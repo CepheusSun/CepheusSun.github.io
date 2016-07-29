@@ -84,27 +84,21 @@
 
 
 
-<meta name="description" content="开篇举一个简单的的例子，老婆说了句“你给我滚出去睡沙发”。这句话的处理流程事这样的
-
-程序的编译其实就是计算机在执行过程之前，把老婆的命令转换成电信号的过程。在计算机世界中，这个玩意儿叫过编译器（compiler），什么GCC啊clang啊什么什么的都是说的这个东西。看起来很高大上，其实就是一个翻译的东西。人把老婆的指令翻译成电波，编译器把各种语言翻译成01010101….">
+<meta name="description" content="开篇举一个简单的的例子，老婆说了句“你给我滚出去睡沙发”。这句话的处理流程事这样的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS中的预编译指令">
 <meta property="og:url" content="http://yoursite.com/2016/07/26/iOS中的预编译指令的初步探究-转/index.html">
 <meta property="og:site_name" content="ProgramerSunny的博客">
-<meta property="og:description" content="开篇举一个简单的的例子，老婆说了句“你给我滚出去睡沙发”。这句话的处理流程事这样的
-
-程序的编译其实就是计算机在执行过程之前，把老婆的命令转换成电信号的过程。在计算机世界中，这个玩意儿叫过编译器（compiler），什么GCC啊clang啊什么什么的都是说的这个东西。看起来很高大上，其实就是一个翻译的东西。人把老婆的指令翻译成电波，编译器把各种语言翻译成01010101….">
+<meta property="og:description" content="开篇举一个简单的的例子，老婆说了句“你给我滚出去睡沙发”。这句话的处理流程事这样的">
 <meta property="og:image" content="http://i4.piimg.com/567571/5d9de7ecac719da4.png">
 <meta property="og:image" content="http://i4.piimg.com/567571/68513aafd1af8015.png">
 <meta property="og:image" content="http://i2.piimg.com/567571/fbcad0c8c26e0977.png">
 <meta property="og:image" content="http://i4.piimg.com/567571/397d615e3cafdbcf.png">
 <meta property="og:image" content="http://i4.piimg.com/567571/e3ab0fb1840550e3.png">
-<meta property="og:updated_time" content="2016-07-26T14:33:11.000Z">
+<meta property="og:updated_time" content="2016-07-29T00:06:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS中的预编译指令">
-<meta name="twitter:description" content="开篇举一个简单的的例子，老婆说了句“你给我滚出去睡沙发”。这句话的处理流程事这样的
-
-程序的编译其实就是计算机在执行过程之前，把老婆的命令转换成电信号的过程。在计算机世界中，这个玩意儿叫过编译器（compiler），什么GCC啊clang啊什么什么的都是说的这个东西。看起来很高大上，其实就是一个翻译的东西。人把老婆的指令翻译成电波，编译器把各种语言翻译成01010101….">
+<meta name="twitter:description" content="开篇举一个简单的的例子，老婆说了句“你给我滚出去睡沙发”。这句话的处理流程事这样的">
 <meta name="twitter:image" content="http://i4.piimg.com/567571/5d9de7ecac719da4.png">
 
 
@@ -301,9 +295,9 @@
 
       
         <h2 id="开篇"><a href="#开篇" class="headerlink" title="开篇"></a>开篇</h2><p>举一个简单的的例子，老婆说了句“你给我滚出去睡沙发”。这句话的处理流程事这样的</p>
+<a id="more"></a>
 <p><img src="http://i4.piimg.com/567571/5d9de7ecac719da4.png" width=600 height=400 /></p>
 <p>程序的编译其实就是计算机在执行过程之前，把老婆的命令转换成电信号的过程。在计算机世界中，这个玩意儿叫过编译器（compiler），什么GCC啊clang啊什么什么的都是说的这个东西。看起来很高大上，其实就是一个翻译的东西。人把老婆的指令翻译成电波，编译器把各种语言翻译成01010101….</p>
-<a id="more"></a>
 <pre><code>ps : 这篇文章是我在阅读了戴伟来的文章之后,根据原文整理的一个笔记。所以文中会有很多地方都摘录了文中的句子。感谢@戴伟来。如果你想直接看一下原文的话，最后有链接。
 </code></pre><blockquote>
 <p>编译器的工作原理基本上都是三段式的，前端、优化器、后端。</p>
