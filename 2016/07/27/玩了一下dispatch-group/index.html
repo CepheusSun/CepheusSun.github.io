@@ -84,29 +84,20 @@
 
 
 
-<meta name="description" content="看了一天的JavaScript基础语法，然后水了一下群，发现一个朋友在问这样的问题。
-简单分析了一下,跟iOS一道面试题一样一样的
-
-如果一个页面需要发送4个网络请求，如何监听到所有的请求都已经回调之后再刷新UI？">
+<meta name="description" content="看了一天的JavaScript基础语法，然后水了一下群，发现一个朋友在问这样的问题。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="玩了一下dispatch_group">
 <meta property="og:url" content="http://yoursite.com/2016/07/27/玩了一下dispatch-group/index.html">
 <meta property="og:site_name" content="ProgramerSunny的博客">
-<meta property="og:description" content="看了一天的JavaScript基础语法，然后水了一下群，发现一个朋友在问这样的问题。
-简单分析了一下,跟iOS一道面试题一样一样的
-
-如果一个页面需要发送4个网络请求，如何监听到所有的请求都已经回调之后再刷新UI？">
+<meta property="og:description" content="看了一天的JavaScript基础语法，然后水了一下群，发现一个朋友在问这样的问题。">
 <meta property="og:image" content="http://i2.piimg.com/567571/423e50e7a0263f42.png">
 <meta property="og:image" content="http://i1.piimg.com/567571/81a097ba5898ac7f.png">
 <meta property="og:image" content="http://i4.piimg.com/567571/b6e3b6ef4164d064.png">
 <meta property="og:image" content="http://i4.piimg.com/567571/af4266a02564281b.png">
-<meta property="og:updated_time" content="2016-07-27T09:34:37.000Z">
+<meta property="og:updated_time" content="2016-07-29T00:04:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="玩了一下dispatch_group">
-<meta name="twitter:description" content="看了一天的JavaScript基础语法，然后水了一下群，发现一个朋友在问这样的问题。
-简单分析了一下,跟iOS一道面试题一样一样的
-
-如果一个页面需要发送4个网络请求，如何监听到所有的请求都已经回调之后再刷新UI？">
+<meta name="twitter:description" content="看了一天的JavaScript基础语法，然后水了一下群，发现一个朋友在问这样的问题。">
 <meta name="twitter:image" content="http://i2.piimg.com/567571/423e50e7a0263f42.png">
 
 
@@ -303,10 +294,12 @@
 
       
         <p>看了一天的JavaScript基础语法，然后水了一下群，发现一个朋友在问这样的问题。<br><img src="http://i2.piimg.com/567571/423e50e7a0263f42.png" width=600 height=120 /></p>
+<a id="more"></a>
 <p>简单分析了一下,跟iOS一道面试题一样一样的</p>
 <blockquote>
-<p>如果一个页面需要发送4个网络请求，如何监听到所有的请求都已经回调之后再刷新UI？<br><a id="more"></a><br>自己也曾经被问到过两次，当时都是说的声明一个全局变量在收到回调的时候+1，当这个变量等于4的时候再刷新UI。</p>
+<p>如果一个页面需要发送4个网络请求，如何监听到所有的请求都已经回调之后再刷新UI？</p>
 </blockquote>
+<p>自己也曾经被问到过两次，当时都是说的声明一个全局变量在收到回调的时候+1，当这个变量等于4的时候再刷新UI。</p>
 <p>现在看起来，这样的答案确实low得可怜。其实我是知道有dispatch group 这个东西的，但是，考虑到网络请求都是异步请求并且通过block回调的，那么block里面的内容无论有没有执行完毕，group notify 总是能够在真正受到回调才会刷新数据。</p>
 <p>看到了朋友这样的问题，在群里简单的提了我用group的解决方案之后，主动提出了我写一个demo出来的建议，然后我就开始了</p>
 <h3 id="temp-one"><a href="#temp-one" class="headerlink" title="temp one"></a>temp one</h3><p>首先我模拟了4个任务分别延时了0.3 0.5 0.1 和马上返回; 然后是通过block回调通知接下来的操作</p>
