@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="ProgramerSunny的博客">
 <meta property="og:description" content="抽空学习了一下html、css、JavaScript。">
 <meta property="og:image" content="http://ocg4av0wv.bkt.clouddn.com/8A576722-8BC1-46CF-9981-5E922715E6E6.png">
-<meta property="og:updated_time" content="2016-08-28T03:01:07.000Z">
+<meta property="og:updated_time" content="2016-08-28T03:04:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="html学习笔记--1">
 <meta name="twitter:description" content="抽空学习了一下html、css、JavaScript。">
@@ -392,6 +392,7 @@
 <p><strong>语法:</strong> <code>&lt;a href = &quot;目标网址&quot; title = &quot;鼠标滑过的文本&quot; target = &quot;_blank&quot;&gt;链接显示的文本&lt;/a&gt;</code></p>
 <p>以上表示在新窗口中打开超链接</p>
 <h4 id="16、-lt-mailto-gt-在网页中链接Email地址"><a href="#16、-lt-mailto-gt-在网页中链接Email地址" class="headerlink" title="16、&lt;mailto&gt; 在网页中链接Email地址"></a>16、<code>&lt;mailto&gt;</code> 在网页中链接Email地址</h4><p><code>&lt;a&gt;</code>标签还有一个作用是可以链接Email地址,使用mailto能让访问者便捷向网址管理者发生电子邮件。还可以用它做些其它事情。</p>
+<p>如下：</p>
 <p><table><br>    <tbody><br>        <tr><br>            <th>功能</th><br>            <th>关键字</th><br>            <th>功能详解</th><br>            <th>举例</th><br>        </tr><br>        <tr><br>            <th>邮箱地址</th><br>            <td>mailto:</td><br>            <th>浏览器自动调用默认的电子邮件程序，并在收件人中填上跳上收件人地址</th><br>            <th><code>&lt;a href=&quot;mailto: aa@163.com&quot;&gt;发送&lt;/a&gt;</code></th><br>        </tr><br>        <tr><br>            <th>抄送地址</th><br>            <td>cc=</td><br>            <th>在收件人地址后用cc=地址 ，可以填写抄送地址</th><br>            <th><code>&lt;a href=&quot;mailto: aa@163.com?cc=bb@163.com&quot;&gt;发送&lt;/a&gt;</code></th><br>        </tr><br>        <tr><br>            <th>密件抄送地址</th><br>            <td>bcc=</td><br>            <th>在收件人地址后用cc=地址 ，可以填写密件抄送地址</th><br>            <th><code>&lt;a href=&quot;mailto: aa@163.com?bcc=bb@163.com&quot;&gt;发送&lt;/a&gt;</code></th><br>        </tr><br>        <tr><br>            <th>多个收件人、抄送、密件抄送人</th><br>            <td>;</td><br>            <th>用分号隔开多个地址</th><br>            <th><code>&lt;a href=&quot;mailto: aa@163.com;bb@163.com&quot;&gt;发送&lt;/a&gt;</code></th><br>        </tr><br>        <tr><br>            <th>邮件主题</th><br>            <td>subject=</td><br>            <th>用subject= 添加邮件主题</th><br>            <th><code>&lt;a href=&quot;mailto: aa@163.com？subject＝发送电子邮件&quot;&gt;发送&lt;/a&gt;</code></th><br>        </tr><br>        <tr><br>            <th>邮件内容</th><br>            <td>body=</td><br>            <th>用body= 添加邮件内容</th><br>            <th><code>&lt;a href=&quot;mailto: aa@163.com？body= 邮件内容&quot;&gt;发送&lt;/a&gt;</code></th><br>        </tr><br>    </tbody></p>
 <table>
 
@@ -404,7 +405,7 @@
 <li><code>action</code>:浏览者输入的数据被传送到的地方，比如一个php页面</li>
 <li><code>method</code>:数据的传输方式<code>get／post</code></li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;form method = &quot;post&quot; action = &quot;save.php&quot;&gt;</div><div class="line">	&lt;label for = &quot;username&quot;&gt;用户名:&lt;/label&gt;</div><div class="line">	&lt;input type = &quot;text&quot; name = &quot;username&quot;/&gt;</div><div class="line">	&lt;label for = &quot;pass&quot;&gt;密码:&lt;/label&gt;</div><div class="line">	&lt;input type = &quot;password&quot; name = &quot;pass&quot;/&gt;</div><div class="line">&lt;/form&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">//</div><div class="line">&lt;form method = &quot;post&quot; action = &quot;save.php&quot;&gt;</div><div class="line">	&lt;label for = &quot;username&quot;&gt;用户名:&lt;/label&gt;</div><div class="line">	&lt;input type = &quot;text&quot; name = &quot;username&quot;/&gt;</div><div class="line">	&lt;label for = &quot;pass&quot;&gt;密码:&lt;/label&gt;</div><div class="line">	&lt;input type = &quot;password&quot; name = &quot;pass&quot;/&gt;</div><div class="line">&lt;/form&gt;</div><div class="line">//</div></pre></td></tr></table></figure>
 <form method = "post" action = "save.php"><br>    <label for = "username">用户名:</label><br>    <input type = "text" name = "username" value = "placeholder"/><br>    <label for = "pass">密码:</label><br>    <input type = "password" name = "pass" value = "placeholder"/><br></form>
 
 <p>注意:</p>
