@@ -1,0 +1,891 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS,编译原理," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="ProgramerSunny的博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="http://i1.piimg.com/567571/ad232c36cb221eba.png?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="iOS中的一些预编译指令。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS中的预编译指令">
+<meta property="og:url" content="http://yoursite.com/2016/07/26/iOS中的预编译指令的初步探究-转/index.html">
+<meta property="og:site_name" content="ProgramerSunny的博客">
+<meta property="og:description" content="iOS中的一些预编译指令。">
+<meta property="og:image" content="http://i4.piimg.com/567571/5d9de7ecac719da4.png">
+<meta property="og:image" content="http://i4.piimg.com/567571/68513aafd1af8015.png">
+<meta property="og:image" content="http://i2.piimg.com/567571/fbcad0c8c26e0977.png">
+<meta property="og:image" content="http://i4.piimg.com/567571/397d615e3cafdbcf.png">
+<meta property="og:image" content="http://i4.piimg.com/567571/e3ab0fb1840550e3.png">
+<meta property="og:updated_time" content="2016-08-29T02:27:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS中的预编译指令">
+<meta name="twitter:description" content="iOS中的一些预编译指令。">
+<meta name="twitter:image" content="http://i4.piimg.com/567571/5d9de7ecac719da4.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/07/26/iOS中的预编译指令的初步探究-转/"/>
+
+  <title> iOS中的预编译指令 | ProgramerSunny的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">ProgramerSunny的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">ProgramerSunny的博客</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                iOS中的预编译指令
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-26T17:16:38+08:00" content="2016-07-26">
+              2016-07-26
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/26/iOS中的预编译指令的初步探究-转/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/26/iOS中的预编译指令的初步探究-转/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/07/26/iOS中的预编译指令的初步探究-转/" class="leancloud_visitors" data-flag-title="iOS中的预编译指令">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>iOS中的一些预编译指令。<br><a id="more"></a></p>
+<h2 id="开篇"><a href="#开篇" class="headerlink" title="开篇"></a>开篇</h2><p>举一个简单的的例子，老婆说了句“你给我滚出去睡沙发”。这句话的处理流程事这样的</p>
+<p><img src="http://i4.piimg.com/567571/5d9de7ecac719da4.png" width=600 height=400 /></p>
+<p>程序的编译其实就是计算机在执行过程之前，把老婆的命令转换成电信号的过程。在计算机世界中，这个玩意儿叫过编译器（compiler），什么GCC啊clang啊什么什么的都是说的这个东西。看起来很高大上，其实就是一个翻译的东西。人把老婆的指令翻译成电波，编译器把各种语言翻译成01010101….</p>
+<pre><code>ps : 这篇文章是我在阅读了戴伟来的文章之后,根据原文整理的一个笔记。所以文中会有很多地方都摘录了文中的句子。感谢@戴伟来。如果你想直接看一下原文的话，最后有链接。
+</code></pre><blockquote>
+<p>编译器的工作原理基本上都是三段式的，前端、优化器、后端。</p>
+<blockquote>
+<p>前端负责解析源码，检查语法错误，并将其翻译成抽象的语法树; </p>
+<p>优化器对这一中间代码进行优化，使代码更佳高效。</p>
+<p>后端负责将优化过的代码转化成对应机器的代码。</p>
+</blockquote>
+</blockquote>
+<p><img src="http://i4.piimg.com/567571/68513aafd1af8015.png" width=650 height=180 /></p>
+<p>LLVC编译器实际上是用C++写的，那C++的编译器呢？当然是汇编了，所以编译器和计算机语言的进步就是这样迭代发展的，再之后就是用高级语言写更高级的编译器，更高级的编译器就能编译更加高级的语言….那么问题来了，世界上计算机语言那么多，各种不同的架构，Intel ARM，怎么让编译语言分别产生不同的架构的执行码呢，这个时候就应该想到刚刚的三段式模型了，当我们要支持多种语言的时候，只需要添加多个前端就可以了。当我们要支持多种目标机器的时候，只需要添加多个后端就可以了。对于中间的优化器，我们可以使用通用的中间代码。gcc可以支持c、cpp、java….等语言的编译。</p>
+<p><img src="http://i2.piimg.com/567571/fbcad0c8c26e0977.png" width=650 height=180 /></p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>由于文中作者使用的是Xcode6，但是现在我已经用到了Xcode7.3，而Xcode8页已经beta了。所以我讲使用我目前正在使用的Xcode7.3来进行本文。由于APPLE已经不在Xcode中内置GCC了，所以我就只能研究研究LLVM了。</p>
+<p>如果对各种编译器的区别感兴趣的话可以看看下面两篇文章</p>
+<ul>
+<li><a href="http://www.cnblogs.com/zuopeng/p/4141467.html"><em>《LLVM和GCC的区别》</em></a></li>
+<li><a href="http://www.programmer.com.cn/9436/"><em>《《三好学生Chris Lattner的LLVM编译工具链》》</em></a></li>
+</ul>
+<p>如果阅读过优秀的源码，你一定会看到很多的<code>#define</code> <code>#if</code> <code>#error</code>之类的代码,预编译对程序之后的编译提供了很多方便以及优化，对于错误处理，包引用、跨平台等都有着极大的帮助。</p>
+<h3 id="包含文件"><a href="#包含文件" class="headerlink" title="包含文件"></a>包含文件</h3><h4 id="include"><a href="#include" class="headerlink" title="#include"></a>#include</h4><p><code>#include&quot; &quot;</code> 、<code>#include&lt; &gt;</code>的区别:<code>#include“”</code>包含和使用<code>#include &lt; &gt;</code>包含的不同之处就是使用&lt;&gt;包含时，预处理器会搜索C函数库头文件路径下的文件，而使用“”包含时首先搜索程序所在目录，其次搜索系统Path定义目录，如果还是找不到才会搜索C函数库头文件所在目录。</p>
+<blockquote>
+<p>使用#include的时候包含文件的时候是不能递归包含的，例如a.h文件包含b.h，而b.h就不<br>能再包含a.h了；还有就是重复包含(比如a.h包含了b.h,然后main.c中又包含了a.h和b.h)虽然是允许的但是这会降低编译性能。那该怎么办呢？</p>
+<blockquote>
+<ol>
+<li>使用#import替代include</li>
+<li>使用宏判断(宏判断下面会详解)，xcode很聪明，只要新建一个头文件a.h 里面就自动就生成了</li>
+</ol>
+</blockquote>
+</blockquote>
+<h4 id="include-next"><a href="#include-next" class="headerlink" title="#include_next"></a>#include_next</h4><p>这个是非C标准库里面的预处理指令,我没有用过。</p>
+<h4 id="import"><a href="#import" class="headerlink" title="#import"></a>#import</h4><p>OC特有的，智能的<code>＃include</code>,解决了<code>＃include</code>的重复包含问题。</p>
+<h3 id="宏定义"><a href="#宏定义" class="headerlink" title="宏定义"></a>宏定义</h3><h4 id="define"><a href="#define" class="headerlink" title="#define"></a>#define</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//this defines PI</div><div class="line">#define M_PI 3.141592</div></pre></td></tr></table></figure>
+<p><code>#define</code> 关键字表面即将开始定义一个宏，M_PI是宏的名字，空格过后是宏的内容。类似这样的宏编译器会在语义分析之后讲M_PI替换为3.14159，这是宏的最基本用法。</p>
+<p>还有一种是函数宏函数宏顾名思义，就是行为类似函数，可以接受参数的宏。具体来说，在定义的时候，如果我们在宏名字后面跟上一对括号的话，这个宏就变成了函数宏。从最简单的例子开始，比如我在开发中最常用的两个宏</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#define WS(weakSelf) __weak __typeof(&amp;*self)weakSelf = self;</div><div class="line">#define SS(strongSelf) __strong typeof(&amp;*weakSelf) strongSelf = weakSelf;</div></pre></td></tr></table></figure>
+<p>这两个宏的意思应该不用我说了吧，如果你没看懂而且你又喜欢用block的话，那建议你用instrument 的leaks看看是不是一串红点。</p>
+<p>原文中还有一个MIN宏定义的正确用法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#define MIN(A,B)    (&#123; __typeof__(A) __a = (A); __typeof__(B) __b = (B); __a &lt; __b ? __a : __b; &#125;)</div></pre></td></tr></table></figure>
+<p>接下来再把我使用的log宏放出来</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#ifdef DEBUG</div><div class="line">#   define PSLog(fmt, ...) NSLog((@&quot;%s [%d 行] &quot; fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);</div><div class="line">#else</div><div class="line">#   define PSLog(...)</div><div class="line">#endif</div></pre></td></tr></table></figure>
+<p>这个宏的意思请分别在release 和 debug下测试</p>
+<h4 id="＃undef"><a href="#＃undef" class="headerlink" title="＃undef"></a>＃undef</h4><p>当你使用了<code>#define</code>宏定义后，则在整个程序的运行周期内这个宏都是有效的，但有时候我们在某个逻辑里希望这个宏失效不想使用，则会使用</p>
+<h3 id="条件编译"><a href="#条件编译" class="headerlink" title="条件编译"></a>条件编译</h3><h4 id="if-else-endif"><a href="#if-else-endif" class="headerlink" title="#if #else #endif"></a>#if #else #endif</h4><p>如果<code>＃if 之后的条件语句成立的话</code>编译<code>＃else</code>里面的代码 反之编译 <code>＃else</code> 之后的代码 <code>#endif</code> 结束语句<br>接下来是一些预定的宏</p>
+<ul>
+<li><code>DEBUG</code> DEBUG环境下返回YES</li>
+<li><code>__has_feature(objc_arc)</code> 开启ARC时返回YES</li>
+<li><code>__IPHONE_OS_VERSION_MIN_REQUIRED &lt; __IPHONE_7_0</code> 如果手机系统小于7.0 返回YES,版本策略</li>
+</ul>
+<h4 id="if-defined-ifdef-ifndef-elif"><a href="#if-defined-ifdef-ifndef-elif" class="headerlink" title="#if defined #ifdef #ifndef #elif"></a>#if defined #ifdef #ifndef #elif</h4><ul>
+<li><code>#if defined (AAA)</code> : 如果已经定义了AAA这个宏,返回YES，可用于复杂条件<code>#if defined (AAA) &amp;&amp; defined (BBB)</code>或者<code>#if defined (AAA) || VERSION &gt; 12</code></li>
+<li><code>#iddef （AAA）</code>: 如果已经定义了AAA这个宏,返回YES，单个条件</li>
+<li><code>#ifndef</code> : if not defined 的缩写</li>
+<li><code>#elif</code> : 跟<code>#if</code>一起使用，else if的缩写</li>
+</ul>
+<h3 id="错误、警告处理"><a href="#错误、警告处理" class="headerlink" title="错误、警告处理"></a>错误、警告处理</h3><p>####　#error</p>
+<p>如果编译器遇到这货，马上就会罢工。</p>
+<p>如果你在开发一些arc only的库，那么一下代码就有了作用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#if !__has_feature(objc_arc)</div><div class="line">#error &quot;我的低调不是你装逼的资本！这个库需要开启ARC，不然你别用！&quot;</div><div class="line">#endif</div></pre></td></tr></table></figure>
+<h4 id="warning"><a href="#warning" class="headerlink" title="#warning"></a>#warning</h4><p>这个用法很简单，只要后面跟上你想警告的话就OK了，这样你就可以让编译器提醒这个警告。这个我经常用。但是还有一个更好用的<code>TODO</code>脚本,一会而我会放出来。</p>
+<h3 id="编译器控制"><a href="#编译器控制" class="headerlink" title="编译器控制"></a>编译器控制</h3><h4 id="pragma"><a href="#pragma" class="headerlink" title="#pragma"></a>#pragma</h4><p>这个应该算是使用的非常多的指令了吧，应该所有的程序员都应该知道代码<code>＃pragma mark</code>的作用。</p>
+<h5 id="pragma-mark"><a href="#pragma-mark" class="headerlink" title="#pragma mark"></a>#pragma mark</h5><p>这个真没有什么好说的了，记得<code>＃pragma mark</code> 和<code>＃pragma mark －</code>的区别就好了</p>
+<blockquote>
+<p><code>#pragma</code>非常复杂需要你对编译器底层非常的了解，只有当你开发一些比较底层的framework的时候才可能比较多用的。 <a href="http://clang.llvm.org/get_started.html"><em>Clang使用手册</em></a></p>
+</blockquote>
+<h5 id="pragma-message-“”"><a href="#pragma-message-“”" class="headerlink" title="#pragma message(“”)"></a>#pragma message(“”)</h5><p>可以输出调试信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#pragma clang disgnostic push</div><div class="line">#pragma clang disgnostic ignored &quot;clang的参数&quot;  //屏蔽某类警告</div><div class="line">#pragma clang disgnostic pop</div></pre></td></tr></table></figure>
+<p>如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#pragma clang disgnostic push</div><div class="line">#pragma clang disgnostic ignored &quot;-Wunused-variable&quot;</div><div class="line"> </div><div class="line">int i = 1;</div><div class="line">#pragma clang disgnostic pop</div></pre></td></tr></table></figure>
+<p>如果没有被使用的时候不会报出警告</p>
+<p>关于警告一类的文章可以看看<a href="https://onevcat.com/#blog"><em>喵神王巍</em></a>的博客。</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>#####line<br>这个就没什么好说的，如果你自定义过NSLog 或者看到其他自定义的log并且点进去看过的话应该会看得到<code>__line__</code>这个东西吧，这表示本行语句在源文件中的位置信息。而<code>＃line</code>就是可以改变当前行的行号在编译器中的表示。并且之后的行号也会相应的改变。比如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#include&lt;stdio.h&gt;</div><div class="line">main()&#123;</div><div class="line">	printf(&quot;%d\n&quot;,__line__);</div><div class="line">#line 100 // 指定下一行的__line__为100</div><div class="line">	printf(&quot;%d\n&quot;,__line__);</div><div class="line">	printf(&quot;%d\n&quot;,__line__);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>输出为,如果第一个printf在第三行的话</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">3</div><div class="line">100</div><div class="line">101</div></pre></td></tr></table></figure>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>刚刚开始写博客，这是我水的第二篇博文了,依然是那么的水，主要还是为了想要测试一下HEXO的玩法。以后希望自己能够在javascript 、python 、 React Native 这三个方向进步。写这个博客也是为了学习一下javescript，结果几乎没有用到js的知识。以后写一些有关于这三个方向的学习心得或者说是学习笔记吧。这篇文章发出来之后，博客的基本用法也就学的七七八八了，期待自己的进阶之旅，也期待自己在iOS的进阶之旅，也期待自己在is py rn这三个方向的入门之旅。</p>
+<p><a href="http://www.cnblogs.com/daiweilai/p/4234336.html"><em>戴伟来地址</em></a></p>
+<p>哦, 对了那个TODO是这样设置的：</p>
+<p><img src="http://i4.piimg.com/567571/397d615e3cafdbcf.png" width=650 height=400 /></p>
+<p>第四步中的脚本为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">KEYWORDS=&quot;TODO:|FIXME:|\?\?\?:|\!\!\!:&quot;</div><div class="line">find &quot;$&#123;SRCROOT&#125;&quot; \( -name &quot;*.h&quot; -or -name &quot;*.m&quot; \) -print0 | xargs -0 egrep --with-filename --line-number --only-matching &quot;($KEYWORDS).*\$&quot; | perl -p -e &quot;s/($KEYWORDS)/ warning: \$1/&quot;</div></pre></td></tr></table></figure>
+<p>原理是根据正则表达式去判断。</p>
+<p>用起来是这样的:</p>
+<p><img src="http://i4.piimg.com/567571/e3ab0fb1840550e3.png" width=650 height=50 /></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag">#iOS</a>
+          
+            <a href="/tags/编译原理/" rel="tag">#编译原理</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/15/hello-world/" rel="next" title="我是这样搭建我的博客的">
+                <i class="fa fa-chevron-left"></i> 我是这样搭建我的博客的
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/27/玩了一下dispatch-group/" rel="prev" title="玩了一下dispatch_group">
+                玩了一下dispatch_group <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/07/26/iOS中的预编译指令的初步探究-转/"
+           data-title="iOS中的预编译指令" data-url="http://yoursite.com/2016/07/26/iOS中的预编译指令的初步探究-转/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://i1.piimg.com/567571/8792d80f863fe9cc.png"
+               alt="Programer Sunny" />
+          <p class="site-author-name" itemprop="name">Programer Sunny</p>
+          <p class="site-description motion-element" itemprop="description">一名iOS开发者,对动态化和组件化两个词语比较感兴趣，正在学习中。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ProgramerSunny" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/208883862/home?wvr=5&lf=reg" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#开篇"><span class="nav-number">1.</span> <span class="nav-text">开篇</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#包含文件"><span class="nav-number">2.1.</span> <span class="nav-text">包含文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#include"><span class="nav-number">2.1.1.</span> <span class="nav-text">#include</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#include-next"><span class="nav-number">2.1.2.</span> <span class="nav-text">#include_next</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#import"><span class="nav-number">2.1.3.</span> <span class="nav-text">#import</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#宏定义"><span class="nav-number">2.2.</span> <span class="nav-text">宏定义</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#define"><span class="nav-number">2.2.1.</span> <span class="nav-text">#define</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#＃undef"><span class="nav-number">2.2.2.</span> <span class="nav-text">＃undef</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#条件编译"><span class="nav-number">2.3.</span> <span class="nav-text">条件编译</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#if-else-endif"><span class="nav-number">2.3.1.</span> <span class="nav-text">#if #else #endif</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#if-defined-ifdef-ifndef-elif"><span class="nav-number">2.3.2.</span> <span class="nav-text">#if defined #ifdef #ifndef #elif</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#错误、警告处理"><span class="nav-number">2.4.</span> <span class="nav-text">错误、警告处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#warning"><span class="nav-number">2.4.1.</span> <span class="nav-text">#warning</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编译器控制"><span class="nav-number">2.5.</span> <span class="nav-text">编译器控制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#pragma"><span class="nav-number">2.5.1.</span> <span class="nav-text">#pragma</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#pragma-mark"><span class="nav-number">2.5.1.1.</span> <span class="nav-text">#pragma mark</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#pragma-message-“”"><span class="nav-number">2.5.1.2.</span> <span class="nav-text">#pragma message(“”)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他"><span class="nav-number">2.6.</span> <span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语"><span class="nav-number">3.</span> <span class="nav-text">结语</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Programer Sunny</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人</span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"programersunny"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("3VegSLQBjr1EXkI6a2GR2aXY-gzGzoHsz", "bUW35k3am6UQE29tQY4kDeP5");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
