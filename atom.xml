@@ -1,0 +1,950 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>ProgramerSunny的博客</title>
+  <subtitle>ProgramerSunny的博客</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2016-08-29T02:25:51.000Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>Programer Sunny</name>
+    <email>cd_sunyang@163.com</email>
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CSS学习笔记 -- 1</title>
+    <link href="http://yoursite.com/2016/08/29/css%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0--1/"/>
+    <id>http://yoursite.com/2016/08/29/css学习笔记--1/</id>
+    <published>2016-08-29T01:56:45.000Z</published>
+    <updated>2016-08-29T02:25:51.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>抽空学习了一下html、css、JavaScript。</p>
+<a id="more"></a>
+<blockquote>
+<p>这部分内容是我抽空学习的时候整理的笔记,这部分是看的前端的内容。<a href="http://www.imooc.com/learn/9"><em>学习地址</em></a>。</p>
+</blockquote>
+<h2 id="什么是CSS"><a href="#什么是CSS" class="headerlink" title="什么是CSS"></a>什么是CSS</h2><blockquote>
+<p>CSS 全称为”层叠样式表Cascading Style Sheets”,他主要是用于定义HTML内容在浏览器中的样式,如文字大小，颜色，字体加粗等。</p>
+<p>使用CSS样式的一个好处是通过定义某个样式，可以让不同网页位置的文字有着统一的字体、字号或者颜色等。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">p&#123;</div><div class="line">	font-size:12px;</div><div class="line">	color:red;</div><div class="line">	font-weight:bold;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="CSS的语法"><a href="#CSS的语法" class="headerlink" title="CSS的语法"></a>CSS的语法</h2><h3 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h3><p>css样式由<strong>选择符</strong>和<strong>声明</strong>组成，而<strong>声明</strong>又由<strong>属性</strong>和<strong>值</strong>组成。</p>
+<p>如上文示例中<code>p</code>为选择符 <code>{...}</code>花括号内为声明，<code>color</code>为属性 ,<code>red</code>为值。</p>
+<p><strong>选择符</strong>:又称为选择器，指明网页中要应用样式规则的元素。</p>
+<p><strong>声明</strong>: 在英文花括号中的就是声明，属性和值之间用英文冒号分割。当有多条声明的时候，使用<code>;</code>分割。</p>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>html: <code>&lt;!-- ... --&gt;</code>;</p>
+<p>css: <code>/*...*/</code></p>
+<h3 id="位置"><a href="#位置" class="headerlink" title="位置"></a>位置</h3><p>内联式、嵌入式、外部式</p>
+<h4 id="内联式CSS样式-直接写在现有的CSS标签中"><a href="#内联式CSS样式-直接写在现有的CSS标签中" class="headerlink" title="内联式CSS样式,直接写在现有的CSS标签中"></a>内联式CSS样式,直接写在现有的CSS标签中</h4><p><p style="color:red ; font-size: 15px">text</p>  <code>&lt;p style=&quot;color:red ;font-size: 15px&quot;&gt;text&lt;/p&gt;</code></p>
+<h4 id="嵌入式CSS样式，直接写在当前的文件中"><a href="#嵌入式CSS样式，直接写在当前的文件中" class="headerlink" title="嵌入式CSS样式，直接写在当前的文件中"></a>嵌入式CSS样式，直接写在当前的文件中</h4><p>将css代码写在html文件的<code>&lt;style&gt;&lt;/style&gt;</code>标签中</p>
+<p>嵌入式css样式必须写在<code>&lt;style&gt;&lt;/style&gt;</code>之间，并且一般情况下嵌入式css样式写在<code>&lt;head&gt;&lt;/head&gt;</code>之间。如右边编辑器中的代码。</p>
+<h4 id="外部式CSS样式-写在单独的一个文件中"><a href="#外部式CSS样式-写在单独的一个文件中" class="headerlink" title="外部式CSS样式,写在单独的一个文件中"></a>外部式CSS样式,写在单独的一个文件中</h4><p>外部式css样式(也可称为外联式)就是把css代码写一个单独的外部文件中，这个css样式文件以“.css”为扩展名，在<code>&lt;head&gt;</code>内（不是在<code>&lt;style&gt;</code>标签内）使用<code>&lt;link&gt;</code>标签将css样式文件链接到HTML文件内，如下面代码：</p>
+<p><code>&lt;link href=&quot;base.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;</code></p>
+<p>注意:</p>
+<ol>
+<li>css样式文件名称应该以有意义的英文字母命名。</li>
+<li>rel=”stylesheet” type=”text/css”是固定写法，不可以修改。</li>
+<li><code>&lt;link&gt;</code>标签的位置一般写在<code>&lt;head&gt;</code>标签之内。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE HTML&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;</div><div class="line">&lt;title&gt;嵌入式css样式&lt;/title&gt;</div><div class="line">&lt;link href=&quot;style.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;p&gt;...&lt;/p&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h4 id="三种方式的优先级以及怎么选择"><a href="#三种方式的优先级以及怎么选择" class="headerlink" title="三种方式的优先级以及怎么选择"></a>三种方式的优先级以及怎么选择</h4><p>如果三个都有，那么三个都要访问到，但是如果对于同一个属性，那么按照：就近原则体现。</p>
+<h3 id="类选择器"><a href="#类选择器" class="headerlink" title="类选择器"></a>类选择器</h3><p><strong>语法</strong>： <code>.类选择器{css样式代码;}</code></p>
+<ul>
+<li>以英文原点开头</li>
+<li>类选器名称可以任意起名</li>
+</ul>
+<p><strong>使用</strong>：</p>
+<ol>
+<li>设置类选择器<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">2. 使用合适的标签修饰内容</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><span>内容</span><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">3. 为上面的标签设置一个类</div></pre></td></tr></table></figure></p>
+<p><span class="name">内容</span><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### ID选择器</div><div class="line"></div><div class="line">类似类选择器</div><div class="line"></div><div class="line">1、为标签设置id=&quot;ID名称&quot;，而不是class=&quot;类名称&quot;。</div><div class="line"></div><div class="line">2、ID选择符的前面是井号（#）号，而不是英文圆点（.）。</div><div class="line"></div><div class="line">#### 类选择器和ID选择器的区别</div><div class="line"></div><div class="line">**相同点**:可以应用于任何元素</div><div class="line"></div><div class="line">**不同点**:</div><div class="line"></div><div class="line">1. ID选择器只能在文档中使用一次。与类选择器不同，在一个HTML文档中，ID选择器只能使用一次，而且仅一次。而类选择器可以使用多次。</div><div class="line">2. 可以使用类选择器词列表方法为一个元素同时设置多个样式。我们可以为一个元素同时设多个样式，但只可以用类选择器的方法实现，ID选择器是不可以的（不能使用 ID 词列表）。</div><div class="line"></div><div class="line"></div><div class="line">### 子选择器</div><div class="line"></div><div class="line">子选择器(&quot;&gt;&quot;)：用于选择指定标签元素的第一代子元素。</div></pre></td></tr></table></figure></p>
+<p>.food&gt;li{border:1px solid red;}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">这行代码会使class名为food下的子元素li（水果、蔬菜）加入红色实线边框。</div><div class="line"></div><div class="line"></div><div class="line">### 包含（后代）选择器</div><div class="line"></div><div class="line">包含选择器，即加入空格,用于选择指定标签元素下的后辈元素。如右侧代码编辑器中的代码：</div></pre></td></tr></table></figure></p>
+<p>.first span{color:red;}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">请注意这个选择器与子选择器的区别，子选择器（child selector）仅是指它的直接后代，或者你可以理解为作用于子元素的第一代后代。而后代选择器是作用于所有子后代元素。后代选择器通过空格来进行选择，而子选择器是通过“&gt;”进行选择。</div><div class="line"></div><div class="line">总结：&gt;作用于元素的第一代后代，空格作用于元素的所有后代。</div><div class="line"></div><div class="line">### 通用选择器</div><div class="line"></div><div class="line">通用选择器是功能最强大的选择器，它使用一个（*）号指定，它的作用是匹配html中所有标签元素，如下使用下面代码使用html中任意标签元素字体颜色全部设置为红色：</div></pre></td></tr></table></figure></p>
+<p>*{color:red;}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 伪类选择符</div><div class="line"></div><div class="line">`a:hover&#123;color:red;&#125;`</div><div class="line"></div><div class="line">为a标签鼠标滑过状态设置字体颜色变红。 由于兼容问题，只有`a:hover `兼容所有浏览器</div><div class="line"></div><div class="line">### 分组选择符</div></pre></td></tr></table></figure></p>
+<p>h1,span{color:red;}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure></p>
+<p>h1{color:red;}<br>span{color:red;}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">以上代码等价。</div><div class="line"></div><div class="line">### 权值规则</div><div class="line"></div><div class="line">标签的权值为1，类选择符的权值为10，ID选择符的权值最高为100。</div><div class="line"></div><div class="line">权值越高，优先使用。</div><div class="line"></div><div class="line">**注意**：还有一个权值比较特殊--继承也有权值但很低，有的文献提出它只有0.1，所以可以理解为继承的权值最低。</div><div class="line"></div><div class="line"></div><div class="line">### 重要性</div><div class="line"></div><div class="line">使用！important使某些样式具有最高权重。如：</div><div class="line"></div><div class="line">`p&#123;color:red!important;&#125;`</div><div class="line"></div><div class="line">一般情况下：浏览器默认的样式 &lt; 网页制作者样式 &lt; 用户自己设置的样式</div><div class="line"></div><div class="line">但是`!important`是一个例外</div><div class="line"></div><div class="line">所以:浏览器默认的样式 &lt; 网页制作者样式 &lt; 用户自己设置的样式 &lt; `!important` 修饰的样式</div><div class="line"></div><div class="line">## 文字排版</div><div class="line"></div><div class="line">### 字体</div></pre></td></tr></table></figure></p>
+<p>body{font-family:”Microsoft Yahei”;}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 字号、颜色</div></pre></td></tr></table></figure></p>
+<p>font-size:12px;/<em>字号</em>/<br>color:#66;/<em>颜色</em>/<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 粗体</div></pre></td></tr></table></figure></p>
+<p>font-weight:bold;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 斜体</div></pre></td></tr></table></figure></p>
+<p>font-style:italic;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 下划线</div></pre></td></tr></table></figure></p>
+<p>font-decoration:underline;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 删除线</div></pre></td></tr></table></figure></p>
+<p>text-decoration:line-through;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 缩进</div></pre></td></tr></table></figure></p>
+<p>text-indent:2em;/<em>2em表示文字的2倍大小</em>/<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 行间距(行高)</div></pre></td></tr></table></figure></p>
+<p>line-height:1.5em;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 中文字间距、字母间距</div><div class="line"></div><div class="line">**中文、字母**</div></pre></td></tr></table></figure></p>
+<p>letter-spacing:50px;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">**单词**</div></pre></td></tr></table></figure></p>
+<p>word-spacing:50px;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 对其方式</div></pre></td></tr></table></figure></p>
+<p>text-align:center;/<em>居中</em>/<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">## 元素分类</div><div class="line"></div><div class="line">常用的块状元素：</div><div class="line"></div><div class="line">`div`、`p`、`hn`、`ol`、`ul`、`dl`、`table`、`address`、`blockquote`、`form`</div><div class="line"></div><div class="line">常用的内联元素有：</div><div class="line"></div><div class="line">`&lt;a&gt;`、`&lt;span&gt;`、`&lt;br&gt;`、`&lt;i&gt;`、`&lt;em&gt;`、`&lt;strong&gt;`、`&lt;label&gt;`、`&lt;q&gt;`、`&lt;var&gt;`、`&lt;cite&gt;`、`&lt;code&gt;`</div><div class="line"></div><div class="line">常用的内联块状元素有：</div><div class="line"></div><div class="line">`&lt;img&gt;`、`&lt;input&gt;`</div><div class="line"></div><div class="line">### 块级元素</div><div class="line"></div><div class="line">如上文；</div><div class="line"></div><div class="line">可以通过`display:block`将元素显示为块级别元素。</div><div class="line"></div><div class="line">**块级元素特点**：</div><div class="line"></div><div class="line">1. 每个块级元素都从新的一行开始，并且其后的元素也另起一行。（真霸道，一个块级元素独占一行）</div><div class="line">2. 元素的高度、宽度、行高以及顶和底边距都可设置。</div><div class="line">3. 元素宽度在不设置的情况下，是它本身父容器的100%（和父元素的宽度一致），除非设定一个宽度。</div><div class="line"></div><div class="line">### 内联元素</div><div class="line"></div><div class="line">如上文；</div><div class="line"></div><div class="line">可以通过`display:inline`将元素设置为内联元素</div><div class="line"></div><div class="line">**内联元素特点**：</div><div class="line"></div><div class="line">1. 和其他元素都在一行上；</div><div class="line">2. 元素的高度、宽度及顶部和底部边距不可设置；</div><div class="line">3. 元素的宽度就是它包含的文字或图片的宽度，不可改变。</div><div class="line"></div><div class="line"></div><div class="line">### 内联块状元素</div><div class="line"></div><div class="line">内联块状元素（inline-block）就是同时具备内联元素、块状元素的特点</div><div class="line"></div><div class="line">可以通过`display:inline-block`将元素设置为内联块状元素</div><div class="line"></div><div class="line">**inline-block 元素特点**：</div><div class="line"></div><div class="line">1. 和其他元素都在一行上；</div><div class="line">2. 元素的高度、宽度、行高以及顶和底边距都可设置。</div><div class="line"></div><div class="line"></div><div class="line">## 盒子模型</div><div class="line"></div><div class="line">1. `width`: 内容</div><div class="line">2. `height`:内容</div><div class="line">3. `padding`:内填充</div><div class="line">4. `margin`:外填充</div><div class="line">5. `border`:边界</div><div class="line"></div><div class="line">### 边框 border</div><div class="line"></div><div class="line">盒子模型的边框就是围绕着内容及补白的线，这条线你可以设置它的粗细、样式和颜色(边框三个属性)。</div><div class="line"></div><div class="line">例如给div设置边框：</div></pre></td></tr></table></figure></p>
+<p>div{border:2px solid red;}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">或者</div></pre></td></tr></table></figure></p>
+<p>div{<br>    border-width:2px;<br>    border-style:solid;<br>    border-color:red;<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">**注意**</div><div class="line"></div><div class="line">1. border-style: `dashed`虚线、 `dotted`点线、 `solid`实线</div><div class="line">2. border-color:</div><div class="line">3. border-width（边框宽度）中的宽度也可以设置为：`thin` | `medium` | `thick`（但不是很常用），最常还是用象素（px）。</div><div class="line"></div><div class="line"></div><div class="line">`border-bottom`、`bottom-top`、`bottom-left`、`bottom-right`只给一边的边框设置。</div><div class="line"></div><div class="line"></div><div class="line">### 大小 </div><div class="line"></div><div class="line">`width` `height`</div><div class="line"></div><div class="line">### 内填充</div><div class="line"></div><div class="line">`padding`  `div&#123;padding:20px 10px 15px 30px;&#125;`  顺序为上又下左(顺时针)</div><div class="line"></div><div class="line">如果上、右、下、左的填充都为10px;可以这么写</div><div class="line"></div><div class="line">`div&#123;padding:10px;&#125;`</div><div class="line"></div><div class="line">如果上下填充一样为10px，左右一样为20px，可以这么写：</div><div class="line"></div><div class="line">`div&#123;padding:10px 20px;&#125;`</div><div class="line"></div><div class="line">### 边界(外填充)</div><div class="line"></div><div class="line">`margin`  类似`padding`</div><div class="line"></div><div class="line">## CSS布局模型</div><div class="line"></div><div class="line">网页中的元素有三种布局模型:</div><div class="line"></div><div class="line">1. 流动模型(Flow)</div><div class="line">2. 浮动模型(Float)</div><div class="line">3. 层模型(Layer)</div><div class="line"></div><div class="line">### 流动模型(Flow) </div><div class="line"></div><div class="line">流动是默认的网页布局模式。也就是说网页在默认的状态下的HTML网页元素都是根据流动模型来分布网页内容的。流动布局模型具有2个比较典型的特征:</div><div class="line"></div><div class="line">1. 块状元素都会在所处的包含元素内自上而下按顺序垂直延伸分布，因为在默认状态下，块状元素的宽度都为100%。实际上，块状元素都会以行的形式占据位置。如右侧代码编辑器中三个块状元素标签(div，h1，p)宽度显示为100%。</div><div class="line">2. 在流动模型下，内联元素都会在所处的包含元素内从左到右水平分布显示。（内联元素可不像块状元素这么霸道独占一行）</div><div class="line"></div><div class="line">### 浮动模型(Float)</div><div class="line"></div><div class="line">如上文，块状元素都是独占一行。如果要讲快中元素并排显示，那么久需要用到浮动模型了。</div><div class="line"></div><div class="line">注意: 任何元素都是默认不能浮动的，但是可以用css定义为浮动。</div></pre></td></tr></table></figure></p>
+<p>div{<br>    width:200px;<br>    height:200px;<br>    border:1px red solid;<br>    float:left;<br>}</p>
+<p><div id="div1"></div></p>
+<p><div id="div1"></div><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 层模型(Layer)</div><div class="line"></div><div class="line">让html元素在网页中精确定位</div><div class="line"></div><div class="line">层模型有三种形式：</div><div class="line"></div><div class="line">* 绝对定位(position: absolute)</div><div class="line">* 相对定位(position: relative)</div><div class="line">* 固定定位(position: fixed)</div><div class="line"></div><div class="line">#### 绝对定位</div><div class="line"></div><div class="line">如果想为元素设置层模型中的绝对定位，需要设置position:absolute(表示绝对定位)，这条语句的作用将元素从文档流中拖出来，然后使用left、right、top、bottom属性相对于其最接近的一个具有定位属性的父包含块进行绝对定位。如果不存在这样的包含块，则相对于body元素，即相对于浏览器窗口。</div><div class="line"></div><div class="line">#### 相对定位</div><div class="line"></div><div class="line">如果想为元素设置层模型中的相对定位，需要设置position:relative（表示相对定位），它通过left、right、top、bottom属性确定元素在正常文档流中的偏移位置。相对定位完成的过程是首先按static(float)方式生成一个元素(并且元素像层一样浮动了起来)，然后相对于以前的位置移动，移动的方向和幅度由left、right、top、bottom属性确定，偏移前的位置保留不动。</div><div class="line"></div><div class="line">#### 固定定位</div><div class="line"></div><div class="line">fixed：表示固定定位，与absolute定位类型类似，但它的相对移动的坐标是视图（屏幕内的网页窗口）本身。由于视图本身是固定的，它不会随浏览器窗口的滚动条滚动而变化，除非你在屏幕中移动浏览器窗口的屏幕位置，或改变浏览器窗口的显示大小，因此固定定位的元素会始终位于浏览器窗口内视图的某个位置，不会受文档流动影响，这与background-attachment:fixed;属性功能相同。以下代码可以实现相对于浏览器视图向右移动100px，向下移动50px。并且拖动滚动条时位置固定不变。</div><div class="line"></div><div class="line">#### Relative与Absolute组合使用</div><div class="line"></div><div class="line">absolute 可以相对于浏览器设置定位。如果相对于其他元素，就需要使用`position:relative`</div><div class="line"></div><div class="line">注意:</div><div class="line"></div><div class="line">1. 参照定位的元素必须是相对定位元素的前辈元素</div><div class="line">2. 参照定位的元素必须加入position:relative;</div><div class="line">3. 定位元素加入position:absolute，便可以使用top、bottom、left、right来进行偏移定位了。</div><div class="line"></div><div class="line">### 盒子模型代码简写</div><div class="line"></div><div class="line">* top right bottom left 相同,写一个</div><div class="line">* top bottom相同，left right 相同，写两个</div><div class="line">* left right相同，写三个</div><div class="line">*</div><div class="line"></div><div class="line">### 颜色值缩写</div><div class="line"></div><div class="line">16进制的色彩值，如果每两位的值相同，可以缩写一半</div><div class="line"></div><div class="line">＃336699   ——&gt;  ＃369</div><div class="line"></div><div class="line">### 字体缩写</div></pre></td></tr></table></figure></p>
+<p>body{<br>    font-style:italic;<br>    font-variant:small-caps;<br>    font-weight:bold;<br>    font-size:12px;<br>    line-height:1.5em;<br>    font-family:”宋体”,sans-serif;<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">缩写为:</div></pre></td></tr></table></figure></p>
+<p>body{<br>    font:italic  small-caps  bold  12px/1.5em  “宋体”,sans-serif;<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">**注意**:</div><div class="line"></div><div class="line">1. 使用这一简写方式你至少要指定 font-size 和 font-family 属性，其他的属性(如 font-weight、font-style、font-varient、line-height)如未指定将自动使用默认值。</div><div class="line">2. 在缩写时 font-size 与 line-height 中间要加入“/”斜扛。 </div><div class="line"></div><div class="line">一般情况下因为对于中文网站，英文还是比较少的，所以下面缩写代码比较常用：</div></pre></td></tr></table></figure></p>
+<p>body{<br>    font:12px/1.5em  “宋体”,sans-serif;<br>}<br>```<br>只是有字号、行间距、中文字体、英文字体设置。</p>
+<h3 id="颜色"><a href="#颜色" class="headerlink" title="颜色"></a>颜色</h3><ol>
+<li>英文命令颜色<code>p{color:red;}</code></li>
+<li>RGB颜色<code>p{color:rgb(133,45,200);}</code>或者<code>p{color:rgb(20%,23%,20%);}</code></li>
+<li>十六进制颜色<code>p{color:＃00ffff);}</code></li>
+</ol>
+<h3 id="长度值-都是相对单位"><a href="#长度值-都是相对单位" class="headerlink" title="长度值  都是相对单位"></a>长度值  都是相对单位</h3><ol>
+<li>像素  px  相对于显示器</li>
+<li>em 就是本元素给定字体的 font-size 值，如果元素的 font-size 为 14px ，那么 1em = 14px；如果 font-size 为 18px，那么 1em = 18px。</li>
+<li>百分比</li>
+</ol>
+<p>注意：</p>
+<p>但当给 font-size 设置单位为 em 时，此时计算的标准以 p 的父元素的 font-size 为基础。</p>
+<h2 id="小技巧"><a href="#小技巧" class="headerlink" title="小技巧"></a>小技巧</h2><h3 id="水平居中"><a href="#水平居中" class="headerlink" title="水平居中"></a>水平居中</h3><ul>
+<li>如果被设置元素为文本、图片等行内元素时，水平居中时通过给父类元素设置<code>text-align:center</code>来实现的</li>
+<li>定宽块状元素:通过设置<code>margin</code>的<code>left</code>和<code>right</code>为<code>auto</code>实现。此时<code>width:200px</code></li>
+<li>不定宽块状元素:<ul>
+<li>加入label标签<ul>
+<li>第一步:为需要设置居中的元素外面加入一个<code>table</code>标签(包括<code>&lt;tbody&gt;</code>、<code>&lt;tr&gt;</code>、<code>&lt;td&gt;</code>)</li>
+<li>第二步:为这个<code>table</code>设置左右margin居中。</li>
+</ul>
+</li>
+<li>设置<code>display:inline</code>:显示类型设置为行内元素，进行不定宽元素的属性设置</li>
+<li>设置<code>position:relative</code>和<code>left:50%</code>:利用相对定位的方式，讲元素向左偏移50%，达到居中的目的。</li>
+</ul>
+</li>
+</ul>
+<h3 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h3><ul>
+<li>父元素高度确定的单行文本: 设置 <code>height</code> 等于 <code>line-height</code> 实现。<ul>
+<li>height : 该元素的高度</li>
+<li>line-height:行高，指在文本中，行与行之间的基线间的距离.</li>
+<li>line-height 与 font-size 的计算值之差，在CSS中成为”行间距”.</li>
+</ul>
+</li>
+<li>父元素高度确定的多行文本(图片):<ul>
+<li>方法一:使用插入table 同时设置<code>vertival-align:middle</code></li>
+<li>方法二(因为兼容问题，不推荐使用):<code>display：table-cell ; vertival-align:middle</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="隐性改变display类型"><a href="#隐性改变display类型" class="headerlink" title="隐性改变display类型"></a>隐性改变display类型</h3><p>有一个有趣的现象就是当为元素（不论之前是什么类型元素，<code>display:none</code> 除外）设置以下 2 个句之一：</p>
+<ol>
+<li><p>position : absolute </p>
+</li>
+<li><p>float : left 或 float:right </p>
+</li>
+</ol>
+<p>简单来说，只要html代码中出现以上两句之一，元素的display显示类型就会自动变为以 <code>display:inline-block</code>（块状元素）的方式显示，当然就可以设置元素的 width 和 height 了，且默认宽度不占满父元素。</p>
+<p>如下面的代码，小伙伴们都知道 a 标签是 行内元素 ，所以设置它的 width 是 没有效果的，但是设置为 <code>position:absolute</code> 以后，就可以了。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;抽空学习了一下html、css、JavaScript。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="CSS" scheme="http://yoursite.com/tags/CSS/"/>
+    
+      <category term="前端" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript和Native的交互 第二弹</title>
+    <link href="http://yoursite.com/2016/08/28/javascript%E5%92%8Cnative%E7%9A%84%E4%BA%A4%E4%BA%92_%E7%AC%AC%E4%BA%8C%E5%BC%B9/"/>
+    <id>http://yoursite.com/2016/08/28/javascript和native的交互_第二弹/</id>
+    <published>2016-08-28T06:58:45.000Z</published>
+    <updated>2016-08-29T02:27:33.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>上次简单的写了一下js和Native交互的问题，这篇文章再稍微深入的研究一下JSBinding。作为上文的补充。</p>
+<a id="more"></a>
+<h2 id="JSBinding"><a href="#JSBinding" class="headerlink" title="JSBinding"></a>JSBinding</h2><h3 id="JSBinding-是什么"><a href="#JSBinding-是什么" class="headerlink" title="JSBinding 是什么?"></a>JSBinding 是什么?</h3><p>JSBinding 不是Hybrid很多人都是通过cocos2dx来了解JSbinding这个技术的。</p>
+<p>JSBingding 是JSC和Native 之间的桥接。</p>
+<p>JS实际上就是JS和Native之间的一个桥梁，通过JSBinding打通了JS代码和Native代码，并在其间实现二者的交流。</p>
+<h3 id="JSBinding和Hybrid的区别"><a href="#JSBinding和Hybrid的区别" class="headerlink" title="JSBinding和Hybrid的区别"></a>JSBinding和Hybrid的区别</h3><p>Hybrid实际上就是通过webview。js代码实际上还是跑在web上。是web技术和Native之间的桥梁。</p>
+<p>二JSBinding并不依赖于webview</p>
+<p>Native (原生静态语言): 高性能、更底层、更强大、平台特性<br>JavaScript(动态脚本语言): 简单易用、免编译、热部署</p>
+<h2 id="JSC-API"><a href="#JSC-API" class="headerlink" title="JSC API"></a>JSC API</h2><h3 id="JavaScriptCore-h"><a href="#JavaScriptCore-h" class="headerlink" title="JavaScriptCore.h"></a>JavaScriptCore.h</h3><p>这一部分在上一篇文章已经又过一些简单的介绍了。在这里可能会有一些新的理解。</p>
+<p><code>#import &lt;JavaScriptCore/JavaScriptCore.h&gt;</code></p>
+<h3 id="JSContext"><a href="#JSContext" class="headerlink" title="JSContext"></a>JSContext</h3><p>就是js的上下文，或者说是js的运行环境</p>
+<h3 id="JSValue"><a href="#JSValue" class="headerlink" title="JSValue"></a>JSValue</h3><h3 id="JSExport"><a href="#JSExport" class="headerlink" title="JSExport"></a>JSExport</h3><h2 id="OC-call-Js"><a href="#OC-call-Js" class="headerlink" title="OC call Js"></a>OC call Js</h2><h3 id="1、执行js脚本"><a href="#1、执行js脚本" class="headerlink" title="1、执行js脚本"></a>1、执行js脚本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//执行js脚本</div><div class="line">    JSContext *context = [[JSContext alloc] init];</div><div class="line">    JSValue *value = [context evaluateScript:@&quot;1+2&quot;];</div><div class="line">    NSLog(@&quot;%f&quot;,[value toDouble]);</div></pre></td></tr></table></figure>
+<h3 id="2、调用js函数"><a href="#2、调用js函数" class="headerlink" title="2、调用js函数"></a>2、调用js函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//调用js函数</div><div class="line">    //在js上下文中定义一个js函数</div><div class="line">    //NSString *js = @&quot;function sum(a,b) &#123;return a+b;&#125;&quot;;</div><div class="line">    //[context evaluateScript:js];</div><div class="line">    //调用这个js函数</div><div class="line">    //sumA 是js代码中的一个function</div><div class="line">    JSValue *sum = context[@&quot;sumA&quot;];</div><div class="line">    JSValue *result = [sum callWithArguments:@[@1,@1]];</div><div class="line">    NSLog(@&quot;sum(1,2) = %f&quot;,[result toDouble]);</div></pre></td></tr></table></figure>
+<h3 id="3、创建一个js值"><a href="#3、创建一个js值" class="headerlink" title="3、创建一个js值"></a>3、创建一个js值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">//创建js值对象</div><div class="line">    //方法1</div><div class="line">    JSValue *intVar = [JSValue valueWithInt32:231 inContext:context];</div><div class="line">    context[@&quot;bar&quot;] = intVar;</div><div class="line">    [context evaluateScript:@&quot;bar++&quot;];</div><div class="line">    //方法2</div><div class="line">    [context evaluateScript:@&quot;var bar = 231;&quot;];</div></pre></td></tr></table></figure>
+<p>value对应关系，在上文中有介绍</p>
+<h3 id="4、捕获错误信息"><a href="#4、捕获错误信息" class="headerlink" title="4、捕获错误信息"></a>4、捕获错误信息</h3><p>由于在js 中的错误在native中是不能自动捕捉的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//捕获JS中的异常信息</div><div class="line">	JSContext *context = [[JSContext alloc] init];</div><div class="line">	context.exceptionHandler = ^(JSContext *ctx ,JSValue *exception)&#123;</div><div class="line">		NSLog(@&quot;%@&quot;,exception)</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<h2 id="Js-call-Native"><a href="#Js-call-Native" class="headerlink" title="Js call Native"></a>Js call Native</h2><h3 id="1、js-call-Native-via-block"><a href="#1、js-call-Native-via-block" class="headerlink" title="1、js call Native via block"></a>1、js call Native via block</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">context[@&quot;sum&quot;] = ^(int a, int b)&#123;</div><div class="line">     return a+b;</div><div class="line"> &#125;;</div><div class="line"> value = [context evaluateScript:@&quot;sum(1,2)&quot;];</div><div class="line"> //在js 中直接使用  “sum(1,2);”来调用</div></pre></td></tr></table></figure>
+<ul>
+<li>虽然在oc的代码中block是可以访问自己之外的变量的。但是当我们使用这个block和js互动的时候这个block就不能够调用外面的东西。如果要是用这个context的话，使用<code>[JSContext currentContext]</code>来获取当前的上下文。动态参数：<code>[JSContext currentArguments]</code></li>
+</ul>
+<h3 id="2、js-call-native-via-JSExport"><a href="#2、js-call-native-via-JSExport" class="headerlink" title="2、js call native via JSExport"></a>2、js call native via JSExport</h3><p>在上文中，介绍较多。只是没有仔细的研究具体实现原理。</p>
+<p>定义并且实例化一个JSExport类,然后把这个对象放在jscontext。这样就可以通过像操作js对象那样操作这个对象。</p>
+<p>但是要注意，在js中没有构造函数。</p>
+<p> 即使我们通过export向js上下文中注入了一个类，但是我们在js中通过new来实例化这个类的对象是不可行的。即使我们通过<code>context[@&quot;Foo&quot;] = [Foo class]</code>向js注入这么一个类，但是也是不可以的。这可以说是jsbinding的一个缺陷吧。</p>
+<h2 id="console等怎么来"><a href="#console等怎么来" class="headerlink" title="console等怎么来"></a>console等怎么来</h2><p>上一篇文章中console.log 是可用的，因为js代码实际上也是运行在webview中的，但是如果我们不通过浏览器的话，是没有console这个函数的，这个时候怎么样实现我们的日志输出功能呢？</p>
+<p>这个时候如果我们通过一个叫console的类,来实现这个功能就是可以的了。</p>
+<p>但是我们其实也可以单独使用一个js本身来模拟这个功能。但我没有去实现过，不敢赘述。</p>
+<h2 id="内存泄漏"><a href="#内存泄漏" class="headerlink" title="内存泄漏"></a>内存泄漏</h2><ul>
+<li>Retain cycle</li>
+</ul>
+<p>native 对象 和js对象循环持有，是不能通过GC或者ARC释放的。</p>
+<p>这种情况下 Native必须通过JSManagedValue来持有js对象，js可以直接持有。这种情况下，js代码可以正常写，而oc里面的setter方法需要使用<code>[JSManagedValue managedValueWith:]</code>来包装一下。</p>
+<h2 id="线程安全"><a href="#线程安全" class="headerlink" title="线程安全"></a>线程安全</h2><p>API是线程安全的；</p>
+<p>锁的最小粒度是js虚拟机 JSVirtualMachine</p>
+<p>如果要并行的运行两个东西，需要把它分到两个虚拟机中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">	JSVirtualMachine *jsMachineA = [[JSVirtualMachine alloc] init];</div><div class="line">    JSContext *contextA = [[JSContext alloc] initWithVirtualMachine:jsMachineA];</div><div class="line">    JSContext *contextB = [[JSContext alloc] initWithVirtualMachine:jsMachineA];</div><div class="line">//</div><div class="line">    JSVirtualMachine *jsMachineB = [[JSVirtualMachine alloc] init];</div><div class="line">    JSContext *contextC = [[JSContext alloc] initWithVirtualMachine:jsMachineB];</div></pre></td></tr></table></figure>
+<p>A、B虽然是不容的上下文，但是她们是运行在同一个js虚拟机当中的，他俩在运行的时候是能够保证是一个同步的状态。虽然她们不能直接互相访问，但是她们是能够在Native上面实现一个比较好的通讯。（不需要考虑执行顺序和锁的问题）</p>
+<p>A、C是在不同的线程中的，她们是不能很容易通讯的，异步执行，在他们之间的通讯比较麻烦</p>
+<h3 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h3><p>这篇文章作为上一篇文章的补充，实在没有那么多的干货，但是作为自己对jsbinding的理解和更加深入的学习,本文的撰写确实帮助我对这一知识的理解更加的系统化。上一篇文章更多的是面相实现，而这篇文章增加了更多对原理的理解。路漫漫其修远兮，吾将上下而求索。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;上次简单的写了一下js和Native交互的问题，这篇文章再稍微深入的研究一下JSBinding。作为上文的补充。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://yoursite.com/categories/iOS/"/>
+    
+    
+      <category term="iOS" scheme="http://yoursite.com/tags/iOS/"/>
+    
+      <category term="JavaScript" scheme="http://yoursite.com/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>html学习笔记--1</title>
+    <link href="http://yoursite.com/2016/08/27/html%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0--1/"/>
+    <id>http://yoursite.com/2016/08/27/html学习笔记--1/</id>
+    <published>2016-08-27T15:03:45.000Z</published>
+    <updated>2016-08-29T02:27:22.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>抽空学习了一下html、css、JavaScript。</p>
+<a id="more"></a>
+<blockquote>
+<p>这部分内容是我抽空学习的时候整理的笔记,这部分是看的前端的内容。<a href="http://www.imooc.com/learn/9"><em>学习地址</em></a>。</p>
+</blockquote>
+<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><ol>
+<li>HTML是网页内容的载体。内容就是网页制作者放在页面上想要让用户浏览的信息，可以包含文字、图片、视频等。</li>
+<li>CSS样式是表现。就像网页的外衣。比如，标题字体、颜色变化，或为标题加入背景图片、边框等。所有这些用来改变内容外观的东西称之为表现。</li>
+<li>JavaScript是用来实现网页上的特效效果。如：鼠标滑过弹出下拉菜单。或鼠标滑过表格的背景颜色改变。还有焦点新闻（新闻图片）的轮换。可以这么理解，有动画的，有交互的一般都是用JavaScript来实现的。</li>
+</ol>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>html代码注释  <code>&lt;!--注释内容--&gt;</code></p>
+<h2 id="html文件的基本结构"><a href="#html文件的基本结构" class="headerlink" title="html文件的基本结构"></a>html文件的基本结构</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">	&lt;head&gt;...&lt;/head&gt;</div><div class="line">	&lt;body&gt;...&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<ol>
+<li><code>&lt;html&gt;&lt;/html&gt;</code>为根标签，所有的网页标签都在<code>&lt;html&gt;&lt;/html&gt;</code>中.</li>
+<li><code>&lt;head&gt;&lt;/head&gt;</code>标签用于定于文档的头部，他是所有头部元素的容器。头部元素有以下这些标签<ul>
+<li><code>&lt;title&gt;</code></li>
+<li><code>&lt;script&gt;</code></li>
+<li><code>&lt;style&gt;</code></li>
+<li><code>&lt;link&gt;</code></li>
+<li><code>&lt;meta&gt;</code></li>
+<li>etc</li>
+</ul>
+</li>
+<li><code>&lt;body&gt;&lt;/body&gt;</code>标签之间的内容是网页的主要内容，如<code>&lt;h1&gt;</code>、<code>&lt;p&gt;</code>、<code>&lt;a&gt;</code>、<code>&lt;img&gt;</code>等网页内容，在这里的标签中的内容会在浏览器中显示出来。</li>
+</ol>
+<h3 id="head-标签"><a href="#head-标签" class="headerlink" title="head 标签"></a>head 标签</h3><p>作用:文档的头部描述了文档的各种属性和信息，包括文档的标题等，绝大多数文档头部包含的数据都不会真正作为内容显示给读者。</p>
+<p>下面标签可用在head 部分</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;head&gt;</div><div class="line">	&lt;title&gt;...&lt;/title&gt;</div><div class="line">	&lt;meta&gt;</div><div class="line">	&lt;link&gt;</div><div class="line">	&lt;style&gt;...&lt;/style&gt;</div><div class="line">	&lt;script&gt;...&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li><code>title</code>标签: 网页的标题信息,内容显示在浏览器的标题栏目中.</li>
+</ul>
+<h3 id="body-标签"><a href="#body-标签" class="headerlink" title="body 标签"></a>body 标签</h3><p>作用:网页上要显示的内容必须放在body标签中。</p>
+<h4 id="1、-lt-p-gt-lt-p-gt-段落文本"><a href="#1、-lt-p-gt-lt-p-gt-段落文本" class="headerlink" title="1、&lt;p&gt;&lt;/p&gt;段落文本"></a>1、<code>&lt;p&gt;&lt;/p&gt;</code>段落文本</h4><p>如果想在网页上显示文章，这时就需要<code>&lt;p&gt;</code>标签了，把文章的段落放到<code>&lt;p&gt;</code>标签中。注意一段文字一个<code>&lt;p&gt;</code>标签，如在一篇新闻文章中有3段文字，就要把这3个段落分别放到3个<code>&lt;p&gt;</code>标签中。<code>&lt;p&gt;</code>标签的默认样式是段前段后都会有空白，如果不喜欢这个空白，可以用css样式来删除或改变它。</p>
+<h4 id="2、-lt-hx-gt-lt-hx-gt-标题"><a href="#2、-lt-hx-gt-lt-hx-gt-标题" class="headerlink" title="2、&lt;hx&gt;&lt;/hx&gt;标题"></a>2、<code>&lt;hx&gt;&lt;/hx&gt;</code>标题</h4><p>x: 1-6 分别为一级标题、二级标题….六级标题。<br>注意:因为<code>h1</code>标签在网页中比较重要，所以一般<code>h1</code>标签被用在网站名称上。如<code>&lt;h1&gt;腾讯网&lt;/h1&gt;</code></p>
+<h4 id="3、-lt-strong-gt-lt-em-gt-强调"><a href="#3、-lt-strong-gt-lt-em-gt-强调" class="headerlink" title="3、&lt;strong&gt;&lt;em&gt;强调"></a>3、<code>&lt;strong&gt;&lt;em&gt;</code>强调</h4><p><code>&lt;strong&gt;&lt;/strong&gt;</code>:加粗</p>
+<p><code>&lt;em&gt;&lt;/em&gt;</code>:斜体</p>
+<h4 id="4、-lt-span-gt-行内标签"><a href="#4、-lt-span-gt-行内标签" class="headerlink" title="4、&lt;span&gt;行内标签"></a>4、<code>&lt;span&gt;</code>行内标签</h4><ol>
+<li><code>&lt;em&gt;</code>和<code>&lt;strong&gt;</code>标签是为了强调一段话中的关键字时使用，它们的语义是强调;</li>
+<li><code>&lt;span&gt;</code>是没有语义的，他的作用就是为了设置单独的样式;</li>
+</ol>
+<p>如我要对段落中某个词语改变颜色:</p>
+<p>在<code>&lt;head&gt;</code>的<code>&lt;style&gt;</code>标签中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">`&lt;style&gt;</div><div class="line">	span&#123;</div><div class="line">		color : red;</div><div class="line">	&#125;</div><div class="line">&lt;/style&gt;`</div></pre></td></tr></table></figure>
+<p>在文本中用<code>&lt;span&gt;&lt;/span&gt;</code>包上需要将颜色变成红色的文字;</p>
+<pre><code>那么问题来了,如果我对词语`objc`红色 对 `javascript`蓝色呢？
+</code></pre><p>这也很简单。同上在<code>&lt;style&gt;</code>中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">`&lt;style&gt;</div><div class="line">span.blue&#123;</div><div class="line">    color:blue;</div><div class="line">&#125;</div><div class="line">span.red&#123;</div><div class="line">    color:red;</div><div class="line">&#125;</div><div class="line">&lt;/style&gt;`</div></pre></td></tr></table></figure>
+<p>然后在文本中 <code>&lt;span class = &quot;blue&quot;&gt;javascript&lt;/span&gt;</code> 、<code>&lt;span class = &quot;red&quot;&gt;objc&lt;/span&gt;</code> </p>
+<h4 id="5、-lt-q-gt-引用文本"><a href="#5、-lt-q-gt-引用文本" class="headerlink" title="5、&lt;q&gt; 引用文本"></a>5、<code>&lt;q&gt;</code> 引用文本</h4><p>效果类似于手动给文本加上双引号。但是使用<code>&lt;q&gt;&lt;/q&gt;</code>关键点在于增加语意：<strong>引用别人的话</strong></p>
+<h4 id="6、-lt-blockquote-gt-长文本引用"><a href="#6、-lt-blockquote-gt-长文本引用" class="headerlink" title="6、&lt;blockquote&gt;长文本引用"></a>6、<code>&lt;blockquote&gt;</code>长文本引用</h4><p>跟<code>&lt;q&gt;&lt;/q&gt;</code>的简短文本不同，<code>&lt;blockquote&gt;&lt;／blockquote&gt;</code>表示长文本引用。比如在文中需要引用一首李白的一句诗，那么用<code>&lt;q&gt;窗前明月光&lt;/q&gt;</code>。如果是一首诗，那么用<code>&lt;blockquote&gt;。。。。。&lt;／blockquote&gt;</code></p>
+<p>使用<code>&lt;blockquote&gt;</code> 并不会像<code>&lt;q&gt;&lt;/q&gt;</code>一样添加双引号。但是会被浏览器解析成添加缩进样式。</p>
+<h4 id="7、-lt-br-gt-分行显示文本。"><a href="#7、-lt-br-gt-分行显示文本。" class="headerlink" title="7、 &lt;br/&gt;分行显示文本。"></a>7、 <code>&lt;br/&gt;</code>分行显示文本。</h4><p>html代码中输入空格、回车都是没有作用的。如果要换行就是在要分行的地方添加<code>&lt;br/&gt;</code>标签。</p>
+<p><code>&lt;br /&gt;</code> : 换行</p>
+<p><code>&lt;hr /&gt;</code> : 分段线</p>
+<p><code>&lt;img&gt;</code> : 插入图片</p>
+<h4 id="8、-amp-nbsp-添加空格"><a href="#8、-amp-nbsp-添加空格" class="headerlink" title="8、 &amp;nbsp;添加空格"></a>8、 <code>&amp;nbsp;</code>添加空格</h4><p>在html中如果需要输入空格，必须写入<code>&amp;nbsp;</code>；</p>
+<p> 一个<code>&amp;nbsp;</code>是一个空格。</p>
+<h4 id="9、-lt-address-gt-为网页加入地址信息"><a href="#9、-lt-address-gt-为网页加入地址信息" class="headerlink" title="9、 &lt;address&gt;为网页加入地址信息"></a>9、 <code>&lt;address&gt;</code>为网页加入地址信息</h4><p>默认斜体</p>
+<h4 id="10、-lt-code-gt-加入一行代码"><a href="#10、-lt-code-gt-加入一行代码" class="headerlink" title="10、&lt;code&gt;加入一行代码"></a>10、<code>&lt;code&gt;</code>加入一行代码</h4><p><code>&lt;code&gt;var string = &quot;aaa&quot;;&lt;/code&gt;</code></p>
+<p><code>var string = “aaa”;</code></p>
+<p>如果加入多行代码使用<code>&lt;pre&gt;&lt;/pre&gt;</code>代替<code>&lt;code&gt;&lt;/code&gt;</code></p>
+<h4 id="11、-无序列表、有序列表"><a href="#11、-无序列表、有序列表" class="headerlink" title="11、 无序列表、有序列表"></a>11、 无序列表、有序列表</h4><p><strong>无序列表语法：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">`&lt;ul&gt;</div><div class="line">	&lt;li&gt;a&lt;/li&gt;</div><div class="line">	&lt;li&gt;b&lt;/li&gt;</div><div class="line">	&lt;li&gt;c&lt;/li&gt;</div><div class="line">	&lt;li&gt;d&lt;/li&gt;</div><div class="line">&lt;/ul&gt;`</div></pre></td></tr></table></figure>
+<p><strong>有序列表语法：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">`&lt;ol&gt;</div><div class="line">	&lt;li&gt;a&lt;/li&gt;</div><div class="line">	&lt;li&gt;b&lt;/li&gt;</div><div class="line">	&lt;li&gt;c&lt;/li&gt;</div><div class="line">	&lt;li&gt;d&lt;/li&gt;</div><div class="line">&lt;/ol&gt;`</div></pre></td></tr></table></figure>
+<h4 id="12、-lt-div-gt"><a href="#12、-lt-div-gt" class="headerlink" title="12、&lt;div&gt;"></a><strong>12、<code>&lt;div&gt;</code></strong></h4><blockquote>
+<p>在网页制作过程过中，可以把一些独立的逻辑部分划分出来，放在一个<code>&lt;div&gt;</code>标签中，这个<code>&lt;div&gt;</code>标签的作用就相当于一个容器。</p>
+</blockquote>
+<p>可以通过<code>id</code>给div命名</p>
+<p>语法</p>
+<p><code>&lt;div id = &quot;板块名称&quot;&gt;...&lt;/div&gt;</code></p>
+<h4 id="13、-lt-table-gt-表格"><a href="#13、-lt-table-gt-表格" class="headerlink" title="13、 &lt;table&gt; 表格"></a>13、 <code>&lt;table&gt;</code> 表格</h4><p><code>&lt;table&gt;</code>、<code>&lt;tbody&gt;</code>、<code>&lt;tr&gt;</code>、<code>&lt;th&gt;</code>、<code>&lt;td&gt;</code></p>
+<ol>
+<li><code>&lt;table&gt;...&lt;/table&gt;</code>:整个表格以<code>&lt;table&gt;</code>标记开始，以<code>&lt;/table&gt;</code>标记结束。</li>
+<li><code>&lt;tbody&gt;...&lt;/tbody&gt;</code>:当表格内容非常多的时候，表格会一边下载一边加载。加上<code>&lt;tbody&gt;...&lt;/tbody&gt;</code>之后，这个表格就要等全部下载完之后才回加载。</li>
+<li><code>&lt;tr&gt;...&lt;/tr&gt;</code>:表格的一行，有几个<code>&lt;tr&gt;</code>就表示有几行。</li>
+<li><code>&lt;td&gt;...&lt;/td&gt;</code>:表格的一列，一行中有几个<code>&lt;td&gt;</code>就表示这一行有几列。</li>
+<li><code>&lt;th&gt;...&lt;/th&gt;</code>:表格的头部单元格,表格表头。</li>
+<li>表格中列的个数，取决于一行中数据单元格的个数。</li>
+</ol>
+<p>注意：</p>
+<ul>
+<li>table表格在没有添加css样式之前，在浏览器中是没有表格线的。</li>
+<li><code>&lt;th&gt;</code>中的表头，默认<strong>粗体</strong>并且<strong>居中</strong>显示。</li>
+</ul>
+<h4 id="14、-lt-caption-gt-为表格添加标题和摘要"><a href="#14、-lt-caption-gt-为表格添加标题和摘要" class="headerlink" title="14、&lt;caption&gt; 为表格添加标题和摘要"></a>14、<code>&lt;caption&gt;</code> 为表格添加标题和摘要</h4><p>标题:</p>
+<p><strong>语法:</strong><code>&lt;caption&gt;title&lt;/caption&gt;</code></p>
+<p>作用:用于描述表格内容，显示在表格上方</p>
+<p>摘要:</p>
+<p><strong>语法:</strong><code>&lt;table summary=&quot;表格简介文本&quot;&gt;</code></p>
+<p>作用：摘要是不会在浏览器中显示出来的。作用是为了增加语义性。</p>
+<h4 id="15、-lt-a-gt-链接到另外一个界面"><a href="#15、-lt-a-gt-链接到另外一个界面" class="headerlink" title="15、&lt;a&gt; 链接到另外一个界面"></a>15、<code>&lt;a&gt;</code> 链接到另外一个界面</h4><p>使用<code>&lt;a&gt;</code>标签可以实现超链接.</p>
+<p><strong>语法:</strong><code>&lt;a href = &quot;目标网址&quot; title = &quot;鼠标滑过的文本&quot;&gt;链接显示的文本&lt;/a&gt;</code></p>
+<p><a href = "目标网址" title = "鼠标滑过的文本">链接显的文本</a></p>
+<p>这里的<code>title</code>属性的作用是: 鼠标滑过链接文字的时候，显示的内容。</p>
+<p><strong>语法:</strong> <code>&lt;a href = &quot;目标网址&quot; title = &quot;鼠标滑过的文本&quot; target = &quot;_blank&quot;&gt;链接显示的文本&lt;/a&gt;</code></p>
+<p>以上表示在新窗口中打开超链接</p>
+<h4 id="16、-lt-mailto-gt-在网页中链接Email地址"><a href="#16、-lt-mailto-gt-在网页中链接Email地址" class="headerlink" title="16、&lt;mailto&gt; 在网页中链接Email地址"></a>16、<code>&lt;mailto&gt;</code> 在网页中链接Email地址</h4><p><code>&lt;a&gt;</code>标签还有一个作用是可以链接Email地址,使用mailto能让访问者便捷向网址管理者发生电子邮件。还可以用它做些其它事情。</p>
+<p>如下：</p>
+<p><table><br>    <tbody><br>        <tr><br>            <th>功能</th><br>            <th>关键字</th><br>            <th>功能详解</th><br>            <th>举例</th><br>        </tr><br>        <tr><br>            <th>邮箱地址</th><br>            <td>mailto:</td><br>            <th>浏览器自动调用默认的电子邮件程序，并在收件人中填上跳上收件人地址</th><br>            <th><code>&lt;a href=&quot;mailto: aa@163.com&quot;&gt;发送&lt;/a&gt;</code></th><br>        </tr><br>        <tr><br>            <th>抄送地址</th><br>            <td>cc=</td><br>            <th>在收件人地址后用cc=地址 ，可以填写抄送地址</th><br>            <th><code>&lt;a href=&quot;mailto: aa@163.com?cc=bb@163.com&quot;&gt;发送&lt;/a&gt;</code></th><br>        </tr><br>        <tr><br>            <th>密件抄送地址</th><br>            <td>bcc=</td><br>            <th>在收件人地址后用cc=地址 ，可以填写密件抄送地址</th><br>            <th><code>&lt;a href=&quot;mailto: aa@163.com?bcc=bb@163.com&quot;&gt;发送&lt;/a&gt;</code></th><br>        </tr><br>        <tr><br>            <th>多个收件人、抄送、密件抄送人</th><br>            <td>;</td><br>            <th>用分号隔开多个地址</th><br>            <th><code>&lt;a href=&quot;mailto: aa@163.com;bb@163.com&quot;&gt;发送&lt;/a&gt;</code></th><br>        </tr><br>        <tr><br>            <th>邮件主题</th><br>            <td>subject=</td><br>            <th>用subject= 添加邮件主题</th><br>            <th><code>&lt;a href=&quot;mailto: aa@163.com？subject＝发送电子邮件&quot;&gt;发送&lt;/a&gt;</code></th><br>        </tr><br>        <tr><br>            <th>邮件内容</th><br>            <td>body=</td><br>            <th>用body= 添加邮件内容</th><br>            <th><code>&lt;a href=&quot;mailto: aa@163.com？body= 邮件内容&quot;&gt;发送&lt;/a&gt;</code></th><br>        </tr><br>    </tbody></p>
+<table>
+
+<p>注意:如果<code>mailto</code>后面有多个参数的话，第一个参数必须以<code>？</code>开头 其它<code>&amp;</code>分开。</p>
+<h4 id="17、-lt-img-gt-为网页插入图片"><a href="#17、-lt-img-gt-为网页插入图片" class="headerlink" title="17、&lt;img&gt; 为网页插入图片"></a>17、<code>&lt;img&gt;</code> 为网页插入图片</h4><p><strong>语法:</strong><code>&lt;img src&quot;图片地址&quot; alt= &quot;下载失败的替换文本&quot; title = “提示文本”&gt;</code></p>
+<p>支持格式 : GIF PNG JPEG</p>
+<h4 id="18、-lt-form-gt-与用户交互"><a href="#18、-lt-form-gt-与用户交互" class="headerlink" title="18、 &lt;form&gt;与用户交互"></a>18、 <code>&lt;form&gt;</code>与用户交互</h4><p><strong>语法:</strong><code>&lt;form method=&quot;传送方式&quot; action = “服务文件”&gt;</code></p>
+<ol>
+<li><code>&lt;form&gt;</code>: form 标签是成对出现的。</li>
+<li><code>action</code>:浏览者输入的数据被传送到的地方，比如一个php页面</li>
+<li><code>method</code>:数据的传输方式<code>get／post</code></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">//</div><div class="line">&lt;form method = &quot;post&quot; action = &quot;save.php&quot;&gt;</div><div class="line">	&lt;label for = &quot;username&quot;&gt;用户名:&lt;/label&gt;</div><div class="line">	&lt;input type = &quot;text&quot; name = &quot;username&quot;/&gt;</div><div class="line">	&lt;label for = &quot;pass&quot;&gt;密码:&lt;/label&gt;</div><div class="line">	&lt;input type = &quot;password&quot; name = &quot;pass&quot;/&gt;</div><div class="line">&lt;/form&gt;</div><div class="line">//</div></pre></td></tr></table></figure>
+<form method = "post" action = "save.php"><br>    <label for = "username">用户名:</label><br>    <input type = "text" name = "username" value = "placeholder"/><br>    <label for = "pass">密码:</label><br>    <input type = "password" name = "pass" value = "placeholder"/><br></form>
+
+<p>注意:</p>
+<ul>
+<li>所有表单控件(文本框、文本域、按钮、单选框、复选框等)都必须放在<code>&lt;form&gt;&lt;/form&gt;</code>之间。</li>
+</ul>
+<h5 id="文本输入框-lt-input-gt"><a href="#文本输入框-lt-input-gt" class="headerlink" title="文本输入框 &lt;input ... /&gt;"></a>文本输入框 <code>&lt;input ... /&gt;</code></h5><p><code>&lt;input type = &quot;text&quot; name = &quot;username&quot; value = &quot;placeholder&quot;/&gt;</code></p>
+<p>其中type ＝ “text”时: <strong>文本输入框</strong></p>
+<p>其中type ＝ “password”时: <strong>密码输入框</strong></p>
+<p>name: 为文本框命名</p>
+<p>value: 默认值</p>
+<h5 id="文本域-lt-textarea-gt-lt-textarea-gt"><a href="#文本域-lt-textarea-gt-lt-textarea-gt" class="headerlink" title="文本域 &lt;textarea&gt;&lt;/textarea&gt;"></a>文本域 <code>&lt;textarea&gt;&lt;/textarea&gt;</code></h5><p><strong>语法:</strong><code>&lt;textarea  rows=&quot;行数&quot; cols=&quot;列数&quot;&gt;默认文本&lt;/textarea&gt;</code></p>
+<p><code>cols</code>:列数</p>
+<p><code>rows</code>:行数</p>
+<h5 id="单选框-和-复选框"><a href="#单选框-和-复选框" class="headerlink" title="单选框 和 复选框"></a>单选框 和 复选框</h5><p><strong>语法:</strong> <code>&lt;input type=&quot;radio/checkbox&quot; value = &quot;值&quot; name = &quot;名称&quot; checked = &quot;checked&quot; /&gt;</code></p>
+<ol>
+<li><code>type</code> radio时，单选框 ，checkbox时，多选框。</li>
+<li><code>value</code>:提交数据到服务器的值</li>
+<li><code>name</code>:为控件命名</li>
+<li><code>checked</code>:当设置 checked=”checked” 时，该选项被默认选中</li>
+</ol>
+<p>注意:<strong>同一组</strong>的单选按钮，name 取值<strong>一定要一致</strong>，比如上面例子为同一个名称“radioLove”，这样同一组的单选按钮才可以起到单选的作用。</p>
+<h5 id="下拉列表框"><a href="#下拉列表框" class="headerlink" title="下拉列表框"></a>下拉列表框</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;form action=&quot;save.php&quot; method=&quot;post&quot; &gt;</div><div class="line">    &lt;label&gt;爱好:&lt;/label&gt;</div><div class="line">    &lt;select&gt;</div><div class="line">      &lt;option value=&quot;看书&quot;&gt;看书&lt;/option&gt;</div><div class="line">      &lt;option value=&quot;旅游&quot;&gt;旅游&lt;/option&gt;</div><div class="line">      &lt;option value=&quot;运动&quot;&gt;运动&lt;/option&gt;</div><div class="line">      &lt;option value=&quot;购物&quot;&gt;购物&lt;/option&gt;</div><div class="line">    &lt;/select&gt;</div><div class="line">&lt;/form&gt;</div></pre></td></tr></table></figure>
+<form action="save.php" method="post" ><br>    <label>爱好:</label><br>    <select><br>      <option value="看书">看书</option><br>      <option value="旅游">旅游</option><br>      <option value="运动">运动</option><br>      <option value="购物" selected = "selected">购物</option><br>    </select><br></form>
+
+<ol>
+<li>value <code>&lt;option value = “提交值”&gt;选项&lt;／option&gt;</code>  向服务器提交的值</li>
+<li>selected 默认选中</li>
+</ol>
+<p>下拉列表也可以进行多选操作，在<code>&lt;select&gt;</code>标签中设置<code>multiple=&quot;multiple&quot;</code>属性，就可以实现多选功能，在 widows 操作系统下，进行多选时按下<code>Ctrl</code>键同时进行单击（在 Mac下使用 <code>Command</code> +单击），可以选择多个选项。如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;form action=&quot;save.php&quot; method=&quot;post&quot; &gt;</div><div class="line">    &lt;label&gt;爱好:&lt;/label&gt;</div><div class="line">    &lt;select multiple = &quot;multiple&quot;&gt;</div><div class="line">      &lt;option value=&quot;看书&quot;&gt;看书&lt;/option&gt;</div><div class="line">      &lt;option value=&quot;旅游&quot;&gt;旅游&lt;/option&gt;</div><div class="line">      &lt;option value=&quot;运动&quot;&gt;运动&lt;/option&gt;</div><div class="line">      &lt;option value=&quot;购物&quot; selected = &quot;selected&quot;&gt;购物&lt;/option&gt;</div><div class="line">    &lt;/select&gt;</div><div class="line">&lt;/form&gt;</div></pre></td></tr></table></figure>
+<form action="save.php" method="post" ><br>    <label>爱好:</label><br>    <select multiple = "multiple"><br>      <option value="看书">看书</option><br>      <option value="旅游">旅游</option><br>      <option value="运动">运动</option><br>      <option value="购物" selected = "selected">购物</option><br>    </select><br></form>
+
+
+<h5 id="按钮"><a href="#按钮" class="headerlink" title="按钮"></a>按钮</h5><p><strong>语法:</strong> <code>&lt;input type=&quot;submit&quot; value = &quot;按钮&quot; /&gt;</code></p>
+<input type="submit" value = "按钮" name = "名称" checked = "checked" />
+
+<h5 id="重置按钮"><a href="#重置按钮" class="headerlink" title="重置按钮"></a>重置按钮</h5><p><strong>语法:</strong> <code>&lt;input type=&quot;reset&quot; value = &quot;重置&quot; /&gt;</code></p>
+<input type="reset" value = "重置" />
+
+<h4 id="表单中的label标签"><a href="#表单中的label标签" class="headerlink" title="表单中的label标签"></a>表单中的label标签</h4><p>label标签不会向用户呈现任何特殊效果，它的作用是为鼠标用户改进了可用性。如果你在 label 标签内点击文本，就会触发此控件。就是说，当用户单击选中该label标签时，浏览器就会自动将焦点转到和标签相关的表单控件上（就自动选中和该label标签相关连的表单控件上）。</p>
+<p><strong>语法:</strong> <code>&lt;label for=&quot;控件id名称&quot;&gt;</code></p>
+<p>注意：标签的<code>for</code>属性中的值应当与相关控件的<code>id</code>属性一定要相同。</p>
+<form><br>  <label for="male">男</label><br>  <input type="radio" name="gender" id="male" /><br>  <label for="female">女</label><br>  <input type="radio" name="gender" id="female" /><br>  <label for="email">输入你的邮箱地址</label><br>  <input type="email" id="email" placeholder="Enter email"><br></form>
+
+
+<h4 id="总结input标签的type属性-资料"><a href="#总结input标签的type属性-资料" class="headerlink" title="总结input标签的type属性 资料"></a>总结input标签的<code>type</code>属性 <a href="http://www.w3school.com.cn/html5/att_input_type.asp"><em>资料</em></a></h4><ul>
+<li><code>text</code>: 文本输入框</li>
+<li><code>password</code>: 密码输入框</li>
+<li><code>radio</code>:单选框</li>
+<li><code>checkbox</code>:多选框</li>
+<li><code>submit</code>:提交按钮</li>
+<li><code>reset</code>:重置按钮</li>
+</ul>
+<p><img src="http://ocg4av0wv.bkt.clouddn.com/8A576722-8BC1-46CF-9981-5E922715E6E6.png" width = "400" height="600"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;抽空学习了一下html、css、JavaScript。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="前端" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="html" scheme="http://yoursite.com/tags/html/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript和Native的交互</title>
+    <link href="http://yoursite.com/2016/08/25/JavaScript%E5%92%8CNative%E7%9A%84%E4%BA%A4%E4%BA%92/"/>
+    <id>http://yoursite.com/2016/08/25/JavaScript和Native的交互/</id>
+    <published>2016-08-25T08:35:13.000Z</published>
+    <updated>2016-08-29T02:27:38.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>iOS Dev难免会遇上需要和JavaScript交互的时候，我是这么做的。<br><a id="more"></a></p>
+<h2 id="JavaScriptCore"><a href="#JavaScriptCore" class="headerlink" title="JavaScriptCore"></a>JavaScriptCore</h2><p>JSC是webkit的一部分，主要是对JS进行解析和提供执行环境,并且，他是开源的。<br><a href="https://github.com/phoboslab/JavaScriptCore-iOS"><em>JavaScriptCore源码</em></a><br>在iOS7推出后，JSC极大的方便了开发者对js的操作。在此之前通用的方法都是是用<code>webview</code>里面的一个函数<code>stringByEvaluatingJavaScriptFromString</code>,JS 对Native的回调都是通过拦截URL的方式进行的。</p>
+<p>JSC中和我们相关的类就大概只有一下5个。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">#ifndef JavaScriptCore_h</div><div class="line">#define JavaScriptCore_h</div><div class="line"></div><div class="line">#include &lt;JavaScriptCore/JavaScript.h&gt;</div><div class="line">#include &lt;JavaScriptCore/JSStringRefCF.h&gt;</div><div class="line"></div><div class="line">#if defined(__OBJC__) &amp;&amp; JSC_OBJC_API_ENABLED</div><div class="line"></div><div class="line">#import &quot;JSContext.h&quot;</div><div class="line">#import &quot;JSValue.h&quot;</div><div class="line">#import &quot;JSManagedValue.h&quot;</div><div class="line">#import &quot;JSVirtualMachine.h&quot;</div><div class="line">#import &quot;JSExport.h&quot;</div><div class="line"></div><div class="line">#endif</div><div class="line"></div><div class="line">#endif /* JavaScriptCore_h */</div></pre></td></tr></table></figure>
+<h3 id="JSContext"><a href="#JSContext" class="headerlink" title="JSContext"></a>JSContext</h3><p>JS执行的环境，同时也通过JSVirtualMachine管理着所有对象的生命周期，每个JSValue都和JSContext相关联并且强引用context。</p>
+<h3 id="JSValue"><a href="#JSValue" class="headerlink" title="JSValue"></a>JSValue</h3><p>JS对象在JSVirtualMachine中的一个强引用，其实就是Hybird对象。我们对JS的操作都是通过它。并且每个JSValue都是强引用一个context。同时，OC和JS对象之间的转换也是通过它，相应的类型转换如下：</p>
+<table>
+<thead>
+<tr>
+<th>Obj-C type</th>
+<th style="text-align:center">JS type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nil</td>
+<td style="text-align:center">undefined</td>
+</tr>
+<tr>
+<td>NSNull</td>
+<td style="text-align:center">null</td>
+</tr>
+<tr>
+<td>NSString</td>
+<td style="text-align:center">string</td>
+</tr>
+<tr>
+<td>NSNumber</td>
+<td style="text-align:center">number,boolean</td>
+</tr>
+<tr>
+<td>NSDictionary</td>
+<td style="text-align:center">Object object</td>
+</tr>
+<tr>
+<td>NSArray</td>
+<td style="text-align:center">Object object</td>
+</tr>
+<tr>
+<td>NSDate</td>
+<td style="text-align:center">Date object</td>
+</tr>
+<tr>
+<td>NSBlock</td>
+<td style="text-align:center">Function  object</td>
+</tr>
+<tr>
+<td>id</td>
+<td style="text-align:center">Wrapper object</td>
+</tr>
+<tr>
+<td>Class</td>
+<td style="text-align:center">Constructor object</td>
+</tr>
+</tbody>
+</table>
+<h3 id="JSManagedValue"><a href="#JSManagedValue" class="headerlink" title="JSManagedValue"></a>JSManagedValue</h3><p>JS和OC对象的内存管理辅助对象。由于JS内存管理是垃圾回收，并且JS中的对象都是强引用，而OC是引用计数。如果双方相互引用，势必会造成循环引用，而导致内存泄露。我们可以用JSManagedValue保存JSValue来避免。</p>
+<h3 id="JSVirtualMachine"><a href="#JSVirtualMachine" class="headerlink" title="JSVirtualMachine"></a>JSVirtualMachine</h3><p>JS运行的虚拟机，有独立的堆空间和垃圾回收机制。</p>
+<h3 id="JSExport"><a href="#JSExport" class="headerlink" title="JSExport"></a>JSExport</h3><p>一个协议，如果JS对象想直接调用OC对象里面的方法和属性，那么这个OC对象只要实现这个JSExport协议就可以了。</p>
+<h2 id="交互过程"><a href="#交互过程" class="headerlink" title="交互过程"></a>交互过程</h2><p>分别是OC -&gt; JS 、 JS -&gt; OC</p>
+<p>首先在工程中引入JSC。</p>
+<p><img src= "http://ocg4av0wv.bkt.clouddn.com/E203DAC8-DCB9-4E98-95E0-FA250258283C.png" width = 500 height = 400/></p>
+<h3 id="JS-gt-OC"><a href="#JS-gt-OC" class="headerlink" title="JS -&gt; OC"></a>JS -&gt; OC</h3><p>这种情况的使用的应该是最多的, 可能你在一个H5页面中要跳转到native页面等等。</p>
+<p>我写了一个Demo,并写了一个相关的html代码。</p>
+<p>步骤：</p>
+<h4 id="1、定义一个协议PsJsObjcDelegate"><a href="#1、定义一个协议PsJsObjcDelegate" class="headerlink" title="1、定义一个协议PsJsObjcDelegate"></a>1、定义一个协议<code>PsJsObjcDelegate</code></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">@protocol PsJsObjcDelegate &lt;JSExport&gt;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<h4 id="2、定义一个遵守这个协议的Object-JsObjcBridge"><a href="#2、定义一个遵守这个协议的Object-JsObjcBridge" class="headerlink" title="2、定义一个遵守这个协议的Object JsObjcBridge"></a>2、定义一个遵守这个协议的Object <code>JsObjcBridge</code></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@interface JsObjcBridge : NSObject &lt;PsJsObjcDelegate&gt;</div><div class="line">@property (nonatomic, weak) JSContext *jsContext;</div><div class="line">@property (nonatomic, weak) UIWebView *webView;</div><div class="line">@property (nonatomic, copy) void (^pSJsObjcModelBlock)(NSInteger type , NSArray *param);</div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>因为我选择了通过block来进行这个class 和 vc之间的调用,所以我定义了一个block<code>property</code>来进行这个对象和vc之间的调用。</p>
+<h4 id="3、协议方法-注意这里的方法名要和js中的一致"><a href="#3、协议方法-注意这里的方法名要和js中的一致" class="headerlink" title="3、协议方法 (注意这里的方法名要和js中的一致)"></a>3、协议方法 (注意这里的方法名要和js中的一致)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">- (void)jsCallNativeWithParam:(NSDictionary *)param;//无返回值</div><div class="line">- (NSString *)jsCallNativeWithParamWithReturn:(NSDictionary *)param;//有返回值</div></pre></td></tr></table></figure>
+<h4 id="4、在-JsObjcBridge中实现这个方法"><a href="#4、在-JsObjcBridge中实现这个方法" class="headerlink" title="4、在 JsObjcBridge中实现这个方法"></a>4、在 <code>JsObjcBridge</code>中实现这个方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">- (void)jsCallNativeWithParam:(NSDictionary *)param&#123;</div><div class="line">    self.pSJsObjcBridgeBlock(param);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="5、把那个｀-html｀文件导入工程"><a href="#5、把那个｀-html｀文件导入工程" class="headerlink" title="5、把那个｀.html｀文件导入工程"></a>5、把那个｀.html｀文件导入工程</h4><p><img src= "http://ocg4av0wv.bkt.clouddn.com/03FD2A40-D380-46A7-8221-12FC1247B8F0.png" width = 300 height = 400/></p>
+<h4 id="6、在Controller中编码"><a href="#6、在Controller中编码" class="headerlink" title="6、在Controller中编码"></a>6、在Controller中编码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">#pragma mark - UIWebViewDelegate</div><div class="line">- (void)webViewDidFinishLoad:(UIWebView *)webView &#123;</div><div class="line">    self.jsContext = [webView valueForKeyPath:@&quot;documentView.webView.mainFrame.javaScriptContext&quot;];</div><div class="line">    JsObjcBridge *model              = [[JsObjcBridge alloc] init];</div><div class="line">    self.jsContext[@&quot;JSInteractive&quot;] = model;</div><div class="line">    model.jsContext                  = self.jsContext;</div><div class="line">    model.webView                    = self.webView;</div><div class="line">    </div><div class="line">    model.pSJsObjcBridgeBlock = ^(NSDictionary *param) &#123;</div><div class="line">        NSLog(@&quot;%@&quot;, param[@&quot;vc&quot;]);</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    model.pSJsObjcBridgeBlockWithReturn = ^(NSDictionary *param) &#123;</div><div class="line">        return param[@&quot;vc&quot;];</div><div class="line">    &#125;;</div><div class="line">    self.jsContext.exceptionHandler = ^(JSContext *context, JSValue *exceptionValue) &#123;</div><div class="line">        context.exception = exceptionValue;</div><div class="line">        NSLog(@&quot;异常信息：%@&quot;, exceptionValue);</div><div class="line">    &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="OC-gt-JS"><a href="#OC-gt-JS" class="headerlink" title="OC -&gt; JS"></a>OC -&gt; JS</h3><p>一种是向js 中注入新的js代码、一种是调用js中已有方法。</p>
+<p>由于我实在想不到好的应用场景，所以就只能在一个导航栏中左右分别放两个item</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@&quot;callJS&quot; style:UIBarButtonItemStylePlain target:self action:@selector(objcCallJsFunction)];</div><div class="line">self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@&quot;injectJS&quot; style:UIBarButtonItemStylePlain target:self action:@selector(objcInjectJsFunction)];</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">- (void)objcCallJsFunction&#123;</div><div class="line">    [self.jsContext[@&quot;jsFunc&quot;] callWithArguments:nil];</div><div class="line">&#125;</div><div class="line">- (void)objcInjectJsFunction&#123;</div><div class="line">    NSString *js = @&quot;function add(a,b) &#123;alert(a+b)&#125;&quot;;</div><div class="line">    [self.jsContext evaluateScript:js];</div><div class="line">    [self.jsContext[@&quot;add&quot;] callWithArguments:@[@2,@3]];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当然你要调用或者注入的js function 是有返回值的那么上面的一句话就应该改成这样了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">JSValue *n = [self.jsContext[@&quot;add&quot;] callWithArguments:@[@2,@3]];</div></pre></td></tr></table></figure></p>
+<h2 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h2><p>写博文的时候查阅相关资料发现这里还是可能会出现一些循环引用的问题。然后简单整理了一下。</p>
+<ol>
+<li>OC 的 <code>ARC</code> 和 JS的 <code>GC</code></li>
+<li>正常情况下<code>GC</code>都会打破循环引用</li>
+</ol>
+<p>特殊情况：</p>
+<ul>
+<li>不要在block里面直接使用context，或者使用外部的<code>JSValue</code>对象。</li>
+<li>OC对象不要用属性直接保存<code>JSValue</code>对象，因为这样太容易循环引用了。</li>
+<li>不要在不同的 <code>JSVirtualMachine</code> 之间进行传递JS对象。</li>
+</ul>
+<h2 id="结束的话"><a href="#结束的话" class="headerlink" title="结束的话"></a>结束的话</h2><p>不多说了,只是简单的实现了一下,肯定还是有很多的东西没有考虑到,以后遇到了再完善吧。<a href="https://github.com/ProgramerSunny/jsCallObjc"><em>demo地址</em></a>。在写这个博客的过程中思考了许多,其实在具体场景中还是有很多东西没有想到。而且在代码中调用的方法什么的卸写在一个<code>plist</code>里面，把各种规则放进去,这样更利于维护,和与<code>sever</code>的交互。这些可能都需要去思考的问题。原谅我比较low，并没有在项目中有过这样的应用。吾将上下而求索…</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;iOS Dev难免会遇上需要和JavaScript交互的时候，我是这么做的。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://yoursite.com/categories/iOS/"/>
+    
+    
+      <category term="iOS" scheme="http://yoursite.com/tags/iOS/"/>
+    
+      <category term="JavaScript" scheme="http://yoursite.com/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>我是这样格式化我的代码</title>
+    <link href="http://yoursite.com/2016/08/19/%E6%88%91%E6%98%AF%E8%BF%99%E6%A0%B7%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%88%91%E7%9A%84%E4%BB%A3%E7%A0%81/"/>
+    <id>http://yoursite.com/2016/08/19/我是这样格式化我的代码/</id>
+    <published>2016-08-19T07:55:13.000Z</published>
+    <updated>2016-08-29T02:25:41.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>这篇文章是我整理的一份代码格式化的东西, 和一份我正在用的clang-format的配置文件。</p>
+<a id="more"></a>
+<h3 id="一、前面的话"><a href="#一、前面的话" class="headerlink" title="一、前面的话"></a>一、前面的话</h3><p>前段时间整理一系列公司的文档,写到代码编写规范和CodeReview规范中都提到代码格式化的问题。很多人都说能都自动化的步骤都应该通过自动化来解决,所以这个时候想到了以前一直舍不得用的clang-format。想起来还是有点惭愧，自从看了sunnyxx的《招聘一个靠谱的iOS》之后就仿佛也有了代码洁癖，但是一直也没有去整理自己的代码编写规范这些东西。后来看到了google的规范文档,感觉越来越想弄一下这个东西。</p>
+<p><img src="http://i2.buimg.com/567571/33caa8485b3664b5.png" alt=""></p>
+<h3 id="二、clang-format"><a href="#二、clang-format" class="headerlink" title="二、clang-format"></a>二、clang-format</h3><p><a href="https://github.com/travisjeffery/ClangFormat-Xcode"><em>clang-format</em></a><br>是一款Xcode的一个非常好用的插件。具体安装可以去GitHub查看官方的readme。</p>
+<h3 id="三、-install-clang-format"><a href="#三、-install-clang-format" class="headerlink" title="三、 install clang-format"></a>三、 install clang-format</h3><p>官方的readme是英文的,由于我用上它和写这篇文章已经有一段时间了，我就简单的看着官方文档整理一下步骤吧！<br><a href="https://github.com/travisjeffery/ClangFormat-Xcode"><em>原文地址</em></a></p>
+<ol>
+<li>下载或者克隆这个文件<br><img src="http://i4.buimg.com/567571/f6fde5feb67252db.png" alt=""></li>
+<li>像运行普通项目一样运行一下</li>
+<li>cmd + q 完全退出一下Xcode</li>
+<li>重新打开你的项目,应该会让你选择是否load这个插件。不要选skip。</li>
+<li>没有第五,你已经装上这个插件了</li>
+</ol>
+<h3 id="四、How-to-init"><a href="#四、How-to-init" class="headerlink" title="四、How to init"></a>四、How to init</h3><p>在工程目录或者workspace目录下创建一个<code>.clang-format</code>文件<br><img src="http://i4.buimg.com/567571/1da53f4cd1bc9633.png" alt=""><br><img src="http://i4.buimg.com/567571/b5f72a18bea10286.png" alt=""><br><img src="http://i4.buimg.com/567571/20151db030f769c4.png" alt=""><br><img src="http://i4.buimg.com/567571/1214171b519c680c.png" alt=""></p>
+<p>完成之后你会发现这个文件在你工程文件中是没有的。如果你在桌面上将任意文件改成.clang-format之后就会出现这个。<br><img src="http://i1.buimg.com/567571/12c3424371497a27.png" alt=""><br>其实还好，只需要打开终端</p>
+<p>显示隐藏文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">defaults write com.apple.finder AppleShowAllFiles -bool true &amp;&amp; killall Finder</div></pre></td></tr></table></figure></p>
+<p>不显示隐藏文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">defaults write com.apple.finder AppleShowAllFiles -bool false &amp;&amp; killall Finder</div></pre></td></tr></table></figure></p>
+<p>通过两句命令就可以打开了。这个时候你可以通过vim打开并且编辑,或者在刚刚在Xcode中创建的时候编辑,不过我通常都是通过sublime来编辑这些东西的。</p>
+<p>这个只是一个配置文件,这个文件是可以随意拖动的。</p>
+<p>由于公司目前的规范是我写的,所以我也直接把这个文件放在了根目录中</p>
+<ol>
+<li>打开Finder</li>
+<li>cmd＋shift＋g<br><img src="http://i1.buimg.com/567571/65f27507e6dc1145.png" alt=""></li>
+<li>前往,前题是你刚过显示了隐藏文件,不然你看到的是很boring的内容</li>
+<li>找到<code>.clang-format</code>文件,右键,，选择sublime text<br><img src="http://i4.buimg.com/567571/f2de4faccb5c7098.jpg" alt=""></li>
+</ol>
+<h3 id="五、How-to-config"><a href="#五、How-to-config" class="headerlink" title="五、How to config"></a>五、How to config</h3><p>这个就简单了,也没什么好说的,我的大概就是这个样子。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div></pre></td><td class="code"><pre><div class="line"># Custom options in the special build of clang-format (these are not standard options)</div><div class="line"># IndentNestedBlocks: false</div><div class="line"># AllowNewlineBeforeBlockParameter: false</div><div class="line">Language:        Cpp</div><div class="line"># BasedOnStyle:  Google</div><div class="line">AccessModifierOffset: -1</div><div class="line">ConstructorInitializerIndentWidth: 4</div><div class="line">SortIncludes: false</div><div class="line"></div><div class="line">AlignConsecutiveAssignments: true</div><div class="line">AlignAfterOpenBracket: true</div><div class="line">AlignEscapedNewlinesLeft: true</div><div class="line">AlignOperands: false</div><div class="line">AlignTrailingComments: true</div><div class="line"></div><div class="line">AllowAllParametersOfDeclarationOnNextLine: false</div><div class="line">AllowShortBlocksOnASingleLine: false</div><div class="line">AllowShortCaseLabelsOnASingleLine: false</div><div class="line">AllowShortFunctionsOnASingleLine: true</div><div class="line">AllowShortIfStatementsOnASingleLine: true</div><div class="line">AllowShortFunctionsOnASingleLine: All</div><div class="line">AllowShortLoopsOnASingleLine: true</div><div class="line"></div><div class="line">AlwaysBreakAfterDefinitionReturnType: false</div><div class="line">AlwaysBreakTemplateDeclarations: false</div><div class="line">AlwaysBreakBeforeMultilineStrings: false</div><div class="line"></div><div class="line">BreakBeforeBinaryOperators: None</div><div class="line">BreakBeforeTernaryOperators: false</div><div class="line">BreakConstructorInitializersBeforeComma: false</div><div class="line"></div><div class="line">BinPackArguments: true</div><div class="line">BinPackParameters: true</div><div class="line">ColumnLimit: 0</div><div class="line">ConstructorInitializerAllOnOneLineOrOnePerLine: true</div><div class="line">DerivePointerAlignment: false</div><div class="line">ExperimentalAutoDetectBinPacking: false</div><div class="line">IndentCaseLabels: true</div><div class="line">IndentWrappedFunctionNames: false</div><div class="line">IndentFunctionDeclarationAfterType: false</div><div class="line">MaxEmptyLinesToKeep: 2</div><div class="line">KeepEmptyLinesAtTheStartOfBlocks: false</div><div class="line">NamespaceIndentation: Inner</div><div class="line">ObjCBlockIndentWidth: 4</div><div class="line">ObjCSpaceAfterProperty: true</div><div class="line">ObjCSpaceBeforeProtocolList: true</div><div class="line">PenaltyBreakBeforeFirstCallParameter: 10000</div><div class="line">PenaltyBreakComment: 300</div><div class="line">PenaltyBreakString: 1000</div><div class="line">PenaltyBreakFirstLessLess: 120</div><div class="line">PenaltyExcessCharacter: 1000000</div><div class="line">PenaltyReturnTypeOnItsOwnLine: 200</div><div class="line">PointerAlignment: Right</div><div class="line">SpacesBeforeTrailingComments: 1</div><div class="line">Cpp11BracedListStyle: true</div><div class="line">Standard:        Auto</div><div class="line">IndentWidth:     4</div><div class="line">TabWidth:        8</div><div class="line">UseTab:          Never</div><div class="line">BreakBeforeBraces: Custom</div><div class="line">BraceWrapping: </div><div class="line">    AfterClass: true</div><div class="line">    AfterControlStatement: false</div><div class="line">    AfterEnum: false</div><div class="line">    AfterFunction: false</div><div class="line">    AfterNamespace: true</div><div class="line">    AfterObjCDeclaration: true</div><div class="line">    AfterStruct: false</div><div class="line">    AfterUnion: false</div><div class="line">    BeforeCatch: false</div><div class="line">    BeforeElse: false</div><div class="line">    IndentBraces: false</div><div class="line"></div><div class="line">SpacesInParentheses: false</div><div class="line">SpacesInSquareBrackets: false</div><div class="line">SpacesInAngles:  false</div><div class="line">SpaceInEmptyParentheses: false</div><div class="line">SpacesInCStyleCastParentheses: false</div><div class="line">SpaceAfterCStyleCast: false</div><div class="line">SpacesInContainerLiterals: true</div><div class="line">SpaceBeforeAssignmentOperators: true</div><div class="line"></div><div class="line">ContinuationIndentWidth: 4</div><div class="line">CommentPragmas:  &apos;^ IWYU pragma:&apos;</div><div class="line">ForEachMacros:   [ foreach, Q_FOREACH, BOOST_FOREACH ]</div><div class="line">SpaceBeforeParens: ControlStatements</div><div class="line">DisableFormat:   false</div></pre></td></tr></table></figure>
+<p><a href="http://clang.llvm.org/docs/ClangFormatStyleOptions.html"><em>英文版 Clang-Format Style Options</em></a> 自己定制的话，看看这个吧！<br><a href="http://www.jianshu.com/p/542e535117eb"><em>ClangFormat语法1.0</em></a> 简书上有一个中文版的,好像不是特别完整,一般自己玩玩也是够了.</p>
+<h3 id="六、How-to-use"><a href="#六、How-to-use" class="headerlink" title="六、How to use"></a>六、How to use</h3><ol>
+<li>Xcode-Edit-ClangFormat-File选项</li>
+<li>选择你想要格式化的代码，然后Edit-ClangFormat-确认File为勾选状态-Format Selected Text</li>
+</ol>
+<p>设置快捷键</p>
+<p>系统偏好设置－键盘－快捷键－应用快捷键- +<br><img src="http://i2.buimg.com/567571/586f472600761b93.jpg" alt=""><br>我自己设置的是<code>option</code>＋<code>,</code> </p>
+<h3 id="七、Ending"><a href="#七、Ending" class="headerlink" title="七、Ending"></a>七、Ending</h3><p>作为代码编写者，编写让自己舒服，让reviewer舒服的代码是我们的责任, 在编码过程中难免会出现时间紧任务重的情况，作为软件开发人员，耗费大量的精力去调整自己的代码格式是非常不值得的事情。况且在团队协同开发的时候如果自己编写的代码不符合团队规范，即使能够很好的完成工作，那也是不道德的事情。通过一个简单的工作一劳永逸的解决这个问题，又何乐而不为呢？</p>
+<h3 id="八、The-next"><a href="#八、The-next" class="headerlink" title="八、The next"></a>八、The next</h3><p>最近在看《重构》这本是，虽然是java写的，希望自己能在学习之后能够更快速更科学的重构项目，重构代码。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这篇文章是我整理的一份代码格式化的东西, 和一份我正在用的clang-format的配置文件。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://yoursite.com/categories/iOS/"/>
+    
+    
+      <category term="iOS" scheme="http://yoursite.com/tags/iOS/"/>
+    
+      <category term="代码规范" scheme="http://yoursite.com/tags/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>简单对比了一下Delegate和Block的效率</title>
+    <link href="http://yoursite.com/2016/08/10/%E7%AE%80%E5%8D%95%E5%AF%B9%E6%AF%94%E4%BA%86%E4%B8%80%E4%B8%8BDelegate%E5%92%8CBlock%E7%9A%84%E6%95%88%E7%8E%87/"/>
+    <id>http://yoursite.com/2016/08/10/简单对比了一下Delegate和Block的效率/</id>
+    <published>2016-08-10T03:03:12.000Z</published>
+    <updated>2016-08-29T02:24:06.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近公司的项目完成了，简单的写了个小demo来验证一下block和delegate的效率问题。</p>
+<a id="more"></a>
+<h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><blockquote>
+<p>开始之前还是麻烦直接先看一些结论吧！</p>
+</blockquote>
+<p>终于，公司的项目给运营进行验证测试了，忙了那么久都没有时间学点新的东西。又倒腾了点新的东西出来，python啊，Go啊，然后感觉需要学习的东西还有很多，自己的能力也不够。买了几本书《Objective—C 高级编程 iOS与OS X多线程和内存管理》、 《重构》、《编程珠玑》….也没有时间看，刚刚才把OC的内存管理看了一遍。</p>
+<p>一直在水各种qq群，然后有人在问<code>block</code>怎么用什么什么的，然后在群里就在讨论<code>block</code>和<code>delegate</code>，然后说为什么很多第三方库都是用的<code>delegate</code>，apple自带的控件也全都是用的<code>delegate</code>。</p>
+<p>刚刚开始学<code>block</code>的时候，感觉<code>block</code>特别的难，什么鬼都不知道是怎么回事，代码索引也没有。所以我给出的第一个答案就是实用delegate至少在代码可读性上会好很多。</p>
+<p>然后在简书看到一篇文章<a href="http://www.jianshu.com/p/bbccac805641"><em>block和delegate傻傻分不清楚</em></a></p>
+<blockquote>
+<p>由此我们可以看到delegate运行成本低，block成本很高。block出栈需要将使用的数据从栈内存拷贝到堆内存，当然对象的话就是加计数，使用完或者block置nil后才消除；delegate只是保存了一个对象指针，直接回调，没有额外消耗。相对C的函数指针，只多做了一个查表动作 。</p>
+</blockquote>
+<p>自己想了一下确实是这样的。</p>
+<p>后来突然想到了自己一起踩过的坑，由于一直都有使用instrument或者MLeaksFinder来检查内存泄漏的习惯，所以在发现MJRefresh的时候发现内存泄漏，这个时候才发现之前使用block的时候并没有使用<code>weakSelf</code> 和 <code>strongSelf</code> 所以…<br>这就能够很好的解释为什么很多第三方库都会使用<code>delegate</code>而不是<code>block</code>了，毕竟对于目前的iOS市场，充斥着大量新手iOSer，如果使用block的话，第一会增加小白的使用成本，第二虽然不会立马造成crash，但如果不使用<code>weakSelf</code> 和 <code>strongSelf</code>的话，内存无法释放，对于那些写库的大神来说，应该是很难容忍的吧。</p>
+<p>所以虽然我在项目中也会大量的使用<code>block</code>（主要是开发效率的提升，毕竟用<code>delegate</code>比较麻烦），但是对比<code>delegate</code>和<code>block</code>，<code>delegate</code>至少在以下三点比<code>block</code>好:</p>
+<ol>
+<li>代码的可读性。</li>
+<li>运行效率。</li>
+<li>使用<code>block</code>需要时刻预防循环引用。</li>
+</ol>
+<p>对于第四点,我想delegate作为一个很经典的设计模式，相比较于block出现的比较早。</p>
+<p>作为iOS4的新特性，block最开始，现在可能也最常见的出现在<code>UIView animateWithDuration</code> 和 数组的<code>enumeratedObjectsUsingBlock</code> 方法中。</p>
+<p>1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[UIView animateWithDuration:2.0f animations:^&#123;</div><div class="line">   //do somethings </div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+<p>2</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[self.dataSource enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) &#123;</div><div class="line">    NSLog(@&quot;%@,%@&quot;,obj,@(idx));</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+<p>第二种作为枚举遍历法，被广泛的使用，用以替换之前或者现在都用的 <code>for</code> <code>forin</code>两个循环办法，而这个方法查阅文档之后发现是遵循了<code>NSFastEnumeration</code>这个协议。而这个协议直有下面一个方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(id __unsafe_unretained [])buffer count:(NSUInteger)len;</div></pre></td></tr></table></figure>
+<p>这里面的实现原理，并不是本文的讨论范围,这里的block虽然能够代码巨大的效率提升，但也没办法跟delegate进行比较，而且这个应该也是算法的提升吧。如果对这个东西敢兴趣，也可以去看看巧大的文章，我记得他对这个有过深入的研究。</p>
+<p>刚刚提到的三点，第一点可能没有办法去验证，第三点可以自己写一个block然后在这个block里面使用<code>self</code>然后再调用这个block，在看这个对象能不能<code>dealloc</code></p>
+<p>对于第二点，我大胆的写了一个demo，这也是我最常使用block的场景：通过tableviewcell上的button回调点击时间到controller中。</p>
+<p>我在controller中添加一个tableview实现了一些基本的代码之后，为了验证这个问题，我有自定义了一个<code>UITableViewCell</code> </p>
+<p><img src="http://i1.piimg.com/567571/1196bd9c84116dd0.png" alt=""></p>
+<p>通过拖线</p>
+<p><img src="http://i1.piimg.com/567571/70c46c66aad2fecf.png" alt=""></p>
+<p>实现了一下两个方法，分别通过block 和delegate 回调了10000次。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">- (IBAction)blockAction:(id)sender &#123;</div><div class="line">    for (int i = 0; i &lt; 10000; i++) &#123;</div><div class="line">        self.blk();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">- (IBAction)delegateAction:(id)sender &#123;</div><div class="line">    for (int i = 0; i &lt; 10000; i++) &#123;</div><div class="line">        [self.delegate foocellDelegateButtonClicked];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在自定义cell的<code>.h</code>中声明了一个<code>protocol</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@protocol FooCellDelegate &lt;NSObject&gt;</div><div class="line">@required</div><div class="line">- (void)foocellDelegateButtonClicked;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>和一个<code>block</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">typedef void (^blk_t)(void);</div></pre></td></tr></table></figure>
+<p>我们看一下整个<code>.h</code>文件中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">#import &lt;UIKit/UIKit.h&gt;</div><div class="line"></div><div class="line">typedef void (^blk_t)(void);</div><div class="line"></div><div class="line">@protocol FooCellDelegate &lt;NSObject&gt;</div><div class="line"></div><div class="line">@required</div><div class="line"></div><div class="line">- (void)foocellDelegateButtonClicked;</div><div class="line"></div><div class="line">@end</div><div class="line"></div><div class="line">@interface FooCell : UITableViewCell</div><div class="line"></div><div class="line">@property (nonatomic, copy) blk_t blk;</div><div class="line"></div><div class="line">@property (nonatomic, weak) id&lt;FooCellDelegate&gt; delegate;</div><div class="line"></div><div class="line">+ (instancetype)cellWithTableView:(UITableView *)tableView;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>然后在controller中分别接受回调</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath &#123;</div><div class="line">    return (&#123;</div><div class="line">        FooCell *cell = [FooCell cellWithTableView:tableView];</div><div class="line">        cell.delegate = self;</div><div class="line">        cell.blk = ^&#123;</div><div class="line">            NSLog(@&quot;block&quot;);</div><div class="line">        &#125;;</div><div class="line">        cell;</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)foocellDelegateButtonClicked &#123;</div><div class="line">    NSLog(@&quot;delegate&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>代码部分写完了,然后简单的运行了一下,结果分别是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">2016-08-10 14:53:00.466 IB[4649:179409] block</div><div class="line">.</div><div class="line">.</div><div class="line">.</div><div class="line">2016-08-10 14:53:02.926 IB[4649:179409] block</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">2016-08-10 14:53:50.639 IB[4649:179409] delegate</div><div class="line">.</div><div class="line">.</div><div class="line">.</div><div class="line">2016-08-10 14:53:54.325 IB[4649:179409] delegate</div></pre></td></tr></table></figure>
+<p>结果还是很直观的<code>2.926</code> - <code>0.466</code>  对比 <code>54.325</code> - <code>50.639</code><br>我发现delegate的效率是要比block高些的。</p>
+<p>接下来我又决定在block中使用一下外部变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath &#123;</div><div class="line">    return (&#123;</div><div class="line">        FooCell *cell = [FooCell cellWithTableView:tableView];</div><div class="line">        cell.delegate = self;</div><div class="line">        NSString *str = @&quot;delegate&quot;;</div><div class="line">        cell.blk = ^&#123;</div><div class="line">            NSLog(@&quot;%@&quot;,str);</div><div class="line">        &#125;;</div><div class="line">        cell;</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line">- (void)foocellDelegateButtonClicked &#123;</div><div class="line">    NSString *str = @&quot;delegate&quot;;</div><div class="line">    NSLog(@&quot;%@&quot;,str);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>由于没有对str进行更改，所以我并没有使用<code>__block</code>修饰<code>str</code>;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">2016-08-10 15:38:41.340 IB[4717:198573] block</div><div class="line">.</div><div class="line">.</div><div class="line">.</div><div class="line">2016-08-10 15:38:44.136 IB[4717:198573] block</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">2016-08-10 15:39:20.837 IB[4717:198573] delegate</div><div class="line">.</div><div class="line">.</div><div class="line">.</div><div class="line">2016-08-10 15:39:23.883 IB[4717:198573] delegate</div></pre></td></tr></table></figure>
+<p><code>44.136</code> - <code>41.340</code>  对比 <code>23.883</code> - <code>20.837</code>  2.796  vs  3.046<br>依然是block效率高于delegate</p>
+<p>我再用<code>__block</code>修饰了一下,然后</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath &#123;</div><div class="line">    return (&#123;</div><div class="line">        FooCell *cell = [FooCell cellWithTableView:tableView];</div><div class="line">        cell.delegate = self;</div><div class="line">        __weak typeof(self) weakself = self;</div><div class="line">        cell.blk = ^&#123;</div><div class="line">            __strong typeof(weakself) strongself = weakself;</div><div class="line">            NSLog(@&quot;%ld&quot;,strongself-&gt;idx_);</div><div class="line">            strongself-&gt; idx_++;</div><div class="line">        &#125;;</div><div class="line">        cell;</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line">- (void)foocellDelegateButtonClicked &#123;</div><div class="line">    NSLog(@&quot;%ld&quot;,idx_);</div><div class="line">    idx_ ++;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">2016-08-10 15:58:19.665 IB[4827:213165] 0</div><div class="line">.</div><div class="line">.</div><div class="line">.</div><div class="line">2016-08-10 15:58:22.866 IB[4827:213165] 9999</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">2016-08-10 15:58:42.689 IB[4827:213165] 0</div><div class="line">.</div><div class="line">.</div><div class="line">.</div><div class="line">2016-08-10 15:58:45.192 IB[4827:213165] 9999</div></pre></td></tr></table></figure>
+<p><code>22.866</code> - <code>19.665</code>  对比 <code>45.192</code> - <code>42.689</code>  3.201  vs  2.503   delegate更高</p>
+<p><em>对比了大半天才发现文中所谓的效率比较其实是几乎没有的，毕竟是回调了10000次才出现了那么微弱的差距。<br>所以前文对比的所谓的区别也是没有什么道理的。</em></p>
+<p>但是可能考虑到运行顺序和可能出现的缓存等等其他可能出现的因素,我也不能下十分完整的定论，但是block作为一个在很多语言都具有的语法,其优越性对比delegate也不会差。</p>
+<table>
+<thead>
+<tr>
+<th>程序语言</th>
+<th style="text-align:center">Block的名称</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C ＋blocks</td>
+<td style="text-align:center">block</td>
+</tr>
+<tr>
+<td>SmallTalk</td>
+<td style="text-align:center">block</td>
+</tr>
+<tr>
+<td>Ruby</td>
+<td style="text-align:center">block</td>
+</tr>
+<tr>
+<td>LISP</td>
+<td style="text-align:center">Lambda</td>
+</tr>
+<tr>
+<td>Python</td>
+<td style="text-align:center">Lambda</td>
+</tr>
+<tr>
+<td>C++ 11</td>
+<td style="text-align:center">Lambda</td>
+</tr>
+<tr>
+<td>Javascript</td>
+<td style="text-align:center">Anonymous function</td>
+</tr>
+</tbody>
+</table>
+<p>写到这了，其实我也是比较方的，因为到现在也是刚刚才认可这个事情。</p>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>所以到最后，无论block还是delegate 其实都是要看具体的应用场景的，如果脱离的具体的应用场景这样的最求所谓的性能优化其实也是没有什么意义的。所以一味的强行的去对比二者的区别也是没有多大的意义的。毕竟，如此微弱的差距，在排除了其他的因素之后，可能就完全的忽略不计了，在手机端，也不可能有生命回调什么的能够进行10000次。</p>
+<p>所以除了可读性和需要预防循环引用。block带来开发效率的提升还是特别的快的。对于第三方库使用delegate的原因，我猜想还是因为使用delegate更贴近于原生的OC代码,毕竟是写出来给别人使用的，更原生，可能更友好。而我们更熟悉的<code>AFNetworking</code> 也是用的block回调网络请求的啊。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近公司的项目完成了，简单的写了个小demo来验证一下block和delegate的效率问题。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://yoursite.com/categories/iOS/"/>
+    
+    
+      <category term="iOS" scheme="http://yoursite.com/tags/iOS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>玩了一下dispatch_group</title>
+    <link href="http://yoursite.com/2016/07/27/%E7%8E%A9%E4%BA%86%E4%B8%80%E4%B8%8Bdispatch-group/"/>
+    <id>http://yoursite.com/2016/07/27/玩了一下dispatch-group/</id>
+    <published>2016-07-27T07:34:44.000Z</published>
+    <updated>2016-08-29T02:25:36.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Model里面有ABCD四个属性，这4个属性每个都不能直接用，都需要去调一个Block返回回来才能用，然后界面上的textview的值需要这4个属性来拼接，每个属性都有可能为空，最后拼出来的东西还不能打乱顺序。</p>
+<a id="more"></a>
+<p>看了一天的JavaScript基础语法，然后水了一下群，发现一个朋友在问这样的问题:</p>
+<p><img src="http://i2.piimg.com/567571/423e50e7a0263f42.png" width=600 height=120 /></p>
+<p>简单分析了一下,跟iOS一道面试题一样一样的</p>
+<blockquote>
+<p>如果一个页面需要发送4个网络请求，如何监听到所有的请求都已经回调之后再刷新UI？</p>
+</blockquote>
+<p>自己也曾经被问到过两次，当时都是说的声明一个全局变量在收到回调的时候+1，当这个变量等于4的时候再刷新UI。</p>
+<p>现在看起来，这样的答案确实low得可怜。其实我是知道有dispatch group 这个东西的，但是，考虑到网络请求都是异步请求并且通过block回调的，那么block里面的内容无论有没有执行完毕，group notify 总是能够在真正受到回调才会刷新数据。</p>
+<p>看到了朋友这样的问题，在群里简单的提了我用group的解决方案之后，主动提出了我写一个demo出来的建议，然后我就开始了</p>
+<h3 id="temp-one"><a href="#temp-one" class="headerlink" title="temp one"></a>temp one</h3><p>首先我模拟了4个任务分别延时了0.3 0.5 0.1 和马上返回; 然后是通过block回调通知接下来的操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">//任务A</div><div class="line">- (void)requestA:(void (^)(NSString* ss))block &#123;</div><div class="line">    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_queue_create(0, 0), ^&#123;</div><div class="line">        NSLog(@&quot;aa&quot;);</div><div class="line">        block();</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line">//任务B</div><div class="line">- (void)requestB:(void (^)(NSString* ss))block &#123;</div><div class="line">    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_queue_create(0, 0), ^&#123;</div><div class="line">        NSLog(@&quot;bb&quot;);</div><div class="line">        block();</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line">//任务C</div><div class="line">- (void)requestC:(void (^)(NSString* ss))block &#123;</div><div class="line">    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_queue_create(0, 0), ^&#123;</div><div class="line">        NSLog(@&quot;cc&quot;);</div><div class="line">        block();</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line">//任务D</div><div class="line">- (void)requestD:(void (^)())block &#123;</div><div class="line">    NSLog(@&quot;dd&quot;);</div><div class="line">    block();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>由于我要模拟的是在后台的情况下执行请求任务，所以我果断的讲dispatch中的<code>dispatch_get_main_queue</code> 改成了 <code>dispatch_queue_create(0, 0)</code></p>
+<p>然后我写了这样的代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">- (void)sendRequestA &#123;</div><div class="line">    dispatch_group_t group = dispatch_group_create();</div><div class="line">    dispatch_queue_t queue = dispatch_get_global_queue(0, 0);</div><div class="line">    </div><div class="line">    </div><div class="line">    dispatch_group_async(group, queue, ^&#123;</div><div class="line">        [self requestA:^(NSString* ss)&#123;</div><div class="line">            NSLog(@&quot;%@&quot;,ss);</div><div class="line">        &#125;];</div><div class="line">    &#125;);</div><div class="line">    dispatch_group_async(group, queue, ^&#123;</div><div class="line">        [self requestB:^(NSString* ss)&#123;</div><div class="line">            NSLog(@&quot;%@&quot;,ss);</div><div class="line">        &#125;];</div><div class="line">    &#125;);</div><div class="line">    </div><div class="line">    dispatch_group_async(group, queue, ^&#123;</div><div class="line">        [self requestC:^(NSString* ss)&#123;</div><div class="line">            NSLog(@&quot;%@&quot;,ss);</div><div class="line">        &#125;];</div><div class="line">    &#125;);</div><div class="line">    </div><div class="line">    dispatch_group_async(group, queue, ^&#123;</div><div class="line">        [self requestD:^(NSString* ss)&#123;</div><div class="line">            NSLog(@&quot;%@&quot;,ss);</div><div class="line">        &#125;];</div><div class="line">    &#125;);</div><div class="line">    </div><div class="line">    dispatch_group_notify(group, dispatch_get_main_queue(), ^&#123;</div><div class="line">        NSLog(@&quot;over&quot;);</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我以为这个问题就解决了，然后我很自信的运行了一下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">2016-07-27 16:00:51.268 IB[1944:308855] dd</div><div class="line">2016-07-27 16:00:51.268 IB[1944:308823] over</div><div class="line">2016-07-27 16:00:51.372 IB[1944:308823] cc</div><div class="line">2016-07-27 16:00:51.602 IB[1944:308823] aa</div><div class="line">2016-07-27 16:00:51.796 IB[1944:308823] bb</div></pre></td></tr></table></figure>
+<p>很显然我弄错了;</p>
+<p>仔细阅读了一下代码和输出的值之后我意识到了，block回调是在notify之后执行的</p>
+<h3 id="temp-two"><a href="#temp-two" class="headerlink" title="temp two"></a>temp two</h3><p>然后我看了下意思的输入了disoatch_group。</p>
+<p><img src="http://i1.piimg.com/567571/81a097ba5898ac7f.png" width=600 height=120 /></p>
+<p>等等<code>disoatch_group_enter</code> <code>disoatch_group_wait</code>  <code>disoatch_group_leave</code> 这三个东西是什么鬼？<br>然后简单百度了一下,然后我就改了一下代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">- (void)sendRequest &#123;</div><div class="line">    dispatch_group_t group = dispatch_group_create();</div><div class="line"></div><div class="line">    dispatch_group_enter(group);</div><div class="line">    dispatch_async(dispatch_get_global_queue(0, 0), ^&#123;</div><div class="line">        [self requestA:^(NSString* ss) &#123;</div><div class="line">            dispatch_group_leave(group);</div><div class="line">        &#125;];</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    dispatch_group_enter(group);</div><div class="line">    dispatch_async(dispatch_get_global_queue(0, 0), ^&#123;</div><div class="line">        [self requestB:^(NSString* ss) &#123;</div><div class="line">            dispatch_group_leave(group);</div><div class="line">        &#125;];</div><div class="line">    &#125;);</div><div class="line">    dispatch_group_enter(group);</div><div class="line">    dispatch_async(dispatch_get_global_queue(0, 0), ^&#123;</div><div class="line">        [self requestC:^(NSString* ss) &#123;</div><div class="line">            dispatch_group_leave(group);</div><div class="line">        &#125;];</div><div class="line">    &#125;);</div><div class="line">    dispatch_group_enter(group);</div><div class="line">    dispatch_async(dispatch_get_global_queue(0, 0), ^&#123;</div><div class="line">        [self requestD:^(NSString* ss) &#123;</div><div class="line">            dispatch_group_leave(group);</div><div class="line">        &#125;];</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    dispatch_group_wait(group, DISPATCH_TIME_FOREVER);</div><div class="line"></div><div class="line">    dispatch_async(dispatch_get_main_queue(), ^&#123;</div><div class="line">        NSLog(@&quot;刷新UI&quot;);</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>再运行一下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">2016-07-27 16:21:25.110 IB[2048:328327] ddd</div><div class="line">2016-07-27 16:21:25.219 IB[2048:328327] ccc</div><div class="line">2016-07-27 16:21:25.431 IB[2048:328327] aaa</div><div class="line">2016-07-27 16:21:25.658 IB[2048:328327] bbb</div><div class="line">2016-07-27 16:21:25.658 IB[2048:328295] 刷新UI</div></pre></td></tr></table></figure>
+<p>搞定！</p>
+<h3 id="temp-three"><a href="#temp-three" class="headerlink" title="temp three"></a>temp three</h3><p>最开始我在四个任务方法里面的<code>dispatch_after</code>都是Xcode 代码自动补全出来的,参数都是<code>dispatch_get_main_queue()</code> ,在第一次尝试的时候输出并没有什么不一样。</p>
+<p>但是在第二次尝试的时候输出变成了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">2016-07-27 16:23:29.547 IB[2062:330077] ddd</div></pre></td></tr></table></figure>
+<p>我想到了这应该是死锁造成的，因为在四个模拟任务中出了第四个<code>dispatch_after</code>都将回调放到主线程去了，而</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dispatch_group_wait(group, DISPATCH_TIME_FOREVER);</div></pre></td></tr></table></figure>
+<p>也是在主线程wait的,考虑到UI的任务都是在主线程中执行的所以我在demo中引入了一个tableview，果然，wait的时候tableview也是卡死的，所以，呵呵。折腾了半天，还是没有找到合适的办法，我决定再深入的看一下文档;</p>
+<p>然后我看了一下</p>
+<p><img src="http://i4.piimg.com/567571/b6e3b6ef4164d064.png" width=150 height=200 /></p>
+<p>这本书<br>看到了这句话<br><img src="http://i4.piimg.com/567571/af4266a02564281b.png" width=600 height=80 /></p>
+<p>所以我将调用request的方法改了一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">- (void)sendRequest &#123;</div><div class="line">    dispatch_group_t group = dispatch_group_create();</div><div class="line"></div><div class="line">    dispatch_group_enter(group);</div><div class="line">    dispatch_async(dispatch_get_global_queue(0, 0), ^&#123;</div><div class="line">        [self requestA:^(NSString* ss) &#123;</div><div class="line">            NSLog(@&quot;%@&quot;,ss);</div><div class="line">            dispatch_group_leave(group);</div><div class="line">        &#125;];</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    dispatch_group_enter(group);</div><div class="line">    dispatch_async(dispatch_get_global_queue(0, 0), ^&#123;</div><div class="line">        [self requestB:^(NSString* ss) &#123;</div><div class="line">            NSLog(@&quot;%@&quot;,ss);</div><div class="line">            dispatch_group_leave(group);</div><div class="line">        &#125;];</div><div class="line">    &#125;);</div><div class="line">    dispatch_group_enter(group);</div><div class="line">    dispatch_async(dispatch_get_global_queue(0, 0), ^&#123;</div><div class="line">        [self requestC:^(NSString* ss) &#123;</div><div class="line">            NSLog(@&quot;%@&quot;,ss);</div><div class="line">            dispatch_group_leave(group);</div><div class="line">        &#125;];</div><div class="line">    &#125;);</div><div class="line">    dispatch_group_enter(group);</div><div class="line">    dispatch_async(dispatch_get_global_queue(0, 0), ^&#123;</div><div class="line">        [self requestD:^(NSString* ss) &#123;</div><div class="line">            NSLog(@&quot;%@&quot;,ss);</div><div class="line">            dispatch_group_leave(group);</div><div class="line">        &#125;];</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    dispatch_async(dispatch_queue_create(0, 0), ^&#123;</div><div class="line">        dispatch_group_wait(group, DISPATCH_TIME_FOREVER);</div><div class="line">        dispatch_async(dispatch_get_main_queue(), ^&#123;</div><div class="line">            NSLog(@&quot;刷新UI&quot;);</div><div class="line">        &#125;);</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>问题完美解决。</p>
+<h3 id="temp-four"><a href="#temp-four" class="headerlink" title="temp four"></a>temp four</h3><p>后来我又想了一下，查了一下相关资料,写下了一下代码，然后发现这样也是可以的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">- (void)sendRequestB &#123;</div><div class="line">    dispatch_group_t group = dispatch_group_create();</div><div class="line">    </div><div class="line">    dispatch_group_enter(group);</div><div class="line">    dispatch_group_async(group, dispatch_get_global_queue(0, 0), ^&#123;</div><div class="line">        [self requestA:^(NSString *ss) &#123;</div><div class="line">            NSLog(@&quot;%@&quot;,ss);</div><div class="line">            dispatch_group_leave(group);</div><div class="line">        &#125;];</div><div class="line">    &#125;);</div><div class="line">    </div><div class="line">    dispatch_group_enter(group);</div><div class="line">    dispatch_group_async(group, dispatch_get_global_queue(0, 0), ^&#123;</div><div class="line">        [self requestB:^(NSString *ss) &#123;</div><div class="line">            NSLog(@&quot;%@&quot;,ss);</div><div class="line">            dispatch_group_leave(group);</div><div class="line">        &#125;];</div><div class="line">    &#125;);</div><div class="line">    </div><div class="line">    dispatch_group_enter(group);</div><div class="line">    dispatch_group_async(group, dispatch_get_global_queue(0, 0), ^&#123;</div><div class="line">        [self requestC:^(NSString *ss) &#123;</div><div class="line">            NSLog(@&quot;%@&quot;,ss);</div><div class="line">            dispatch_group_leave(group);</div><div class="line">        &#125;];</div><div class="line">    &#125;);</div><div class="line">    </div><div class="line">    dispatch_group_enter(group);</div><div class="line">    dispatch_group_async(group, dispatch_get_global_queue(0, 0), ^&#123;</div><div class="line">        [self requestD:^(NSString *ss) &#123;</div><div class="line">            NSLog(@&quot;%@&quot;,ss);</div><div class="line">            dispatch_group_leave(group);</div><div class="line">        &#125;];</div><div class="line">    &#125;);</div><div class="line">    </div><div class="line">    dispatch_group_notify(group, dispatch_get_main_queue(), ^&#123;</div><div class="line">        NSLog(@&quot;over&quot;);</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>所以我大胆的得出了如果在block情况下使用<code>dispatch_grop</code>是需要在开始人物的时候<code>enter</code> 并且在结束任务的时候<code>leave</code> 这样的话使用<code>dispatch_notify</code>也是能够达到同样的效果的。</p>
+<h3 id="temp-five"><a href="#temp-five" class="headerlink" title="temp five"></a>temp five</h3><p>查阅了猿题库YTKNetwork相关代码之后，看到了<code>YTKBatchRequest</code>这个类,他的<code>init</code>方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">- (id)initWithRequestArray:(NSArray *)requestArray &#123;</div><div class="line">    self = [super init];</div><div class="line">    if (self) &#123;</div><div class="line">        _requestArray = [requestArray copy];</div><div class="line">        _finishedCount = 0;</div><div class="line">        for (YTKRequest * req in _requestArray) &#123;</div><div class="line">            if (![req isKindOfClass:[YTKRequest class]]) &#123;</div><div class="line">                YTKLog(@&quot;Error, request item must be YTKRequest instance.&quot;);</div><div class="line">                return nil;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return self;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>并且这个类有一个property <code>finishedCount</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@property (nonatomic) NSInteger finishedCount;</div></pre></td></tr></table></figure>
+<p>而且这个property出了在<code>initWithRequestArray</code>中进行了原始赋值以外只在<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (void)requestFinished:(YTKRequest *)request;</div></pre></td></tr></table></figure></p>
+<p>这个方法里面使用到了。</p>
+<p>大概猜到了YTKNetwork在处理批量网络请求的时候，应该是先调用<code>initWithRequestArray</code>这个初始化方法，把所有网络请求的实例放进去，然后再调用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">- (void)startWithCompletionBlockWithSuccess:(void (^)(YTKBatchRequest *batchRequest))success</div><div class="line">                                    failure:(void (^)(YTKBatchRequest *batchRequest))failure &#123;</div><div class="line">    [self setCompletionBlockWithSuccess:success failure:failure];</div><div class="line">    [self start];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个方法开始举行网络请求，最后通过<code>finishedCount</code>这个熟悉来进行回调，如果有某一个失败了，那最后就返回失败巴拉巴拉…<br>这段写的有点水，主要是没有十分仔细的去阅读YTKNetwork的源码。大概看了一下，YTKNetwork的处理思路跟我之前的思路有些不谋而合，也是通过添加一个flag值来判断回调是否全部收到。不过经过猿题库团队的封装之后,这种问题的处理方式就变得更加的优雅了。</p>
+<p>由于我demo只是写了几个简单的方法来模拟这种应用场景，所以我也简单的用YTK的思路来进行一下模拟</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">- (void)sendRequestC &#123;</div><div class="line">    _requesrCount_ = 0;</div><div class="line">    // 模拟的数组</div><div class="line">//    NSArray *requestArray = @[@&quot;A&quot;,@&quot;B&quot;,@&quot;C&quot;,@&quot;D&quot;];</div><div class="line">    dispatch_queue_t queue = dispatch_queue_create(0, 0);</div><div class="line">    dispatch_async(queue, ^&#123;</div><div class="line">        [self requestA:^(NSString *ss) &#123;</div><div class="line">            NSLog(@&quot;%@&quot;,ss);</div><div class="line">            [self finishRequest];</div><div class="line">        &#125;];</div><div class="line">    &#125;);</div><div class="line">    </div><div class="line">    dispatch_async(queue, ^&#123;</div><div class="line">        [self requestB:^(NSString *ss) &#123;</div><div class="line">            NSLog(@&quot;%@&quot;,ss);</div><div class="line">            [self finishRequest];</div><div class="line">        &#125;];</div><div class="line">    &#125;);</div><div class="line">    </div><div class="line">    dispatch_async(queue, ^&#123;</div><div class="line">        [self requestC:^(NSString *ss) &#123;</div><div class="line">            NSLog(@&quot;%@&quot;,ss);</div><div class="line">            [self finishRequest];</div><div class="line">        &#125;];</div><div class="line">    &#125;);</div><div class="line">    </div><div class="line">    dispatch_async(queue, ^&#123;</div><div class="line">        [self requestD:^(NSString *ss) &#123;</div><div class="line">            NSLog(@&quot;%@&quot;,ss);</div><div class="line">            [self finishRequest];</div><div class="line">        &#125;];</div><div class="line">    &#125;);</div><div class="line">    </div><div class="line">&#125;</div><div class="line">- (void)finishRequest &#123;</div><div class="line">    _requesrCount_ ++;</div><div class="line">    //由于没有模拟,所以没有使用array.count来判断</div><div class="line">    if (_requesrCount_ == 4) &#123;</div><div class="line">        dispatch_async(dispatch_get_main_queue(), ^&#123;</div><div class="line">            NSLog(@&quot;over&quot;);</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>结果是:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">2016-07-29 14:58:23.068 IB[3403:280129] ddd</div><div class="line">2016-07-29 14:58:23.169 IB[3403:280164] ccc</div><div class="line">2016-07-29 14:58:23.390 IB[3403:280164] aa</div><div class="line">2016-07-29 14:58:29.091 IB[3403:280164] bbb</div><div class="line">2016-07-29 14:58:29.091 IB[3403:280129] over</div></pre></td></tr></table></figure>
+<p>好了第三种思路完成。</p>
+<h3 id="temp-six"><a href="#temp-six" class="headerlink" title="temp six"></a>temp six</h3><p>然后我又看到资料说GCD的信号量也能实现这种需求，看了一下相关资料，然后我是这写了这段代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">- (void)sendRequestD&#123;</div><div class="line">    dispatch_group_t group =  dispatch_group_create();</div><div class="line">    dispatch_group_enter(group);</div><div class="line">    dispatch_group_async(group, dispatch_get_global_queue(0, 0), ^&#123;</div><div class="line">        dispatch_semaphore_t semapore = dispatch_semaphore_create(0);</div><div class="line">        dispatch_async(dispatch_queue_create(0, 0), ^&#123;</div><div class="line">            [self requestA:^(NSString *ss) &#123;</div><div class="line">                NSLog(@&quot;%@&quot;,ss);</div><div class="line">                dispatch_semaphore_signal(semapore);</div><div class="line">            &#125;];</div><div class="line">        &#125;);</div><div class="line">        dispatch_semaphore_wait(semapore, DISPATCH_TIME_FOREVER);</div><div class="line">    &#125;);</div><div class="line">    </div><div class="line">    </div><div class="line">    dispatch_group_async(group, dispatch_get_global_queue(0, 0), ^&#123;</div><div class="line">        dispatch_semaphore_t semapore = dispatch_semaphore_create(0);</div><div class="line">        dispatch_async(dispatch_queue_create(0, 0), ^&#123;</div><div class="line">            [self requestB:^(NSString *ss) &#123;</div><div class="line">                NSLog(@&quot;%@&quot;,ss);</div><div class="line">                dispatch_semaphore_signal(semapore);</div><div class="line">            &#125;];</div><div class="line">        &#125;);</div><div class="line">        dispatch_semaphore_wait(semapore, DISPATCH_TIME_FOREVER);</div><div class="line">    &#125;);</div><div class="line">    </div><div class="line">    dispatch_group_async(group, dispatch_get_global_queue(0, 0), ^&#123;</div><div class="line">        dispatch_semaphore_t semapore = dispatch_semaphore_create(0);</div><div class="line">        dispatch_async(dispatch_queue_create(0, 0), ^&#123;</div><div class="line">            [self requestC:^(NSString *ss) &#123;</div><div class="line">                NSLog(@&quot;%@&quot;,ss);</div><div class="line">                dispatch_semaphore_signal(semapore);</div><div class="line">            &#125;];</div><div class="line">        &#125;);</div><div class="line">        dispatch_semaphore_wait(semapore, DISPATCH_TIME_FOREVER);</div><div class="line">    &#125;);</div><div class="line">    </div><div class="line">    </div><div class="line">    dispatch_group_async(group, dispatch_get_global_queue(0, 0), ^&#123;</div><div class="line">        dispatch_semaphore_t semapore = dispatch_semaphore_create(0);</div><div class="line">        dispatch_async(dispatch_queue_create(0, 0), ^&#123;</div><div class="line">            [self requestD:^(NSString *ss) &#123;</div><div class="line">                NSLog(@&quot;%@&quot;,ss);</div><div class="line">                dispatch_semaphore_signal(semapore);</div><div class="line">            &#125;];</div><div class="line">        &#125;);</div><div class="line">        dispatch_semaphore_wait(semapore, DISPATCH_TIME_FOREVER);</div><div class="line">    &#125;);</div><div class="line">    </div><div class="line">    dispatch_group_notify(group, dispatch_get_main_queue(), ^&#123;</div><div class="line">        NSLog(@&quot;over&quot;);</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>很不幸:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">2016-07-29 15:44:21.322 IB[3553:314160] ddd</div><div class="line">2016-07-29 15:44:21.424 IB[3553:314355] ccc</div><div class="line">2016-07-29 15:44:21.639 IB[3553:314355] aa</div><div class="line">2016-07-29 15:44:21.842 IB[3553:314355] bbb</div></pre></td></tr></table></figure>
+<p>over是没有打印出来的，具体原因，我等我再仔细查找查找吧！</p>
+<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>没有结语,不知道具体实践中有没有其他更好的办法。如果有，也可以给我留言，我们一起讨论。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Model里面有ABCD四个属性，这4个属性每个都不能直接用，都需要去调一个Block返回回来才能用，然后界面上的textview的值需要这4个属性来拼接，每个属性都有可能为空，最后拼出来的东西还不能打乱顺序。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://yoursite.com/categories/iOS/"/>
+    
+    
+      <category term="iOS" scheme="http://yoursite.com/tags/iOS/"/>
+    
+      <category term="多线程" scheme="http://yoursite.com/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iOS中的预编译指令</title>
+    <link href="http://yoursite.com/2016/07/26/iOS%E4%B8%AD%E7%9A%84%E9%A2%84%E7%BC%96%E8%AF%91%E6%8C%87%E4%BB%A4%E7%9A%84%E5%88%9D%E6%AD%A5%E6%8E%A2%E7%A9%B6-%E8%BD%AC/"/>
+    <id>http://yoursite.com/2016/07/26/iOS中的预编译指令的初步探究-转/</id>
+    <published>2016-07-26T09:16:38.000Z</published>
+    <updated>2016-08-29T02:27:28.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>iOS中的一些预编译指令。<br><a id="more"></a></p>
+<h2 id="开篇"><a href="#开篇" class="headerlink" title="开篇"></a>开篇</h2><p>举一个简单的的例子，老婆说了句“你给我滚出去睡沙发”。这句话的处理流程事这样的</p>
+<p><img src="http://i4.piimg.com/567571/5d9de7ecac719da4.png" width=600 height=400 /></p>
+<p>程序的编译其实就是计算机在执行过程之前，把老婆的命令转换成电信号的过程。在计算机世界中，这个玩意儿叫过编译器（compiler），什么GCC啊clang啊什么什么的都是说的这个东西。看起来很高大上，其实就是一个翻译的东西。人把老婆的指令翻译成电波，编译器把各种语言翻译成01010101….</p>
+<pre><code>ps : 这篇文章是我在阅读了戴伟来的文章之后,根据原文整理的一个笔记。所以文中会有很多地方都摘录了文中的句子。感谢@戴伟来。如果你想直接看一下原文的话，最后有链接。
+</code></pre><blockquote>
+<p>编译器的工作原理基本上都是三段式的，前端、优化器、后端。</p>
+<blockquote>
+<p>前端负责解析源码，检查语法错误，并将其翻译成抽象的语法树; </p>
+<p>优化器对这一中间代码进行优化，使代码更佳高效。</p>
+<p>后端负责将优化过的代码转化成对应机器的代码。</p>
+</blockquote>
+</blockquote>
+<p><img src="http://i4.piimg.com/567571/68513aafd1af8015.png" width=650 height=180 /></p>
+<p>LLVC编译器实际上是用C++写的，那C++的编译器呢？当然是汇编了，所以编译器和计算机语言的进步就是这样迭代发展的，再之后就是用高级语言写更高级的编译器，更高级的编译器就能编译更加高级的语言….那么问题来了，世界上计算机语言那么多，各种不同的架构，Intel ARM，怎么让编译语言分别产生不同的架构的执行码呢，这个时候就应该想到刚刚的三段式模型了，当我们要支持多种语言的时候，只需要添加多个前端就可以了。当我们要支持多种目标机器的时候，只需要添加多个后端就可以了。对于中间的优化器，我们可以使用通用的中间代码。gcc可以支持c、cpp、java….等语言的编译。</p>
+<p><img src="http://i2.piimg.com/567571/fbcad0c8c26e0977.png" width=650 height=180 /></p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>由于文中作者使用的是Xcode6，但是现在我已经用到了Xcode7.3，而Xcode8页已经beta了。所以我讲使用我目前正在使用的Xcode7.3来进行本文。由于APPLE已经不在Xcode中内置GCC了，所以我就只能研究研究LLVM了。</p>
+<p>如果对各种编译器的区别感兴趣的话可以看看下面两篇文章</p>
+<ul>
+<li><a href="http://www.cnblogs.com/zuopeng/p/4141467.html"><em>《LLVM和GCC的区别》</em></a></li>
+<li><a href="http://www.programmer.com.cn/9436/"><em>《《三好学生Chris Lattner的LLVM编译工具链》》</em></a></li>
+</ul>
+<p>如果阅读过优秀的源码，你一定会看到很多的<code>#define</code> <code>#if</code> <code>#error</code>之类的代码,预编译对程序之后的编译提供了很多方便以及优化，对于错误处理，包引用、跨平台等都有着极大的帮助。</p>
+<h3 id="包含文件"><a href="#包含文件" class="headerlink" title="包含文件"></a>包含文件</h3><h4 id="include"><a href="#include" class="headerlink" title="#include"></a>#include</h4><p><code>#include&quot; &quot;</code> 、<code>#include&lt; &gt;</code>的区别:<code>#include“”</code>包含和使用<code>#include &lt; &gt;</code>包含的不同之处就是使用&lt;&gt;包含时，预处理器会搜索C函数库头文件路径下的文件，而使用“”包含时首先搜索程序所在目录，其次搜索系统Path定义目录，如果还是找不到才会搜索C函数库头文件所在目录。</p>
+<blockquote>
+<p>使用#include的时候包含文件的时候是不能递归包含的，例如a.h文件包含b.h，而b.h就不<br>能再包含a.h了；还有就是重复包含(比如a.h包含了b.h,然后main.c中又包含了a.h和b.h)虽然是允许的但是这会降低编译性能。那该怎么办呢？</p>
+<blockquote>
+<ol>
+<li>使用#import替代include</li>
+<li>使用宏判断(宏判断下面会详解)，xcode很聪明，只要新建一个头文件a.h 里面就自动就生成了</li>
+</ol>
+</blockquote>
+</blockquote>
+<h4 id="include-next"><a href="#include-next" class="headerlink" title="#include_next"></a>#include_next</h4><p>这个是非C标准库里面的预处理指令,我没有用过。</p>
+<h4 id="import"><a href="#import" class="headerlink" title="#import"></a>#import</h4><p>OC特有的，智能的<code>＃include</code>,解决了<code>＃include</code>的重复包含问题。</p>
+<h3 id="宏定义"><a href="#宏定义" class="headerlink" title="宏定义"></a>宏定义</h3><h4 id="define"><a href="#define" class="headerlink" title="#define"></a>#define</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//this defines PI</div><div class="line">#define M_PI 3.141592</div></pre></td></tr></table></figure>
+<p><code>#define</code> 关键字表面即将开始定义一个宏，M_PI是宏的名字，空格过后是宏的内容。类似这样的宏编译器会在语义分析之后讲M_PI替换为3.14159，这是宏的最基本用法。</p>
+<p>还有一种是函数宏函数宏顾名思义，就是行为类似函数，可以接受参数的宏。具体来说，在定义的时候，如果我们在宏名字后面跟上一对括号的话，这个宏就变成了函数宏。从最简单的例子开始，比如我在开发中最常用的两个宏</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#define WS(weakSelf) __weak __typeof(&amp;*self)weakSelf = self;</div><div class="line">#define SS(strongSelf) __strong typeof(&amp;*weakSelf) strongSelf = weakSelf;</div></pre></td></tr></table></figure>
+<p>这两个宏的意思应该不用我说了吧，如果你没看懂而且你又喜欢用block的话，那建议你用instrument 的leaks看看是不是一串红点。</p>
+<p>原文中还有一个MIN宏定义的正确用法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#define MIN(A,B)    (&#123; __typeof__(A) __a = (A); __typeof__(B) __b = (B); __a &lt; __b ? __a : __b; &#125;)</div></pre></td></tr></table></figure>
+<p>接下来再把我使用的log宏放出来</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#ifdef DEBUG</div><div class="line">#   define PSLog(fmt, ...) NSLog((@&quot;%s [%d 行] &quot; fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);</div><div class="line">#else</div><div class="line">#   define PSLog(...)</div><div class="line">#endif</div></pre></td></tr></table></figure>
+<p>这个宏的意思请分别在release 和 debug下测试</p>
+<h4 id="＃undef"><a href="#＃undef" class="headerlink" title="＃undef"></a>＃undef</h4><p>当你使用了<code>#define</code>宏定义后，则在整个程序的运行周期内这个宏都是有效的，但有时候我们在某个逻辑里希望这个宏失效不想使用，则会使用</p>
+<h3 id="条件编译"><a href="#条件编译" class="headerlink" title="条件编译"></a>条件编译</h3><h4 id="if-else-endif"><a href="#if-else-endif" class="headerlink" title="#if #else #endif"></a>#if #else #endif</h4><p>如果<code>＃if 之后的条件语句成立的话</code>编译<code>＃else</code>里面的代码 反之编译 <code>＃else</code> 之后的代码 <code>#endif</code> 结束语句<br>接下来是一些预定的宏</p>
+<ul>
+<li><code>DEBUG</code> DEBUG环境下返回YES</li>
+<li><code>__has_feature(objc_arc)</code> 开启ARC时返回YES</li>
+<li><code>__IPHONE_OS_VERSION_MIN_REQUIRED &lt; __IPHONE_7_0</code> 如果手机系统小于7.0 返回YES,版本策略</li>
+</ul>
+<h4 id="if-defined-ifdef-ifndef-elif"><a href="#if-defined-ifdef-ifndef-elif" class="headerlink" title="#if defined #ifdef #ifndef #elif"></a>#if defined #ifdef #ifndef #elif</h4><ul>
+<li><code>#if defined (AAA)</code> : 如果已经定义了AAA这个宏,返回YES，可用于复杂条件<code>#if defined (AAA) &amp;&amp; defined (BBB)</code>或者<code>#if defined (AAA) || VERSION &gt; 12</code></li>
+<li><code>#iddef （AAA）</code>: 如果已经定义了AAA这个宏,返回YES，单个条件</li>
+<li><code>#ifndef</code> : if not defined 的缩写</li>
+<li><code>#elif</code> : 跟<code>#if</code>一起使用，else if的缩写</li>
+</ul>
+<h3 id="错误、警告处理"><a href="#错误、警告处理" class="headerlink" title="错误、警告处理"></a>错误、警告处理</h3><p>####　#error</p>
+<p>如果编译器遇到这货，马上就会罢工。</p>
+<p>如果你在开发一些arc only的库，那么一下代码就有了作用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#if !__has_feature(objc_arc)</div><div class="line">#error &quot;我的低调不是你装逼的资本！这个库需要开启ARC，不然你别用！&quot;</div><div class="line">#endif</div></pre></td></tr></table></figure>
+<h4 id="warning"><a href="#warning" class="headerlink" title="#warning"></a>#warning</h4><p>这个用法很简单，只要后面跟上你想警告的话就OK了，这样你就可以让编译器提醒这个警告。这个我经常用。但是还有一个更好用的<code>TODO</code>脚本,一会而我会放出来。</p>
+<h3 id="编译器控制"><a href="#编译器控制" class="headerlink" title="编译器控制"></a>编译器控制</h3><h4 id="pragma"><a href="#pragma" class="headerlink" title="#pragma"></a>#pragma</h4><p>这个应该算是使用的非常多的指令了吧，应该所有的程序员都应该知道代码<code>＃pragma mark</code>的作用。</p>
+<h5 id="pragma-mark"><a href="#pragma-mark" class="headerlink" title="#pragma mark"></a>#pragma mark</h5><p>这个真没有什么好说的了，记得<code>＃pragma mark</code> 和<code>＃pragma mark －</code>的区别就好了</p>
+<blockquote>
+<p><code>#pragma</code>非常复杂需要你对编译器底层非常的了解，只有当你开发一些比较底层的framework的时候才可能比较多用的。 <a href="http://clang.llvm.org/get_started.html"><em>Clang使用手册</em></a></p>
+</blockquote>
+<h5 id="pragma-message-“”"><a href="#pragma-message-“”" class="headerlink" title="#pragma message(“”)"></a>#pragma message(“”)</h5><p>可以输出调试信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#pragma clang disgnostic push</div><div class="line">#pragma clang disgnostic ignored &quot;clang的参数&quot;  //屏蔽某类警告</div><div class="line">#pragma clang disgnostic pop</div></pre></td></tr></table></figure>
+<p>如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#pragma clang disgnostic push</div><div class="line">#pragma clang disgnostic ignored &quot;-Wunused-variable&quot;</div><div class="line"> </div><div class="line">int i = 1;</div><div class="line">#pragma clang disgnostic pop</div></pre></td></tr></table></figure>
+<p>如果没有被使用的时候不会报出警告</p>
+<p>关于警告一类的文章可以看看<a href="https://onevcat.com/#blog"><em>喵神王巍</em></a>的博客。</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>#####line<br>这个就没什么好说的，如果你自定义过NSLog 或者看到其他自定义的log并且点进去看过的话应该会看得到<code>__line__</code>这个东西吧，这表示本行语句在源文件中的位置信息。而<code>＃line</code>就是可以改变当前行的行号在编译器中的表示。并且之后的行号也会相应的改变。比如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#include&lt;stdio.h&gt;</div><div class="line">main()&#123;</div><div class="line">	printf(&quot;%d\n&quot;,__line__);</div><div class="line">#line 100 // 指定下一行的__line__为100</div><div class="line">	printf(&quot;%d\n&quot;,__line__);</div><div class="line">	printf(&quot;%d\n&quot;,__line__);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>输出为,如果第一个printf在第三行的话</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">3</div><div class="line">100</div><div class="line">101</div></pre></td></tr></table></figure>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>刚刚开始写博客，这是我水的第二篇博文了,依然是那么的水，主要还是为了想要测试一下HEXO的玩法。以后希望自己能够在javascript 、python 、 React Native 这三个方向进步。写这个博客也是为了学习一下javescript，结果几乎没有用到js的知识。以后写一些有关于这三个方向的学习心得或者说是学习笔记吧。这篇文章发出来之后，博客的基本用法也就学的七七八八了，期待自己的进阶之旅，也期待自己在iOS的进阶之旅，也期待自己在is py rn这三个方向的入门之旅。</p>
+<p><a href="http://www.cnblogs.com/daiweilai/p/4234336.html"><em>戴伟来地址</em></a></p>
+<p>哦, 对了那个TODO是这样设置的：</p>
+<p><img src="http://i4.piimg.com/567571/397d615e3cafdbcf.png" width=650 height=400 /></p>
+<p>第四步中的脚本为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">KEYWORDS=&quot;TODO:|FIXME:|\?\?\?:|\!\!\!:&quot;</div><div class="line">find &quot;$&#123;SRCROOT&#125;&quot; \( -name &quot;*.h&quot; -or -name &quot;*.m&quot; \) -print0 | xargs -0 egrep --with-filename --line-number --only-matching &quot;($KEYWORDS).*\$&quot; | perl -p -e &quot;s/($KEYWORDS)/ warning: \$1/&quot;</div></pre></td></tr></table></figure>
+<p>原理是根据正则表达式去判断。</p>
+<p>用起来是这样的:</p>
+<p><img src="http://i4.piimg.com/567571/e3ab0fb1840550e3.png" width=650 height=50 /></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;iOS中的一些预编译指令。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://yoursite.com/categories/iOS/"/>
+    
+    
+      <category term="iOS" scheme="http://yoursite.com/tags/iOS/"/>
+    
+      <category term="编译原理" scheme="http://yoursite.com/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>我是这样搭建我的博客的</title>
+    <link href="http://yoursite.com/2016/07/15/hello-world/"/>
+    <id>http://yoursite.com/2016/07/15/hello-world/</id>
+    <published>2016-07-14T16:00:00.000Z</published>
+    <updated>2016-08-29T02:26:59.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>通过GitHub pages &amp; Hexo 搭建我的个人博客。<br><a id="more"></a></p>
+<h3 id="说在前面的话"><a href="#说在前面的话" class="headerlink" title="说在前面的话"></a>说在前面的话</h3><p>转眼，已经做了那么久的开发了。相信跟我一样，很多的iOSer都是在<a href="http://blog.devtang.com/"><em>唐巧的技术博客</em></a>、<a href="https://onevcat.com/#blog"><em>oneV’s Den</em></a>、<a href="http://blog.ibireme.com/archive/"><em>ibireme</em></a>等等大神的技术博客里面汲取营养，每次看到那么漂亮的技术博客，总会想自己也弄一个来玩玩，在看了群里@bestswifter的介绍之后，结合另一个群里的<a href="http://www.jianshu.com/p/834d7cc0668d"><em>锤神 水瓶座_iOSer</em></a>的文章，我也完成了我的技术博客的搭建。</p>
+<p>最开始也想快速搭建的，结果弄了一半公司的项目突然要拆分，所以搁置了一段时间，终于闲下来了，公司老大强烈建议我从现在开始写技术博客。想想也是，坚持总结和梳理，5年10年以后，终会是会又一些收获的，所以我也大胆的搭建了这个博客。并且按照国际案例，第一篇博文总是要说说这个博客是怎么出生的。</p>
+<h3 id="简单的说一下这个博客的搭建过程"><a href="#简单的说一下这个博客的搭建过程" class="headerlink" title="简单的说一下这个博客的搭建过程"></a>简单的说一下这个博客的搭建过程</h3><blockquote>
+<p>首先，这个博客是在Mac环境下进行搭建的。</p>
+</blockquote>
+<ol>
+<li>注册Github帐号。</li>
+<li>在Github上创建以第一步创建的Github用户名(name)为头的仓库name.github.io</li>
+<li>在你的Mac上配置你的Hexo环境，这个嘛，看是看Hexo的官方文档比较好。<a href="https://hexo.io/zh-cn/docs/"><em>这里是传送门</em></a>;<br> ‘这一步比较复杂，坑也大多数在这里所以一定要好好的看Hexo的官方文档’</li>
+<li>第三步使用命令<br> hexo clean<br> hexo g<br> hexo d   这一步如果出现not found 错误 使用npm install hexo-deployer-git –save命令解决然后再用hexo d 尝试部署</li>
+<li>选择一个你喜欢的主题，这个就可以用<a href="https://www.google.com/"><em>google</em></a>、或者<a href="https://baidu.com"><em>baidu</em></a>去找了。<blockquote>
+<p>我因为个人比较懒，所以用了锤神博客推荐的主题Next了，可能你们比我还懒，所以<a href="https://github.com/iissnan/hexo-theme-next"><em>传送门</em></a>去看文档吧。</p>
+</blockquote>
+</li>
+<li>根据第5步的传送门，再去定制你自己的blog吧。由于我自己前端知识薄弱，所以现在暂时还不能深入的了解详细的细节。不过还好，公司前端就在我旁边，一些问题还能够直接请教。</li>
+<li>(可选)最后一步就没什么好说的了，我不是土豪，所以没有买域名，也没有办法尝试下一步的域名绑定了。如果有朋友完成过，那么请你教我好吗？</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;通过GitHub pages &amp;amp; Hexo 搭建我的个人博客。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Hexo" scheme="http://yoursite.com/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
+    
+  </entry>
+  
+</feed>
