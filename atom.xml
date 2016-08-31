@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://programersunny.github.io/"/>
-  <updated>2016-08-31T08:29:56.000Z</updated>
+  <updated>2016-08-31T08:30:40.000Z</updated>
   <id>https://programersunny.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://programersunny.github.io/2016/08/31/%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8Hexo%E5%8F%91%E5%8D%9A%E5%AE%A2/"/>
     <id>https://programersunny.github.io/2016/08/31/怎么使用Hexo发博客/</id>
     <published>2016-08-30T16:00:00.000Z</published>
-    <updated>2016-08-31T08:29:56.000Z</updated>
+    <updated>2016-08-31T08:30:40.000Z</updated>
     
     <content type="html"><![CDATA[<p>怎么样使用Hexo发博客,以及博客的使用技巧。</p>
 <a id="more"></a>
@@ -371,11 +371,11 @@
       <category term="前端" scheme="https://programersunny.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="CSS" scheme="https://programersunny.github.io/tags/CSS/"/>
-    
       <category term="前端" scheme="https://programersunny.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="学习笔记" scheme="https://programersunny.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="CSS" scheme="https://programersunny.github.io/tags/CSS/"/>
     
   </entry>
   
@@ -628,11 +628,11 @@
       <category term="前端" scheme="https://programersunny.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
+      <category term="html" scheme="https://programersunny.github.io/tags/html/"/>
+    
       <category term="前端" scheme="https://programersunny.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="学习笔记" scheme="https://programersunny.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="html" scheme="https://programersunny.github.io/tags/html/"/>
     
   </entry>
   
