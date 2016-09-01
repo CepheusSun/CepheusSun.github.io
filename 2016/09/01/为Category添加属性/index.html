@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="iOS,Objective-C,运行时," />
 
 
 
@@ -86,15 +86,28 @@
 
 
 
-<meta name="description" content="一名iOS开发者,对动态化和组件化两个词语比较感兴趣，正在学习中。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ProgramerSunny的博客">
-<meta property="og:url" content="https://programersunny.github.io/index.html">
+<meta name="description" content="使用Runtime给Category添加属性。
+Category 与 property我为类ViewController添加了一个Category,然后我想给他添加一个属性，vcName
+于是我在ViewController+Category中声明了一个属性
+1@property (nonatomic ,copy) NSString *vcName;
+我们知道在类目的接口中是可以声明属性的。但是在">
+<meta property="og:type" content="article">
+<meta property="og:title" content="为Category添加属性">
+<meta property="og:url" content="https://programersunny.github.io/2016/09/01/为Category添加属性/index.html">
 <meta property="og:site_name" content="ProgramerSunny的博客">
-<meta property="og:description" content="一名iOS开发者,对动态化和组件化两个词语比较感兴趣，正在学习中。">
+<meta property="og:description" content="使用Runtime给Category添加属性。
+Category 与 property我为类ViewController添加了一个Category,然后我想给他添加一个属性，vcName
+于是我在ViewController+Category中声明了一个属性
+1@property (nonatomic ,copy) NSString *vcName;
+我们知道在类目的接口中是可以声明属性的。但是在">
+<meta property="og:updated_time" content="2016-09-01T06:51:40.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ProgramerSunny的博客">
-<meta name="twitter:description" content="一名iOS开发者,对动态化和组件化两个词语比较感兴趣，正在学习中。">
+<meta name="twitter:title" content="为Category添加属性">
+<meta name="twitter:description" content="使用Runtime给Category添加属性。
+Category 与 property我为类ViewController添加了一个Category,然后我想给他添加一个属性，vcName
+于是我在ViewController+Category中声明了一个属性
+1@property (nonatomic ,copy) NSString *vcName;
+我们知道在类目的接口中是可以声明属性的。但是在">
 
 
 
@@ -115,9 +128,9 @@
 
 
 
-  <link rel="canonical" href="https://programersunny.github.io/"/>
+  <link rel="canonical" href="https://programersunny.github.io/2016/09/01/为Category添加属性/"/>
 
-  <title> ProgramerSunny的博客 </title>
+  <title> 为Category添加属性 | ProgramerSunny的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -138,9 +151,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -227,9 +238,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -249,10 +260,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/09/01/为Category添加属性/" itemprop="url">
-                  为Category添加属性
-                </a>
+                为Category添加属性
               
             
           </h1>
@@ -327,9 +335,7 @@
       
 
       
-        
-          
-            <p>使用Runtime给Category添加属性。</p>
+        <p>使用Runtime给Category添加属性。</p>
 <h2 id="Category-与-property"><a href="#Category-与-property" class="headerlink" title="Category 与 property"></a>Category 与 property</h2><p>我为类<code>ViewController</code>添加了一个<code>Category</code>,然后我想给他添加一个属性，<code>vcName</code></p>
 <p>于是我在<code>ViewController+Category</code>中声明了一个属性</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@property (nonatomic ,copy) NSString *vcName;</div></pre></td></tr></table></figure>
@@ -393,571 +399,81 @@
 <p>很好说了,<code>objc_removeAssociatedObjects(self);</code>的作用是断开所有关联。 </p>
 <p>而且也更简单的验证了,使用runtime给对象关联的属性跟本身的属性本质是是不一样的。</p>
 
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/31/怎么使用Hexo发博客/" itemprop="url">
-                  怎么使用Hexo发博客
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-31T00:00:00+08:00" content="2016-08-31">
-              2016-08-31
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Hexo/" itemprop="url" rel="index">
-                    <span itemprop="name">Hexo</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
+            <a href="/tags/iOS/" rel="tag">#iOS</a>
           
-
+            <a href="/tags/Objective-C/" rel="tag">#Objective-C</a>
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/31/怎么使用Hexo发博客/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/31/怎么使用Hexo发博客/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/08/31/怎么使用Hexo发博客/" class="leancloud_visitors" data-flag-title="怎么使用Hexo发博客">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
+            <a href="/tags/运行时/" rel="tag">#运行时</a>
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <p>怎么样使用Hexo发博客,以及博客的使用技巧。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/31/怎么使用Hexo发博客/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/31/怎么使用Hexo发博客/" rel="next" title="怎么使用Hexo发博客">
+                <i class="fa fa-chevron-left"></i> 怎么使用Hexo发博客
+              </a>
+            
           </div>
-        
-      
-    </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+          <div class="post-nav-prev post-nav-item">
             
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/30/复杂业务下的架构设计和研发效率提升(笔记)/" itemprop="url">
-                  复杂业务下的架构设计和研发效率提升(笔记)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-30T14:37:45+08:00" content="2016-08-30">
-              2016-08-30
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/文章笔记收集/" itemprop="url" rel="index">
-                    <span itemprop="name">文章笔记收集</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/30/复杂业务下的架构设计和研发效率提升(笔记)/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/30/复杂业务下的架构设计和研发效率提升(笔记)/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/08/30/复杂业务下的架构设计和研发效率提升(笔记)/" class="leancloud_visitors" data-flag-title="复杂业务下的架构设计和研发效率提升(笔记)">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <p>抽空重新看了一下今年的<a href="http://gmtc.geekbang.org/"><em>GMTC</em></a>,读到链家郭晓铭的PPT:<a href="http://ppt.geekbang.org/slide/show/210"><em>链家网移动端敏捷之术</em></a>的时候忍不住写了这个笔记,大多数内容都是ppt上的原文。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/30/复杂业务下的架构设计和研发效率提升(笔记)/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-      
 
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/29/css学习笔记--1/" itemprop="url">
-                  CSS学习笔记 -- 1
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-29T09:56:45+08:00" content="2016-08-29">
-              2016-08-29
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/29/css学习笔记--1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/29/css学习笔记--1/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/08/29/css学习笔记--1/" class="leancloud_visitors" data-flag-title="CSS学习笔记 -- 1">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>抽空学习了一下html、css、JavaScript。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/29/css学习笔记--1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
+    <div class="post-spread">
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/28/javascript和native的交互_第二弹/" itemprop="url">
-                  JavaScript和Native的交互 第二弹
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-28T14:58:45+08:00" content="2016-08-28">
-              2016-08-28
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/28/javascript和native的交互_第二弹/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/28/javascript和native的交互_第二弹/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/08/28/javascript和native的交互_第二弹/" class="leancloud_visitors" data-flag-title="JavaScript和Native的交互 第二弹">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>上次简单的写了一下js和Native交互的问题，这篇文章再稍微深入的研究一下JSBinding。作为上文的补充。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/28/javascript和native的交互_第二弹/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
+  </div>
 
 
           </div>
           
 
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/09/01/为Category添加属性/"
+           data-title="为Category添加属性" data-url="https://programersunny.github.io/2016/09/01/为Category添加属性/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -977,8 +493,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://i1.piimg.com/567571/8792d80f863fe9cc.png"
@@ -1061,6 +586,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Category-与-property"><span class="nav-number">1.</span> <span class="nav-text">Category 与 property</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#给Category-添加-Property"><span class="nav-number">2.</span> <span class="nav-text">给Category 添加 Property</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加和检索关联"><span class="nav-number">2.1.</span> <span class="nav-text">添加和检索关联</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#存储关键字"><span class="nav-number">2.2.</span> <span class="nav-text">存储关键字</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#断开关联"><span class="nav-number">3.</span> <span class="nav-text">断开关联</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">4.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#试一下断开关联"><span class="nav-number">5.</span> <span class="nav-text">试一下断开关联</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -1173,6 +709,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
