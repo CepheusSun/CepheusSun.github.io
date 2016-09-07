@@ -8,6 +8,7 @@
       <url>https://programersunny.github.io/2016/09/07/EmptyDataKit/</url>
       <content type="html"><![CDATA[<p>抽空写了一个小东西<a href="https://github.com/ProgramerSunny/EmptyDataKit"><strong>EmptyDataKit</strong></a>，一行代码可以集成UITableView 和 UICollectionView 在数据源没有数据的时候展示一个默认占位图片。</p>
 <a id="more"></a>
+<h2 id="gif"><a href="#gif" class="headerlink" title="gif"></a>gif</h2><p><img src="http://ocg4av0wv.bkt.clouddn.com/ProgramerSunnyDemo.gif" width= "400" /></p>
 <h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p><strong>1、</strong>首先将<code>EmptyDataKit</code>导入工程</p>
 <p><img src="http://ocg4av0wv.bkt.clouddn.com/D8321BD1-550B-4A72-825A-6BD8EB3D332B.png" width="300"></p>
 <p><strong>2、</strong>导入头文件<code>#import &quot;EmptyDataKit.h&quot;</code></p>
