@@ -4,6 +4,34 @@
   
     
     <entry>
+      <title><![CDATA[JPUSH 两个问题]]></title>
+      <url>https://programersunny.github.io/2016/09/13/JPUSH%20%E4%B8%A4%E4%B8%AA%E9%97%AE%E9%A2%98/</url>
+      <content type="html"><![CDATA[<p>最近在调试公司项目的推送的时候遇到了点小问题,死活收不到推送消息。</p>
+<a id="more"></a>
+<p>由于接受公司项目的时候极光推送是已经集成上去了的,虽然说本地调试的时候会经常看见失败这种情况,一直也知道极光推送可能会出现一些收不到消息的问题,所以并没有在意。</p>
+<p>后来公司需要通过tag给不同组别的用户推送消息,所以也要开始看一下以前的代码。果然还是被我发现了问题。</p>
+<h4 id="Q1"><a href="#Q1" class="headerlink" title="Q1"></a>Q1</h4><blockquote>
+<p>在登陆的时候设置了别名，但是在Appdelegate中并没有设置。</p>
+</blockquote>
+<p>这中情况会造成app在保存密码之后进入app不会在走道登录界面，所以并不会设置别名什么的。这个时候的推送应该是收不到的。</p>
+<p>这个我没有测试过,看了之前的代码之后直接的添加了相关代码,运行后并没有什么问题。</p>
+<h4 id="Q2"><a href="#Q2" class="headerlink" title="Q2"></a>Q2</h4><blockquote>
+<p>报错APNs is not available, please check your provisioning profile and certification</p>
+</blockquote>
+<p>这个可能就全是我自身造成的了,为了尝鲜Swift3.0 下了Xcode8.0beta 来玩玩,然后本来是Xcode7.0打开的项目文件,默认8.0了,然后不小心运行到了公司的项目。很悲剧的是，Xcode8.0 是默认关闭Push Notifications的,Xcode中手动打开就ok了。然后其它添加证书什么的, 真的没什么好说的, 极光在文档中也已经描述的非常清楚了。</p>
+<p><strong>设置步骤:</strong> taget -&gt; Capabilities -&gt; PushNotification -&gt; ON</p>
+<p><img src="http://ocg4av0wv.bkt.clouddn.com/BD4D54BC-82B6-40F6-83E8-ECE15A8FA8D2.png" /></p>
+<h4 id="Q3"><a href="#Q3" class="headerlink" title="Q3"></a>Q3</h4><blockquote>
+<p>设置别名悲剧 : app not registed, give up set tag: alias:</p>
+</blockquote>
+<p>这是由于记住密码的情况下,设置别名什么的和注册极光等都是在很短的时间内,这个时候掉用的话，可能极光推送还不可用,所以就悲剧了.</p>
+<p><strong>解决方案:</strong>延迟调用设置别名的方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^&#123;</div><div class="line">    [JPUSHService setTags:[NSSet setWithObject:_MUserInfo.partnerId]</div><div class="line">                    alias:_MUserInfo.userId</div><div class="line">    fetchCompletionHandle:^(int iResCode, NSSet *iTags, NSString *iAlias) &#123;</div><div class="line">        PSLog(@&quot;-----%@&quot;, iAlias);</div><div class="line">    &#125;];</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h4 id="ending"><a href="#ending" class="headerlink" title="ending"></a>ending</h4><p>在集成的时候还是要注意一下方法的调用顺序, 别在注册JPush之前去设置什么东西吧! 猜想:这肯定是有问题的。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[教你一行代码集成列表视图无数据展示]]></title>
       <url>https://programersunny.github.io/2016/09/07/EmptyDataKit/</url>
       <content type="html"><![CDATA[<p>抽空写了一个小东西<a href="https://github.com/ProgramerSunny/EmptyDataKit"><strong>EmptyDataKit</strong></a>，一行代码可以集成UITableView 和 UICollectionView 在数据源没有数据的时候展示一个默认占位图片。</p>
