@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title><![CDATA[最近看到的一些好的文章]]></title>
+      <url>https://programersunny.github.io/2016/10/14/readinglist/</url>
+      <content type="html"><![CDATA[<p>好久没有更新博客了，分享几篇最近读到的比较好的文章吧！读的不是特别的仔细，也算是留一个记录，以后再详读一遍</p>
+<a id="more"></a>
+<p><a href="http://fex.baidu.com/blog/2014/07/feature-flag/"><em>Feature Flag 功能发布控制</em></a></p>
+<p>[<em><a href="http://wangchao.de/%e8%81%8a%e8%81%8a%e5%88%9b%e4%b8%9a%e5%9b%a2%e9%98%9f%e7%9a%84%e9%a1%b9%e7%9b%ae%e7%ae%a1%e7%90%86%e5%a6%82%e4%bd%95%e9%9d%a2%e5%90%91%e5%bc%80%e5%8f%91%e4%ba%ba%e5%91%98%e4%bc%98%e5%8c%96/">聊聊创业团队的项目管理如何面向开发人员优化</a></em></p>
+<p><a href="https://zhuanlan.zhihu.com/p/22283843"><em>基于 KIF 的 iOS UI 自动化测试和持续集成</em></a></p>
+<p><a href="http://www.jianshu.com/p/9ae446d76271"><em>iOS项目的持续集成与管理[译]</em></a></p>
+<p>准备把手上项目网络层完全优化之后再来仔细研读一下这几篇文章。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[分享一点xib体会]]></title>
       <url>https://programersunny.github.io/2016/09/30/%E5%88%86%E4%BA%AB%E4%B8%80%E7%82%B9xib%E4%BD%93%E4%BC%9A/</url>
       <content type="html"><![CDATA[<p>一篇杂七杂八的东西，一些我在使用xib的时候的心得。<br><a id="more"></a></p>
