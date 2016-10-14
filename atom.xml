@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://programersunny.github.io/"/>
-  <updated>2016-10-14T13:30:02.000Z</updated>
+  <updated>2016-10-14T13:33:51.000Z</updated>
   <id>https://programersunny.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://programersunny.github.io/2016/10/14/readinglist/"/>
     <id>https://programersunny.github.io/2016/10/14/readinglist/</id>
     <published>2016-10-13T16:00:00.000Z</published>
-    <updated>2016-10-14T13:30:02.000Z</updated>
+    <updated>2016-10-14T13:33:51.000Z</updated>
     
     <content type="html"><![CDATA[<p>好久没有更新博客了，分享几篇最近读到的比较好的文章吧！读的不是特别的仔细，也算是留一个记录，以后再详读一遍</p>
 <a id="more"></a>
@@ -28,6 +28,8 @@
 <p>[<em><a href="http://wangchao.de/%e8%81%8a%e8%81%8a%e5%88%9b%e4%b8%9a%e5%9b%a2%e9%98%9f%e7%9a%84%e9%a1%b9%e7%9b%ae%e7%ae%a1%e7%90%86%e5%a6%82%e4%bd%95%e9%9d%a2%e5%90%91%e5%bc%80%e5%8f%91%e4%ba%ba%e5%91%98%e4%bc%98%e5%8c%96/">聊聊创业团队的项目管理如何面向开发人员优化</a></em></p>
 <p><a href="https://zhuanlan.zhihu.com/p/22283843"><em>基于 KIF 的 iOS UI 自动化测试和持续集成</em></a></p>
 <p><a href="http://www.jianshu.com/p/9ae446d76271"><em>iOS项目的持续集成与管理[译]</em></a></p>
+<p><a href="http://mrpeak.cn/blog/http2/"><em>HTTP 2.0的那些事</em></a></p>
+<p><a href="http://mrpeak.cn/blog/ios-network/"><em>深度优化iOS网络模块</em></a></p>
 <p>准备把手上项目网络层完全优化之后再来仔细研读一下这几篇文章。</p>
 ]]></content>
     
