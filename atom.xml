@@ -175,7 +175,7 @@
     <link href="https://programersunny.github.io/2016/09/30/%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E7%9A%84%E4%BD%BF%E7%94%A8xib%E8%BF%9B%E8%A1%8C%E5%BC%80%E5%8F%91/"/>
     <id>https://programersunny.github.io/2016/09/30/如何优雅的使用xib进行开发/</id>
     <published>2016-09-29T16:00:00.000Z</published>
-    <updated>2016-11-15T16:05:00.000Z</updated>
+    <updated>2016-11-15T16:54:55.000Z</updated>
     
     <content type="html"><![CDATA[<p>一篇杂七杂八的东西，一些我在使用xib的时候的心得。<br><a id="more"></a></p>
 <h2 id="写在前面的话"><a href="#写在前面的话" class="headerlink" title="写在前面的话"></a>写在前面的话</h2><p>最近实在是比较忙，先是公司从成都搬到了重庆，纠结了半天还是决定留在现在的团队，再继续往前走下去。再是到重庆没有完整的办公场地的情况下，启动了2.0计划。好在坚持了一段时间之后，2.0版本已经完成了95%的开发等着接下来的优化了。停止可这么长时间的博客，终于也想起来了要打理打理。</p>
