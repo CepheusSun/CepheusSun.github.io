@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>https://programersunny.github.io/2016/07/27/%E7%8E%A9%E4%BA%86%E4%B8%80%E4%B8%8Bdispatch-group/</loc>
+    <lastmod>2016-11-16T02:48:21.000Z</lastmod>
+    <data>
+        <display>
+        <title>如果一个页面需要发送4个网络请求，如何监听到所有的请求都已经回调之后再刷新UI？</title>
+        <pubTime>2016-07-27T07:34:44.000Z</pubTime>
+        
+        <tag>iOS</tag>
+         
+        <tag>多线程</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS" url="https://programersunny.github.io/categories/iOS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://programersunny.github.io/2016/09/30/%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E7%9A%84%E4%BD%BF%E7%94%A8xib%E8%BF%9B%E8%A1%8C%E5%BC%80%E5%8F%91/</loc>
     <lastmod>2016-11-15T16:54:55.000Z</lastmod>
     <data>
@@ -341,28 +363,6 @@
         <tag>iOS</tag>
          
         <tag>代码规范</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS" url="https://programersunny.github.io/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://programersunny.github.io/2016/07/27/%E7%8E%A9%E4%BA%86%E4%B8%80%E4%B8%8Bdispatch-group/</loc>
-    <lastmod>2016-08-29T02:25:36.000Z</lastmod>
-    <data>
-        <display>
-        <title>玩了一下dispatch_group</title>
-        <pubTime>2016-07-27T07:34:44.000Z</pubTime>
-        
-        <tag>iOS</tag>
-         
-        <tag>多线程</tag>
          
          
            
