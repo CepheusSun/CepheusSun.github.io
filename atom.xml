@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://programersunny.github.io/"/>
-  <updated>2016-11-17T06:46:34.000Z</updated>
+  <updated>2016-11-17T06:48:45.000Z</updated>
   <id>https://programersunny.github.io/</id>
   
   <author>
@@ -20,10 +20,11 @@
     <link href="https://programersunny.github.io/2016/11/17/SYNetwork/"/>
     <id>https://programersunny.github.io/2016/11/17/SYNetwork/</id>
     <published>2016-11-16T16:00:00.000Z</published>
-    <updated>2016-11-17T06:46:34.000Z</updated>
+    <updated>2016-11-17T06:48:45.000Z</updated>
     
     <content type="html"><![CDATA[<p>基于AFNetworking的网络请求框架。采用command设计模式，支持按照接口缓存请求数据。</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><h2 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h2><p>SYNetwork由一下三个部分组成</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p><a href="https://github.com/ProgramerSunny/SYNetwork"><em>GitHub地址</em></a></p>
+<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><h2 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h2><p>SYNetwork由一下三个部分组成</p>
 <ul>
 <li><p>SYNetwork</p>
 <ul>
