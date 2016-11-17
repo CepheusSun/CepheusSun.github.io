@@ -4,6 +4,106 @@
   
     
     <entry>
+      <title><![CDATA[SYNetwork]]></title>
+      <url>https://programersunny.github.io/2016/11/17/SYNetwork/</url>
+      <content type="html"><![CDATA[<h1 id="SYNetwork"><a href="#SYNetwork" class="headerlink" title="SYNetwork"></a>SYNetwork</h1><p>基于AFNetworking的网络请求框架。采用command设计模式，支持按照接口缓存请求数据。</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><h2 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h2><p>SYNetwork由一下三个部分组成</p>
+<ul>
+<li><p>SYNetwork</p>
+<ul>
+<li><p>SYBaseRequest</p>
+<blockquote>
+<p>所有网络请求 API 的父类</p>
+</blockquote>
+</li>
+<li><p>SYNetworkConfig</p>
+<blockquote>
+<p>环境配置 包括网络请求的 BaseUrl 请求超时时间，缓存总量等</p>
+</blockquote>
+</li>
+<li><p>SYRequestCenter</p>
+<blockquote>
+<p>所有网络请求统一由这个类发出</p>
+</blockquote>
+</li>
+<li><p>SYResponse</p>
+<blockquote>
+<p>网络请求返回值对象</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>SYCache</p>
+<ul>
+<li><p>SYCache</p>
+<blockquote>
+<p>缓存管理</p>
+</blockquote>
+</li>
+<li><p>SYCacheObject </p>
+<blockquote>
+<p>缓存的对象</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>Category</p>
+<ul>
+<li><p>NSDictionary+SYNetworking </p>
+<blockquote>
+<p> 加密用，在网络请求开始的时候对参数进行加密等，如果需要加密在这个category中惊醒</p>
+</blockquote>
+</li>
+<li><p>NSString+Encryption            </p>
+<blockquote>
+<p>加密算法，提供md5 盒bas_64</p>
+</blockquote>
+</li>
+<li><p>NSUrlRequest+SYNetworkingMethods</p>
+<blockquote>
+<p>动态的给UrlRequest 添加一个请求参数属性</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h2><p><img src="http://ocg4av0wv.bkt.clouddn.com/C3CD9DA5-475A-4A76-95E4-CC1D50AE921C.png"/></p>
+<p>注意:</p>
+<ul>
+<li>缓存的存取 key 是通过参数和url拼接形成的，这里的参数是加密之前的参数</li>
+<li>加密的行为是最终发起网络请求的时候就行的</li>
+<li>自定义加密算法的时候应该在<code>NSUrlRequest+SYNetworkingMethods</code>类别中进行</li>
+</ul>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>首先将SYNetwork导入你的工程。</p>
+<p>1、首先导入头文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#import &quot;SYNetwork.h&quot;</div></pre></td></tr></table></figure>
+<p>2、 在appdelegate中使用SYNetworkConfig配置网络请求的baseurl等</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[SYNetworkConfig setDefaultBaseUrl:YOUR_BASE_URL timeOutInterval:20 cacheCountLimit:1000];</div></pre></td></tr></table></figure>
+<p><strong>采用<code>command</code>设计模式所以你的网络请求api都应该是一个单独的类</strong></p>
+<p>3、创建<code>LoginApi</code>类    .h文件构造方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">#import &quot;SYBaseRequest.h&quot;</div><div class="line"></div><div class="line">typedef NS_ENUM(NSInteger, LoginType)&#123;</div><div class="line">    LoginTypePassword,</div><div class="line">    LoginTypeVerifyCode</div><div class="line">&#125;;</div><div class="line"></div><div class="line">@interface LoginApi : SYBaseRequest</div><div class="line">- (id)initWithUserName:(NSString *)username password:(NSString *)password logintype:(LoginType)logintype;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>.m 文件提供请求的参数和url</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">#import &quot;LoginApi.h&quot;</div><div class="line"></div><div class="line">@implementation LoginApi&#123;</div><div class="line">    NSString *_username;</div><div class="line">    NSString *_password;</div><div class="line">    LoginType _logintype;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (id)initWithUserName:(NSString *)username password:(NSString *)password logintype:(LoginType)logintype &#123;</div><div class="line">    self = [super init];</div><div class="line">    if (self) &#123;</div><div class="line">        _username = username;</div><div class="line">        _password = password;</div><div class="line">        _logintype = logintype;</div><div class="line">    &#125;</div><div class="line">    return self;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (NSString *)methodName &#123;</div><div class="line">    return @&quot;api/user/login&quot;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (NSMutableDictionary *)requestParams &#123;</div><div class="line">    return @&#123;</div><div class="line">             @&quot;phone&quot;: _username,</div><div class="line">             @&quot;code&quot; : _password,</div><div class="line">             @&quot;type&quot; : [NSString stringWithFormat:@&quot;%@&quot;,@(_logintype)]</div><div class="line">             &#125;.mutableCopy;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>4、调用，支持block 和delegate 回调两种方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">_loginApi = [[LoginApi alloc] initWithUserName:phone password:code logintype:type];</div><div class="line">_loginApi.callBackDelegate = self;</div><div class="line">_loginApi startWithSuccessBlock:^(SYResponse *response, NSString *errorMessage) &#123;</div><div class="line">    </div><div class="line">&#125; failureBlbck:^(SYResponse *response, NSString *errorMessage) &#123;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果是delegate方式</p>
+<p>应该遵守<code>SYRequestCallBackDelegate</code>协议</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">_loginApi.callBackDelegate = self;</div></pre></td></tr></table></figure>
+<p>并且实现对应方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">- (void)managerCallApiDidSuccess:(SYResponse *)response;</div><div class="line">- (void)managerCallApiDidFailed:(NSString *)errorMessage;</div></pre></td></tr></table></figure>
+<h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><ol>
+<li><p>对其他请求方法的支持</p>
+</li>
+<li><p>HTTPS</p>
+<p>​</p>
+<hr>
+</li>
+</ol>
+<h1 id="许可证"><a href="#许可证" class="headerlink" title="许可证"></a>许可证</h1><p>YYKit 使用 MIT 许可证，详情见 LICENSE 文件。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[SYPhotoBrowser]]></title>
       <url>https://programersunny.github.io/2016/11/02/SYPhotoBrowser/</url>
       <content type="html"><![CDATA[<p>图片浏览器，使用方法类似UITableView的图片浏览器。基于YYWebImage.</p>

@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="iOS,OpenSource," />
 
 
 
@@ -86,15 +86,18 @@
 
 
 
-<meta name="description" content="iOS Dev. Stay hungry, Stay foolish.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ProgramerSunny的博客">
-<meta property="og:url" content="https://programersunny.github.io/tags/多线程/index.html">
+<meta name="description" content="SYNetwork基于AFNetworking的网络请求框架。采用command设计模式，支持按照接口缓存请求数据。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SYNetwork">
+<meta property="og:url" content="https://programersunny.github.io/2016/11/17/SYNetwork/index.html">
 <meta property="og:site_name" content="ProgramerSunny的博客">
-<meta property="og:description" content="iOS Dev. Stay hungry, Stay foolish.">
+<meta property="og:description" content="SYNetwork基于AFNetworking的网络请求框架。采用command设计模式，支持按照接口缓存请求数据。">
+<meta property="og:image" content="http://ocg4av0wv.bkt.clouddn.com/C3CD9DA5-475A-4A76-95E4-CC1D50AE921C.png">
+<meta property="og:updated_time" content="2016-11-17T06:45:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ProgramerSunny的博客">
-<meta name="twitter:description" content="iOS Dev. Stay hungry, Stay foolish.">
+<meta name="twitter:title" content="SYNetwork">
+<meta name="twitter:description" content="SYNetwork基于AFNetworking的网络请求框架。采用command设计模式，支持按照接口缓存请求数据。">
+<meta name="twitter:image" content="http://ocg4av0wv.bkt.clouddn.com/C3CD9DA5-475A-4A76-95E4-CC1D50AE921C.png">
 
 
 
@@ -115,9 +118,9 @@
 
 
 
-  <link rel="canonical" href="https://programersunny.github.io/tags/多线程/"/>
+  <link rel="canonical" href="https://programersunny.github.io/2016/11/17/SYNetwork/"/>
 
-  <title> 标签: 多线程 | ProgramerSunny的博客 </title>
+  <title> SYNetwork | ProgramerSunny的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -138,7 +141,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -249,53 +252,261 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        多线程
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                SYNetwork
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-17T00:00:00+08:00" content="2016-11-17">
+              2016-11-17
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/17/SYNetwork/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/17/SYNetwork/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <h1 id="SYNetwork"><a href="#SYNetwork" class="headerlink" title="SYNetwork"></a>SYNetwork</h1><p>基于AFNetworking的网络请求框架。采用command设计模式，支持按照接口缓存请求数据。</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><h2 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h2><p>SYNetwork由一下三个部分组成</p>
+<ul>
+<li><p>SYNetwork</p>
+<ul>
+<li><p>SYBaseRequest</p>
+<blockquote>
+<p>所有网络请求 API 的父类</p>
+</blockquote>
+</li>
+<li><p>SYNetworkConfig</p>
+<blockquote>
+<p>环境配置 包括网络请求的 BaseUrl 请求超时时间，缓存总量等</p>
+</blockquote>
+</li>
+<li><p>SYRequestCenter</p>
+<blockquote>
+<p>所有网络请求统一由这个类发出</p>
+</blockquote>
+</li>
+<li><p>SYResponse</p>
+<blockquote>
+<p>网络请求返回值对象</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>SYCache</p>
+<ul>
+<li><p>SYCache</p>
+<blockquote>
+<p>缓存管理</p>
+</blockquote>
+</li>
+<li><p>SYCacheObject </p>
+<blockquote>
+<p>缓存的对象</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>Category</p>
+<ul>
+<li><p>NSDictionary+SYNetworking </p>
+<blockquote>
+<p> 加密用，在网络请求开始的时候对参数进行加密等，如果需要加密在这个category中惊醒</p>
+</blockquote>
+</li>
+<li><p>NSString+Encryption            </p>
+<blockquote>
+<p>加密算法，提供md5 盒bas_64</p>
+</blockquote>
+</li>
+<li><p>NSUrlRequest+SYNetworkingMethods</p>
+<blockquote>
+<p>动态的给UrlRequest 添加一个请求参数属性</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h2><p><img src="http://ocg4av0wv.bkt.clouddn.com/C3CD9DA5-475A-4A76-95E4-CC1D50AE921C.png"/></p>
+<p>注意:</p>
+<ul>
+<li>缓存的存取 key 是通过参数和url拼接形成的，这里的参数是加密之前的参数</li>
+<li>加密的行为是最终发起网络请求的时候就行的</li>
+<li>自定义加密算法的时候应该在<code>NSUrlRequest+SYNetworkingMethods</code>类别中进行</li>
+</ul>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>首先将SYNetwork导入你的工程。</p>
+<p>1、首先导入头文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#import &quot;SYNetwork.h&quot;</div></pre></td></tr></table></figure>
+<p>2、 在appdelegate中使用SYNetworkConfig配置网络请求的baseurl等</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[SYNetworkConfig setDefaultBaseUrl:YOUR_BASE_URL timeOutInterval:20 cacheCountLimit:1000];</div></pre></td></tr></table></figure>
+<p><strong>采用<code>command</code>设计模式所以你的网络请求api都应该是一个单独的类</strong></p>
+<p>3、创建<code>LoginApi</code>类    .h文件构造方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">#import &quot;SYBaseRequest.h&quot;</div><div class="line"></div><div class="line">typedef NS_ENUM(NSInteger, LoginType)&#123;</div><div class="line">    LoginTypePassword,</div><div class="line">    LoginTypeVerifyCode</div><div class="line">&#125;;</div><div class="line"></div><div class="line">@interface LoginApi : SYBaseRequest</div><div class="line">- (id)initWithUserName:(NSString *)username password:(NSString *)password logintype:(LoginType)logintype;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>.m 文件提供请求的参数和url</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">#import &quot;LoginApi.h&quot;</div><div class="line"></div><div class="line">@implementation LoginApi&#123;</div><div class="line">    NSString *_username;</div><div class="line">    NSString *_password;</div><div class="line">    LoginType _logintype;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (id)initWithUserName:(NSString *)username password:(NSString *)password logintype:(LoginType)logintype &#123;</div><div class="line">    self = [super init];</div><div class="line">    if (self) &#123;</div><div class="line">        _username = username;</div><div class="line">        _password = password;</div><div class="line">        _logintype = logintype;</div><div class="line">    &#125;</div><div class="line">    return self;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (NSString *)methodName &#123;</div><div class="line">    return @&quot;api/user/login&quot;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (NSMutableDictionary *)requestParams &#123;</div><div class="line">    return @&#123;</div><div class="line">             @&quot;phone&quot;: _username,</div><div class="line">             @&quot;code&quot; : _password,</div><div class="line">             @&quot;type&quot; : [NSString stringWithFormat:@&quot;%@&quot;,@(_logintype)]</div><div class="line">             &#125;.mutableCopy;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>4、调用，支持block 和delegate 回调两种方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">_loginApi = [[LoginApi alloc] initWithUserName:phone password:code logintype:type];</div><div class="line">_loginApi.callBackDelegate = self;</div><div class="line">_loginApi startWithSuccessBlock:^(SYResponse *response, NSString *errorMessage) &#123;</div><div class="line">    </div><div class="line">&#125; failureBlbck:^(SYResponse *response, NSString *errorMessage) &#123;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果是delegate方式</p>
+<p>应该遵守<code>SYRequestCallBackDelegate</code>协议</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">_loginApi.callBackDelegate = self;</div></pre></td></tr></table></figure>
+<p>并且实现对应方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">- (void)managerCallApiDidSuccess:(SYResponse *)response;</div><div class="line">- (void)managerCallApiDidFailed:(NSString *)errorMessage;</div></pre></td></tr></table></figure>
+<h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><ol>
+<li><p>对其他请求方法的支持</p>
+</li>
+<li><p>HTTPS</p>
+<p>​</p>
+<hr>
+</li>
+</ol>
+<h1 id="许可证"><a href="#许可证" class="headerlink" title="许可证"></a>许可证</h1><p>YYKit 使用 MIT 许可证，详情见 LICENSE 文件。</p>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2016/07/27/如果一个页面需要发送4个网络请求，如何监听到所有的请求都已经回调之后再刷新UI？/" itemprop="url">
-              
-                <span itemprop="name">如果一个页面需要发送4个网络请求，如何监听到所有的请求都已经回调之后再刷新UI？</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-07-27T15:34:44+08:00"
-              content="2016-07-27" >
-          07-27
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag">#iOS</a>
+          
+            <a href="/tags/OpenSource/" rel="tag">#OpenSource</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/02/SYPhotoBrowser/" rel="next" title="SYPhotoBrowser">
+                <i class="fa fa-chevron-left"></i> SYPhotoBrowser
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
           
 
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/11/17/SYNetwork/"
+           data-title="SYNetwork" data-url="https://programersunny.github.io/2016/11/17/SYNetwork/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -315,8 +526,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://ocg4av0wv.bkt.clouddn.com/icon_spot@2x.png"
@@ -399,6 +619,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SYNetwork"><span class="nav-number">1.</span> <span class="nav-text">SYNetwork</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.1.</span> <span class="nav-text"></span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#原理"><span class="nav-number">2.</span> <span class="nav-text">原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#组成"><span class="nav-number">2.1.</span> <span class="nav-text">组成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#流程图"><span class="nav-number">2.2.</span> <span class="nav-text">流程图</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用"><span class="nav-number">3.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#TODO"><span class="nav-number">3.1.</span> <span class="nav-text">TODO</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#许可证"><span class="nav-number">4.</span> <span class="nav-text">许可证</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -511,6 +742,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
