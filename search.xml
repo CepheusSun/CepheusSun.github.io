@@ -6,7 +6,7 @@
     <entry>
       <title><![CDATA[SYNetwork]]></title>
       <url>https://programersunny.github.io/2016/11/17/SYNetwork/</url>
-      <content type="html"><![CDATA[<h1 id="SYNetwork"><a href="#SYNetwork" class="headerlink" title="SYNetwork"></a>SYNetwork</h1><p>基于AFNetworking的网络请求框架。采用command设计模式，支持按照接口缓存请求数据。</p>
+      <content type="html"><![CDATA[<p>基于AFNetworking的网络请求框架。采用command设计模式，支持按照接口缓存请求数据。</p>
 <h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><h2 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h2><p>SYNetwork由一下三个部分组成</p>
 <ul>
 <li><p>SYNetwork</p>
