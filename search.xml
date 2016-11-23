@@ -11,6 +11,7 @@
 <blockquote>
 <p>这是一篇写给 iOS 开发的文章(教程)。</p>
 </blockquote>
+<h2 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h2><p>测试的时候随便截了一个图<br><img src="http://ocg4av0wv.bkt.clouddn.com/9760173C-7692-43C5-A5CC-FEED1611B3B5.png" /></p>
 <h2 id="什么是-icon-font-？"><a href="#什么是-icon-font-？" class="headerlink" title="什么是 icon-font ？"></a>什么是 icon-font ？</h2><p>icon 和 font 拆开来看应该所有人都认识它是什么意思，iconfont就是这两者的结合。严格的说，我们平时使用的字体，并不是我们传统认知中的文字，而是一个一个的图标。是由在坐标系中各种点，连起来组成的。babala….. 这也是我们平时使用的字体无论放到多大，都不会出现在图片上面出现的因为拉伸而出现的失真的情况。</p>
 <p>iconfont 实际上就是吧我们在项目中要使用的各类 icon 按照相同的原理制作成一个字体库，然后用使用 font 的方式来使用。</p>
 <p>说的挺乱，反正大概就是这么个意思吧。</p>

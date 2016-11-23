@@ -92,6 +92,7 @@
 <meta property="og:url" content="https://programersunny.github.io/2016/11/23/怎样在iOS中使用icon-font？/index.html">
 <meta property="og:site_name" content="ProgramerSunny的博客">
 <meta property="og:description" content="一篇在iOS项目中使用 icon-font 的教程。">
+<meta property="og:image" content="http://ocg4av0wv.bkt.clouddn.com/9760173C-7692-43C5-A5CC-FEED1611B3B5.png">
 <meta property="og:image" content="http://ocg4av0wv.bkt.clouddn.com/CB315E67-08BF-46E0-A087-F658EC1B49FC.png">
 <meta property="og:image" content="http://ocg4av0wv.bkt.clouddn.com/6064C73F-8BEF-40B9-99EB-3C5BF3BFDBCB.png">
 <meta property="og:image" content="http://ocg4av0wv.bkt.clouddn.com/1DF9A210-D6A1-490B-B816-2D813E51F643.png">
@@ -105,11 +106,11 @@
 <meta property="og:image" content="http://ocg4av0wv.bkt.clouddn.com/9B7F5726-260D-4CCA-859B-F5453307387E.png">
 <meta property="og:image" content="http://ocg4av0wv.bkt.clouddn.com/3831121F-8386-4F51-B578-B425888571C6.png">
 <meta property="og:image" content="http://ocg4av0wv.bkt.clouddn.com/10B329BA-57B9-4C54-B447-90EEBDDC138D.png">
-<meta property="og:updated_time" content="2016-11-23T12:20:30.000Z">
+<meta property="og:updated_time" content="2016-11-23T12:24:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="怎样在iOS中使用icon-font？">
 <meta name="twitter:description" content="一篇在iOS项目中使用 icon-font 的教程。">
-<meta name="twitter:image" content="http://ocg4av0wv.bkt.clouddn.com/CB315E67-08BF-46E0-A087-F658EC1B49FC.png">
+<meta name="twitter:image" content="http://ocg4av0wv.bkt.clouddn.com/9760173C-7692-43C5-A5CC-FEED1611B3B5.png">
 
 
 
@@ -356,6 +357,7 @@
 <blockquote>
 <p>这是一篇写给 iOS 开发的文章(教程)。</p>
 </blockquote>
+<h2 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h2><p>测试的时候随便截了一个图<br><img src="http://ocg4av0wv.bkt.clouddn.com/9760173C-7692-43C5-A5CC-FEED1611B3B5.png" /></p>
 <h2 id="什么是-icon-font-？"><a href="#什么是-icon-font-？" class="headerlink" title="什么是 icon-font ？"></a>什么是 icon-font ？</h2><p>icon 和 font 拆开来看应该所有人都认识它是什么意思，iconfont就是这两者的结合。严格的说，我们平时使用的字体，并不是我们传统认知中的文字，而是一个一个的图标。是由在坐标系中各种点，连起来组成的。babala….. 这也是我们平时使用的字体无论放到多大，都不会出现在图片上面出现的因为拉伸而出现的失真的情况。</p>
 <p>iconfont 实际上就是吧我们在项目中要使用的各类 icon 按照相同的原理制作成一个字体库，然后用使用 font 的方式来使用。</p>
 <p>说的挺乱，反正大概就是这么个意思吧。</p>
@@ -629,7 +631,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是-icon-font-？"><span class="nav-number">1.</span> <span class="nav-text">什么是 icon-font ？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#icon-font-解决了什么问题"><span class="nav-number">2.</span> <span class="nav-text">icon-font 解决了什么问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点"><span class="nav-number">2.0.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点"><span class="nav-number">2.0.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原理"><span class="nav-number">2.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#准备工作"><span class="nav-number">2.2.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step-1"><span class="nav-number">2.3.</span> <span class="nav-text">step 1</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#step-2"><span class="nav-number">2.3.1.</span> <span class="nav-text">step 2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#step-3"><span class="nav-number">2.3.2.</span> <span class="nav-text">step 3</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Xib"><span class="nav-number">2.4.</span> <span class="nav-text">Xib</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">2.5.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TODO："><span class="nav-number">2.6.</span> <span class="nav-text">TODO：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#感谢"><span class="nav-number">2.7.</span> <span class="nav-text">感谢</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#效果图"><span class="nav-number">1.</span> <span class="nav-text">效果图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是-icon-font-？"><span class="nav-number">2.</span> <span class="nav-text">什么是 icon-font ？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#icon-font-解决了什么问题"><span class="nav-number">3.</span> <span class="nav-text">icon-font 解决了什么问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点"><span class="nav-number">3.0.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点"><span class="nav-number">3.0.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原理"><span class="nav-number">3.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#准备工作"><span class="nav-number">3.2.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step-1"><span class="nav-number">3.3.</span> <span class="nav-text">step 1</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#step-2"><span class="nav-number">3.3.1.</span> <span class="nav-text">step 2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#step-3"><span class="nav-number">3.3.2.</span> <span class="nav-text">step 3</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Xib"><span class="nav-number">3.4.</span> <span class="nav-text">Xib</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">3.5.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TODO："><span class="nav-number">3.6.</span> <span class="nav-text">TODO：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#感谢"><span class="nav-number">3.7.</span> <span class="nav-text">感谢</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
