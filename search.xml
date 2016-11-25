@@ -4,6 +4,50 @@
   
     
     <entry>
+      <title><![CDATA[我的书单]]></title>
+      <url>https://programersunny.github.io/2016/11/25/%E6%88%91%E7%9A%84%E4%B9%A6%E5%8D%95/</url>
+      <content type="html"><![CDATA[<p>在年末的时候意识到梳理记录是一件多么重要和美好的事情。从阅读开始，从2016年开始记录我的读书记录。</p>
+<a id="more"></a>
+<h3 id="已经读清单"><a href="#已经读清单" class="headerlink" title="已经读清单"></a>已经读清单</h3><h4 id="《疯狂的Java讲义》"><a href="#《疯狂的Java讲义》" class="headerlink" title="《疯狂的Java讲义》"></a>《疯狂的Java讲义》</h4><blockquote>
+<p>虽然看了但是没有很深入的研究学习Java，仅仅是看了而已😂</p>
+</blockquote>
+<h4 id="《禅与Objective-C编程艺术》"><a href="#《禅与Objective-C编程艺术》" class="headerlink" title="《禅与Objective-C编程艺术》"></a>《禅与Objective-C编程艺术》</h4><blockquote>
+<p>iOS进阶苦旅</p>
+</blockquote>
+<h4 id="《iOS开发进阶》"><a href="#《iOS开发进阶》" class="headerlink" title="《iOS开发进阶》"></a>《iOS开发进阶》</h4><blockquote>
+<p>iOS进阶苦旅</p>
+</blockquote>
+<h4 id="《Effective-Objective-C-2-0：编写高质量iOS与OS-X代码的52个有效方法》"><a href="#《Effective-Objective-C-2-0：编写高质量iOS与OS-X代码的52个有效方法》" class="headerlink" title="《Effective Objective-C 2.0：编写高质量iOS与OS X代码的52个有效方法》"></a>《Effective Objective-C 2.0：编写高质量iOS与OS X代码的52个有效方法》</h4><blockquote>
+<p>iOS进阶苦旅，强烈推荐本书。</p>
+</blockquote>
+<h4 id="《PRODUCTER》"><a href="#《PRODUCTER》" class="headerlink" title="《PRODUCTER》"></a>《PRODUCTER》</h4><blockquote>
+<p>Kevin Zhou 出品</p>
+</blockquote>
+<h4 id="《Objective-C高级编程-iOS与OS-X多线程和内存管理》"><a href="#《Objective-C高级编程-iOS与OS-X多线程和内存管理》" class="headerlink" title="《Objective-C高级编程 iOS与OS X多线程和内存管理》"></a>《Objective-C高级编程 iOS与OS X多线程和内存管理》</h4><blockquote>
+<p>iOS进阶苦旅，强烈推荐本书。</p>
+</blockquote>
+<h4 id="《腾讯是怎么长大的》"><a href="#《腾讯是怎么长大的》" class="headerlink" title="《腾讯是怎么长大的》"></a>《腾讯是怎么长大的》</h4><blockquote>
+<p>算是腾讯的自传吧</p>
+</blockquote>
+<h4 id="《跳槽：做出更好的选择》"><a href="#《跳槽：做出更好的选择》" class="headerlink" title="《跳槽：做出更好的选择》"></a>《跳槽：做出更好的选择》</h4><blockquote>
+<p>职业规划相关 </p>
+</blockquote>
+<h3 id="DOING"><a href="#DOING" class="headerlink" title="DOING"></a>DOING</h3><h4 id="《The-Swift-Programming-Languige》"><a href="#《The-Swift-Programming-Languige》" class="headerlink" title="《The Swift Programming Languige》"></a>《The Swift Programming Languige》</h4><blockquote>
+<p>swift 开发必备</p>
+</blockquote>
+<h4 id="《软件开发者路线图：从学徒到高手》"><a href="#《软件开发者路线图：从学徒到高手》" class="headerlink" title="《软件开发者路线图：从学徒到高手》"></a>《软件开发者路线图：从学徒到高手》</h4><h3 id="未读清单"><a href="#未读清单" class="headerlink" title="未读清单"></a>未读清单</h3><h4 id="《软件开发者路线图-从学徒到高手》"><a href="#《软件开发者路线图-从学徒到高手》" class="headerlink" title="《软件开发者路线图:从学徒到高手》"></a>《软件开发者路线图:从学徒到高手》</h4><h4 id="《编程珠玑》"><a href="#《编程珠玑》" class="headerlink" title="《编程珠玑》"></a>《编程珠玑》</h4><h4 id="《重构-改善既有代码的设计》"><a href="#《重构-改善既有代码的设计》" class="headerlink" title="《重构 改善既有代码的设计》"></a>《重构 改善既有代码的设计》</h4><h4 id="《React-Native-用JavaScript开发移动应用》"><a href="#《React-Native-用JavaScript开发移动应用》" class="headerlink" title="《React Native 用JavaScript开发移动应用》"></a>《React Native 用JavaScript开发移动应用》</h4><h4 id="《Objective-C编程全解》"><a href="#《Objective-C编程全解》" class="headerlink" title="《Objective-C编程全解》"></a>《Objective-C编程全解》</h4><h3 id="书库"><a href="#书库" class="headerlink" title="书库"></a>书库</h3><h4 id="《A-Guide-To-iOS-Animation》"><a href="#《A-Guide-To-iOS-Animation》" class="headerlink" title="《A Guide To iOS Animation》"></a>《A Guide To iOS Animation》</h4><h4 id="《iOS进阶指南》"><a href="#《iOS进阶指南》" class="headerlink" title="《iOS进阶指南》"></a>《iOS进阶指南》</h4><blockquote>
+<p>iOS圈网红 叶孤城正在写的书</p>
+</blockquote>
+<h4 id="《Core-Data》"><a href="#《Core-Data》" class="headerlink" title="《Core Data》"></a>《Core Data》</h4><blockquote>
+<p>objc.io 出品 喵神翻译</p>
+</blockquote>
+<h4 id="《Swift-设计模式（iOS）》"><a href="#《Swift-设计模式（iOS）》" class="headerlink" title="《Swift 设计模式（iOS）》"></a>《Swift 设计模式（iOS）》</h4><h4 id="《Go-Web-编程》"><a href="#《Go-Web-编程》" class="headerlink" title="《Go Web 编程》"></a>《Go Web 编程》</h4><h4 id="《iOS-CORE-ANIMATION》"><a href="#《iOS-CORE-ANIMATION》" class="headerlink" title="《iOS CORE ANIMATION》"></a>《iOS CORE ANIMATION》</h4><h4 id="《Python-Cookbook》"><a href="#《Python-Cookbook》" class="headerlink" title="《Python Cookbook》"></a>《Python Cookbook》</h4><h4 id="《函数式Swift》"><a href="#《函数式Swift》" class="headerlink" title="《函数式Swift》"></a>《函数式Swift》</h4><blockquote>
+<p>objc.io 出品 喵神翻译</p>
+</blockquote>
+<h4 id="《深入解析Mac-OX-amp-iOS-操作系统》"><a href="#《深入解析Mac-OX-amp-iOS-操作系统》" class="headerlink" title="《深入解析Mac OX &amp; iOS 操作系统》"></a>《深入解析Mac OX &amp; iOS 操作系统》</h4><h4 id="《JavaScript-权威指南》"><a href="#《JavaScript-权威指南》" class="headerlink" title="《JavaScript 权威指南》"></a>《JavaScript 权威指南》</h4><h4 id="《JavaScript-面向对象编程指南》"><a href="#《JavaScript-面向对象编程指南》" class="headerlink" title="《JavaScript 面向对象编程指南》"></a>《JavaScript 面向对象编程指南》</h4><h4 id="《JavaScript-王者归来》"><a href="#《JavaScript-王者归来》" class="headerlink" title="《JavaScript 王者归来》"></a>《JavaScript 王者归来》</h4><h4 id="《Shell脚本学习指南》"><a href="#《Shell脚本学习指南》" class="headerlink" title="《Shell脚本学习指南》"></a>《Shell脚本学习指南》</h4><h4 id="《大道至简-软件工程实践者的思想》"><a href="#《大道至简-软件工程实践者的思想》" class="headerlink" title="《大道至简 软件工程实践者的思想》"></a>《大道至简 软件工程实践者的思想》</h4><h4 id="《REWORK》"><a href="#《REWORK》" class="headerlink" title="《REWORK》"></a>《REWORK》</h4><h4 id="《iOS-并发编程指南》"><a href="#《iOS-并发编程指南》" class="headerlink" title="《iOS 并发编程指南》"></a>《iOS 并发编程指南》</h4><h4 id="《Growth-全栈工程师指南》"><a href="#《Growth-全栈工程师指南》" class="headerlink" title="《Growth 全栈工程师指南》"></a>《Growth 全栈工程师指南》</h4><h4 id="《深入浅出全栈工程师》"><a href="#《深入浅出全栈工程师》" class="headerlink" title="《深入浅出全栈工程师》"></a>《深入浅出全栈工程师》</h4><h4 id="《调试九法-软件错误的排查之道》"><a href="#《调试九法-软件错误的排查之道》" class="headerlink" title="《调试九法 软件错误的排查之道》"></a>《调试九法 软件错误的排查之道》</h4><h4 id="《架构实践-软件架构设计的过程》"><a href="#《架构实践-软件架构设计的过程》" class="headerlink" title="《架构实践 软件架构设计的过程》"></a>《架构实践 软件架构设计的过程》</h4><h4 id="《图解TCP-IP》"><a href="#《图解TCP-IP》" class="headerlink" title="《图解TCP/IP》"></a>《图解TCP/IP》</h4><h4 id="《图解HTTP》"><a href="#《图解HTTP》" class="headerlink" title="《图解HTTP》"></a>《图解HTTP》</h4><h4 id="《HTTP权威指南》"><a href="#《HTTP权威指南》" class="headerlink" title="《HTTP权威指南》"></a>《HTTP权威指南》</h4><h4 id="《TCP-IP详解-协议、实现、TCP事物协议》"><a href="#《TCP-IP详解-协议、实现、TCP事物协议》" class="headerlink" title="《TCP/IP详解 协议、实现、TCP事物协议》"></a>《TCP/IP详解 协议、实现、TCP事物协议》</h4>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[怎样在iOS中使用icon-font？]]></title>
       <url>https://programersunny.github.io/2016/11/23/%E6%80%8E%E6%A0%B7%E5%9C%A8iOS%E4%B8%AD%E4%BD%BF%E7%94%A8icon-font%EF%BC%9F/</url>
       <content type="html"><![CDATA[<p>一篇在iOS项目中使用 icon-font 的教程。</p>
@@ -197,50 +241,6 @@
 </ol>
 <h1 id="许可证"><a href="#许可证" class="headerlink" title="许可证"></a>许可证</h1><p>YYKit 使用 MIT 许可证，详情见 LICENSE 文件。</p>
 ]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[我的书单]]></title>
-      <url>https://programersunny.github.io/2016/11/12/%E6%88%91%E7%9A%84%E4%B9%A6%E5%8D%95/</url>
-      <content type="html"><![CDATA[<p>在年末的时候意识到梳理记录是一件多么重要和美好的事情。从阅读开始，从2016年开始记录我的读书记录。</p>
-<a id="more"></a>
-<h3 id="已经读清单"><a href="#已经读清单" class="headerlink" title="已经读清单"></a>已经读清单</h3><h4 id="《疯狂的Java讲义》"><a href="#《疯狂的Java讲义》" class="headerlink" title="《疯狂的Java讲义》"></a>《疯狂的Java讲义》</h4><blockquote>
-<p>虽然看了但是没有很深入的研究学习Java，仅仅是看了而已😂</p>
-</blockquote>
-<h4 id="《禅与Objective-C编程艺术》"><a href="#《禅与Objective-C编程艺术》" class="headerlink" title="《禅与Objective-C编程艺术》"></a>《禅与Objective-C编程艺术》</h4><blockquote>
-<p>iOS进阶苦旅</p>
-</blockquote>
-<h4 id="《iOS开发进阶》"><a href="#《iOS开发进阶》" class="headerlink" title="《iOS开发进阶》"></a>《iOS开发进阶》</h4><blockquote>
-<p>iOS进阶苦旅</p>
-</blockquote>
-<h4 id="《Effective-Objective-C-2-0：编写高质量iOS与OS-X代码的52个有效方法》"><a href="#《Effective-Objective-C-2-0：编写高质量iOS与OS-X代码的52个有效方法》" class="headerlink" title="《Effective Objective-C 2.0：编写高质量iOS与OS X代码的52个有效方法》"></a>《Effective Objective-C 2.0：编写高质量iOS与OS X代码的52个有效方法》</h4><blockquote>
-<p>iOS进阶苦旅，强烈推荐本书。</p>
-</blockquote>
-<h4 id="《PRODUCTER》"><a href="#《PRODUCTER》" class="headerlink" title="《PRODUCTER》"></a>《PRODUCTER》</h4><blockquote>
-<p>Kevin Zhou 出品</p>
-</blockquote>
-<h4 id="《Objective-C高级编程-iOS与OS-X多线程和内存管理》"><a href="#《Objective-C高级编程-iOS与OS-X多线程和内存管理》" class="headerlink" title="《Objective-C高级编程 iOS与OS X多线程和内存管理》"></a>《Objective-C高级编程 iOS与OS X多线程和内存管理》</h4><blockquote>
-<p>iOS进阶苦旅，强烈推荐本书。</p>
-</blockquote>
-<h4 id="《腾讯是怎么长大的》"><a href="#《腾讯是怎么长大的》" class="headerlink" title="《腾讯是怎么长大的》"></a>《腾讯是怎么长大的》</h4><blockquote>
-<p>算是腾讯的自传吧</p>
-</blockquote>
-<h4 id="《跳槽：做出更好的选择》"><a href="#《跳槽：做出更好的选择》" class="headerlink" title="《跳槽：做出更好的选择》"></a>《跳槽：做出更好的选择》</h4><blockquote>
-<p>职业规划相关 </p>
-</blockquote>
-<h3 id="DOING"><a href="#DOING" class="headerlink" title="DOING"></a>DOING</h3><h4 id="《The-Swift-Programming-Languige》"><a href="#《The-Swift-Programming-Languige》" class="headerlink" title="《The Swift Programming Languige》"></a>《The Swift Programming Languige》</h4><blockquote>
-<p>swift 开发必备</p>
-</blockquote>
-<h4 id="《软件开发者路线图：从学徒到高手》"><a href="#《软件开发者路线图：从学徒到高手》" class="headerlink" title="《软件开发者路线图：从学徒到高手》"></a>《软件开发者路线图：从学徒到高手》</h4><h3 id="未读清单"><a href="#未读清单" class="headerlink" title="未读清单"></a>未读清单</h3><h4 id="《软件开发者路线图-从学徒到高手》"><a href="#《软件开发者路线图-从学徒到高手》" class="headerlink" title="《软件开发者路线图:从学徒到高手》"></a>《软件开发者路线图:从学徒到高手》</h4><h4 id="《编程珠玑》"><a href="#《编程珠玑》" class="headerlink" title="《编程珠玑》"></a>《编程珠玑》</h4><h4 id="《重构-改善既有代码的设计》"><a href="#《重构-改善既有代码的设计》" class="headerlink" title="《重构 改善既有代码的设计》"></a>《重构 改善既有代码的设计》</h4><h4 id="《React-Native-用JavaScript开发移动应用》"><a href="#《React-Native-用JavaScript开发移动应用》" class="headerlink" title="《React Native 用JavaScript开发移动应用》"></a>《React Native 用JavaScript开发移动应用》</h4><h4 id="《Objective-C编程全解》"><a href="#《Objective-C编程全解》" class="headerlink" title="《Objective-C编程全解》"></a>《Objective-C编程全解》</h4><h3 id="书库"><a href="#书库" class="headerlink" title="书库"></a>书库</h3><h4 id="《A-Guide-To-iOS-Animation》"><a href="#《A-Guide-To-iOS-Animation》" class="headerlink" title="《A Guide To iOS Animation》"></a>《A Guide To iOS Animation》</h4><h4 id="《iOS进阶指南》"><a href="#《iOS进阶指南》" class="headerlink" title="《iOS进阶指南》"></a>《iOS进阶指南》</h4><blockquote>
-<p>iOS圈网红 叶孤城正在写的书</p>
-</blockquote>
-<h4 id="《Core-Data》"><a href="#《Core-Data》" class="headerlink" title="《Core Data》"></a>《Core Data》</h4><blockquote>
-<p>objc.io 出品 喵神翻译</p>
-</blockquote>
-<h4 id="《Swift-设计模式（iOS）》"><a href="#《Swift-设计模式（iOS）》" class="headerlink" title="《Swift 设计模式（iOS）》"></a>《Swift 设计模式（iOS）》</h4><h4 id="《Go-Web-编程》"><a href="#《Go-Web-编程》" class="headerlink" title="《Go Web 编程》"></a>《Go Web 编程》</h4><h4 id="《iOS-CORE-ANIMATION》"><a href="#《iOS-CORE-ANIMATION》" class="headerlink" title="《iOS CORE ANIMATION》"></a>《iOS CORE ANIMATION》</h4><h4 id="《Python-Cookbook》"><a href="#《Python-Cookbook》" class="headerlink" title="《Python Cookbook》"></a>《Python Cookbook》</h4><h4 id="《函数式Swift》"><a href="#《函数式Swift》" class="headerlink" title="《函数式Swift》"></a>《函数式Swift》</h4><blockquote>
-<p>objc.io 出品 喵神翻译</p>
-</blockquote>
-<h4 id="《深入解析Mac-OX-amp-iOS-操作系统》"><a href="#《深入解析Mac-OX-amp-iOS-操作系统》" class="headerlink" title="《深入解析Mac OX &amp; iOS 操作系统》"></a>《深入解析Mac OX &amp; iOS 操作系统》</h4><h4 id="《JavaScript-权威指南》"><a href="#《JavaScript-权威指南》" class="headerlink" title="《JavaScript 权威指南》"></a>《JavaScript 权威指南》</h4><h4 id="《JavaScript-面向对象编程指南》"><a href="#《JavaScript-面向对象编程指南》" class="headerlink" title="《JavaScript 面向对象编程指南》"></a>《JavaScript 面向对象编程指南》</h4><h4 id="《JavaScript-王者归来》"><a href="#《JavaScript-王者归来》" class="headerlink" title="《JavaScript 王者归来》"></a>《JavaScript 王者归来》</h4><h4 id="《Shell脚本学习指南》"><a href="#《Shell脚本学习指南》" class="headerlink" title="《Shell脚本学习指南》"></a>《Shell脚本学习指南》</h4><h4 id="《大道至简-软件工程实践者的思想》"><a href="#《大道至简-软件工程实践者的思想》" class="headerlink" title="《大道至简 软件工程实践者的思想》"></a>《大道至简 软件工程实践者的思想》</h4><h4 id="《REWORK》"><a href="#《REWORK》" class="headerlink" title="《REWORK》"></a>《REWORK》</h4><h4 id="《iOS-并发编程指南》"><a href="#《iOS-并发编程指南》" class="headerlink" title="《iOS 并发编程指南》"></a>《iOS 并发编程指南》</h4><h4 id="《Growth-全栈工程师指南》"><a href="#《Growth-全栈工程师指南》" class="headerlink" title="《Growth 全栈工程师指南》"></a>《Growth 全栈工程师指南》</h4><h4 id="《深入浅出全栈工程师》"><a href="#《深入浅出全栈工程师》" class="headerlink" title="《深入浅出全栈工程师》"></a>《深入浅出全栈工程师》</h4><h4 id="《调试九法-软件错误的排查之道》"><a href="#《调试九法-软件错误的排查之道》" class="headerlink" title="《调试九法 软件错误的排查之道》"></a>《调试九法 软件错误的排查之道》</h4><h4 id="《架构实践-软件架构设计的过程》"><a href="#《架构实践-软件架构设计的过程》" class="headerlink" title="《架构实践 软件架构设计的过程》"></a>《架构实践 软件架构设计的过程》</h4><h4 id="《图解TCP-IP》"><a href="#《图解TCP-IP》" class="headerlink" title="《图解TCP/IP》"></a>《图解TCP/IP》</h4><h4 id="《图解HTTP》"><a href="#《图解HTTP》" class="headerlink" title="《图解HTTP》"></a>《图解HTTP》</h4><h4 id="《HTTP权威指南》"><a href="#《HTTP权威指南》" class="headerlink" title="《HTTP权威指南》"></a>《HTTP权威指南》</h4><h4 id="《TCP-IP详解-协议、实现、TCP事物协议》"><a href="#《TCP-IP详解-协议、实现、TCP事物协议》" class="headerlink" title="《TCP/IP详解 协议、实现、TCP事物协议》"></a>《TCP/IP详解 协议、实现、TCP事物协议》</h4>]]></content>
     </entry>
     
     <entry>
