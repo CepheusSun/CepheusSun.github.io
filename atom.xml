@@ -195,7 +195,7 @@
     <link href="https://programersunny.github.io/2016/11/17/SYNetwork/"/>
     <id>https://programersunny.github.io/2016/11/17/SYNetwork/</id>
     <published>2016-11-16T16:00:00.000Z</published>
-    <updated>2016-11-17T06:48:45.000Z</updated>
+    <updated>2016-11-28T13:45:56.000Z</updated>
     
     <content type="html"><![CDATA[<p>基于AFNetworking的网络请求框架。采用command设计模式，支持按照接口缓存请求数据。</p>
 <h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p><a href="https://github.com/ProgramerSunny/SYNetwork"><em>GitHub地址</em></a></p>
@@ -287,11 +287,10 @@
 <li><p>对其他请求方法的支持</p>
 </li>
 <li><p>HTTPS</p>
-<p>​</p>
-<hr>
 </li>
 </ol>
-<h1 id="许可证"><a href="#许可证" class="headerlink" title="许可证"></a>许可证</h1><p>YYKit 使用 MIT 许可证，详情见 LICENSE 文件。</p>
+<hr>
+<h1 id="许可证"><a href="#许可证" class="headerlink" title="许可证"></a>许可证</h1><p>SYNetwork 使用 MIT 许可证，详情见 LICENSE 文件。</p>
 ]]></content>
     
     <summary type="html">
