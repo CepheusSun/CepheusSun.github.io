@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://programersunny.github.io/"/>
-  <updated>2016-11-25T03:17:34.000Z</updated>
+  <updated>2016-12-02T08:58:34.000Z</updated>
   <id>https://programersunny.github.io/</id>
   
   <author>
@@ -14,6 +14,96 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用 Cocoapods 管理你的项目</title>
+    <link href="https://programersunny.github.io/2016/12/02/CoaocPodSpec/"/>
+    <id>https://programersunny.github.io/2016/12/02/CoaocPodSpec/</id>
+    <published>2016-12-01T16:00:00.000Z</published>
+    <updated>2016-12-02T08:58:34.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>教你建立一个自己的 CocoaPods 开源仓库。</p>
+<a id="more"></a>
+<h2 id="写在前面的话"><a href="#写在前面的话" class="headerlink" title="写在前面的话"></a>写在前面的话</h2><p>作为一个 iOS 开发者，几乎所有人都使用过 CocoaPods 吧。作为 iOS 开发中最常用最有名的类库管理工具，给开发者带来了很大的便利。而且现在很多的第三方类库都支持 Pod . 如果一名开发者想要将自己的代码开源给更多的人使用，支持 CocoaPods 肯定是更好的办法。</p>
+<p>最近一直在考虑将公司的项目使用 CocoaPods 来模块管理，所以将前段时间重新写的 <code>SYNetwork</code> 进行了对其他类的解耦，在这个过程中学到了很多组织代码的经验， 加上最近正在读的 《设计模式之禅》 逐渐意识到之前自己组织代码的能力还是有所欠缺，很多模块之间也进行了一些完全没有必要的耦合，这其实是很烂的编码形式。</p>
+<p>由于公司并没有构建自己的 git 服务器, 而是将代码托管在了 oschina ,所以索性将这个模块开源并放在了github上。然后尝试使用 CocoaPods 来管理这个模块，并在公司其他几个项目中进行推广。</p>
+<p><strong>这只是我模块化项目的第一步。</strong> </p>
+<p>好了， 扯淡部分完成。</p>
+<h2 id="在-GitHub-创建代码仓库"><a href="#在-GitHub-创建代码仓库" class="headerlink" title="在 GitHub 创建代码仓库"></a>在 GitHub 创建代码仓库</h2><p>因为 CocoaPods 始终还是要将代码放在 GitHub 上的，所以我们还是创建一个代码仓库来保存这些代码吧！</p>
+<p>这一步完成之后需要记住两个内容</p>
+<ul>
+<li>项目的 ssh地址 <code>git@github.com:ProgramerSunny/SYNetwork.git</code></li>
+<li>项目的名称 <code>SYNetwork</code></li>
+</ul>
+<h2 id="在本地创建-podspec-文件"><a href="#在本地创建-podspec-文件" class="headerlink" title="在本地创建 podspec 文件"></a>在本地创建 podspec 文件</h2><p>在终端中执行命令</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod lib create SYNetwork</div></pre></td></tr></table></figure>
+<p>终端会提示</p>
+<blockquote>
+<p>Cloning <code>https://github.com/CocoaPods/pod-template.git</code> into <code>pod</code>.</p>
+</blockquote>
+<p>克隆完成之后会连续的回答几个问题，根据实际情况来选择吧！</p>
+<p>回答问题之后，在桌面上会有一个<code>SYNetwork</code>文件夹。在这个文件夹中又有一个文件夹<code>SYNetwork</code>里面有两个文件</p>
+<ul>
+<li>Classes</li>
+<li>Assets</li>
+</ul>
+<p>其中Classes 存放的你的源代码，Assets 应该好似一些图片资源什么的,我这个仓库里面并没有用到。</p>
+<blockquote>
+<p>还是重新整理一下Clone下来的SYNetwork吧</p>
+<ul>
+<li>在 Example 文件中是自动创建的 demo 项目， 回答问题之后会自动打开这个项目，不用管它，果断的关掉它，然后 cd 到这个文件夹中 <code>pod install</code>一下。</li>
+<li>将我们写的代码放进 <code>SYNetwork/SYNetwork/Classes/</code>文件夹中。</li>
+<li>重新 cd 到 example 文件夹，执行 <code>pod update</code></li>
+</ul>
+<p>完成上面三步之后，可以在你的 demo 项目中尝试使用一些你的库，不过我没有，偷了一个懒😊</p>
+</blockquote>
+<h3 id="在podspec文件中编码"><a href="#在podspec文件中编码" class="headerlink" title="在podspec文件中编码"></a>在podspec文件中编码</h3><p>我使用的是Sublime Text </p>
+<p>打开第一个<code>SYNetwork</code>文件夹中的<code>SYNetwork.podspec</code>文件。这个文件就是配置 CoaoaPods 基本信息的文件</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Pod::Spec.new <span class="keyword">do</span> <span class="params">|s|</span></div><div class="line">  <span class="comment"># pod 库名</span></div><div class="line">  s.name             = <span class="string">'SYNetwork'</span></div><div class="line">  <span class="comment"># pod 版本</span></div><div class="line">  s.version          = <span class="string">'3.0'</span></div><div class="line">  <span class="comment"># pod 概述 </span></div><div class="line">  s.summary          = <span class="string">'A grest network frameworks.'</span></div><div class="line">  <span class="comment"># pod的详细描述</span></div><div class="line">  s.description      = &lt;&lt;-DESC</div><div class="line">    ’this is A great network frameworks<span class="string">'</div><div class="line">                       DESC</div><div class="line">  # pod 的主页</div><div class="line">  s.homepage         = '</span><span class="symbol">https:</span>/<span class="regexp">/github.com/</span>ProgramerSunny/SYNetwork<span class="string">'</div><div class="line">  # 许可证书</div><div class="line">  s.license          = &#123; :type =&gt; '</span>MIT<span class="string">', :file =&gt; '</span>LICENSE<span class="string">' &#125;</div><div class="line">  # 作者信息</div><div class="line">  s.author           = &#123; '</span>ProgramerSunny<span class="string">' =&gt; '</span>cd_sunyang@163.com<span class="string">' &#125;</div><div class="line">  # pod 源码在 GitHub 的仓库地址,以及 pod 版本</div><div class="line">  s.source           = &#123; :git =&gt; '</span><span class="symbol">https:</span>/<span class="regexp">/github.com/</span>ProgramerSunny/SYNetwork.git<span class="string">', :tag =&gt; 3.0 &#125;</div><div class="line">  # pod 支持 iOS 系统</div><div class="line">  s.ios.deployment_target = '</span><span class="number">8.0</span><span class="string">'</div><div class="line"></div><div class="line">  s.source_files = '</span>SYNetwork/Classes/*<span class="string">'</div><div class="line"></div><div class="line">  # s.public_header_files = '</span>SYNetwork/Classes/SYNetwork.h<span class="string">'</div><div class="line">  # s.frameworks = '</span>UIKit<span class="string">', '</span>MapKit<span class="string">'</div><div class="line">  s.dependency '</span>AFNetworking<span class="string">', '</span>~&gt; <span class="number">3.0</span><span class="string">'</div><div class="line">end</span></div></pre></td></tr></table></figure>
+<p><strong>需要注意的是</strong></p>
+<p><strong>1.</strong></p>
+<p><code>s.source_files</code></p>
+<p><code>s.public_header_files</code>  中设置的文件路径一定应该是正确的。不然后面会出问题。</p>
+<p><strong>2.</strong></p>
+<p><code>s.version</code></p>
+<p><code>s.source</code>中设置的版本应该要对上吧，我不知道对不上会有什么问题。这个地方也会有很多的坑。还有就是至今没明白为什么我如果用 <code>0.1.0</code> 这样会报错，所以我就用了 <code>1.0</code></p>
+<h3 id="验证一下"><a href="#验证一下" class="headerlink" title="验证一下"></a>验证一下</h3><p>在终端中执行</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod lib lint</div></pre></td></tr></table></figure>
+<p>如果出现</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">-&gt; SYNetwork (<span class="number">3.0</span>)</div><div class="line">SYNetwork passed validation.</div></pre></td></tr></table></figure>
+<p>就是验证通过</p>
+<p>不然就需要去改各种问题了</p>
+<h3 id="注册CocoaPods"><a href="#注册CocoaPods" class="headerlink" title="注册CocoaPods"></a>注册CocoaPods</h3><p>要上传你的代码到 CocoaPods 肯定也需要注册自己的身份。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod trunk register your_email_address <span class="string">'your_name'</span></div></pre></td></tr></table></figure>
+<p>成功之后 CocoaPods 会发送一验证邮件到上面的邮箱，确认一下就OK</p>
+<p><strong>这里的<code>your_name</code>非常建议你使用 GitHub 的用户名 邮箱也是</strong></p>
+<h3 id="上传"><a href="#上传" class="headerlink" title="上传"></a>上传</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git tag -m<span class="string">"first release"</span> <span class="string">"3.0"</span></div><div class="line">git push --tags</div><div class="line">pod trunk push iOS_Category.podspec</div></pre></td></tr></table></figure>
+<p>这了的 3.0 就是<code>SYNetwork.podspec</code>中的 3.0 </p>
+<p>最后搜索一下吧</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod search SYNetwork</div></pre></td></tr></table></figure>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>一些坑吧！</p>
+<h4 id="路径不对"><a href="#路径不对" class="headerlink" title="路径不对"></a>路径不对</h4><blockquote>
+<p>Unable to interpret the specified path as a podspec</p>
+</blockquote>
+<p> 看你的 tag 标记和 podSpec 文件的 version 字段是否一致</p>
+<h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><p><a href="http://blog.csdn.net/skylin19840101/article/details/50426822"><em>链接</em></a></p>
+<p><a href="http://tips.producter.io/shi-yong-cocoapods-jin-xing-tuan-dui-xie-zuo/">使用 CocoaPods 进行团队协作</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;教你建立一个自己的 CocoaPods 开源仓库。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="iOS" scheme="https://programersunny.github.io/categories/iOS/"/>
+    
+    
+      <category term="iOS" scheme="https://programersunny.github.io/tags/iOS/"/>
+    
+      <category term="CocoaPods" scheme="https://programersunny.github.io/tags/CocoaPods/"/>
+    
+  </entry>
   
   <entry>
     <title>2016我的书单</title>
@@ -1055,11 +1145,11 @@
       <category term="前端" scheme="https://programersunny.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="CSS" scheme="https://programersunny.github.io/tags/CSS/"/>
-    
       <category term="前端" scheme="https://programersunny.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="学习笔记" scheme="https://programersunny.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="CSS" scheme="https://programersunny.github.io/tags/CSS/"/>
     
   </entry>
   
@@ -1312,11 +1402,11 @@
       <category term="前端" scheme="https://programersunny.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
+      <category term="html" scheme="https://programersunny.github.io/tags/html/"/>
+    
       <category term="前端" scheme="https://programersunny.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="学习笔记" scheme="https://programersunny.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="html" scheme="https://programersunny.github.io/tags/html/"/>
     
   </entry>
   
@@ -1701,117 +1791,6 @@
       <category term="iOS" scheme="https://programersunny.github.io/tags/iOS/"/>
     
       <category term="多线程" scheme="https://programersunny.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>iOS中的预编译指令</title>
-    <link href="https://programersunny.github.io/2016/07/26/iOS%E4%B8%AD%E7%9A%84%E9%A2%84%E7%BC%96%E8%AF%91%E6%8C%87%E4%BB%A4%E7%9A%84%E5%88%9D%E6%AD%A5%E6%8E%A2%E7%A9%B6-%E8%BD%AC/"/>
-    <id>https://programersunny.github.io/2016/07/26/iOS中的预编译指令的初步探究-转/</id>
-    <published>2016-07-26T09:16:38.000Z</published>
-    <updated>2016-08-29T02:27:28.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>iOS中的一些预编译指令。<br><a id="more"></a></p>
-<h2 id="开篇"><a href="#开篇" class="headerlink" title="开篇"></a>开篇</h2><p>举一个简单的的例子，老婆说了句“你给我滚出去睡沙发”。这句话的处理流程事这样的</p>
-<p><img src="http://i4.piimg.com/567571/5d9de7ecac719da4.png" width=600 height=400 /></p>
-<p>程序的编译其实就是计算机在执行过程之前，把老婆的命令转换成电信号的过程。在计算机世界中，这个玩意儿叫过编译器（compiler），什么GCC啊clang啊什么什么的都是说的这个东西。看起来很高大上，其实就是一个翻译的东西。人把老婆的指令翻译成电波，编译器把各种语言翻译成01010101….</p>
-<pre><code>ps : 这篇文章是我在阅读了戴伟来的文章之后,根据原文整理的一个笔记。所以文中会有很多地方都摘录了文中的句子。感谢@戴伟来。如果你想直接看一下原文的话，最后有链接。
-</code></pre><blockquote>
-<p>编译器的工作原理基本上都是三段式的，前端、优化器、后端。</p>
-<blockquote>
-<p>前端负责解析源码，检查语法错误，并将其翻译成抽象的语法树; </p>
-<p>优化器对这一中间代码进行优化，使代码更佳高效。</p>
-<p>后端负责将优化过的代码转化成对应机器的代码。</p>
-</blockquote>
-</blockquote>
-<p><img src="http://i4.piimg.com/567571/68513aafd1af8015.png" width=650 height=180 /></p>
-<p>LLVC编译器实际上是用C++写的，那C++的编译器呢？当然是汇编了，所以编译器和计算机语言的进步就是这样迭代发展的，再之后就是用高级语言写更高级的编译器，更高级的编译器就能编译更加高级的语言….那么问题来了，世界上计算机语言那么多，各种不同的架构，Intel ARM，怎么让编译语言分别产生不同的架构的执行码呢，这个时候就应该想到刚刚的三段式模型了，当我们要支持多种语言的时候，只需要添加多个前端就可以了。当我们要支持多种目标机器的时候，只需要添加多个后端就可以了。对于中间的优化器，我们可以使用通用的中间代码。gcc可以支持c、cpp、java….等语言的编译。</p>
-<p><img src="http://i2.piimg.com/567571/fbcad0c8c26e0977.png" width=650 height=180 /></p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>由于文中作者使用的是Xcode6，但是现在我已经用到了Xcode7.3，而Xcode8页已经beta了。所以我讲使用我目前正在使用的Xcode7.3来进行本文。由于APPLE已经不在Xcode中内置GCC了，所以我就只能研究研究LLVM了。</p>
-<p>如果对各种编译器的区别感兴趣的话可以看看下面两篇文章</p>
-<ul>
-<li><a href="http://www.cnblogs.com/zuopeng/p/4141467.html"><em>《LLVM和GCC的区别》</em></a></li>
-<li><a href="http://www.programmer.com.cn/9436/"><em>《《三好学生Chris Lattner的LLVM编译工具链》》</em></a></li>
-</ul>
-<p>如果阅读过优秀的源码，你一定会看到很多的<code>#define</code> <code>#if</code> <code>#error</code>之类的代码,预编译对程序之后的编译提供了很多方便以及优化，对于错误处理，包引用、跨平台等都有着极大的帮助。</p>
-<h3 id="包含文件"><a href="#包含文件" class="headerlink" title="包含文件"></a>包含文件</h3><h4 id="include"><a href="#include" class="headerlink" title="#include"></a>#include</h4><p><code>#include&quot; &quot;</code> 、<code>#include&lt; &gt;</code>的区别:<code>#include“”</code>包含和使用<code>#include &lt; &gt;</code>包含的不同之处就是使用&lt;&gt;包含时，预处理器会搜索C函数库头文件路径下的文件，而使用“”包含时首先搜索程序所在目录，其次搜索系统Path定义目录，如果还是找不到才会搜索C函数库头文件所在目录。</p>
-<blockquote>
-<p>使用#include的时候包含文件的时候是不能递归包含的，例如a.h文件包含b.h，而b.h就不<br>能再包含a.h了；还有就是重复包含(比如a.h包含了b.h,然后main.c中又包含了a.h和b.h)虽然是允许的但是这会降低编译性能。那该怎么办呢？</p>
-<blockquote>
-<ol>
-<li>使用#import替代include</li>
-<li>使用宏判断(宏判断下面会详解)，xcode很聪明，只要新建一个头文件a.h 里面就自动就生成了</li>
-</ol>
-</blockquote>
-</blockquote>
-<h4 id="include-next"><a href="#include-next" class="headerlink" title="#include_next"></a>#include_next</h4><p>这个是非C标准库里面的预处理指令,我没有用过。</p>
-<h4 id="import"><a href="#import" class="headerlink" title="#import"></a>#import</h4><p>OC特有的，智能的<code>＃include</code>,解决了<code>＃include</code>的重复包含问题。</p>
-<h3 id="宏定义"><a href="#宏定义" class="headerlink" title="宏定义"></a>宏定义</h3><h4 id="define"><a href="#define" class="headerlink" title="#define"></a>#define</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//this defines PI</div><div class="line">#define M_PI 3.141592</div></pre></td></tr></table></figure>
-<p><code>#define</code> 关键字表面即将开始定义一个宏，M_PI是宏的名字，空格过后是宏的内容。类似这样的宏编译器会在语义分析之后讲M_PI替换为3.14159，这是宏的最基本用法。</p>
-<p>还有一种是函数宏函数宏顾名思义，就是行为类似函数，可以接受参数的宏。具体来说，在定义的时候，如果我们在宏名字后面跟上一对括号的话，这个宏就变成了函数宏。从最简单的例子开始，比如我在开发中最常用的两个宏</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#define WS(weakSelf) __weak __typeof(&amp;*self)weakSelf = self;</div><div class="line">#define SS(strongSelf) __strong typeof(&amp;*weakSelf) strongSelf = weakSelf;</div></pre></td></tr></table></figure>
-<p>这两个宏的意思应该不用我说了吧，如果你没看懂而且你又喜欢用block的话，那建议你用instrument 的leaks看看是不是一串红点。</p>
-<p>原文中还有一个MIN宏定义的正确用法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#define MIN(A,B)    (&#123; __typeof__(A) __a = (A); __typeof__(B) __b = (B); __a &lt; __b ? __a : __b; &#125;)</div></pre></td></tr></table></figure>
-<p>接下来再把我使用的log宏放出来</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#ifdef DEBUG</div><div class="line">#   define PSLog(fmt, ...) NSLog((@&quot;%s [%d 行] &quot; fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);</div><div class="line">#else</div><div class="line">#   define PSLog(...)</div><div class="line">#endif</div></pre></td></tr></table></figure>
-<p>这个宏的意思请分别在release 和 debug下测试</p>
-<h4 id="＃undef"><a href="#＃undef" class="headerlink" title="＃undef"></a>＃undef</h4><p>当你使用了<code>#define</code>宏定义后，则在整个程序的运行周期内这个宏都是有效的，但有时候我们在某个逻辑里希望这个宏失效不想使用，则会使用</p>
-<h3 id="条件编译"><a href="#条件编译" class="headerlink" title="条件编译"></a>条件编译</h3><h4 id="if-else-endif"><a href="#if-else-endif" class="headerlink" title="#if #else #endif"></a>#if #else #endif</h4><p>如果<code>＃if 之后的条件语句成立的话</code>编译<code>＃else</code>里面的代码 反之编译 <code>＃else</code> 之后的代码 <code>#endif</code> 结束语句<br>接下来是一些预定的宏</p>
-<ul>
-<li><code>DEBUG</code> DEBUG环境下返回YES</li>
-<li><code>__has_feature(objc_arc)</code> 开启ARC时返回YES</li>
-<li><code>__IPHONE_OS_VERSION_MIN_REQUIRED &lt; __IPHONE_7_0</code> 如果手机系统小于7.0 返回YES,版本策略</li>
-</ul>
-<h4 id="if-defined-ifdef-ifndef-elif"><a href="#if-defined-ifdef-ifndef-elif" class="headerlink" title="#if defined #ifdef #ifndef #elif"></a>#if defined #ifdef #ifndef #elif</h4><ul>
-<li><code>#if defined (AAA)</code> : 如果已经定义了AAA这个宏,返回YES，可用于复杂条件<code>#if defined (AAA) &amp;&amp; defined (BBB)</code>或者<code>#if defined (AAA) || VERSION &gt; 12</code></li>
-<li><code>#iddef （AAA）</code>: 如果已经定义了AAA这个宏,返回YES，单个条件</li>
-<li><code>#ifndef</code> : if not defined 的缩写</li>
-<li><code>#elif</code> : 跟<code>#if</code>一起使用，else if的缩写</li>
-</ul>
-<h3 id="错误、警告处理"><a href="#错误、警告处理" class="headerlink" title="错误、警告处理"></a>错误、警告处理</h3><p>####　#error</p>
-<p>如果编译器遇到这货，马上就会罢工。</p>
-<p>如果你在开发一些arc only的库，那么一下代码就有了作用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#if !__has_feature(objc_arc)</div><div class="line">#error &quot;我的低调不是你装逼的资本！这个库需要开启ARC，不然你别用！&quot;</div><div class="line">#endif</div></pre></td></tr></table></figure>
-<h4 id="warning"><a href="#warning" class="headerlink" title="#warning"></a>#warning</h4><p>这个用法很简单，只要后面跟上你想警告的话就OK了，这样你就可以让编译器提醒这个警告。这个我经常用。但是还有一个更好用的<code>TODO</code>脚本,一会而我会放出来。</p>
-<h3 id="编译器控制"><a href="#编译器控制" class="headerlink" title="编译器控制"></a>编译器控制</h3><h4 id="pragma"><a href="#pragma" class="headerlink" title="#pragma"></a>#pragma</h4><p>这个应该算是使用的非常多的指令了吧，应该所有的程序员都应该知道代码<code>＃pragma mark</code>的作用。</p>
-<h5 id="pragma-mark"><a href="#pragma-mark" class="headerlink" title="#pragma mark"></a>#pragma mark</h5><p>这个真没有什么好说的了，记得<code>＃pragma mark</code> 和<code>＃pragma mark －</code>的区别就好了</p>
-<blockquote>
-<p><code>#pragma</code>非常复杂需要你对编译器底层非常的了解，只有当你开发一些比较底层的framework的时候才可能比较多用的。 <a href="http://clang.llvm.org/get_started.html"><em>Clang使用手册</em></a></p>
-</blockquote>
-<h5 id="pragma-message-“”"><a href="#pragma-message-“”" class="headerlink" title="#pragma message(“”)"></a>#pragma message(“”)</h5><p>可以输出调试信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#pragma clang disgnostic push</div><div class="line">#pragma clang disgnostic ignored &quot;clang的参数&quot;  //屏蔽某类警告</div><div class="line">#pragma clang disgnostic pop</div></pre></td></tr></table></figure>
-<p>如</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#pragma clang disgnostic push</div><div class="line">#pragma clang disgnostic ignored &quot;-Wunused-variable&quot;</div><div class="line"> </div><div class="line">int i = 1;</div><div class="line">#pragma clang disgnostic pop</div></pre></td></tr></table></figure>
-<p>如果没有被使用的时候不会报出警告</p>
-<p>关于警告一类的文章可以看看<a href="https://onevcat.com/#blog"><em>喵神王巍</em></a>的博客。</p>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>#####line<br>这个就没什么好说的，如果你自定义过NSLog 或者看到其他自定义的log并且点进去看过的话应该会看得到<code>__line__</code>这个东西吧，这表示本行语句在源文件中的位置信息。而<code>＃line</code>就是可以改变当前行的行号在编译器中的表示。并且之后的行号也会相应的改变。比如</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#include&lt;stdio.h&gt;</div><div class="line">main()&#123;</div><div class="line">	printf(&quot;%d\n&quot;,__line__);</div><div class="line">#line 100 // 指定下一行的__line__为100</div><div class="line">	printf(&quot;%d\n&quot;,__line__);</div><div class="line">	printf(&quot;%d\n&quot;,__line__);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>输出为,如果第一个printf在第三行的话</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">3</div><div class="line">100</div><div class="line">101</div></pre></td></tr></table></figure>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>刚刚开始写博客，这是我水的第二篇博文了,依然是那么的水，主要还是为了想要测试一下HEXO的玩法。以后希望自己能够在javascript 、python 、 React Native 这三个方向进步。写这个博客也是为了学习一下javescript，结果几乎没有用到js的知识。以后写一些有关于这三个方向的学习心得或者说是学习笔记吧。这篇文章发出来之后，博客的基本用法也就学的七七八八了，期待自己的进阶之旅，也期待自己在iOS的进阶之旅，也期待自己在is py rn这三个方向的入门之旅。</p>
-<p><a href="http://www.cnblogs.com/daiweilai/p/4234336.html"><em>戴伟来地址</em></a></p>
-<p>哦, 对了那个TODO是这样设置的：</p>
-<p><img src="http://i4.piimg.com/567571/397d615e3cafdbcf.png" width=650 height=400 /></p>
-<p>第四步中的脚本为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">KEYWORDS=&quot;TODO:|FIXME:|\?\?\?:|\!\!\!:&quot;</div><div class="line">find &quot;$&#123;SRCROOT&#125;&quot; \( -name &quot;*.h&quot; -or -name &quot;*.m&quot; \) -print0 | xargs -0 egrep --with-filename --line-number --only-matching &quot;($KEYWORDS).*\$&quot; | perl -p -e &quot;s/($KEYWORDS)/ warning: \$1/&quot;</div></pre></td></tr></table></figure>
-<p>原理是根据正则表达式去判断。</p>
-<p>用起来是这样的:</p>
-<p><img src="http://i4.piimg.com/567571/e3ab0fb1840550e3.png" width=650 height=50 /></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;iOS中的一些预编译指令。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="iOS" scheme="https://programersunny.github.io/categories/iOS/"/>
-    
-    
-      <category term="iOS" scheme="https://programersunny.github.io/tags/iOS/"/>
-    
-      <category term="编译原理" scheme="https://programersunny.github.io/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
     
   </entry>
   
