@@ -86,16 +86,22 @@
 
 
 
-<meta name="description" content="基于AFNetworking的网络请求框架。采用command设计模式，支持按照接口缓存请求数据。">
+<meta name="description" content="基于AFNetworking的网络请求框架。采用command设计模式，支持按照接口缓存请求数据。
+
+在公司项目整体进行换代升级的同时，移动端 App 由原来的的一个 App 拆分成两个 App ，再拆分到三个 App，在三个 App 虽然还是有很多的办法来进行管理，但是考虑到随着业务的增长，产品的数量还有增加的趋势，功能也逐渐增多。还有 Hybrid化 的趋势。将一些共有的模块提取出来为三个">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SYNetwork">
 <meta property="og:url" content="https://programersunny.github.io/2016/11/17/SYNetwork/index.html">
 <meta property="og:site_name" content="ProgramerSunny的博客">
-<meta property="og:description" content="基于AFNetworking的网络请求框架。采用command设计模式，支持按照接口缓存请求数据。">
-<meta property="og:updated_time" content="2016-12-07T13:45:28.000Z">
+<meta property="og:description" content="基于AFNetworking的网络请求框架。采用command设计模式，支持按照接口缓存请求数据。
+
+在公司项目整体进行换代升级的同时，移动端 App 由原来的的一个 App 拆分成两个 App ，再拆分到三个 App，在三个 App 虽然还是有很多的办法来进行管理，但是考虑到随着业务的增长，产品的数量还有增加的趋势，功能也逐渐增多。还有 Hybrid化 的趋势。将一些共有的模块提取出来为三个">
+<meta property="og:updated_time" content="2016-12-08T17:55:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SYNetwork">
-<meta name="twitter:description" content="基于AFNetworking的网络请求框架。采用command设计模式，支持按照接口缓存请求数据。">
+<meta name="twitter:description" content="基于AFNetworking的网络请求框架。采用command设计模式，支持按照接口缓存请求数据。
+
+在公司项目整体进行换代升级的同时，移动端 App 由原来的的一个 App 拆分成两个 App ，再拆分到三个 App，在三个 App 虽然还是有很多的办法来进行管理，但是考虑到随着业务的增长，产品的数量还有增加的趋势，功能也逐渐增多。还有 Hybrid化 的趋势。将一些共有的模块提取出来为三个">
 
 
 
@@ -337,8 +343,14 @@
       
 
       
-        <p>基于AFNetworking的网络请求框架。采用command设计模式，支持按照接口缓存请求数据。</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p><a href="https://github.com/ProgramerSunny/SYNetwork"><em>GitHub地址</em></a></p>
+        <blockquote>
+<p> 基于AFNetworking的网络请求框架。采用command设计模式，支持按照接口缓存请求数据。</p>
+</blockquote>
+<p>在公司项目整体进行换代升级的同时，移动端 App 由原来的的一个 App 拆分成两个 App ，再拆分到三个 App，在三个 App 虽然还是有很多的办法来进行管理，但是考虑到随着业务的增长，产品的数量还有增加的趋势，功能也逐渐增多。还有 Hybrid化 的趋势。将一些共有的模块提取出来为三个 App 所用，可能会是更好的方式。当然，对这些公共模块的管理，还是会选择使用 CocoaPods ，接下来会再写一篇文章来介绍如何使用创建自己的 CocoaPods 仓库。在这样的环境下，第一个提取出来的模块就诞生了 — SYNetwork。</p>
+<p>在进行模块的独立的时候，想得最多的还是和原来的代码进行解耦，并且在抽取的过程中不要破坏原有的代码逻辑，并且比较合理的组织代码。在这样的基础上添加一些新的功能。在跟另外一个同事讨论之后，决定放弃之前集中式的网络请求方式，参考了大量前辈的网络库之后，采用了 Command 模式，一个网络请求 Api 是一个对象，这样能够更方便和优雅的根据不同的接口满足不同的业务需求。</p>
+<p>当然，公司的项目目前还没有十分的复杂，所以目前主要实现了: <code>POST</code>、<code>GET</code> 两种请求方式；根据请求的参数和 url 缓存请求结果；一个还算漂亮的logger；简单的对网络请求进行 AOP 操作(对参数进行加密)这些比较常见的功能。</p>
+<a id="more"></a>
+<p><a href="https://github.com/ProgramerSunny/SYNetwork"><em>GitHub地址</em></a></p>
 <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><h3 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h3><p>SYNetwork 由下面两个部分组成</p>
 <ul>
 <li><p>SYNetwork</p>
@@ -614,7 +626,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原理"><span class="nav-number">2.</span> <span class="nav-text">原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#组成"><span class="nav-number">2.1.</span> <span class="nav-text">组成</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#加入"><span class="nav-number">3.</span> <span class="nav-text">加入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、直接将源文件拉进你的工程"><span class="nav-number">3.1.</span> <span class="nav-text">1、直接将源文件拉进你的工程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、SYNetwork也支持通过Cocoapod-通过在Podfile中添加如下代码。"><span class="nav-number">3.2.</span> <span class="nav-text">2、SYNetwork也支持通过Cocoapod. 通过在Podfile中添加如下代码。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用方法"><span class="nav-number">4.</span> <span class="nav-text">使用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#step-1"><span class="nav-number">4.1.</span> <span class="nav-text">step 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step-2"><span class="nav-number">4.2.</span> <span class="nav-text">step 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step-3-调用"><span class="nav-number">4.3.</span> <span class="nav-text">step 3 调用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#License"><span class="nav-number">5.</span> <span class="nav-text">License</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#原理"><span class="nav-number">1.</span> <span class="nav-text">原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#组成"><span class="nav-number">1.1.</span> <span class="nav-text">组成</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#加入"><span class="nav-number">2.</span> <span class="nav-text">加入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、直接将源文件拉进你的工程"><span class="nav-number">2.1.</span> <span class="nav-text">1、直接将源文件拉进你的工程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、SYNetwork也支持通过Cocoapod-通过在Podfile中添加如下代码。"><span class="nav-number">2.2.</span> <span class="nav-text">2、SYNetwork也支持通过Cocoapod. 通过在Podfile中添加如下代码。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用方法"><span class="nav-number">3.</span> <span class="nav-text">使用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#step-1"><span class="nav-number">3.1.</span> <span class="nav-text">step 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step-2"><span class="nav-number">3.2.</span> <span class="nav-text">step 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step-3-调用"><span class="nav-number">3.3.</span> <span class="nav-text">step 3 调用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#License"><span class="nav-number">4.</span> <span class="nav-text">License</span></a></li></ol></div>
             
           </div>
         </section>
