@@ -538,7 +538,7 @@
     </entry>
     
     <entry>
-      <title><![CDATA[教你一行代码集成列表视图无数据展示]]></title>
+      <title><![CDATA[EmptyDataKit -- 一行代码集成列表视图无数据展示]]></title>
       <url>https://programersunny.github.io/2016/09/07/EmptyDataKit/</url>
       <content type="html"><![CDATA[<p>抽空写了一个小东西<a href="https://github.com/ProgramerSunny/EmptyDataKit"><strong>EmptyDataKit</strong></a>，一行代码可以集成UITableView 和 UICollectionView 在数据源没有数据的时候展示一个默认占位图片。</p>
 <a id="more"></a>
