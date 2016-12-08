@@ -470,7 +470,12 @@
 
       
         
-          <p>教你建立一个自己的 CocoaPods 开源仓库。</p>
+          <blockquote>
+<p>本文是一个教你使用CocoaPods管理开源模块的文章。</p>
+</blockquote>
+<p>作为一个 iOS 开发者，几乎所有人都使用过 CocoaPods 。作为 iOS 开发中最常用最有名的类库管理工具，给开发者带来了很大的便利。而且现在很多的第三方类库都支持 Pod . 如果一名开发者想要将自己的代码开源给更多的人使用，支持 CocoaPods 肯定是更好的办法。</p>
+<p>最近一直在考虑将公司的项目使用 CocoaPods 来模块管理，所以将前段时间重新写的 <code>SYNetwork</code> 进行了对其他类的解耦，在这个过程中学到了很多组织代码的经验， 加上最近正在读的 《设计模式之禅》 逐渐意识到之前自己组织代码的能力还是有所欠缺，很多模块之间也进行了一些完全没有必要的耦合，这其实是很烂的编码形式。</p>
+<p>由于公司并没有构建自己的 git 服务器, 而是将代码托管在了 oschina ,所以索性将这个模块开源并放在了github上。然后尝试使用 CocoaPods 来管理这个模块，并在公司其他几个项目中进行推广。</p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/12/02/CoaocPodSpec/#more" rel="contents">
               阅读全文 &raquo;

@@ -86,16 +86,25 @@
 
 
 
-<meta name="description" content="教你建立一个自己的 CocoaPods 开源仓库。">
+<meta name="description" content="本文是一个教你使用CocoaPods管理开源模块的文章。
+
+作为一个 iOS 开发者，几乎所有人都使用过 CocoaPods 。作为 iOS 开发中最常用最有名的类库管理工具，给开发者带来了很大的便利。而且现在很多的第三方类库都支持 Pod . 如果一名开发者想要将自己的代码开源给更多的人使用，支持 CocoaPods 肯定是更好的办法。
+最近一直在考虑将公司的项目使用 CocoaPods 来模">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用 Cocoapods 管理你的项目">
 <meta property="og:url" content="https://programersunny.github.io/2016/12/02/CoaocPodSpec/index.html">
 <meta property="og:site_name" content="ProgramerSunny的博客">
-<meta property="og:description" content="教你建立一个自己的 CocoaPods 开源仓库。">
-<meta property="og:updated_time" content="2016-12-02T08:58:34.000Z">
+<meta property="og:description" content="本文是一个教你使用CocoaPods管理开源模块的文章。
+
+作为一个 iOS 开发者，几乎所有人都使用过 CocoaPods 。作为 iOS 开发中最常用最有名的类库管理工具，给开发者带来了很大的便利。而且现在很多的第三方类库都支持 Pod . 如果一名开发者想要将自己的代码开源给更多的人使用，支持 CocoaPods 肯定是更好的办法。
+最近一直在考虑将公司的项目使用 CocoaPods 来模">
+<meta property="og:updated_time" content="2016-12-08T17:35:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用 Cocoapods 管理你的项目">
-<meta name="twitter:description" content="教你建立一个自己的 CocoaPods 开源仓库。">
+<meta name="twitter:description" content="本文是一个教你使用CocoaPods管理开源模块的文章。
+
+作为一个 iOS 开发者，几乎所有人都使用过 CocoaPods 。作为 iOS 开发中最常用最有名的类库管理工具，给开发者带来了很大的便利。而且现在很多的第三方类库都支持 Pod . 如果一名开发者想要将自己的代码开源给更多的人使用，支持 CocoaPods 肯定是更好的办法。
+最近一直在考虑将公司的项目使用 CocoaPods 来模">
 
 
 
@@ -337,11 +346,13 @@
       
 
       
-        <p>教你建立一个自己的 CocoaPods 开源仓库。</p>
-<a id="more"></a>
-<h2 id="写在前面的话"><a href="#写在前面的话" class="headerlink" title="写在前面的话"></a>写在前面的话</h2><p>作为一个 iOS 开发者，几乎所有人都使用过 CocoaPods 吧。作为 iOS 开发中最常用最有名的类库管理工具，给开发者带来了很大的便利。而且现在很多的第三方类库都支持 Pod . 如果一名开发者想要将自己的代码开源给更多的人使用，支持 CocoaPods 肯定是更好的办法。</p>
+        <blockquote>
+<p>本文是一个教你使用CocoaPods管理开源模块的文章。</p>
+</blockquote>
+<p>作为一个 iOS 开发者，几乎所有人都使用过 CocoaPods 。作为 iOS 开发中最常用最有名的类库管理工具，给开发者带来了很大的便利。而且现在很多的第三方类库都支持 Pod . 如果一名开发者想要将自己的代码开源给更多的人使用，支持 CocoaPods 肯定是更好的办法。</p>
 <p>最近一直在考虑将公司的项目使用 CocoaPods 来模块管理，所以将前段时间重新写的 <code>SYNetwork</code> 进行了对其他类的解耦，在这个过程中学到了很多组织代码的经验， 加上最近正在读的 《设计模式之禅》 逐渐意识到之前自己组织代码的能力还是有所欠缺，很多模块之间也进行了一些完全没有必要的耦合，这其实是很烂的编码形式。</p>
 <p>由于公司并没有构建自己的 git 服务器, 而是将代码托管在了 oschina ,所以索性将这个模块开源并放在了github上。然后尝试使用 CocoaPods 来管理这个模块，并在公司其他几个项目中进行推广。</p>
+<a id="more"></a>
 <p><strong>这只是我模块化项目的第一步。</strong> </p>
 <p>好了， 扯淡部分完成。</p>
 <h2 id="在-GitHub-创建代码仓库"><a href="#在-GitHub-创建代码仓库" class="headerlink" title="在 GitHub 创建代码仓库"></a>在 GitHub 创建代码仓库</h2><p>因为 CocoaPods 始终还是要将代码放在 GitHub 上的，所以我们还是创建一个代码仓库来保存这些代码吧！</p>
@@ -600,7 +611,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#写在前面的话"><span class="nav-number">1.</span> <span class="nav-text">写在前面的话</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在-GitHub-创建代码仓库"><span class="nav-number">2.</span> <span class="nav-text">在 GitHub 创建代码仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在本地创建-podspec-文件"><span class="nav-number">3.</span> <span class="nav-text">在本地创建 podspec 文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在podspec文件中编码"><span class="nav-number">3.1.</span> <span class="nav-text">在podspec文件中编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#验证一下"><span class="nav-number">3.2.</span> <span class="nav-text">验证一下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注册CocoaPods"><span class="nav-number">3.3.</span> <span class="nav-text">注册CocoaPods</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#上传"><span class="nav-number">3.4.</span> <span class="nav-text">上传</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">3.5.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#路径不对"><span class="nav-number">3.5.1.</span> <span class="nav-text">路径不对</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考资料"><span class="nav-number">3.5.2.</span> <span class="nav-text">参考资料</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#在-GitHub-创建代码仓库"><span class="nav-number">1.</span> <span class="nav-text">在 GitHub 创建代码仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在本地创建-podspec-文件"><span class="nav-number">2.</span> <span class="nav-text">在本地创建 podspec 文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在podspec文件中编码"><span class="nav-number">2.1.</span> <span class="nav-text">在podspec文件中编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#验证一下"><span class="nav-number">2.2.</span> <span class="nav-text">验证一下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注册CocoaPods"><span class="nav-number">2.3.</span> <span class="nav-text">注册CocoaPods</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#上传"><span class="nav-number">2.4.</span> <span class="nav-text">上传</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">2.5.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#路径不对"><span class="nav-number">2.5.1.</span> <span class="nav-text">路径不对</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考资料"><span class="nav-number">2.5.2.</span> <span class="nav-text">参考资料</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
         </section>
