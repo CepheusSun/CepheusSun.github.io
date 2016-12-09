@@ -179,9 +179,10 @@
     <link href="https://programersunny.github.io/2016/11/25/2016%E6%88%91%E7%9A%84%E4%B9%A6%E5%8D%95/"/>
     <id>https://programersunny.github.io/2016/11/25/2016我的书单/</id>
     <published>2016-11-24T16:00:00.000Z</published>
-    <updated>2016-12-08T17:37:01.000Z</updated>
+    <updated>2016-12-09T03:08:53.000Z</updated>
     
     <content type="html"><![CDATA[<p>在年末的时候意识到梳理记录是一件多么重要和美好的事情。从阅读开始，从2016年开始记录我的读书记录。</p>
+<a id="more"></a>
 <h3 id="已经读清单"><a href="#已经读清单" class="headerlink" title="已经读清单"></a>已经读清单</h3><h4 id="《疯狂的Java讲义》"><a href="#《疯狂的Java讲义》" class="headerlink" title="《疯狂的Java讲义》"></a>《疯狂的Java讲义》</h4><blockquote>
 <p>虽然看了但是没有很深入的研究学习Java，仅仅是看了而已😂</p>
 </blockquote>
@@ -206,7 +207,6 @@
 <h4 id="《跳槽：做出更好的选择》"><a href="#《跳槽：做出更好的选择》" class="headerlink" title="《跳槽：做出更好的选择》"></a>《跳槽：做出更好的选择》</h4><blockquote>
 <p>职业规划相关 </p>
 </blockquote>
-<a id="more"></a>
 <h3 id="DOING"><a href="#DOING" class="headerlink" title="DOING"></a>DOING</h3><h4 id="《The-Swift-Programming-Languige》"><a href="#《The-Swift-Programming-Languige》" class="headerlink" title="《The Swift Programming Languige》"></a>《The Swift Programming Languige》</h4><blockquote>
 <p>swift 开发必备</p>
 </blockquote>
@@ -224,30 +224,6 @@
     <summary type="html">
     
       &lt;p&gt;在年末的时候意识到梳理记录是一件多么重要和美好的事情。从阅读开始，从2016年开始记录我的读书记录。&lt;/p&gt;
-&lt;h3 id=&quot;已经读清单&quot;&gt;&lt;a href=&quot;#已经读清单&quot; class=&quot;headerlink&quot; title=&quot;已经读清单&quot;&gt;&lt;/a&gt;已经读清单&lt;/h3&gt;&lt;h4 id=&quot;《疯狂的Java讲义》&quot;&gt;&lt;a href=&quot;#《疯狂的Java讲义》&quot; class=&quot;headerlink&quot; title=&quot;《疯狂的Java讲义》&quot;&gt;&lt;/a&gt;《疯狂的Java讲义》&lt;/h4&gt;&lt;blockquote&gt;
-&lt;p&gt;虽然看了但是没有很深入的研究学习Java，仅仅是看了而已😂&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h4 id=&quot;《禅与Objective-C编程艺术》&quot;&gt;&lt;a href=&quot;#《禅与Objective-C编程艺术》&quot; class=&quot;headerlink&quot; title=&quot;《禅与Objective-C编程艺术》&quot;&gt;&lt;/a&gt;《禅与Objective-C编程艺术》&lt;/h4&gt;&lt;blockquote&gt;
-&lt;p&gt;iOS进阶苦旅&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h4 id=&quot;《iOS开发进阶》&quot;&gt;&lt;a href=&quot;#《iOS开发进阶》&quot; class=&quot;headerlink&quot; title=&quot;《iOS开发进阶》&quot;&gt;&lt;/a&gt;《iOS开发进阶》&lt;/h4&gt;&lt;blockquote&gt;
-&lt;p&gt;iOS进阶苦旅&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h4 id=&quot;《Effective-Objective-C-2-0：编写高质量iOS与OS-X代码的52个有效方法》&quot;&gt;&lt;a href=&quot;#《Effective-Objective-C-2-0：编写高质量iOS与OS-X代码的52个有效方法》&quot; class=&quot;headerlink&quot; title=&quot;《Effective Objective-C 2.0：编写高质量iOS与OS X代码的52个有效方法》&quot;&gt;&lt;/a&gt;《Effective Objective-C 2.0：编写高质量iOS与OS X代码的52个有效方法》&lt;/h4&gt;&lt;blockquote&gt;
-&lt;p&gt;iOS进阶苦旅，强烈推荐本书。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h4 id=&quot;《PRODUCTER》&quot;&gt;&lt;a href=&quot;#《PRODUCTER》&quot; class=&quot;headerlink&quot; title=&quot;《PRODUCTER》&quot;&gt;&lt;/a&gt;《PRODUCTER》&lt;/h4&gt;&lt;blockquote&gt;
-&lt;p&gt;Kevin Zhou 出品&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h4 id=&quot;《Objective-C高级编程-iOS与OS-X多线程和内存管理》&quot;&gt;&lt;a href=&quot;#《Objective-C高级编程-iOS与OS-X多线程和内存管理》&quot; class=&quot;headerlink&quot; title=&quot;《Objective-C高级编程 iOS与OS X多线程和内存管理》&quot;&gt;&lt;/a&gt;《Objective-C高级编程 iOS与OS X多线程和内存管理》&lt;/h4&gt;&lt;blockquote&gt;
-&lt;p&gt;iOS进阶苦旅，强烈推荐本书。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h4 id=&quot;《腾讯是怎么长大的》&quot;&gt;&lt;a href=&quot;#《腾讯是怎么长大的》&quot; class=&quot;headerlink&quot; title=&quot;《腾讯是怎么长大的》&quot;&gt;&lt;/a&gt;《腾讯是怎么长大的》&lt;/h4&gt;&lt;blockquote&gt;
-&lt;p&gt;算是腾讯的自传吧&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h4 id=&quot;《跳槽：做出更好的选择》&quot;&gt;&lt;a href=&quot;#《跳槽：做出更好的选择》&quot; class=&quot;headerlink&quot; title=&quot;《跳槽：做出更好的选择》&quot;&gt;&lt;/a&gt;《跳槽：做出更好的选择》&lt;/h4&gt;&lt;blockquote&gt;
-&lt;p&gt;职业规划相关 &lt;/p&gt;
-&lt;/blockquote&gt;
     
     </summary>
     
