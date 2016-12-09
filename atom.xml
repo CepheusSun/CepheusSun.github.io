@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://programersunny.github.io/"/>
-  <updated>2016-12-08T17:31:05.000Z</updated>
+  <updated>2016-12-09T02:44:13.000Z</updated>
   <id>https://programersunny.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://programersunny.github.io/2016/12/05/%E4%B8%80%E5%A4%9C%E7%9F%A5%E7%A7%8B/"/>
     <id>https://programersunny.github.io/2016/12/05/一夜知秋/</id>
     <published>2016-12-04T16:00:00.000Z</published>
-    <updated>2016-12-08T17:31:05.000Z</updated>
+    <updated>2016-12-09T02:44:13.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>任何一种环境或个人，初次见面就预感到离别的隐痛时，你必定爱上他了。</p>
@@ -497,7 +497,7 @@
     <link href="https://programersunny.github.io/2016/11/02/SYPhotoBrowser/"/>
     <id>https://programersunny.github.io/2016/11/02/SYPhotoBrowser/</id>
     <published>2016-11-01T16:00:00.000Z</published>
-    <updated>2016-11-02T07:17:59.000Z</updated>
+    <updated>2016-12-09T02:49:19.000Z</updated>
     
     <content type="html"><![CDATA[<p>图片浏览器，使用方法类似UITableView的图片浏览器。基于YYWebImage.</p>
 <a id="more"></a>
@@ -527,13 +527,13 @@
     <link href="https://programersunny.github.io/2016/10/31/%E8%AE%A9%E4%BA%BA%E6%81%90%E6%83%A7%E7%9A%84%E5%B1%9E%E6%80%A7%E5%85%B3%E9%94%AE%E5%AD%97/"/>
     <id>https://programersunny.github.io/2016/10/31/让人恐惧的属性关键字/</id>
     <published>2016-10-30T16:00:00.000Z</published>
-    <updated>2016-10-31T12:39:02.000Z</updated>
+    <updated>2016-12-09T02:56:32.000Z</updated>
     
-    <content type="html"><![CDATA[<p>使用UIScrollView+HeaderImageScale中遇到了一个巨大的坑。<br><a id="more"></a></p>
-<p>最近搞公司的项目，在项目结束的时候，想到给我的界面加一个“headerimage scale”的效果，不想大刀阔斧的去修改原来的代码，所以我想到了之前在微博上看到的:</p>
+    <content type="html"><![CDATA[<p>一半的 App 都会有一个个人这个模块来对个人信息，设置等功能进行管理，最近搞公司的项目，在项目结束的时候就想到了应该给我的这个界面加上 “headerimage scale” 这样的效果。然后项目已经结束，也并不想大刀阔斧的去修改原来的代码，想到之前在微博看到一个这样的库。时间还是比较紧急的，毕竟周末，然后就把代码下下来，简单的跑了一下，没有发现什么问题之后就直接在项目中用了。</p>
+<p>由于公司一直缺乏很系统的兼容测试，只是对功能有比较严格的要求，所以接下来到上线这个过程都很愉快。 UI、产品都比较满意这样搞。</p>
+<p>上线之后，就发生了一些悲剧的事情了….</p>
+<a id="more"></a>
 <p><img src="http://ocg4av0wv.bkt.clouddn.com/CE310A65-63EE-4D64-B031-864A19556924.png",width = 500 /></p>
-<p>这个东西，打开看过代码，然后在试了一下，没有发现什么问题，然后在某个周末，跑到外面咖啡店，看了些文章，实在无聊就把这个集成到了现在做的项目中。</p>
-<p>几轮测试下来，并没有出现什么问题。。。</p>
 <h4 id="UIScrollView-headerImageScale-实现原理"><a href="#UIScrollView-headerImageScale-实现原理" class="headerlink" title="UIScrollView + headerImageScale 实现原理"></a>UIScrollView + headerImageScale 实现原理</h4><p>不得不说，这个category也是一个非常好的东西，帮助我们轻松的集成tableview上面的头部缩放图片，且无侵入性。</p>
 <p>实现原理其实看起来也比较见到，使用到了method swizzling来拦截到tableview的头部试图，然后通过KVO来监听scrollview的偏移量。然后修改imageView的frame实现头部试图的缩放。</p>
 <p>当然既然使用到了KVO很自然的就要想到在dealloc方法里面需要去移除observer我也很愉快的在源码里面找到了这个方法。<strong>这就是坑所在</strong></p>
@@ -605,7 +605,9 @@
     
     <summary type="html">
     
-      &lt;p&gt;使用UIScrollView+HeaderImageScale中遇到了一个巨大的坑。&lt;br&gt;
+      &lt;p&gt;一半的 App 都会有一个个人这个模块来对个人信息，设置等功能进行管理，最近搞公司的项目，在项目结束的时候就想到了应该给我的这个界面加上 “headerimage scale” 这样的效果。然后项目已经结束，也并不想大刀阔斧的去修改原来的代码，想到之前在微博看到一个这样的库。时间还是比较紧急的，毕竟周末，然后就把代码下下来，简单的跑了一下，没有发现什么问题之后就直接在项目中用了。&lt;/p&gt;
+&lt;p&gt;由于公司一直缺乏很系统的兼容测试，只是对功能有比较严格的要求，所以接下来到上线这个过程都很愉快。 UI、产品都比较满意这样搞。&lt;/p&gt;
+&lt;p&gt;上线之后，就发生了一些悲剧的事情了….&lt;/p&gt;
     
     </summary>
     
@@ -652,11 +654,12 @@
     <link href="https://programersunny.github.io/2016/09/30/%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E7%9A%84%E4%BD%BF%E7%94%A8xib%E8%BF%9B%E8%A1%8C%E5%BC%80%E5%8F%91/"/>
     <id>https://programersunny.github.io/2016/09/30/如何优雅的使用xib进行开发/</id>
     <published>2016-09-29T16:00:00.000Z</published>
-    <updated>2016-11-15T16:54:55.000Z</updated>
+    <updated>2016-12-09T03:04:36.000Z</updated>
     
-    <content type="html"><![CDATA[<p>一篇杂七杂八的东西，一些我在使用xib的时候的心得。<br><a id="more"></a></p>
-<h2 id="写在前面的话"><a href="#写在前面的话" class="headerlink" title="写在前面的话"></a>写在前面的话</h2><p>最近实在是比较忙，先是公司从成都搬到了重庆，纠结了半天还是决定留在现在的团队，再继续往前走下去。再是到重庆没有完整的办公场地的情况下，启动了2.0计划。好在坚持了一段时间之后，2.0版本已经完成了95%的开发等着接下来的优化了。停止可这么长时间的博客，终于也想起来了要打理打理。</p>
+    <content type="html"><![CDATA[<p>IB 和纯代码布局在 iOS 界一直都存在着不小的争论，唐巧也曾专门撰文来对比二者。网上也能找打一大堆关于 IB 或者纯代码好的或者不好的文章。即使是大神对这个也有着不一样的看法。 Sunny 力挺 IB 开发，据说Ibireme YY大神是纯代码的拥簇，虽然两位大神现在也不会再写 UI 了…</p>
+<p>最近实在是比较忙，先是公司从成都搬到了重庆，纠结了半天还是决定留在现在的团队，再继续往前走下去。再是到重庆没有完整的办公场地的情况下，启动了2.0计划。好在坚持了一段时间之后，2.0版本已经完成了95%的开发等着接下来的优化了。停止可这么长时间的博客，终于也想起来了要打理打理。</p>
 <p>在项目中一直都坚持着使用xib来进行界面布局,除了一些界面需要使用静态单元格用了StoryBoard其他的view层全部使用了xib进行。即使这样,刚刚看了一下也有了16w＋行代码,这篇文章就算是一些心得吧。</p>
+<a id="more"></a>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="xib的构成"><a href="#xib的构成" class="headerlink" title="xib的构成"></a>xib的构成</h3><p>随便拿了一个xib文件,我们总是能看到这样的内容:</p>
 <p><img src="http://ocg4av0wv.bkt.clouddn.com/EF967121-9470-40EE-97CB-B457F80C0A88.png" width="300" /></p>
 <ul>
@@ -709,7 +712,9 @@
     
     <summary type="html">
     
-      &lt;p&gt;一篇杂七杂八的东西，一些我在使用xib的时候的心得。&lt;br&gt;
+      &lt;p&gt;IB 和纯代码布局在 iOS 界一直都存在着不小的争论，唐巧也曾专门撰文来对比二者。网上也能找打一大堆关于 IB 或者纯代码好的或者不好的文章。即使是大神对这个也有着不一样的看法。 Sunny 力挺 IB 开发，据说Ibireme YY大神是纯代码的拥簇，虽然两位大神现在也不会再写 UI 了…&lt;/p&gt;
+&lt;p&gt;最近实在是比较忙，先是公司从成都搬到了重庆，纠结了半天还是决定留在现在的团队，再继续往前走下去。再是到重庆没有完整的办公场地的情况下，启动了2.0计划。好在坚持了一段时间之后，2.0版本已经完成了95%的开发等着接下来的优化了。停止可这么长时间的博客，终于也想起来了要打理打理。&lt;/p&gt;
+&lt;p&gt;在项目中一直都坚持着使用xib来进行界面布局,除了一些界面需要使用静态单元格用了StoryBoard其他的view层全部使用了xib进行。即使这样,刚刚看了一下也有了16w＋行代码,这篇文章就算是一些心得吧。&lt;/p&gt;
     
     </summary>
     

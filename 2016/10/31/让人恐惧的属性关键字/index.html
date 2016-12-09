@@ -86,20 +86,23 @@
 
 
 
-<meta name="description" content="使用UIScrollView+HeaderImageScale中遇到了一个巨大的坑。">
+<meta name="description" content="一半的 App 都会有一个个人这个模块来对个人信息，设置等功能进行管理，最近搞公司的项目，在项目结束的时候就想到了应该给我的这个界面加上 “headerimage scale” 这样的效果。然后项目已经结束，也并不想大刀阔斧的去修改原来的代码，想到之前在微博看到一个这样的库。时间还是比较紧急的，毕竟周末，然后就把代码下下来，简单的跑了一下，没有发现什么问题之后就直接在项目中用了。
+由于公司一直缺乏">
 <meta property="og:type" content="article">
 <meta property="og:title" content="让人恐惧的属性关键字">
 <meta property="og:url" content="https://programersunny.github.io/2016/10/31/让人恐惧的属性关键字/index.html">
 <meta property="og:site_name" content="ProgramerSunny的博客">
-<meta property="og:description" content="使用UIScrollView+HeaderImageScale中遇到了一个巨大的坑。">
+<meta property="og:description" content="一半的 App 都会有一个个人这个模块来对个人信息，设置等功能进行管理，最近搞公司的项目，在项目结束的时候就想到了应该给我的这个界面加上 “headerimage scale” 这样的效果。然后项目已经结束，也并不想大刀阔斧的去修改原来的代码，想到之前在微博看到一个这样的库。时间还是比较紧急的，毕竟周末，然后就把代码下下来，简单的跑了一下，没有发现什么问题之后就直接在项目中用了。
+由于公司一直缺乏">
 <meta property="og:image" content="http://ocg4av0wv.bkt.clouddn.com/CE310A65-63EE-4D64-B031-864A19556924.png">
 <meta property="og:image" content="http://ocg4av0wv.bkt.clouddn.com/8C289058-1F79-42EE-8F0B-34FA0FC27A43.png">
 <meta property="og:image" content="http://ocg4av0wv.bkt.clouddn.com/E28FB77D-C390-47D4-A6B3-6FED899295EF.png">
 <meta property="og:image" content="http://ocg4av0wv.bkt.clouddn.com/FF79579D-6E61-4795-A19F-5806CF7.png">
-<meta property="og:updated_time" content="2016-10-31T12:39:02.000Z">
+<meta property="og:updated_time" content="2016-12-09T02:56:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="让人恐惧的属性关键字">
-<meta name="twitter:description" content="使用UIScrollView+HeaderImageScale中遇到了一个巨大的坑。">
+<meta name="twitter:description" content="一半的 App 都会有一个个人这个模块来对个人信息，设置等功能进行管理，最近搞公司的项目，在项目结束的时候就想到了应该给我的这个界面加上 “headerimage scale” 这样的效果。然后项目已经结束，也并不想大刀阔斧的去修改原来的代码，想到之前在微博看到一个这样的库。时间还是比较紧急的，毕竟周末，然后就把代码下下来，简单的跑了一下，没有发现什么问题之后就直接在项目中用了。
+由于公司一直缺乏">
 <meta name="twitter:image" content="http://ocg4av0wv.bkt.clouddn.com/CE310A65-63EE-4D64-B031-864A19556924.png">
 
 
@@ -342,11 +345,11 @@
       
 
       
-        <p>使用UIScrollView+HeaderImageScale中遇到了一个巨大的坑。<br><a id="more"></a></p>
-<p>最近搞公司的项目，在项目结束的时候，想到给我的界面加一个“headerimage scale”的效果，不想大刀阔斧的去修改原来的代码，所以我想到了之前在微博上看到的:</p>
+        <p>一半的 App 都会有一个个人这个模块来对个人信息，设置等功能进行管理，最近搞公司的项目，在项目结束的时候就想到了应该给我的这个界面加上 “headerimage scale” 这样的效果。然后项目已经结束，也并不想大刀阔斧的去修改原来的代码，想到之前在微博看到一个这样的库。时间还是比较紧急的，毕竟周末，然后就把代码下下来，简单的跑了一下，没有发现什么问题之后就直接在项目中用了。</p>
+<p>由于公司一直缺乏很系统的兼容测试，只是对功能有比较严格的要求，所以接下来到上线这个过程都很愉快。 UI、产品都比较满意这样搞。</p>
+<p>上线之后，就发生了一些悲剧的事情了….</p>
+<a id="more"></a>
 <p><img src="http://ocg4av0wv.bkt.clouddn.com/CE310A65-63EE-4D64-B031-864A19556924.png",width = 500 /></p>
-<p>这个东西，打开看过代码，然后在试了一下，没有发现什么问题，然后在某个周末，跑到外面咖啡店，看了些文章，实在无聊就把这个集成到了现在做的项目中。</p>
-<p>几轮测试下来，并没有出现什么问题。。。</p>
 <h4 id="UIScrollView-headerImageScale-实现原理"><a href="#UIScrollView-headerImageScale-实现原理" class="headerlink" title="UIScrollView + headerImageScale 实现原理"></a>UIScrollView + headerImageScale 实现原理</h4><p>不得不说，这个category也是一个非常好的东西，帮助我们轻松的集成tableview上面的头部缩放图片，且无侵入性。</p>
 <p>实现原理其实看起来也比较见到，使用到了method swizzling来拦截到tableview的头部试图，然后通过KVO来监听scrollview的偏移量。然后修改imageView的frame实现头部试图的缩放。</p>
 <p>当然既然使用到了KVO很自然的就要想到在dealloc方法里面需要去移除observer我也很愉快的在源码里面找到了这个方法。<strong>这就是坑所在</strong></p>
