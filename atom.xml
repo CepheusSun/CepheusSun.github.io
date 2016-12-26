@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://programersunny.github.io/"/>
-  <updated>2016-12-09T02:44:13.000Z</updated>
+  <updated>2016-12-26T05:46:48.000Z</updated>
   <id>https://programersunny.github.io/</id>
   
   <author>
@@ -14,6 +14,51 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2016写在年关的话</title>
+    <link href="https://programersunny.github.io/2016/12/26/2016%E5%86%99%E5%9C%A8%E5%B9%B4%E5%85%B3%E7%9A%84%E8%AF%9D/"/>
+    <id>https://programersunny.github.io/2016/12/26/2016写在年关的话/</id>
+    <published>2016-12-25T16:00:00.000Z</published>
+    <updated>2016-12-26T05:46:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>距离下一个年头也只有几张日历纸了，还是抱着一个比较好的态度来回忆一些这即将过去的2016. 从大学开始，每一年都有着一个这样的习惯，总要在每学期结束，每一年结束的时候，给自己写下点什么。开通了新的blog， 总还是要在这里留下心的印记。</p>
+<a id="more"></a>
+<p>写了那么多年，着实还是没有训练出来对文字驾轻就熟的能力，写出来的东西也往往还是一坨狗屎。让自己也不忍心重新回头再来看下去。每一年也就是这么简单的这么写着。</p>
+<p>这一年总结下来，在技术上还是有了一些沉淀，虽然没有什么十足的进步。但，终于能够有这么一段比较长的时间，纯粹的去研究一些这些东西。五月份以来的这么一段时间里，我还是心怀感激的，有了这么个不紧不慢，也有足够多时间了足够多的空间来折腾各种好玩的东西。也开始努力的在质量上控制整个项目。也有那么几个同事愿意花时间了精力去折腾新鲜的东西。确实也是件不错的事情。</p>
+<p>这么长的时间以来，感觉在技术生活上还是蛮有趣的，先是在微博上加入了一些技术比较活跃的群，然后又转到趣直播这样的平台下，跟大牛们更近距离的接触，体会到了技术世界的无边无际。再后来因为bang用上了微信读书，不多不少还是读过了一些书，更技术无关。到最后应该能凑够个50多个小时阅读时长吧。阅读总是能让人安静下来的。</p>
+<p>之前学过一篇文章来记录这一年看过的书，到最后，应该还是能再加上那么一本两本。每天能够抽出那么一个把小时来阅读，也是一件值得坚持的事情。程序员还是应该花一些时间再代码以外的事情上。</p>
+<p>然后不知道什么契机，下载了一个英语流利说。还是认为这是一个非常优秀的 app ，确实在我身上还是达到了他们的口号：“让你忍不住，开口说英语”, 花了100块钱参加他们的课程，每天花一些时间来学习英语，每天哇啦哇啦的说着并不流利的英语，也能切切实实的感受到自己的成长。学习英语这件事情，想来也是值得坚持的事情，多么希望一年以后再次写这样的文字的时候，能够很开心的说，这件事情，我坚持了整整一年。</p>
+<p>除了这两件事情，年初或者年初的时候，还是读过一些作为程序员，应该读的一些书的。这一年开始了，并不太深入的对 iOS 底层的探索。因为最初对动态化近乎痴迷的兴趣，在看到 JSPatch 的时候，立马就开始撸Demo开干，在线上出了 bug 之后，瞬间把 bug 解决掉的之后，JSPatch 很快的被集成在了公司所有的 iOS app 中，在公司测试力度不足的情况下，也能够放心的进行开发。</p>
+<p>再后来因为对 Javascript 知识的刚需，简单的学了一些 HTML 和 CSS 之类的东西，因为集成成本高，不能立马在公司项目中使用等原因，放弃了对 React Native 的探索，知道最近阿里又开源了 Weex ， 对动态化的兴趣，驱使着我在接下来的时间里，或多或少的都会花点时间去研究这些东西。对 Weex 的兴趣应该还是大于 RN 的， 比较起来，还是愿意使用国人研发的 Vue ，前端的世界果然是深似海。在海边散步，也确实折腾了我很多的精力。但是看着新出来的名词 PWA 还是希望对这一块有一些了解。对了，还有微信的小程序。</p>
+<p>对技术的追求在这一年还是让我非常的应接不暇。作为客户端开发，在今年初期的时候便对动态化、组件化产生了比较大的兴趣，以至于在博客刚刚建立的时候，就写下来了对动态化和组件化时分着迷这样的文字(后来还是改了)， 相比起来，动态化算是简单的能实现了吧，一直就通过各种渠道能够猜出来 sunny 孙源在滴滴正在进行的项目也是更动态化相关的内容，在 DynamicCocoa 被公布出来的时候，还是被这样的大神折服了，sunny 对底层，对编译器的研究确实是让人难以望其项背的。到后来知道手Q很久以前就有一套类似的框架的事情，最后还是认识到了一个残酷的现实</p>
+<blockquote>
+<p>大厂对于小公司的碾压不仅仅是运营能力上的，他们对于小厂在技术上的碾压，对于我们来说才是更可怕的。不管你有多么好的 idea 等你实现下来并且能够完美运行的时候，你觉得十分牛逼的事情，确实人家玩剩下的。</p>
+</blockquote>
+<p>对新的东西的追求还是让我在这一年收集到了各种书，也驱使着我我去学习英语。也驱使着我去学习了可能已经无限趋近稳定的 Swift 3.0 ，开始看了一些现在估计也完全没有入门的前端三件套，balabala….</p>
+<p>接着再说一下组件化吧，这一年确实在这一块只做了很少的工作，简单的吧一些组件网络库什么的拆分出来，使用  CocoaPods 来进行管理，看了一些相关的文章，跟一些搞过这个朋友交流过，算是积累了一些知识储备，但是在这样的时间，面对年底还是比较多的需求，实践这件事情，可能还是需要往后推一下了。</p>
+<p>然后这一年从纯代码，转到了Xib ，研究了一下 iconfont 然后貌似也记不清楚再搞过什么了。只是读了写文章，看了点源码，重构了下项目，做了些需求，改了些bug，如是而已…</p>
+<p>这一年，绕了一大圈，有因为一些原因跑到重庆了，再次回到这个城市生活，确实没有感受到太多的让我心里有什么波动的东西，跟往常一样，跟去到曾经到过的任何一个城市一样…只是喜欢上了这个季节的这里随处可见的黄叶。</p>
+<p>外婆离开也到了第三个年头了，是不是还是会思念那个胖胖的可爱的人。生活还是继续向前走着的，毕业也三年了，还是不知道接下来应该怎样。或许，就是这样吧。</p>
+<p>车也把坐垫全部换成皮的了，也算修正了买车时犯下的错误。</p>
+<p>做了一丢丢有关技术管理的工作，做的不好。只能继续努力了。</p>
+<p>好奇心还是那么重，看到什么都想去尝试一下，所以入门了很多东西，了解很多东西，却没能深入，算是今年最大的遗憾吧。</p>
+<p>关于年初做的不好的一些事情，等真正再长大一些了再来梳理吧，确实对一些事情还是没那么精通，而且那些也算是去年的事情了吧…</p>
+<p>很多想做，却没能做的事情，只能在下一个年头继续了，努力做一个可爱的人吧…</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;距离下一个年头也只有几张日历纸了，还是抱着一个比较好的态度来回忆一些这即将过去的2016. 从大学开始，每一年都有着一个这样的习惯，总要在每学期结束，每一年结束的时候，给自己写下点什么。开通了新的blog， 总还是要在这里留下心的印记。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="随笔杂记" scheme="https://programersunny.github.io/categories/%E9%9A%8F%E7%AC%94%E6%9D%82%E8%AE%B0/"/>
+    
+    
+      <category term="杂记" scheme="https://programersunny.github.io/tags/%E6%9D%82%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>一叶知秋</title>
@@ -1675,130 +1720,6 @@
       <category term="iOS" scheme="https://programersunny.github.io/tags/iOS/"/>
     
       <category term="代码规范" scheme="https://programersunny.github.io/tags/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>简单对比了一下Delegate和Block的效率</title>
-    <link href="https://programersunny.github.io/2016/08/10/%E7%AE%80%E5%8D%95%E5%AF%B9%E6%AF%94%E4%BA%86%E4%B8%80%E4%B8%8BDelegate%E5%92%8CBlock%E7%9A%84%E6%95%88%E7%8E%87/"/>
-    <id>https://programersunny.github.io/2016/08/10/简单对比了一下Delegate和Block的效率/</id>
-    <published>2016-08-10T03:03:12.000Z</published>
-    <updated>2016-08-29T02:24:06.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>最近公司的项目完成了，简单的写了个小demo来验证一下block和delegate的效率问题。</p>
-<a id="more"></a>
-<h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><blockquote>
-<p>开始之前还是麻烦直接先看一些结论吧！</p>
-</blockquote>
-<p>终于，公司的项目给运营进行验证测试了，忙了那么久都没有时间学点新的东西。又倒腾了点新的东西出来，python啊，Go啊，然后感觉需要学习的东西还有很多，自己的能力也不够。买了几本书《Objective—C 高级编程 iOS与OS X多线程和内存管理》、 《重构》、《编程珠玑》….也没有时间看，刚刚才把OC的内存管理看了一遍。</p>
-<p>一直在水各种qq群，然后有人在问<code>block</code>怎么用什么什么的，然后在群里就在讨论<code>block</code>和<code>delegate</code>，然后说为什么很多第三方库都是用的<code>delegate</code>，apple自带的控件也全都是用的<code>delegate</code>。</p>
-<p>刚刚开始学<code>block</code>的时候，感觉<code>block</code>特别的难，什么鬼都不知道是怎么回事，代码索引也没有。所以我给出的第一个答案就是实用delegate至少在代码可读性上会好很多。</p>
-<p>然后在简书看到一篇文章<a href="http://www.jianshu.com/p/bbccac805641"><em>block和delegate傻傻分不清楚</em></a></p>
-<blockquote>
-<p>由此我们可以看到delegate运行成本低，block成本很高。block出栈需要将使用的数据从栈内存拷贝到堆内存，当然对象的话就是加计数，使用完或者block置nil后才消除；delegate只是保存了一个对象指针，直接回调，没有额外消耗。相对C的函数指针，只多做了一个查表动作 。</p>
-</blockquote>
-<p>自己想了一下确实是这样的。</p>
-<p>后来突然想到了自己一起踩过的坑，由于一直都有使用instrument或者MLeaksFinder来检查内存泄漏的习惯，所以在发现MJRefresh的时候发现内存泄漏，这个时候才发现之前使用block的时候并没有使用<code>weakSelf</code> 和 <code>strongSelf</code> 所以…<br>这就能够很好的解释为什么很多第三方库都会使用<code>delegate</code>而不是<code>block</code>了，毕竟对于目前的iOS市场，充斥着大量新手iOSer，如果使用block的话，第一会增加小白的使用成本，第二虽然不会立马造成crash，但如果不使用<code>weakSelf</code> 和 <code>strongSelf</code>的话，内存无法释放，对于那些写库的大神来说，应该是很难容忍的吧。</p>
-<p>所以虽然我在项目中也会大量的使用<code>block</code>（主要是开发效率的提升，毕竟用<code>delegate</code>比较麻烦），但是对比<code>delegate</code>和<code>block</code>，<code>delegate</code>至少在以下三点比<code>block</code>好:</p>
-<ol>
-<li>代码的可读性。</li>
-<li>运行效率。</li>
-<li>使用<code>block</code>需要时刻预防循环引用。</li>
-</ol>
-<p>对于第四点,我想delegate作为一个很经典的设计模式，相比较于block出现的比较早。</p>
-<p>作为iOS4的新特性，block最开始，现在可能也最常见的出现在<code>UIView animateWithDuration</code> 和 数组的<code>enumeratedObjectsUsingBlock</code> 方法中。</p>
-<p>1</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[UIView animateWithDuration:2.0f animations:^&#123;</div><div class="line">   //do somethings </div><div class="line">&#125;];</div></pre></td></tr></table></figure>
-<p>2</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[self.dataSource enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) &#123;</div><div class="line">    NSLog(@&quot;%@,%@&quot;,obj,@(idx));</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
-<p>第二种作为枚举遍历法，被广泛的使用，用以替换之前或者现在都用的 <code>for</code> <code>forin</code>两个循环办法，而这个方法查阅文档之后发现是遵循了<code>NSFastEnumeration</code>这个协议。而这个协议直有下面一个方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(id __unsafe_unretained [])buffer count:(NSUInteger)len;</div></pre></td></tr></table></figure>
-<p>这里面的实现原理，并不是本文的讨论范围,这里的block虽然能够代码巨大的效率提升，但也没办法跟delegate进行比较，而且这个应该也是算法的提升吧。如果对这个东西敢兴趣，也可以去看看巧大的文章，我记得他对这个有过深入的研究。</p>
-<p>刚刚提到的三点，第一点可能没有办法去验证，第三点可以自己写一个block然后在这个block里面使用<code>self</code>然后再调用这个block，在看这个对象能不能<code>dealloc</code></p>
-<p>对于第二点，我大胆的写了一个demo，这也是我最常使用block的场景：通过tableviewcell上的button回调点击时间到controller中。</p>
-<p>我在controller中添加一个tableview实现了一些基本的代码之后，为了验证这个问题，我有自定义了一个<code>UITableViewCell</code> </p>
-<p><img src="http://i1.piimg.com/567571/1196bd9c84116dd0.png" alt=""></p>
-<p>通过拖线</p>
-<p><img src="http://i1.piimg.com/567571/70c46c66aad2fecf.png" alt=""></p>
-<p>实现了一下两个方法，分别通过block 和delegate 回调了10000次。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">- (IBAction)blockAction:(id)sender &#123;</div><div class="line">    for (int i = 0; i &lt; 10000; i++) &#123;</div><div class="line">        self.blk();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">- (IBAction)delegateAction:(id)sender &#123;</div><div class="line">    for (int i = 0; i &lt; 10000; i++) &#123;</div><div class="line">        [self.delegate foocellDelegateButtonClicked];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>在自定义cell的<code>.h</code>中声明了一个<code>protocol</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@protocol FooCellDelegate &lt;NSObject&gt;</div><div class="line">@required</div><div class="line">- (void)foocellDelegateButtonClicked;</div><div class="line">@end</div></pre></td></tr></table></figure>
-<p>和一个<code>block</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">typedef void (^blk_t)(void);</div></pre></td></tr></table></figure>
-<p>我们看一下整个<code>.h</code>文件中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">#import &lt;UIKit/UIKit.h&gt;</div><div class="line"></div><div class="line">typedef void (^blk_t)(void);</div><div class="line"></div><div class="line">@protocol FooCellDelegate &lt;NSObject&gt;</div><div class="line"></div><div class="line">@required</div><div class="line"></div><div class="line">- (void)foocellDelegateButtonClicked;</div><div class="line"></div><div class="line">@end</div><div class="line"></div><div class="line">@interface FooCell : UITableViewCell</div><div class="line"></div><div class="line">@property (nonatomic, copy) blk_t blk;</div><div class="line"></div><div class="line">@property (nonatomic, weak) id&lt;FooCellDelegate&gt; delegate;</div><div class="line"></div><div class="line">+ (instancetype)cellWithTableView:(UITableView *)tableView;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
-<p>然后在controller中分别接受回调</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath &#123;</div><div class="line">    return (&#123;</div><div class="line">        FooCell *cell = [FooCell cellWithTableView:tableView];</div><div class="line">        cell.delegate = self;</div><div class="line">        cell.blk = ^&#123;</div><div class="line">            NSLog(@&quot;block&quot;);</div><div class="line">        &#125;;</div><div class="line">        cell;</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)foocellDelegateButtonClicked &#123;</div><div class="line">    NSLog(@&quot;delegate&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>代码部分写完了,然后简单的运行了一下,结果分别是</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">2016-08-10 14:53:00.466 IB[4649:179409] block</div><div class="line">.</div><div class="line">.</div><div class="line">.</div><div class="line">2016-08-10 14:53:02.926 IB[4649:179409] block</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">2016-08-10 14:53:50.639 IB[4649:179409] delegate</div><div class="line">.</div><div class="line">.</div><div class="line">.</div><div class="line">2016-08-10 14:53:54.325 IB[4649:179409] delegate</div></pre></td></tr></table></figure>
-<p>结果还是很直观的<code>2.926</code> - <code>0.466</code>  对比 <code>54.325</code> - <code>50.639</code><br>我发现delegate的效率是要比block高些的。</p>
-<p>接下来我又决定在block中使用一下外部变量</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath &#123;</div><div class="line">    return (&#123;</div><div class="line">        FooCell *cell = [FooCell cellWithTableView:tableView];</div><div class="line">        cell.delegate = self;</div><div class="line">        NSString *str = @&quot;delegate&quot;;</div><div class="line">        cell.blk = ^&#123;</div><div class="line">            NSLog(@&quot;%@&quot;,str);</div><div class="line">        &#125;;</div><div class="line">        cell;</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line">- (void)foocellDelegateButtonClicked &#123;</div><div class="line">    NSString *str = @&quot;delegate&quot;;</div><div class="line">    NSLog(@&quot;%@&quot;,str);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>由于没有对str进行更改，所以我并没有使用<code>__block</code>修饰<code>str</code>;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">2016-08-10 15:38:41.340 IB[4717:198573] block</div><div class="line">.</div><div class="line">.</div><div class="line">.</div><div class="line">2016-08-10 15:38:44.136 IB[4717:198573] block</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">2016-08-10 15:39:20.837 IB[4717:198573] delegate</div><div class="line">.</div><div class="line">.</div><div class="line">.</div><div class="line">2016-08-10 15:39:23.883 IB[4717:198573] delegate</div></pre></td></tr></table></figure>
-<p><code>44.136</code> - <code>41.340</code>  对比 <code>23.883</code> - <code>20.837</code>  2.796  vs  3.046<br>依然是block效率高于delegate</p>
-<p>我再用<code>__block</code>修饰了一下,然后</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath &#123;</div><div class="line">    return (&#123;</div><div class="line">        FooCell *cell = [FooCell cellWithTableView:tableView];</div><div class="line">        cell.delegate = self;</div><div class="line">        __weak typeof(self) weakself = self;</div><div class="line">        cell.blk = ^&#123;</div><div class="line">            __strong typeof(weakself) strongself = weakself;</div><div class="line">            NSLog(@&quot;%ld&quot;,strongself-&gt;idx_);</div><div class="line">            strongself-&gt; idx_++;</div><div class="line">        &#125;;</div><div class="line">        cell;</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line">- (void)foocellDelegateButtonClicked &#123;</div><div class="line">    NSLog(@&quot;%ld&quot;,idx_);</div><div class="line">    idx_ ++;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">2016-08-10 15:58:19.665 IB[4827:213165] 0</div><div class="line">.</div><div class="line">.</div><div class="line">.</div><div class="line">2016-08-10 15:58:22.866 IB[4827:213165] 9999</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">2016-08-10 15:58:42.689 IB[4827:213165] 0</div><div class="line">.</div><div class="line">.</div><div class="line">.</div><div class="line">2016-08-10 15:58:45.192 IB[4827:213165] 9999</div></pre></td></tr></table></figure>
-<p><code>22.866</code> - <code>19.665</code>  对比 <code>45.192</code> - <code>42.689</code>  3.201  vs  2.503   delegate更高</p>
-<p><em>对比了大半天才发现文中所谓的效率比较其实是几乎没有的，毕竟是回调了10000次才出现了那么微弱的差距。<br>所以前文对比的所谓的区别也是没有什么道理的。</em></p>
-<p>但是可能考虑到运行顺序和可能出现的缓存等等其他可能出现的因素,我也不能下十分完整的定论，但是block作为一个在很多语言都具有的语法,其优越性对比delegate也不会差。</p>
-<table>
-<thead>
-<tr>
-<th>程序语言</th>
-<th style="text-align:center">Block的名称</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>C ＋blocks</td>
-<td style="text-align:center">block</td>
-</tr>
-<tr>
-<td>SmallTalk</td>
-<td style="text-align:center">block</td>
-</tr>
-<tr>
-<td>Ruby</td>
-<td style="text-align:center">block</td>
-</tr>
-<tr>
-<td>LISP</td>
-<td style="text-align:center">Lambda</td>
-</tr>
-<tr>
-<td>Python</td>
-<td style="text-align:center">Lambda</td>
-</tr>
-<tr>
-<td>C++ 11</td>
-<td style="text-align:center">Lambda</td>
-</tr>
-<tr>
-<td>Javascript</td>
-<td style="text-align:center">Anonymous function</td>
-</tr>
-</tbody>
-</table>
-<p>写到这了，其实我也是比较方的，因为到现在也是刚刚才认可这个事情。</p>
-<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>所以到最后，无论block还是delegate 其实都是要看具体的应用场景的，如果脱离的具体的应用场景这样的最求所谓的性能优化其实也是没有什么意义的。所以一味的强行的去对比二者的区别也是没有多大的意义的。毕竟，如此微弱的差距，在排除了其他的因素之后，可能就完全的忽略不计了，在手机端，也不可能有生命回调什么的能够进行10000次。</p>
-<p>所以除了可读性和需要预防循环引用。block带来开发效率的提升还是特别的快的。对于第三方库使用delegate的原因，我猜想还是因为使用delegate更贴近于原生的OC代码,毕竟是写出来给别人使用的，更原生，可能更友好。而我们更熟悉的<code>AFNetworking</code> 也是用的block回调网络请求的啊。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;最近公司的项目完成了，简单的写了个小demo来验证一下block和delegate的效率问题。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="iOS" scheme="https://programersunny.github.io/categories/iOS/"/>
-    
-    
-      <category term="iOS" scheme="https://programersunny.github.io/tags/iOS/"/>
     
   </entry>
   
