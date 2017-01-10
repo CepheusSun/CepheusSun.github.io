@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://programersunny.github.io/"/>
-  <updated>2017-01-09T01:34:38.000Z</updated>
+  <updated>2017-01-10T07:49:29.000Z</updated>
   <id>https://programersunny.github.io/</id>
   
   <author>
@@ -17,10 +17,10 @@
   
   <entry>
     <title>Swift 和 OC 混合编程</title>
-    <link href="https://programersunny.github.io/2019/01/05/Swift%E5%92%8COC%E6%B7%B7%E5%90%88%E7%BC%96%E7%A8%8B/"/>
-    <id>https://programersunny.github.io/2019/01/05/Swift和OC混合编程/</id>
-    <published>2019-01-04T16:00:00.000Z</published>
-    <updated>2017-01-09T01:34:38.000Z</updated>
+    <link href="https://programersunny.github.io/2017/01/05/Swift%E5%92%8COC%E6%B7%B7%E5%90%88%E7%BC%96%E7%A8%8B/"/>
+    <id>https://programersunny.github.io/2017/01/05/Swift和OC混合编程/</id>
+    <published>2017-01-04T16:00:00.000Z</published>
+    <updated>2017-01-10T07:49:29.000Z</updated>
     
     <content type="html"><![CDATA[<p>自己学了一段时间的 Swift ，从最开始看 Swift 2.3 的《写给大忙人看的Swift》,在 Xcode8 下很多示例代码都不能好好玩下去，然后看到了 SwiftGG 翻译组针对 Swift 官方文档的中文译本。算是正式开始了对 Swift 的学习。对 Swift 的喜爱不仅仅是因为他是新的语言，是 iOS 开发未来的趋势。而且还有一个很重要的一点单单就是因为 Swift 代码看起来就是非常漂亮啊。</p>
 <a id="more"></a>

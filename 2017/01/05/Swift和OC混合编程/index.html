@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="iOS,Swift,Objective-C," />
 
 
 
@@ -86,15 +86,22 @@
 
 
 
-<meta name="description" content="iOS Dev. Stay hungry, Stay foolish.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ProgramerSunny的博客">
-<meta property="og:url" content="https://programersunny.github.io/tags/Swift/index.html">
+<meta name="description" content="自己学了一段时间的 Swift ，从最开始看 Swift 2.3 的《写给大忙人看的Swift》,在 Xcode8 下很多示例代码都不能好好玩下去，然后看到了 SwiftGG 翻译组针对 Swift 官方文档的中文译本。算是正式开始了对 Swift 的学习。对 Swift 的喜爱不仅仅是因为他是新的语言，是 iOS 开发未来的趋势。而且还有一个很重要的一点单单就是因为 Swift 代码看起来就是非">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swift 和 OC 混合编程">
+<meta property="og:url" content="https://programersunny.github.io/2017/01/05/Swift和OC混合编程/index.html">
 <meta property="og:site_name" content="ProgramerSunny的博客">
-<meta property="og:description" content="iOS Dev. Stay hungry, Stay foolish.">
+<meta property="og:description" content="自己学了一段时间的 Swift ，从最开始看 Swift 2.3 的《写给大忙人看的Swift》,在 Xcode8 下很多示例代码都不能好好玩下去，然后看到了 SwiftGG 翻译组针对 Swift 官方文档的中文译本。算是正式开始了对 Swift 的学习。对 Swift 的喜爱不仅仅是因为他是新的语言，是 iOS 开发未来的趋势。而且还有一个很重要的一点单单就是因为 Swift 代码看起来就是非">
+<meta property="og:image" content="http://ocg4av0wv.bkt.clouddn.com/34DF1870-F7E8-4522-B715-F1ACAA35DFEA.png">
+<meta property="og:image" content="http://ocg4av0wv.bkt.clouddn.com/CC24943D-0A36-4095-9EFF-64DBF9D96193.png">
+<meta property="og:image" content="http://ocg4av0wv.bkt.clouddn.com/7132C9EA-C1A4-4AE9-BC83-F200006A95B1.png">
+<meta property="og:image" content="http://ocg4av0wv.bkt.clouddn.com/B4E7A1D8-F202-4BE8-8CDF-1A3221F42571.png">
+<meta property="og:image" content="http://ocg4av0wv.bkt.clouddn.com/0BA5113B-03E2-40EC-81D0-A55903005F19.png">
+<meta property="og:updated_time" content="2017-01-10T07:49:29.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ProgramerSunny的博客">
-<meta name="twitter:description" content="iOS Dev. Stay hungry, Stay foolish.">
+<meta name="twitter:title" content="Swift 和 OC 混合编程">
+<meta name="twitter:description" content="自己学了一段时间的 Swift ，从最开始看 Swift 2.3 的《写给大忙人看的Swift》,在 Xcode8 下很多示例代码都不能好好玩下去，然后看到了 SwiftGG 翻译组针对 Swift 官方文档的中文译本。算是正式开始了对 Swift 的学习。对 Swift 的喜爱不仅仅是因为他是新的语言，是 iOS 开发未来的趋势。而且还有一个很重要的一点单单就是因为 Swift 代码看起来就是非">
+<meta name="twitter:image" content="http://ocg4av0wv.bkt.clouddn.com/34DF1870-F7E8-4522-B715-F1ACAA35DFEA.png">
 
 
 
@@ -115,9 +122,9 @@
 
 
 
-  <link rel="canonical" href="https://programersunny.github.io/tags/Swift/"/>
+  <link rel="canonical" href="https://programersunny.github.io/2017/01/05/Swift和OC混合编程/"/>
 
-  <title> 标签: Swift | ProgramerSunny的博客 </title>
+  <title> Swift 和 OC 混合编程 | ProgramerSunny的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -138,7 +145,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -249,53 +256,199 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        Swift
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Swift 和 OC 混合编程
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-05T00:00:00+08:00" content="2017-01-05">
+              2017-01-05
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/01/05/Swift和OC混合编程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/05/Swift和OC混合编程/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <p>自己学了一段时间的 Swift ，从最开始看 Swift 2.3 的《写给大忙人看的Swift》,在 Xcode8 下很多示例代码都不能好好玩下去，然后看到了 SwiftGG 翻译组针对 Swift 官方文档的中文译本。算是正式开始了对 Swift 的学习。对 Swift 的喜爱不仅仅是因为他是新的语言，是 iOS 开发未来的趋势。而且还有一个很重要的一点单单就是因为 Swift 代码看起来就是非常漂亮啊。</p>
+<a id="more"></a>
+<h2 id="写在前面的话"><a href="#写在前面的话" class="headerlink" title="写在前面的话"></a>写在前面的话</h2><p>对于Swift的学习根本还是一种还没有正式入门的感觉。所以没有办法像 OC 那样驾轻就熟，很多语法都还没有完全掌握，因为时间原因，也因为最近确实发生了一些事情。导致最近学习的热情比较的低，而且年关在即，很多工作上生活上的事情都需要认真梳理一遍。减少了在学习上的努力，是在是罪大恶极。技术圈在这个时候也发生了一些大事情。微信开源的组件 <a href="https://github.com/Tencent/mars#mars_cn">Mars</a>  滴滴和手Q相继 po 出了自己的动态化解决方案。下一年应该会是动态化更广泛应用的一年吧，很多 app 动态化将成为标准配置。但是唯一比较遗憾的是，这些解决方案还是基于 OC 的。但是这也并不妨碍我学习 Swift 的激情，毕竟一切 app 的生杀大权都掌握在苹果手中的，而且，苹果还有一个并不开放的动态库。</p>
+<p>简单的学了一些 Swift 的相关东西，就开始手痒想要实践一下了。本来打算使用 Swift 重新写一个项目，但是苦于需求一直源源不断，重写压力也是非常的大。还有一个最大的原因，对 Swift 的掌握还没有真正算是一个 Swift 开发者。实在没有能力将原有项目中的组件转化为 Swift ，所以还是决定在原来的代码中，尝试将一些类用 Swift 来表达。</p>
+<blockquote>
+<p>这也解决了在 Swift 项目中，优秀的第三方库确实没有 OC 丰富，而作为现在非常热门的开发语言，很多比较好的效果什么的也只有 Swift 版本这样的问题。</p>
+</blockquote>
+<p>其实无论如何，其实都是 OC 和 Swift 之间的交互。</p>
+<h2 id="在-Swift-中使用-OC-类"><a href="#在-Swift-中使用-OC-类" class="headerlink" title="在 Swift 中使用 OC 类"></a>在 Swift 中使用 OC 类</h2><p>如果在Swift类中使用OC的代码，那么就需要使用桥接文件了。</p>
+<p>这是我们在平常的OC项目中创建一个新的类</p>
+<p><img src="http://ocg4av0wv.bkt.clouddn.com/34DF1870-F7E8-4522-B715-F1ACAA35DFEA.png" /></p>
+<p>点击按钮 <code>Create Bridging Header</code> 。</p>
+<p><img src="http://ocg4av0wv.bkt.clouddn.com/CC24943D-0A36-4095-9EFF-64DBF9D96193.png" /></p>
+<p>就会生成一个<code>项目名-Bridging-Header.h</code>文件，这其实貌似就是一个很平常的<code>.h</code>文件。</p>
+<p><img src="http://ocg4av0wv.bkt.clouddn.com/7132C9EA-C1A4-4AE9-BC83-F200006A95B1.png"></p>
+<p>然后就只需要像 Import 一个普通类一样把你需要在 Swift 中使用的所有 OC 类在这个<code>.h</code> 文件中添加进来，然后就能够在 Swift 代码中正常的使用 OC 的方法了。</p>
+<p><img src="http://ocg4av0wv.bkt.clouddn.com/B4E7A1D8-F202-4BE8-8CDF-1A3221F42571.png"></p>
+<p>这里的<code>MUserInfo</code>其实就是我项目中的一个单例类了。这里要注意的是，虽然使用的是 OC 的类，但是使用的时候依然是使用 Swift 的语法。这个也没什么需要注意的。</p>
+<blockquote>
+<p>需要注意的是：在 Swift 类中使用的 OC 的方法，还是需要使用 Swift 的语法。</p>
+</blockquote>
+<p>刚刚说的导入，就是直接在刚刚说的桥接文件中写入如下代码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#import &quot;MUserInfo.h&quot;</div></pre></td></tr></table></figure>
+<h2 id="在-OC-中使用-Swift-类"><a href="#在-OC-中使用-Swift-类" class="headerlink" title="在 OC 中使用 Swift 类"></a>在 OC 中使用 Swift 类</h2><p>这个也是非常的简单，</p>
+<p>在<code>TARGETS</code>- <code>Build Settings</code>中选择<code>Swift Complier-General</code></p>
+<p><img src="http://ocg4av0wv.bkt.clouddn.com/0BA5113B-03E2-40EC-81D0-A55903005F19.png" /></p>
+<p>然后分别将<code>Install Objective-C Compatibility Header</code> 和 <code>Objective-C Generated Interface Header Name</code> 选项 改为 <code>YES</code> 和 <code>项目名-Swift.h</code></p>
+<p>然后在使用Swift类的时候，只需要在使用的时候像导入头文件一样倒入 <code>项目名-Swift.h</code>这个文件。然后就可以愉快的使用了。</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>没有解语，期待下次分享！</p>
+<p>## </p>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2017/01/05/Swift和OC混合编程/" itemprop="url">
-              
-                <span itemprop="name">Swift 和 OC 混合编程</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-01-05T00:00:00+08:00"
-              content="2017-01-05" >
-          01-05
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag">#iOS</a>
+          
+            <a href="/tags/Swift/" rel="tag">#Swift</a>
+          
+            <a href="/tags/Objective-C/" rel="tag">#Objective-C</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/26/2016写在年关的话/" rel="next" title="2016写在年关的话">
+                <i class="fa fa-chevron-left"></i> 2016写在年关的话
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
           
 
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/01/05/Swift和OC混合编程/"
+           data-title="Swift 和 OC 混合编程" data-url="https://programersunny.github.io/2017/01/05/Swift和OC混合编程/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -315,8 +468,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://ocg4av0wv.bkt.clouddn.com/icon_spot@2x.png"
@@ -399,6 +561,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#写在前面的话"><span class="nav-number">1.</span> <span class="nav-text">写在前面的话</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在-Swift-中使用-OC-类"><span class="nav-number">2.</span> <span class="nav-text">在 Swift 中使用 OC 类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在-OC-中使用-Swift-类"><span class="nav-number">3.</span> <span class="nav-text">在 OC 中使用 Swift 类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语"><span class="nav-number">4.</span> <span class="nav-text">结语</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -511,6 +684,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 

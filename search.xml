@@ -5,7 +5,7 @@
     
     <entry>
       <title><![CDATA[Swift 和 OC 混合编程]]></title>
-      <url>https://programersunny.github.io/2019/01/05/Swift%E5%92%8COC%E6%B7%B7%E5%90%88%E7%BC%96%E7%A8%8B/</url>
+      <url>https://programersunny.github.io/2017/01/05/Swift%E5%92%8COC%E6%B7%B7%E5%90%88%E7%BC%96%E7%A8%8B/</url>
       <content type="html"><![CDATA[<p>自己学了一段时间的 Swift ，从最开始看 Swift 2.3 的《写给大忙人看的Swift》,在 Xcode8 下很多示例代码都不能好好玩下去，然后看到了 SwiftGG 翻译组针对 Swift 官方文档的中文译本。算是正式开始了对 Swift 的学习。对 Swift 的喜爱不仅仅是因为他是新的语言，是 iOS 开发未来的趋势。而且还有一个很重要的一点单单就是因为 Swift 代码看起来就是非常漂亮啊。</p>
 <a id="more"></a>
 <h2 id="写在前面的话"><a href="#写在前面的话" class="headerlink" title="写在前面的话"></a>写在前面的话</h2><p>对于Swift的学习根本还是一种还没有正式入门的感觉。所以没有办法像 OC 那样驾轻就熟，很多语法都还没有完全掌握，因为时间原因，也因为最近确实发生了一些事情。导致最近学习的热情比较的低，而且年关在即，很多工作上生活上的事情都需要认真梳理一遍。减少了在学习上的努力，是在是罪大恶极。技术圈在这个时候也发生了一些大事情。微信开源的组件 <a href="https://github.com/Tencent/mars#mars_cn">Mars</a>  滴滴和手Q相继 po 出了自己的动态化解决方案。下一年应该会是动态化更广泛应用的一年吧，很多 app 动态化将成为标准配置。但是唯一比较遗憾的是，这些解决方案还是基于 OC 的。但是这也并不妨碍我学习 Swift 的激情，毕竟一切 app 的生杀大权都掌握在苹果手中的，而且，苹果还有一个并不开放的动态库。</p>
