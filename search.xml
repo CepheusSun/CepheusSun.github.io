@@ -1661,6 +1661,21 @@
 ]]></content>
     </entry>
     
+    <entry>
+      <title><![CDATA[CocoaPods小知识集锦]]></title>
+      <url>https://programersunny.github.io/2016/01/20/CocoaPods%E5%B0%8F%E7%9F%A5%E8%AF%86%E9%9B%86%E9%94%A6/</url>
+      <content type="html"><![CDATA[<p>在使用CocoaPods 的过程中遇到的问题。整理性的一遍文章，没有多少价值。</p>
+<a id="more"></a>
+<h3 id="1"><a href="#1" class="headerlink" title="1"></a>1</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">✘ sunyang@sunny-mbp  ~<span class="regexp">/desktop/ios</span>  pod install</div><div class="line">[!] No <span class="string">`Podfile' found in the project directory.</span></div></pre></td></tr></table></figure>
+<p>解决方案</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">✘ sunyang@sunny-mbp  ~<span class="regexp">/desktop/ios</span>   pod repo remove master</div><div class="line">Removing spec repo <span class="string">`master`</span></div><div class="line"></div><div class="line">✘ sunyang@sunny-mbp  ~<span class="regexp">/desktop/ios</span>  pod setup</div><div class="line">Setting up CocoaPods master repo</div><div class="line"></div><div class="line">✘ sunyang@sunny-mbp  ~<span class="regexp">/desktop/ios</span>  pod install</div><div class="line">Pod installation complete! There are <span class="number">3</span> dependencies from the Podfile <span class="keyword">and</span> <span class="number">4</span> total pods installed.</div></pre></td></tr></table></figure>
+<p>原因</p>
+<p>这是因为 CocoaPods 基于 GitHub 的网页编辑器的 <code>libgit2</code>的一个 bug。 正式这个 bug 导致了 git 仓库错误。</p>
+<p>唯一的解决办法就是像上面一样。 </p>
+<p><a href="http://blog.cocoapods.org/Repairing-Our-Broken-Specs-Repository/">相关链接</a></p>
+]]></content>
+    </entry>
+    
   
   
 </search>
