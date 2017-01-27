@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://programersunny.github.io/"/>
-  <updated>2017-01-20T06:09:01.000Z</updated>
+  <updated>2017-01-27T17:25:59.000Z</updated>
   <id>https://programersunny.github.io/</id>
   
   <author>
@@ -16,42 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>CocoaPods小知识集锦</title>
-    <link href="https://programersunny.github.io/2017/01/20/CocoaPods%E5%B0%8F%E7%9F%A5%E8%AF%86%E9%9B%86%E9%94%A6/"/>
-    <id>https://programersunny.github.io/2017/01/20/CocoaPods小知识集锦/</id>
-    <published>2017-01-19T16:00:00.000Z</published>
-    <updated>2017-01-20T06:09:01.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>在使用CocoaPods 的过程中遇到的问题。整理性的一遍文章，没有多少价值。</p>
-<a id="more"></a>
-<h3 id="1"><a href="#1" class="headerlink" title="1"></a>1</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">✘ sunyang@sunny-mbp  ~<span class="regexp">/desktop/ios</span>  pod install</div><div class="line">[!] No <span class="string">`Podfile' found in the project directory.</span></div></pre></td></tr></table></figure>
-<p>解决方案</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">✘ sunyang@sunny-mbp  ~<span class="regexp">/desktop/ios</span>   pod repo remove master</div><div class="line">Removing spec repo <span class="string">`master`</span></div><div class="line"></div><div class="line">✘ sunyang@sunny-mbp  ~<span class="regexp">/desktop/ios</span>  pod setup</div><div class="line">Setting up CocoaPods master repo</div><div class="line"></div><div class="line">✘ sunyang@sunny-mbp  ~<span class="regexp">/desktop/ios</span>  pod install</div><div class="line">Pod installation complete! There are <span class="number">3</span> dependencies from the Podfile <span class="keyword">and</span> <span class="number">4</span> total pods installed.</div></pre></td></tr></table></figure>
-<p>原因</p>
-<p>这是因为 CocoaPods 基于 GitHub 的网页编辑器的 <code>libgit2</code>的一个 bug。 正式这个 bug 导致了 git 仓库错误。</p>
-<p>唯一的解决办法就是像上面一样。 </p>
-<p><a href="http://blog.cocoapods.org/Repairing-Our-Broken-Specs-Repository/">相关链接</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;在使用CocoaPods 的过程中遇到的问题。整理性的一遍文章，没有多少价值。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="CocoaPods" scheme="https://programersunny.github.io/categories/CocoaPods/"/>
-    
-    
-      <category term="CocoaPods" scheme="https://programersunny.github.io/tags/CocoaPods/"/>
-    
-  </entry>
-  
-  <entry>
     <title>SBAnimation a new Repository</title>
-    <link href="https://programersunny.github.io/2017/01/18/SBAnimation%20a%20new%20Repository/"/>
-    <id>https://programersunny.github.io/2017/01/18/SBAnimation a new Repository/</id>
-    <published>2017-01-17T16:00:00.000Z</published>
-    <updated>2017-01-27T17:22:41.000Z</updated>
+    <link href="https://programersunny.github.io/2017/01/28/SBAnimation%20a%20new%20Repository/"/>
+    <id>https://programersunny.github.io/2017/01/28/SBAnimation a new Repository/</id>
+    <published>2017-01-27T16:00:00.000Z</published>
+    <updated>2017-01-27T17:25:59.000Z</updated>
     
     <content type="html"><![CDATA[<p>看了时间，外面已经一直是在放着鞭炮声音。QQ 上收到大学同窗在美国发来的新春祝福，闲聊两句，深感在国外的科研狗的不容易。想到了昨天突然多想了一下，看到的一句话</p>
 <blockquote>
@@ -97,6 +66,37 @@
       <category term="iOS" scheme="https://programersunny.github.io/tags/iOS/"/>
     
       <category term="OpenSource" scheme="https://programersunny.github.io/tags/OpenSource/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CocoaPods小知识集锦</title>
+    <link href="https://programersunny.github.io/2017/01/20/CocoaPods%E5%B0%8F%E7%9F%A5%E8%AF%86%E9%9B%86%E9%94%A6/"/>
+    <id>https://programersunny.github.io/2017/01/20/CocoaPods小知识集锦/</id>
+    <published>2017-01-19T16:00:00.000Z</published>
+    <updated>2017-01-20T06:09:01.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>在使用CocoaPods 的过程中遇到的问题。整理性的一遍文章，没有多少价值。</p>
+<a id="more"></a>
+<h3 id="1"><a href="#1" class="headerlink" title="1"></a>1</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">✘ sunyang@sunny-mbp  ~<span class="regexp">/desktop/ios</span>  pod install</div><div class="line">[!] No <span class="string">`Podfile' found in the project directory.</span></div></pre></td></tr></table></figure>
+<p>解决方案</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">✘ sunyang@sunny-mbp  ~<span class="regexp">/desktop/ios</span>   pod repo remove master</div><div class="line">Removing spec repo <span class="string">`master`</span></div><div class="line"></div><div class="line">✘ sunyang@sunny-mbp  ~<span class="regexp">/desktop/ios</span>  pod setup</div><div class="line">Setting up CocoaPods master repo</div><div class="line"></div><div class="line">✘ sunyang@sunny-mbp  ~<span class="regexp">/desktop/ios</span>  pod install</div><div class="line">Pod installation complete! There are <span class="number">3</span> dependencies from the Podfile <span class="keyword">and</span> <span class="number">4</span> total pods installed.</div></pre></td></tr></table></figure>
+<p>原因</p>
+<p>这是因为 CocoaPods 基于 GitHub 的网页编辑器的 <code>libgit2</code>的一个 bug。 正式这个 bug 导致了 git 仓库错误。</p>
+<p>唯一的解决办法就是像上面一样。 </p>
+<p><a href="http://blog.cocoapods.org/Repairing-Our-Broken-Specs-Repository/">相关链接</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在使用CocoaPods 的过程中遇到的问题。整理性的一遍文章，没有多少价值。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="CocoaPods" scheme="https://programersunny.github.io/categories/CocoaPods/"/>
+    
+    
+      <category term="CocoaPods" scheme="https://programersunny.github.io/tags/CocoaPods/"/>
     
   </entry>
   
@@ -1429,11 +1429,11 @@
       <category term="前端" scheme="https://programersunny.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
+      <category term="CSS" scheme="https://programersunny.github.io/tags/CSS/"/>
+    
       <category term="前端" scheme="https://programersunny.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="学习笔记" scheme="https://programersunny.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="CSS" scheme="https://programersunny.github.io/tags/CSS/"/>
     
   </entry>
   
