@@ -4,6 +4,59 @@
   
     
     <entry>
+      <title><![CDATA[python 中的逻辑运算符]]></title>
+      <url>https://programersunny.github.io/2017/01/29/python%20%E4%B8%AD%E7%9A%84%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6/</url>
+      <content type="html"><![CDATA[<p>从现在开始，开始了对 pyhton 这门语言的学习。</p>
+<a id="more"></a>
+<p>逻辑运算符其实没什么好说的，只是最近学习 python 这门语言的时候，才研究发现的一个小知识点。</p>
+<h2 id="逻辑运算符有什么？"><a href="#逻辑运算符有什么？" class="headerlink" title="逻辑运算符有什么？"></a>逻辑运算符有什么？</h2><table>
+<thead>
+<tr>
+<th style="text-align:center">关系运算符</th>
+<th style="text-align:center">含义</th>
+<th style="text-align:center">举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">and</td>
+<td style="text-align:center">与(全真才真)</td>
+<td style="text-align:center">True and False == False</td>
+</tr>
+<tr>
+<td style="text-align:center">or</td>
+<td style="text-align:center">或(全假才假)</td>
+<td style="text-align:center">True or False == True</td>
+</tr>
+<tr>
+<td style="text-align:center">not</td>
+<td style="text-align:center">非(真变假、假变真)</td>
+<td style="text-align:center">not True == False</td>
+</tr>
+</tbody>
+</table>
+<h2 id="为什么123-and-456结果是456而123-or-456结果是123？"><a href="#为什么123-and-456结果是456而123-or-456结果是123？" class="headerlink" title="为什么123 and 456结果是456而123 or 456结果是123？"></a>为什么<code>123 and 456</code>结果是<code>456</code>而<code>123 or 456</code>结果是<code>123</code>？</h2><p><strong>and </strong>:</p>
+<p>​    对于 and 首先计算第一个表达式，</p>
+<p>​    如果第一个表达式为真，结果为第二个表达式的结果。</p>
+<p>​    如果第一个表达式为假，返回假。</p>
+<p><strong>or </strong>：</p>
+<p>​    对于 or 首先计算第一个表达式，</p>
+<p>​    如果第一个表达式为真，则返回真。</p>
+<p>​    如果第一个表达式为假，则返回第二个表达式的结果    </p>
+<p>所以，对于</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="number">123</span> <span class="keyword">and</span> <span class="number">456</span></div></pre></td></tr></table></figure>
+<p>这行代码， 遵循非零为真的原则，第一个表达式为真。那么看第二个表达式，第二个表达式也大于零，所以结果为第二个表达式的结果。所以返回</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="number">456</span></div></pre></td></tr></table></figure>
+<p>对于</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="number">123</span> <span class="keyword">or</span> <span class="number">456</span></div></pre></td></tr></table></figure>
+<p>这行代码，第一个表达式非零，结果为第一个表达式的结果。</p>
+<p>另外，因为 <code>123</code> 或者 <code>456</code> 这两个表达式，都不是逻辑运算，表达式的值就是他本身的值。所以最后得出这样的结果。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><strong>and: </strong>从左到右计算表达式，若所有值为真，返回最后一个值。若存在假，返回第一个假值。</p>
+<p><strong>or：</strong> 从左到右计算表达式，返回第一个为真的值。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[SBAnimation a new Repository]]></title>
       <url>https://programersunny.github.io/2017/01/28/SBAnimation%20a%20new%20Repository/</url>
       <content type="html"><![CDATA[<p>看了时间，外面已经一直是在放着鞭炮声音。QQ 上收到大学同窗在美国发来的新春祝福，闲聊两句，深感在国外的科研狗的不容易。想到了昨天突然多想了一下，看到的一句话</p>

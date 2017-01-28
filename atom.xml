@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://programersunny.github.io/"/>
-  <updated>2017-01-27T17:27:29.000Z</updated>
+  <updated>2017-01-28T14:58:52.000Z</updated>
   <id>https://programersunny.github.io/</id>
   
   <author>
@@ -14,6 +14,75 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>python 中的逻辑运算符</title>
+    <link href="https://programersunny.github.io/2017/01/29/python%20%E4%B8%AD%E7%9A%84%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6/"/>
+    <id>https://programersunny.github.io/2017/01/29/python 中的逻辑运算符/</id>
+    <published>2017-01-28T16:00:00.000Z</published>
+    <updated>2017-01-28T14:58:52.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>从现在开始，开始了对 pyhton 这门语言的学习。</p>
+<a id="more"></a>
+<p>逻辑运算符其实没什么好说的，只是最近学习 python 这门语言的时候，才研究发现的一个小知识点。</p>
+<h2 id="逻辑运算符有什么？"><a href="#逻辑运算符有什么？" class="headerlink" title="逻辑运算符有什么？"></a>逻辑运算符有什么？</h2><table>
+<thead>
+<tr>
+<th style="text-align:center">关系运算符</th>
+<th style="text-align:center">含义</th>
+<th style="text-align:center">举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">and</td>
+<td style="text-align:center">与(全真才真)</td>
+<td style="text-align:center">True and False == False</td>
+</tr>
+<tr>
+<td style="text-align:center">or</td>
+<td style="text-align:center">或(全假才假)</td>
+<td style="text-align:center">True or False == True</td>
+</tr>
+<tr>
+<td style="text-align:center">not</td>
+<td style="text-align:center">非(真变假、假变真)</td>
+<td style="text-align:center">not True == False</td>
+</tr>
+</tbody>
+</table>
+<h2 id="为什么123-and-456结果是456而123-or-456结果是123？"><a href="#为什么123-and-456结果是456而123-or-456结果是123？" class="headerlink" title="为什么123 and 456结果是456而123 or 456结果是123？"></a>为什么<code>123 and 456</code>结果是<code>456</code>而<code>123 or 456</code>结果是<code>123</code>？</h2><p><strong>and </strong>:</p>
+<p>​    对于 and 首先计算第一个表达式，</p>
+<p>​    如果第一个表达式为真，结果为第二个表达式的结果。</p>
+<p>​    如果第一个表达式为假，返回假。</p>
+<p><strong>or </strong>：</p>
+<p>​    对于 or 首先计算第一个表达式，</p>
+<p>​    如果第一个表达式为真，则返回真。</p>
+<p>​    如果第一个表达式为假，则返回第二个表达式的结果    </p>
+<p>所以，对于</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="number">123</span> <span class="keyword">and</span> <span class="number">456</span></div></pre></td></tr></table></figure>
+<p>这行代码， 遵循非零为真的原则，第一个表达式为真。那么看第二个表达式，第二个表达式也大于零，所以结果为第二个表达式的结果。所以返回</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="number">456</span></div></pre></td></tr></table></figure>
+<p>对于</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="number">123</span> <span class="keyword">or</span> <span class="number">456</span></div></pre></td></tr></table></figure>
+<p>这行代码，第一个表达式非零，结果为第一个表达式的结果。</p>
+<p>另外，因为 <code>123</code> 或者 <code>456</code> 这两个表达式，都不是逻辑运算，表达式的值就是他本身的值。所以最后得出这样的结果。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><strong>and: </strong>从左到右计算表达式，若所有值为真，返回最后一个值。若存在假，返回第一个假值。</p>
+<p><strong>or：</strong> 从左到右计算表达式，返回第一个为真的值。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;从现在开始，开始了对 pyhton 这门语言的学习。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="python" scheme="https://programersunny.github.io/categories/python/"/>
+    
+    
+      <category term="python" scheme="https://programersunny.github.io/tags/python/"/>
+    
+  </entry>
   
   <entry>
     <title>SBAnimation a new Repository</title>
@@ -61,11 +130,11 @@
       <category term="iOS" scheme="https://programersunny.github.io/categories/iOS/"/>
     
     
-      <category term="杂记" scheme="https://programersunny.github.io/tags/%E6%9D%82%E8%AE%B0/"/>
-    
       <category term="iOS" scheme="https://programersunny.github.io/tags/iOS/"/>
     
       <category term="OpenSource" scheme="https://programersunny.github.io/tags/OpenSource/"/>
+    
+      <category term="杂记" scheme="https://programersunny.github.io/tags/%E6%9D%82%E8%AE%B0/"/>
     
   </entry>
   
@@ -1434,70 +1503,6 @@
       <category term="前端" scheme="https://programersunny.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="学习笔记" scheme="https://programersunny.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JavaScript和Native的交互 第二弹</title>
-    <link href="https://programersunny.github.io/2016/08/28/javascript%E5%92%8Cnative%E7%9A%84%E4%BA%A4%E4%BA%92_%E7%AC%AC%E4%BA%8C%E5%BC%B9/"/>
-    <id>https://programersunny.github.io/2016/08/28/javascript和native的交互_第二弹/</id>
-    <published>2016-08-28T06:58:45.000Z</published>
-    <updated>2016-08-29T02:27:33.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>上次简单的写了一下js和Native交互的问题，这篇文章再稍微深入的研究一下JSBinding。作为上文的补充。</p>
-<a id="more"></a>
-<h2 id="JSBinding"><a href="#JSBinding" class="headerlink" title="JSBinding"></a>JSBinding</h2><h3 id="JSBinding-是什么"><a href="#JSBinding-是什么" class="headerlink" title="JSBinding 是什么?"></a>JSBinding 是什么?</h3><p>JSBinding 不是Hybrid很多人都是通过cocos2dx来了解JSbinding这个技术的。</p>
-<p>JSBingding 是JSC和Native 之间的桥接。</p>
-<p>JS实际上就是JS和Native之间的一个桥梁，通过JSBinding打通了JS代码和Native代码，并在其间实现二者的交流。</p>
-<h3 id="JSBinding和Hybrid的区别"><a href="#JSBinding和Hybrid的区别" class="headerlink" title="JSBinding和Hybrid的区别"></a>JSBinding和Hybrid的区别</h3><p>Hybrid实际上就是通过webview。js代码实际上还是跑在web上。是web技术和Native之间的桥梁。</p>
-<p>二JSBinding并不依赖于webview</p>
-<p>Native (原生静态语言): 高性能、更底层、更强大、平台特性<br>JavaScript(动态脚本语言): 简单易用、免编译、热部署</p>
-<h2 id="JSC-API"><a href="#JSC-API" class="headerlink" title="JSC API"></a>JSC API</h2><h3 id="JavaScriptCore-h"><a href="#JavaScriptCore-h" class="headerlink" title="JavaScriptCore.h"></a>JavaScriptCore.h</h3><p>这一部分在上一篇文章已经又过一些简单的介绍了。在这里可能会有一些新的理解。</p>
-<p><code>#import &lt;JavaScriptCore/JavaScriptCore.h&gt;</code></p>
-<h3 id="JSContext"><a href="#JSContext" class="headerlink" title="JSContext"></a>JSContext</h3><p>就是js的上下文，或者说是js的运行环境</p>
-<h3 id="JSValue"><a href="#JSValue" class="headerlink" title="JSValue"></a>JSValue</h3><h3 id="JSExport"><a href="#JSExport" class="headerlink" title="JSExport"></a>JSExport</h3><h2 id="OC-call-Js"><a href="#OC-call-Js" class="headerlink" title="OC call Js"></a>OC call Js</h2><h3 id="1、执行js脚本"><a href="#1、执行js脚本" class="headerlink" title="1、执行js脚本"></a>1、执行js脚本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//执行js脚本</div><div class="line">    JSContext *context = [[JSContext alloc] init];</div><div class="line">    JSValue *value = [context evaluateScript:@&quot;1+2&quot;];</div><div class="line">    NSLog(@&quot;%f&quot;,[value toDouble]);</div></pre></td></tr></table></figure>
-<h3 id="2、调用js函数"><a href="#2、调用js函数" class="headerlink" title="2、调用js函数"></a>2、调用js函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//调用js函数</div><div class="line">    //在js上下文中定义一个js函数</div><div class="line">    //NSString *js = @&quot;function sum(a,b) &#123;return a+b;&#125;&quot;;</div><div class="line">    //[context evaluateScript:js];</div><div class="line">    //调用这个js函数</div><div class="line">    //sumA 是js代码中的一个function</div><div class="line">    JSValue *sum = context[@&quot;sumA&quot;];</div><div class="line">    JSValue *result = [sum callWithArguments:@[@1,@1]];</div><div class="line">    NSLog(@&quot;sum(1,2) = %f&quot;,[result toDouble]);</div></pre></td></tr></table></figure>
-<h3 id="3、创建一个js值"><a href="#3、创建一个js值" class="headerlink" title="3、创建一个js值"></a>3、创建一个js值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">//创建js值对象</div><div class="line">    //方法1</div><div class="line">    JSValue *intVar = [JSValue valueWithInt32:231 inContext:context];</div><div class="line">    context[@&quot;bar&quot;] = intVar;</div><div class="line">    [context evaluateScript:@&quot;bar++&quot;];</div><div class="line">    //方法2</div><div class="line">    [context evaluateScript:@&quot;var bar = 231;&quot;];</div></pre></td></tr></table></figure>
-<p>value对应关系，在上文中有介绍</p>
-<h3 id="4、捕获错误信息"><a href="#4、捕获错误信息" class="headerlink" title="4、捕获错误信息"></a>4、捕获错误信息</h3><p>由于在js 中的错误在native中是不能自动捕捉的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//捕获JS中的异常信息</div><div class="line">	JSContext *context = [[JSContext alloc] init];</div><div class="line">	context.exceptionHandler = ^(JSContext *ctx ,JSValue *exception)&#123;</div><div class="line">		NSLog(@&quot;%@&quot;,exception)</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
-<h2 id="Js-call-Native"><a href="#Js-call-Native" class="headerlink" title="Js call Native"></a>Js call Native</h2><h3 id="1、js-call-Native-via-block"><a href="#1、js-call-Native-via-block" class="headerlink" title="1、js call Native via block"></a>1、js call Native via block</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">context[@&quot;sum&quot;] = ^(int a, int b)&#123;</div><div class="line">     return a+b;</div><div class="line"> &#125;;</div><div class="line"> value = [context evaluateScript:@&quot;sum(1,2)&quot;];</div><div class="line"> //在js 中直接使用  “sum(1,2);”来调用</div></pre></td></tr></table></figure>
-<ul>
-<li>虽然在oc的代码中block是可以访问自己之外的变量的。但是当我们使用这个block和js互动的时候这个block就不能够调用外面的东西。如果要是用这个context的话，使用<code>[JSContext currentContext]</code>来获取当前的上下文。动态参数：<code>[JSContext currentArguments]</code></li>
-</ul>
-<h3 id="2、js-call-native-via-JSExport"><a href="#2、js-call-native-via-JSExport" class="headerlink" title="2、js call native via JSExport"></a>2、js call native via JSExport</h3><p>在上文中，介绍较多。只是没有仔细的研究具体实现原理。</p>
-<p>定义并且实例化一个JSExport类,然后把这个对象放在jscontext。这样就可以通过像操作js对象那样操作这个对象。</p>
-<p>但是要注意，在js中没有构造函数。</p>
-<p> 即使我们通过export向js上下文中注入了一个类，但是我们在js中通过new来实例化这个类的对象是不可行的。即使我们通过<code>context[@&quot;Foo&quot;] = [Foo class]</code>向js注入这么一个类，但是也是不可以的。这可以说是jsbinding的一个缺陷吧。</p>
-<h2 id="console等怎么来"><a href="#console等怎么来" class="headerlink" title="console等怎么来"></a>console等怎么来</h2><p>上一篇文章中console.log 是可用的，因为js代码实际上也是运行在webview中的，但是如果我们不通过浏览器的话，是没有console这个函数的，这个时候怎么样实现我们的日志输出功能呢？</p>
-<p>这个时候如果我们通过一个叫console的类,来实现这个功能就是可以的了。</p>
-<p>但是我们其实也可以单独使用一个js本身来模拟这个功能。但我没有去实现过，不敢赘述。</p>
-<h2 id="内存泄漏"><a href="#内存泄漏" class="headerlink" title="内存泄漏"></a>内存泄漏</h2><ul>
-<li>Retain cycle</li>
-</ul>
-<p>native 对象 和js对象循环持有，是不能通过GC或者ARC释放的。</p>
-<p>这种情况下 Native必须通过JSManagedValue来持有js对象，js可以直接持有。这种情况下，js代码可以正常写，而oc里面的setter方法需要使用<code>[JSManagedValue managedValueWith:]</code>来包装一下。</p>
-<h2 id="线程安全"><a href="#线程安全" class="headerlink" title="线程安全"></a>线程安全</h2><p>API是线程安全的；</p>
-<p>锁的最小粒度是js虚拟机 JSVirtualMachine</p>
-<p>如果要并行的运行两个东西，需要把它分到两个虚拟机中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">	JSVirtualMachine *jsMachineA = [[JSVirtualMachine alloc] init];</div><div class="line">    JSContext *contextA = [[JSContext alloc] initWithVirtualMachine:jsMachineA];</div><div class="line">    JSContext *contextB = [[JSContext alloc] initWithVirtualMachine:jsMachineA];</div><div class="line">//</div><div class="line">    JSVirtualMachine *jsMachineB = [[JSVirtualMachine alloc] init];</div><div class="line">    JSContext *contextC = [[JSContext alloc] initWithVirtualMachine:jsMachineB];</div></pre></td></tr></table></figure>
-<p>A、B虽然是不容的上下文，但是她们是运行在同一个js虚拟机当中的，他俩在运行的时候是能够保证是一个同步的状态。虽然她们不能直接互相访问，但是她们是能够在Native上面实现一个比较好的通讯。（不需要考虑执行顺序和锁的问题）</p>
-<p>A、C是在不同的线程中的，她们是不能很容易通讯的，异步执行，在他们之间的通讯比较麻烦</p>
-<h3 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h3><p>这篇文章作为上一篇文章的补充，实在没有那么多的干货，但是作为自己对jsbinding的理解和更加深入的学习,本文的撰写确实帮助我对这一知识的理解更加的系统化。上一篇文章更多的是面相实现，而这篇文章增加了更多对原理的理解。路漫漫其修远兮，吾将上下而求索。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;上次简单的写了一下js和Native交互的问题，这篇文章再稍微深入的研究一下JSBinding。作为上文的补充。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="iOS" scheme="https://programersunny.github.io/categories/iOS/"/>
-    
-    
-      <category term="iOS" scheme="https://programersunny.github.io/tags/iOS/"/>
-    
-      <category term="JavaScript" scheme="https://programersunny.github.io/tags/JavaScript/"/>
     
   </entry>
   
