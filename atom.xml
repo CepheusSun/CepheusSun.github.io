@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://programersunny.github.io/"/>
-  <updated>2017-02-01T16:13:09.000Z</updated>
+  <updated>2017-02-01T15:15:04.000Z</updated>
   <id>https://programersunny.github.io/</id>
   
   <author>
@@ -14,50 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>python Debug 之一</title>
-    <link href="https://programersunny.github.io/2017/02/02/python%20debug%20%E4%B9%8B%E4%B8%80/"/>
-    <id>https://programersunny.github.io/2017/02/02/python debug 之一/</id>
-    <published>2017-02-01T16:00:00.000Z</published>
-    <updated>2017-02-01T16:13:09.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>错误类型:SyntaxError: Non-ASCII character ‘\xe9’ in file xxx</p>
-<a id="more"></a>
-<p>最近写 python 代码的时候，简单的一下代码，确出现错误。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">points = int(raw_input(<span class="string">"领先的分数："</span>))</div><div class="line">is_in_control = raw_input(<span class="string">"是否领先队控球(Y／N：)"</span>)</div><div class="line">last_seconds = int(raw_input(<span class="string">"比赛剩余秒数："</span>))</div><div class="line"></div><div class="line">points -= <span class="number">3</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> is_in_control == <span class="string">'Y'</span>:</div><div class="line">    points += <span class="number">0.5</span></div><div class="line"><span class="keyword">else</span>:</div><div class="line">    points -= <span class="number">0.5</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> points &lt; <span class="number">0</span>:</div><div class="line">    points = <span class="number">0</span></div><div class="line"></div><div class="line"></div><div class="line">points = points ** <span class="number">2</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> points &gt; last_seconds:</div><div class="line">    <span class="keyword">print</span> <span class="string">"safe"</span></div><div class="line"><span class="keyword">else</span>:</div><div class="line">    <span class="keyword">print</span>  <span class="string">"unsafe"</span></div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SyntaxError: Non-ASCII character &apos;\xe9&apos; in file /Users/programersunny/PycharmProjects/pythonDemo/hello on line 58, but no encoding declared; see http://www.python.org/peps/pep-0263.html for details</div></pre></td></tr></table></figure>
-<p>打开 URL 阅读了一下，找到原因：</p>
-<blockquote>
-<p>Python will default to ASCII as standard encoding if no other encoding hints are given.</p>
-</blockquote>
-<p>Python的默认编码文件是用的ASCII码，你将文件存成了UTF-8也没用。</p>
-<p>解决办法很简单：</p>
-<p>只要在文件开头加入<code># -*- coding: UTF-8 —</code>或者<code>#coding=utf-8</code> 就行了。</p>
-<p>注意，这两行代码必须添加在<code>.py</code>文件的第一行或者第二行。如果在第三行以及以上，都没有效果，这个在这个网址上也有描述</p>
-<blockquote>
-<p>To define a source code encoding, a magic comment must be placed into the source files either as first or second line in the file</p>
-</blockquote>
-<p>翻译一下：</p>
-<blockquote>
-<p>为了定义源码的编码格式，一个神奇的注释需要被添加到源文件的第一行或者第二行中。</p>
-</blockquote>
-<p>神奇的注释已经在上文提到了。</p>
-<p>纪念一下自己在 python 中遇到的第一个小坑。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;错误类型:SyntaxError: Non-ASCII character ‘\xe9’ in file xxx&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="python" scheme="https://programersunny.github.io/categories/python/"/>
-    
-    
-      <category term="python" scheme="https://programersunny.github.io/tags/python/"/>
-    
-  </entry>
   
   <entry>
     <title>iOS小知识集锦-NSString常用方法汇总</title>
@@ -100,6 +56,51 @@
     
     
       <category term="Objective-C" scheme="https://programersunny.github.io/tags/Objective-C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python Debug 之一</title>
+    <link href="https://programersunny.github.io/2017/02/02/python%20debug%20%E4%B9%8B%E4%B8%80/"/>
+    <id>https://programersunny.github.io/2017/02/02/python debug 之一/</id>
+    <published>2017-02-01T16:00:00.000Z</published>
+    <updated>2017-02-01T16:14:38.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>错误类型:SyntaxError: Non-ASCII character ‘\xe9’ in file xxx</p>
+<a id="more"></a>
+<p>最近写 python 代码的时候，简单的一下代码，确出现错误。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">points = int(raw_input(<span class="string">"领先的分数："</span>))</div><div class="line">is_in_control = raw_input(<span class="string">"是否领先队控球(Y／N：)"</span>)</div><div class="line">last_seconds = int(raw_input(<span class="string">"比赛剩余秒数："</span>))</div><div class="line"></div><div class="line">points -= <span class="number">3</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> is_in_control == <span class="string">'Y'</span>:</div><div class="line">    points += <span class="number">0.5</span></div><div class="line"><span class="keyword">else</span>:</div><div class="line">    points -= <span class="number">0.5</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> points &lt; <span class="number">0</span>:</div><div class="line">    points = <span class="number">0</span></div><div class="line"></div><div class="line"></div><div class="line">points = points ** <span class="number">2</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> points &gt; last_seconds:</div><div class="line">    <span class="keyword">print</span> <span class="string">"safe"</span></div><div class="line"><span class="keyword">else</span>:</div><div class="line">    <span class="keyword">print</span>  <span class="string">"unsafe"</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SyntaxError: Non-ASCII character &apos;\xe9&apos; in file /Users/programersunny/PycharmProjects/pythonDemo/hello on line 58, but no encoding declared; see http://www.python.org/peps/pep-0263.html for details</div></pre></td></tr></table></figure>
+<p>打开 URL 阅读了一下，找到原因：</p>
+<blockquote>
+<p>Python will default to ASCII as standard encoding if no other encoding hints are given.</p>
+</blockquote>
+<p>Python的默认编码文件是用的ASCII码，你将文件存成了UTF-8也没用。</p>
+<p>解决办法很简单：</p>
+<p>只要在文件开头加入<code># -*- coding: UTF-8 —</code>或者<code>#coding=utf-8</code> 就行了。</p>
+<p>注意，这两行代码必须添加在<code>.py</code>文件的第一行或者第二行。如果在第三行以及以上，都没有效果，这个在这个网址上也有描述</p>
+<blockquote>
+<p>To define a source code encoding, a magic comment must be placed into the source files either as first or second line in the file</p>
+</blockquote>
+<p>翻译一下：</p>
+<blockquote>
+<p>为了定义源码的编码格式，一个神奇的注释需要被添加到源文件的第一行或者第二行中。</p>
+</blockquote>
+<p>神奇的注释已经在上文提到了。</p>
+<p><a href="https://www.python.org/dev/peps/pep-0263/">上文提到的URL地址</a></p>
+<p>纪念一下自己在 python 中遇到的第一个小坑。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;错误类型:SyntaxError: Non-ASCII character ‘\xe9’ in file xxx&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="python" scheme="https://programersunny.github.io/categories/python/"/>
+    
+    
+      <category term="python" scheme="https://programersunny.github.io/tags/python/"/>
     
   </entry>
   
@@ -222,11 +223,11 @@
       <category term="iOS" scheme="https://programersunny.github.io/categories/iOS/"/>
     
     
+      <category term="杂记" scheme="https://programersunny.github.io/tags/%E6%9D%82%E8%AE%B0/"/>
+    
       <category term="iOS" scheme="https://programersunny.github.io/tags/iOS/"/>
     
       <category term="OpenSource" scheme="https://programersunny.github.io/tags/OpenSource/"/>
-    
-      <category term="杂记" scheme="https://programersunny.github.io/tags/%E6%9D%82%E8%AE%B0/"/>
     
   </entry>
   
