@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://programersunny.github.io/"/>
-  <updated>2017-01-29T16:05:59.000Z</updated>
+  <updated>2017-02-01T16:13:09.000Z</updated>
   <id>https://programersunny.github.io/</id>
   
   <author>
@@ -14,6 +14,94 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>python Debug 之一</title>
+    <link href="https://programersunny.github.io/2017/02/02/python%20debug%20%E4%B9%8B%E4%B8%80/"/>
+    <id>https://programersunny.github.io/2017/02/02/python debug 之一/</id>
+    <published>2017-02-01T16:00:00.000Z</published>
+    <updated>2017-02-01T16:13:09.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>错误类型:SyntaxError: Non-ASCII character ‘\xe9’ in file xxx</p>
+<a id="more"></a>
+<p>最近写 python 代码的时候，简单的一下代码，确出现错误。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">points = int(raw_input(<span class="string">"领先的分数："</span>))</div><div class="line">is_in_control = raw_input(<span class="string">"是否领先队控球(Y／N：)"</span>)</div><div class="line">last_seconds = int(raw_input(<span class="string">"比赛剩余秒数："</span>))</div><div class="line"></div><div class="line">points -= <span class="number">3</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> is_in_control == <span class="string">'Y'</span>:</div><div class="line">    points += <span class="number">0.5</span></div><div class="line"><span class="keyword">else</span>:</div><div class="line">    points -= <span class="number">0.5</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> points &lt; <span class="number">0</span>:</div><div class="line">    points = <span class="number">0</span></div><div class="line"></div><div class="line"></div><div class="line">points = points ** <span class="number">2</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> points &gt; last_seconds:</div><div class="line">    <span class="keyword">print</span> <span class="string">"safe"</span></div><div class="line"><span class="keyword">else</span>:</div><div class="line">    <span class="keyword">print</span>  <span class="string">"unsafe"</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SyntaxError: Non-ASCII character &apos;\xe9&apos; in file /Users/programersunny/PycharmProjects/pythonDemo/hello on line 58, but no encoding declared; see http://www.python.org/peps/pep-0263.html for details</div></pre></td></tr></table></figure>
+<p>打开 URL 阅读了一下，找到原因：</p>
+<blockquote>
+<p>Python will default to ASCII as standard encoding if no other encoding hints are given.</p>
+</blockquote>
+<p>Python的默认编码文件是用的ASCII码，你将文件存成了UTF-8也没用。</p>
+<p>解决办法很简单：</p>
+<p>只要在文件开头加入<code># -*- coding: UTF-8 —</code>或者<code>#coding=utf-8</code> 就行了。</p>
+<p>注意，这两行代码必须添加在<code>.py</code>文件的第一行或者第二行。如果在第三行以及以上，都没有效果，这个在这个网址上也有描述</p>
+<blockquote>
+<p>To define a source code encoding, a magic comment must be placed into the source files either as first or second line in the file</p>
+</blockquote>
+<p>翻译一下：</p>
+<blockquote>
+<p>为了定义源码的编码格式，一个神奇的注释需要被添加到源文件的第一行或者第二行中。</p>
+</blockquote>
+<p>神奇的注释已经在上文提到了。</p>
+<p>纪念一下自己在 python 中遇到的第一个小坑。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;错误类型:SyntaxError: Non-ASCII character ‘\xe9’ in file xxx&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="python" scheme="https://programersunny.github.io/categories/python/"/>
+    
+    
+      <category term="python" scheme="https://programersunny.github.io/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iOS小知识集锦-NSString常用方法汇总</title>
+    <link href="https://programersunny.github.io/2017/02/02/iOS%E5%B0%8F%E7%9F%A5%E8%AF%86%E9%9B%86%E9%94%A6-NSString%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB/"/>
+    <id>https://programersunny.github.io/2017/02/02/iOS小知识集锦-NSString常用方法汇总/</id>
+    <published>2017-02-01T16:00:00.000Z</published>
+    <updated>2017-02-01T15:15:04.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>NSString 几乎是 iOS 开发中最常用的类了。几乎所有的地方都会用到各种各样的字符串。NSString 也有很多的方法。这篇文章记录我在使用 NSString 类的时候，会用到的知识点。也是 <code>iOS小知识集锦</code>的第一篇文章吧。</p>
+<a id="more"></a>
+<h3 id="创建字符串"><a href="#创建字符串" class="headerlink" title="创建字符串"></a>创建字符串</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">// 直接创建字符串</div><div class="line">NSString *str1 = @&quot;this is programer sunny&quot;;</div><div class="line"></div><div class="line">// 用一个字符串创建另一个字符串</div><div class="line">NSString *str2 =[[NSString alloc] initWithString:str1];</div><div class="line"></div><div class="line">// 用c的字符串创建oc的字符串</div><div class="line">NSString *str4 = [[NSString alloc] initWithUTF8String:&quot;我是程序猿&quot;];</div><div class="line"></div><div class="line">// 用格式符拼接字符串</div><div class="line">NSString *str3 = [[NSString alloc] initWithFormat:@&quot;%@%@&quot;,str1,str4];</div></pre></td></tr></table></figure>
+<h3 id="读取文件来初始化字符串"><a href="#读取文件来初始化字符串" class="headerlink" title="读取文件来初始化字符串"></a>读取文件来初始化字符串</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">// 先创建一个error对象，用来保存错误信息</div><div class="line">NSError *error = nil;</div><div class="line">//@&quot;/Users/xxx/Desktop/123.txt&quot;为文件路径</div><div class="line">NSString *str01 = [NSString stringWithContentsOfFile:@&quot;/Users/xxx/Desktop/123.txt&quot; encoding:NSUTF8StringEncoding error:&amp;error];</div><div class="line">        </div><div class="line">// 创建if语句判断输出</div><div class="line">if (error) &#123; // 一旦为真，说明读取文件出错了</div><div class="line">	NSLog(@&quot;读取文件出错 %@&quot;, error);</div><div class="line">&#125; else &#123;</div><div class="line">	NSLog(@&quot;读取成功:%@&quot;, str01);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="通过-URL-读取文件，初始化字符串"><a href="#通过-URL-读取文件，初始化字符串" class="headerlink" title="通过 URL 读取文件，初始化字符串"></a>通过 URL 读取文件，初始化字符串</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">// http://www.baidu.com/image/xxxx.png</div><div class="line">// url = 协议头://主机地址/在主机里面的路径</div><div class="line"></div><div class="line">// ftp协议，传输比较大的文件</div><div class="line">// file协议，读取比较大的文件</div><div class="line"></div><div class="line">// file协议，读取文本文件</div><div class="line">NSURL *url = [NSURL URLWithString:@&quot;file://192.168.1.1/user/apple/desktop/test.txt&quot;]</div><div class="line">  </div><div class="line">// 如果不写 IP 地址，就会默认访问本机</div><div class="line">NSURL *url = [NSURL URLWithString:@&quot;file:///user/programersunny/desktop/123.txt&quot;]</div><div class="line">  </div><div class="line">// 将本地文件路径创建为 URL 对象(路径可以是中文)</div><div class="line"> NSURL *url = [NSURL fileURLWithPath:@&quot;/Users/programersunny/Desktop/123.txt&quot;];</div><div class="line"></div><div class="line">// 将对应对网络资源文件路径创建为URL对象(路径必须是英文字母)</div><div class="line">// SURL *url = [NSURL URLWithString:@&quot;file:///Users/programersunny/Desktop/123.txt&quot;];</div><div class="line"> </div><div class="line">// 先创建一个 error 对象，用来保存错误信息</div><div class="line">NSError *error1 = nil;</div><div class="line">// 调用URL地址的文件</div><div class="line">NSString *str03 = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&amp;error1];</div><div class="line">        </div><div class="line">if (error1) &#123; // 一旦为真，说明读取文件出错了</div><div class="line">	NSLog(@&quot;读取文件出错 %@&quot;, error1);</div><div class="line">&#125; else&#123;</div><div class="line">	NSLog(@&quot;读取成功:%@&quot;, str03);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="通过-url-或-file-将字符串信息写入文件"><a href="#通过-url-或-file-将字符串信息写入文件" class="headerlink" title="通过 url 或 file 将字符串信息写入文件"></a>通过 url 或 file 将字符串信息写入文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"> NSString *s001 = @&quot;dfa短发方法法德俄额度 短发舒服&quot;;</div><div class="line">        </div><div class="line">// NSURL *myurl = [NSURL fileURLWithPath:@&quot;/Users/progamersunny/Desktop/123.txt&quot;];</div><div class="line">        </div><div class="line">NSURL *myurl = [NSURL URLWithString:@&quot;file:///Users/progamersunny/Desktop/123.txt&quot;];</div><div class="line"></div><div class="line">// 调用将字符串写入URL地址文件的方法</div><div class="line">[s001 writeToURL:myurl atomically:YES encoding:NSUTF8StringEncoding error:nil];</div><div class="line">        </div><div class="line">// 调用将字符串写入本机文件的方法</div><div class="line">// [s001 writeToFile:@&quot;/Users/xlzhang/Desktop/OC基础知识点汇总/OC中NSString常用方法汇总/text1.txt1&quot; atomically:YES encoding:NSUTF8StringEncoding error:nil];</div><div class="line">        </div><div class="line">// 提取文件内容</div><div class="line">NSString *str04 = [NSString stringWithContentsOfFile:@&quot;/Users/xlzhang/Desktop/text/text/123.txt&quot; encoding:NSUTF8StringEncoding error:nil];</div></pre></td></tr></table></figure>
+<h3 id="创建临时字符串"><a href="#创建临时字符串" class="headerlink" title="创建临时字符串"></a>创建临时字符串</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// 用一个字符串创建另一个临时字符串</div><div class="line">NSString *str5 = [NSString stringWithString:str2];</div><div class="line"></div><div class="line">// 用c的字符串创建oc的临时字符串</div><div class="line">NSString *str6 = [NSString stringWithUTF8String:&quot;我是程序猿&quot;];</div><div class="line">        </div><div class="line">// 用格式符拼接字符串</div><div class="line">NSString *str7 = [NSString stringWithFormat:@&quot;%@%@&quot;,str5,str3];</div></pre></td></tr></table></figure>
+<h3 id="字符串比较"><a href="#字符串比较" class="headerlink" title="字符串比较"></a>字符串比较</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">// 比较两个字符串是否相等，返回BOOL值YES或NO</div><div class="line">BOOL ret = [str6 isEqualToString: str7];</div><div class="line"></div><div class="line">// 比较并返回谁大谁小(返回值是个枚举类型: 比较的结果 ＝ －1，0，1)</div><div class="line">// typedef NS_ENUM(NSInteger, NSComparisonResult) &#123;NSOrderedAscending = -1L, NSOrderedSame, NSOrderedDescending&#125;;</div><div class="line">// 如果左边str1小于右边str4就返回－1，相等就返回0，大于就返回1</div><div class="line"></div><div class="line">NSComparisonResult ret1 = [str1 compare: str4];</div><div class="line"></div><div class="line">// 忽略大小写进行比较</div><div class="line">NSComparisonResult ret01 = [str1 caseInsensitiveCompare:str4];</div><div class="line"></div><div class="line"> // 有条件的比较谁大谁小(options的参数为限制条件)</div><div class="line"> // options: 指定比较的条件</div><div class="line"> // NSCaseInsensitiveSearch  忽略大小写</div><div class="line"> // NSBackwardsSearch  从后往前比较</div><div class="line"> // NSNumericSearch  首先比较字符串里面的字符的个数，个数一样再比较大小</div><div class="line"></div><div class="line">NSComparisonResult ret02 = [str1 compare:str4 options:NSCaseInsensitiveSearch]; // 忽略大小写进行比较</div></pre></td></tr></table></figure>
+<h3 id="从一个字符串中查找子字符串"><a href="#从一个字符串中查找子字符串" class="headerlink" title="从一个字符串中查找子字符串"></a>从一个字符串中查找子字符串</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">NSString *s1 = @&quot;I am such a poor programer.&quot;;</div><div class="line">NSString *s2 = @&quot;am&quot;;</div><div class="line"></div><div class="line">// 返回值类型是一个枚举类型NSRange,包含两个lu整型变量location(位置)和length(长度)</div><div class="line">NSRange range = [s1 rangeOfString:s2];// 查找并返回位置</div><div class="line"></div><div class="line">        </div><div class="line">// 有条件的查找,options后面为： NSCaseInsensitiveSearch 表示忽略大小写</div><div class="line">NSRange range01 = [s1 rangeOfString:s2 options:NSLiteralSearch]; // options表示查找方式</div><div class="line"></div><div class="line">BOOL b1 = [s1 containsString:s2]; // 返回值类型是一个BOOL值，YES表示s1包含有s2，NO表示没有包含</div><div class="line"></div><div class="line">// 如果查找的字符串不存在，返回的值：range.length = 0;range.location = NSNotFound (NSNotFound = -1)</div></pre></td></tr></table></figure>
+<h3 id="单独提取某一个字符"><a href="#单独提取某一个字符" class="headerlink" title="单独提取某一个字符"></a>单独提取某一个字符</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// 创建一个可变字符串对象</div><div class="line">NSMutableString *str02 = [[NSMutableString alloc] init];</div><div class="line">// 循环获取字符中的每一个字符</div><div class="line">for (int i = 0;i &lt; [str1 length]; i++)&#123;</div><div class="line">    // 此处提取的字符是两个字节，因此可以提取汉字</div><div class="line">	unichar c = [str1 characterAtIndex:i]; </div><div class="line">	// 将获取对字符合并到可变字符串中</div><div class="line">	[str02 appendFormat:@&quot;%C&quot;,c];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="从字符串中提取某个范围点字符生成新字符串－－-从第一个字符开始到某个位置结束，从某个位置开始到字符串尾，某点开始某点结束"><a href="#从字符串中提取某个范围点字符生成新字符串－－-从第一个字符开始到某个位置结束，从某个位置开始到字符串尾，某点开始某点结束" class="headerlink" title="从字符串中提取某个范围点字符生成新字符串－－(从第一个字符开始到某个位置结束，从某个位置开始到字符串尾，某点开始某点结束)"></a>从字符串中提取某个范围点字符生成新字符串－－(从第一个字符开始到某个位置结束，从某个位置开始到字符串尾，某点开始某点结束)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">NSString *s3 = @&quot;0123456789&quot;;</div><div class="line">NSString *s4 = [s3 substringToIndex: 6 ]; </div><div class="line">// 从s3中提取从头至第6个字符(不包括第6个),生产新字符串,返回这个新字符串的地址</div><div class="line">// s4的结果为: &quot;012345&quot;</div><div class="line">        </div><div class="line">NSString *s5 = [s3 substringFromIndex: 6 ]; </div><div class="line">// 从s3中提取从第6个字符(包括第6个)到最后一个字符,生产新字符串,返回这个新字符串的地址</div><div class="line">// s5到结果为: &quot;6789&quot;</div><div class="line">        </div><div class="line">NSRange range1 = &#123;3,4&#125;; </div><div class="line">// 3表示起始位置，4表示长度，表示从第3个字符(包含第3个)开始提取连续的4个字符,生产新字符串,返回这个新字符串的地址</div><div class="line">NSString *s6 = [s3 substringWithRange:range1]; </div><div class="line">// 先定义一个range值</div><div class="line">// s6的结果为: &quot;3456&quot;</div><div class="line">        </div><div class="line">        </div><div class="line">// 也可以合并一起写</div><div class="line">NSString *s7 = [s3 substringWithRange:NSMakeRange(3, 4)]; // NSMakeRange 是一个c函数</div></pre></td></tr></table></figure>
+<h3 id="字符串与其他类型的转换"><a href="#字符串与其他类型的转换" class="headerlink" title="字符串与其他类型的转换"></a>字符串与其他类型的转换</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">NSString *intStr = @&quot;1234&quot;;</div><div class="line">NSString *floatStr = @&quot;5.14&quot;;</div><div class="line"></div><div class="line">int a = [intStr intValue];</div><div class="line">float f = [floatS floatValue];</div></pre></td></tr></table></figure>
+<h3 id="字符串首位-前缀后缀的对比"><a href="#字符串首位-前缀后缀的对比" class="headerlink" title="字符串首位(前缀后缀的对比)"></a>字符串首位(前缀后缀的对比)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">NSString *url1 = @&quot;https://www.baidu.com/rader/p.png&quot;;</div><div class="line">BOOL b001 = [url1 hasPrefix:@&quot;https://&quot;]; // 判断字符串首位是否与输入的字符串相同</div><div class="line">BOOL b002 = [url1 hasSuffix:@&quot;p.png&quot;];   // 判断字符串尾部是否与输入的字符串相同</div></pre></td></tr></table></figure>
+<h3 id="字符串中某些字符的替换"><a href="#字符串中某些字符的替换" class="headerlink" title="字符串中某些字符的替换"></a>字符串中某些字符的替换</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">NSString *url2 = @&quot;http://www.baidu.com/rader/p.gdp&quot;;</div><div class="line">// 将withString:字符串内容替换掉url1中 OfString:字符串内容 后生成一个新的字符串url2</div><div class="line">NSString *url3 = [url2 stringByReplacingOccurrencesOfString:@&quot;/&quot; withString:@&quot;*&quot;];</div></pre></td></tr></table></figure>
+<h3 id="去掉字符串首尾的某些连续的字符"><a href="#去掉字符串首尾的某些连续的字符" class="headerlink" title="去掉字符串首尾的某些连续的字符"></a>去掉字符串首尾的某些连续的字符</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"> NSString *url4 = @&quot;    http://www.baidu.com     &quot;;</div><div class="line">        </div><div class="line">NSCharacterSet *set = [NSCharacterSet whitespaceCharacterSet]; //  去除空格</div><div class="line">// lowercaseLetterCharacterSet  去除小写字母</div><div class="line">// uppercaseLetterCharacterSet  去除大写字母</div><div class="line">        </div><div class="line">NSCharacterSet *set1 = [NSCharacterSet characterSetWithCharactersInString:@&quot;指定的字符串&quot;]; // 去除指定的字符串</div><div class="line">        </div><div class="line">        </div><div class="line">// 去除字符串首尾的某些相同字符,有多少个就去掉多少个</div><div class="line">NSString *url5 = [url4 stringByTrimmingCharactersInSet:set];</div></pre></td></tr></table></figure>
+<h3 id="可变字符串-以上字符串方法都可以用于可变字符串"><a href="#可变字符串-以上字符串方法都可以用于可变字符串" class="headerlink" title="可变字符串:(以上字符串方法都可以用于可变字符串)"></a>可变字符串:(以上字符串方法都可以用于可变字符串)</h3><blockquote>
+<p>可变字符串是字符串的子类，所以可以使用所有NSString的所有方法，其比起字符串增加的功能主要有：增,删,改,擦</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">// 创建一个可变字符串</div><div class="line"></div><div class="line">NSMutableString *string1 = [[NSMutableString alloc] init];</div><div class="line">[string1 setString:@&quot;1234&quot;]; // 对可变字符串进行赋值</div><div class="line">        </div><div class="line">[string1 setString:@&quot;abcd&quot;]; // 已赋值的可变字符串可以重新赋值（改）</div><div class="line">[string1 appendString:@&quot;123&quot;]; // 可以增加字符串，增加后结果为:&quot;abcd123&quot;</div><div class="line">[string1 appendFormat:@&quot;%c&quot;,&apos;D&apos;]; // 可以用格式符增加相应的字符或字符串，结果为:&quot;abcd123D&quot;</div><div class="line">[string1 insertString:@&quot;xxxx&quot; atIndex:4]; // 可以把&quot;xxxx&quot;字符串插入到第4个字符开始的地方,原第四个开始的后面字符依次后移</div><div class="line">// 插入后的结果为: &quot;abcdxxxx123D&quot;</div><div class="line">        </div><div class="line">// 也可以把字符串改为另一个字符串的地址，因为它们传递的都是地址</div><div class="line">NSString *ss1 = [NSString stringWithFormat:@&quot;%d&quot;,-88];</div><div class="line">        </div><div class="line">[string1 insertString:ss1 atIndex:6]; // 结果为: string1 = &quot;abcdxx-88xx123D&quot;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">NSRange range2 = &#123;3,4&#125;; </div><div class="line">// 3表示起始位置，4表示长度，表示从第3个字符(包含第3个)开始删除连续的4个字符,后面字符依次前移</div><div class="line">[string1 deleteCharactersInRange:range2]; </div><div class="line">// 结果为: string1 = &quot;abc88xx123D&quot;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[string1 replaceCharactersInRange:NSMakeRange(3, 2) withString:@&quot;RRRRRRRRRR&quot;];</div><div class="line">// 3表示起始位置，2表示长度，表示从第3个字符(包含第3个)开始将后面的2个字符换成字符串&quot;RRRRRRRRRR&quot;,后面字符依次后移</div><div class="line">// 结果为: string1 = &quot;abcRRRRRRRRRRxx123D&quot;</div><div class="line">NSLog(@&quot;\nstring1 = %@&quot;,string1);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 擦除原有字符串内容重新设置字符串的内容</div><div class="line">[string1 setString:@&quot;---&quot;];</div><div class="line">// 等同于</div><div class="line">// string1.string = @&quot;---&quot;;</div><div class="line">        </div><div class="line">NSLog(@&quot;string1 = %@&quot;, string1);</div><div class="line">// 结果为: string1 = &quot;---&quot;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;NSString 几乎是 iOS 开发中最常用的类了。几乎所有的地方都会用到各种各样的字符串。NSString 也有很多的方法。这篇文章记录我在使用 NSString 类的时候，会用到的知识点。也是 &lt;code&gt;iOS小知识集锦&lt;/code&gt;的第一篇文章吧。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="知识集锦" scheme="https://programersunny.github.io/categories/%E7%9F%A5%E8%AF%86%E9%9B%86%E9%94%A6/"/>
+    
+    
+      <category term="Objective-C" scheme="https://programersunny.github.io/tags/Objective-C/"/>
+    
+  </entry>
   
   <entry>
     <title>python 中的逻辑运算符</title>
@@ -134,11 +222,11 @@
       <category term="iOS" scheme="https://programersunny.github.io/categories/iOS/"/>
     
     
-      <category term="杂记" scheme="https://programersunny.github.io/tags/%E6%9D%82%E8%AE%B0/"/>
-    
       <category term="iOS" scheme="https://programersunny.github.io/tags/iOS/"/>
     
       <category term="OpenSource" scheme="https://programersunny.github.io/tags/OpenSource/"/>
+    
+      <category term="杂记" scheme="https://programersunny.github.io/tags/%E6%9D%82%E8%AE%B0/"/>
     
   </entry>
   
@@ -1246,267 +1334,6 @@
     
     
       <category term="Hexo" scheme="https://programersunny.github.io/tags/Hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>复杂业务下的架构设计和研发效率提升(笔记)</title>
-    <link href="https://programersunny.github.io/2016/08/30/%E5%A4%8D%E6%9D%82%E4%B8%9A%E5%8A%A1%E4%B8%8B%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%92%8C%E7%A0%94%E5%8F%91%E6%95%88%E7%8E%87%E6%8F%90%E5%8D%87(%E7%AC%94%E8%AE%B0)/"/>
-    <id>https://programersunny.github.io/2016/08/30/复杂业务下的架构设计和研发效率提升(笔记)/</id>
-    <published>2016-08-30T06:37:45.000Z</published>
-    <updated>2016-08-30T06:45:27.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>抽空重新看了一下今年的<a href="http://gmtc.geekbang.org/"><em>GMTC</em></a>,读到链家郭晓铭的PPT:<a href="http://ppt.geekbang.org/slide/show/210"><em>链家网移动端敏捷之术</em></a>的时候忍不住写了这个笔记,大多数内容都是ppt上的原文。</p>
-<a id="more"></a>
-<h2 id="大多数app存在的现象"><a href="#大多数app存在的现象" class="headerlink" title="大多数app存在的现象"></a>大多数app存在的现象</h2><ol>
-<li>业务简单<ul>
-<li>业务覆盖城市范围小</li>
-<li>产品用户角色单一</li>
-<li>业务单一、未形成线上线下的闭环</li>
-</ul>
-</li>
-<li>团队工作方式传统<ul>
-<li>团队规模小(人员密切配合，不存在业务线的分工)</li>
-<li>瀑布式开发(版本需求比较稳定，在开发过程中很少调整)</li>
-<li>手工打包上线(产品投放渠道少，发版节奏平缓，测试盒上线均靠手工打包)</li>
-</ul>
-</li>
-<li>架构简单 MVC架构<ul>
-<li>通用设计，学习和维护成本低。</li>
-<li>对复杂业务不适应。业务逻辑变得复杂的时候，Controller将变得越来越大</li>
-</ul>
-</li>
-</ol>
-<h2 id="第一阶段"><a href="#第一阶段" class="headerlink" title="第一阶段"></a>第一阶段</h2><ol>
-<li>地域业务差异</li>
-<li>业务增多，内容型业务的形态多变</li>
-<li>人员增多，人均产出下降，代码质量堪忧</li>
-</ol>
-<h3 id="基于短链的配置化"><a href="#基于短链的配置化" class="headerlink" title="基于短链的配置化"></a>基于短链的配置化</h3><p><strong>方法:</strong></p>
-<ol>
-<li>Sever端下发城市配置(包含icon、标题、跳转短链、功能开关等)</li>
-<li>跳转短链注册表(保存短链pattern与页面的类别、类参数名、短链参数名、默认参数值、跳转方式等的对应信息)</li>
-<li>短链解析和页面跳转(使用注册表中的短链pattern做正则匹配，根据匹配到的消息创建页面并用对应的跳转方式打开)</li>
-</ol>
-<p><strong>优点:</strong></p>
-<ol>
-<li>更统一(各个业务的解析和跳转逻辑由跳转同意引擎同意处理)</li>
-<li>更灵活(城市配置由路由端下发，城市业务范围的调整不依赖发版)</li>
-<li>扩展性强(快速支持新增城市，且对新业务的支持不影响旧的功能)</li>
-</ol>
-<h3 id="业务快速上线和调整"><a href="#业务快速上线和调整" class="headerlink" title="业务快速上线和调整"></a>业务快速上线和调整</h3><p>使用Native + H5 的方式实现。</p>
-<p>Native作为重点业务体验的保证。 H5负责内容型业务和运营活动</p>
-<p><img src="http://ocg4av0wv.bkt.clouddn.com/6008BDF9-E1DD-4BFA-9076-CD85EFDAA252.png" width="600"/></p>
-<ol>
-<li>小巧清晰，不依赖第三方解决方案</li>
-<li>消息传递安全，通过bridge注入参数信息，不是url</li>
-<li>两端方案统一</li>
-</ol>
-<h3 id="项目质量缺乏保障"><a href="#项目质量缺乏保障" class="headerlink" title="项目质量缺乏保障"></a>项目质量缺乏保障</h3><ol>
-<li>开发流程优化<ul>
-<li>代码规范形成(代码风格一致,提高可读性;统一的入口参数校验，异常处理等，提高健壮性)</li>
-<li>CodeReview(同步开发人员对代码和设计的理解；提前发现问题)</li>
-<li>敏捷开发模式(随时交付，提早反馈)</li>
-</ul>
-</li>
-</ol>
-<h2 id="第二阶段"><a href="#第二阶段" class="headerlink" title="第二阶段"></a>第二阶段</h2><ol>
-<li>多个业务团队并行开发</li>
-<li>多个新产品需要快速上线(需要能够复制已有功能，快速上线)</li>
-<li>对接后端团队越来越多(沟通成本高，发版风险大;不同团队接口数据格式差异大，客户端数据解析和校验逻辑复杂)</li>
-</ol>
-<h3 id="组件化"><a href="#组件化" class="headerlink" title="组件化"></a>组件化</h3><p><img src="http://ocg4av0wv.bkt.clouddn.com/A311CAD4-C6F0-4428-8662-0E7DA0EFB066.png" width="600" /></p>
-<h4 id="组建间的调用方案"><a href="#组建间的调用方案" class="headerlink" title="组建间的调用方案"></a>组建间的调用方案</h4><p>组建: 各个组件之间相互独立，不直接调用，而是通过中介者Component Mediator相互调用</p>
-<p>CM:按组建拆分，每部分为该组建支持的调用方式</p>
-<p>组建接口: 各组件针对组件间调用做相应接口类。CM通过反射机制调用该接口类的相应方法。</p>
-<h4 id="组件化过程中的风险控制"><a href="#组件化过程中的风险控制" class="headerlink" title="组件化过程中的风险控制"></a>组件化过程中的风险控制</h4><ol>
-<li>代码仓库分离<ul>
-<li>主工程代码、公共模块代码、以及各业务组件代码仓库分离</li>
-</ul>
-</li>
-<li>权限控制<ul>
-<li>为单个业务团队配置公共模块代码，以及其他业务代码的只读权限</li>
-</ul>
-</li>
-<li>建立接口类的命名规范<ul>
-<li>对组件接口类名以及接口接口方法的命名统一规范，降低开发成本</li>
-</ul>
-</li>
-<li>接口类的CodeReview<ul>
-<li>接口类出错的影响范围相对较大，需要业务负责任对接口类做重点review</li>
-</ul>
-</li>
-<li>热修复<ul>
-<li>紧急修复组件化过程中造成的线上问题；每个补丁不允许超过1个版本</li>
-</ul>
-</li>
-</ol>
-<h4 id="API团队引入"><a href="#API团队引入" class="headerlink" title="API团队引入"></a>API团队引入</h4><p>引入API团队可以减少客户端和多个Sever端交互。</p>
-<ul>
-<li>沟通成本降低</li>
-<li>发版风险降低</li>
-<li>业务逻辑简化</li>
-</ul>
-<p><strong>移动端与后端配合开发流程</strong><br><img src="http://ocg4av0wv.bkt.clouddn.com/80A8B375-36DC-496F-B4CD-C9C26A538986.png" width = 600 title="移动端与后端配合开发流程"/> </p>
-<h2 id="第三阶段"><a href="#第三阶段" class="headerlink" title="第三阶段"></a>第三阶段</h2><ol>
-<li>插件化(用户对产品功能做个性化定制，减少安装包体积，降低发版成本)</li>
-<li>跨平台技术(最小的成本覆盖到两个平台，避免重复开发)</li>
-<li>安全性(更多交易内容线上化)</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;抽空重新看了一下今年的&lt;a href=&quot;http://gmtc.geekbang.org/&quot;&gt;&lt;em&gt;GMTC&lt;/em&gt;&lt;/a&gt;,读到链家郭晓铭的PPT:&lt;a href=&quot;http://ppt.geekbang.org/slide/show/210&quot;&gt;&lt;em&gt;链家网移动端敏捷之术&lt;/em&gt;&lt;/a&gt;的时候忍不住写了这个笔记,大多数内容都是ppt上的原文。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="文章笔记收集" scheme="https://programersunny.github.io/categories/%E6%96%87%E7%AB%A0%E7%AC%94%E8%AE%B0%E6%94%B6%E9%9B%86/"/>
-    
-    
-      <category term="iOS" scheme="https://programersunny.github.io/tags/iOS/"/>
-    
-      <category term="架构设计" scheme="https://programersunny.github.io/tags/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CSS学习笔记 -- 1</title>
-    <link href="https://programersunny.github.io/2016/08/29/css%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0--1/"/>
-    <id>https://programersunny.github.io/2016/08/29/css学习笔记--1/</id>
-    <published>2016-08-29T01:56:45.000Z</published>
-    <updated>2016-08-29T02:25:51.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>抽空学习了一下html、css、JavaScript。</p>
-<a id="more"></a>
-<blockquote>
-<p>这部分内容是我抽空学习的时候整理的笔记,这部分是看的前端的内容。<a href="http://www.imooc.com/learn/9"><em>学习地址</em></a>。</p>
-</blockquote>
-<h2 id="什么是CSS"><a href="#什么是CSS" class="headerlink" title="什么是CSS"></a>什么是CSS</h2><blockquote>
-<p>CSS 全称为”层叠样式表Cascading Style Sheets”,他主要是用于定义HTML内容在浏览器中的样式,如文字大小，颜色，字体加粗等。</p>
-<p>使用CSS样式的一个好处是通过定义某个样式，可以让不同网页位置的文字有着统一的字体、字号或者颜色等。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">p&#123;</div><div class="line">	font-size:12px;</div><div class="line">	color:red;</div><div class="line">	font-weight:bold;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="CSS的语法"><a href="#CSS的语法" class="headerlink" title="CSS的语法"></a>CSS的语法</h2><h3 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h3><p>css样式由<strong>选择符</strong>和<strong>声明</strong>组成，而<strong>声明</strong>又由<strong>属性</strong>和<strong>值</strong>组成。</p>
-<p>如上文示例中<code>p</code>为选择符 <code>{...}</code>花括号内为声明，<code>color</code>为属性 ,<code>red</code>为值。</p>
-<p><strong>选择符</strong>:又称为选择器，指明网页中要应用样式规则的元素。</p>
-<p><strong>声明</strong>: 在英文花括号中的就是声明，属性和值之间用英文冒号分割。当有多条声明的时候，使用<code>;</code>分割。</p>
-<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>html: <code>&lt;!-- ... --&gt;</code>;</p>
-<p>css: <code>/*...*/</code></p>
-<h3 id="位置"><a href="#位置" class="headerlink" title="位置"></a>位置</h3><p>内联式、嵌入式、外部式</p>
-<h4 id="内联式CSS样式-直接写在现有的CSS标签中"><a href="#内联式CSS样式-直接写在现有的CSS标签中" class="headerlink" title="内联式CSS样式,直接写在现有的CSS标签中"></a>内联式CSS样式,直接写在现有的CSS标签中</h4><p><p style="color:red ; font-size: 15px">text</p>  <code>&lt;p style=&quot;color:red ;font-size: 15px&quot;&gt;text&lt;/p&gt;</code></p>
-<h4 id="嵌入式CSS样式，直接写在当前的文件中"><a href="#嵌入式CSS样式，直接写在当前的文件中" class="headerlink" title="嵌入式CSS样式，直接写在当前的文件中"></a>嵌入式CSS样式，直接写在当前的文件中</h4><p>将css代码写在html文件的<code>&lt;style&gt;&lt;/style&gt;</code>标签中</p>
-<p>嵌入式css样式必须写在<code>&lt;style&gt;&lt;/style&gt;</code>之间，并且一般情况下嵌入式css样式写在<code>&lt;head&gt;&lt;/head&gt;</code>之间。如右边编辑器中的代码。</p>
-<h4 id="外部式CSS样式-写在单独的一个文件中"><a href="#外部式CSS样式-写在单独的一个文件中" class="headerlink" title="外部式CSS样式,写在单独的一个文件中"></a>外部式CSS样式,写在单独的一个文件中</h4><p>外部式css样式(也可称为外联式)就是把css代码写一个单独的外部文件中，这个css样式文件以“.css”为扩展名，在<code>&lt;head&gt;</code>内（不是在<code>&lt;style&gt;</code>标签内）使用<code>&lt;link&gt;</code>标签将css样式文件链接到HTML文件内，如下面代码：</p>
-<p><code>&lt;link href=&quot;base.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;</code></p>
-<p>注意:</p>
-<ol>
-<li>css样式文件名称应该以有意义的英文字母命名。</li>
-<li>rel=”stylesheet” type=”text/css”是固定写法，不可以修改。</li>
-<li><code>&lt;link&gt;</code>标签的位置一般写在<code>&lt;head&gt;</code>标签之内。</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE HTML&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;</div><div class="line">&lt;title&gt;嵌入式css样式&lt;/title&gt;</div><div class="line">&lt;link href=&quot;style.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;p&gt;...&lt;/p&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
-<h4 id="三种方式的优先级以及怎么选择"><a href="#三种方式的优先级以及怎么选择" class="headerlink" title="三种方式的优先级以及怎么选择"></a>三种方式的优先级以及怎么选择</h4><p>如果三个都有，那么三个都要访问到，但是如果对于同一个属性，那么按照：就近原则体现。</p>
-<h3 id="类选择器"><a href="#类选择器" class="headerlink" title="类选择器"></a>类选择器</h3><p><strong>语法</strong>： <code>.类选择器{css样式代码;}</code></p>
-<ul>
-<li>以英文原点开头</li>
-<li>类选器名称可以任意起名</li>
-</ul>
-<p><strong>使用</strong>：</p>
-<ol>
-<li>设置类选择器<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">2. 使用合适的标签修饰内容</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p><span>内容</span><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">3. 为上面的标签设置一个类</div></pre></td></tr></table></figure></p>
-<p><span class="name">内容</span><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### ID选择器</div><div class="line"></div><div class="line">类似类选择器</div><div class="line"></div><div class="line">1、为标签设置id=&quot;ID名称&quot;，而不是class=&quot;类名称&quot;。</div><div class="line"></div><div class="line">2、ID选择符的前面是井号（#）号，而不是英文圆点（.）。</div><div class="line"></div><div class="line">#### 类选择器和ID选择器的区别</div><div class="line"></div><div class="line">**相同点**:可以应用于任何元素</div><div class="line"></div><div class="line">**不同点**:</div><div class="line"></div><div class="line">1. ID选择器只能在文档中使用一次。与类选择器不同，在一个HTML文档中，ID选择器只能使用一次，而且仅一次。而类选择器可以使用多次。</div><div class="line">2. 可以使用类选择器词列表方法为一个元素同时设置多个样式。我们可以为一个元素同时设多个样式，但只可以用类选择器的方法实现，ID选择器是不可以的（不能使用 ID 词列表）。</div><div class="line"></div><div class="line"></div><div class="line">### 子选择器</div><div class="line"></div><div class="line">子选择器(&quot;&gt;&quot;)：用于选择指定标签元素的第一代子元素。</div></pre></td></tr></table></figure></p>
-<p>.food&gt;li{border:1px solid red;}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">这行代码会使class名为food下的子元素li（水果、蔬菜）加入红色实线边框。</div><div class="line"></div><div class="line"></div><div class="line">### 包含（后代）选择器</div><div class="line"></div><div class="line">包含选择器，即加入空格,用于选择指定标签元素下的后辈元素。如右侧代码编辑器中的代码：</div></pre></td></tr></table></figure></p>
-<p>.first span{color:red;}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">请注意这个选择器与子选择器的区别，子选择器（child selector）仅是指它的直接后代，或者你可以理解为作用于子元素的第一代后代。而后代选择器是作用于所有子后代元素。后代选择器通过空格来进行选择，而子选择器是通过“&gt;”进行选择。</div><div class="line"></div><div class="line">总结：&gt;作用于元素的第一代后代，空格作用于元素的所有后代。</div><div class="line"></div><div class="line">### 通用选择器</div><div class="line"></div><div class="line">通用选择器是功能最强大的选择器，它使用一个（*）号指定，它的作用是匹配html中所有标签元素，如下使用下面代码使用html中任意标签元素字体颜色全部设置为红色：</div></pre></td></tr></table></figure></p>
-<p>*{color:red;}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 伪类选择符</div><div class="line"></div><div class="line">`a:hover&#123;color:red;&#125;`</div><div class="line"></div><div class="line">为a标签鼠标滑过状态设置字体颜色变红。 由于兼容问题，只有`a:hover `兼容所有浏览器</div><div class="line"></div><div class="line">### 分组选择符</div></pre></td></tr></table></figure></p>
-<p>h1,span{color:red;}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure></p>
-<p>h1{color:red;}<br>span{color:red;}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">以上代码等价。</div><div class="line"></div><div class="line">### 权值规则</div><div class="line"></div><div class="line">标签的权值为1，类选择符的权值为10，ID选择符的权值最高为100。</div><div class="line"></div><div class="line">权值越高，优先使用。</div><div class="line"></div><div class="line">**注意**：还有一个权值比较特殊--继承也有权值但很低，有的文献提出它只有0.1，所以可以理解为继承的权值最低。</div><div class="line"></div><div class="line"></div><div class="line">### 重要性</div><div class="line"></div><div class="line">使用！important使某些样式具有最高权重。如：</div><div class="line"></div><div class="line">`p&#123;color:red!important;&#125;`</div><div class="line"></div><div class="line">一般情况下：浏览器默认的样式 &lt; 网页制作者样式 &lt; 用户自己设置的样式</div><div class="line"></div><div class="line">但是`!important`是一个例外</div><div class="line"></div><div class="line">所以:浏览器默认的样式 &lt; 网页制作者样式 &lt; 用户自己设置的样式 &lt; `!important` 修饰的样式</div><div class="line"></div><div class="line">## 文字排版</div><div class="line"></div><div class="line">### 字体</div></pre></td></tr></table></figure></p>
-<p>body{font-family:”Microsoft Yahei”;}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 字号、颜色</div></pre></td></tr></table></figure></p>
-<p>font-size:12px;/<em>字号</em>/<br>color:#66;/<em>颜色</em>/<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 粗体</div></pre></td></tr></table></figure></p>
-<p>font-weight:bold;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 斜体</div></pre></td></tr></table></figure></p>
-<p>font-style:italic;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 下划线</div></pre></td></tr></table></figure></p>
-<p>font-decoration:underline;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 删除线</div></pre></td></tr></table></figure></p>
-<p>text-decoration:line-through;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 缩进</div></pre></td></tr></table></figure></p>
-<p>text-indent:2em;/<em>2em表示文字的2倍大小</em>/<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 行间距(行高)</div></pre></td></tr></table></figure></p>
-<p>line-height:1.5em;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 中文字间距、字母间距</div><div class="line"></div><div class="line">**中文、字母**</div></pre></td></tr></table></figure></p>
-<p>letter-spacing:50px;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">**单词**</div></pre></td></tr></table></figure></p>
-<p>word-spacing:50px;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 对其方式</div></pre></td></tr></table></figure></p>
-<p>text-align:center;/<em>居中</em>/<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">## 元素分类</div><div class="line"></div><div class="line">常用的块状元素：</div><div class="line"></div><div class="line">`div`、`p`、`hn`、`ol`、`ul`、`dl`、`table`、`address`、`blockquote`、`form`</div><div class="line"></div><div class="line">常用的内联元素有：</div><div class="line"></div><div class="line">`&lt;a&gt;`、`&lt;span&gt;`、`&lt;br&gt;`、`&lt;i&gt;`、`&lt;em&gt;`、`&lt;strong&gt;`、`&lt;label&gt;`、`&lt;q&gt;`、`&lt;var&gt;`、`&lt;cite&gt;`、`&lt;code&gt;`</div><div class="line"></div><div class="line">常用的内联块状元素有：</div><div class="line"></div><div class="line">`&lt;img&gt;`、`&lt;input&gt;`</div><div class="line"></div><div class="line">### 块级元素</div><div class="line"></div><div class="line">如上文；</div><div class="line"></div><div class="line">可以通过`display:block`将元素显示为块级别元素。</div><div class="line"></div><div class="line">**块级元素特点**：</div><div class="line"></div><div class="line">1. 每个块级元素都从新的一行开始，并且其后的元素也另起一行。（真霸道，一个块级元素独占一行）</div><div class="line">2. 元素的高度、宽度、行高以及顶和底边距都可设置。</div><div class="line">3. 元素宽度在不设置的情况下，是它本身父容器的100%（和父元素的宽度一致），除非设定一个宽度。</div><div class="line"></div><div class="line">### 内联元素</div><div class="line"></div><div class="line">如上文；</div><div class="line"></div><div class="line">可以通过`display:inline`将元素设置为内联元素</div><div class="line"></div><div class="line">**内联元素特点**：</div><div class="line"></div><div class="line">1. 和其他元素都在一行上；</div><div class="line">2. 元素的高度、宽度及顶部和底部边距不可设置；</div><div class="line">3. 元素的宽度就是它包含的文字或图片的宽度，不可改变。</div><div class="line"></div><div class="line"></div><div class="line">### 内联块状元素</div><div class="line"></div><div class="line">内联块状元素（inline-block）就是同时具备内联元素、块状元素的特点</div><div class="line"></div><div class="line">可以通过`display:inline-block`将元素设置为内联块状元素</div><div class="line"></div><div class="line">**inline-block 元素特点**：</div><div class="line"></div><div class="line">1. 和其他元素都在一行上；</div><div class="line">2. 元素的高度、宽度、行高以及顶和底边距都可设置。</div><div class="line"></div><div class="line"></div><div class="line">## 盒子模型</div><div class="line"></div><div class="line">1. `width`: 内容</div><div class="line">2. `height`:内容</div><div class="line">3. `padding`:内填充</div><div class="line">4. `margin`:外填充</div><div class="line">5. `border`:边界</div><div class="line"></div><div class="line">### 边框 border</div><div class="line"></div><div class="line">盒子模型的边框就是围绕着内容及补白的线，这条线你可以设置它的粗细、样式和颜色(边框三个属性)。</div><div class="line"></div><div class="line">例如给div设置边框：</div></pre></td></tr></table></figure></p>
-<p>div{border:2px solid red;}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">或者</div></pre></td></tr></table></figure></p>
-<p>div{<br>    border-width:2px;<br>    border-style:solid;<br>    border-color:red;<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">**注意**</div><div class="line"></div><div class="line">1. border-style: `dashed`虚线、 `dotted`点线、 `solid`实线</div><div class="line">2. border-color:</div><div class="line">3. border-width（边框宽度）中的宽度也可以设置为：`thin` | `medium` | `thick`（但不是很常用），最常还是用象素（px）。</div><div class="line"></div><div class="line"></div><div class="line">`border-bottom`、`bottom-top`、`bottom-left`、`bottom-right`只给一边的边框设置。</div><div class="line"></div><div class="line"></div><div class="line">### 大小 </div><div class="line"></div><div class="line">`width` `height`</div><div class="line"></div><div class="line">### 内填充</div><div class="line"></div><div class="line">`padding`  `div&#123;padding:20px 10px 15px 30px;&#125;`  顺序为上又下左(顺时针)</div><div class="line"></div><div class="line">如果上、右、下、左的填充都为10px;可以这么写</div><div class="line"></div><div class="line">`div&#123;padding:10px;&#125;`</div><div class="line"></div><div class="line">如果上下填充一样为10px，左右一样为20px，可以这么写：</div><div class="line"></div><div class="line">`div&#123;padding:10px 20px;&#125;`</div><div class="line"></div><div class="line">### 边界(外填充)</div><div class="line"></div><div class="line">`margin`  类似`padding`</div><div class="line"></div><div class="line">## CSS布局模型</div><div class="line"></div><div class="line">网页中的元素有三种布局模型:</div><div class="line"></div><div class="line">1. 流动模型(Flow)</div><div class="line">2. 浮动模型(Float)</div><div class="line">3. 层模型(Layer)</div><div class="line"></div><div class="line">### 流动模型(Flow) </div><div class="line"></div><div class="line">流动是默认的网页布局模式。也就是说网页在默认的状态下的HTML网页元素都是根据流动模型来分布网页内容的。流动布局模型具有2个比较典型的特征:</div><div class="line"></div><div class="line">1. 块状元素都会在所处的包含元素内自上而下按顺序垂直延伸分布，因为在默认状态下，块状元素的宽度都为100%。实际上，块状元素都会以行的形式占据位置。如右侧代码编辑器中三个块状元素标签(div，h1，p)宽度显示为100%。</div><div class="line">2. 在流动模型下，内联元素都会在所处的包含元素内从左到右水平分布显示。（内联元素可不像块状元素这么霸道独占一行）</div><div class="line"></div><div class="line">### 浮动模型(Float)</div><div class="line"></div><div class="line">如上文，块状元素都是独占一行。如果要讲快中元素并排显示，那么久需要用到浮动模型了。</div><div class="line"></div><div class="line">注意: 任何元素都是默认不能浮动的，但是可以用css定义为浮动。</div></pre></td></tr></table></figure></p>
-<p>div{<br>    width:200px;<br>    height:200px;<br>    border:1px red solid;<br>    float:left;<br>}</p>
-<p><div id="div1"></div></p>
-<p><div id="div1"></div><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 层模型(Layer)</div><div class="line"></div><div class="line">让html元素在网页中精确定位</div><div class="line"></div><div class="line">层模型有三种形式：</div><div class="line"></div><div class="line">* 绝对定位(position: absolute)</div><div class="line">* 相对定位(position: relative)</div><div class="line">* 固定定位(position: fixed)</div><div class="line"></div><div class="line">#### 绝对定位</div><div class="line"></div><div class="line">如果想为元素设置层模型中的绝对定位，需要设置position:absolute(表示绝对定位)，这条语句的作用将元素从文档流中拖出来，然后使用left、right、top、bottom属性相对于其最接近的一个具有定位属性的父包含块进行绝对定位。如果不存在这样的包含块，则相对于body元素，即相对于浏览器窗口。</div><div class="line"></div><div class="line">#### 相对定位</div><div class="line"></div><div class="line">如果想为元素设置层模型中的相对定位，需要设置position:relative（表示相对定位），它通过left、right、top、bottom属性确定元素在正常文档流中的偏移位置。相对定位完成的过程是首先按static(float)方式生成一个元素(并且元素像层一样浮动了起来)，然后相对于以前的位置移动，移动的方向和幅度由left、right、top、bottom属性确定，偏移前的位置保留不动。</div><div class="line"></div><div class="line">#### 固定定位</div><div class="line"></div><div class="line">fixed：表示固定定位，与absolute定位类型类似，但它的相对移动的坐标是视图（屏幕内的网页窗口）本身。由于视图本身是固定的，它不会随浏览器窗口的滚动条滚动而变化，除非你在屏幕中移动浏览器窗口的屏幕位置，或改变浏览器窗口的显示大小，因此固定定位的元素会始终位于浏览器窗口内视图的某个位置，不会受文档流动影响，这与background-attachment:fixed;属性功能相同。以下代码可以实现相对于浏览器视图向右移动100px，向下移动50px。并且拖动滚动条时位置固定不变。</div><div class="line"></div><div class="line">#### Relative与Absolute组合使用</div><div class="line"></div><div class="line">absolute 可以相对于浏览器设置定位。如果相对于其他元素，就需要使用`position:relative`</div><div class="line"></div><div class="line">注意:</div><div class="line"></div><div class="line">1. 参照定位的元素必须是相对定位元素的前辈元素</div><div class="line">2. 参照定位的元素必须加入position:relative;</div><div class="line">3. 定位元素加入position:absolute，便可以使用top、bottom、left、right来进行偏移定位了。</div><div class="line"></div><div class="line">### 盒子模型代码简写</div><div class="line"></div><div class="line">* top right bottom left 相同,写一个</div><div class="line">* top bottom相同，left right 相同，写两个</div><div class="line">* left right相同，写三个</div><div class="line">*</div><div class="line"></div><div class="line">### 颜色值缩写</div><div class="line"></div><div class="line">16进制的色彩值，如果每两位的值相同，可以缩写一半</div><div class="line"></div><div class="line">＃336699   ——&gt;  ＃369</div><div class="line"></div><div class="line">### 字体缩写</div></pre></td></tr></table></figure></p>
-<p>body{<br>    font-style:italic;<br>    font-variant:small-caps;<br>    font-weight:bold;<br>    font-size:12px;<br>    line-height:1.5em;<br>    font-family:”宋体”,sans-serif;<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">缩写为:</div></pre></td></tr></table></figure></p>
-<p>body{<br>    font:italic  small-caps  bold  12px/1.5em  “宋体”,sans-serif;<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">**注意**:</div><div class="line"></div><div class="line">1. 使用这一简写方式你至少要指定 font-size 和 font-family 属性，其他的属性(如 font-weight、font-style、font-varient、line-height)如未指定将自动使用默认值。</div><div class="line">2. 在缩写时 font-size 与 line-height 中间要加入“/”斜扛。 </div><div class="line"></div><div class="line">一般情况下因为对于中文网站，英文还是比较少的，所以下面缩写代码比较常用：</div></pre></td></tr></table></figure></p>
-<p>body{<br>    font:12px/1.5em  “宋体”,sans-serif;<br>}<br>```<br>只是有字号、行间距、中文字体、英文字体设置。</p>
-<h3 id="颜色"><a href="#颜色" class="headerlink" title="颜色"></a>颜色</h3><ol>
-<li>英文命令颜色<code>p{color:red;}</code></li>
-<li>RGB颜色<code>p{color:rgb(133,45,200);}</code>或者<code>p{color:rgb(20%,23%,20%);}</code></li>
-<li>十六进制颜色<code>p{color:＃00ffff);}</code></li>
-</ol>
-<h3 id="长度值-都是相对单位"><a href="#长度值-都是相对单位" class="headerlink" title="长度值  都是相对单位"></a>长度值  都是相对单位</h3><ol>
-<li>像素  px  相对于显示器</li>
-<li>em 就是本元素给定字体的 font-size 值，如果元素的 font-size 为 14px ，那么 1em = 14px；如果 font-size 为 18px，那么 1em = 18px。</li>
-<li>百分比</li>
-</ol>
-<p>注意：</p>
-<p>但当给 font-size 设置单位为 em 时，此时计算的标准以 p 的父元素的 font-size 为基础。</p>
-<h2 id="小技巧"><a href="#小技巧" class="headerlink" title="小技巧"></a>小技巧</h2><h3 id="水平居中"><a href="#水平居中" class="headerlink" title="水平居中"></a>水平居中</h3><ul>
-<li>如果被设置元素为文本、图片等行内元素时，水平居中时通过给父类元素设置<code>text-align:center</code>来实现的</li>
-<li>定宽块状元素:通过设置<code>margin</code>的<code>left</code>和<code>right</code>为<code>auto</code>实现。此时<code>width:200px</code></li>
-<li>不定宽块状元素:<ul>
-<li>加入label标签<ul>
-<li>第一步:为需要设置居中的元素外面加入一个<code>table</code>标签(包括<code>&lt;tbody&gt;</code>、<code>&lt;tr&gt;</code>、<code>&lt;td&gt;</code>)</li>
-<li>第二步:为这个<code>table</code>设置左右margin居中。</li>
-</ul>
-</li>
-<li>设置<code>display:inline</code>:显示类型设置为行内元素，进行不定宽元素的属性设置</li>
-<li>设置<code>position:relative</code>和<code>left:50%</code>:利用相对定位的方式，讲元素向左偏移50%，达到居中的目的。</li>
-</ul>
-</li>
-</ul>
-<h3 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h3><ul>
-<li>父元素高度确定的单行文本: 设置 <code>height</code> 等于 <code>line-height</code> 实现。<ul>
-<li>height : 该元素的高度</li>
-<li>line-height:行高，指在文本中，行与行之间的基线间的距离.</li>
-<li>line-height 与 font-size 的计算值之差，在CSS中成为”行间距”.</li>
-</ul>
-</li>
-<li>父元素高度确定的多行文本(图片):<ul>
-<li>方法一:使用插入table 同时设置<code>vertival-align:middle</code></li>
-<li>方法二(因为兼容问题，不推荐使用):<code>display：table-cell ; vertival-align:middle</code></li>
-</ul>
-</li>
-</ul>
-<h3 id="隐性改变display类型"><a href="#隐性改变display类型" class="headerlink" title="隐性改变display类型"></a>隐性改变display类型</h3><p>有一个有趣的现象就是当为元素（不论之前是什么类型元素，<code>display:none</code> 除外）设置以下 2 个句之一：</p>
-<ol>
-<li><p>position : absolute </p>
-</li>
-<li><p>float : left 或 float:right </p>
-</li>
-</ol>
-<p>简单来说，只要html代码中出现以上两句之一，元素的display显示类型就会自动变为以 <code>display:inline-block</code>（块状元素）的方式显示，当然就可以设置元素的 width 和 height 了，且默认宽度不占满父元素。</p>
-<p>如下面的代码，小伙伴们都知道 a 标签是 行内元素 ，所以设置它的 width 是 没有效果的，但是设置为 <code>position:absolute</code> 以后，就可以了。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;抽空学习了一下html、css、JavaScript。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="前端" scheme="https://programersunny.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="CSS" scheme="https://programersunny.github.io/tags/CSS/"/>
-    
-      <category term="前端" scheme="https://programersunny.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="学习笔记" scheme="https://programersunny.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
