@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title></title>
+      <title><![CDATA[\#iOS面试集锦#按钮或者 View 在进行 frame 动画的时候，为什么点击 frame 动画的重点位置才能触发事件？如何在动画过程中响应事件？]]></title>
       <url>https://programersunny.github.io/2017/02/20/mianshiti1/</url>
       <content type="html"><![CDATA[<p>按钮或者 View 在进行 frame 动画的时候，为什么点击 frame 动画的重点位置才能触发事件？如何在动画过程中响应事件？</p>
 <a id="more"></a>  
