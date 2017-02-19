@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://programersunny.github.io/"/>
-  <updated>2017-02-04T09:27:00.000Z</updated>
+  <updated>2017-02-19T20:04:31.000Z</updated>
   <id>https://programersunny.github.io/</id>
   
   <author>
@@ -14,6 +14,39 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>iOS面试集锦&amp;按钮或者 View 在进行 frame 动画的时候，为什么点击 frame 动画的重点位置才能触发事件？如何在动画过程中响应事件？</title>
+    <link href="https://programersunny.github.io/2017/02/20/mianshiti1/"/>
+    <id>https://programersunny.github.io/2017/02/20/mianshiti1/</id>
+    <published>2017-02-19T16:00:00.000Z</published>
+    <updated>2017-02-19T20:04:31.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>按钮或者 View 在进行 frame 动画的时候，为什么点击 frame 动画的重点位置才能触发事件？如何在动画过程中响应事件？</p>
+<a id="more"></a>  
+<p>答：<br>① <del>动画开始后有两个图层：</del><br>（修改原因：不是动画开始后,而是 view 出现了的时候。只要 view 出现在试图上,他都具有这两个图层。）<br><strong>iOS 中对于 UIView 具有一个 CALayer 类的属性 layer 我们姑且叫他 rootLayer。而每一个 CALayer 都有两个属性：</strong><br><del>一个 <code>view.layer.presentationLayer</code> 用来显示动画（属性随动画过程慢慢改变)</del><br>（修改原因:感觉显示动画这个用法不大准确,我语文也不好😂）<br><strong>一个<code>resentationLayer</code> 指呈现图层,是模型图层的复制，他的属性值代表了在任何指定时刻当前的显示。所以在 UIView 没有出现的时候这个 view 的属性值为 nil， 出现之后无论 view 是否动画，这个值的内存地址每次打印都不一样。</strong></p>
+<p><del>一个 <code>view.layer</code> 用来处理用户交互（动画一开始属性值立即改变到动画结束时的状态和位置)</del><br>(修改原因: CALayer 是不处理交互的,这一点可以从UIView有<code>userInteractionEnabled</code>这个属性，而CALayer没有可以看出,并且看 iOS-CoreAnimation这本书,这样使用 modelLayer 来描述更 MVC 一些)<br><strong>一个<code>modelLayer</code> 指模型层,在 view 显示出来的时候<code>view.layer</code> = <code>view.layer.presentationLayer.modelLayer</code> = <code>view.layer.view.layer.modelLayer</code>。 三者内存地址是一样的,保存实际的属性值。</strong></p>
+<p><strong>最后总结：当一个图层的属性改变的时候，我们设置的属性并没有直接调用图层的外观，只是定义了图层动画结束之后将要变化的外观。</strong>具体关系见下图：</p>
+<center><img src="http://ocg4av0wv.bkt.clouddn.com/layer%E7%9F%A5%E8%AF%86.png" alt=""><br>from《iOS-CoreAnimation》<br></center>
+
+<p>② 要在移动动画的过程中处理 触摸可以重写 <code>UIView的hitTest</code> 方法<br>(总的来说，通过<code>view.layer.presentationLayer</code>的相关属性，就可以实现响应需求了，通过<code>touchbegan</code>判断用户点击的位置是否在<code>view.layer.presentationLayer.frame</code>之内，是《iOS—CoreAnimation》中另外一个实现方式)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">- (id)hitTest:(CGPoint)point withEvent:(UIEvent *)event &#123;</div><div class="line">    NSArray *subViews = self.subviews;</div><div class="line">    for (UIView *subView in subViews) &#123;</div><div class="line">        if([subView isKindOfClass:[FoamImageView class]])&#123; //是要找的图片</div><div class="line">            CALayer *layer = subView.layer.presentationLayer; //图片的显示层            </div><div class="line">            if(CGRectContainsPoint(layer.frame, point))&#123; //触摸点在显示层中，返回当前图片</div><div class="line">                return subView;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return [super hitTest:point withEvent:event];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">- (void)touchesBegan:(NSSet&lt;UITouch *&gt; *)touches withEvent:(UIEvent *)event &#123;</div><div class="line">    CGPoint point = [[touches anyObject] locationInView:self.view];</div><div class="line">    </div><div class="line">    if (CGRectContainsPoint(button_.layer.presentationLayer.frame, point)) &#123;</div><div class="line">        NSLog(@&quot;youxiangying&quot;);</div><div class="line">        [self buttonEvent:button_];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>参考资料</strong>：<br><a href="http://www.voidcn.com/blog/lixuemei45/article/p-5021040.html">www.voidcn.com</a><br><a href="https://www.amazon.com/iOS-Core-Animation-Advanced-Techniques-ebook/dp/B00EHJCORC/ref=sr_1_1?ie=UTF8&amp;qid=1423192842&amp;sr=8-1&amp;keywords=Core+Animation+Advanced+Techniques">iOS-CoreAnimation</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;按钮或者 View 在进行 frame 动画的时候，为什么点击 frame 动画的重点位置才能触发事件？如何在动画过程中响应事件？&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="iOS面试集锦" scheme="https://programersunny.github.io/categories/iOS%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/"/>
+    
+    
+      <category term="iOS面试集锦" scheme="https://programersunny.github.io/tags/iOS%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/"/>
+    
+  </entry>
   
   <entry>
     <title>python 中 str 和 list 互相转换</title>
@@ -550,9 +583,9 @@
       <category term="iOS" scheme="https://programersunny.github.io/categories/iOS/"/>
     
     
-      <category term="CocoaPods" scheme="https://programersunny.github.io/tags/CocoaPods/"/>
-    
       <category term="iOS" scheme="https://programersunny.github.io/tags/iOS/"/>
+    
+      <category term="CocoaPods" scheme="https://programersunny.github.io/tags/CocoaPods/"/>
     
   </entry>
   
@@ -1176,96 +1209,6 @@
       <category term="iOS" scheme="https://programersunny.github.io/tags/iOS/"/>
     
       <category term="OpenSource" scheme="https://programersunny.github.io/tags/OpenSource/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>为Category添加属性</title>
-    <link href="https://programersunny.github.io/2016/09/01/%E4%B8%BACategory%E6%B7%BB%E5%8A%A0%E5%B1%9E%E6%80%A7/"/>
-    <id>https://programersunny.github.io/2016/09/01/为Category添加属性/</id>
-    <published>2016-08-31T16:00:00.000Z</published>
-    <updated>2016-09-01T06:54:47.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>使用Runtime给Category添加属性。</p>
-<a id="more"></a>
-<h2 id="Category-与-property"><a href="#Category-与-property" class="headerlink" title="Category 与 property"></a>Category 与 property</h2><p>我为类<code>ViewController</code>添加了一个<code>Category</code>,然后我想给他添加一个属性，<code>vcName</code></p>
-<p>于是我在<code>ViewController+Category</code>中声明了一个属性</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@property (nonatomic ,copy) NSString *vcName;</div></pre></td></tr></table></figure>
-<p>我们知道在类目的接口中是可以声明属性的。但是在他的实现部分是不允许包含<code>@synthesize</code>的。 下面安利一下两个关键字<code>@synthesize</code>、<code>@dynamic</code></p>
-<pre><code>`@synthesize`的语义是如果我们没有手动的实现`property`的`setter`和`getter`方法，编译器会自动的添加上这两个方法。
-
-`@dynamic`告诉编译器,属性的`setter`与`getter`方法由用户自己实现，不自动生成。
-
-在平常我们都习惯了不写这两个关键词，这个时候其实默认是`@synthesize var = _var`
-</code></pre><p>回到刚才的地方,如果我手动加上<code>@synthesize vcName = _vcName;</code>是无法通过编译的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@synthesize not allowed in a category&apos;s implementation//这是编译器报的错误消息</div></pre></td></tr></table></figure>
-<p>如果我不写的话编译器会有警告让你加上<code>@dynamic</code>语句。这个当然也是不行的。因为这个时候我自己写setter和getter.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">- (NSString *)vcName&#123;</div><div class="line">    return _vcName;</div><div class="line">&#125;</div><div class="line">- (void)setVcName:(NSString *)vcName &#123;</div><div class="line">    _vcName = vcName;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这时候编译器会报错 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">use of undeclared identifier &apos;_vcName&apos;</div></pre></td></tr></table></figure>
-<p><strong>结论</strong></p>
-<blockquote>
-<p>Categoryde 的接口中可以包含属性声明，但是实现部分不能包含<code>@synthesis</code></p>
-</blockquote>
-<h2 id="给Category-添加-Property"><a href="#给Category-添加-Property" class="headerlink" title="给Category 添加 Property"></a>给Category 添加 Property</h2><p>已经有了上面的结论了，但是我们在具体开发过程中确实会遇到很多需要在类别中添加使用<code>Property</code>的情况。这个时候应该怎么办呢？我们知道Obj-c是一门动态语言，强大的运行时(Runtime)机制能够为类关联引用，然后通过这种方法来实现给类别添加属性。</p>
-<blockquote>
-<p>关联引用指的是借助运行时功能，为已存在的对象增加实例变量。</p>
-</blockquote>
-<p>通过关联引用就算时同一个类的不同对象也可能添加关联或者添加不同种类和数量的关联。另外添加了的关联也是可以被删除的。</p>
-<h3 id="添加和检索关联"><a href="#添加和检索关联" class="headerlink" title="添加和检索关联"></a>添加和检索关联</h3><p>既然说到了需要使用runtime,那我们首先需要导入Runtime相关的头文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#import &lt;objc/runtime.h&gt;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//这个方法时为对象object添加key指定的地址作为关键字，以value为值关联引用，第四个参数pilicy指的是关联引用的存储策略。</div><div class="line">//通过将value设置为nil 可以删除key的关联</div><div class="line">OBJC_EXPORT void objc_setAssociatedObject(id object, const void *key, id value, objc_AssociationPolicy policy)</div><div class="line">    __OSX_AVAILABLE_STARTING(__MAC_10_6, __IPHONE_3_1);</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">//返回object以key为关键字关联的对象，如果没有，则反火nil</div><div class="line">OBJC_EXPORT id objc_getAssociatedObject(id object, const void *key)</div><div class="line">    __OSX_AVAILABLE_STARTING(__MAC_10_6, __IPHONE_3_1);</div></pre></td></tr></table></figure>
-<p>这一个的原理还是比较简单的。</p>
-<p>首先，我们需要为一个类别专家多个关联引用，所以我们需要用不同的key值来区别。</p>
-<p>其次，键值必须要使用一个确定且不可变的地址。所以选择定义在实现文件的static静态局部变量的地址。</p>
-<p>policy策略就跟定义property的时候才用的存储关键字相似了。</p>
-<h3 id="存储关键字"><a href="#存储关键字" class="headerlink" title="存储关键字"></a>存储关键字</h3><p>第四个参数<code>objc_AssociationPolicy policy</code>其实是一个枚举，点看之后我们可以看到</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">typedef OBJC_ENUM(uintptr_t, objc_AssociationPolicy) &#123;</div><div class="line">    OBJC_ASSOCIATION_ASSIGN = 0,           /**&lt; Specifies a weak reference to the associated object. */</div><div class="line">    OBJC_ASSOCIATION_RETAIN_NONATOMIC = 1, /**&lt; Specifies a strong reference to the associated object. </div><div class="line">                                            *   The association is not made atomically. */</div><div class="line">    OBJC_ASSOCIATION_COPY_NONATOMIC = 3,   /**&lt; Specifies that the associated object is copied. </div><div class="line">                                            *   The association is not made atomically. */</div><div class="line">    OBJC_ASSOCIATION_RETAIN = 01401,       /**&lt; Specifies a strong reference to the associated object.</div><div class="line">                                            *   The association is made atomically. */</div><div class="line">    OBJC_ASSOCIATION_COPY = 01403          /**&lt; Specifies that the associated object is copied.</div><div class="line">                                            *   The association is made atomically. */</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>有这5个值</p>
-<p>下面就分别的介绍一下几种。看注释也知道:</p>
-<p><strong>OBJC_ASSOCIATION_ASSIGN</strong> <code>weak</code></p>
-<p>不给关联对象发送<code>retain</code>消息，引用计数不会增加。</p>
-<p><strong>OBJC_ASSOCIATION_RETAIN_NONATOMIC</strong> <code>strong</code></p>
-<p>发送<code>retain</code>消息，引用计数加1.  如果给同样的key关联到了其他对象，那么会给其他对象发送一个<code>release</code>消息。释放关联对象的所有者的时候，会给所有关联的对象发送<code>release</code>消息。</p>
-<p><strong>OBJC_ASSOCIATION_COPY_NONATOMIC</strong> <code>copy</code></p>
-<p>会将该对象复制一份，并且用新复制的对象进行关联操作。</p>
-<p><strong>OBJC_ASSOCIATION_RETAIN</strong> <code>strong</code>、<code>atomic</code></p>
-<p><strong>OBJC_ASSOCIATION_COPY</strong> <code>copy</code>、<code>atomic</code></p>
-<h2 id="断开关联"><a href="#断开关联" class="headerlink" title="断开关联"></a>断开关联</h2><p>runtime 也贴心的提供了断开关联的函数。但是可惜，我并不经常用，因为使用上面的方法并且传入nil来断开关联，会更佳安全，毕竟，我不敢保证是不是有其他地方会使用到已经关联的对象。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">OBJC_EXPORT void objc_removeAssociatedObjects(id object)</div><div class="line">    __OSX_AVAILABLE_STARTING(__MAC_10_6, __IPHONE_3_1);</div></pre></td></tr></table></figure>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>扯了这么多有的没得，还是talk is cheap， show me the code 比较好一点。</p>
-<p><em>第一步</em>  导入头文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#import &lt;objc/runtime.h&gt;</div></pre></td></tr></table></figure>
-<p><em>第二步</em>  定义用作键值的静态变量。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">static char *vcNameKey;</div></pre></td></tr></table></figure>
-<p>或者</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">static const char *vcNameKey = &quot;vcNameKey&quot;;</div></pre></td></tr></table></figure>
-<p><em>第三步</em> 定义存取方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">- (NSString *)vcName&#123;</div><div class="line">    return objc_getAssociatedObject(self, vcNameKey);</div><div class="line">&#125;</div><div class="line">- (void)setVcName:(NSString *)vcName &#123;</div><div class="line">    objc_setAssociatedObject(self, vcNameKey, vcName, OBJC_ASSOCIATION_COPY_NONATOMIC);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="试一下断开关联"><a href="#试一下断开关联" class="headerlink" title="试一下断开关联"></a>试一下断开关联</h2><p>首先在category中定义两个关联属性</p>
-<p>在vievcontroller中给两个属性赋值，并且给<code>self.title</code>赋值</p>
-<p>然后用<code>objc_removeAssociatedObjects(self);</code>断开关联</p>
-<p>然后输出结果,category中关联的属性两个都输出<code>null</code>而本身的属性title正常输出</p>
-<p><strong>结论</strong></p>
-<p>很好说了,<code>objc_removeAssociatedObjects(self);</code>的作用是断开所有关联。 </p>
-<p>而且也更简单的验证了,使用runtime给对象关联的属性跟本身的属性本质是是不一样的。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;使用Runtime给Category添加属性。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="iOS" scheme="https://programersunny.github.io/categories/iOS/"/>
-    
-    
-      <category term="iOS" scheme="https://programersunny.github.io/tags/iOS/"/>
-    
-      <category term="Objective-C" scheme="https://programersunny.github.io/tags/Objective-C/"/>
-    
-      <category term="运行时" scheme="https://programersunny.github.io/tags/%E8%BF%90%E8%A1%8C%E6%97%B6/"/>
     
   </entry>
   
