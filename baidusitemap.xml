@@ -5,10 +5,10 @@
     
   <url>
     <loc>https://programersunny.github.io/2017/02/20/mianshiti1/</loc>
-    <lastmod>2017-02-19T19:58:38.000Z</lastmod>
+    <lastmod>2017-02-19T19:59:28.000Z</lastmod>
     <data>
         <display>
-        <title>\#iOS面试集锦#按钮或者 View 在进行 frame 动画的时候，为什么点击 frame 动画的重点位置才能触发事件？如何在动画过程中响应事件？</title>
+        <title><iOS面试集锦>按钮或者 View 在进行 frame 动画的时候，为什么点击 frame 动画的重点位置才能触发事件？如何在动画过程中响应事件？</title>
         <pubTime>2017-02-19T16:00:00.000Z</pubTime>
         
         <tag>iOS面试集锦</tag>
