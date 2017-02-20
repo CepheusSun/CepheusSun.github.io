@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://programersunny.github.io/"/>
-  <updated>2017-02-19T20:06:44.000Z</updated>
+  <updated>2017-02-20T14:34:01.000Z</updated>
   <id>https://programersunny.github.io/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>iOS面试集锦&amp;按钮或者 View 在进行 frame 动画的时候，为什么点击 frame 动画的重点位置才能触发事件？如何在动画过程中响应事件？</title>
-    <link href="https://programersunny.github.io/2017/02/20/mianshiti1/"/>
-    <id>https://programersunny.github.io/2017/02/20/mianshiti1/</id>
+    <title>iOS面试集锦&amp;2017年02月20日01</title>
+    <link href="https://programersunny.github.io/2017/02/20/interview07022001/"/>
+    <id>https://programersunny.github.io/2017/02/20/interview07022001/</id>
     <published>2017-02-19T16:00:00.000Z</published>
-    <updated>2017-02-19T20:06:44.000Z</updated>
+    <updated>2017-02-20T14:34:01.000Z</updated>
     
     <content type="html"><![CDATA[<p>按钮或者 View 在进行 frame 动画的时候，为什么点击 frame 动画的重点位置才能触发事件？如何在动画过程中响应事件？</p>
 <a id="more"></a>  
@@ -38,6 +38,52 @@
     <summary type="html">
     
       &lt;p&gt;按钮或者 View 在进行 frame 动画的时候，为什么点击 frame 动画的重点位置才能触发事件？如何在动画过程中响应事件？&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="iOS面试集锦" scheme="https://programersunny.github.io/categories/iOS%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/"/>
+    
+    
+      <category term="iOS面试集锦" scheme="https://programersunny.github.io/tags/iOS%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iOS面试集锦&amp;2017年02月20日02</title>
+    <link href="https://programersunny.github.io/2017/02/20/interview07022002/"/>
+    <id>https://programersunny.github.io/2017/02/20/interview07022002/</id>
+    <published>2017-02-19T16:00:00.000Z</published>
+    <updated>2017-02-20T14:34:02.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>1、 对内存管理的理解。<br>2、 类别的作用<br>3、点击屏幕上的按钮，系统做了什么？</p>
+<a id="more"></a>
+<p>##2017-02-20  Question<br>Question 1.内存管理理解不正确的是<br>A 程序A里有一段内存被成功申请完成之后，内存计数器就从0变为1 (这个过程是alloc);<br>B 程序B里要使用已存在内存，那么内存计数器从1变为2 (这个过程是retain或者copy);<br>C 紧接着程序A不需要这个内存了，那么程序A就把这个内存计数器减1 (这个过程是release);<br>D 当系统发现这个内存计数器变为小于等于0，那么就调用垃圾回收程序把这段内存回收(这个过程是dealloc)；</p>
+<p>Question 2.类别的作用不正确的是<br>A 将类的实现分散到多个不同文件或多个不同框架中。<br>B 创建对私有方法的前向引用。<br>C 向对象添加非正式协议。 继承可以增加，修改或者删除方法。<br>D 不能添加属性  </p>
+<p>Question 3.点击屏幕上的按钮，系统做了什么？  </p>
+<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><p>Answer 1. B  使用并不会增加引用技术，持有才会。<br>Answer 2. D  </p>
+<pre><code>class-continuation分类是唯一能给添加属性的分类。而所谓的关联对象，我在52个方法中找到了这样一句话：
+    * “定义关联对象时可以指定内存管理语义，用以模仿定义属性时所采用的“拥有”和“非拥有关系””
+可见，关连对象跟属性是两个不同的概念，不能混为一谈。
+
+类别的三个作用：
+    * 可以将类的实现分散到多个不同文件或多个不同框架中，方便代码管理。
+    * 创建对私有方法的前向引用。比如在别人的类或者框架中有一个方法的是没有说明的，这时候通过类别声明这个方法，就可以在不破坏原来框架的情况下，使用到这个方法。
+    * 向对象添加非正式协议。
+</code></pre><p>Answer 3.   </p>
+<ul>
+<li>触摸事件的传递是从父空间传递到子控件，如果父空间不能接收触摸事件，那么子控件就不能接收触摸事件  </li>
+<li>发生触摸事件后，系统会将该事件加入到一个由UIApplication管理的事件队列中。(为什么是队列而不是栈？因为队列的特定是先进先出，先产生的事件先处理才符合常理，所以把事件添加到队列。)  </li>
+<li>UIApplication会从事件队列中取出最前面的事件，并将事件分发下去以便处理，通常，先发送事件给应用程序的主窗口（keyWindow）。  </li>
+<li>主窗口会在视图层次结构中找到一个最合适的视图来处理触摸事件，这也是整个事件处理过程的第一步。<br>找到合适的视图控件后，就会调用视图控件的touches方法来作具体的事件处理。  </li>
+</ul>
+<blockquote>
+<p>参考<br><a href="http://www.cnblogs.com/LiLihongqiang/p/5645907.html">http://www.cnblogs.com/LiLihongqiang/p/5645907.html</a><br><a href="http://www.infocool.net/kb/IOS/201610/200104.html">http://www.infocool.net/kb/IOS/201610/200104.html</a><br><a href="http://www.cocoachina.com/ios/20160113/14896.html">http://www.cocoachina.com/ios/20160113/14896.html</a><br><a href="http://www.jianshu.com/p/2e074db792ba">http://www.jianshu.com/p/2e074db792ba</a>  </p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;1、 对内存管理的理解。&lt;br&gt;2、 类别的作用&lt;br&gt;3、点击屏幕上的按钮，系统做了什么？&lt;/p&gt;
     
     </summary>
     
@@ -1159,56 +1205,6 @@
       <category term="iOS" scheme="https://programersunny.github.io/tags/iOS/"/>
     
       <category term="推送" scheme="https://programersunny.github.io/tags/%E6%8E%A8%E9%80%81/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>EmptyDataKit -- 一行代码集成列表视图无数据展示</title>
-    <link href="https://programersunny.github.io/2016/09/07/EmptyDataKit/"/>
-    <id>https://programersunny.github.io/2016/09/07/EmptyDataKit/</id>
-    <published>2016-09-06T16:00:00.000Z</published>
-    <updated>2017-01-25T16:57:40.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>抽空写了一个小东西<a href="https://github.com/ProgramerSunny/EmptyDataKit"><strong>EmptyDataKit</strong></a>，一行代码可以集成UITableView 和 UICollectionView 在数据源没有数据的时候展示一个默认占位图片。</p>
-<a id="more"></a>
-<h2 id="gif"><a href="#gif" class="headerlink" title="gif"></a>gif</h2><p><img src="http://ocg4av0wv.bkt.clouddn.com/ProgramerSunnyDemo.gif" width= "400" /></p>
-<p>另外这个工具也被我添加进了我来一个叫做<code>SBAnimation</code>的仓库中,而且<code>SBAnimation</code>中的demo代码更干净和间接，而且完整的示范了这个工具的使用方法。由于精力有限，暂时还没有动力将这里的demo代码替换。所以我也将<code>SBAnimation</code>中的截图放到这里来。如果需要的话可以过去看看。<a href="https://github.com/SolarBee/SBAnimation">地址</a></p>
-<p><img src="http://ojno1pj4x.bkt.clouddn.com/EmptyDataKit.gif"></p>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p><strong>0、</strong>框架依赖与<code>BlocksKit</code>请在<code>podfile</code>中添加<code>pod &#39;BlocksKit&#39;</code>并且在终端执行<code>pod install --no-repo-update</code>。如果直接拖进你的工程记得添加 pod BlocksKit</p>
-<p><strong>1、</strong>首先 <code>pod &#39;EmptyDataKit&#39;</code></p>
-<p><strong>2、</strong>导入头文件<code>#import &lt;EmptyDataKit/EmptyDataKit.h&gt;</code></p>
-<p><strong>3、</strong>在dataSource的<code>numberOfSectionsInTableView</code>方法中调用<code>EmptyDataKit</code>中的唯一方法.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    __weak typeof(self) weakSelf = self;</div><div class="line">    EmptyDataKit *kit = [[EmptyDataKit alloc] initWithEdk_Image:[UIImage imageNamed:@&quot;common_pic_loadFail&quot;] edk_Message:@&quot;aaa&quot; edk_reloadHandler:^&#123;</div><div class="line">        [weakSelf getData];</div><div class="line">    &#125;];</div><div class="line">    kit.edk_error_image = [UIImage imageNamed: @&quot;&quot;];</div><div class="line">    kit.edk_error_message = @&quot;网络错误&quot;;</div><div class="line">    self.tableView.emptyKit = kit;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>至此，EmptyDataKit集成成功!   <code>UIcollectionView</code>使用方法同理</p>
-<p>另外<code>EmptyDataKit</code>有如下枚举</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">typedef NS_ENUM(NSUInteger ,EmptyDataType) &#123;</div><div class="line">    EDK_Loading,     // if there is a LoadingView, use this ,and also this is a default status.</div><div class="line">    EDK_None,        // if there is some data, use this.</div><div class="line">    EDK_Empty,       // if there is no data, use this.</div><div class="line">    EDK_Error        // if there is some error such as network, use this.</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>这样在<code>reloadData</code>之前给<code>self.tableView.emptyKit.edk_type</code>赋值即可区分在不同状态下的不同展示情况。</p>
-<h2 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h2><p>思路方面，我给<code>UITableView</code>和<code>UIColectionView</code>分别添加了两个Category, 并且通过runtime给两个类都关联了两个属性<code>data</code> 、 <code>touchBlock</code> 和<code>emptyKit</code>。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@property (nonatomic, assign) BOOL data;</div><div class="line">@property (nonatomic, copy) TouchBlock touchBlock;</div><div class="line">@property (nonatomic, strong) EmptyDataKit *emptyKit;</div></pre></td></tr></table></figure>
-<p>分别表示是否有数据和一个空数据的时候点击空白部分回调刷新的部分。</p>
-<p>考虑到我想同时兼容UITableView 和 UICollectionView 所以我提取了一个object <code>EmptyDataKit</code>。</p>
-<p>之前的调用方式是在<code>numberOfSectionsInTableView</code>方法中调用EmptyDataKit，并且是一个类方法，在新的框架下，EmptyDataKit 作为 TableView 的属性在设置的时候更加自主。</p>
-<p>并且通过<code>MethodSwizzling</code>在 <code>tableView</code> 的 <code>reloadData</code> 方法中激发 <code>EmptyDataKit</code>,减少了很多调用次数。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">+ (void)load &#123;</div><div class="line">    static dispatch_once_t onceToken;</div><div class="line">    dispatch_once(&amp;onceToken, ^&#123;</div><div class="line">        [self methodSwizzlingWithOriginalSelector:@selector(reloadData)</div><div class="line">                               bySwizzledSelector:@selector(sure_reloadData)];</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)sure_reloadData &#123;</div><div class="line">    [self.emptyKit edk_display:self];</div><div class="line">//    id &lt;UITableViewDataSource&gt; dataSource = self.dataSource;</div><div class="line">    [self sure_reloadData];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="TODO："><a href="#TODO：" class="headerlink" title="TODO："></a>TODO：</h2><ol>
-<li>进一步规范文档。</li>
-<li>移除对BlocksKit的依赖。</li>
-</ol>
-<h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><p><strong>**工具已经开源在github中,欢迎提issue。[</strong>开源地址**](<a href="https://github.com/ProgramerSunny/EmptyDataKit">https://github.com/ProgramerSunny/EmptyDataKit</a>)</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;抽空写了一个小东西&lt;a href=&quot;https://github.com/ProgramerSunny/EmptyDataKit&quot;&gt;&lt;strong&gt;EmptyDataKit&lt;/strong&gt;&lt;/a&gt;，一行代码可以集成UITableView 和 UICollectionView 在数据源没有数据的时候展示一个默认占位图片。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="iOS" scheme="https://programersunny.github.io/categories/iOS/"/>
-    
-    
-      <category term="iOS" scheme="https://programersunny.github.io/tags/iOS/"/>
-    
-      <category term="OpenSource" scheme="https://programersunny.github.io/tags/OpenSource/"/>
     
   </entry>
   
