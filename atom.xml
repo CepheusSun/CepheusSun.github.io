@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://programersunny.github.io/"/>
-  <updated>2017-02-20T14:34:02.000Z</updated>
+  <updated>2017-02-20T17:25:55.000Z</updated>
   <id>https://programersunny.github.io/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>iOS面试集锦&amp;2017年02月20日02</title>
+    <title>iOS面试集锦&amp;2017年02月20日01</title>
     <link href="https://programersunny.github.io/2017/02/20/interview07022001/"/>
     <id>https://programersunny.github.io/2017/02/20/interview07022001/</id>
     <published>2017-02-19T16:00:00.000Z</published>
-    <updated>2017-02-20T14:34:02.000Z</updated>
+    <updated>2017-02-20T17:25:55.000Z</updated>
     
     <content type="html"><![CDATA[<p>1、 对内存管理的理解。<br>2、 类别的作用<br>3、点击屏幕上的按钮，系统做了什么？</p>
 <a id="more"></a>
