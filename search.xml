@@ -5,7 +5,7 @@
     
     <entry>
       <title><![CDATA[iOS面试集锦&2017年02月20日02]]></title>
-      <url>https://programersunny.github.io/2017/02/20/interview07022002/</url>
+      <url>https://programersunny.github.io/2017/02/20/interview07022001/</url>
       <content type="html"><![CDATA[<p>1、 对内存管理的理解。<br>2、 类别的作用<br>3、点击屏幕上的按钮，系统做了什么？</p>
 <a id="more"></a>
 <p>##2017-02-20  Question<br>Question 1.内存管理理解不正确的是<br>A 程序A里有一段内存被成功申请完成之后，内存计数器就从0变为1 (这个过程是alloc);<br>B 程序B里要使用已存在内存，那么内存计数器从1变为2 (这个过程是retain或者copy);<br>C 紧接着程序A不需要这个内存了，那么程序A就把这个内存计数器减1 (这个过程是release);<br>D 当系统发现这个内存计数器变为小于等于0，那么就调用垃圾回收程序把这段内存回收(这个过程是dealloc)；</p>
@@ -35,7 +35,7 @@
     
     <entry>
       <title><![CDATA[iOS面试集锦&2017年02月19日01]]></title>
-      <url>https://programersunny.github.io/2017/02/19/interview07022001/</url>
+      <url>https://programersunny.github.io/2017/02/19/interview07021901/</url>
       <content type="html"><![CDATA[<p>按钮或者 View 在进行 frame 动画的时候，为什么点击 frame 动画的重点位置才能触发事件？如何在动画过程中响应事件？</p>
 <a id="more"></a>  
 <p>答：<br>① <del>动画开始后有两个图层：</del><br>（修改原因：不是动画开始后,而是 view 出现了的时候。只要 view 出现在试图上,他都具有这两个图层。）<br><strong>iOS 中对于 UIView 具有一个 CALayer 类的属性 layer 我们姑且叫他 rootLayer。而每一个 CALayer 都有两个属性：</strong><br><del>一个 <code>view.layer.presentationLayer</code> 用来显示动画（属性随动画过程慢慢改变)</del><br>（修改原因:感觉显示动画这个用法不大准确,我语文也不好😂）<br><strong>一个<code>resentationLayer</code> 指呈现图层,是模型图层的复制，他的属性值代表了在任何指定时刻当前的显示。所以在 UIView 没有出现的时候这个 view 的属性值为 nil， 出现之后无论 view 是否动画，这个值的内存地址每次打印都不一样。</strong></p>
