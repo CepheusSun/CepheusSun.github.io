@@ -115,7 +115,7 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
     <link href="https://programersunny.github.io/2017/02/20/interview07022001/"/>
     <id>https://programersunny.github.io/2017/02/20/interview07022001/</id>
     <published>2017-02-19T16:00:00.000Z</published>
-    <updated>2017-02-20T17:25:55.000Z</updated>
+    <updated>2017-02-21T16:04:22.000Z</updated>
     
     <content type="html"><![CDATA[<p>1、 对内存管理的理解。<br>2、 类别的作用<br>3、点击屏幕上的按钮，系统做了什么？</p>
 <a id="more"></a>
@@ -141,6 +141,8 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
 <blockquote>
 <p>参考<br><a href="http://www.cnblogs.com/LiLihongqiang/p/5645907.html">http://www.cnblogs.com/LiLihongqiang/p/5645907.html</a><br><a href="http://www.infocool.net/kb/IOS/201610/200104.html">http://www.infocool.net/kb/IOS/201610/200104.html</a><br><a href="http://www.cocoachina.com/ios/20160113/14896.html">http://www.cocoachina.com/ios/20160113/14896.html</a><br><a href="http://www.jianshu.com/p/2e074db792ba">http://www.jianshu.com/p/2e074db792ba</a>  </p>
 </blockquote>
+<hr>
+<h5 id="写在后面的话"><a href="#写在后面的话" class="headerlink" title="写在后面的话"></a>写在后面的话</h5><p>这个系列所有的文章都是在一个QQ群里面跟小伙伴们讨论出来的,每个 topic 都已经放在了 GitHub 的一个仓库中 <a href="https://github.com/GetOfferSoldier/Objective-C"><strong>这是地址</strong></a>。 所有内容的更新的将在这个仓库中进行,在博客中将不再进行更新。有任何问题，都可以在这个仓库中给我们提 issue 或者 pull request.</p>
 ]]></content>
     
     <summary type="html">
@@ -161,7 +163,7 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
     <link href="https://programersunny.github.io/2017/02/19/interview07021901/"/>
     <id>https://programersunny.github.io/2017/02/19/interview07021901/</id>
     <published>2017-02-18T16:00:00.000Z</published>
-    <updated>2017-02-20T17:23:02.000Z</updated>
+    <updated>2017-02-21T16:04:14.000Z</updated>
     
     <content type="html"><![CDATA[<p>按钮或者 View 在进行 frame 动画的时候，为什么点击 frame 动画的重点位置才能触发事件？如何在动画过程中响应事件？</p>
 <a id="more"></a>  
@@ -174,6 +176,8 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">- (id)hitTest:(CGPoint)point withEvent:(UIEvent *)event &#123;</div><div class="line">    NSArray *subViews = self.subviews;</div><div class="line">    for (UIView *subView in subViews) &#123;</div><div class="line">        if([subView isKindOfClass:[FoamImageView class]])&#123; //是要找的图片</div><div class="line">            CALayer *layer = subView.layer.presentationLayer; //图片的显示层            </div><div class="line">            if(CGRectContainsPoint(layer.frame, point))&#123; //触摸点在显示层中，返回当前图片</div><div class="line">                return subView;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return [super hitTest:point withEvent:event];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">- (void)touchesBegan:(NSSet&lt;UITouch *&gt; *)touches withEvent:(UIEvent *)event &#123;</div><div class="line">    CGPoint point = [[touches anyObject] locationInView:self.view];</div><div class="line">    </div><div class="line">    if (CGRectContainsPoint(button_.layer.presentationLayer.frame, point)) &#123;</div><div class="line">        NSLog(@&quot;youxiangying&quot;);</div><div class="line">        [self buttonEvent:button_];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><strong>参考资料</strong>：<br><a href="http://www.voidcn.com/blog/lixuemei45/article/p-5021040.html">www.voidcn.com</a><br><a href="https://www.amazon.com/iOS-Core-Animation-Advanced-Techniques-ebook/dp/B00EHJCORC/ref=sr_1_1?ie=UTF8&amp;qid=1423192842&amp;sr=8-1&amp;keywords=Core+Animation+Advanced+Techniques">iOS-CoreAnimation</a></p>
+<hr>
+<h5 id="写在后面的话"><a href="#写在后面的话" class="headerlink" title="写在后面的话"></a>写在后面的话</h5><p>这个系列所有的文章都是在一个QQ群里面跟小伙伴们讨论出来的,每个 topic 都已经放在了 GitHub 的一个仓库中 <a href="https://github.com/GetOfferSoldier/Objective-C"><strong>这是地址</strong></a>。 所有内容的更新的将在这个仓库中进行,在博客中将不再进行更新。有任何问题，都可以在这个仓库中给我们提 issue 或者 pull request.</p>
 ]]></content>
     
     <summary type="html">
