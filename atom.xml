@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>ProgramerSunny的博客</title>
-  <subtitle>ProgramerSunny的博客</subtitle>
+  <title>CepheusSun的博客</title>
+  <subtitle>CepheusSun的博客</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://programersunny.github.io/"/>
@@ -9,7 +9,7 @@
   <id>https://programersunny.github.io/</id>
   
   <author>
-    <name>Programer Sunny</name>
+    <name>CepheusSun</name>
     <email>cd_sunyang@163.com</email>
   </author>
   
