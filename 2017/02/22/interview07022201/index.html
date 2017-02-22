@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="阅读," />
+  <meta name="keywords" content="iOS面试集锦," />
 
 
 
@@ -86,16 +86,28 @@
 
 
 
-<meta name="description" content="好久没有更新博客了，分享几篇最近读到的比较好的文章吧！读的不是特别的仔细，也算是留一个记录，以后再详读一遍">
+<meta name="description" content="id 和 instancetype 的区别?
+有方法查看当前系统内存使用的情况吗？
+为什么 NotificationCenter 要 removeObserver? 如何实现自动 remove？
+iOS的沙盒目录结构是怎样的？ App Bundle 里面都有什么？
+简单描述一下客户端的缓存机制？">
 <meta property="og:type" content="article">
-<meta property="og:title" content="最近看到的一些好的文章">
-<meta property="og:url" content="https://CepheusSun.github.io/2016/10/14/readinglist/index.html">
+<meta property="og:title" content="iOS面试集锦&2017年02月22日01">
+<meta property="og:url" content="https://CepheusSun.github.io/2017/02/22/interview07022201/index.html">
 <meta property="og:site_name" content="CepheusSun的博客">
-<meta property="og:description" content="好久没有更新博客了，分享几篇最近读到的比较好的文章吧！读的不是特别的仔细，也算是留一个记录，以后再详读一遍">
-<meta property="og:updated_time" content="2016-10-14T13:33:51.000Z">
+<meta property="og:description" content="id 和 instancetype 的区别?
+有方法查看当前系统内存使用的情况吗？
+为什么 NotificationCenter 要 removeObserver? 如何实现自动 remove？
+iOS的沙盒目录结构是怎样的？ App Bundle 里面都有什么？
+简单描述一下客户端的缓存机制？">
+<meta property="og:updated_time" content="2017-02-22T17:10:05.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="最近看到的一些好的文章">
-<meta name="twitter:description" content="好久没有更新博客了，分享几篇最近读到的比较好的文章吧！读的不是特别的仔细，也算是留一个记录，以后再详读一遍">
+<meta name="twitter:title" content="iOS面试集锦&2017年02月22日01">
+<meta name="twitter:description" content="id 和 instancetype 的区别?
+有方法查看当前系统内存使用的情况吗？
+为什么 NotificationCenter 要 removeObserver? 如何实现自动 remove？
+iOS的沙盒目录结构是怎样的？ App Bundle 里面都有什么？
+简单描述一下客户端的缓存机制？">
 
 
 
@@ -116,9 +128,9 @@
 
 
 
-  <link rel="canonical" href="https://CepheusSun.github.io/2016/10/14/readinglist/"/>
+  <link rel="canonical" href="https://CepheusSun.github.io/2017/02/22/interview07022201/"/>
 
-  <title> 最近看到的一些好的文章 | CepheusSun的博客 </title>
+  <title> iOS面试集锦&2017年02月22日01 | CepheusSun的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -271,7 +283,7 @@
             
             
               
-                最近看到的一些好的文章
+                iOS面试集锦&2017年02月22日01
               
             
           </h1>
@@ -283,8 +295,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-14T00:00:00+08:00" content="2016-10-14">
-              2016-10-14
+            <time itemprop="dateCreated" datetime="2017-02-22T00:00:00+08:00" content="2017-02-22">
+              2017-02-22
             </time>
           </span>
 
@@ -297,8 +309,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/阅读/" itemprop="url" rel="index">
-                    <span itemprop="name">阅读</span>
+                  <a href="/categories/iOS面试集锦/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS面试集锦</span>
                   </a>
                 </span>
 
@@ -313,8 +325,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/10/14/readinglist/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/14/readinglist/" itemprop="commentsCount"></span>
+                <a href="/2017/02/22/interview07022201/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/22/interview07022201/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -324,7 +336,7 @@
 
           
           
-             <span id="/2016/10/14/readinglist/" class="leancloud_visitors" data-flag-title="最近看到的一些好的文章">
+             <span id="/2017/02/22/interview07022201/" class="leancloud_visitors" data-flag-title="iOS面试集锦&2017年02月22日01">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -346,15 +358,76 @@
       
 
       
-        <p>好久没有更新博客了，分享几篇最近读到的比较好的文章吧！读的不是特别的仔细，也算是留一个记录，以后再详读一遍</p>
+        <ol>
+<li><code>id</code> 和 <code>instancetype</code> 的区别?</li>
+<li>有方法查看当前系统内存使用的情况吗？</li>
+<li>为什么 NotificationCenter 要 removeObserver? 如何实现自动 remove？</li>
+<li>iOS的沙盒目录结构是怎样的？ App Bundle 里面都有什么？</li>
+<li>简单描述一下客户端的缓存机制？</li>
+</ol>
 <a id="more"></a>
-<p><a href="http://fex.baidu.com/blog/2014/07/feature-flag/"><em>Feature Flag 功能发布控制</em></a></p>
-<p>[<em><a href="http://wangchao.de/%e8%81%8a%e8%81%8a%e5%88%9b%e4%b8%9a%e5%9b%a2%e9%98%9f%e7%9a%84%e9%a1%b9%e7%9b%ae%e7%ae%a1%e7%90%86%e5%a6%82%e4%bd%95%e9%9d%a2%e5%90%91%e5%bc%80%e5%8f%91%e4%ba%ba%e5%91%98%e4%bc%98%e5%8c%96/">聊聊创业团队的项目管理如何面向开发人员优化</a></em></p>
-<p><a href="https://zhuanlan.zhihu.com/p/22283843"><em>基于 KIF 的 iOS UI 自动化测试和持续集成</em></a></p>
-<p><a href="http://www.jianshu.com/p/9ae446d76271"><em>iOS项目的持续集成与管理[译]</em></a></p>
-<p><a href="http://mrpeak.cn/blog/http2/"><em>HTTP 2.0的那些事</em></a></p>
-<p><a href="http://mrpeak.cn/blog/ios-network/"><em>深度优化iOS网络模块</em></a></p>
-<p>准备把手上项目网络层完全优化之后再来仔细研读一下这几篇文章。</p>
+<p>##2017-02-22</p>
+<p>#####1. <code>id</code> 和 <code>instancetype</code> 的区别?</p>
+<ol>
+<li><p>在 ARC(Auto Reference Count)环境下:</p>
+<pre><code>instancetype 用来在编译期确定实例的类型,而使用 id 的话,编译器不检查类型, 运行时检查类型.
+</code></pre><p>在 MRC(Manual Reference Count)环境下:</p>
+<pre><code>instancetype 和 id 一样,不做具体类型检查
+</code></pre></li>
+<li><p>id 可以作为方法的参数,但 instancetype 不可以<br>instancetype 只适用于初始化方法和便利构造器的返回值类型</p>
+</li>
+</ol>
+<p>#####2. 有方法查看当前系统内存使用的情况吗？<br>一般我上手新的项目,检查内存问题三部曲;</p>
+<ol>
+<li>静态分析, 初步了解代码不规范的地方,或者是一些内存泄漏问题。</li>
+<li>instrument, 初略的定位我们在什么地方发生了内存泄漏。</li>
+<li>代码测试内存泄漏, 观察对象的生成和销毁是否配对。使用MLeaksFinder来配合检查</li>
+</ol>
+<ul>
+<li>两个对象互相持有，主要是 delegate 使用 weak 属性, 在 iOS8 上系统 delegate 使用的是 assign 这会带来一些问题,踩过坑的老司机可以提一下。</li>
+<li>有时候需要使用 removeFromSuperView 来释放, a 持有了 b ， b 被 add 到了 c 上, 而在程序设计中b 的生命周期应该和 a 相同, 这个时候使用 self.b = nil 并不会吧 b 释放, 我们应该在之前加上 <code>[b removeFromSuperView]</code></li>
+</ul>
+<p>#####3. 为什么 NotificationCenter 要 removeObserver? 如何实现自动 remove？</p>
+<ul>
+<li>如果不移除，万一注册通知的类被销毁之后又发送了通知, 程序会 crash。 因为野指针。</li>
+<li>实现自动 remove;通过自动释放机制, 通过动态属性将 remove 转移给第三者,解除耦合,达到自动实现 remove 。</li>
+</ul>
+<p>#####4. iOS的沙盒目录结构是怎样的？ App Bundle 里面都有什么？</p>
+<ol>
+<li>沙盒结构<ul>
+<li>Application: 存放程序源文件, 上架前经过数字签名,上架后不可修改</li>
+<li>Documents: 常用目录, iCloud 备份目录,存放数据,这里不能缓存文件,否则上架不被通过</li>
+<li>Library<ul>
+<li>Caches: 存放体积大又不需要备份的数据, SDWebImage 就是这个</li>
+<li>Preference: 设置目录, iCloud会备份设置信息。</li>
+<li>tmp: 存放临时文件,不会被备份,而且这个文件下的数据有可能随时被清除</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>App Bundle<ul>
+<li>Info.plist: 文件的配置信息,系统依赖次文件获取应用程序的相关信息。</li>
+<li>可执行文件: 此文件包含应用程序的入口和通过静态链接到应用程序 target 的代码。</li>
+<li>资源文件: 图片声音</li>
+<li>其他: 可以潜入定制的数据资源。</li>
+</ul>
+</li>
+</ol>
+<h5 id="5-简单描述一下客户端的缓存机制？"><a href="#5-简单描述一下客户端的缓存机制？" class="headerlink" title="5.简单描述一下客户端的缓存机制？"></a>5.简单描述一下客户端的缓存机制？</h5><ul>
+<li>缓存可以分为:<ul>
+<li>内存数据缓存</li>
+<li>数据库缓存</li>
+<li>文件缓存</li>
+</ul>
+</li>
+<li>每次想获取数据的时候<ol>
+<li>检查内存中有无缓存</li>
+<li>检查本地有无缓存(数据库\文件)</li>
+<li>发起请求</li>
+<li>将服务器返回的数据进行缓存(内存数据库文件)</li>
+</ol>
+</li>
+</ul>
 
       
     </div>
@@ -377,7 +450,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/阅读/" rel="tag">#阅读</a>
+            <a href="/tags/iOS面试集锦/" rel="tag">#iOS面试集锦</a>
           
         </div>
       
@@ -386,17 +459,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/30/如何优雅的使用xib进行开发/" rel="next" title="如何优雅的使用xib进行开发">
-                <i class="fa fa-chevron-left"></i> 如何优雅的使用xib进行开发
+              <a href="/2017/02/21/interview07022101/" rel="next" title="iOS面试集锦&2017年02月21日01">
+                <i class="fa fa-chevron-left"></i> iOS面试集锦&2017年02月21日01
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/10/31/让人恐惧的属性关键字/" rel="prev" title="让人恐惧的属性关键字">
-                让人恐惧的属性关键字 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -425,8 +494,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/10/14/readinglist/"
-           data-title="最近看到的一些好的文章" data-url="https://CepheusSun.github.io/2016/10/14/readinglist/">
+      <div class="ds-thread" data-thread-key="2017/02/22/interview07022201/"
+           data-title="iOS面试集锦&2017年02月22日01" data-url="https://CepheusSun.github.io/2017/02/22/interview07022201/">
       </div>
     
   </div>
@@ -564,7 +633,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#5-简单描述一下客户端的缓存机制？"><span class="nav-number">1.</span> <span class="nav-text">5.简单描述一下客户端的缓存机制？</span></a></li></ol></div>
             
           </div>
         </section>
