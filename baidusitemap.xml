@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>https://CepheusSun.github.io/2017/02/01/iOS%E5%B0%8F%E7%9F%A5%E8%AF%86%E9%9B%86%E9%94%A6-NSString%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB/</loc>
+    <lastmod>2017-02-22T16:39:14.000Z</lastmod>
+    <data>
+        <display>
+        <title>iOS小知识集锦-NSString常用方法汇总</title>
+        <pubTime>2017-01-31T16:00:00.000Z</pubTime>
+        
+        <tag>Objective-C</tag>
+         
+         
+           
+             
+              <breadCrumb title="知识集锦" url="https://CepheusSun.github.io/categories/%E7%9F%A5%E8%AF%86%E9%9B%86%E9%94%A6/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://CepheusSun.github.io/2016/11/02/SYPhotoBrowser/</loc>
     <lastmod>2017-02-22T15:47:38.000Z</lastmod>
     <data>
@@ -209,26 +229,6 @@
            
              
               <breadCrumb title="python" url="https://CepheusSun.github.io/categories/python/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://CepheusSun.github.io/2017/02/01/iOS%E5%B0%8F%E7%9F%A5%E8%AF%86%E9%9B%86%E9%94%A6-NSString%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB/</loc>
-    <lastmod>2017-02-01T16:16:12.000Z</lastmod>
-    <data>
-        <display>
-        <title>iOS小知识集锦-NSString常用方法汇总</title>
-        <pubTime>2017-01-31T16:00:00.000Z</pubTime>
-        
-        <tag>Objective-C</tag>
-         
-         
-           
-             
-              <breadCrumb title="知识集锦" url="https://CepheusSun.github.io/categories/%E7%9F%A5%E8%AF%86%E9%9B%86%E9%94%A6/"/>
           
         </display>
     </data>
