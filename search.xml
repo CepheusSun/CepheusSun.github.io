@@ -276,9 +276,9 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
 <h3 id="SBAnimation"><a href="#SBAnimation" class="headerlink" title="SBAnimation"></a>SBAnimation</h3><p>SolarBee创建的一个关于一些动画和自定义有趣的View的合集的合集。</p>
 <h4 id="1、仪表盘"><a href="#1、仪表盘" class="headerlink" title="1、仪表盘"></a>1、仪表盘</h4><p><img src="http://ojno1pj4x.bkt.clouddn.com/91B9BB1D47A45C3FD69A20FB5813C31F.jpg"></p>
 <h4 id="2、购物车抛物线"><a href="#2、购物车抛物线" class="headerlink" title="2、购物车抛物线"></a>2、购物车抛物线</h4><p><img src="http://ojno1pj4x.bkt.clouddn.com/%E8%B4%AD%E7%89%A9%E8%BD%A6%E6%8A%9B%E7%89%A9%E7%BA%BF.gif"></p>
-<h4 id="3、列表空数据展示"><a href="#3、列表空数据展示" class="headerlink" title="3、列表空数据展示"></a>3、列表空数据展示</h4><p>这个工具支持 CocoaPods 可见源作者 github 仓库 <a href="https://github.com/ProgramerSunny/EmptyDataKit">地址</a></p>
+<h4 id="3、列表空数据展示"><a href="#3、列表空数据展示" class="headerlink" title="3、列表空数据展示"></a>3、列表空数据展示</h4><p>这个工具支持 CocoaPods 可见源作者 github 仓库 <a href="https://github.com/CepheusSun/EmptyDataKit">地址</a></p>
 <p><img src="http://ojno1pj4x.bkt.clouddn.com/EmptyDataKit.gif"></p>
-<h4 id="4、仿照淘宝商品详情加入购物车转场动画"><a href="#4、仿照淘宝商品详情加入购物车转场动画" class="headerlink" title="4、仿照淘宝商品详情加入购物车转场动画"></a>4、仿照淘宝商品详情加入购物车转场动画</h4><p>使用说明在作者 <a href="https://github.com/ProgramerSunny/SYTaoBaoAnimation">github</a></p>
+<h4 id="4、仿照淘宝商品详情加入购物车转场动画"><a href="#4、仿照淘宝商品详情加入购物车转场动画" class="headerlink" title="4、仿照淘宝商品详情加入购物车转场动画"></a>4、仿照淘宝商品详情加入购物车转场动画</h4><p>使用说明在作者 <a href="https://github.com/CepheusSun/SYTaoBaoAnimation">github</a></p>
 <p><img src="http://ojno1pj4x.bkt.clouddn.com/ProgramerSunnyDemo.gif"></p>
 ]]></content>
     </entry>
@@ -418,7 +418,7 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
 <h2 id="在-GitHub-创建代码仓库"><a href="#在-GitHub-创建代码仓库" class="headerlink" title="在 GitHub 创建代码仓库"></a>在 GitHub 创建代码仓库</h2><p>因为 CocoaPods 始终还是要将代码放在 GitHub 上的，所以我们还是创建一个代码仓库来保存这些代码吧！</p>
 <p>这一步完成之后需要记住两个内容</p>
 <ul>
-<li>项目的 ssh地址 <code>git@github.com:ProgramerSunny/SYNetwork.git</code></li>
+<li>项目的 ssh地址 <code>git@github.com:CepheusSun/SYNetwork.git</code></li>
 <li>项目的名称 <code>SYNetwork</code></li>
 </ul>
 <h2 id="在本地创建-podspec-文件"><a href="#在本地创建-podspec-文件" class="headerlink" title="在本地创建 podspec 文件"></a>在本地创建 podspec 文件</h2><p>在终端中执行命令</p>
@@ -445,7 +445,7 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
 </blockquote>
 <h3 id="在podspec文件中编码"><a href="#在podspec文件中编码" class="headerlink" title="在podspec文件中编码"></a>在podspec文件中编码</h3><p>我使用的是Sublime Text </p>
 <p>打开第一个<code>SYNetwork</code>文件夹中的<code>SYNetwork.podspec</code>文件。这个文件就是配置 CoaoaPods 基本信息的文件</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Pod::Spec.new <span class="keyword">do</span> <span class="params">|s|</span></div><div class="line">  <span class="comment"># pod 库名</span></div><div class="line">  s.name             = <span class="string">'SYNetwork'</span></div><div class="line">  <span class="comment"># pod 版本</span></div><div class="line">  s.version          = <span class="string">'3.0'</span></div><div class="line">  <span class="comment"># pod 概述 </span></div><div class="line">  s.summary          = <span class="string">'A grest network frameworks.'</span></div><div class="line">  <span class="comment"># pod的详细描述</span></div><div class="line">  s.description      = &lt;&lt;-DESC</div><div class="line">    ’this is A great network frameworks<span class="string">'</div><div class="line">                       DESC</div><div class="line">  # pod 的主页</div><div class="line">  s.homepage         = '</span><span class="symbol">https:</span>/<span class="regexp">/github.com/</span>ProgramerSunny/SYNetwork<span class="string">'</div><div class="line">  # 许可证书</div><div class="line">  s.license          = &#123; :type =&gt; '</span>MIT<span class="string">', :file =&gt; '</span>LICENSE<span class="string">' &#125;</div><div class="line">  # 作者信息</div><div class="line">  s.author           = &#123; '</span>ProgramerSunny<span class="string">' =&gt; '</span>cd_sunyang@163.com<span class="string">' &#125;</div><div class="line">  # pod 源码在 GitHub 的仓库地址,以及 pod 版本</div><div class="line">  s.source           = &#123; :git =&gt; '</span><span class="symbol">https:</span>/<span class="regexp">/github.com/</span>ProgramerSunny/SYNetwork.git<span class="string">', :tag =&gt; 3.0 &#125;</div><div class="line">  # pod 支持 iOS 系统</div><div class="line">  s.ios.deployment_target = '</span><span class="number">8.0</span><span class="string">'</div><div class="line"></div><div class="line">  s.source_files = '</span>SYNetwork/Classes/*<span class="string">'</div><div class="line"></div><div class="line">  # s.public_header_files = '</span>SYNetwork/Classes/SYNetwork.h<span class="string">'</div><div class="line">  # s.frameworks = '</span>UIKit<span class="string">', '</span>MapKit<span class="string">'</div><div class="line">  s.dependency '</span>AFNetworking<span class="string">', '</span>~&gt; <span class="number">3.0</span><span class="string">'</div><div class="line">end</span></div></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Pod::Spec.new <span class="keyword">do</span> <span class="params">|s|</span></div><div class="line">  <span class="comment"># pod 库名</span></div><div class="line">  s.name             = <span class="string">'SYNetwork'</span></div><div class="line">  <span class="comment"># pod 版本</span></div><div class="line">  s.version          = <span class="string">'3.0'</span></div><div class="line">  <span class="comment"># pod 概述 </span></div><div class="line">  s.summary          = <span class="string">'A grest network frameworks.'</span></div><div class="line">  <span class="comment"># pod的详细描述</span></div><div class="line">  s.description      = &lt;&lt;-DESC</div><div class="line">    ’this is A great network frameworks<span class="string">'</div><div class="line">                       DESC</div><div class="line">  # pod 的主页</div><div class="line">  s.homepage         = '</span><span class="symbol">https:</span>/<span class="regexp">/github.com/</span>CepheusSun/SYNetwork<span class="string">'</div><div class="line">  # 许可证书</div><div class="line">  s.license          = &#123; :type =&gt; '</span>MIT<span class="string">', :file =&gt; '</span>LICENSE<span class="string">' &#125;</div><div class="line">  # 作者信息</div><div class="line">  s.author           = &#123; '</span>CepheusSun<span class="string">' =&gt; '</span>cd_sunyang@163.com<span class="string">' &#125;</div><div class="line">  # pod 源码在 GitHub 的仓库地址,以及 pod 版本</div><div class="line">  s.source           = &#123; :git =&gt; '</span><span class="symbol">https:</span>/<span class="regexp">/github.com/</span>CepheusSun/SYNetwork.git<span class="string">', :tag =&gt; 3.0 &#125;</div><div class="line">  # pod 支持 iOS 系统</div><div class="line">  s.ios.deployment_target = '</span><span class="number">8.0</span><span class="string">'</div><div class="line"></div><div class="line">  s.source_files = '</span>SYNetwork/Classes/*<span class="string">'</div><div class="line"></div><div class="line">  # s.public_header_files = '</span>SYNetwork/Classes/SYNetwork.h<span class="string">'</div><div class="line">  # s.frameworks = '</span>UIKit<span class="string">', '</span>MapKit<span class="string">'</div><div class="line">  s.dependency '</span>AFNetworking<span class="string">', '</span>~&gt; <span class="number">3.0</span><span class="string">'</div><div class="line">end</span></div></pre></td></tr></table></figure>
 <p><strong>需要注意的是</strong></p>
 <p><strong>1.</strong></p>
 <p><code>s.source_files</code></p>
@@ -625,7 +625,7 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
 <p>在进行模块的独立的时候，想得最多的还是和原来的代码进行解耦，并且在抽取的过程中不要破坏原有的代码逻辑，并且比较合理的组织代码。在这样的基础上添加一些新的功能。在跟另外一个同事讨论之后，决定放弃之前集中式的网络请求方式，参考了大量前辈的网络库之后，采用了 Command 模式，一个网络请求 Api 是一个对象，这样能够更方便和优雅的根据不同的接口满足不同的业务需求。</p>
 <p>当然，公司的项目目前还没有十分的复杂，所以目前主要实现了: <code>POST</code>、<code>GET</code> 两种请求方式；根据请求的参数和 url 缓存请求结果；一个还算漂亮的logger；简单的对网络请求进行 AOP 操作(对参数进行加密)这些比较常见的功能。</p>
 <a id="more"></a>
-<p><a href="https://github.com/ProgramerSunny/SYNetwork"><em>GitHub地址</em></a></p>
+<p><a href="https://github.com/CepheusSun/SYNetwork"><em>GitHub地址</em></a></p>
 <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><h3 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h3><p>SYNetwork 由下面两个部分组成</p>
 <ul>
 <li><p>SYNetwork</p>
@@ -715,7 +715,7 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
 <h3 id="GIF"><a href="#GIF" class="headerlink" title="GIF"></a>GIF</h3><p><img src="http://ocg4av0wv.bkt.clouddn.com/SYPhotoBrowser.gif" width=500/></p>
 <h3 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h3><h4 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">SYPhotoBrowser *browser = [[SYPhotoBrowser alloc] init];</div><div class="line">   [browser setDataSource:self];</div><div class="line">   NSInteger idx = 0;</div><div class="line">   [browser showFromView:ges.view photoCount:self.imageUrls.count currentPhotoIndex:idx];</div></pre></td></tr></table></figure>
 <h4 id="Datasource"><a href="#Datasource" class="headerlink" title="Datasource"></a>Datasource</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">- (UIView *)photoView:(SYPhotoBrowser *)photeBrowser viewForIndex:(NSInteger)index;</div><div class="line">- (CGSize)photoView:(SYPhotoBrowser *)photeBrowser imageSizeForIndex:(NSInteger)index;</div><div class="line">- (UIImage *)photoView:(SYPhotoBrowser *)photoBrowser defaultImageForIndex:(NSInteger)index;</div><div class="line">- (NSString *)photoView:(SYPhotoBrowser *)photoBrowser highQualityUrlStringForIndex:(NSInteger)index;</div></pre></td></tr></table></figure>
-<p><a href="https://github.com/ProgramerSunny/SYPhotoBrowser"><em>GitHub地址</em></a></p>
+<p><a href="https://github.com/CepheusSun/SYPhotoBrowser"><em>GitHub地址</em></a></p>
 ]]></content>
     </entry>
     
@@ -901,7 +901,7 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
     <entry>
       <title><![CDATA[EmptyDataKit -- 一行代码集成列表视图无数据展示]]></title>
       <url>https://CepheusSun.github.io/2016/09/07/EmptyDataKit/</url>
-      <content type="html"><![CDATA[<p>抽空写了一个小东西<a href="https://github.com/ProgramerSunny/EmptyDataKit"><strong>EmptyDataKit</strong></a>，一行代码可以集成UITableView 和 UICollectionView 在数据源没有数据的时候展示一个默认占位图片。</p>
+      <content type="html"><![CDATA[<p>抽空写了一个小东西<a href="https://github.com/CepheusSun/EmptyDataKit"><strong>EmptyDataKit</strong></a>，一行代码可以集成UITableView 和 UICollectionView 在数据源没有数据的时候展示一个默认占位图片。</p>
 <a id="more"></a>
 <h2 id="gif"><a href="#gif" class="headerlink" title="gif"></a>gif</h2><p><img src="http://ocg4av0wv.bkt.clouddn.com/ProgramerSunnyDemo.gif" width= "400" /></p>
 <p>另外这个工具也被我添加进了我来一个叫做<code>SBAnimation</code>的仓库中,而且<code>SBAnimation</code>中的demo代码更干净和间接，而且完整的示范了这个工具的使用方法。由于精力有限，暂时还没有动力将这里的demo代码替换。所以我也将<code>SBAnimation</code>中的截图放到这里来。如果需要的话可以过去看看。<a href="https://github.com/SolarBee/SBAnimation">地址</a></p>
@@ -926,7 +926,7 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
 <li>进一步规范文档。</li>
 <li>移除对BlocksKit的依赖。</li>
 </ol>
-<h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><p><strong>**工具已经开源在github中,欢迎提issue。[</strong>开源地址**](<a href="https://github.com/ProgramerSunny/EmptyDataKit">https://github.com/ProgramerSunny/EmptyDataKit</a>)</p>
+<h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><p><strong>**工具已经开源在github中,欢迎提issue。[</strong>开源地址**](<a href="https://github.com/CepheusSun/EmptyDataKit">https://github.com/CepheusSun/EmptyDataKit</a>)</p>
 ]]></content>
     </entry>
     
@@ -1032,7 +1032,7 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
 <p>如果采用上面的命令发现一切都没有什么乱用,别多想了，直接下载安装吧。</p>
 </blockquote>
 <p>这个应该更容易一点，虽然感觉没那么Geek，但是能解决问题，才是最好的吧。</p>
-<h3 id="部署篇"><a href="#部署篇" class="headerlink" title="部署篇"></a>部署篇</h3><p>这个没什么好说的了，<a href="https://programersunny.github.io/2016/07/15/hello-world/"><em>上篇文章</em></a>也有写到,在<strong>第一次部署</strong>的时候会出现一些问题，所以在</p>
+<h3 id="部署篇"><a href="#部署篇" class="headerlink" title="部署篇"></a>部署篇</h3><p>这个没什么好说的了，<a href="https://CepheusSun.github.io/2016/07/15/hello-world/"><em>上篇文章</em></a>也有写到,在<strong>第一次部署</strong>的时候会出现一些问题，所以在</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo d</div></pre></td></tr></table></figure>
 <p>之前先</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-deployer-git –save</div></pre></td></tr></table></figure>
@@ -1047,17 +1047,17 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
 <h2 id="Markdown"><a href="#Markdown" class="headerlink" title="Markdown"></a>Markdown</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">title: 怎么使用Hexo发博客</div><div class="line">date: 2016-8-31</div><div class="line">tags: Hexo</div><div class="line">categories: Hexo</div><div class="line">---</div></pre></td></tr></table></figure>
 <p>我的文章是这样开始的，上面的内容分别代表什么不用我说了吧。给这篇文章设置tag 和分类什么的都是这样的。如果你想在两个tag 或者分类中看到这篇文    <code>tags: [hexo , ios]</code>即可。</p>
 <h3 id="markdown语法"><a href="#markdown语法" class="headerlink" title="markdown语法"></a>markdown语法</h3><p>markdown 也有自己的语法，hexo会自己解析然后出现在你的博客里面，这是一个很好用的工具，让我们更专注于写作本身而不是费尽心思的去弄格式。</p>
-<p>之前学习html css的时候发现markdown也支持html标签  比如我想对一个词语“ProgramerSunny”加粗，我可以使用markdown语法 <code>**ProgramerSunny**</code>  也可以使用html标签 <code>&lt;strong&gt;ProgramerSunny&lt;/strong&gt;</code> 这样的效果是一样的；</p>
+<p>之前学习html css的时候发现markdown也支持html标签  比如我想对一个词语“CepheusSun加粗，我可以使用markdown语法 <code>**CepheusSun**</code>  也可以使用html标签 <code>&lt;strong&gt;CepheusSun&lt;/strong&gt;</code> 这样的效果是一样的；</p>
 <ul>
-<li>markdown: <strong>ProgramerSunny</strong></li>
-<li>html: <strong>ProgramerSunny</strong></li>
+<li>markdown: <strong>CepheusSun</strong></li>
+<li>html: <strong>CepheusSun</strong></li>
 </ul>
 <p>这里我还是单纯的讲一下markdown我要用的内容吧。 </p>
 <blockquote>
 <p>在Mou里直接CMD + R 可以看到相关内容，但是貌似是英文的。</p>
 </blockquote>
 <h4 id="加粗强调"><a href="#加粗强调" class="headerlink" title="加粗强调"></a>加粗强调</h4><p><code>__ss__  _ss_  *aa*  **aa**</code>  表现为： <strong>ss</strong>  <em>ss</em>  <em>aa</em>  <strong>aa</strong></p>
-<h4 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h4><p><code>[*ProgramerSunny*](https://programersunny.github.io/)</code> 表现为：  <a href="https://programersunny.github.io/"><em>ProgramerSunny</em></a></p>
+<h4 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h4><p><code>[*CepheusSun*](https://CepheusSun.github.io/)</code> 表现为：  <a href="https://CepheusSun.github.io/"><em>CepheusSun</em></a></p>
 <h4 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h4><p>我弄图片我习惯设置宽度大小什么的，所以我用的html标签</p>
 <p><code>&lt;img src=&quot;图片地址&quot; width=&quot;100&quot; height=&quot;100&quot;&gt;</code></p>
 <p><img src="图片地址" width="100" height="100"></p>

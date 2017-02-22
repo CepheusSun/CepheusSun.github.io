@@ -93,7 +93,7 @@
 <meta property="og:site_name" content="CepheusSun的博客">
 <meta property="og:description" content="图片浏览器，使用方法类似UITableView的图片浏览器。基于YYWebImage.">
 <meta property="og:image" content="http://ocg4av0wv.bkt.clouddn.com/SYPhotoBrowser.gif">
-<meta property="og:updated_time" content="2016-12-09T02:49:19.000Z">
+<meta property="og:updated_time" content="2017-02-22T15:47:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SYPhotoBrowser">
 <meta name="twitter:description" content="图片浏览器，使用方法类似UITableView的图片浏览器。基于YYWebImage.">
@@ -353,7 +353,7 @@
 <h3 id="GIF"><a href="#GIF" class="headerlink" title="GIF"></a>GIF</h3><p><img src="http://ocg4av0wv.bkt.clouddn.com/SYPhotoBrowser.gif" width=500/></p>
 <h3 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h3><h4 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">SYPhotoBrowser *browser = [[SYPhotoBrowser alloc] init];</div><div class="line">   [browser setDataSource:self];</div><div class="line">   NSInteger idx = 0;</div><div class="line">   [browser showFromView:ges.view photoCount:self.imageUrls.count currentPhotoIndex:idx];</div></pre></td></tr></table></figure>
 <h4 id="Datasource"><a href="#Datasource" class="headerlink" title="Datasource"></a>Datasource</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">- (UIView *)photoView:(SYPhotoBrowser *)photeBrowser viewForIndex:(NSInteger)index;</div><div class="line">- (CGSize)photoView:(SYPhotoBrowser *)photeBrowser imageSizeForIndex:(NSInteger)index;</div><div class="line">- (UIImage *)photoView:(SYPhotoBrowser *)photoBrowser defaultImageForIndex:(NSInteger)index;</div><div class="line">- (NSString *)photoView:(SYPhotoBrowser *)photoBrowser highQualityUrlStringForIndex:(NSInteger)index;</div></pre></td></tr></table></figure>
-<p><a href="https://github.com/ProgramerSunny/SYPhotoBrowser"><em>GitHub地址</em></a></p>
+<p><a href="https://github.com/CepheusSun/SYPhotoBrowser"><em>GitHub地址</em></a></p>
 
       
     </div>
