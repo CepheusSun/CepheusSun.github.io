@@ -926,7 +926,7 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
 <li>进一步规范文档。</li>
 <li>移除对BlocksKit的依赖。</li>
 </ol>
-<h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><p><strong>**工具已经开源在github中,欢迎提issue。[</strong>开源地址**](<a href="https://github.com/CepheusSun/EmptyDataKit">https://github.com/CepheusSun/EmptyDataKit</a>)</p>
+<h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><p>工具已经开源在github中,欢迎提issue。<a href="https://github.com/CepheusSun/EmptyDataKit"><strong>开源地址</strong></a></p>
 ]]></content>
     </entry>
     
