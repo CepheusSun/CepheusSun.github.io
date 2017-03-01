@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>https://CepheusSun.github.io/2016/12/02/CoaocPodSpec/</loc>
+    <lastmod>2017-03-01T15:29:17.000Z</lastmod>
+    <data>
+        <display>
+        <title>使用 Cocoapods 管理你的项目</title>
+        <pubTime>2016-12-01T16:00:00.000Z</pubTime>
+        
+        <tag>iOS</tag>
+         
+        <tag>CocoaPods</tag>
+         
+         
+           
+             
+              <breadCrumb title="CocoaPods" url="https://CepheusSun.github.io/categories/CocoaPods/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://CepheusSun.github.io/2017/02/22/interview07022201/</loc>
     <lastmod>2017-02-23T12:05:00.000Z</lastmod>
     <data>
@@ -128,28 +150,6 @@
 
     
   <url>
-    <loc>https://CepheusSun.github.io/2016/12/02/CoaocPodSpec/</loc>
-    <lastmod>2017-02-22T15:47:34.000Z</lastmod>
-    <data>
-        <display>
-        <title>使用 Cocoapods 管理你的项目</title>
-        <pubTime>2016-12-01T16:00:00.000Z</pubTime>
-        
-        <tag>iOS</tag>
-         
-        <tag>CocoaPods</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS" url="https://CepheusSun.github.io/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://CepheusSun.github.io/2017/01/28/SBAnimation%20a%20new%20Repository/</loc>
     <lastmod>2017-02-22T15:47:32.000Z</lastmod>
     <data>
@@ -157,9 +157,9 @@
         <title>SBAnimation a new Repository</title>
         <pubTime>2017-01-27T16:00:00.000Z</pubTime>
         
-        <tag>杂记</tag>
-         
         <tag>iOS</tag>
+         
+        <tag>杂记</tag>
          
         <tag>OpenSource</tag>
          
@@ -648,11 +648,11 @@
         <title>html学习笔记--1</title>
         <pubTime>2016-08-27T15:03:45.000Z</pubTime>
         
+        <tag>html</tag>
+         
         <tag>前端</tag>
          
         <tag>学习笔记</tag>
-         
-        <tag>html</tag>
          
          
            
@@ -692,11 +692,11 @@
         <title>CSS学习笔记 -- 1</title>
         <pubTime>2016-08-29T01:56:45.000Z</pubTime>
         
-        <tag>CSS</tag>
-         
         <tag>前端</tag>
          
         <tag>学习笔记</tag>
+         
+        <tag>CSS</tag>
          
          
            
