@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>https://CepheusSun.github.io/2017/03/17/Requests%20%E5%BA%93/</loc>
+    <lastmod>2017-03-07T15:31:49.000Z</lastmod>
+    <data>
+        <display>
+        <title>python 爬虫之一 "Requests 库学习"</title>
+        <pubTime>2017-03-16T16:00:00.000Z</pubTime>
+        
+        <tag>python</tag>
+         
+         
+           
+             
+              <breadCrumb title="python" url="https://CepheusSun.github.io/categories/python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://CepheusSun.github.io/2016/12/02/CoaocPodSpec/</loc>
     <lastmod>2017-03-01T15:29:17.000Z</lastmod>
     <data>
@@ -157,9 +177,9 @@
         <title>SBAnimation a new Repository</title>
         <pubTime>2017-01-27T16:00:00.000Z</pubTime>
         
-        <tag>iOS</tag>
-         
         <tag>杂记</tag>
+         
+        <tag>iOS</tag>
          
         <tag>OpenSource</tag>
          
@@ -648,11 +668,11 @@
         <title>html学习笔记--1</title>
         <pubTime>2016-08-27T15:03:45.000Z</pubTime>
         
-        <tag>html</tag>
-         
         <tag>前端</tag>
          
         <tag>学习笔记</tag>
+         
+        <tag>html</tag>
          
          
            
@@ -692,11 +712,11 @@
         <title>CSS学习笔记 -- 1</title>
         <pubTime>2016-08-29T01:56:45.000Z</pubTime>
         
+        <tag>CSS</tag>
+         
         <tag>前端</tag>
          
         <tag>学习笔记</tag>
-         
-        <tag>CSS</tag>
          
          
            

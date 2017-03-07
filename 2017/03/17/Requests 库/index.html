@@ -86,16 +86,16 @@
 
 
 
-<meta name="description" content="一些相关方法、函数、运算符的整理">
+<meta name="description" content="这个系列的文章是用来记录我学习 python 爬虫的。这是第一篇。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python 中 str 和 list 互相转换">
-<meta property="og:url" content="https://CepheusSun.github.io/2017/02/04/python 中 str 和 list 互相转换/index.html">
+<meta property="og:title" content="python 爬虫之一 "Requests 库学习"">
+<meta property="og:url" content="https://CepheusSun.github.io/2017/03/17/Requests 库/index.html">
 <meta property="og:site_name" content="CepheusSun的博客">
-<meta property="og:description" content="一些相关方法、函数、运算符的整理">
-<meta property="og:updated_time" content="2017-02-04T09:27:00.000Z">
+<meta property="og:description" content="这个系列的文章是用来记录我学习 python 爬虫的。这是第一篇。">
+<meta property="og:updated_time" content="2017-03-07T15:31:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python 中 str 和 list 互相转换">
-<meta name="twitter:description" content="一些相关方法、函数、运算符的整理">
+<meta name="twitter:title" content="python 爬虫之一 "Requests 库学习"">
+<meta name="twitter:description" content="这个系列的文章是用来记录我学习 python 爬虫的。这是第一篇。">
 
 
 
@@ -116,9 +116,9 @@
 
 
 
-  <link rel="canonical" href="https://CepheusSun.github.io/2017/02/04/python 中 str 和 list 互相转换/"/>
+  <link rel="canonical" href="https://CepheusSun.github.io/2017/03/17/Requests 库/"/>
 
-  <title> python 中 str 和 list 互相转换 | CepheusSun的博客 </title>
+  <title> python 爬虫之一 "Requests 库学习" | CepheusSun的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -271,7 +271,7 @@
             
             
               
-                python 中 str 和 list 互相转换
+                python 爬虫之一 "Requests 库学习"
               
             
           </h1>
@@ -283,8 +283,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-02-04T00:00:00+08:00" content="2017-02-04">
-              2017-02-04
+            <time itemprop="dateCreated" datetime="2017-03-17T00:00:00+08:00" content="2017-03-17">
+              2017-03-17
             </time>
           </span>
 
@@ -313,8 +313,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2017/02/04/python 中 str 和 list 互相转换/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/04/python 中 str 和 list 互相转换/" itemprop="commentsCount"></span>
+                <a href="/2017/03/17/Requests 库/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/17/Requests 库/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -324,7 +324,7 @@
 
           
           
-             <span id="/2017/02/04/python 中 str 和 list 互相转换/" class="leancloud_visitors" data-flag-title="python 中 str 和 list 互相转换">
+             <span id="/2017/03/17/Requests 库/" class="leancloud_visitors" data-flag-title="python 爬虫之一 "Requests 库学习"">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -346,18 +346,115 @@
       
 
       
-        <p>一些相关方法、函数、运算符的整理</p>
+        <p>这个系列的文章是用来记录我学习 python 爬虫的。这是第一篇。</p>
 <a id="more"></a>
-<h3 id="str-gt-list"><a href="#str-gt-list" class="headerlink" title="str -&gt; list"></a>str -&gt; list</h3><h4 id="将字符串按照字符分割成字符list"><a href="#将字符串按照字符分割成字符list" class="headerlink" title="将字符串按照字符分割成字符list"></a>将字符串按照字符分割成字符list</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">s = <span class="string">'spam'</span></div><div class="line">t = list(s)</div><div class="line"><span class="keyword">print</span> t</div><div class="line"></div><div class="line"><span class="comment">#结果：['s', 'p', 'a', 'm']</span></div></pre></td></tr></table></figure>
-<h4 id="将字符串按照分隔符，分割成字符-串-list"><a href="#将字符串按照分隔符，分割成字符-串-list" class="headerlink" title="将字符串按照分隔符，分割成字符(串)list"></a>将字符串按照分隔符，分割成字符(串)list</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">s = <span class="string">'spam-spam-spsm'</span></div><div class="line">delimiter = <span class="string">'-'</span></div><div class="line">s.split(delimiter)</div><div class="line"><span class="keyword">print</span> s.split(delimiter)</div><div class="line"></div><div class="line"><span class="comment">#结果：['spam', 'spam', 'spsm']</span></div></pre></td></tr></table></figure>
-<h4 id="使用-split-方法将字符串分成单词"><a href="#使用-split-方法将字符串分成单词" class="headerlink" title="使用 split 方法将字符串分成单词"></a>使用 split 方法将字符串分成单词</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">s = <span class="string">'pinging for the fjords'</span></div><div class="line">t = s.split()</div><div class="line"><span class="keyword">print</span> t</div><div class="line"></div><div class="line"><span class="comment">#结果：['pinging', 'for', 'the', 'fjords']</span></div></pre></td></tr></table></figure>
-<h3 id="list-gt-str"><a href="#list-gt-str" class="headerlink" title="list -&gt; str"></a>list -&gt; str</h3><h4 id="使用字符-串-将-list-串联成字符串"><a href="#使用字符-串-将-list-串联成字符串" class="headerlink" title="使用字符(串)将 list 串联成字符串"></a>使用字符(串)将 list 串联成字符串</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">t = [<span class="string">'pinging'</span>, <span class="string">'for'</span>, <span class="string">'the'</span>, <span class="string">'fjords'</span>]</div><div class="line">delimiter = <span class="string">' '</span></div><div class="line"><span class="keyword">print</span> delimiter.join(t)</div><div class="line"></div><div class="line"><span class="comment">#结果：pinging for the fjords</span></div><div class="line"><span class="comment"># 如果不需要分隔符，第二行中delimiter复制为''空字符串即可</span></div></pre></td></tr></table></figure>
-<h3 id="数组-增-删-改"><a href="#数组-增-删-改" class="headerlink" title="数组 增 删 改"></a>数组 增 删 改</h3><h4 id="增"><a href="#增" class="headerlink" title="增"></a>增</h4><p><strong>直接在后面添加一个元素</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">t = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]</div><div class="line">t.append(<span class="string">'d'</span>)</div><div class="line"><span class="keyword">print</span> t</div><div class="line"></div><div class="line"><span class="comment">#结果：['a', 'b', 'c', 'd']</span></div></pre></td></tr></table></figure>
-<p><strong>将一个数组遍历添加在后面</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">t = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]</div><div class="line">t2 = [<span class="string">'e'</span> ,<span class="string">'f'</span>]</div><div class="line">t.extend(t2)</div><div class="line"><span class="keyword">print</span> t</div><div class="line"></div><div class="line"><span class="comment">#结果：['a', 'b', 'c', 'e', 'f']</span></div></pre></td></tr></table></figure>
-<h4 id="删"><a href="#删" class="headerlink" title="删"></a>删</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 以下方法运算符都可以使用切片</span></div><div class="line"></div><div class="line">t = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]</div><div class="line"><span class="comment"># del 运算符 如果不需要被删除的值，使用这个</span></div><div class="line"><span class="keyword">del</span> t[<span class="number">1</span>]</div><div class="line"></div><div class="line"><span class="comment"># pop 方法 改变列表并返回被删除的元素。如果不提供索引，删除并返回最后一个元素。</span></div><div class="line"><span class="keyword">print</span> t.pop(<span class="number">1</span>)</div><div class="line"></div><div class="line"><span class="comment"># remove 方法 删除不知道索引的元素, 只删除第一个</span></div><div class="line">t.remove(<span class="string">'a'</span>)</div><div class="line"><span class="keyword">print</span> t</div></pre></td></tr></table></figure>
-<h4 id="改"><a href="#改" class="headerlink" title="改"></a>改</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">t = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]</div><div class="line">t[<span class="number">0</span>] = <span class="string">'c'</span></div><div class="line"><span class="keyword">print</span> t</div><div class="line"></div><div class="line"><span class="comment">#结果：['c', 'b', 'c']</span></div></pre></td></tr></table></figure>
+<h2 id="安装-requests-库"><a href="#安装-requests-库" class="headerlink" title="安装 requests 库"></a>安装 requests 库</h2><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo pip install requests</div></pre></td></tr></table></figure>
+<h2 id="验证安装是否成功"><a href="#验证安装是否成功" class="headerlink" title="验证安装是否成功"></a>验证安装是否成功</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$ python</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment">#import requests</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r = requests.get(<span class="string">"http://www.baidu.com"</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r.status_code</div><div class="line"><span class="number">200</span></div><div class="line">&gt;&gt;&gt;r.encoding = <span class="string">'utf-8'</span></div><div class="line">&gt;&gt;&gt;r.text</div></pre></td></tr></table></figure>
+<h3 id="Requests-库的主要方法"><a href="#Requests-库的主要方法" class="headerlink" title="Requests 库的主要方法"></a>Requests 库的主要方法</h3><ul>
+<li>requests.request()<blockquote>
+<p>构造一个请求,支撑一下各方法的基础方法</p>
+</blockquote>
+</li>
+<li>requests.get()<blockquote>
+<p>获取HTML网页的主要方法,对应HTTP的GET</p>
+</blockquote>
+</li>
+<li>requests.head()<blockquote>
+<p>获取HTML网页头信息的方法,对应HTTP的HEAD</p>
+</blockquote>
+</li>
+<li>requests.post()<blockquote>
+<p>向HTML网页提交POST请求的方法,对应HTTP的POST</p>
+</blockquote>
+</li>
+<li>requests.put()<blockquote>
+<p>向HTML网页提交PUT请求的方法,对应HTTP的PUT</p>
+</blockquote>
+</li>
+<li>requests.patch()<blockquote>
+<p>向HTML网页提交局部修改请求,对应HTTP的POST</p>
+</blockquote>
+</li>
+<li>requests.delete()<blockquote>
+<p>向HTML网页提交删除请求,对应HTTP的POST</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="Reuqest-最重要的两个对象"><a href="#Reuqest-最重要的两个对象" class="headerlink" title="Reuqest 最重要的两个对象"></a>Reuqest 最重要的两个对象</h3><h4 id="Request-对象"><a href="#Request-对象" class="headerlink" title="Request 对象"></a>Request 对象</h4><blockquote>
+</blockquote>
+<h4 id="Response-对象"><a href="#Response-对象" class="headerlink" title="Response 对象"></a>Response 对象</h4><blockquote>
+<p>包含了爬虫返回的全部内容</p>
+</blockquote>
+<ul>
+<li>r.status_code; 状态码,200表示成功,404表示失败</li>
+<li>r.text; HTTP响应内容的字符串形式,即, URL 对应的页面内容</li>
+<li><p>r.encoding; 从 HTTP header 中猜测的响应内容编码方式</p>
+<blockquote>
+<p>如果 header 中不存在 charset, 则认为编码是,ISO-8859-1</p>
+</blockquote>
+</li>
+<li>r.apparent_encoding;从内容中分析出的响应内容编码方式(备选编码方式)</li>
+<li>r.content; HTTP 响应内容的二进制形式</li>
+</ul>
+<h3 id="爬取网页的通用代码框架"><a href="#爬取网页的通用代码框架" class="headerlink" title="爬取网页的通用代码框架"></a>爬取网页的通用代码框架</h3><h4 id="Request-的异常"><a href="#Request-的异常" class="headerlink" title="Request 的异常"></a>Request 的异常</h4><ul>
+<li>request.ConnectionError; 网络连接错误异常，如DNS查询失败，拒绝连接定</li>
+<li>request.HTTPError; HTTP错误异常</li>
+<li>request.URLRequired; URL 缺失异常</li>
+<li>request.TooManyRedirects; 超过最大重定向次数,长生重定向异常</li>
+<li>request.ConnectTimeout;链接远程服务器超时异常</li>
+<li>requests.Timeout;请求URL超时，产生超时异常</li>
+</ul>
+<p>r.raise_for_status(); 如果不是200,产生已成requests.HTTPError</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -- coding: UTF-8 --</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> requests</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">getHTMLText</span><span class="params">(url)</span>:</span></div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        r = requests.get(url, timeout=<span class="number">30</span>)</div><div class="line">        r.raise_for_status()</div><div class="line">        <span class="comment"># 如果状态不是200， 引发HTTPError异常</span></div><div class="line">        r.encoding = r.apparent_encoding</div><div class="line">        <span class="keyword">return</span> r.text</div><div class="line">    <span class="keyword">except</span>:</div><div class="line">        <span class="keyword">return</span> <span class="string">"产生异常"</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    url = <span class="string">"http://CepheusSun.com"</span></div><div class="line">    print(getHTMLText(url))</div></pre></td></tr></table></figure>
+<center>通用代码框架</center>
+
+<h4 id="HTTP-协议"><a href="#HTTP-协议" class="headerlink" title="HTTP 协议"></a>HTTP 协议</h4><p>HTTP, Hypertext Transfer Protocol, 超文本传输协议。</p>
+<p>HTTP 是一个基于”请求与响应”模式的、无状态的应用层协议。</p>
+<p>HTTP 协议采用 URL 作为定位网络资源的标识。</p>
+<p>URL格式: <a href="http://host[:port][path">http://host[:port][path</a>]</p>
+<ul>
+<li>host:合法的 Internet 主机域名或者 IP 地址</li>
+<li>port:端口号,缺省端口为80</li>
+<li>path:请求资源的路径</li>
+</ul>
+<p>URL 是通过 HTTP 协议存取资源的 Internet 路径, 一个 URL 对应一个数据资源。</p>
+<p>HTTP 协议对资源的操作</p>
+<p><strong>GET</strong>， 获取资源<br><strong>HEAD</strong>，获取资源头部信息<br><strong>POST</strong>，向URL位置的资源后附加新的数据<br><strong>PUT</strong>，储存一个资源，覆盖原来URL的资源<br><strong>PATCH</strong>，对原来的资源，进行局部更新<br><strong>DELETE</strong>，删除</p>
+<h4 id="requests-request-method-url-kwargs"><a href="#requests-request-method-url-kwargs" class="headerlink" title="requests.request(method, url, **kwargs)"></a>requests.request(<code>method</code>, <code>url</code>, <code>**kwargs</code>)</h4><p>method: 请求方式,对应get/put/post等7种<br>url: 请求地址<br><code>**warrgs</code> 控制访问的参数，一共13个</p>
+<ul>
+<li><code>params</code>: 字典或字节序列，作为参数增加到url中</li>
+<li><code>data</code>: 字典、字节序列或者文件对象，作为 Request 的内容</li>
+<li><code>json</code>: JSON 格式的数据,作为 Request 的内容</li>
+<li><code>headers</code>: 字典,HTTP定制头</li>
+<li><code>cookies</code>:字典或CookieeJar, request中的cookie</li>
+<li><code>auth</code>: 元组,支持HTTP认证功能</li>
+<li><code>files</code>: 字典类型,传输文件</li>
+<li><code>timeout</code>: 设定的超时时间，单位秒</li>
+<li><p><code>proxies</code>: 字典类型,设定访问代理服务器,可以增加登录认证 </p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">pxs = &#123;<span class="string">'http'</span>:<span class="string">'http//balabala'</span>,</div><div class="line"><span class="string">'https'</span>:<span class="string">'https"//balabala'</span></div><div class="line">&#125;</div><div class="line">r= requests.request(<span class="string">'GET'</span>,<span class="string">'http://www.baidu.com'</span>,proxies=pxs)</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>allow_redirects</code>: True/False,默认True,重定向开关</p>
+</li>
+<li><code>stream</code>:True/False,默认True,获取内容立即下载开关</li>
+<li><code>verify</code>:True/False,默认True,，认证 SSL 证书开关</li>
+<li><code>cert</code>:本地SSL证书路径</li>
+</ul>
+<h3 id="网络爬虫的类型"><a href="#网络爬虫的类型" class="headerlink" title="网络爬虫的类型"></a>网络爬虫的类型</h3><p>按照尺寸区别</p>
+<p>爬取网页，玩转网页。小规模,数据量小，爬取速度不敏感 requests 。</p>
+<p>爬取网站，爬取系列网站. 中规模，数据规模较大，爬取速度敏感 Scrapy 库</p>
+<p>爬取全网。大规模,搜索引擎，爬取速度关键,只能定制开发</p>
+<h3 id="反爬虫"><a href="#反爬虫" class="headerlink" title="反爬虫"></a>反爬虫</h3><h4 id="来源审查-判断-User-Agent-进行限制"><a href="#来源审查-判断-User-Agent-进行限制" class="headerlink" title="来源审查: 判断 User-Agent 进行限制"></a>来源审查: 判断 User-Agent 进行限制</h4><blockquote>
+<p>检查来访 HTTP 协议头的 User-Agent 域，只响应浏览器或者友好爬虫的访问。</p>
+</blockquote>
+<h4 id="发布公告-Robots-协议"><a href="#发布公告-Robots-协议" class="headerlink" title="发布公告 Robots 协议"></a>发布公告 Robots 协议</h4><blockquote>
+<p>告知所有爬虫网站的爬取策略,要求爬虫遵守</p>
+</blockquote>
+<h3 id="Robots-协议"><a href="#Robots-协议" class="headerlink" title="Robots 协议"></a>Robots 协议</h3><p>Robots Exclusion Standard 网络爬虫排除标准</p>
+<p>作用: 网站告知网络爬虫哪些页面可以抓取,哪些不行。<br>形式: 在网站根目录下的 robots.txt 文件<br>使用:</p>
+<ul>
+<li>网络爬虫：自动或者人工识别robots.txt， 再进行内容爬取</li>
+<li>约束性: Robots 协议是建议但非约束性,网络爬虫可以不遵守，但是存在法律风险</li>
+</ul>
 
       
     </div>
@@ -389,17 +486,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/02/02/python debug 之一/" rel="next" title="python Debug 之一">
-                <i class="fa fa-chevron-left"></i> python Debug 之一
+              <a href="/2017/02/22/interview07022201/" rel="next" title="iOS面试集锦&2017年02月22日01">
+                <i class="fa fa-chevron-left"></i> iOS面试集锦&2017年02月22日01
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/02/19/interview07021901/" rel="prev" title="iOS面试集锦&2017年02月19日01">
-                iOS面试集锦&2017年02月19日01 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -428,8 +521,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/02/04/python 中 str 和 list 互相转换/"
-           data-title="python 中 str 和 list 互相转换" data-url="https://CepheusSun.github.io/2017/02/04/python 中 str 和 list 互相转换/">
+      <div class="ds-thread" data-thread-key="2017/03/17/Requests 库/"
+           data-title="python 爬虫之一 "Requests 库学习"" data-url="https://CepheusSun.github.io/2017/03/17/Requests 库/">
       </div>
     
   </div>
@@ -567,7 +660,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#str-gt-list"><span class="nav-number">1.</span> <span class="nav-text">str -> list</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#将字符串按照字符分割成字符list"><span class="nav-number">1.1.</span> <span class="nav-text">将字符串按照字符分割成字符list</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#将字符串按照分隔符，分割成字符-串-list"><span class="nav-number">1.2.</span> <span class="nav-text">将字符串按照分隔符，分割成字符(串)list</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用-split-方法将字符串分成单词"><span class="nav-number">1.3.</span> <span class="nav-text">使用 split 方法将字符串分成单词</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#list-gt-str"><span class="nav-number">2.</span> <span class="nav-text">list -> str</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用字符-串-将-list-串联成字符串"><span class="nav-number">2.1.</span> <span class="nav-text">使用字符(串)将 list 串联成字符串</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组-增-删-改"><span class="nav-number">3.</span> <span class="nav-text">数组 增 删 改</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#增"><span class="nav-number">3.1.</span> <span class="nav-text">增</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删"><span class="nav-number">3.2.</span> <span class="nav-text">删</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#改"><span class="nav-number">3.3.</span> <span class="nav-text">改</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-requests-库"><span class="nav-number">1.</span> <span class="nav-text">安装 requests 库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#验证安装是否成功"><span class="nav-number">2.</span> <span class="nav-text">验证安装是否成功</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Requests-库的主要方法"><span class="nav-number">2.1.</span> <span class="nav-text">Requests 库的主要方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reuqest-最重要的两个对象"><span class="nav-number">2.2.</span> <span class="nav-text">Reuqest 最重要的两个对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Request-对象"><span class="nav-number">2.2.1.</span> <span class="nav-text">Request 对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Response-对象"><span class="nav-number">2.2.2.</span> <span class="nav-text">Response 对象</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#爬取网页的通用代码框架"><span class="nav-number">2.3.</span> <span class="nav-text">爬取网页的通用代码框架</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Request-的异常"><span class="nav-number">2.3.1.</span> <span class="nav-text">Request 的异常</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP-协议"><span class="nav-number">2.3.2.</span> <span class="nav-text">HTTP 协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#requests-request-method-url-kwargs"><span class="nav-number">2.3.3.</span> <span class="nav-text">requests.request(method, url, **kwargs)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络爬虫的类型"><span class="nav-number">2.4.</span> <span class="nav-text">网络爬虫的类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#反爬虫"><span class="nav-number">2.5.</span> <span class="nav-text">反爬虫</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#来源审查-判断-User-Agent-进行限制"><span class="nav-number">2.5.1.</span> <span class="nav-text">来源审查: 判断 User-Agent 进行限制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#发布公告-Robots-协议"><span class="nav-number">2.5.2.</span> <span class="nav-text">发布公告 Robots 协议</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Robots-协议"><span class="nav-number">2.6.</span> <span class="nav-text">Robots 协议</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
