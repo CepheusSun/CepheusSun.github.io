@@ -5,7 +5,7 @@
     
     <entry>
       <title><![CDATA[python 爬虫之一 "Requests 库学习"]]></title>
-      <url>https://CepheusSun.github.io/2017/03/17/Requests%20%E5%BA%93/</url>
+      <url>https://CepheusSun.github.io/2017/03/07/Requests%20%E5%BA%93/</url>
       <content type="html"><![CDATA[<p>这个系列的文章是用来记录我学习 python 爬虫的。这是第一篇。</p>
 <a id="more"></a>
 <h2 id="安装-requests-库"><a href="#安装-requests-库" class="headerlink" title="安装 requests 库"></a>安装 requests 库</h2><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo pip install requests</div></pre></td></tr></table></figure>
