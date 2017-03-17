@@ -128,7 +128,7 @@
 <li>iOS的沙盒目录结构是怎样的？ App Bundle 里面都有什么？</li>
 <li>简单描述一下客户端的缓存机制？</li>
 </ol>
-<a id="more"></a>
+<p>注意： 以后的更新全部放在 GitHub 博客不再继续添加了。 毕竟好多内容放在这里也没有什么意义。<br><a id="more"></a></p>
 <p>##2017-02-22</p>
 <p>#####1. <code>id</code> 和 <code>instancetype</code> 的区别?</p>
 <ol>
