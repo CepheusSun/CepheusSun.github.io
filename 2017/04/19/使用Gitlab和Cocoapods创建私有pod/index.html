@@ -102,7 +102,7 @@
 几乎每个 ObjC 的 iOS 项目是使用 AFNetworking 、 SDWebImage等三方框架。
 几乎每个 Swift 的 iOS 项目都是用了 Alamofire、 Kingfisher等三方框架
 每一次这些框架更新之后, 无数个工程师只需要在终端执行一下’pod">
-<meta property="og:updated_time" content="2017-04-19T14:40:32.000Z">
+<meta property="og:updated_time" content="2017-04-19T14:53:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用Gitlab和Cocoapods创建私有pod">
 <meta name="twitter:description" content="每个稍微有点开发经验的 iOS 工程师都很容易的发现一下几点: 
@@ -385,7 +385,7 @@
 <h2 id="为什么使用-GitLab"><a href="#为什么使用-GitLab" class="headerlink" title="为什么使用 GitLab"></a>为什么使用 GitLab</h2><p>其实上面已经说到了,为什么要使用 CocoaPods 来做这件事情。也说到了为什么要做这件事情。为什么使用 gitlab 呢？ 原因很简单。 毕竟 GitHub 的私有repo 是收费的。原谅我穷, 也可以说是公司扣门儿。只能把开源的东西放在, GitHub 把不能开源的东西放在其他地方。</p>
 <h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>其实没什么好准备的。 但是首先你得有个 Gitlab 账号吧！ 如果没有注册之后添加 SSH 就好了。</p>
 <p>然后在 Gitlab 上创建一个空的仓库:XXX 然后记住这个项目的 地址: git@gitlab.com:XXX/XXX.git </p>
-<h2 id="创建工程"><a href="#创建工程" class="headerlink" title="创建工程"></a>创建工程</h2><p>这些可以看我去年年底写开源 Cocoapods 的时候写的东西。<a href="http://cepheussun.com/2016/12/02/CoaocPodSpec/">使用 Cocoapods 管理你的项目</a></p>
+<h2 id="创建工程"><a href="#创建工程" class="headerlink" title="创建工程"></a>创建工程</h2><p>这些可以看我去年年底写开源 Cocoapods 的时候写的东西。<a href="http://cepheussun.com/2016/12/02/%E4%BD%BF%E7%94%A8Cocoapods%E7%AE%A1%E7%90%86%E4%BD%A0%E7%9A%84%E9%A1%B9%E7%9B%AE/">使用 Cocoapods 管理你的项目</a></p>
 <p>基本上简化一下就是以下</p>
 <h3 id="创建工程-1"><a href="#创建工程-1" class="headerlink" title="创建工程"></a>创建工程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pod lib create XXX</div></pre></td></tr></table></figure>
 <p>回答问题</p>
@@ -394,7 +394,7 @@
 <p>可以检查一下: ~./cocoapods/repos 目录下又了 XXX 文件夹</p>
 </blockquote>
 <h3 id="将代码放进去"><a href="#将代码放进去" class="headerlink" title="将代码放进去"></a>将代码放进去</h3><blockquote>
-<p>这一步上篇文章中有。 <a href="http://cepheussun.com/2016/12/02/CoaocPodSpec/">使用 Cocoapods 管理你的项目</a></p>
+<p>这一步上篇文章中有。 <a href="http://cepheussun.com/2016/12/02/%E4%BD%BF%E7%94%A8Cocoapods%E7%AE%A1%E7%90%86%E4%BD%A0%E7%9A%84%E9%A1%B9%E7%9B%AE/">使用 Cocoapods 管理你的项目</a></p>
 </blockquote>
 <h4 id="修改-podspec"><a href="#修改-podspec" class="headerlink" title="修改 .podspec"></a>修改 .podspec</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">Pod::Spec.new <span class="keyword">do</span> <span class="params">|s|</span></div><div class="line">  s.name             = <span class="string">'XXX'</span></div><div class="line">  s.version          = <span class="string">'0.0.1'</span></div><div class="line">  s.summary          = <span class="string">'这是项目的基础框架,所有项目都需要集成.'</span></div><div class="line"></div><div class="line">  s.homepage         = <span class="string">'https://gitlab.com/XXX/XXX'</span></div><div class="line">  s.license          = &#123; <span class="symbol">:type</span> =&gt; <span class="string">'MIT'</span>, <span class="symbol">:file</span> =&gt; <span class="string">'LICENSE'</span> &#125;</div><div class="line">  s.author           = &#123; <span class="string">'XXX'</span> =&gt; <span class="string">'cd_sunyang@163.com'</span> &#125;</div><div class="line">  s.source           = &#123; <span class="symbol">:git</span> =&gt; <span class="string">'git@gitlab.com:XXX/XXX.git'</span>, <span class="symbol">:tag</span> =&gt; s.version &#125;</div><div class="line"></div><div class="line">  s.ios.deployment_target = <span class="string">'8.0'</span></div><div class="line"></div><div class="line">  s.source_files = <span class="string">'XXX/Classes/**/*'</span></div><div class="line">  s.frameworks = <span class="string">'UIKit'</span></div><div class="line">  s.dependency <span class="string">'AFNetworking'</span></div><div class="line">  s.dependency <span class="string">'MBProgressHUD'</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
 <p>我这个Demo引用了两个公有的repo</p>
