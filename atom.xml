@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://CepheusSun.github.io/"/>
-  <updated>2017-03-10T01:54:02.000Z</updated>
+  <updated>2017-04-19T14:40:32.000Z</updated>
   <id>https://CepheusSun.github.io/</id>
   
   <author>
@@ -14,6 +14,113 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用Gitlab和Cocoapods创建私有pod</title>
+    <link href="https://CepheusSun.github.io/2017/04/19/%E4%BD%BF%E7%94%A8Gitlab%E5%92%8CCocoapods%E5%88%9B%E5%BB%BA%E7%A7%81%E6%9C%89pod/"/>
+    <id>https://CepheusSun.github.io/2017/04/19/使用Gitlab和Cocoapods创建私有pod/</id>
+    <published>2017-04-19T14:39:27.000Z</published>
+    <updated>2017-04-19T14:40:32.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>每个稍微有点开发经验的 iOS 工程师都很容易的发现一下几点: </p>
+<ol>
+<li>几乎每个 iOS 的项目都适用了 <code>Cocoapods</code> </li>
+<li>几乎每个 ObjC 的 iOS 项目是使用 <code>AFNetworking</code> 、 <code>SDWebImage</code>等三方框架。</li>
+<li>几乎每个 Swift 的 iOS 项目都是用了 <code>Alamofire</code>、 <code>Kingfisher</code>等三方框架</li>
+<li>每一次这些框架更新之后, 无数个工程师只需要在终端执行一下’pod update’ 或 <code>pod install</code>就能对应的更新自己项目中的代码</li>
+</ol>
+<p>这几乎都是每个 iOS 工程师经常都会遇到的事情。目前几乎所有优秀的 iOS 开源框架都支持了 CocoaPods。 几乎所有的 iOS 项目都集成了 CocoaPods</p>
+<p>但是我们在日常的开发中也常会遇到这样的问题:</p>
+<ol>
+<li>很多公司都有好 App 同时在进行开发。</li>
+<li>这些 App 或多或少在业务或者 UI 都很很多的重合。</li>
+</ol>
+<p>着就意味着有很多的代码在这些 App 中都是可以复用的。由于各种各样的原因,同个公司的不同 App 可能更新不同步。 app A 可能已经升级到新版本 app B 可能还在老版本。每个 App 分别管理势必会出现混乱的局面。一起管理又存在新旧交替的问题。如果每个 App 又不同的工程师负责, 即使可能有交叉 review 的机制, 但也很难保证公司代码的统一。很多逻辑都存在多段代码。</p>
+<p>如何管理公司的公共代码库就成了一个比较麻烦的问题。</p>
+<p>集成 IJKMediaPlayer 的时候,想到了使用git来区别版本,然后使用 framework 来管理共有代码。然而在出现了你的代码需要使用到其他的 Framework 的时候, 或者好几个 Framework 都需要使用同一个第三方框架的时候, 这么做确实也是件恼火的事情。</p>
+<a id="more"></a>
+<p>去年写了三了小组件 <code>SYNetwork</code> <code>EmptyDataKit</code> <code>SYPhotoBrowser</code>。前两个已经支持了 <code>Cocoapods</code> 之后网上不断的开始有一些利用 <code>cocoapods</code>进行组件化的文章。前些天在 去直播看了 casa 的两个关于组建化的直播之后。也一直蠢蠢欲动想自己也来做一下这件事情。</p>
+<p>做开源的 repo 的时候，还是比较顺利的做到了这件事情。但是当时想用 <code>OSChina</code> 来做了几次都没有成功。就一直搁置了。</p>
+<p>春节之后换了个工作, 适应了公司的环境, 简单的学习了一下 Swift 之后, 公司还是决定对现有的项目进行一次梳理,然后做一次重构。 所以很自然的还是想到了使用 <code>CocoaPods</code> 将公司原有的项目进行组件化。</p>
+<p>结果了半天时间的尝试,报错create gitlab账号等等。终于达到了最初的想法。 所以将这个过程记录下来。</p>
+<h2 id="为什么使用-GitLab"><a href="#为什么使用-GitLab" class="headerlink" title="为什么使用 GitLab"></a>为什么使用 GitLab</h2><p>其实上面已经说到了,为什么要使用 CocoaPods 来做这件事情。也说到了为什么要做这件事情。为什么使用 gitlab 呢？ 原因很简单。 毕竟 GitHub 的私有repo 是收费的。原谅我穷, 也可以说是公司扣门儿。只能把开源的东西放在, GitHub 把不能开源的东西放在其他地方。</p>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>其实没什么好准备的。 但是首先你得有个 Gitlab 账号吧！ 如果没有注册之后添加 SSH 就好了。</p>
+<p>然后在 Gitlab 上创建一个空的仓库:XXX 然后记住这个项目的 地址: git@gitlab.com:XXX/XXX.git </p>
+<h2 id="创建工程"><a href="#创建工程" class="headerlink" title="创建工程"></a>创建工程</h2><p>这些可以看我去年年底写开源 Cocoapods 的时候写的东西。<a href="http://cepheussun.com/2016/12/02/CoaocPodSpec/">使用 Cocoapods 管理你的项目</a></p>
+<p>基本上简化一下就是以下</p>
+<h3 id="创建工程-1"><a href="#创建工程-1" class="headerlink" title="创建工程"></a>创建工程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pod lib create XXX</div></pre></td></tr></table></figure>
+<p>回答问题</p>
+<h3 id="添加私有库到本地-pod-库-多人开发其他人也应该有这个操作"><a href="#添加私有库到本地-pod-库-多人开发其他人也应该有这个操作" class="headerlink" title="添加私有库到本地 pod 库(多人开发其他人也应该有这个操作)"></a>添加私有库到本地 pod 库(多人开发其他人也应该有这个操作)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pod repo add XXX git@gitlab.com:XXX/XXX.git</div></pre></td></tr></table></figure>
+<blockquote>
+<p>可以检查一下: ~./cocoapods/repos 目录下又了 XXX 文件夹</p>
+</blockquote>
+<h3 id="将代码放进去"><a href="#将代码放进去" class="headerlink" title="将代码放进去"></a>将代码放进去</h3><blockquote>
+<p>这一步上篇文章中有。 <a href="http://cepheussun.com/2016/12/02/CoaocPodSpec/">使用 Cocoapods 管理你的项目</a></p>
+</blockquote>
+<h4 id="修改-podspec"><a href="#修改-podspec" class="headerlink" title="修改 .podspec"></a>修改 .podspec</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">Pod::Spec.new <span class="keyword">do</span> <span class="params">|s|</span></div><div class="line">  s.name             = <span class="string">'XXX'</span></div><div class="line">  s.version          = <span class="string">'0.0.1'</span></div><div class="line">  s.summary          = <span class="string">'这是项目的基础框架,所有项目都需要集成.'</span></div><div class="line"></div><div class="line">  s.homepage         = <span class="string">'https://gitlab.com/XXX/XXX'</span></div><div class="line">  s.license          = &#123; <span class="symbol">:type</span> =&gt; <span class="string">'MIT'</span>, <span class="symbol">:file</span> =&gt; <span class="string">'LICENSE'</span> &#125;</div><div class="line">  s.author           = &#123; <span class="string">'XXX'</span> =&gt; <span class="string">'cd_sunyang@163.com'</span> &#125;</div><div class="line">  s.source           = &#123; <span class="symbol">:git</span> =&gt; <span class="string">'git@gitlab.com:XXX/XXX.git'</span>, <span class="symbol">:tag</span> =&gt; s.version &#125;</div><div class="line"></div><div class="line">  s.ios.deployment_target = <span class="string">'8.0'</span></div><div class="line"></div><div class="line">  s.source_files = <span class="string">'XXX/Classes/**/*'</span></div><div class="line">  s.frameworks = <span class="string">'UIKit'</span></div><div class="line">  s.dependency <span class="string">'AFNetworking'</span></div><div class="line">  s.dependency <span class="string">'MBProgressHUD'</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+<p>我这个Demo引用了两个公有的repo</p>
+<h4 id="提交代码"><a href="#提交代码" class="headerlink" title="提交代码"></a>提交代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git add .</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git commit -m &quot;commit comments&quot;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git push origin master</div></pre></td></tr></table></figure>
+<h4 id="检查一下"><a href="#检查一下" class="headerlink" title="检查一下"></a>检查一下</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ pod lib lint</div><div class="line"></div><div class="line">#或者 pod lib lint --allow-warnings 忽略警告</div></pre></td></tr></table></figure>
+<p>然后也可以在项目中的 <code>podfile</code>文件中添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">pod &apos;XXX&apos;, :path =&gt; &apos;/Users/xxx/Desktop/XXX&apos;</div><div class="line"></div><div class="line">## 最后路径以实际情况为准, 有可能不在桌面</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod install</div></pre></td></tr></table></figure>
+<p>成功后我们的库会出现在<code>Development Pods</code>文件夹里面。可以检查一下有没有问题。</p>
+<h4 id="提交私有库"><a href="#提交私有库" class="headerlink" title="提交私有库"></a>提交私有库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git tag 0.0.1</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git push --tags</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod repo push XXX XXX.podspec</div></pre></td></tr></table></figure>
+<h3 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h3><h4 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h4><p>在执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pod lib lint</div></pre></td></tr></table></figure></p>
+<p>的时候,如果在你的文件中引入了一些三方库, 并且在<code>.podspec</code>文件中也添加了对用的<code>.dependency</code> 依然出现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- ERROR | xcodebuild: /Users/xinhuikeji/Library/Developer/Xcode/DerivedData/App-cpgccqdjhyrbqwcpjanyefntolkf/Build/Products/Release-iphonesimulator/wLib/wLib.framework/Headers/BaseModel.h:13:9: error: include of non-modular header inside framework module &apos;wLib.BaseModel&apos; [-Werror,-Wnon-modular-include-in-framework-module]</div></pre></td></tr></table></figure>
+<p>这样的错误。</p>
+<p>在命令后面添加参数 <code>--use-libraries</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$ pod lib lint xxx.podspec --use-libraries</div><div class="line">$ pod repo push XXX XXX.podspec --use-libraries</div><div class="line">``` </div><div class="line"></div><div class="line">在[segmentfault](https://segmentfault.com/q/1010000006885674)中看到的答案。</div><div class="line"></div><div class="line"></div><div class="line">#### pod search 找不到</div><div class="line"></div><div class="line">最后完成之后在新建的工程中</div></pre></td></tr></table></figure>
+<p>$ pod init<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line">$ vim podfile</div></pre></td></tr></table></figure></p>
+<p>添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod &quot;SYBase&quot;, :git =&gt; &apos;git@gitlab.com:CepheusSun/SYBase.git&apos;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod install</div></pre></td></tr></table></figure>
+<p>然后莫名其妙发现引入的 repo 是<code>0.1.0</code>或者什么巴拉巴拉版本的。这个时候更新一下pod</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod updata</div></pre></td></tr></table></figure>
+<p>再<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod install</div></pre></td></tr></table></figure></p>
+<h4 id="强迫症"><a href="#强迫症" class="headerlink" title="强迫症"></a>强迫症</h4><p>如果遇到强迫症想要用 1.1.1 这样的三级版本的话。</p>
+<p><code>XXX.podspec</code> 文件中的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">s.source = &#123; :git =&gt; &apos;git@gitlab.com:XXX/XXX.git&apos;, :tag =&gt; s.version &#125;</div></pre></td></tr></table></figure></p>
+<p>必须用 s.version</p>
+<p>我也不知道为什么。</p>
+<h3 id="结束篇"><a href="#结束篇" class="headerlink" title="结束篇"></a>结束篇</h3><p>好久没写文章了。终于还是继续写了下去。这段时间自己学了学Swift 学了学 函数响应式编程, 七牛云直播的认证也下来的。接下来可能要研究一下推流相关的东西。2017 的前半段老实说学到了很多的东西。一直很感恩也很珍惜这样的情况。</p>
+<p><strong>参考文档</strong></p>
+<p><a href="http://www.th7.cn/program/ios/201702/1119967.shtml">组件化开发之CocoaPods私有库制作</a><br><a href="http://mt.sohu.com/20160824/n465823814.shtml">使用cocoapods管理私有库</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;每个稍微有点开发经验的 iOS 工程师都很容易的发现一下几点: &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;几乎每个 iOS 的项目都适用了 &lt;code&gt;Cocoapods&lt;/code&gt; &lt;/li&gt;
+&lt;li&gt;几乎每个 ObjC 的 iOS 项目是使用 &lt;code&gt;AFNetworking&lt;/code&gt; 、 &lt;code&gt;SDWebImage&lt;/code&gt;等三方框架。&lt;/li&gt;
+&lt;li&gt;几乎每个 Swift 的 iOS 项目都是用了 &lt;code&gt;Alamofire&lt;/code&gt;、 &lt;code&gt;Kingfisher&lt;/code&gt;等三方框架&lt;/li&gt;
+&lt;li&gt;每一次这些框架更新之后, 无数个工程师只需要在终端执行一下’pod update’ 或 &lt;code&gt;pod install&lt;/code&gt;就能对应的更新自己项目中的代码&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;这几乎都是每个 iOS 工程师经常都会遇到的事情。目前几乎所有优秀的 iOS 开源框架都支持了 CocoaPods。 几乎所有的 iOS 项目都集成了 CocoaPods&lt;/p&gt;
+&lt;p&gt;但是我们在日常的开发中也常会遇到这样的问题:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;很多公司都有好 App 同时在进行开发。&lt;/li&gt;
+&lt;li&gt;这些 App 或多或少在业务或者 UI 都很很多的重合。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;着就意味着有很多的代码在这些 App 中都是可以复用的。由于各种各样的原因,同个公司的不同 App 可能更新不同步。 app A 可能已经升级到新版本 app B 可能还在老版本。每个 App 分别管理势必会出现混乱的局面。一起管理又存在新旧交替的问题。如果每个 App 又不同的工程师负责, 即使可能有交叉 review 的机制, 但也很难保证公司代码的统一。很多逻辑都存在多段代码。&lt;/p&gt;
+&lt;p&gt;如何管理公司的公共代码库就成了一个比较麻烦的问题。&lt;/p&gt;
+&lt;p&gt;集成 IJKMediaPlayer 的时候,想到了使用git来区别版本,然后使用 framework 来管理共有代码。然而在出现了你的代码需要使用到其他的 Framework 的时候, 或者好几个 Framework 都需要使用同一个第三方框架的时候, 这么做确实也是件恼火的事情。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="CocoaPods" scheme="https://CepheusSun.github.io/categories/CocoaPods/"/>
+    
+    
+      <category term="CocoaPods" scheme="https://CepheusSun.github.io/tags/CocoaPods/"/>
+    
+      <category term="iOS" scheme="https://CepheusSun.github.io/tags/iOS/"/>
+    
+  </entry>
   
   <entry>
     <title>python 爬虫之一 &quot;Requests 库学习&quot;</title>
@@ -879,8 +986,8 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
   
   <entry>
     <title>使用 Cocoapods 管理你的项目</title>
-    <link href="https://CepheusSun.github.io/2016/12/02/CoaocPodSpec/"/>
-    <id>https://CepheusSun.github.io/2016/12/02/CoaocPodSpec/</id>
+    <link href="https://CepheusSun.github.io/2016/12/02/%E4%BD%BF%E7%94%A8Cocoapods%E7%AE%A1%E7%90%86%E4%BD%A0%E7%9A%84%E9%A1%B9%E7%9B%AE/"/>
+    <id>https://CepheusSun.github.io/2016/12/02/使用Cocoapods管理你的项目/</id>
     <published>2016-12-01T16:00:00.000Z</published>
     <updated>2017-03-01T15:29:17.000Z</updated>
     
@@ -1295,102 +1402,6 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
       <category term="iOS" scheme="https://CepheusSun.github.io/tags/iOS/"/>
     
       <category term="OpenSource" scheme="https://CepheusSun.github.io/tags/OpenSource/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>让人恐惧的属性关键字</title>
-    <link href="https://CepheusSun.github.io/2016/10/31/%E8%AE%A9%E4%BA%BA%E6%81%90%E6%83%A7%E7%9A%84%E5%B1%9E%E6%80%A7%E5%85%B3%E9%94%AE%E5%AD%97/"/>
-    <id>https://CepheusSun.github.io/2016/10/31/让人恐惧的属性关键字/</id>
-    <published>2016-10-30T16:00:00.000Z</published>
-    <updated>2016-12-09T02:56:32.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>一半的 App 都会有一个个人这个模块来对个人信息，设置等功能进行管理，最近搞公司的项目，在项目结束的时候就想到了应该给我的这个界面加上 “headerimage scale” 这样的效果。然后项目已经结束，也并不想大刀阔斧的去修改原来的代码，想到之前在微博看到一个这样的库。时间还是比较紧急的，毕竟周末，然后就把代码下下来，简单的跑了一下，没有发现什么问题之后就直接在项目中用了。</p>
-<p>由于公司一直缺乏很系统的兼容测试，只是对功能有比较严格的要求，所以接下来到上线这个过程都很愉快。 UI、产品都比较满意这样搞。</p>
-<p>上线之后，就发生了一些悲剧的事情了….</p>
-<a id="more"></a>
-<p><img src="http://ocg4av0wv.bkt.clouddn.com/CE310A65-63EE-4D64-B031-864A19556924.png",width = 500 /></p>
-<h4 id="UIScrollView-headerImageScale-实现原理"><a href="#UIScrollView-headerImageScale-实现原理" class="headerlink" title="UIScrollView + headerImageScale 实现原理"></a>UIScrollView + headerImageScale 实现原理</h4><p>不得不说，这个category也是一个非常好的东西，帮助我们轻松的集成tableview上面的头部缩放图片，且无侵入性。</p>
-<p>实现原理其实看起来也比较见到，使用到了method swizzling来拦截到tableview的头部试图，然后通过KVO来监听scrollview的偏移量。然后修改imageView的frame实现头部试图的缩放。</p>
-<p>当然既然使用到了KVO很自然的就要想到在dealloc方法里面需要去移除observer我也很愉快的在源码里面找到了这个方法。<strong>这就是坑所在</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">- (void)dealloc</div><div class="line">&#123;</div><div class="line">    if (self.yz_isInitial) &#123; // 初始化过，就表示有监听contentOffset属性，才需要移除</div><div class="line">        </div><div class="line">        [self removeObserver:self forKeyPath:YZKeyPath(self, contentOffset)];</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>可能说的不好，但是大概实现思路，也跟我之前自己写的差不多，就是在原来的header位置上面放一个UIimageView，通过监听scrollview的偏移量来改变UIimageView的frame.</p>
-<p>然后我们接着讲，由于公司缺乏系统的兼容性测试，在上线前使用模拟器跟UI对应调整了一下试图，以及针对小屏幕手机做了相应了屏幕适配之后。项目也很顺利的上线了，虽然从我点发布，到我在app store上面搜到这期间相差了6七个小时，感觉这个周期比往常慢了很多。</p>
-<p>原以为提前了半个月完成了项目，然后经过了十分充分的测试，自己也针对极端网络条件下做了很多测试。这个版本应该不会收集到太多的线上crash。</p>
-<p>然后很不幸的是我在线上日志收集日志中看到了很怪异的问题，线上crash一直都非常高。</p>
-<p><img src="http://ocg4av0wv.bkt.clouddn.com/8C289058-1F79-42EE-8F0B-34FA0FC27A43.png" width= 500 /></p>
-<p>这是我通过bugly收集到的相关日志， 仔细一看，所有crash都发生在iOS8上面。一共三条日志，全部发生在iOS8 上面。</p>
-<p>这让我意识到这个问题一定是这次更新导致了严重的不兼容iOS8的问题。</p>
-<h4 id="DEBUG过程"><a href="#DEBUG过程" class="headerlink" title="DEBUG过程"></a>DEBUG过程</h4><p>可能也注意到了，上面有一条ipad的日志，虽然app并没有兼容apad，但是我也用家里的ipad试了一下，进入app，到登录界面然后就crash，在打了全局断点的情况下，crash到了maim.m这个文件里面，bad_access野指针。然后我想了半天也没有找到什么情况下能这么快的出现crash。然后我把目标放在了JPush 极光推送上面。经历了一段时间之后，我仔细检查了极光推送所有的地方，并且尝试将所有代码注释的方法，crash依旧。</p>
-<p>后来我开始依赖于google，最终在唐巧巧大的博客里找到了解决方法。</p>
-<p>在appdelegate中定义一个方法。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">void uncaughtExceptionHandler(NSException *exception) &#123;</div><div class="line">    NSLog(@&quot;CRASH: %@&quot;, exception);</div><div class="line">    NSLog(@&quot;Stack Trace: %@&quot;, [exception callStackSymbols]);</div><div class="line">    // Internal error reporting</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在应用启动的时候，将这个方法作为异常的回调</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions</div><div class="line">&#123;   </div><div class="line">    NSSetUncaughtExceptionHandler(&amp;uncaughtExceptionHandler);</div><div class="line">    // Normal launch stuff</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>然后终于能看到日志了。</p>
-<p>在另外一次crash中我看到了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[UIScrollView _systemGestureStateChanged:]: message sent to deallocated instance</div></pre></td></tr></table></figure>
-<p>这样的句子，才明白，crash并不是JPush造成的。UIScrollView，此时我并没有想到什么东西，因为在这个使用到了ScrollView的场景实在不多，然后我通过修改代码，绕开使用了<code>UIScrollView</code>的<code>WelcomeViewController</code>之后发现登录界面正常，不绕开，无法进入登录界面。然后登录界面登录进去之后依然crash</p>
-<p>因为我的登录界面</p>
-<p><img src="http://ocg4av0wv.bkt.clouddn.com/E28FB77D-C390-47D4-A6B3-6FED899295EF.png" width=200/></p>
-<p>这个控件使用了Scrollview。</p>
-<p>然后在登录成功最后，几乎无法使用，log全是差不多的情况，这个时候我才开始吧注意力放在相关的类别里面。</p>
-<p>然后我又打开了<a href="http://www.jianshu.com/p/859e3ef76b05"><em>作者的简书</em></a></p>
-<p>在评论中看到这样一句</p>
-<blockquote>
-<p>1.发现app中任何的uitableview被释放之后，再点击屏幕就会crash，报<br>[UITableView _systemGestureStateChanged:]: message sent to deallocated instance 0x17385200<br>2.后来发现任何的collectionview被释放之后，点击屏幕也会crash，报<br>[UICollectionView _systemGestureStateChanged:]: message sent to deallocated instance 0x17385200<br>3.把目光放在UIScrollView上，查找UIScrollView的分类，是否有问题<br>4.找到 UIScrollView+HeaderScaleImage.h 注释了其中一部分代码,并把所有的引用都注释掉，依然有这个问题。<br>5.开始将目光放在_systemGestureStateChanged上，还有僵尸对象上，用instrument调试，依然无解。<br>6.六个小时过去了。<br>7.睡了一觉，然后又把目光放在UIScrollView上，将UIScrollView+HeaderScaleImage.h 中的代码全部注释掉了。<br>8.正常。感觉世界都亮了。<br>9.一步一步注释，排除，最后发现这个里面重写了uiscrollview的dealloc方法，导致scrollview在释放的时候无法清除自己的观察者身份，导致系统发通知的时候仍然能发到它身上。ios 9 没问题，ios8上就会直接crash。<br>10.将最后那个dealloc中的代码另外立出来，在controller的dealloc中主动调用这个方法，整个app没几个页面用这个，所以也并没有增加太多的工作量。</p>
-</blockquote>
-<p>照着上面的方法修改之后，果然，问题得到解决。</p>
-<h4 id="分析原因"><a href="#分析原因" class="headerlink" title="分析原因"></a>分析原因</h4><p>如果还记得本文的标题，大概也能想到了，在iOS9以前的系统上delegate的属性关键字是assign,这一点不用查看什么文档，只需要在百度里面搜索一下 <code>delegate assign 2014</code> 就可以得到验证。</p>
-<p><img src="http://ocg4av0wv.bkt.clouddn.com/FF79579D-6E61-4795-A19F-5806CF7.png" width=500 /></p>
-<p>在那个时代的delegate都是使用的assign作为delegate的属性关键字。</p>
-<p>我们再看看<strong>52个方法</strong>中对几个属性关键字的描述</p>
-<blockquote>
-<ol>
-<li>assign “设置方法” 只会执行针对“纯量关系”的简单负值操作。</li>
-<li>strong 此特质表明该属性定义了一种“拥有关系”，为这种属性设置新值时，设置方法会<strong>先保留新值，并释放旧值</strong>然后讲新值设置上去。</li>
-<li>weak 此特质表明该属性定义了一种“非拥有关系”，为这种属性设置新值时，设置方法<strong>既不保留新值，也不释放旧值</strong>，此特征同assign类似，然而在属性所指的对象遭到摧毁时，属性指也会清空（nil out）</li>
-<li>unsafe_unretained 此特质的语义和assign相同，但是它适用于“对象类型”，该特质表达一种“非拥有关系”，当目标对象遭到摧毁时，属性值不会自动清空。</li>
-<li>copy 此特质与strong类似，然而设置方法并不保留新值而是将其拷贝一份。</li>
-</ol>
-</blockquote>
-<p>这时候我们看到无论是使用assign 还是weak 甚至是unsafe_unretained都不会造成循环引用的问题。</p>
-<p>assign实际上是指针覆值，不对引用计数操作，使用之后如果没有置为nil，可能就会产生野指针；而weak一旦不进行使用后，会有一个置nil的操作。</p>
-<h4 id="猜测"><a href="#猜测" class="headerlink" title="猜测"></a>猜测</h4><p>这就说明在iOS8下虽然系统在代理中都使用的assign属性关键字，但是在dealloc方法中使用了如<code>self.delegate = nil</code>这样的代码，将对象置为nil.</p>
-<p>然后我我们在UISCrollView的分类中重写了他的dealloc方法，导致这一过程消失。所以造成野指针。</p>
-<h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><p>由于app已经上线，所以最初的思路还是使用hotfix来解决这个问题，但是经过一番努力之后，发现即使是使用了JSPatch也没有办法来解决这个问题，因为UIScrollview的子类涉及的太多了。我们也没有办法，通过patch的方法，还原系统的dealloc方法。所以我也只能先注释掉category中的dealloc方法，然后在使用了这个类别的我的界面中，手动的移除observer。</p>
-<h4 id="证明猜测"><a href="#证明猜测" class="headerlink" title="证明猜测"></a>证明猜测</h4><p>既然结论都是猜测出来了，我也简单的写一个小demo来验证一下刚才的猜测吧！</p>
-<p> 首先定义了一个Dog类</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">#import &lt;Foundation/Foundation.h&gt;</div><div class="line">@class Cat;</div><div class="line">@protocol DogDelegate &lt;NSObject&gt;</div><div class="line"></div><div class="line">- (void)fuck;</div><div class="line"></div><div class="line">@end</div><div class="line">@interface Dog : NSObject</div><div class="line"></div><div class="line">@property (nonatomic ,assign) Cat &lt;DogDelegate&gt; *delegate;</div><div class="line"></div><div class="line">-(void)run;</div><div class="line">@end</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#import &quot;Dog.h&quot;</div><div class="line">#import &quot;Cat.h&quot;</div><div class="line"></div><div class="line">@implementation Dog</div><div class="line"></div><div class="line">- (void)setDelegate:(Cat&lt;DogDelegate&gt; *)delegate &#123;</div><div class="line">    _delegate = delegate;</div><div class="line">    [delegate addObserver:self forKeyPath:@&quot;name&quot; options:NSKeyValueObservingOptionNew context:nil];</div><div class="line">&#125;</div><div class="line"></div><div class="line">//- (void)dealloc &#123;</div><div class="line">//    [self.delegate removeObserver:self forKeyPath:@&quot;name&quot;];</div><div class="line">//&#125;</div><div class="line"></div><div class="line">- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary&lt;NSKeyValueChangeKey,id&gt; *)change context:(void *)context &#123;</div><div class="line">    </div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure>
-<p>然后定义个一个Cat类</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#import &lt;Foundation/Foundation.h&gt;</div><div class="line"></div><div class="line">@interface Cat : NSObject</div><div class="line">@property (nonatomic ,strong) NSString *name;</div><div class="line">@end</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#import &quot;Cat.h&quot;</div><div class="line">#import &quot;Dog.h&quot;</div><div class="line"></div><div class="line">@interface Cat ()&lt;DogDelegate&gt;</div><div class="line">@end</div><div class="line">@implementation Cat</div><div class="line">@end</div></pre></td></tr></table></figure>
-<p>最后调用一下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Dog *dog = [[Dog alloc] init];</div><div class="line">Cat *cat = [[Cat alloc] init];</div><div class="line">dog.delegate = cat;</div><div class="line">cat.name =  @&quot;nacy&quot;;    </div><div class="line">dog = nil;</div><div class="line">cat.name = @&quot;lily&quot;;</div></pre></td></tr></table></figure>
-<p>果然如果注释掉Dog的dealloc方法，就会造成<code>EXC_BAD_ACCESS</code>crash。</p>
-<h4 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h4><ol>
-<li>千万不要在 category 中覆盖掉原来类中的方法。不然不知道有多少坑等着你。</li>
-<li>在 iOS8 下 delegate使用的是 assign 属性关键字，这是MRC时代的问题。</li>
-<li>这个问题确实是由于覆盖了dealloc方法，导致原来dealloc中清理掉原来对象中的delegate相关代码无法执行。这时候再有observer就会造成野指针。</li>
-<li>在使用各种属性关键字的时候，一定要想好。</li>
-<li>不要以为新的东西出来了就忘掉了以前的东西吧。</li>
-</ol>
-<h4 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h4><p>大神都是一步一个坑踩过来的。虽然这个问题导致原本很愉快的版本（线上没有crash）变成了现在这个样子，甚至还只能紧急发版来解决。但还是值得的。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;一半的 App 都会有一个个人这个模块来对个人信息，设置等功能进行管理，最近搞公司的项目，在项目结束的时候就想到了应该给我的这个界面加上 “headerimage scale” 这样的效果。然后项目已经结束，也并不想大刀阔斧的去修改原来的代码，想到之前在微博看到一个这样的库。时间还是比较紧急的，毕竟周末，然后就把代码下下来，简单的跑了一下，没有发现什么问题之后就直接在项目中用了。&lt;/p&gt;
-&lt;p&gt;由于公司一直缺乏很系统的兼容测试，只是对功能有比较严格的要求，所以接下来到上线这个过程都很愉快。 UI、产品都比较满意这样搞。&lt;/p&gt;
-&lt;p&gt;上线之后，就发生了一些悲剧的事情了….&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="iOS" scheme="https://CepheusSun.github.io/categories/iOS/"/>
-    
-    
-      <category term="iOS" scheme="https://CepheusSun.github.io/tags/iOS/"/>
     
   </entry>
   

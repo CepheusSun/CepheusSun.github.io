@@ -4,6 +4,80 @@
   
     
     <entry>
+      <title><![CDATA[使用Gitlab和Cocoapods创建私有pod]]></title>
+      <url>https://CepheusSun.github.io/2017/04/19/%E4%BD%BF%E7%94%A8Gitlab%E5%92%8CCocoapods%E5%88%9B%E5%BB%BA%E7%A7%81%E6%9C%89pod/</url>
+      <content type="html"><![CDATA[<p>每个稍微有点开发经验的 iOS 工程师都很容易的发现一下几点: </p>
+<ol>
+<li>几乎每个 iOS 的项目都适用了 <code>Cocoapods</code> </li>
+<li>几乎每个 ObjC 的 iOS 项目是使用 <code>AFNetworking</code> 、 <code>SDWebImage</code>等三方框架。</li>
+<li>几乎每个 Swift 的 iOS 项目都是用了 <code>Alamofire</code>、 <code>Kingfisher</code>等三方框架</li>
+<li>每一次这些框架更新之后, 无数个工程师只需要在终端执行一下’pod update’ 或 <code>pod install</code>就能对应的更新自己项目中的代码</li>
+</ol>
+<p>这几乎都是每个 iOS 工程师经常都会遇到的事情。目前几乎所有优秀的 iOS 开源框架都支持了 CocoaPods。 几乎所有的 iOS 项目都集成了 CocoaPods</p>
+<p>但是我们在日常的开发中也常会遇到这样的问题:</p>
+<ol>
+<li>很多公司都有好 App 同时在进行开发。</li>
+<li>这些 App 或多或少在业务或者 UI 都很很多的重合。</li>
+</ol>
+<p>着就意味着有很多的代码在这些 App 中都是可以复用的。由于各种各样的原因,同个公司的不同 App 可能更新不同步。 app A 可能已经升级到新版本 app B 可能还在老版本。每个 App 分别管理势必会出现混乱的局面。一起管理又存在新旧交替的问题。如果每个 App 又不同的工程师负责, 即使可能有交叉 review 的机制, 但也很难保证公司代码的统一。很多逻辑都存在多段代码。</p>
+<p>如何管理公司的公共代码库就成了一个比较麻烦的问题。</p>
+<p>集成 IJKMediaPlayer 的时候,想到了使用git来区别版本,然后使用 framework 来管理共有代码。然而在出现了你的代码需要使用到其他的 Framework 的时候, 或者好几个 Framework 都需要使用同一个第三方框架的时候, 这么做确实也是件恼火的事情。</p>
+<a id="more"></a>
+<p>去年写了三了小组件 <code>SYNetwork</code> <code>EmptyDataKit</code> <code>SYPhotoBrowser</code>。前两个已经支持了 <code>Cocoapods</code> 之后网上不断的开始有一些利用 <code>cocoapods</code>进行组件化的文章。前些天在 去直播看了 casa 的两个关于组建化的直播之后。也一直蠢蠢欲动想自己也来做一下这件事情。</p>
+<p>做开源的 repo 的时候，还是比较顺利的做到了这件事情。但是当时想用 <code>OSChina</code> 来做了几次都没有成功。就一直搁置了。</p>
+<p>春节之后换了个工作, 适应了公司的环境, 简单的学习了一下 Swift 之后, 公司还是决定对现有的项目进行一次梳理,然后做一次重构。 所以很自然的还是想到了使用 <code>CocoaPods</code> 将公司原有的项目进行组件化。</p>
+<p>结果了半天时间的尝试,报错create gitlab账号等等。终于达到了最初的想法。 所以将这个过程记录下来。</p>
+<h2 id="为什么使用-GitLab"><a href="#为什么使用-GitLab" class="headerlink" title="为什么使用 GitLab"></a>为什么使用 GitLab</h2><p>其实上面已经说到了,为什么要使用 CocoaPods 来做这件事情。也说到了为什么要做这件事情。为什么使用 gitlab 呢？ 原因很简单。 毕竟 GitHub 的私有repo 是收费的。原谅我穷, 也可以说是公司扣门儿。只能把开源的东西放在, GitHub 把不能开源的东西放在其他地方。</p>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>其实没什么好准备的。 但是首先你得有个 Gitlab 账号吧！ 如果没有注册之后添加 SSH 就好了。</p>
+<p>然后在 Gitlab 上创建一个空的仓库:XXX 然后记住这个项目的 地址: git@gitlab.com:XXX/XXX.git </p>
+<h2 id="创建工程"><a href="#创建工程" class="headerlink" title="创建工程"></a>创建工程</h2><p>这些可以看我去年年底写开源 Cocoapods 的时候写的东西。<a href="http://cepheussun.com/2016/12/02/CoaocPodSpec/">使用 Cocoapods 管理你的项目</a></p>
+<p>基本上简化一下就是以下</p>
+<h3 id="创建工程-1"><a href="#创建工程-1" class="headerlink" title="创建工程"></a>创建工程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pod lib create XXX</div></pre></td></tr></table></figure>
+<p>回答问题</p>
+<h3 id="添加私有库到本地-pod-库-多人开发其他人也应该有这个操作"><a href="#添加私有库到本地-pod-库-多人开发其他人也应该有这个操作" class="headerlink" title="添加私有库到本地 pod 库(多人开发其他人也应该有这个操作)"></a>添加私有库到本地 pod 库(多人开发其他人也应该有这个操作)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pod repo add XXX git@gitlab.com:XXX/XXX.git</div></pre></td></tr></table></figure>
+<blockquote>
+<p>可以检查一下: ~./cocoapods/repos 目录下又了 XXX 文件夹</p>
+</blockquote>
+<h3 id="将代码放进去"><a href="#将代码放进去" class="headerlink" title="将代码放进去"></a>将代码放进去</h3><blockquote>
+<p>这一步上篇文章中有。 <a href="http://cepheussun.com/2016/12/02/CoaocPodSpec/">使用 Cocoapods 管理你的项目</a></p>
+</blockquote>
+<h4 id="修改-podspec"><a href="#修改-podspec" class="headerlink" title="修改 .podspec"></a>修改 .podspec</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">Pod::Spec.new <span class="keyword">do</span> <span class="params">|s|</span></div><div class="line">  s.name             = <span class="string">'XXX'</span></div><div class="line">  s.version          = <span class="string">'0.0.1'</span></div><div class="line">  s.summary          = <span class="string">'这是项目的基础框架,所有项目都需要集成.'</span></div><div class="line"></div><div class="line">  s.homepage         = <span class="string">'https://gitlab.com/XXX/XXX'</span></div><div class="line">  s.license          = &#123; <span class="symbol">:type</span> =&gt; <span class="string">'MIT'</span>, <span class="symbol">:file</span> =&gt; <span class="string">'LICENSE'</span> &#125;</div><div class="line">  s.author           = &#123; <span class="string">'XXX'</span> =&gt; <span class="string">'cd_sunyang@163.com'</span> &#125;</div><div class="line">  s.source           = &#123; <span class="symbol">:git</span> =&gt; <span class="string">'git@gitlab.com:XXX/XXX.git'</span>, <span class="symbol">:tag</span> =&gt; s.version &#125;</div><div class="line"></div><div class="line">  s.ios.deployment_target = <span class="string">'8.0'</span></div><div class="line"></div><div class="line">  s.source_files = <span class="string">'XXX/Classes/**/*'</span></div><div class="line">  s.frameworks = <span class="string">'UIKit'</span></div><div class="line">  s.dependency <span class="string">'AFNetworking'</span></div><div class="line">  s.dependency <span class="string">'MBProgressHUD'</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+<p>我这个Demo引用了两个公有的repo</p>
+<h4 id="提交代码"><a href="#提交代码" class="headerlink" title="提交代码"></a>提交代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git add .</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git commit -m &quot;commit comments&quot;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git push origin master</div></pre></td></tr></table></figure>
+<h4 id="检查一下"><a href="#检查一下" class="headerlink" title="检查一下"></a>检查一下</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ pod lib lint</div><div class="line"></div><div class="line">#或者 pod lib lint --allow-warnings 忽略警告</div></pre></td></tr></table></figure>
+<p>然后也可以在项目中的 <code>podfile</code>文件中添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">pod &apos;XXX&apos;, :path =&gt; &apos;/Users/xxx/Desktop/XXX&apos;</div><div class="line"></div><div class="line">## 最后路径以实际情况为准, 有可能不在桌面</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod install</div></pre></td></tr></table></figure>
+<p>成功后我们的库会出现在<code>Development Pods</code>文件夹里面。可以检查一下有没有问题。</p>
+<h4 id="提交私有库"><a href="#提交私有库" class="headerlink" title="提交私有库"></a>提交私有库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git tag 0.0.1</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git push --tags</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod repo push XXX XXX.podspec</div></pre></td></tr></table></figure>
+<h3 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h3><h4 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h4><p>在执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pod lib lint</div></pre></td></tr></table></figure></p>
+<p>的时候,如果在你的文件中引入了一些三方库, 并且在<code>.podspec</code>文件中也添加了对用的<code>.dependency</code> 依然出现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- ERROR | xcodebuild: /Users/xinhuikeji/Library/Developer/Xcode/DerivedData/App-cpgccqdjhyrbqwcpjanyefntolkf/Build/Products/Release-iphonesimulator/wLib/wLib.framework/Headers/BaseModel.h:13:9: error: include of non-modular header inside framework module &apos;wLib.BaseModel&apos; [-Werror,-Wnon-modular-include-in-framework-module]</div></pre></td></tr></table></figure>
+<p>这样的错误。</p>
+<p>在命令后面添加参数 <code>--use-libraries</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$ pod lib lint xxx.podspec --use-libraries</div><div class="line">$ pod repo push XXX XXX.podspec --use-libraries</div><div class="line">``` </div><div class="line"></div><div class="line">在[segmentfault](https://segmentfault.com/q/1010000006885674)中看到的答案。</div><div class="line"></div><div class="line"></div><div class="line">#### pod search 找不到</div><div class="line"></div><div class="line">最后完成之后在新建的工程中</div></pre></td></tr></table></figure>
+<p>$ pod init<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line">$ vim podfile</div></pre></td></tr></table></figure></p>
+<p>添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod &quot;SYBase&quot;, :git =&gt; &apos;git@gitlab.com:CepheusSun/SYBase.git&apos;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod install</div></pre></td></tr></table></figure>
+<p>然后莫名其妙发现引入的 repo 是<code>0.1.0</code>或者什么巴拉巴拉版本的。这个时候更新一下pod</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod updata</div></pre></td></tr></table></figure>
+<p>再<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod install</div></pre></td></tr></table></figure></p>
+<h4 id="强迫症"><a href="#强迫症" class="headerlink" title="强迫症"></a>强迫症</h4><p>如果遇到强迫症想要用 1.1.1 这样的三级版本的话。</p>
+<p><code>XXX.podspec</code> 文件中的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">s.source = &#123; :git =&gt; &apos;git@gitlab.com:XXX/XXX.git&apos;, :tag =&gt; s.version &#125;</div></pre></td></tr></table></figure></p>
+<p>必须用 s.version</p>
+<p>我也不知道为什么。</p>
+<h3 id="结束篇"><a href="#结束篇" class="headerlink" title="结束篇"></a>结束篇</h3><p>好久没写文章了。终于还是继续写了下去。这段时间自己学了学Swift 学了学 函数响应式编程, 七牛云直播的认证也下来的。接下来可能要研究一下推流相关的东西。2017 的前半段老实说学到了很多的东西。一直很感恩也很珍惜这样的情况。</p>
+<p><strong>参考文档</strong></p>
+<p><a href="http://www.th7.cn/program/ios/201702/1119967.shtml">组件化开发之CocoaPods私有库制作</a><br><a href="http://mt.sohu.com/20160824/n465823814.shtml">使用cocoapods管理私有库</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[python 爬虫之一 "Requests 库学习"]]></title>
       <url>https://CepheusSun.github.io/2017/03/07/Requests%20%E5%BA%93/</url>
       <content type="html"><![CDATA[<p>这个系列的文章是用来记录我学习 python 爬虫的。这是第一篇。</p>
@@ -602,7 +676,7 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
     
     <entry>
       <title><![CDATA[使用 Cocoapods 管理你的项目]]></title>
-      <url>https://CepheusSun.github.io/2016/12/02/CoaocPodSpec/</url>
+      <url>https://CepheusSun.github.io/2016/12/02/%E4%BD%BF%E7%94%A8Cocoapods%E7%AE%A1%E7%90%86%E4%BD%A0%E7%9A%84%E9%A1%B9%E7%9B%AE/</url>
       <content type="html"><![CDATA[<blockquote>
 <p>本文是一个教你使用CocoaPods管理开源模块的文章。</p>
 </blockquote>
