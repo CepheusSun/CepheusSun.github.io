@@ -273,6 +273,148 @@
             
               
                 
+                <a class="post-title-link" href="/2017/04/26/突然想聊聊 throttle/" itemprop="url">
+                  突然想聊聊 throttle
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-04-26T00:00:00+08:00" content="2017-04-26">
+              2017-04-26
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Reactive/" itemprop="url" rel="index">
+                    <span itemprop="name">Reactive</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/04/26/突然想聊聊 throttle/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/26/突然想聊聊 throttle/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/04/26/突然想聊聊 throttle/" class="leancloud_visitors" data-flag-title="突然想聊聊 throttle">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+                <span class="leancloud-visitors-count"></span>
+                <span class="post-meta-item-text">人正在围观 </span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>如果我们将水龙头拧紧知道水是以水滴的形式流出, 不难发现, 每隔一段时间, 就会有一滴水流出来。</p>
+</blockquote>
+<p>如果我们预先设置一个执行周期, 当第一次调用动作(滴水)和第二次调用动作之间的间隔大于执行周期, 则执行这个动作。反正, 不执行。</p>
+<p>直接翻译 <code>throttle</code> 这个单词。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">throttle</div><div class="line"></div><div class="line">n.	节流阀; 喉咙，气管; [机] 风门;</div><div class="line">vt.	扼杀，压制; 勒死，使窒息; 使节流; （用节汽阀等） 调节;</div><div class="line">vi.	节流，减速; 窒息;</div></pre></td></tr></table></figure>
+<p>不难理解, throttle 其实就是一种控制数据或者流量大小的机制。</p>
+<p>MrPeak 曾经写的文章中介绍过 <code>I/O Throttle</code> 在 <code>DISPATCH_QUEUE_PRIORITY_BACKGROUND</code> queue 的使用场景。在没有非常严苛的实时性要求的情况下, 对于重度依赖磁盘的后台任务, 使用 <code>DISPATCH_QUEUE_PRIORITY_BACKGROUND</code> 的 queue 会更加友好。文中也引用了官方文档的一段话 </p>
+<blockquote>
+<p>Items dispatched to the queue run at background priority; the queue is scheduled for execution after all high priority queues have been scheduled and the system runs items on a thread whose priority is set for background status. Such a thread has the lowest priority and any disk I/O is throttled to minimize the impact on the system.</p>
+</blockquote>
+<p>意思是说, 这种 Global Queue 会在其他所有的 queue 结束之后才会在后台执行。 这是最低优先级的。并且一些磁盘 I/O 操作会因为最小化对系统的影响而被节流。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/04/26/突然想聊聊 throttle/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/04/21/我用RAC干了些什么(一)/" itemprop="url">
                   我用RAC干了些什么(一)
                 </a>
@@ -1479,137 +1621,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/01/iOS小知识集锦-NSString常用方法汇总/" itemprop="url">
-                  iOS小知识集锦-NSString常用方法汇总
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-02-01T00:00:00+08:00" content="2017-02-01">
-              2017-02-01
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/知识集锦/" itemprop="url" rel="index">
-                    <span itemprop="name">知识集锦</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/02/01/iOS小知识集锦-NSString常用方法汇总/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/01/iOS小知识集锦-NSString常用方法汇总/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2017/02/01/iOS小知识集锦-NSString常用方法汇总/" class="leancloud_visitors" data-flag-title="iOS小知识集锦-NSString常用方法汇总">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-                <span class="leancloud-visitors-count"></span>
-                <span class="post-meta-item-text">人正在围观 </span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>NSString 几乎是 iOS 开发中最常用的类了。几乎所有的地方都会用到各种各样的字符串。NSString 也有很多的方法。这篇文章记录我在使用 NSString 类的时候，会用到的知识点。也是 <code>iOS小知识集锦</code>的第一篇文章吧。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/02/01/iOS小知识集锦-NSString常用方法汇总/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1655,7 +1666,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">38</span>
+              <span class="site-state-item-count">39</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -273,6 +273,142 @@
             
               
                 
+                <a class="post-title-link" href="/2016/11/17/SYNetwork/" itemprop="url">
+                  SYNetwork
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-17T00:00:00+08:00" content="2016-11-17">
+              2016-11-17
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/17/SYNetwork/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/17/SYNetwork/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/11/17/SYNetwork/" class="leancloud_visitors" data-flag-title="SYNetwork">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+                <span class="leancloud-visitors-count"></span>
+                <span class="post-meta-item-text">人正在围观 </span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p> 基于AFNetworking的网络请求框架。采用command设计模式，支持按照接口缓存请求数据。</p>
+</blockquote>
+<p>在公司项目整体进行换代升级的同时，移动端 App 由原来的的一个 App 拆分成两个 App ，再拆分到三个 App，在三个 App 虽然还是有很多的办法来进行管理，但是考虑到随着业务的增长，产品的数量还有增加的趋势，功能也逐渐增多。还有 Hybrid化 的趋势。将一些共有的模块提取出来为三个 App 所用，可能会是更好的方式。当然，对这些公共模块的管理，还是会选择使用 CocoaPods ，接下来会再写一篇文章来介绍如何使用创建自己的 CocoaPods 仓库。在这样的环境下，第一个提取出来的模块就诞生了 — SYNetwork。</p>
+<p>在进行模块的独立的时候，想得最多的还是和原来的代码进行解耦，并且在抽取的过程中不要破坏原有的代码逻辑，并且比较合理的组织代码。在这样的基础上添加一些新的功能。在跟另外一个同事讨论之后，决定放弃之前集中式的网络请求方式，参考了大量前辈的网络库之后，采用了 Command 模式，一个网络请求 Api 是一个对象，这样能够更方便和优雅的根据不同的接口满足不同的业务需求。</p>
+<p>当然，公司的项目目前还没有十分的复杂，所以目前主要实现了: <code>POST</code>、<code>GET</code> 两种请求方式；根据请求的参数和 url 缓存请求结果；一个还算漂亮的logger；简单的对网络请求进行 AOP 操作(对参数进行加密)这些比较常见的功能。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/17/SYNetwork/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/11/02/SYPhotoBrowser/" itemprop="url">
                   SYPhotoBrowser
                 </a>
@@ -1435,137 +1571,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/29/css学习笔记--1/" itemprop="url">
-                  CSS学习笔记 -- 1
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-29T09:56:45+08:00" content="2016-08-29">
-              2016-08-29
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/29/css学习笔记--1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/29/css学习笔记--1/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/08/29/css学习笔记--1/" class="leancloud_visitors" data-flag-title="CSS学习笔记 -- 1">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-                <span class="leancloud-visitors-count"></span>
-                <span class="post-meta-item-text">人正在围观 </span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>抽空学习了一下html、css、JavaScript。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/29/css学习笔记--1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1611,7 +1616,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">38</span>
+              <span class="site-state-item-count">39</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
