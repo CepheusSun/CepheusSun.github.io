@@ -16,6 +16,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">+ (RACSignal&lt;ValueType&gt; *)createSignal:(RACDisposable * _Nullable (^)(id&lt;RACSubscriber&gt; subscriber))didSubscribe;</div></pre></td></tr></table></figure>
 <p>方法传入的 block 会返回一个 <code>RACDisposable</code> 对象。</p>
 <p>将以上代码中的 <code>return nil；</code> 替换成如下代码</p>
+<a id="more"></a>
 <figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">return</span> [RACDisposable disposableWithBlock:^&#123;</div><div class="line"><span class="comment">// 订阅者释放时会自动取消订阅信号, 但是只要订阅者没有释放, 就不会取消订阅信号.</span></div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"信号被取消订阅了!"</span>);</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
 <p>这个时候在 <code>[subscriber sendComplete]</code> 的时候会执行创建 <code>RACDisposable</code> 传入的 <code>block</code> </p>
 <p><strong>如何主动取消订阅</strong></p>

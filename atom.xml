@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://CepheusSun.github.io/"/>
-  <updated>2017-04-27T09:08:31.000Z</updated>
+  <updated>2017-04-27T09:20:19.000Z</updated>
   <id>https://CepheusSun.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://CepheusSun.github.io/2017/04/27/RAC%20%E6%9C%80%E5%9F%BA%E6%9C%AC%E7%9A%84%E4%B8%9C%E8%A5%BF--%20RACSignal/"/>
     <id>https://CepheusSun.github.io/2017/04/27/RAC 最基本的东西-- RACSignal/</id>
     <published>2017-04-26T16:00:00.000Z</published>
-    <updated>2017-04-27T09:08:31.000Z</updated>
+    <updated>2017-04-27T09:20:19.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="基础用法"><a href="#基础用法" class="headerlink" title="基础用法"></a>基础用法</h3><ul>
 <li>创建信号</li>
@@ -32,6 +32,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">+ (RACSignal&lt;ValueType&gt; *)createSignal:(RACDisposable * _Nullable (^)(id&lt;RACSubscriber&gt; subscriber))didSubscribe;</div></pre></td></tr></table></figure>
 <p>方法传入的 block 会返回一个 <code>RACDisposable</code> 对象。</p>
 <p>将以上代码中的 <code>return nil；</code> 替换成如下代码</p>
+<a id="more"></a>
 <figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">return</span> [RACDisposable disposableWithBlock:^&#123;</div><div class="line"><span class="comment">// 订阅者释放时会自动取消订阅信号, 但是只要订阅者没有释放, 就不会取消订阅信号.</span></div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"信号被取消订阅了!"</span>);</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
 <p>这个时候在 <code>[subscriber sendComplete]</code> 的时候会执行创建 <code>RACDisposable</code> 传入的 <code>block</code> </p>
 <p><strong>如何主动取消订阅</strong></p>
@@ -104,7 +105,11 @@
 &lt;li&gt;订阅信号&lt;/li&gt;
 &lt;li&gt;发送信号&lt;/li&gt;
 &lt;/ul&gt;
-&lt;figure clas
+&lt;figure class=&quot;highlight obj-c&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 1.创建信号(cold)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;RACSignal *signal = [RACSignal createSignal:^RACDisposable * _Nullable(&lt;span class=&quot;keyword&quot;&gt;id&lt;/span&gt;&amp;lt;RACSubscriber&amp;gt;  _Nonnull subscriber) &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 3.发送信号&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    [subscriber sendNext:&lt;span class=&quot;string&quot;&gt;@&quot;hello, RAC.&quot;&lt;/span&gt;];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 2.订阅信号(hot)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;[signal subscribeNext:^(&lt;span class=&quot;keyword&quot;&gt;id&lt;/span&gt;  _Nullable x) &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;NSLog&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;@&quot;%@&quot;&lt;/span&gt;, x);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;];&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;在创建 RACSignal 的时候, &lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;+ (RACSignal&amp;lt;ValueType&amp;gt; *)createSignal:(RACDisposable * _Nullable (^)(id&amp;lt;RACSubscriber&amp;gt; subscriber))didSubscribe;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;方法传入的 block 会返回一个 &lt;code&gt;RACDisposable&lt;/code&gt; 对象。&lt;/p&gt;
+&lt;p&gt;将以上代码中的 &lt;code&gt;return nil；&lt;/code&gt; 替换成如下代码&lt;/p&gt;
     
     </summary>
     
