@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="iOS,Reactive," />
 
 
 
@@ -86,15 +86,31 @@
 
 
 
-<meta name="description" content="iOS Dev. Stay hungry, Stay foolish.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="CepheusSun的博客">
-<meta property="og:url" content="https://CepheusSun.github.io/index.html">
+<meta name="description" content="基础用法
+创建信号
+订阅信号
+发送信号
+
+12345678910// 1.创建信号(cold)RACSignal *signal = [RACSignal createSignal:^RACDisposable * _Nullable(id&amp;lt;RACSubscriber&amp;gt;  _Nonnull subscriber) &amp;#123;    // 3.发送信号    [subscriber s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RAC 最基本的东西-- RACSignal">
+<meta property="og:url" content="https://CepheusSun.github.io/2017/04/27/RAC 最基本的东西-- RACSignal/index.html">
 <meta property="og:site_name" content="CepheusSun的博客">
-<meta property="og:description" content="iOS Dev. Stay hungry, Stay foolish.">
+<meta property="og:description" content="基础用法
+创建信号
+订阅信号
+发送信号
+
+12345678910// 1.创建信号(cold)RACSignal *signal = [RACSignal createSignal:^RACDisposable * _Nullable(id&amp;lt;RACSubscriber&amp;gt;  _Nonnull subscriber) &amp;#123;    // 3.发送信号    [subscriber s">
+<meta property="og:updated_time" content="2017-04-27T09:08:31.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CepheusSun的博客">
-<meta name="twitter:description" content="iOS Dev. Stay hungry, Stay foolish.">
+<meta name="twitter:title" content="RAC 最基本的东西-- RACSignal">
+<meta name="twitter:description" content="基础用法
+创建信号
+订阅信号
+发送信号
+
+12345678910// 1.创建信号(cold)RACSignal *signal = [RACSignal createSignal:^RACDisposable * _Nullable(id&amp;lt;RACSubscriber&amp;gt;  _Nonnull subscriber) &amp;#123;    // 3.发送信号    [subscriber s">
 
 
 
@@ -115,9 +131,9 @@
 
 
 
-  <link rel="canonical" href="https://CepheusSun.github.io/"/>
+  <link rel="canonical" href="https://CepheusSun.github.io/2017/04/27/RAC 最基本的东西-- RACSignal/"/>
 
-  <title> CepheusSun的博客 </title>
+  <title> RAC 最基本的东西-- RACSignal | CepheusSun的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -138,9 +154,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -250,9 +264,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -272,10 +286,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2017/04/27/RAC 最基本的东西-- RACSignal/" itemprop="url">
-                  RAC 最基本的东西-- RACSignal
-                </a>
+                RAC 最基本的东西-- RACSignal
               
             
           </h1>
@@ -350,9 +361,7 @@
       
 
       
-        
-          
-            <h3 id="基础用法"><a href="#基础用法" class="headerlink" title="基础用法"></a>基础用法</h3><ul>
+        <h3 id="基础用法"><a href="#基础用法" class="headerlink" title="基础用法"></a>基础用法</h3><ul>
 <li>创建信号</li>
 <li>订阅信号</li>
 <li>发送信号</li>
@@ -426,1285 +435,79 @@
 <p><strong>zip 和 combineLatest 的区别</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">signal1-----1----2-----3------4-------5-------6--------7-----</div><div class="line"></div><div class="line">signal2----------------5----------------------7--------------</div><div class="line"></div><div class="line"></div><div class="line">combine 返回 (3，5)  （6，7）</div><div class="line">zip 返回     (1,5)    (2,7)</div></pre></td></tr></table></figure>
 
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/26/突然想聊聊 throttle/" itemprop="url">
-                  突然想聊聊 throttle
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-04-26T00:00:00+08:00" content="2017-04-26">
-              2017-04-26
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Reactive/" itemprop="url" rel="index">
-                    <span itemprop="name">Reactive</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
+            <a href="/tags/iOS/" rel="tag">#iOS</a>
           
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/04/26/突然想聊聊 throttle/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/26/突然想聊聊 throttle/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2017/04/26/突然想聊聊 throttle/" class="leancloud_visitors" data-flag-title="突然想聊聊 throttle">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-                <span class="leancloud-visitors-count"></span>
-                <span class="post-meta-item-text">人正在围观 </span>
-              </span>
-          
-
+            <a href="/tags/Reactive/" rel="tag">#Reactive</a>
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <blockquote>
-<p>如果我们将水龙头拧紧知道水是以水滴的形式流出, 不难发现, 每隔一段时间, 就会有一滴水流出来。</p>
-</blockquote>
-<p>如果我们预先设置一个执行周期, 当第一次调用动作(滴水)和第二次调用动作之间的间隔大于执行周期, 则执行这个动作。反正, 不执行。</p>
-<p>直接翻译 <code>throttle</code> 这个单词。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">throttle</div><div class="line"></div><div class="line">n.	节流阀; 喉咙，气管; [机] 风门;</div><div class="line">vt.	扼杀，压制; 勒死，使窒息; 使节流; （用节汽阀等） 调节;</div><div class="line">vi.	节流，减速; 窒息;</div></pre></td></tr></table></figure>
-<p>不难理解, throttle 其实就是一种控制数据或者流量大小的机制。</p>
-<p>MrPeak 曾经写的文章中介绍过 <code>I/O Throttle</code> 在 <code>DISPATCH_QUEUE_PRIORITY_BACKGROUND</code> queue 的使用场景。在没有非常严苛的实时性要求的情况下, 对于重度依赖磁盘的后台任务, 使用 <code>DISPATCH_QUEUE_PRIORITY_BACKGROUND</code> 的 queue 会更加友好。文中也引用了官方文档的一段话 </p>
-<blockquote>
-<p>Items dispatched to the queue run at background priority; the queue is scheduled for execution after all high priority queues have been scheduled and the system runs items on a thread whose priority is set for background status. Such a thread has the lowest priority and any disk I/O is throttled to minimize the impact on the system.</p>
-</blockquote>
-<p>意思是说, 这种 Global Queue 会在其他所有的 queue 结束之后才会在后台执行。 这是最低优先级的。并且一些磁盘 I/O 操作会因为最小化对系统的影响而被节流。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/04/26/突然想聊聊 throttle/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/26/突然想聊聊 throttle/" rel="next" title="突然想聊聊 throttle">
+                <i class="fa fa-chevron-left"></i> 突然想聊聊 throttle
+              </a>
+            
           </div>
-        
-      
-    </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+          <div class="post-nav-prev post-nav-item">
             
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/21/我用RAC干了些什么(一)/" itemprop="url">
-                  我用RAC干了些什么(一)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-04-21T00:00:00+08:00" content="2017-04-21">
-              2017-04-21
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Reactive/" itemprop="url" rel="index">
-                    <span itemprop="name">Reactive</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/04/21/我用RAC干了些什么(一)/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/21/我用RAC干了些什么(一)/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2017/04/21/我用RAC干了些什么(一)/" class="leancloud_visitors" data-flag-title="我用RAC干了些什么(一)">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-                <span class="leancloud-visitors-count"></span>
-                <span class="post-meta-item-text">人正在围观 </span>
-              </span>
-          
-
-          
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <p>对象间的交互, 主要有 <code>target-action</code>、<code>Notification</code>、<code>KVO</code>、<code>Delegate</code></p>
-<h3 id="target-action"><a href="#target-action" class="headerlink" title="target-action"></a>target-action</h3><figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[[<span class="keyword">self</span>.loginBtn rac_signalForControlEvents:<span class="built_in">UIControlEventTouchUpInside</span>] subscribeNext:^(<span class="built_in">UIButton</span> *btn) &#123;</div><div class="line"> <span class="comment">// btn, 即 self.loginBtn</span></div><div class="line"> <span class="comment">// 这里执行点击之后的操作</span></div><div class="line">&#125;];</div></pre></td></tr></table></figure>
-<p>可以用 BlocksKit 替代</p>
-<h3 id="KVO"><a href="#KVO" class="headerlink" title="KVO"></a>KVO</h3><figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[RACObserve(<span class="keyword">self</span>, name) subscribeNext:^(<span class="built_in">NSString</span> *name) &#123;</div><div class="line">  <span class="comment">// name 即 self.name</span></div><div class="line">  <span class="comment">// 一旦 name 属性改变就立即进入到这个 block</span></div><div class="line">&#125;];</div></pre></td></tr></table></figure>
-<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// self.myLab.text 随着 self.myTF.text 的改变而改变</span></div><div class="line">RAC(<span class="keyword">self</span>.myLab, text) = <span class="keyword">self</span>.myTF.rac_textSignal;</div></pre></td></tr></table></figure>
-<h3 id="Notificaiton"><a href="#Notificaiton" class="headerlink" title="Notificaiton"></a>Notificaiton</h3><figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[[[[<span class="built_in">NSNotificationCenter</span> defaultCenter] </div><div class="line">rac_addObserverForName:<span class="built_in">UIKeyboardWillChangeFrameNotification</span> object:<span class="literal">nil</span>] </div><div class="line">  <span class="comment">// 这句不可少，表示 当 self 将要 dealloc 的时候，就要释放 通知</span></div><div class="line">  takeUntil:<span class="keyword">self</span>.rac_willDeallocSignal] </div><div class="line">  subscribeNext:^(<span class="built_in">NSNotification</span> *notification) &#123;</div><div class="line">      <span class="built_in">NSLog</span>(<span class="string">@"-----%@"</span>, notification.description);</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
-<p>不要忘了还是原来的方法发送通知。</p>
-<p><strong>通知已经通过 RAC 内部得到了释放，所以不需要额外在 - dealloc 添加移除的代码</strong></p>
-<h3 id="RACCommand"><a href="#RACCommand" class="headerlink" title="RACCommand"></a>RACCommand</h3><blockquote>
-<p>A command, represented by the RACCommand class, creates and subscribes to a signal in response to some action. This makes it easy to perform side-effecting work as the user interacts with the app.</p>
-</blockquote>
-<p>简单的使用RACCommand 实现一个 viewModel 的网络请求。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/04/21/我用RAC干了些什么(一)/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-      
 
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/19/使用Gitlab和Cocoapods创建私有pod/" itemprop="url">
-                  使用Gitlab和Cocoapods创建私有pod
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-04-19T22:39:27+08:00" content="2017-04-19">
-              2017-04-19
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/CocoaPods/" itemprop="url" rel="index">
-                    <span itemprop="name">CocoaPods</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/04/19/使用Gitlab和Cocoapods创建私有pod/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/19/使用Gitlab和Cocoapods创建私有pod/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2017/04/19/使用Gitlab和Cocoapods创建私有pod/" class="leancloud_visitors" data-flag-title="使用Gitlab和Cocoapods创建私有pod">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-                <span class="leancloud-visitors-count"></span>
-                <span class="post-meta-item-text">人正在围观 </span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>每个稍微有点开发经验的 iOS 工程师都很容易的发现一下几点: </p>
-<ol>
-<li>几乎每个 iOS 的项目都适用了 <code>Cocoapods</code> </li>
-<li>几乎每个 ObjC 的 iOS 项目是使用 <code>AFNetworking</code> 、 <code>SDWebImage</code>等三方框架。</li>
-<li>几乎每个 Swift 的 iOS 项目都是用了 <code>Alamofire</code>、 <code>Kingfisher</code>等三方框架</li>
-<li>每一次这些框架更新之后, 无数个工程师只需要在终端执行一下’pod update’ 或 <code>pod install</code>就能对应的更新自己项目中的代码</li>
-</ol>
-<p>这几乎都是每个 iOS 工程师经常都会遇到的事情。目前几乎所有优秀的 iOS 开源框架都支持了 CocoaPods。 几乎所有的 iOS 项目都集成了 CocoaPods</p>
-<p>但是我们在日常的开发中也常会遇到这样的问题:</p>
-<ol>
-<li>很多公司都有好 App 同时在进行开发。</li>
-<li>这些 App 或多或少在业务或者 UI 都很很多的重合。</li>
-</ol>
-<p>着就意味着有很多的代码在这些 App 中都是可以复用的。由于各种各样的原因,同个公司的不同 App 可能更新不同步。 app A 可能已经升级到新版本 app B 可能还在老版本。每个 App 分别管理势必会出现混乱的局面。一起管理又存在新旧交替的问题。如果每个 App 又不同的工程师负责, 即使可能有交叉 review 的机制, 但也很难保证公司代码的统一。很多逻辑都存在多段代码。</p>
-<p>如何管理公司的公共代码库就成了一个比较麻烦的问题。</p>
-<p>集成 IJKMediaPlayer 的时候,想到了使用git来区别版本,然后使用 framework 来管理共有代码。然而在出现了你的代码需要使用到其他的 Framework 的时候, 或者好几个 Framework 都需要使用同一个第三方框架的时候, 这么做确实也是件恼火的事情。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/04/19/使用Gitlab和Cocoapods创建私有pod/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
+    <div class="post-spread">
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/07/Requests 库/" itemprop="url">
-                  python 爬虫之一 "Requests 库学习"
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-07T00:00:00+08:00" content="2017-03-07">
-              2017-03-07
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index">
-                    <span itemprop="name">python</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/03/07/Requests 库/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/07/Requests 库/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2017/03/07/Requests 库/" class="leancloud_visitors" data-flag-title="python 爬虫之一 "Requests 库学习"">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-                <span class="leancloud-visitors-count"></span>
-                <span class="post-meta-item-text">人正在围观 </span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>这个系列的文章是用来记录我学习 python 爬虫的。这是第一篇。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/03/07/Requests 库/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/22/interview07022201/" itemprop="url">
-                  iOS面试集锦&2017年02月22日01
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-02-22T00:00:00+08:00" content="2017-02-22">
-              2017-02-22
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/iOS面试集锦/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS面试集锦</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/02/22/interview07022201/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/22/interview07022201/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2017/02/22/interview07022201/" class="leancloud_visitors" data-flag-title="iOS面试集锦&2017年02月22日01">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-                <span class="leancloud-visitors-count"></span>
-                <span class="post-meta-item-text">人正在围观 </span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <ol>
-<li><code>id</code> 和 <code>instancetype</code> 的区别?</li>
-<li>有方法查看当前系统内存使用的情况吗？</li>
-<li>为什么 NotificationCenter 要 removeObserver? 如何实现自动 remove？</li>
-<li>iOS的沙盒目录结构是怎样的？ App Bundle 里面都有什么？</li>
-<li>简单描述一下客户端的缓存机制？</li>
-</ol>
-<p>注意： 以后的更新全部放在 GitHub 博客不再继续添加了。 毕竟好多内容放在这里也没有什么意义。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/02/22/interview07022201/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/21/interview07022101/" itemprop="url">
-                  iOS面试集锦&2017年02月21日01
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-02-21T00:00:00+08:00" content="2017-02-21">
-              2017-02-21
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/iOS面试集锦/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS面试集锦</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/02/21/interview07022101/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/21/interview07022101/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2017/02/21/interview07022101/" class="leancloud_visitors" data-flag-title="iOS面试集锦&2017年02月21日01">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-                <span class="leancloud-visitors-count"></span>
-                <span class="post-meta-item-text">人正在围观 </span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <ol>
-<li>写出中序遍历二叉树的算法(不限编程语言，已知 TreeRoot 为二叉树的根)</li>
-<li>快速排序，归并排序的时间复杂度分别是什么？</li>
-<li>UITableViewCell 可重用机制是什么?有什么要注意的地方?</li>
-<li>OC 中的 @property 和 @synthesize 有什么用？</li>
-<li>OC有没有重载(overload)和重写(overwrite)？有的话请举个例子。</li>
-<li>列举出 iOS 开发中三种最常出现的循环引用的场景。</li>
-<li>MVC 模式具体指什么？iOS现在流行的 MVVM 是什么？</li>
-<li>iOS 中设计金钱计算和比较时，用数值应该用哪个类型来处理？</li>
-<li>iOS 上触摸事件的视图检测和事件传递过程是怎样的？  </li>
-<li>写一个折半查找或者快速排序</li>
-</ol>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/02/21/interview07022101/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/20/interview07022001/" itemprop="url">
-                  iOS面试集锦&2017年02月20日01
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-02-20T00:00:00+08:00" content="2017-02-20">
-              2017-02-20
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/iOS面试集锦/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS面试集锦</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/02/20/interview07022001/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/20/interview07022001/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2017/02/20/interview07022001/" class="leancloud_visitors" data-flag-title="iOS面试集锦&2017年02月20日01">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-                <span class="leancloud-visitors-count"></span>
-                <span class="post-meta-item-text">人正在围观 </span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <ol>
-<li>对内存管理的理解。</li>
-<li>类别的作用</li>
-<li>点击屏幕上的按钮，系统做了什么？</li>
-</ol>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/02/20/interview07022001/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/19/interview07021901/" itemprop="url">
-                  iOS面试集锦&2017年02月19日01
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-02-19T00:00:00+08:00" content="2017-02-19">
-              2017-02-19
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/iOS面试集锦/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS面试集锦</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/02/19/interview07021901/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/19/interview07021901/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2017/02/19/interview07021901/" class="leancloud_visitors" data-flag-title="iOS面试集锦&2017年02月19日01">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-                <span class="leancloud-visitors-count"></span>
-                <span class="post-meta-item-text">人正在围观 </span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>按钮或者 View 在进行 frame 动画的时候，为什么点击 frame 动画的重点位置才能触发事件？如何在动画过程中响应事件？</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/02/19/interview07021901/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/04/python 中 str 和 list 互相转换/" itemprop="url">
-                  python 中 str 和 list 互相转换
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-02-04T00:00:00+08:00" content="2017-02-04">
-              2017-02-04
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index">
-                    <span itemprop="name">python</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/02/04/python 中 str 和 list 互相转换/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/04/python 中 str 和 list 互相转换/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2017/02/04/python 中 str 和 list 互相转换/" class="leancloud_visitors" data-flag-title="python 中 str 和 list 互相转换">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-                <span class="leancloud-visitors-count"></span>
-                <span class="post-meta-item-text">人正在围观 </span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>一些相关方法、函数、运算符的整理</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/02/04/python 中 str 和 list 互相转换/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
+  </div>
 
 
           </div>
           
 
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/04/27/RAC 最基本的东西-- RACSignal/"
+           data-title="RAC 最基本的东西-- RACSignal" data-url="https://CepheusSun.github.io/2017/04/27/RAC 最基本的东西-- RACSignal/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -1724,8 +527,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://ocg4av0wv.bkt.clouddn.com/icon_spot@2x.png"
@@ -1826,6 +638,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#基础用法"><span class="nav-number">1.</span> <span class="nav-text">基础用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#timer"><span class="nav-number">2.</span> <span class="nav-text">timer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#delay"><span class="nav-number">3.</span> <span class="nav-text">delay</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#timeout"><span class="nav-number">4.</span> <span class="nav-text">timeout</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#retry"><span class="nav-number">5.</span> <span class="nav-text">retry</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对-RACSignal-的操作"><span class="nav-number"></span> <span class="nav-text">对 RACSignal 的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#map-映射"><span class="nav-number">1.</span> <span class="nav-text">map 映射</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#map"><span class="nav-number">1.1.</span> <span class="nav-text">map</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#flattenMap"><span class="nav-number">1.2.</span> <span class="nav-text">flattenMap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#flattenmap-和-map-的区别"><span class="nav-number">1.3.</span> <span class="nav-text">flattenmap 和 map 的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mapReplace"><span class="nav-number">1.4.</span> <span class="nav-text">mapReplace</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#filter-过滤"><span class="nav-number">2.</span> <span class="nav-text">filter 过滤</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#filter"><span class="nav-number">2.1.</span> <span class="nav-text">filter</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ignore"><span class="nav-number">2.2.</span> <span class="nav-text">ignore</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#distinctUntilChanged"><span class="nav-number">2.3.</span> <span class="nav-text">distinctUntilChanged</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#startWith"><span class="nav-number">2.4.</span> <span class="nav-text">startWith</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#take"><span class="nav-number">2.5.</span> <span class="nav-text">take</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#takeLast"><span class="nav-number">2.6.</span> <span class="nav-text">takeLast</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#takeUntilBlock"><span class="nav-number">2.7.</span> <span class="nav-text">takeUntilBlock</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#takeWhileBlock"><span class="nav-number">2.8.</span> <span class="nav-text">takeWhileBlock</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#skip"><span class="nav-number">2.9.</span> <span class="nav-text">skip</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#skipUntilBlock"><span class="nav-number">2.10.</span> <span class="nav-text">skipUntilBlock</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#skipWhileBlock"><span class="nav-number">2.11.</span> <span class="nav-text">skipWhileBlock</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#scanWithStart-reduce"><span class="nav-number">2.12.</span> <span class="nav-text">scanWithStart:reduce</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组合"><span class="nav-number">3.</span> <span class="nav-text">组合</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#contact"><span class="nav-number">3.1.</span> <span class="nav-text">contact</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#then"><span class="nav-number">3.2.</span> <span class="nav-text">then</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#merge"><span class="nav-number">3.3.</span> <span class="nav-text">merge</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#zip"><span class="nav-number">3.4.</span> <span class="nav-text">zip</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#combineLatest"><span class="nav-number">3.5.</span> <span class="nav-text">combineLatest</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -1939,6 +762,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
