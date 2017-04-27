@@ -34,7 +34,7 @@
 <p>界面上又一个按钮, 然后点击这个按钮, 发起网络请求, 跟上面的例子类似。如果用户快速的点击这个按钮也比较蛋疼。按照以前的写法, 我们可能会设置一个 <code>flag</code> 在点击的时候将这个 <code>flag</code> 设置为 no, 然后在 <code>button</code> 的 <code>action</code> 中判断是否发起请求,然后在请求结果回来之后, 把这个 <code>flag</code> 改回来。 想想都比较蛋疼。这时候使用 <code>throttle</code> 将按钮的点击事件节流一下, 就好了。</p>
 <p>这个直接搬用 MrPeak <a href="http://mp.weixin.qq.com/s/MsPEZ9GUwCSZN1kngBkJxw">iOS编程中throttle那些事</a>中的swift代码。 毕竟 OC 的意见在上面了。</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">button.rx_tap</div><div class="line">   .throttle(<span class="number">0.5</span>, <span class="type">MainScheduler</span>.instance)</div><div class="line">   .subscribeNext &#123; <span class="number">_</span> <span class="keyword">in</span> </div><div class="line">      <span class="built_in">print</span>(<span class="string">"Hello World"</span>)</div><div class="line">   &#125;</div><div class="line">   .addDisposableTo(disposeBag)</div></pre></td></tr></table></figure>
-<p><em>在 OC 的 demo 中(ReactiveCocoa 2.5.0) 我也发现了一个问题。第一次的点击也会在这个间隔之后响应。而在 swift 的 demo 中并没有这种情况。</em></p>
+<p><strong>在 OC 的 demo 中(ReactiveCocoa 2.5.0) 我也发现了一个问题。第一次的点击也会在这个间隔之后响应。之后又实用了 ReactiveObjc(3.0) 中也发现了这个问题,而在 swift 的 demo 中并没有这种情况。</strong></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>其实 throttle 并没有减少实际逻辑处理过程的执行来提高事件处理函数运行性能的手段, 并没有减少事件的触发次数。写到最后, 发现文章有点变成学习心得了😂😂😂😂</p>
 ]]></content>
     </entry>
