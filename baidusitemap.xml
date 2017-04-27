@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>https://CepheusSun.github.io/2016/08/19/%E6%88%91%E6%98%AF%E8%BF%99%E6%A0%B7%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%88%91%E7%9A%84%E4%BB%A3%E7%A0%81/</loc>
+    <lastmod>2017-04-27T09:23:54.000Z</lastmod>
+    <data>
+        <display>
+        <title>我是这样格式化我的代码</title>
+        <pubTime>2016-08-19T07:55:13.000Z</pubTime>
+        
+        <tag>iOS</tag>
+         
+        <tag>代码规范</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS" url="https://CepheusSun.github.io/categories/iOS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://CepheusSun.github.io/2017/04/27/RAC%20%E6%9C%80%E5%9F%BA%E6%9C%AC%E7%9A%84%E4%B8%9C%E8%A5%BF--%20RACSignal/</loc>
     <lastmod>2017-04-27T09:20:19.000Z</lastmod>
     <data>
@@ -63,28 +85,6 @@
            
              
               <breadCrumb title="Reactive" url="https://CepheusSun.github.io/categories/Reactive/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://CepheusSun.github.io/2016/08/19/%E6%88%91%E6%98%AF%E8%BF%99%E6%A0%B7%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%88%91%E7%9A%84%E4%BB%A3%E7%A0%81/</loc>
-    <lastmod>2017-04-21T04:28:45.000Z</lastmod>
-    <data>
-        <display>
-        <title>我是这样格式化我的代码</title>
-        <pubTime>2016-08-19T07:55:13.000Z</pubTime>
-        
-        <tag>iOS</tag>
-         
-        <tag>代码规范</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS" url="https://CepheusSun.github.io/categories/iOS/"/>
           
         </display>
     </data>
@@ -778,11 +778,11 @@
         <title>html学习笔记--1</title>
         <pubTime>2016-08-27T15:03:45.000Z</pubTime>
         
+        <tag>html</tag>
+         
         <tag>前端</tag>
          
         <tag>学习笔记</tag>
-         
-        <tag>html</tag>
          
          
            
@@ -822,11 +822,11 @@
         <title>CSS学习笔记 -- 1</title>
         <pubTime>2016-08-29T01:56:45.000Z</pubTime>
         
-        <tag>CSS</tag>
-         
         <tag>前端</tag>
          
         <tag>学习笔记</tag>
+         
+        <tag>CSS</tag>
          
          
            

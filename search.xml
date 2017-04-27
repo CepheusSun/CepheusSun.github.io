@@ -2040,6 +2040,7 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
       <title><![CDATA[我是这样格式化我的代码]]></title>
       <url>https://CepheusSun.github.io/2016/08/19/%E6%88%91%E6%98%AF%E8%BF%99%E6%A0%B7%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%88%91%E7%9A%84%E4%BB%A3%E7%A0%81/</url>
       <content type="html"><![CDATA[<p>这篇文章是我整理的一份代码格式化的东西, 和一份我正在用的clang-format的配置文件。</p>
+<p>clang-format 之类的插件在 Xcode8 上已经不能用了,所以… 呵呵</p>
 <a id="more"></a>
 <h3 id="一、前面的话"><a href="#一、前面的话" class="headerlink" title="一、前面的话"></a>一、前面的话</h3><p>前段时间整理一系列公司的文档,写到代码编写规范和CodeReview规范中都提到代码格式化的问题。很多人都说能都自动化的步骤都应该通过自动化来解决,所以这个时候想到了以前一直舍不得用的clang-format。想起来还是有点惭愧，自从看了sunnyxx的《招聘一个靠谱的iOS》之后就仿佛也有了代码洁癖，但是一直也没有去整理自己的代码编写规范这些东西。后来看到了google的规范文档,感觉越来越想弄一下这个东西。</p>
 <p><img src="http://i2.buimg.com/567571/33caa8485b3664b5.png" alt=""></p>
