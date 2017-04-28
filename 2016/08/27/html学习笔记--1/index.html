@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="html,前端,学习笔记," />
+  <meta name="keywords" content="前端,学习笔记,html," />
 
 
 
@@ -537,11 +537,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/html/" rel="tag">#html</a>
-          
             <a href="/tags/前端/" rel="tag">#前端</a>
           
             <a href="/tags/学习笔记/" rel="tag">#学习笔记</a>
+          
+            <a href="/tags/html/" rel="tag">#html</a>
           
         </div>
       
@@ -1076,27 +1076,26 @@
       var $visitors = $(".leancloud_visitors");
       var url = $visitors.attr('id').trim();
       var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
-      console.log(Visit);
-      // query.equalTo("url", url);
-      // query.find({
-      //     success:function(results) {
-      //       if(results.length > 0) {
-      //         var counter = results[0];
-      //         counter.fetchWhenSave(true);
-      //         counter.increment("time")
-      //         counter.save(null, {
+      var query = new AV.Query(Visit);
+      query.equalTo("url", url);
+      query.find({
+          success:function(results) {
+            if(results.length > 0) {
+              var counter = results[0];
+              counter.fetchWhenSave(true);
+              counter.increment("time")
+              counter.save(null, {
 
-      //         },
-      //         error: function(counter, error) {
+              },
+              error: function(counter, error) {
 
-      //         }) 
-      //       }
-      //     },
-      //     error function(error) {
+              }) 
+            }
+          },
+          error function(error) {
 
-      //     }
-      // });      
+          }
+      });      
 
     }
 

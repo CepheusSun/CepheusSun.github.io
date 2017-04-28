@@ -993,27 +993,26 @@ iOS的沙盒目录结构是怎样的？ App Bundle 里面都有什么？
       var $visitors = $(".leancloud_visitors");
       var url = $visitors.attr('id').trim();
       var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
-      console.log(Visit);
-      // query.equalTo("url", url);
-      // query.find({
-      //     success:function(results) {
-      //       if(results.length > 0) {
-      //         var counter = results[0];
-      //         counter.fetchWhenSave(true);
-      //         counter.increment("time")
-      //         counter.save(null, {
+      var query = new AV.Query(Visit);
+      query.equalTo("url", url);
+      query.find({
+          success:function(results) {
+            if(results.length > 0) {
+              var counter = results[0];
+              counter.fetchWhenSave(true);
+              counter.increment("time")
+              counter.save(null, {
 
-      //         },
-      //         error: function(counter, error) {
+              },
+              error: function(counter, error) {
 
-      //         }) 
-      //       }
-      //     },
-      //     error function(error) {
+              }) 
+            }
+          },
+          error function(error) {
 
-      //     }
-      // });      
+          }
+      });      
 
     }
 
