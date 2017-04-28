@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="iOS,CocoaPods," />
+  <meta name="keywords" content="CocoaPods,iOS," />
 
 
 
@@ -451,9 +451,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/iOS/" rel="tag">#iOS</a>
-          
             <a href="/tags/CocoaPods/" rel="tag">#CocoaPods</a>
+          
+            <a href="/tags/iOS/" rel="tag">#iOS</a>
           
         </div>
       
@@ -991,22 +991,9 @@
       // 新建一个 Todo 对象
       var todo = new Todo();
 
-        message(todo);
-        todo.save().then(function (todo) {
-      // 成功保存之后，执行其他逻辑.
-        console.log('New object created with objectId: ' + todo.id);
-      }, function (error) {
-    // 异常处理
-      console.error('Failed to create new object, with error message: ' + error.message);
-      });  
-    }
-    
-    function message(todo) { 
       var $visitors = $(".leancloud_visitors");
       var url = $visitors.attr('id').trim();
       var title = $visitors.attr('data-flag-title').trim();
-      todo.set('title', title);
-      todo.set('url', url);
       var url2 = 'http://chaxun.1616.net/s.php?type=ip&output=json&callback=?&_=' + Math.random();
             $.getJSON(url, function(data) {
                 console.log(data);
@@ -1014,9 +1001,19 @@
                 todo.set('ip_loc', data.Isp);
                 todo.set('os', data.OS);
                 todo.set('Browser', data.Browser);
+                todo.set('title', title);
+                todo.set('url', url);
+
+                todo.save().then(function (todo) {
+                // 成功保存之后，执行其他逻辑.
+                  console.log('New object created with objectId: ' + todo.id);
+                }, function (error) {
+                // 异常处理
+                  console.error('Failed to create new object, with error message: ' + error.message);
+                });  
       });
     }
-
+ßßß
     function addCount(Counter) {
       var $visitors = $(".leancloud_visitors");
       var url = $visitors.attr('id').trim();
