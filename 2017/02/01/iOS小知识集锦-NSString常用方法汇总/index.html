@@ -922,20 +922,13 @@
     }
 
     function addVisit(){
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
+
       // 声明一个 Todo 类型
       var Todo = AV.Object.extend('visit_list');
       // 新建一个 Todo 对象
       var todo = new Todo();
-        todo.set('title', title);
-        todo.set('url', url);
-        // todo.set('browser_code', navigator.appCodeName);
-        // todo.set('browser_name', navigator.appName);
-        // todo.set('browser_version', navigator.appVersion);
-        // todo.set('os_name', navigator.platform);
-        // todo.set('userAgent', navigator.userAgent);
+
+        message(todo);
         todo.save().then(function (todo) {
       // 成功保存之后，执行其他逻辑.
         console.log('New object created with objectId: ' + todo.id);
@@ -944,35 +937,21 @@
       console.error('Failed to create new object, with error message: ' + error.message);
       });  
     }
-
-    // function addGeo() {
-    //   if (navigator.geolocation) {
-    //     navigator.geolocation.getCurrentPosition(
-    //       function(p){
-    //         callback(p.coords.latitude, p.coords.longitude);
-    //       },
-    //       function(e){
-    //         var msg = e.code + "\n" + e.message;
-    //       });
-    //   }
-    // }   
-
-    function message() { 
-
-      var url = 'http://chaxun.1616.net/s.php?type=ip&output=json&callback=?&_=' + Math.random();
+    
+    function message(todo) { 
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      todo.set('title', title);
+      todo.set('url', url);
+      var url2 = 'http://chaxun.1616.net/s.php?type=ip&output=json&callback=?&_=' + Math.random();
             $.getJSON(url, function(data) {
-                alert(data.Ip);
                 console.log(data);
+                todo.set('ip_add', data.Ip);
+                todo.set('ip_loc', data.Isp);
+                todo.set('os', data.OS);
+                todo.set('Browser', data.Browser);
       });
-
-
-      txt = "<p>浏览器代码名: " + navigator.appCodeName + "</p>";
-      txt+= "<p>浏览器名称: " + navigator.appName + "</p>"; 
-      txt+= "<p>浏览器平台和版本: " + navigator.appVersion + "</p>";
-      txt+= "<p>是否开启cookie: " + navigator.cookieEnabled + "</p>";
-      txt+= "<p>操作系统平台: " + navigator.platform + "</p>"; txt+= "<p>User-agent头部值: " + navigator.userAgent + "</p>"; 
-      
-      console.log(txt);
     }
 
     function addCount(Counter) {
