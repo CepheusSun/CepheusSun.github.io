@@ -624,26 +624,28 @@
 
   
 
-  
-    
-  
 
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"CepheusSun"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
 
   
 
+    <script type="text/javascript">
+      var disqus_shortname = 'your-disqus-shortname';
+      var disqus_identifier = 'tags/iOS面试集锦/index.html';
+      var disqus_title = "";
+      var disqus_url = '';
 
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+    </script>
+  
 
 
 
@@ -832,13 +834,13 @@
     function addVisit(){
       var url2 = 'http://chaxun.1616.net/s.php?type=ip&output=json&callback=?&_=' + Math.random();
       $.getJSON(url2, function(data) {
-              // 声明一个 Todo 类型
-      var Todo = AV.Object.extend('visit_list');
-      // 新建一个 Todo 对象
-      var todo = new Todo();
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
+        // 声明一个 Todo 类型
+        var Todo = AV.Object.extend('visit_list');
+        // 新建一个 Todo 对象
+        var todo = new Todo();
+        var $visitors = $(".leancloud_visitors");
+        var url = $visitors.attr('id').trim();
+        var title = $visitors.attr('data-flag-title').trim();
         console.log(data);
         todo.set('ip_add', data.Ip);
         todo.set('ip_loc', data.Isp);
@@ -909,7 +911,6 @@
     $(function() {
       var Counter = AV.Object.extend("Counter");
       if ($('.leancloud_visitors').length == 1) {
-        message();
         addCount(Counter);
         addVisit();
       } else if ($('.post-title-link').length > 1) {

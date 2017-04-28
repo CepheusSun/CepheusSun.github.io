@@ -329,7 +329,7 @@
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
                 <a href="/2017/04/19/使用Gitlab和Cocoapods创建私有pod/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/19/使用Gitlab和Cocoapods创建私有pod/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/04/19/使用Gitlab和Cocoapods创建私有pod/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -498,8 +498,11 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/04/19/使用Gitlab和Cocoapods创建私有pod/"
-           data-title="使用Gitlab和Cocoapods创建私有pod" data-url="https://CepheusSun.github.io/2017/04/19/使用Gitlab和Cocoapods创建私有pod/">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
       </div>
     
   </div>
@@ -772,26 +775,30 @@
 
   
 
-  
-    
-  
 
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"CepheusSun"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
 
   
 
+    <script type="text/javascript">
+      var disqus_shortname = 'your-disqus-shortname';
+      var disqus_identifier = '2017/04/19/使用Gitlab和Cocoapods创建私有pod/';
+      var disqus_title = "使用Gitlab和Cocoapods创建私有pod";
+      var disqus_url = 'https://CepheusSun.github.io/2017/04/19/使用Gitlab和Cocoapods创建私有pod/';
 
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
 
 
 
@@ -980,13 +987,13 @@
     function addVisit(){
       var url2 = 'http://chaxun.1616.net/s.php?type=ip&output=json&callback=?&_=' + Math.random();
       $.getJSON(url2, function(data) {
-              // 声明一个 Todo 类型
-      var Todo = AV.Object.extend('visit_list');
-      // 新建一个 Todo 对象
-      var todo = new Todo();
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
+        // 声明一个 Todo 类型
+        var Todo = AV.Object.extend('visit_list');
+        // 新建一个 Todo 对象
+        var todo = new Todo();
+        var $visitors = $(".leancloud_visitors");
+        var url = $visitors.attr('id').trim();
+        var title = $visitors.attr('data-flag-title').trim();
         console.log(data);
         todo.set('ip_add', data.Ip);
         todo.set('ip_loc', data.Isp);
@@ -1057,7 +1064,6 @@
     $(function() {
       var Counter = AV.Object.extend("Counter");
       if ($('.leancloud_visitors').length == 1) {
-        message();
         addCount(Counter);
         addVisit();
       } else if ($('.post-title-link').length > 1) {
