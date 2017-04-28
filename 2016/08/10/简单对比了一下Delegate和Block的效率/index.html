@@ -514,9 +514,6 @@
           </div>
           
 
-  <p>热评文章</p>
-  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
-
 
           
   <div class="comments" id="comments">
@@ -813,10 +810,6 @@
   </script>
 
   
-    
-    <script src="/VEN/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
-  
 
 
 
@@ -1005,35 +998,32 @@
     }
 
     function addVisit(){
-
-      // 声明一个 Todo 类型
+      var url2 = 'http://chaxun.1616.net/s.php?type=ip&output=json&callback=?&_=' + Math.random();
+      $.getJSON(url2, function(data) {
+              // 声明一个 Todo 类型
       var Todo = AV.Object.extend('visit_list');
       // 新建一个 Todo 对象
       var todo = new Todo();
-
       var $visitors = $(".leancloud_visitors");
       var url = $visitors.attr('id').trim();
       var title = $visitors.attr('data-flag-title').trim();
-      var url2 = 'http://chaxun.1616.net/s.php?type=ip&output=json&callback=?&_=' + Math.random();
-            $.getJSON(url, function(data) {
-                console.log(data);
-                todo.set('ip_add', data.Ip);
-                todo.set('ip_loc', data.Isp);
-                todo.set('os', data.OS);
-                todo.set('Browser', data.Browser);
-                todo.set('title', title);
-                todo.set('url', url);
-
-                todo.save().then(function (todo) {
-                // 成功保存之后，执行其他逻辑.
-                  console.log('New object created with objectId: ' + todo.id);
-                }, function (error) {
-                // 异常处理
-                  console.error('Failed to create new object, with error message: ' + error.message);
-                });  
+        console.log(data);
+        todo.set('ip_add', data.Ip);
+        todo.set('ip_loc', data.Isp);
+        todo.set('os', data.OS);
+        todo.set('Browser', data.Browser);
+        todo.set('title', title);
+        todo.set('url', url);
+        todo.save().then(function (todo) {
+        // 成功保存之后，执行其他逻辑.
+          console.log('New object created with objectId: ' + todo.id);
+        }, function (error) {
+        // 异常处理
+          console.error('Failed to create new object, with error message: ' + error.message);
+        });  
       });
     }
-ßßß
+
     function addCount(Counter) {
       var $visitors = $(".leancloud_visitors");
       var url = $visitors.attr('id').trim();
