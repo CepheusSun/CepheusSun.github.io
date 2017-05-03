@@ -341,9 +341,9 @@
       <category term="CocoaPods" scheme="https://CepheusSun.github.io/categories/CocoaPods/"/>
     
     
-      <category term="iOS" scheme="https://CepheusSun.github.io/tags/iOS/"/>
-    
       <category term="CocoaPods" scheme="https://CepheusSun.github.io/tags/CocoaPods/"/>
+    
+      <category term="iOS" scheme="https://CepheusSun.github.io/tags/iOS/"/>
     
   </entry>
   
@@ -1300,9 +1300,9 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
       <category term="CocoaPods" scheme="https://CepheusSun.github.io/categories/CocoaPods/"/>
     
     
-      <category term="iOS" scheme="https://CepheusSun.github.io/tags/iOS/"/>
-    
       <category term="CocoaPods" scheme="https://CepheusSun.github.io/tags/CocoaPods/"/>
+    
+      <category term="iOS" scheme="https://CepheusSun.github.io/tags/iOS/"/>
     
   </entry>
   
