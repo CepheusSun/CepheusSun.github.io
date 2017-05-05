@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="iOS,架构设计," />
+  <meta name="keywords" content="iOS,Reactive,Swift,翻译,设计模式," />
 
 
 
@@ -86,20 +86,22 @@
 
 
 
-<meta name="description" content="抽空重新看了一下今年的GMTC,读到链家郭晓铭的PPT:链家网移动端敏捷之术的时候忍不住写了这个笔记,大多数内容都是ppt上的原文。">
+<meta name="description" content="MVVM 是一种设计模式。他是程序的代码分离成三个部分: Model、View、ViewModel。 Model 代表数据的表现, View 代表用户看到的界面，ViewModel 代表着模型层和视图层的主要关联关系。
+Model
+Model 就是数据层。他包括一定范围内的模型，和业务逻辑。 Model 并不只是你程序中的那些模型结构体或者数据库, 他也包含了一些 Service 或者组件, 比如">
 <meta property="og:type" content="article">
-<meta property="og:title" content="复杂业务下的架构设计和研发效率提升(笔记)">
-<meta property="og:url" content="https://CepheusSun.github.io/2016/08/30/复杂业务下的架构设计和研发效率提升(笔记)/index.html">
+<meta property="og:title" content="MVVM design pattern and RxSwift">
+<meta property="og:url" content="https://CepheusSun.github.io/2017/05/06/MVVM design pattern and RxSwift/index.html">
 <meta property="og:site_name" content="CepheusSun的博客">
-<meta property="og:description" content="抽空重新看了一下今年的GMTC,读到链家郭晓铭的PPT:链家网移动端敏捷之术的时候忍不住写了这个笔记,大多数内容都是ppt上的原文。">
-<meta property="og:image" content="http://ocg4av0wv.bkt.clouddn.com/6008BDF9-E1DD-4BFA-9076-CD85EFDAA252.png">
-<meta property="og:image" content="http://ocg4av0wv.bkt.clouddn.com/A311CAD4-C6F0-4428-8662-0E7DA0EFB066.png">
-<meta property="og:image" content="http://ocg4av0wv.bkt.clouddn.com/80A8B375-36DC-496F-B4CD-C9C26A538986.png">
-<meta property="og:updated_time" content="2016-08-30T06:45:27.000Z">
+<meta property="og:description" content="MVVM 是一种设计模式。他是程序的代码分离成三个部分: Model、View、ViewModel。 Model 代表数据的表现, View 代表用户看到的界面，ViewModel 代表着模型层和视图层的主要关联关系。
+Model
+Model 就是数据层。他包括一定范围内的模型，和业务逻辑。 Model 并不只是你程序中的那些模型结构体或者数据库, 他也包含了一些 Service 或者组件, 比如">
+<meta property="og:updated_time" content="2017-05-05T17:29:07.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="复杂业务下的架构设计和研发效率提升(笔记)">
-<meta name="twitter:description" content="抽空重新看了一下今年的GMTC,读到链家郭晓铭的PPT:链家网移动端敏捷之术的时候忍不住写了这个笔记,大多数内容都是ppt上的原文。">
-<meta name="twitter:image" content="http://ocg4av0wv.bkt.clouddn.com/6008BDF9-E1DD-4BFA-9076-CD85EFDAA252.png">
+<meta name="twitter:title" content="MVVM design pattern and RxSwift">
+<meta name="twitter:description" content="MVVM 是一种设计模式。他是程序的代码分离成三个部分: Model、View、ViewModel。 Model 代表数据的表现, View 代表用户看到的界面，ViewModel 代表着模型层和视图层的主要关联关系。
+Model
+Model 就是数据层。他包括一定范围内的模型，和业务逻辑。 Model 并不只是你程序中的那些模型结构体或者数据库, 他也包含了一些 Service 或者组件, 比如">
 
 
 
@@ -120,9 +122,9 @@
 
 
 
-  <link rel="canonical" href="https://CepheusSun.github.io/2016/08/30/复杂业务下的架构设计和研发效率提升(笔记)/"/>
+  <link rel="canonical" href="https://CepheusSun.github.io/2017/05/06/MVVM design pattern and RxSwift/"/>
 
-  <title> 复杂业务下的架构设计和研发效率提升(笔记) | CepheusSun的博客 </title>
+  <title> MVVM design pattern and RxSwift | CepheusSun的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -275,7 +277,7 @@
             
             
               
-                复杂业务下的架构设计和研发效率提升(笔记)
+                MVVM design pattern and RxSwift
               
             
           </h1>
@@ -287,8 +289,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-30T14:37:45+08:00" content="2016-08-30">
-              2016-08-30
+            <time itemprop="dateCreated" datetime="2017-05-06T00:00:00+08:00" content="2017-05-06">
+              2017-05-06
             </time>
           </span>
 
@@ -301,8 +303,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/文章笔记收集/" itemprop="url" rel="index">
-                    <span itemprop="name">文章笔记收集</span>
+                  <a href="/categories/Reactive/" itemprop="url" rel="index">
+                    <span itemprop="name">Reactive</span>
                   </a>
                 </span>
 
@@ -317,8 +319,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/08/30/复杂业务下的架构设计和研发效率提升(笔记)/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/08/30/复杂业务下的架构设计和研发效率提升(笔记)/" itemprop="commentsCount"></span>
+                <a href="/2017/05/06/MVVM design pattern and RxSwift/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/05/06/MVVM design pattern and RxSwift/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -328,7 +330,7 @@
 
           
           
-             <span id="/2016/08/30/复杂业务下的架构设计和研发效率提升(笔记)/" class="leancloud_visitors" data-flag-title="复杂业务下的架构设计和研发效率提升(笔记)">
+             <span id="/2017/05/06/MVVM design pattern and RxSwift/" class="leancloud_visitors" data-flag-title="MVVM design pattern and RxSwift">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -350,103 +352,59 @@
       
 
       
-        <p>抽空重新看了一下今年的<a href="http://gmtc.geekbang.org/"><em>GMTC</em></a>,读到链家郭晓铭的PPT:<a href="http://ppt.geekbang.org/slide/show/210"><em>链家网移动端敏捷之术</em></a>的时候忍不住写了这个笔记,大多数内容都是ppt上的原文。</p>
+        <p>MVVM 是一种设计模式。他是程序的代码分离成三个部分: <code>Model</code>、<code>View</code>、<code>ViewModel</code>。 <code>Model</code> 代表数据的表现, <code>View</code> 代表用户看到的界面，<code>ViewModel</code> 代表着模型层和视图层的主要关联关系。</p>
+<p><strong>Model</strong></p>
+<p><code>Model</code> 就是数据层。他包括一定范围内的模型，和业务逻辑。 <code>Model</code> 并不只是你程序中的那些模型结构体或者数据库, 他也包含了一些 Service 或者组件, 比如说 <code>Alamofire</code>和一些 SDK 等等。</p>
+<p><code>Model</code> 层执行所有跟数据有关的操作。比如常见的增删改查等等。这些操作由 <code>ViewModel</code> 发起。当 <code>Model</code>操作完了数据之后它再告诉 <code>ViewModel</code> 结果。</p>
+<p><code>Model</code> 被 ViewModel 持有。他也并不知道视图层和 <code>ViewModel</code> 层的事情。因为他是和这两个东西完全隔离开的。</p>
+<p><strong>View</strong></p>
+<p><code>View</code> 是程序中数据的可视化展示。它没有逻辑相关的东西。他主要有接受用户交互事件，和将数据展示在界面上两个人物。它将用户交互的事件转发到 <code>ViewModel</code> 中进行处理。<code>View</code> 观察 <code>ViewModel</code> 中数据的变化, 并且将这些变化展现出来。</p>
+<p><code>View</code> 和 <code>Model</code> 之间没有任何直接的关联。 他们通过 <code>View</code> 持有的 <code>ViewModel</code> 产生关联。</p>
+<p>界面信息在 <code>xib</code> 或者 <code>StoryBoard</code> 中通过 <code>UIKit</code> 中的组件被定义。<code>ViewController</code> 是直接跟 <code>xib</code> 或者 <code>StoryBoard</code> 关联的。它包含了 <code>Xib</code> 或者 <code>StoryBoard</code> 中的 <code>outlets</code> 和一些定义 UI 的额外配置。他也负责管理 <code>View</code> 的生命周期。 在 MVVM 中他和 <code>View</code> 的关联是非常紧密的, 他其实就是 <code>View</code> 层的一部分。</p>
+<p><strong>ViewModel</strong></p>
+<p><code>ViewModel</code> 是程序的逻辑层。他处理用户交互行为。然后更新数据。然后在通知 <code>View</code> 新的数据和显示的方式。举一个很平常的例子。一个 ViewModel 从Model层中请求到了一些包含 <code>Date</code> 的模型。 这个 Date 值并不会被告诉给 View, ViewModel 告诉 View 的应该是被格式化之后的字符串。视图不会操作数据本身，他只负责将 ViewModel 准备好的数据展示出来。</p>
+<p><strong>Similar to MVC</strong></p>
+<p>在 MVC 设计模式中, <code>ViewController</code> 是 <code>Model</code> 和 <code>View</code> 之间的桥梁。他只有视图, 管理视图的结构，管理用户的交互。他还负责管理视图的生命周期,加载、显示、消失等。他具有的另外一个指责是更新模型数据, 这就包括了显示数据的相关逻辑(也就是数据的处理,如上文提到的讲 <code>Date</code> 转化成 <code>String</code> 的逻辑)。因为他具有这么多的职责，所以很多情况下 <code>Viewcontroller</code> 就会变的非常大。所以也有人称MVC 为 Massive View Controller</p>
+<p>出现复杂的 <code>viewController</code> 主要有两个原因。由于 <code>Controller</code> 有很多的职责。代码就会变的非常的复杂。这很明显就违背了单一职责这个原则。这也让测试 <code>Controller</code> 中的逻辑变成一件很麻烦的事情。<code>Controller</code> 和 <code>View</code> 的高度耦合。<code>view</code> 的生命周期使得逻辑的分离变的不那么容易。我们就需要花很大的精力来处理视图的生命周期。</p>
+<p>MVVM 和 MVC 非常相似。 正如前文所说。 MVC 中的 <code>Controller</code> 同时包含了视图和程序的逻辑。将逻辑相关的代码从 <code>Controller</code> 中分离出来, 放到他自己抽象出来的类里面去。这时候的 <code>Controller</code>就只关注视图相关的事情。刚刚分离出来的这个类处理相关的逻辑。这个类就是 ViewModel。他和 <code>Controller</code> 具有一一对应关系。所以说 MVVM 就是将逻辑代码从 <code>controller</code>中分离到 <code>ViewModel</code> 中的 MVC</p>
+<p><strong>Binding data from ViewModel to View</strong></p>
+<p>有很多将数据绑定的机制, 比如 Swift 中的属性观察。视图可以对外提供一个 Closure 来进行视图的更新。这个 Closure 用来通知 View 他关联的属性的更新。除了熟悉观察。我们的程序还经常需要处理各种异步操作，比如网络请求，和通知或者事件的流信息。函数响应式编程(FRP)框架简直就是为了处理这类事件而生的。现在也有很多FRP 框架，对 iOS 开发来说，最出名的应该是 <code>RxSwift</code> 和 <code>ReactiveCocoa</code>了。之前在一篇对比文章中有提到过, 不管怎样，我更喜欢 <code>RxSwift</code> </p>
+<p><strong>RxSwift</strong></p>
+<p>指令式编程是基于一步一步明确的指令来执行的。他详细的描述了程序的运行过程。值做为状态而存在。由于程序是一步一步的执行的,所以如果其中一个值在之后发生了改变，这一改变也不会被传到下一步。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 指令式编程</span></div><div class="line">a = <span class="number">1</span></div><div class="line">b = <span class="number">2</span></div><div class="line"><span class="built_in">c</span> = a + b  <span class="comment">// c = 3</span></div><div class="line">a = <span class="number">5</span>   <span class="comment">// c = 3</span></div></pre></td></tr></table></figure>
+<p>响应式编程,跟指令式相反。他是基于变化的。他基于声明式编程，这就意味着他关注的是程序应该完成什么，而不是程序是怎么运行的。它是通过数学运算和其他像是 <code>filter</code> <code>map</code> <code>reduce</code> 之类的运算操作的运用来实现的。如何准确的运行被交给底层的程序语言或者框架来考虑了。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 响应式编程</span></div><div class="line">a = <span class="number">1</span></div><div class="line">b = <span class="number">2</span></div><div class="line"><span class="built_in">c</span> = a + b <span class="comment">// c = 3</span></div><div class="line">a = <span class="number">5</span>     <span class="comment">// c = 7</span></div></pre></td></tr></table></figure>
+<p>RxSwift 让你能用通过函数响应式编程来编写你的代码。使用 RxSwift 可以很轻松的创建事件或者数据流。这些事件或者数据流可以互相组合、转换。并且最终被观察到，基于值来进行一些操作。</p>
+<p>正如前文所说，在 MVVM 中 View 观察 ViewModel 中模型的数据。RxSwift 提供了一个非常简单并且干净的方法来观察这些值，并绑定到对应的 View 上。</p>
 <a id="more"></a>
-<h2 id="大多数app存在的现象"><a href="#大多数app存在的现象" class="headerlink" title="大多数app存在的现象"></a>大多数app存在的现象</h2><ol>
-<li>业务简单<ul>
-<li>业务覆盖城市范围小</li>
-<li>产品用户角色单一</li>
-<li>业务单一、未形成线上线下的闭环</li>
-</ul>
-</li>
-<li>团队工作方式传统<ul>
-<li>团队规模小(人员密切配合，不存在业务线的分工)</li>
-<li>瀑布式开发(版本需求比较稳定，在开发过程中很少调整)</li>
-<li>手工打包上线(产品投放渠道少，发版节奏平缓，测试盒上线均靠手工打包)</li>
-</ul>
-</li>
-<li>架构简单 MVC架构<ul>
-<li>通用设计，学习和维护成本低。</li>
-<li>对复杂业务不适应。业务逻辑变得复杂的时候，Controller将变得越来越大</li>
-</ul>
-</li>
-</ol>
-<h2 id="第一阶段"><a href="#第一阶段" class="headerlink" title="第一阶段"></a>第一阶段</h2><ol>
-<li>地域业务差异</li>
-<li>业务增多，内容型业务的形态多变</li>
-<li>人员增多，人均产出下降，代码质量堪忧</li>
-</ol>
-<h3 id="基于短链的配置化"><a href="#基于短链的配置化" class="headerlink" title="基于短链的配置化"></a>基于短链的配置化</h3><p><strong>方法:</strong></p>
-<ol>
-<li>Sever端下发城市配置(包含icon、标题、跳转短链、功能开关等)</li>
-<li>跳转短链注册表(保存短链pattern与页面的类别、类参数名、短链参数名、默认参数值、跳转方式等的对应信息)</li>
-<li>短链解析和页面跳转(使用注册表中的短链pattern做正则匹配，根据匹配到的消息创建页面并用对应的跳转方式打开)</li>
-</ol>
-<p><strong>优点:</strong></p>
-<ol>
-<li>更统一(各个业务的解析和跳转逻辑由跳转同意引擎同意处理)</li>
-<li>更灵活(城市配置由路由端下发，城市业务范围的调整不依赖发版)</li>
-<li>扩展性强(快速支持新增城市，且对新业务的支持不影响旧的功能)</li>
-</ol>
-<h3 id="业务快速上线和调整"><a href="#业务快速上线和调整" class="headerlink" title="业务快速上线和调整"></a>业务快速上线和调整</h3><p>使用Native + H5 的方式实现。</p>
-<p>Native作为重点业务体验的保证。 H5负责内容型业务和运营活动</p>
-<p><img src="http://ocg4av0wv.bkt.clouddn.com/6008BDF9-E1DD-4BFA-9076-CD85EFDAA252.png" width="600"/></p>
-<ol>
-<li>小巧清晰，不依赖第三方解决方案</li>
-<li>消息传递安全，通过bridge注入参数信息，不是url</li>
-<li>两端方案统一</li>
-</ol>
-<h3 id="项目质量缺乏保障"><a href="#项目质量缺乏保障" class="headerlink" title="项目质量缺乏保障"></a>项目质量缺乏保障</h3><ol>
-<li>开发流程优化<ul>
-<li>代码规范形成(代码风格一致,提高可读性;统一的入口参数校验，异常处理等，提高健壮性)</li>
-<li>CodeReview(同步开发人员对代码和设计的理解；提前发现问题)</li>
-<li>敏捷开发模式(随时交付，提早反馈)</li>
-</ul>
-</li>
-</ol>
-<h2 id="第二阶段"><a href="#第二阶段" class="headerlink" title="第二阶段"></a>第二阶段</h2><ol>
-<li>多个业务团队并行开发</li>
-<li>多个新产品需要快速上线(需要能够复制已有功能，快速上线)</li>
-<li>对接后端团队越来越多(沟通成本高，发版风险大;不同团队接口数据格式差异大，客户端数据解析和校验逻辑复杂)</li>
-</ol>
-<h3 id="组件化"><a href="#组件化" class="headerlink" title="组件化"></a>组件化</h3><p><img src="http://ocg4av0wv.bkt.clouddn.com/A311CAD4-C6F0-4428-8662-0E7DA0EFB066.png" width="600" /></p>
-<h4 id="组建间的调用方案"><a href="#组建间的调用方案" class="headerlink" title="组建间的调用方案"></a>组建间的调用方案</h4><p>组建: 各个组件之间相互独立，不直接调用，而是通过中介者Component Mediator相互调用</p>
-<p>CM:按组建拆分，每部分为该组建支持的调用方式</p>
-<p>组建接口: 各组件针对组件间调用做相应接口类。CM通过反射机制调用该接口类的相应方法。</p>
-<h4 id="组件化过程中的风险控制"><a href="#组件化过程中的风险控制" class="headerlink" title="组件化过程中的风险控制"></a>组件化过程中的风险控制</h4><ol>
-<li>代码仓库分离<ul>
-<li>主工程代码、公共模块代码、以及各业务组件代码仓库分离</li>
-</ul>
-</li>
-<li>权限控制<ul>
-<li>为单个业务团队配置公共模块代码，以及其他业务代码的只读权限</li>
-</ul>
-</li>
-<li>建立接口类的命名规范<ul>
-<li>对组件接口类名以及接口接口方法的命名统一规范，降低开发成本</li>
-</ul>
-</li>
-<li>接口类的CodeReview<ul>
-<li>接口类出错的影响范围相对较大，需要业务负责任对接口类做重点review</li>
-</ul>
-</li>
-<li>热修复<ul>
-<li>紧急修复组件化过程中造成的线上问题；每个补丁不允许超过1个版本</li>
-</ul>
-</li>
-</ol>
-<h4 id="API团队引入"><a href="#API团队引入" class="headerlink" title="API团队引入"></a>API团队引入</h4><p>引入API团队可以减少客户端和多个Sever端交互。</p>
+<p><strong>Observable</strong></p>
+<p>Observable 是 RxSwift 的主要构成部分。他是一个可以异步的接受元素的序列。这个序列可以有0个或者很多个的元素。有三种事件能够基于它发生。下一步(Next)、完成(Completed)、错误(Error)</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Event</span> </span>&#123;</div><div class="line">    <span class="keyword">case</span> next(<span class="type">Element</span>)   <span class="comment">// 这个序列的下一个元素</span></div><div class="line">    <span class="keyword">case</span> error(<span class="type">Swift</span>.<span class="type">Error</span>)<span class="comment">// 这个序列发生了错误</span></div><div class="line">    <span class="keyword">case</span> completed      <span class="comment">// 这个序列成功的完成的所有人任务</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以使用 <code>Observable</code> 的 <code>subscribe</code> 方法来订阅这些事件。 用这种方法可以分别处理这个事件的各种情况。</p>
 <ul>
-<li>沟通成本降低</li>
-<li>发版风险降低</li>
-<li>业务逻辑简化</li>
+<li>OnNext: 可以使用被订阅的元素值。</li>
+<li>OnCompleted: 当这个序列成功的发送完所有元素之后会被调用。</li>
+<li>OnError: 当这个序列不能完成的时候被调用。</li>
 </ul>
-<p><strong>移动端与后端配合开发流程</strong><br><img src="http://ocg4av0wv.bkt.clouddn.com/80A8B375-36DC-496F-B4CD-C9C26A538986.png" width = 600 title="移动端与后端配合开发流程"/> </p>
-<h2 id="第三阶段"><a href="#第三阶段" class="headerlink" title="第三阶段"></a>第三阶段</h2><ol>
-<li>插件化(用户对产品功能做个性化定制，减少安装包体积，降低发版成本)</li>
-<li>跨平台技术(最小的成本覆盖到两个平台，避免重复开发)</li>
-<li>安全性(更多交易内容线上化)</li>
-</ol>
+<p>只要 <code>Complete</code> 或者 <code>Error</code> 被观察到了, 这个序列就不能产生任何新的元素了。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">observable.subscribe(</div><div class="line">    onNext: &#123; element <span class="keyword">in</span> ... &#125;, </div><div class="line">    onError: &#123; error <span class="keyword">in</span> ... &#125;,</div><div class="line">    onCompleted: &#123; ... &#125;</div><div class="line">)</div></pre></td></tr></table></figure>
+<p><strong>Hot and cold observables</strong></p>
+<p>即使没有被观察也会发送消息的信号被称作热信号。想象一下 <code>NotificationCenter</code> 技术没有其他对象接受通知, 也也然会发送出来。如果你在某个时候订阅了这个信号, 之前发出来的消息你就会错过。</p>
+<p>那些只有被订阅之后才开始发送消息的信号被称作冷信号。这些资源会被分配给每个订阅对象。(比如说，你每次订阅的网络请求就会被释放)但是这些资源可以被多个对象共享(只有一个网络请求被释放了,但可能这被很多个观察者订阅)</p>
+<p><strong>Driver</strong></p>
+<p>Driver 是 RxCocoa 框架中的一个值类型。它是对一个可订阅的序列的封装，如果要把一个简单的值绑定到View上, 它会是一个更简单的方法。如果 <code>Observables</code> 发生了错误, 你需要很方便的将一些东西展示出来。每个信号都可以很容易的被转换成 <code>Driver</code>。 当你提供了这个信号发生错误的返回什么的时候，只需要使用 <code>asDriver</code> 方法就可以了。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">.asDriver(onErrorJustReturn: <span class="string">"No items to display."</span>)</div></pre></td></tr></table></figure>
+<p>想象一下异步操作的场景。比如说网络请求。我们需要在界面上展示返回值的个数。在这个场景中，我们需要将返回值的个数映射成一个字符串。可能这个字符串的格式可能是 <code>&quot;X item(s)&quot;</code> <code>Driver</code> 还能够确保我们需要修改 UI 的这个订阅是发生在主线程当中的。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> results: <span class="type">Observable</span>&lt;[<span class="type">SomeItem</span>]&gt; = ...</div><div class="line"><span class="keyword">let</span> resultsCountDriver = results</div><div class="line">    .<span class="built_in">map</span> &#123; <span class="string">"<span class="subst">\($<span class="number">0</span>.<span class="built_in">count</span>)</span> item(s)"</span> &#125;</div><div class="line">    .asDriver(onErrorJustReturn: <span class="string">"No items to display."</span>)</div></pre></td></tr></table></figure>
+<p>把这个数据绑定到 Label 中就很简单了</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">resultsCountDriver.drive(resultCountLabel.rx.text).disposed(by: disposeBag)</div></pre></td></tr></table></figure>
+<p><strong>DisposeBag</strong></p>
+<p>如果一个序列停止了, 但是它并没有被释放掉。在他就会造成资源的浪费和内存的泄漏。知道他完成了或者处错了。如果一个序列没有停止，也没有出错，这个资源就会被永久的占用。这就是为什么我们要在需要订阅的对象中生命一个 <code>DisposeBag</code> 的成员变量的原因了。这样的话，只要这个对象呗释放掉了，所有相关的资源都会被释放并且被系统回收。</p>
+<p><strong>Variable</strong></p>
+<p><code>Variable</code>表示可以被订阅的状态。它是信号和功能范式之间的桥梁。<code>Variable</code> 总是包含了提供给构造函数的初始值当你订阅当前的值的时候，这个初始值会立马被发送到过来。(只有最新和当前值会被发出，旧的值不会)。也可以直接获取或者设置 <code>Variable</code> 的值。他内部的信号可以通过 <code>asObservable</code> 方法获取到。另外, <code>Variable</code> 永远都不会出错。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> variable = <span class="type">Variable</span>(<span class="string">"My Variable"</span>)</div><div class="line">variable.value = <span class="string">"Some value"</span></div><div class="line"><span class="keyword">let</span> variableObservable = variable.asObservable()</div><div class="line">variableObservable.subscribe(onNext: &#123; value <span class="keyword">in</span></div><div class="line">    <span class="built_in">print</span>(value) <span class="comment">//prints "Some value"</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>最后， 我写了一个 Demo 来演示 MVVM + RxSwift. 这是一个简单的程序获取并且显示天气的数据。这个app有三种状态， 加载中，显示中，错误。有两种对错误的处理，一是，我们只显示错误。另一个是显示之前的数据。如果没有，就显示错误。这两种处理方式都是通过响应式编程和指令式编程实现的。</p>
+<p>在这些例子中，只有 ViewMoel 会发生改变。你可以看到给功能增加复杂性(显示错误或者旧的数据)。如果使用指令式编程，可能会对代码带来很多的变动。而使用响应式编程，只需要增加额外的状态而已。</p>
 
       
     </div>
@@ -471,7 +429,13 @@
           
             <a href="/tags/iOS/" rel="tag">#iOS</a>
           
-            <a href="/tags/架构设计/" rel="tag">#架构设计</a>
+            <a href="/tags/Reactive/" rel="tag">#Reactive</a>
+          
+            <a href="/tags/Swift/" rel="tag">#Swift</a>
+          
+            <a href="/tags/翻译/" rel="tag">#翻译</a>
+          
+            <a href="/tags/设计模式/" rel="tag">#设计模式</a>
           
         </div>
       
@@ -480,17 +444,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/08/29/css学习笔记--1/" rel="next" title="CSS学习笔记 -- 1">
-                <i class="fa fa-chevron-left"></i> CSS学习笔记 -- 1
+              <a href="/2017/05/05/RxSwift and the awesome things you can do with Reactive Programming — Part I/" rel="next" title="RxSwift and the awesome things you can do with Reactive Programming — Part I">
+                <i class="fa fa-chevron-left"></i> RxSwift and the awesome things you can do with Reactive Programming — Part I
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/08/31/怎么使用Hexo发博客/" rel="prev" title="怎么使用Hexo发博客">
-                怎么使用Hexo发博客 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -662,7 +622,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#大多数app存在的现象"><span class="nav-number">1.</span> <span class="nav-text">大多数app存在的现象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第一阶段"><span class="nav-number">2.</span> <span class="nav-text">第一阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基于短链的配置化"><span class="nav-number">2.1.</span> <span class="nav-text">基于短链的配置化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#业务快速上线和调整"><span class="nav-number">2.2.</span> <span class="nav-text">业务快速上线和调整</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#项目质量缺乏保障"><span class="nav-number">2.3.</span> <span class="nav-text">项目质量缺乏保障</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二阶段"><span class="nav-number">3.</span> <span class="nav-text">第二阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#组件化"><span class="nav-number">3.1.</span> <span class="nav-text">组件化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#组建间的调用方案"><span class="nav-number">3.1.1.</span> <span class="nav-text">组建间的调用方案</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#组件化过程中的风险控制"><span class="nav-number">3.1.2.</span> <span class="nav-text">组件化过程中的风险控制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#API团队引入"><span class="nav-number">3.1.3.</span> <span class="nav-text">API团队引入</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三阶段"><span class="nav-number">4.</span> <span class="nav-text">第三阶段</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
         </section>
@@ -799,9 +759,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'your-disqus-shortname';
-      var disqus_identifier = '2016/08/30/复杂业务下的架构设计和研发效率提升(笔记)/';
-      var disqus_title = "复杂业务下的架构设计和研发效率提升(笔记)";
-      var disqus_url = 'https://CepheusSun.github.io/2016/08/30/复杂业务下的架构设计和研发效率提升(笔记)/';
+      var disqus_identifier = '2017/05/06/MVVM design pattern and RxSwift/';
+      var disqus_title = "MVVM design pattern and RxSwift";
+      var disqus_url = 'https://CepheusSun.github.io/2017/05/06/MVVM design pattern and RxSwift/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');

@@ -4,6 +4,34 @@
 
     
   <url>
+    <loc>https://CepheusSun.github.io/2017/05/06/MVVM%20design%20pattern%20and%20RxSwift/</loc>
+    <lastmod>2017-05-05T17:29:07.000Z</lastmod>
+    <data>
+        <display>
+        <title>MVVM design pattern and RxSwift</title>
+        <pubTime>2017-05-05T16:00:00.000Z</pubTime>
+        
+        <tag>iOS</tag>
+         
+        <tag>Reactive</tag>
+         
+        <tag>Swift</tag>
+         
+        <tag>翻译</tag>
+         
+        <tag>设计模式</tag>
+         
+         
+           
+             
+              <breadCrumb title="Reactive" url="https://CepheusSun.github.io/categories/Reactive/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://CepheusSun.github.io/2017/05/05/RxSwift%20and%20the%20awesome%20things%20you%20can%20do%20with%20Reactive%20Programming%E2%80%8A%E2%80%94%E2%80%8APart%20I/</loc>
     <lastmod>2017-05-04T17:18:23.000Z</lastmod>
     <data>
@@ -804,11 +832,11 @@
         <title>html学习笔记--1</title>
         <pubTime>2016-08-27T15:03:45.000Z</pubTime>
         
+        <tag>html</tag>
+         
         <tag>前端</tag>
          
         <tag>学习笔记</tag>
-         
-        <tag>html</tag>
          
          
            
@@ -848,11 +876,11 @@
         <title>CSS学习笔记 -- 1</title>
         <pubTime>2016-08-29T01:56:45.000Z</pubTime>
         
-        <tag>CSS</tag>
-         
         <tag>前端</tag>
          
         <tag>学习笔记</tag>
+         
+        <tag>CSS</tag>
          
          
            

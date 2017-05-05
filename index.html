@@ -273,6 +273,160 @@
             
               
                 
+                <a class="post-title-link" href="/2017/05/06/MVVM design pattern and RxSwift/" itemprop="url">
+                  MVVM design pattern and RxSwift
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-05-06T00:00:00+08:00" content="2017-05-06">
+              2017-05-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Reactive/" itemprop="url" rel="index">
+                    <span itemprop="name">Reactive</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/05/06/MVVM design pattern and RxSwift/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/05/06/MVVM design pattern and RxSwift/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/05/06/MVVM design pattern and RxSwift/" class="leancloud_visitors" data-flag-title="MVVM design pattern and RxSwift">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+                <span class="leancloud-visitors-count"></span>
+                <span class="post-meta-item-text">人正在围观 </span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>MVVM 是一种设计模式。他是程序的代码分离成三个部分: <code>Model</code>、<code>View</code>、<code>ViewModel</code>。 <code>Model</code> 代表数据的表现, <code>View</code> 代表用户看到的界面，<code>ViewModel</code> 代表着模型层和视图层的主要关联关系。</p>
+<p><strong>Model</strong></p>
+<p><code>Model</code> 就是数据层。他包括一定范围内的模型，和业务逻辑。 <code>Model</code> 并不只是你程序中的那些模型结构体或者数据库, 他也包含了一些 Service 或者组件, 比如说 <code>Alamofire</code>和一些 SDK 等等。</p>
+<p><code>Model</code> 层执行所有跟数据有关的操作。比如常见的增删改查等等。这些操作由 <code>ViewModel</code> 发起。当 <code>Model</code>操作完了数据之后它再告诉 <code>ViewModel</code> 结果。</p>
+<p><code>Model</code> 被 ViewModel 持有。他也并不知道视图层和 <code>ViewModel</code> 层的事情。因为他是和这两个东西完全隔离开的。</p>
+<p><strong>View</strong></p>
+<p><code>View</code> 是程序中数据的可视化展示。它没有逻辑相关的东西。他主要有接受用户交互事件，和将数据展示在界面上两个人物。它将用户交互的事件转发到 <code>ViewModel</code> 中进行处理。<code>View</code> 观察 <code>ViewModel</code> 中数据的变化, 并且将这些变化展现出来。</p>
+<p><code>View</code> 和 <code>Model</code> 之间没有任何直接的关联。 他们通过 <code>View</code> 持有的 <code>ViewModel</code> 产生关联。</p>
+<p>界面信息在 <code>xib</code> 或者 <code>StoryBoard</code> 中通过 <code>UIKit</code> 中的组件被定义。<code>ViewController</code> 是直接跟 <code>xib</code> 或者 <code>StoryBoard</code> 关联的。它包含了 <code>Xib</code> 或者 <code>StoryBoard</code> 中的 <code>outlets</code> 和一些定义 UI 的额外配置。他也负责管理 <code>View</code> 的生命周期。 在 MVVM 中他和 <code>View</code> 的关联是非常紧密的, 他其实就是 <code>View</code> 层的一部分。</p>
+<p><strong>ViewModel</strong></p>
+<p><code>ViewModel</code> 是程序的逻辑层。他处理用户交互行为。然后更新数据。然后在通知 <code>View</code> 新的数据和显示的方式。举一个很平常的例子。一个 ViewModel 从Model层中请求到了一些包含 <code>Date</code> 的模型。 这个 Date 值并不会被告诉给 View, ViewModel 告诉 View 的应该是被格式化之后的字符串。视图不会操作数据本身，他只负责将 ViewModel 准备好的数据展示出来。</p>
+<p><strong>Similar to MVC</strong></p>
+<p>在 MVC 设计模式中, <code>ViewController</code> 是 <code>Model</code> 和 <code>View</code> 之间的桥梁。他只有视图, 管理视图的结构，管理用户的交互。他还负责管理视图的生命周期,加载、显示、消失等。他具有的另外一个指责是更新模型数据, 这就包括了显示数据的相关逻辑(也就是数据的处理,如上文提到的讲 <code>Date</code> 转化成 <code>String</code> 的逻辑)。因为他具有这么多的职责，所以很多情况下 <code>Viewcontroller</code> 就会变的非常大。所以也有人称MVC 为 Massive View Controller</p>
+<p>出现复杂的 <code>viewController</code> 主要有两个原因。由于 <code>Controller</code> 有很多的职责。代码就会变的非常的复杂。这很明显就违背了单一职责这个原则。这也让测试 <code>Controller</code> 中的逻辑变成一件很麻烦的事情。<code>Controller</code> 和 <code>View</code> 的高度耦合。<code>view</code> 的生命周期使得逻辑的分离变的不那么容易。我们就需要花很大的精力来处理视图的生命周期。</p>
+<p>MVVM 和 MVC 非常相似。 正如前文所说。 MVC 中的 <code>Controller</code> 同时包含了视图和程序的逻辑。将逻辑相关的代码从 <code>Controller</code> 中分离出来, 放到他自己抽象出来的类里面去。这时候的 <code>Controller</code>就只关注视图相关的事情。刚刚分离出来的这个类处理相关的逻辑。这个类就是 ViewModel。他和 <code>Controller</code> 具有一一对应关系。所以说 MVVM 就是将逻辑代码从 <code>controller</code>中分离到 <code>ViewModel</code> 中的 MVC</p>
+<p><strong>Binding data from ViewModel to View</strong></p>
+<p>有很多将数据绑定的机制, 比如 Swift 中的属性观察。视图可以对外提供一个 Closure 来进行视图的更新。这个 Closure 用来通知 View 他关联的属性的更新。除了熟悉观察。我们的程序还经常需要处理各种异步操作，比如网络请求，和通知或者事件的流信息。函数响应式编程(FRP)框架简直就是为了处理这类事件而生的。现在也有很多FRP 框架，对 iOS 开发来说，最出名的应该是 <code>RxSwift</code> 和 <code>ReactiveCocoa</code>了。之前在一篇对比文章中有提到过, 不管怎样，我更喜欢 <code>RxSwift</code> </p>
+<p><strong>RxSwift</strong></p>
+<p>指令式编程是基于一步一步明确的指令来执行的。他详细的描述了程序的运行过程。值做为状态而存在。由于程序是一步一步的执行的,所以如果其中一个值在之后发生了改变，这一改变也不会被传到下一步。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 指令式编程</span></div><div class="line">a = <span class="number">1</span></div><div class="line">b = <span class="number">2</span></div><div class="line"><span class="built_in">c</span> = a + b  <span class="comment">// c = 3</span></div><div class="line">a = <span class="number">5</span>   <span class="comment">// c = 3</span></div></pre></td></tr></table></figure>
+<p>响应式编程,跟指令式相反。他是基于变化的。他基于声明式编程，这就意味着他关注的是程序应该完成什么，而不是程序是怎么运行的。它是通过数学运算和其他像是 <code>filter</code> <code>map</code> <code>reduce</code> 之类的运算操作的运用来实现的。如何准确的运行被交给底层的程序语言或者框架来考虑了。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 响应式编程</span></div><div class="line">a = <span class="number">1</span></div><div class="line">b = <span class="number">2</span></div><div class="line"><span class="built_in">c</span> = a + b <span class="comment">// c = 3</span></div><div class="line">a = <span class="number">5</span>     <span class="comment">// c = 7</span></div></pre></td></tr></table></figure>
+<p>RxSwift 让你能用通过函数响应式编程来编写你的代码。使用 RxSwift 可以很轻松的创建事件或者数据流。这些事件或者数据流可以互相组合、转换。并且最终被观察到，基于值来进行一些操作。</p>
+<p>正如前文所说，在 MVVM 中 View 观察 ViewModel 中模型的数据。RxSwift 提供了一个非常简单并且干净的方法来观察这些值，并绑定到对应的 View 上。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/05/06/MVVM design pattern and RxSwift/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/05/05/RxSwift and the awesome things you can do with Reactive Programming — Part I/" itemprop="url">
                   RxSwift and the awesome things you can do with Reactive Programming — Part I
                 </a>
@@ -1508,137 +1662,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/19/interview07021901/" itemprop="url">
-                  iOS面试集锦&2017年02月19日01
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-02-19T00:00:00+08:00" content="2017-02-19">
-              2017-02-19
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/iOS面试集锦/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS面试集锦</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/02/19/interview07021901/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/02/19/interview07021901/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2017/02/19/interview07021901/" class="leancloud_visitors" data-flag-title="iOS面试集锦&2017年02月19日01">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-                <span class="leancloud-visitors-count"></span>
-                <span class="post-meta-item-text">人正在围观 </span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>按钮或者 View 在进行 frame 动画的时候，为什么点击 frame 动画的重点位置才能触发事件？如何在动画过程中响应事件？</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/02/19/interview07021901/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1684,7 +1707,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">41</span>
+              <span class="site-state-item-count">42</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1701,7 +1724,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

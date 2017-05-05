@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://CepheusSun.github.io/2017/05/06/MVVM%20design%20pattern%20and%20RxSwift/</loc>
+    
+    <lastmod>2017-05-05T17:29:07.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://CepheusSun.github.io/2017/05/05/RxSwift%20and%20the%20awesome%20things%20you%20can%20do%20with%20Reactive%20Programming%E2%80%8A%E2%80%94%E2%80%8APart%20I/</loc>
     
     <lastmod>2017-05-04T17:18:23.000Z</lastmod>
