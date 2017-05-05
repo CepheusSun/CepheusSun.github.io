@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://CepheusSun.github.io/"/>
-  <updated>2017-05-05T17:29:07.000Z</updated>
+  <updated>2017-05-05T17:32:16.000Z</updated>
   <id>https://CepheusSun.github.io/</id>
   
   <author>
@@ -20,9 +20,10 @@
     <link href="https://CepheusSun.github.io/2017/05/06/MVVM%20design%20pattern%20and%20RxSwift/"/>
     <id>https://CepheusSun.github.io/2017/05/06/MVVM design pattern and RxSwift/</id>
     <published>2017-05-05T16:00:00.000Z</published>
-    <updated>2017-05-05T17:29:07.000Z</updated>
+    <updated>2017-05-05T17:32:16.000Z</updated>
     
-    <content type="html"><![CDATA[<p>MVVM 是一种设计模式。他是程序的代码分离成三个部分: <code>Model</code>、<code>View</code>、<code>ViewModel</code>。 <code>Model</code> 代表数据的表现, <code>View</code> 代表用户看到的界面，<code>ViewModel</code> 代表着模型层和视图层的主要关联关系。</p>
+    <content type="html"><![CDATA[<p>本文翻译自(<a href="http://lukagabric.com/mvvm-design-pattern-and-rxswift/">http://lukagabric.com/mvvm-design-pattern-and-rxswift/</a>)</p>
+<p>MVVM 是一种设计模式。他是程序的代码分离成三个部分: <code>Model</code>、<code>View</code>、<code>ViewModel</code>。 <code>Model</code> 代表数据的表现, <code>View</code> 代表用户看到的界面，<code>ViewModel</code> 代表着模型层和视图层的主要关联关系。</p>
 <p><strong>Model</strong></p>
 <p><code>Model</code> 就是数据层。他包括一定范围内的模型，和业务逻辑。 <code>Model</code> 并不只是你程序中的那些模型结构体或者数据库, 他也包含了一些 Service 或者组件, 比如说 <code>Alamofire</code>和一些 SDK 等等。</p>
 <p><code>Model</code> 层执行所有跟数据有关的操作。比如常见的增删改查等等。这些操作由 <code>ViewModel</code> 发起。当 <code>Model</code>操作完了数据之后它再告诉 <code>ViewModel</code> 结果。</p>
@@ -79,7 +80,8 @@
     
     <summary type="html">
     
-      &lt;p&gt;MVVM 是一种设计模式。他是程序的代码分离成三个部分: &lt;code&gt;Model&lt;/code&gt;、&lt;code&gt;View&lt;/code&gt;、&lt;code&gt;ViewModel&lt;/code&gt;。 &lt;code&gt;Model&lt;/code&gt; 代表数据的表现, &lt;code&gt;View&lt;/code&gt; 代表用户看到的界面，&lt;code&gt;ViewModel&lt;/code&gt; 代表着模型层和视图层的主要关联关系。&lt;/p&gt;
+      &lt;p&gt;本文翻译自(&lt;a href=&quot;http://lukagabric.com/mvvm-design-pattern-and-rxswift/&quot;&gt;http://lukagabric.com/mvvm-design-pattern-and-rxswift/&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;MVVM 是一种设计模式。他是程序的代码分离成三个部分: &lt;code&gt;Model&lt;/code&gt;、&lt;code&gt;View&lt;/code&gt;、&lt;code&gt;ViewModel&lt;/code&gt;。 &lt;code&gt;Model&lt;/code&gt; 代表数据的表现, &lt;code&gt;View&lt;/code&gt; 代表用户看到的界面，&lt;code&gt;ViewModel&lt;/code&gt; 代表着模型层和视图层的主要关联关系。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Model&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;Model&lt;/code&gt; 就是数据层。他包括一定范围内的模型，和业务逻辑。 &lt;code&gt;Model&lt;/code&gt; 并不只是你程序中的那些模型结构体或者数据库, 他也包含了一些 Service 或者组件, 比如说 &lt;code&gt;Alamofire&lt;/code&gt;和一些 SDK 等等。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;Model&lt;/code&gt; 层执行所有跟数据有关的操作。比如常见的增删改查等等。这些操作由 &lt;code&gt;ViewModel&lt;/code&gt; 发起。当 &lt;code&gt;Model&lt;/code&gt;操作完了数据之后它再告诉 &lt;code&gt;ViewModel&lt;/code&gt; 结果。&lt;/p&gt;

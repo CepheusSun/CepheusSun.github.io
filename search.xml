@@ -6,7 +6,8 @@
     <entry>
       <title><![CDATA[MVVM design pattern and RxSwift]]></title>
       <url>https://CepheusSun.github.io/2017/05/06/MVVM%20design%20pattern%20and%20RxSwift/</url>
-      <content type="html"><![CDATA[<p>MVVM 是一种设计模式。他是程序的代码分离成三个部分: <code>Model</code>、<code>View</code>、<code>ViewModel</code>。 <code>Model</code> 代表数据的表现, <code>View</code> 代表用户看到的界面，<code>ViewModel</code> 代表着模型层和视图层的主要关联关系。</p>
+      <content type="html"><![CDATA[<p>本文翻译自(<a href="http://lukagabric.com/mvvm-design-pattern-and-rxswift/">http://lukagabric.com/mvvm-design-pattern-and-rxswift/</a>)</p>
+<p>MVVM 是一种设计模式。他是程序的代码分离成三个部分: <code>Model</code>、<code>View</code>、<code>ViewModel</code>。 <code>Model</code> 代表数据的表现, <code>View</code> 代表用户看到的界面，<code>ViewModel</code> 代表着模型层和视图层的主要关联关系。</p>
 <p><strong>Model</strong></p>
 <p><code>Model</code> 就是数据层。他包括一定范围内的模型，和业务逻辑。 <code>Model</code> 并不只是你程序中的那些模型结构体或者数据库, 他也包含了一些 Service 或者组件, 比如说 <code>Alamofire</code>和一些 SDK 等等。</p>
 <p><code>Model</code> 层执行所有跟数据有关的操作。比如常见的增删改查等等。这些操作由 <code>ViewModel</code> 发起。当 <code>Model</code>操作完了数据之后它再告诉 <code>ViewModel</code> 结果。</p>
