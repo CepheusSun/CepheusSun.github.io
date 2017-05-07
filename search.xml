@@ -48,7 +48,7 @@
     </entry>
     
     <entry>
-      <title><![CDATA[RxSwift For Dummies 🐣 Part2]]></title>
+      <title><![CDATA[RxSwift For Dummies 🐣 Part3]]></title>
       <url>https://CepheusSun.github.io/2017/05/07/RxSwift%20For%20Dummies%20Part3/</url>
       <content type="html"><![CDATA[<p>好了, 接下来是第三个部分。<strong>Subjects</strong></p>
 <p>学了之前内容. 我们可能已经发现了。之前学习的内容都是 <code>Observables</code> 输出事件的部分。我们可以订阅他, 就能知道他输出的事件了。但是我们还不能改变他。</p>
