@@ -4,6 +4,56 @@
 
     
   <url>
+    <loc>https://CepheusSun.github.io/2017/05/07/RxSwift%20MVVM%20API%20Manual/</loc>
+    <lastmod>2017-05-07T11:02:21.000Z</lastmod>
+    <data>
+        <display>
+        <title>RxSwift MVVM API Manual 📃</title>
+        <pubTime>2017-05-07T11:02:57.000Z</pubTime>
+        
+        <tag>iOS</tag>
+         
+        <tag>Reactive</tag>
+         
+        <tag>Swift</tag>
+         
+        <tag>翻译</tag>
+         
+         
+           
+             
+              <breadCrumb title="Reactive" url="https://CepheusSun.github.io/categories/Reactive/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://CepheusSun.github.io/2017/01/28/SBAnimation%20a%20new%20Repository/</loc>
+    <lastmod>2017-05-07T11:01:17.000Z</lastmod>
+    <data>
+        <display>
+        <title>SBAnimation a new Repository</title>
+        <pubTime>2017-01-27T16:00:00.000Z</pubTime>
+        
+        <tag>杂记</tag>
+         
+        <tag>iOS</tag>
+         
+        <tag>OpenSource</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS" url="https://CepheusSun.github.io/categories/iOS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://CepheusSun.github.io/2017/05/07/RxSwift%20For%20Dummies%20Part3/</loc>
     <lastmod>2017-05-07T09:20:53.000Z</lastmod>
     <data>
@@ -431,30 +481,6 @@
            
              
               <breadCrumb title="Hexo" url="https://CepheusSun.github.io/categories/Hexo/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://CepheusSun.github.io/2017/01/28/SBAnimation%20a%20new%20Repository/</loc>
-    <lastmod>2017-02-22T15:47:32.000Z</lastmod>
-    <data>
-        <display>
-        <title>SBAnimation a new Repository</title>
-        <pubTime>2017-01-27T16:00:00.000Z</pubTime>
-        
-        <tag>杂记</tag>
-         
-        <tag>iOS</tag>
-         
-        <tag>OpenSource</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS" url="https://CepheusSun.github.io/categories/iOS/"/>
           
         </display>
     </data>
@@ -936,11 +962,11 @@
         <title>html学习笔记--1</title>
         <pubTime>2016-08-27T15:03:45.000Z</pubTime>
         
+        <tag>html</tag>
+         
         <tag>前端</tag>
          
         <tag>学习笔记</tag>
-         
-        <tag>html</tag>
          
          
            
@@ -980,11 +1006,11 @@
         <title>CSS学习笔记 -- 1</title>
         <pubTime>2016-08-29T01:56:45.000Z</pubTime>
         
-        <tag>CSS</tag>
-         
         <tag>前端</tag>
          
         <tag>学习笔记</tag>
+         
+        <tag>CSS</tag>
          
          
            

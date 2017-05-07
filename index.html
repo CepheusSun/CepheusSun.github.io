@@ -273,6 +273,150 @@
             
               
                 
+                <a class="post-title-link" href="/2017/05/07/RxSwift MVVM API Manual/" itemprop="url">
+                  RxSwift MVVM API Manual 📃
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-05-07T19:02:57+08:00" content="2017-05-07">
+              2017-05-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Reactive/" itemprop="url" rel="index">
+                    <span itemprop="name">Reactive</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/05/07/RxSwift MVVM API Manual/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/05/07/RxSwift MVVM API Manual/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/05/07/RxSwift MVVM API Manual/" class="leancloud_visitors" data-flag-title="RxSwift MVVM API Manual 📃">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+                <span class="leancloud-visitors-count"></span>
+                <span class="post-meta-item-text">人正在围观 </span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>现在我们掌握了所有的工具, 也明确了他存在的风险以及规避的方法。现在是时候想想应该怎么样最大可能的运用它了。以 MVVM 为例。</p>
+<p>又很多方法来写 RxSwift 的 API。 我怕的做法是: 利用 RxSwift 很酷的观察者模式和很方便的操作符, 管理异步的任务。可能不是 100% 纯正的 RxSwift。 在将我做过很多的尝试试图将两种编程思维统一起来,但是我都失败了。</p>
+<p>下面是一些我使用 RxSwift 的方法。</p>
+<h3 id="Be-Consistent"><a href="#Be-Consistent" class="headerlink" title="Be Consistent"></a>Be Consistent</h3><p>这是在接口设计中最重要的事情, 如果你做出了选择。就坚持下去。</p>
+<p>既然如此, 现在就开始吧！<strong>input vs output</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">FilterViewModel</span> </span>&#123;</div><div class="line">    <span class="comment">//Input</span></div><div class="line">    <span class="keyword">let</span> filterButtonEvents: <span class="type">BehaviorSubject</span>&lt;<span class="type">Int</span>&gt;</div><div class="line">    <span class="keyword">let</span> filterSelectionEvent: <span class="type">PublishSubject</span>&lt;<span class="type">Int</span>&gt;</div><div class="line">    </div><div class="line">    <span class="comment">//OutPut</span></div><div class="line">    <span class="keyword">let</span> currentFilter: <span class="type">Observable</span>&lt;<span class="type">Int</span>&gt;</div><div class="line">    <span class="keyword">let</span> shouldShowFilter: <span class="type">Observable</span>&lt;<span class="type">Bool</span>&gt;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>有好几个可以用来声明 inout 和 output 的组合。这是我最喜欢的一个。</p>
+<h4 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h4><p>通过将 <code>input</code> 声明成 <code>subject</code> 类型。我可以很方便的使用 <code>RxSwift</code> 中的各种操作符。我用的最多的应该是 <strong>throttle</strong>。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">filterButtonEvents</div><div class="line">    .throttle(<span class="number">0.5</span>, scheduler: <span class="type">MainScheduler</span>.instance)</div><div class="line">    .subscribe(onNext: &#123; [<span class="keyword">weak</span> <span class="keyword">self</span>] (counter) <span class="keyword">in</span></div><div class="line">    <span class="keyword">self</span>?.makeRequest()</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>当然用 observable 做 input 也是可以的。</p>
+<h4 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h4><p>记住 <code>output</code> 应该是 <code>Observable</code>, 甚至是 <code>Subject</code>。 如果不这样的话，一些外部的类可能会错误的把这他当做是 <code>output</code> 这样就打破了封装了。当我想要发出一个变量的时候, 就是强制的释放。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">(observable <span class="keyword">as</span>! <span class="type">PublishSubject</span>)</div><div class="line">    .onNext(<span class="string">"Ugly..."</span>)</div></pre></td></tr></table></figure>
+<p>如果你知道有更好的方法, 一定要告诉我。我感觉这么干是在是不优雅😱。</p>
+<h3 id="Safety"><a href="#Safety" class="headerlink" title="Safety"></a>Safety</h3><p>如果在一个简单的 Demo 中, 你可能记得做所有的细节。但在一个复杂的 app 中, 你几乎不可能记得住所有的实现细节。这里面可能有好几百个订阅者。 <code>Observable</code> 又是一个非常广泛的类型。都还没有说这个信号是热信号还是冷信号, 他是在主线程还是在后台线程中运行。这也是 <code>Driver</code> 被设计出来的原因, 为了让 API 更加明确。我们鼓励自己去创建一些单元。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/05/07/RxSwift MVVM API Manual/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/05/07/RxSwift Safety Manual/" itemprop="url">
                   RxSwift Safety Manual 📚
                 </a>
@@ -1560,152 +1704,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/19/使用Gitlab和Cocoapods创建私有pod/" itemprop="url">
-                  使用Gitlab和Cocoapods创建私有pod
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-04-19T22:39:27+08:00" content="2017-04-19">
-              2017-04-19
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/CocoaPods/" itemprop="url" rel="index">
-                    <span itemprop="name">CocoaPods</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/04/19/使用Gitlab和Cocoapods创建私有pod/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/04/19/使用Gitlab和Cocoapods创建私有pod/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2017/04/19/使用Gitlab和Cocoapods创建私有pod/" class="leancloud_visitors" data-flag-title="使用Gitlab和Cocoapods创建私有pod">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-                <span class="leancloud-visitors-count"></span>
-                <span class="post-meta-item-text">人正在围观 </span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>每个稍微有点开发经验的 iOS 工程师都很容易的发现一下几点: </p>
-<ol>
-<li>几乎每个 iOS 的项目都适用了 <code>Cocoapods</code> </li>
-<li>几乎每个 ObjC 的 iOS 项目是使用 <code>AFNetworking</code> 、 <code>SDWebImage</code>等三方框架。</li>
-<li>几乎每个 Swift 的 iOS 项目都是用了 <code>Alamofire</code>、 <code>Kingfisher</code>等三方框架</li>
-<li>每一次这些框架更新之后, 无数个工程师只需要在终端执行一下’pod update’ 或 <code>pod install</code>就能对应的更新自己项目中的代码</li>
-</ol>
-<p>这几乎都是每个 iOS 工程师经常都会遇到的事情。目前几乎所有优秀的 iOS 开源框架都支持了 CocoaPods。 几乎所有的 iOS 项目都集成了 CocoaPods</p>
-<p>但是我们在日常的开发中也常会遇到这样的问题:</p>
-<ol>
-<li>很多公司都有好 App 同时在进行开发。</li>
-<li>这些 App 或多或少在业务或者 UI 都很很多的重合。</li>
-</ol>
-<p>着就意味着有很多的代码在这些 App 中都是可以复用的。由于各种各样的原因,同个公司的不同 App 可能更新不同步。 app A 可能已经升级到新版本 app B 可能还在老版本。每个 App 分别管理势必会出现混乱的局面。一起管理又存在新旧交替的问题。如果每个 App 又不同的工程师负责, 即使可能有交叉 review 的机制, 但也很难保证公司代码的统一。很多逻辑都存在多段代码。</p>
-<p>如何管理公司的公共代码库就成了一个比较麻烦的问题。</p>
-<p>集成 IJKMediaPlayer 的时候,想到了使用git来区别版本,然后使用 framework 来管理共有代码。然而在出现了你的代码需要使用到其他的 Framework 的时候, 或者好几个 Framework 都需要使用同一个第三方框架的时候, 这么做确实也是件恼火的事情。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/04/19/使用Gitlab和Cocoapods创建私有pod/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1751,7 +1749,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">46</span>
+              <span class="site-state-item-count">47</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

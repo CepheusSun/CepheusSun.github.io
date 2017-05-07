@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="iOS,Reactive,Swift,翻译," />
 
 
 
@@ -86,15 +86,22 @@
 
 
 
-<meta name="description" content="iOS Dev. Stay hungry, Stay foolish.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="CepheusSun的博客">
-<meta property="og:url" content="https://CepheusSun.github.io/archives/2016/10/index.html">
+<meta name="description" content="现在我们掌握了所有的工具, 也明确了他存在的风险以及规避的方法。现在是时候想想应该怎么样最大可能的运用它了。以 MVVM 为例。
+又很多方法来写 RxSwift 的 API。 我怕的做法是: 利用 RxSwift 很酷的观察者模式和很方便的操作符, 管理异步的任务。可能不是 100% 纯正的 RxSwift。 在将我做过很多的尝试试图将两种编程思维统一起来,但是我都失败了。
+下面是一些我使用 Rx">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RxSwift MVVM API Manual 📃">
+<meta property="og:url" content="https://CepheusSun.github.io/2017/05/07/RxSwift MVVM API Manual/index.html">
 <meta property="og:site_name" content="CepheusSun的博客">
-<meta property="og:description" content="iOS Dev. Stay hungry, Stay foolish.">
+<meta property="og:description" content="现在我们掌握了所有的工具, 也明确了他存在的风险以及规避的方法。现在是时候想想应该怎么样最大可能的运用它了。以 MVVM 为例。
+又很多方法来写 RxSwift 的 API。 我怕的做法是: 利用 RxSwift 很酷的观察者模式和很方便的操作符, 管理异步的任务。可能不是 100% 纯正的 RxSwift。 在将我做过很多的尝试试图将两种编程思维统一起来,但是我都失败了。
+下面是一些我使用 Rx">
+<meta property="og:updated_time" content="2017-05-07T11:02:21.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CepheusSun的博客">
-<meta name="twitter:description" content="iOS Dev. Stay hungry, Stay foolish.">
+<meta name="twitter:title" content="RxSwift MVVM API Manual 📃">
+<meta name="twitter:description" content="现在我们掌握了所有的工具, 也明确了他存在的风险以及规避的方法。现在是时候想想应该怎么样最大可能的运用它了。以 MVVM 为例。
+又很多方法来写 RxSwift 的 API。 我怕的做法是: 利用 RxSwift 很酷的观察者模式和很方便的操作符, 管理异步的任务。可能不是 100% 纯正的 RxSwift。 在将我做过很多的尝试试图将两种编程思维统一起来,但是我都失败了。
+下面是一些我使用 Rx">
 
 
 
@@ -115,9 +122,9 @@
 
 
 
-  <link rel="canonical" href="https://CepheusSun.github.io/archives/2016/10/"/>
+  <link rel="canonical" href="https://CepheusSun.github.io/2017/05/07/RxSwift MVVM API Manual/"/>
 
-  <title> 归档 | CepheusSun的博客 </title>
+  <title> RxSwift MVVM API Manual 📃 | CepheusSun的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -138,7 +145,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  page-archive  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -249,102 +256,190 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
-
-    <span class="archive-page-counter">
-      
-      
-       
-      
-      OK! 目前共计 47 篇日志。 继续努力。
-    </span>
-
+  <div id="posts" class="posts-expand">
     
-
-      
-      
-      
-
-      
-        
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2016">2016</h2>
-        </div>
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/10/31/让人恐惧的属性关键字/" itemprop="url">
-              
-                <span itemprop="name">让人恐惧的属性关键字</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-10-31T00:00:00+08:00"
-              content="2016-10-31" >
-          10-31
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/10/14/readinglist/" itemprop="url">
-              
-                <span itemprop="name">最近看到的一些好的文章</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-10-14T00:00:00+08:00"
-              content="2016-10-14" >
-          10-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-  </section>
 
   
+  
 
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                RxSwift MVVM API Manual 📃
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-05-07T19:02:57+08:00" content="2017-05-07">
+              2017-05-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Reactive/" itemprop="url" rel="index">
+                    <span itemprop="name">Reactive</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/05/07/RxSwift MVVM API Manual/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/05/07/RxSwift MVVM API Manual/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/05/07/RxSwift MVVM API Manual/" class="leancloud_visitors" data-flag-title="RxSwift MVVM API Manual 📃">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+                <span class="leancloud-visitors-count"></span>
+                <span class="post-meta-item-text">人正在围观 </span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>现在我们掌握了所有的工具, 也明确了他存在的风险以及规避的方法。现在是时候想想应该怎么样最大可能的运用它了。以 MVVM 为例。</p>
+<p>又很多方法来写 RxSwift 的 API。 我怕的做法是: 利用 RxSwift 很酷的观察者模式和很方便的操作符, 管理异步的任务。可能不是 100% 纯正的 RxSwift。 在将我做过很多的尝试试图将两种编程思维统一起来,但是我都失败了。</p>
+<p>下面是一些我使用 RxSwift 的方法。</p>
+<h3 id="Be-Consistent"><a href="#Be-Consistent" class="headerlink" title="Be Consistent"></a>Be Consistent</h3><p>这是在接口设计中最重要的事情, 如果你做出了选择。就坚持下去。</p>
+<p>既然如此, 现在就开始吧！<strong>input vs output</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">FilterViewModel</span> </span>&#123;</div><div class="line">    <span class="comment">//Input</span></div><div class="line">    <span class="keyword">let</span> filterButtonEvents: <span class="type">BehaviorSubject</span>&lt;<span class="type">Int</span>&gt;</div><div class="line">    <span class="keyword">let</span> filterSelectionEvent: <span class="type">PublishSubject</span>&lt;<span class="type">Int</span>&gt;</div><div class="line">    </div><div class="line">    <span class="comment">//OutPut</span></div><div class="line">    <span class="keyword">let</span> currentFilter: <span class="type">Observable</span>&lt;<span class="type">Int</span>&gt;</div><div class="line">    <span class="keyword">let</span> shouldShowFilter: <span class="type">Observable</span>&lt;<span class="type">Bool</span>&gt;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>有好几个可以用来声明 inout 和 output 的组合。这是我最喜欢的一个。</p>
+<h4 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h4><p>通过将 <code>input</code> 声明成 <code>subject</code> 类型。我可以很方便的使用 <code>RxSwift</code> 中的各种操作符。我用的最多的应该是 <strong>throttle</strong>。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">filterButtonEvents</div><div class="line">    .throttle(<span class="number">0.5</span>, scheduler: <span class="type">MainScheduler</span>.instance)</div><div class="line">    .subscribe(onNext: &#123; [<span class="keyword">weak</span> <span class="keyword">self</span>] (counter) <span class="keyword">in</span></div><div class="line">    <span class="keyword">self</span>?.makeRequest()</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>当然用 observable 做 input 也是可以的。</p>
+<h4 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h4><p>记住 <code>output</code> 应该是 <code>Observable</code>, 甚至是 <code>Subject</code>。 如果不这样的话，一些外部的类可能会错误的把这他当做是 <code>output</code> 这样就打破了封装了。当我想要发出一个变量的时候, 就是强制的释放。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">(observable <span class="keyword">as</span>! <span class="type">PublishSubject</span>)</div><div class="line">    .onNext(<span class="string">"Ugly..."</span>)</div></pre></td></tr></table></figure>
+<p>如果你知道有更好的方法, 一定要告诉我。我感觉这么干是在是不优雅😱。</p>
+<h3 id="Safety"><a href="#Safety" class="headerlink" title="Safety"></a>Safety</h3><p>如果在一个简单的 Demo 中, 你可能记得做所有的细节。但在一个复杂的 app 中, 你几乎不可能记得住所有的实现细节。这里面可能有好几百个订阅者。 <code>Observable</code> 又是一个非常广泛的类型。都还没有说这个信号是热信号还是冷信号, 他是在主线程还是在后台线程中运行。这也是 <code>Driver</code> 被设计出来的原因, 为了让 API 更加明确。我们鼓励自己去创建一些单元。</p>
+<a id="more"></a>
+<p><strong>Driver</strong> 是一个热信号, 而且是运行在主线程当中的。好想忽略掉了冷信号？没关系, 创造一个就是了。我称他作 <strong>Template</strong> 因为冷信号就是是一个模版, 在这个模版中你可以用 <code>subscribe</code> 来运行他。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Template</span>&lt;<span class="title">Element</span>&gt; </span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">let</span> observable: <span class="type">Observable</span>&lt;<span class="type">Element</span>&gt;</div><div class="line">    </div><div class="line">    <span class="keyword">init</span>(<span class="number">_</span> subscribe: @escaping (<span class="type">AnyObserver</span>&lt;<span class="type">Element</span>&gt;) -&gt; <span class="type">Disposable</span>) &#123;</div><div class="line">        observable = <span class="type">Observable</span>.create(subscribe)</div><div class="line">            .subscribeOn(<span class="type">MainScheduler</span>.instance)</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样 <code>Template</code> 就能确保是一个在主线程中执行的冷信号。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">class MyViewModel &#123;</div><div class="line"> //Cold ❄️</div><div class="line"> let createRequest : Template&lt;Int&gt;</div><div class="line"> //Hot 🌶</div><div class="line"> let shouldShowelement : Driver&lt;Bool&gt;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样看, 程序中暴露的接口就很明确了。</p>
+<h3 id="MVVM-State-Machine"><a href="#MVVM-State-Machine" class="headerlink" title="MVVM State Machine"></a>MVVM State Machine</h3><p>涉及到状态的管理的时候, <code>ViewController</code> 经常会变得很复杂。如果在 <code>viewModel</code> 中使用状态机, 来告诉 <code>ViewController</code> 在什么时候应该怎么做。<a href="http://curtclifton.net/generic-state-machine-in-swift">这里有一篇不错的文章</a></p>
+<ul>
+<li>把这些状态放在一个枚举里面, 而不是分散在各个地方。这样做可以极大的减少你的 <code>Observable</code>。</li>
+<li>这也会强迫你吧更多的逻辑移到 <code>ViewModel</code> 里面。</li>
+<li>让你的代码更加的具有声明性。<br>👋</li>
+</ul>
+<p><a href="http://swiftpearls.com/mvvm-state-manage.html">原文地址</a></p>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>我是一名来自中国的 iOS 程序员, 对技术有着浓厚的兴趣, 在学习的过程中, 发现了很多来自国外的优秀博客。为了更好的学习这些文章, 产生了将这些文章翻译成中文的想法。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag">#iOS</a>
+          
+            <a href="/tags/Reactive/" rel="tag">#Reactive</a>
+          
+            <a href="/tags/Swift/" rel="tag">#Swift</a>
+          
+            <a href="/tags/翻译/" rel="tag">#翻译</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/07/RxSwift Safety Manual/" rel="next" title="RxSwift Safety Manual 📚">
+                <i class="fa fa-chevron-left"></i> RxSwift Safety Manual 📚
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -352,6 +447,17 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -371,8 +477,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://ocg4av0wv.bkt.clouddn.com/icon_spot@2x.png"
@@ -473,6 +588,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Be-Consistent"><span class="nav-number">1.</span> <span class="nav-text">Be Consistent</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Input"><span class="nav-number">1.1.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Output"><span class="nav-number">1.2.</span> <span class="nav-text">Output</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Safety"><span class="nav-number">2.</span> <span class="nav-text">Safety</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MVVM-State-Machine"><span class="nav-number">3.</span> <span class="nav-text">MVVM State Machine</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最后"><span class="nav-number">4.</span> <span class="nav-text">最后</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -586,11 +712,9 @@
   
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
 
 
   
@@ -608,9 +732,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'your-disqus-shortname';
-      var disqus_identifier = 'archives/2016/10/index.html';
-      var disqus_title = "";
-      var disqus_url = '';
+      var disqus_identifier = '2017/05/07/RxSwift MVVM API Manual/';
+      var disqus_title = "RxSwift MVVM API Manual 📃";
+      var disqus_url = 'https://CepheusSun.github.io/2017/05/07/RxSwift MVVM API Manual/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');
@@ -621,6 +745,8 @@
       }
 
       run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
       
     </script>
   

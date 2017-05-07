@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://CepheusSun.github.io/2017/05/07/RxSwift%20MVVM%20API%20Manual/</loc>
+    
+    <lastmod>2017-05-07T11:02:21.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://CepheusSun.github.io/2017/01/28/SBAnimation%20a%20new%20Repository/</loc>
+    
+    <lastmod>2017-05-07T11:01:17.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://CepheusSun.github.io/2017/05/07/RxSwift%20For%20Dummies%20Part3/</loc>
     
     <lastmod>2017-05-07T09:20:53.000Z</lastmod>
@@ -131,13 +145,6 @@
     <loc>https://CepheusSun.github.io/2016/08/31/%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8Hexo%E5%8F%91%E5%8D%9A%E5%AE%A2/</loc>
     
     <lastmod>2017-02-22T15:47:35.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://CepheusSun.github.io/2017/01/28/SBAnimation%20a%20new%20Repository/</loc>
-    
-    <lastmod>2017-02-22T15:47:32.000Z</lastmod>
     
   </url>
   
