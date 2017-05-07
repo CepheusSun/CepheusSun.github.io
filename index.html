@@ -273,6 +273,152 @@
             
               
                 
+                <a class="post-title-link" href="/2017/05/07/RxSwift For Dummies Part3/" itemprop="url">
+                  RxSwift For Dummies 🐣 Part2
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-05-07T15:27:57+08:00" content="2017-05-07">
+              2017-05-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Reactive/" itemprop="url" rel="index">
+                    <span itemprop="name">Reactive</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/05/07/RxSwift For Dummies Part3/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/05/07/RxSwift For Dummies Part3/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/05/07/RxSwift For Dummies Part3/" class="leancloud_visitors" data-flag-title="RxSwift For Dummies 🐣 Part2">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+                <span class="leancloud-visitors-count"></span>
+                <span class="post-meta-item-text">人正在围观 </span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>好了, 接下来是第三个部分。<strong>Subjects</strong></p>
+<p>学了之前内容. 我们可能已经发现了。之前学习的内容都是 <code>Observables</code> 输出事件的部分。我们可以订阅他, 就能知道他输出的事件了。但是我们还不能改变他。</p>
+<p><strong>Subject</strong> 也是一个 <code>Observable</code> 但是他是能够同时输入和输出的。也就是说, 我们可以动态(强制)的在一个序列中发出信号。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> subject = <span class="type">PublishSubject</span>&lt;<span class="type">String</span>&gt;()</div><div class="line"><span class="comment">// 可以直接转换，因为他也是一个 `Observable`</span></div><div class="line"><span class="keyword">let</span> observable: <span class="type">Observable</span>&lt;<span class="type">String</span>&gt; = subject</div><div class="line">observable.subscribe(onNext: &#123; (text) <span class="keyword">in</span></div><div class="line">    <span class="built_in">print</span>(text)</div><div class="line">&#125;).addDisposableTo(disposeBag)</div><div class="line"><span class="comment">// 只要你想发出一个新的事件, 就可以用 onNext 方法 </span></div><div class="line">subject.onNext(<span class="string">"Hey!"</span>)</div><div class="line">subject.onNext(<span class="string">"I'm back!"</span>)</div></pre></td></tr></table></figure>
+<p><strong>onNext</strong> 是一个输出事件的方法。最后控制台会输出</p>
+<blockquote>
+<p>“Hey!”<br>“I’m back!”</p>
+</blockquote>
+<p><code>Subject</code> 到底有什么用呢? 为了很轻松的将 Rxswift 中声明式的世界和我们平常的世界连接起来。让我们在需要写实现式的代码的时候更 Rx </p>
+<p>在一个纯正的 Rx 的世界里。当你需要有一个更完美的流的时候, 不用去管这个 <code>Observable</code> 是怎么实现的。这个东西我会另外的解释。反正, 如果你需要， 大胆的用吧。</p>
+<p>上面式关于 Subject 最基本的内容。接下来我们学习一下怎么更好的使用 <strong>Subject</strong></p>
+<h3 id="Hot🔥-vs-Cold❄️"><a href="#Hot🔥-vs-Cold❄️" class="headerlink" title="Hot🔥 vs Cold❄️"></a>Hot🔥 vs Cold❄️</h3><p>在第一篇文章中就已经提到过了热信号🔥和冷信号❄️。今天我们在深入的了解一点吧，因为 <strong>Subject</strong> 实际上是我们第一次接触到真正的热信号。</p>
+<p>我们一定确定了，当我们使用 <strong>create</strong> 创建一个 <strong>Observable</strong> 的时候, 由于没有人订阅他，所以她是不会发送消息的。只有被 <strong>subscribe</strong>(订阅)之后才会开始发送消息出来。这就是我们叫它为冷信号❄️的原因。如果很不幸你忘了这个知识点。你可以回到第一篇文章去看看。热信号🔥 就是那种即使没有被订阅也会发出消息的信号, 这也是 <code>subject</code> 做的事情。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> subject = <span class="type">PublishSubject</span>&lt;<span class="type">String</span>&gt;()</div><div class="line"><span class="keyword">let</span> observable: <span class="type">Observable</span>&lt;<span class="type">String</span>&gt; = subject</div><div class="line"><span class="comment">// 这个信号还没有被订阅, 所以这个值不回被接受到</span></div><div class="line">subject.onNext(<span class="string">"Am I too early for the party?"</span>)</div><div class="line"></div><div class="line">observable</div><div class="line">    .subscribe(onNext: &#123; (text) <span class="keyword">in</span></div><div class="line">        <span class="built_in">print</span>(text)</div><div class="line">    &#125;).addDisposableTo(disposeBag)</div><div class="line"><span class="comment">// 这个值发出来的时候已经有一个订阅者了, 所以这个值会打印出来</span></div><div class="line">subject.onNext(<span class="string">"🎉🎉🎉"</span>)</div></pre></td></tr></table></figure>
+<p>很简单直接吧。如果在第一篇中你理解了冷信号的话, 理解热信号也是很自然的事情。</p>
+<h3 id="Subject-Types"><a href="#Subject-Types" class="headerlink" title="Subject Types"></a>Subject Types</h3><p>常用的 <code>Subject</code> 有三种。 他们其实都差不多, 唯一的区别就是: 在订阅之前, 它会干什么。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/05/07/RxSwift For Dummies Part3/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/05/07/RxSwift For Dummies Part2/" itemprop="url">
                   RxSwift For Dummies 🐣 Part2
                 </a>
@@ -1548,144 +1694,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/22/interview07022201/" itemprop="url">
-                  iOS面试集锦&2017年02月22日01
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-02-22T00:00:00+08:00" content="2017-02-22">
-              2017-02-22
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/iOS面试集锦/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS面试集锦</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/02/22/interview07022201/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/02/22/interview07022201/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2017/02/22/interview07022201/" class="leancloud_visitors" data-flag-title="iOS面试集锦&2017年02月22日01">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-                <span class="leancloud-visitors-count"></span>
-                <span class="post-meta-item-text">人正在围观 </span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <ol>
-<li><code>id</code> 和 <code>instancetype</code> 的区别?</li>
-<li>有方法查看当前系统内存使用的情况吗？</li>
-<li>为什么 NotificationCenter 要 removeObserver? 如何实现自动 remove？</li>
-<li>iOS的沙盒目录结构是怎样的？ App Bundle 里面都有什么？</li>
-<li>简单描述一下客户端的缓存机制？</li>
-</ol>
-<p>注意： 以后的更新全部放在 GitHub 博客不再继续添加了。 毕竟好多内容放在这里也没有什么意义。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/02/22/interview07022201/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1731,7 +1739,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">44</span>
+              <span class="site-state-item-count">45</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
