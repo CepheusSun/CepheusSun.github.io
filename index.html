@@ -273,6 +273,149 @@
             
               
                 
+                <a class="post-title-link" href="/2017/05/07/RxSwift Safety Manual/" itemprop="url">
+                  RxSwift Safety Manual 📚
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-05-07T17:19:57+08:00" content="2017-05-07">
+              2017-05-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Reactive/" itemprop="url" rel="index">
+                    <span itemprop="name">Reactive</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/05/07/RxSwift Safety Manual/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/05/07/RxSwift Safety Manual/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/05/07/RxSwift Safety Manual/" class="leancloud_visitors" data-flag-title="RxSwift Safety Manual 📚">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+                <span class="leancloud-visitors-count"></span>
+                <span class="post-meta-item-text">人正在围观 </span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>RxSwift 提供了大量非常好用的工具, 让写代码更爽, 但是他也可能给你带来一些头疼的地方, 也可能是bug😱。 用了三个月之后我觉得我应该也可以给出一些建议来避免一些问题。</p>
+<h3 id="Side-Effects"><a href="#Side-Effects" class="headerlink" title="Side Effects"></a>Side Effects</h3><p>在计算机科学中副作用这个词可能没那么容易理解, 因为这是一个非常宽泛的内容。在 <a href="http://softwareengineering.stackexchange.com/questions/40297/what-is-a-side-effect">Stackoverflow</a> 有一些比较好的讨论。</p>
+<p>简单点说, 一个函数/闭包/…如果他们改变了 app 的状态, 都有可能带来一些副作用。在下面的例子中：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> observable = <span class="type">Observable</span>&lt;<span class="type">Int</span>&gt;.create &#123; (observer) -&gt; <span class="type">Disposable</span> <span class="keyword">in</span></div><div class="line">    <span class="comment">// 这样写没有副作用</span></div><div class="line">    observer.onNext(<span class="number">1</span>)</div><div class="line">    <span class="keyword">return</span> <span class="type">Disposables</span>.create()</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> observableWithSideEffect = <span class="type">Observable</span>&lt;<span class="type">Int</span>&gt;.create &#123; (observer) -&gt; <span class="type">Disposable</span> <span class="keyword">in</span></div><div class="line">    <span class="comment">// 这里就会有副作用: 这个 closure 改变了 counter 的值</span></div><div class="line">    counter = counter + <span class="number">1</span></div><div class="line">    observer.onNext(counter)</div><div class="line">    <span class="keyword">return</span> <span class="type">Disposables</span>.create()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>为什么在 RxSwift 中这个很重要呢? 因为对于冷信号❄️来说。<strong>每次被订阅他都会执行一下里面的任务</strong></p>
+<p>我们两次订阅这个 <code>observableWithSideEffect</code>: </p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">observableWithSideEffect</div><div class="line">    .subscribe(onNext: &#123; (counter) <span class="keyword">in</span></div><div class="line">        <span class="built_in">print</span>(counter)</div><div class="line">    &#125;).addDisposableTo(disposeBag)</div><div class="line"></div><div class="line">observableWithSideEffect</div><div class="line">    .subscribe(onNext: &#123; (counter) <span class="keyword">in</span></div><div class="line">        <span class="built_in">print</span>(counter)</div><div class="line">    &#125;).addDisposableTo(disposeBag)</div></pre></td></tr></table></figure>
+<p>我们可能希望他输出的是两个2.但是事实上它会输出2，3. 因为每次订阅都会分别执行, 所以在闭包里面的代码会被执行两次。<strong>所以 counter + 1 会执行两次</strong></p>
+<p>也就是说, 如果你在这里面房里两个网络请求。<strong>它会发出两次请求</strong></p>
+<p>我们怎么来解决这个问题呢？ 把这个冷信号转换成热信号💡。 使用 <strong>publish</strong> connect 还有 refCount 就可以了,这是<a href="http://www.tailec.com/blog/understanding-publish-connect-refcount-share">完整细节</a>。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> counter = <span class="number">1</span></div><div class="line"><span class="keyword">let</span> observableWithSideEffect = <span class="type">Observable</span>&lt;<span class="type">Int</span>&gt;.create &#123; (observer) -&gt; <span class="type">Disposable</span> <span class="keyword">in</span></div><div class="line">    counter = counter + <span class="number">1</span></div><div class="line">    observer.onNext(counter)</div><div class="line">    <span class="keyword">return</span> <span class="type">Disposables</span>.create()</div><div class="line">&#125;.publish()</div><div class="line"><span class="comment">// publish returns an observable with a shared subscription(hot).</span></div><div class="line"><span class="comment">// It's not active yet</span></div><div class="line"></div><div class="line">observableWithSideEffect</div><div class="line">    .subscribe(onNext: &#123; (counter) <span class="keyword">in</span></div><div class="line">        <span class="built_in">print</span>(counter)</div><div class="line">    &#125;).addDisposableTo(disposeBag)</div><div class="line"></div><div class="line">observableWithSideEffect</div><div class="line">    .connect()</div><div class="line">    .addDisposableTo(disposeBag)</div></pre></td></tr></table></figure>
+<p>这会输出 2，2</p>
+<p>大多数情况下这就够了。但是还有一个更高级的 <em>shareReplay</em> 操作符。他使用了 <code>refCont</code> 操作符合 <code>replay</code>. <code>refCount</code> 也是一种 <code>connect</code> 但是它是自动管理的。他会在第一次订阅开始的时候开始。 replay 会把一些元素发送给那些 “迟到了” 的订阅者/</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/05/07/RxSwift Safety Manual/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/05/07/RxSwift For Dummies Part3/" itemprop="url">
                   RxSwift For Dummies 🐣 Part2
                 </a>
@@ -1563,137 +1706,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/07/Requests 库/" itemprop="url">
-                  python 爬虫之一 "Requests 库学习"
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-07T00:00:00+08:00" content="2017-03-07">
-              2017-03-07
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index">
-                    <span itemprop="name">python</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/03/07/Requests 库/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/03/07/Requests 库/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2017/03/07/Requests 库/" class="leancloud_visitors" data-flag-title="python 爬虫之一 "Requests 库学习"">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-                <span class="leancloud-visitors-count"></span>
-                <span class="post-meta-item-text">人正在围观 </span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>这个系列的文章是用来记录我学习 python 爬虫的。这是第一篇。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/03/07/Requests 库/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1739,7 +1751,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">45</span>
+              <span class="site-state-item-count">46</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
