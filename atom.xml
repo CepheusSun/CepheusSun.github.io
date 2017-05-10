@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://CepheusSun.github.io/"/>
-  <updated>2017-05-07T11:02:21.000Z</updated>
+  <updated>2017-05-10T00:58:09.000Z</updated>
   <id>https://CepheusSun.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://CepheusSun.github.io/2017/05/07/RxSwift%20MVVM%20API%20Manual/"/>
     <id>https://CepheusSun.github.io/2017/05/07/RxSwift MVVM API Manual/</id>
     <published>2017-05-07T11:02:57.000Z</published>
-    <updated>2017-05-07T11:02:21.000Z</updated>
+    <updated>2017-05-10T00:58:09.000Z</updated>
     
     <content type="html"><![CDATA[<p>现在我们掌握了所有的工具, 也明确了他存在的风险以及规避的方法。现在是时候想想应该怎么样最大可能的运用它了。以 MVVM 为例。</p>
 <p>又很多方法来写 RxSwift 的 API。 我怕的做法是: 利用 RxSwift 很酷的观察者模式和很方便的操作符, 管理异步的任务。可能不是 100% 纯正的 RxSwift。 在将我做过很多的尝试试图将两种编程思维统一起来,但是我都失败了。</p>
@@ -32,7 +32,7 @@
 <h4 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h4><p>通过将 <code>input</code> 声明成 <code>subject</code> 类型。我可以很方便的使用 <code>RxSwift</code> 中的各种操作符。我用的最多的应该是 <strong>throttle</strong>。</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">filterButtonEvents</div><div class="line">    .throttle(<span class="number">0.5</span>, scheduler: <span class="type">MainScheduler</span>.instance)</div><div class="line">    .subscribe(onNext: &#123; [<span class="keyword">weak</span> <span class="keyword">self</span>] (counter) <span class="keyword">in</span></div><div class="line">    <span class="keyword">self</span>?.makeRequest()</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <p>当然用 observable 做 input 也是可以的。</p>
-<h4 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h4><p>记住 <code>output</code> 应该是 <code>Observable</code>, 甚至是 <code>Subject</code>。 如果不这样的话，一些外部的类可能会错误的把这他当做是 <code>output</code> 这样就打破了封装了。当我想要发出一个变量的时候, 就是强制的释放。</p>
+<h4 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h4><p>记住 <code>output</code> 应该是 <code>Observable</code>, 甚至是 <code>Subject</code>。 如果不这样的话，一些外部的类可能会错误的把这他当做是 <code>input</code> 这样就打破了封装了。当我想要发出一个变量的时候, 就是强制的释放。</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">(observable <span class="keyword">as</span>! <span class="type">PublishSubject</span>)</div><div class="line">    .onNext(<span class="string">"Ugly..."</span>)</div></pre></td></tr></table></figure>
 <p>如果你知道有更好的方法, 一定要告诉我。我感觉这么干是在是不优雅😱。</p>
 <h3 id="Safety"><a href="#Safety" class="headerlink" title="Safety"></a>Safety</h3><p>如果在一个简单的 Demo 中, 你可能记得做所有的细节。但在一个复杂的 app 中, 你几乎不可能记得住所有的实现细节。这里面可能有好几百个订阅者。 <code>Observable</code> 又是一个非常广泛的类型。都还没有说这个信号是热信号还是冷信号, 他是在主线程还是在后台线程中运行。这也是 <code>Driver</code> 被设计出来的原因, 为了让 API 更加明确。我们鼓励自己去创建一些单元。</p>
@@ -64,7 +64,7 @@
 &lt;h4 id=&quot;Input&quot;&gt;&lt;a href=&quot;#Input&quot; class=&quot;headerlink&quot; title=&quot;Input&quot;&gt;&lt;/a&gt;Input&lt;/h4&gt;&lt;p&gt;通过将 &lt;code&gt;input&lt;/code&gt; 声明成 &lt;code&gt;subject&lt;/code&gt; 类型。我可以很方便的使用 &lt;code&gt;RxSwift&lt;/code&gt; 中的各种操作符。我用的最多的应该是 &lt;strong&gt;throttle&lt;/strong&gt;。&lt;/p&gt;
 &lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;filterButtonEvents&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    .throttle(&lt;span class=&quot;number&quot;&gt;0.5&lt;/span&gt;, scheduler: &lt;span class=&quot;type&quot;&gt;MainScheduler&lt;/span&gt;.instance)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    .subscribe(onNext: &amp;#123; [&lt;span class=&quot;keyword&quot;&gt;weak&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;] (counter) &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;?.makeRequest()&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;)&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;当然用 observable 做 input 也是可以的。&lt;/p&gt;
-&lt;h4 id=&quot;Output&quot;&gt;&lt;a href=&quot;#Output&quot; class=&quot;headerlink&quot; title=&quot;Output&quot;&gt;&lt;/a&gt;Output&lt;/h4&gt;&lt;p&gt;记住 &lt;code&gt;output&lt;/code&gt; 应该是 &lt;code&gt;Observable&lt;/code&gt;, 甚至是 &lt;code&gt;Subject&lt;/code&gt;。 如果不这样的话，一些外部的类可能会错误的把这他当做是 &lt;code&gt;output&lt;/code&gt; 这样就打破了封装了。当我想要发出一个变量的时候, 就是强制的释放。&lt;/p&gt;
+&lt;h4 id=&quot;Output&quot;&gt;&lt;a href=&quot;#Output&quot; class=&quot;headerlink&quot; title=&quot;Output&quot;&gt;&lt;/a&gt;Output&lt;/h4&gt;&lt;p&gt;记住 &lt;code&gt;output&lt;/code&gt; 应该是 &lt;code&gt;Observable&lt;/code&gt;, 甚至是 &lt;code&gt;Subject&lt;/code&gt;。 如果不这样的话，一些外部的类可能会错误的把这他当做是 &lt;code&gt;input&lt;/code&gt; 这样就打破了封装了。当我想要发出一个变量的时候, 就是强制的释放。&lt;/p&gt;
 &lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;(observable &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt;! &lt;span class=&quot;type&quot;&gt;PublishSubject&lt;/span&gt;)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    .onNext(&lt;span class=&quot;string&quot;&gt;&quot;Ugly...&quot;&lt;/span&gt;)&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;如果你知道有更好的方法, 一定要告诉我。我感觉这么干是在是不优雅😱。&lt;/p&gt;
 &lt;h3 id=&quot;Safety&quot;&gt;&lt;a href=&quot;#Safety&quot; class=&quot;headerlink&quot; title=&quot;Safety&quot;&gt;&lt;/a&gt;Safety&lt;/h3&gt;&lt;p&gt;如果在一个简单的 Demo 中, 你可能记得做所有的细节。但在一个复杂的 app 中, 你几乎不可能记得住所有的实现细节。这里面可能有好几百个订阅者。 &lt;code&gt;Observable&lt;/code&gt; 又是一个非常广泛的类型。都还没有说这个信号是热信号还是冷信号, 他是在主线程还是在后台线程中运行。这也是 &lt;code&gt;Driver&lt;/code&gt; 被设计出来的原因, 为了让 API 更加明确。我们鼓励自己去创建一些单元。&lt;/p&gt;
@@ -1015,9 +1015,9 @@
       <category term="CocoaPods" scheme="https://CepheusSun.github.io/categories/CocoaPods/"/>
     
     
-      <category term="iOS" scheme="https://CepheusSun.github.io/tags/iOS/"/>
-    
       <category term="CocoaPods" scheme="https://CepheusSun.github.io/tags/CocoaPods/"/>
+    
+      <category term="iOS" scheme="https://CepheusSun.github.io/tags/iOS/"/>
     
   </entry>
   
