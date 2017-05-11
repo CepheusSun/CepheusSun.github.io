@@ -615,7 +615,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod &quot;SYBase&quot;, :git =&gt; &apos;git@gitlab.com:CepheusSun/SYBase.git&apos;</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod install</div></pre></td></tr></table></figure>
 <p>然后莫名其妙发现引入的 repo 是<code>0.1.0</code>或者什么巴拉巴拉版本的。这个时候更新一下pod</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod updata</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod update</div></pre></td></tr></table></figure>
 <p>再<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod install</div></pre></td></tr></table></figure></p>
 <h4 id="强迫症"><a href="#强迫症" class="headerlink" title="强迫症"></a>强迫症</h4><p>如果遇到强迫症想要用 1.1.1 这样的三级版本的话。</p>
 <p><code>XXX.podspec</code> 文件中的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">s.source = &#123; :git =&gt; &apos;git@gitlab.com:XXX/XXX.git&apos;, :tag =&gt; s.version &#125;</div></pre></td></tr></table></figure></p>

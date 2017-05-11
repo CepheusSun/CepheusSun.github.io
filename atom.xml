@@ -919,7 +919,7 @@
     <link href="https://CepheusSun.github.io/2017/04/19/%E4%BD%BF%E7%94%A8Gitlab%E5%92%8CCocoapods%E5%88%9B%E5%BB%BA%E7%A7%81%E6%9C%89pod/"/>
     <id>https://CepheusSun.github.io/2017/04/19/使用Gitlab和Cocoapods创建私有pod/</id>
     <published>2017-04-19T14:39:27.000Z</published>
-    <updated>2017-05-11T05:29:06.000Z</updated>
+    <updated>2017-05-11T08:44:49.000Z</updated>
     
     <content type="html"><![CDATA[<p>每个稍微有点开发经验的 iOS 工程师都很容易的发现一下几点: </p>
 <ol>
@@ -983,7 +983,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod &quot;SYBase&quot;, :git =&gt; &apos;git@gitlab.com:CepheusSun/SYBase.git&apos;</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod install</div></pre></td></tr></table></figure>
 <p>然后莫名其妙发现引入的 repo 是<code>0.1.0</code>或者什么巴拉巴拉版本的。这个时候更新一下pod</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod updata</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod update</div></pre></td></tr></table></figure>
 <p>再<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod install</div></pre></td></tr></table></figure></p>
 <h4 id="强迫症"><a href="#强迫症" class="headerlink" title="强迫症"></a>强迫症</h4><p>如果遇到强迫症想要用 1.1.1 这样的三级版本的话。</p>
 <p><code>XXX.podspec</code> 文件中的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">s.source = &#123; :git =&gt; &apos;git@gitlab.com:XXX/XXX.git&apos;, :tag =&gt; s.version &#125;</div></pre></td></tr></table></figure></p>
@@ -1018,9 +1018,9 @@
       <category term="CocoaPods" scheme="https://CepheusSun.github.io/categories/CocoaPods/"/>
     
     
-      <category term="iOS" scheme="https://CepheusSun.github.io/tags/iOS/"/>
-    
       <category term="CocoaPods" scheme="https://CepheusSun.github.io/tags/CocoaPods/"/>
+    
+      <category term="iOS" scheme="https://CepheusSun.github.io/tags/iOS/"/>
     
   </entry>
   
