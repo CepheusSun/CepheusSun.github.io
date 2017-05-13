@@ -89,8 +89,7 @@
 <meta name="description" content="OOP is okay, but could’ve been better
 
 Introduction即使你还不知道 Class 和 Struct 基本的区别, 你也可以看这个文章。都知道 Struct 不能继承, 但是, 为什么呢？
-如果你还不知道上面这个问题的答案, 花两分钟时间读一下下面这段代码。这些代码是写在 playground 上的
-12345678910111213class Hu">
+如果你还不知道上面这个问题的答案, 花两分钟时间读一下下面这段代码。这些代码是写在 playground 上的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Introduction to Protocol Oriented Programming in Swift">
 <meta property="og:url" content="https://CepheusSun.github.io/2017/05/14/Introduction to Protocol Oriented Programming in Swift/index.html">
@@ -98,17 +97,15 @@ Introduction即使你还不知道 Class 和 Struct 基本的区别, 你也可以
 <meta property="og:description" content="OOP is okay, but could’ve been better
 
 Introduction即使你还不知道 Class 和 Struct 基本的区别, 你也可以看这个文章。都知道 Struct 不能继承, 但是, 为什么呢？
-如果你还不知道上面这个问题的答案, 花两分钟时间读一下下面这段代码。这些代码是写在 playground 上的
-12345678910111213class Hu">
+如果你还不知道上面这个问题的答案, 花两分钟时间读一下下面这段代码。这些代码是写在 playground 上的">
 <meta property="og:image" content="https://cdn-images-1.medium.com/max/1600/1*hjEXB3PGUOSbxet0qUJRNA.png">
-<meta property="og:updated_time" content="2017-05-13T16:05:14.000Z">
+<meta property="og:updated_time" content="2017-05-13T16:07:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Introduction to Protocol Oriented Programming in Swift">
 <meta name="twitter:description" content="OOP is okay, but could’ve been better
 
 Introduction即使你还不知道 Class 和 Struct 基本的区别, 你也可以看这个文章。都知道 Struct 不能继承, 但是, 为什么呢？
-如果你还不知道上面这个问题的答案, 花两分钟时间读一下下面这段代码。这些代码是写在 playground 上的
-12345678910111213class Hu">
+如果你还不知道上面这个问题的答案, 花两分钟时间读一下下面这段代码。这些代码是写在 playground 上的">
 <meta name="twitter:image" content="https://cdn-images-1.medium.com/max/1600/1*hjEXB3PGUOSbxet0qUJRNA.png">
 
 
@@ -358,6 +355,7 @@ Introduction即使你还不知道 Class 和 Struct 基本的区别, 你也可以
 </blockquote>
 <h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>即使你还不知道 Class 和 Struct 基本的区别, 你也可以看这个文章。都知道 Struct 不能继承, 但是, 为什么呢？</p>
 <p>如果你还不知道上面这个问题的答案, 花两分钟时间读一下下面这段代码。这些代码是写在 playground 上的</p>
+<a id="more"></a>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">HumanClass</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> name: <span class="type">String</span></div><div class="line">    <span class="keyword">init</span>(name: <span class="type">String</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.name = name</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> classHuman = <span class="type">HumanClass</span>(name: <span class="string">"Bob"</span>)</div><div class="line"><span class="comment">// "Bob"</span></div><div class="line">classHuman.name</div><div class="line"><span class="comment">// Created a "copied" object</span></div><div class="line"><span class="keyword">var</span> newClassHuman = classHuman</div><div class="line">newClassHuman.name = <span class="string">"Bobby"</span></div><div class="line">classHuman.name <span class="comment">//"Bobby"</span></div></pre></td></tr></table></figure>
 <p>等我们改变 <code>newClassHuman</code> 的 <code>name</code> 属性为 <code>“Bobby”</code> 之后, <code>classHuman</code> 的 <code>name</code> 属性也变成 <code>“Bobby”</code> 了。</p>
 <p>我们再看看 Struct </p>
