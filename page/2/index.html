@@ -273,6 +273,141 @@
             
               
                 
+                <a class="post-title-link" href="/2017/04/21/我用RAC干了些什么(一)/" itemprop="url">
+                  我用RAC干了些什么(一)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-04-21T00:00:00+08:00" content="2017-04-21">
+              2017-04-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Reactive/" itemprop="url" rel="index">
+                    <span itemprop="name">Reactive</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/04/21/我用RAC干了些什么(一)/" class="leancloud_visitors" data-flag-title="我用RAC干了些什么(一)">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+                <span class="leancloud-visitors-count"></span>
+                <span class="post-meta-item-text">人正在围观 </span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>对象间的交互, 主要有 <code>target-action</code>、<code>Notification</code>、<code>KVO</code>、<code>Delegate</code></p>
+<h3 id="target-action"><a href="#target-action" class="headerlink" title="target-action"></a>target-action</h3><figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[[<span class="keyword">self</span>.loginBtn rac_signalForControlEvents:<span class="built_in">UIControlEventTouchUpInside</span>] subscribeNext:^(<span class="built_in">UIButton</span> *btn) &#123;</div><div class="line"> <span class="comment">// btn, 即 self.loginBtn</span></div><div class="line"> <span class="comment">// 这里执行点击之后的操作</span></div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+<p>可以用 BlocksKit 替代</p>
+<h3 id="KVO"><a href="#KVO" class="headerlink" title="KVO"></a>KVO</h3><figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[RACObserve(<span class="keyword">self</span>, name) subscribeNext:^(<span class="built_in">NSString</span> *name) &#123;</div><div class="line">  <span class="comment">// name 即 self.name</span></div><div class="line">  <span class="comment">// 一旦 name 属性改变就立即进入到这个 block</span></div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// self.myLab.text 随着 self.myTF.text 的改变而改变</span></div><div class="line">RAC(<span class="keyword">self</span>.myLab, text) = <span class="keyword">self</span>.myTF.rac_textSignal;</div></pre></td></tr></table></figure>
+<h3 id="Notificaiton"><a href="#Notificaiton" class="headerlink" title="Notificaiton"></a>Notificaiton</h3><figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[[[[<span class="built_in">NSNotificationCenter</span> defaultCenter] </div><div class="line">rac_addObserverForName:<span class="built_in">UIKeyboardWillChangeFrameNotification</span> object:<span class="literal">nil</span>] </div><div class="line">  <span class="comment">// 这句不可少，表示 当 self 将要 dealloc 的时候，就要释放 通知</span></div><div class="line">  takeUntil:<span class="keyword">self</span>.rac_willDeallocSignal] </div><div class="line">  subscribeNext:^(<span class="built_in">NSNotification</span> *notification) &#123;</div><div class="line">      <span class="built_in">NSLog</span>(<span class="string">@"-----%@"</span>, notification.description);</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+<p>不要忘了还是原来的方法发送通知。</p>
+<p><strong>通知已经通过 RAC 内部得到了释放，所以不需要额外在 - dealloc 添加移除的代码</strong></p>
+<h3 id="RACCommand"><a href="#RACCommand" class="headerlink" title="RACCommand"></a>RACCommand</h3><blockquote>
+<p>A command, represented by the RACCommand class, creates and subscribes to a signal in response to some action. This makes it easy to perform side-effecting work as the user interacts with the app.</p>
+</blockquote>
+<p>简单的使用RACCommand 实现一个 viewModel 的网络请求。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/04/21/我用RAC干了些什么(一)/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/04/19/使用Gitlab和Cocoapods创建私有pod/" itemprop="url">
                   使用Gitlab和Cocoapods创建私有pod
                 </a>
@@ -1405,130 +1540,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/29/python 中的逻辑运算符/" itemprop="url">
-                  python 中的逻辑运算符
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-29T00:00:00+08:00" content="2017-01-29">
-              2017-01-29
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index">
-                    <span itemprop="name">python</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-             <span id="/2017/01/29/python 中的逻辑运算符/" class="leancloud_visitors" data-flag-title="python 中的逻辑运算符">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-                <span class="leancloud-visitors-count"></span>
-                <span class="post-meta-item-text">人正在围观 </span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>从现在开始，开始了对 pyhton 这门语言的学习。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/29/python 中的逻辑运算符/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1574,7 +1585,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">46</span>
+              <span class="site-state-item-count">47</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1582,7 +1593,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1591,7 +1602,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

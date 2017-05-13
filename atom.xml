@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://CepheusSun.github.io/"/>
-  <updated>2017-05-10T01:06:45.000Z</updated>
+  <updated>2017-05-13T16:05:14.000Z</updated>
   <id>https://CepheusSun.github.io/</id>
   
   <author>
@@ -14,6 +14,103 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Introduction to Protocol Oriented Programming in Swift</title>
+    <link href="https://CepheusSun.github.io/2017/05/14/Introduction%20to%20Protocol%20Oriented%20Programming%20in%20Swift/"/>
+    <id>https://CepheusSun.github.io/2017/05/14/Introduction to Protocol Oriented Programming in Swift/</id>
+    <published>2017-05-13T16:05:23.000Z</published>
+    <updated>2017-05-13T16:05:14.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>OOP is okay, but could’ve been better</p>
+</blockquote>
+<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>即使你还不知道 Class 和 Struct 基本的区别, 你也可以看这个文章。都知道 Struct 不能继承, 但是, 为什么呢？</p>
+<p>如果你还不知道上面这个问题的答案, 花两分钟时间读一下下面这段代码。这些代码是写在 playground 上的</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">HumanClass</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> name: <span class="type">String</span></div><div class="line">    <span class="keyword">init</span>(name: <span class="type">String</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.name = name</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> classHuman = <span class="type">HumanClass</span>(name: <span class="string">"Bob"</span>)</div><div class="line"><span class="comment">// "Bob"</span></div><div class="line">classHuman.name</div><div class="line"><span class="comment">// Created a "copied" object</span></div><div class="line"><span class="keyword">var</span> newClassHuman = classHuman</div><div class="line">newClassHuman.name = <span class="string">"Bobby"</span></div><div class="line">classHuman.name <span class="comment">//"Bobby"</span></div></pre></td></tr></table></figure>
+<p>等我们改变 <code>newClassHuman</code> 的 <code>name</code> 属性为 <code>“Bobby”</code> 之后, <code>classHuman</code> 的 <code>name</code> 属性也变成 <code>“Bobby”</code> 了。</p>
+<p>我们再看看 Struct </p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">HumanStruct</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> name: <span class="type">String</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> humanStruct = <span class="type">HumanStruct</span>(name: <span class="string">"Bob"</span>)</div><div class="line"><span class="keyword">var</span> newHumanStruct = humanStruct</div><div class="line">newHumanStruct.name = <span class="string">"Bobby"</span></div><div class="line">humanStruct.name  <span class="comment">// "Bobby"</span></div></pre></td></tr></table></figure>
+<p>看出来区别了吗？ 改变复制出来的 <code>newHumanStruct</code> 的 <code>name</code> 属性比呢没有改变原始的 <code>humanStruct</code> 的 <code>name</code> 属性。</p>
+<p>对于 Class 来说, 这样的复制出来的对象, 和原来的对象都指向的是内存中的同一个对象。对任何一个对象的改变, 都会改变其他的对象(引用类型)。 对于 Struct 来说, 在传递和赋值的时候会创造一个新的对象(值类型)</p>
+<p><a href="https://www.youtube.com/watch?v=MNnfUwzJ4ig">这里有一个介绍这个概念的视频</a></p>
+<h3 id="Bye-OOP"><a href="#Bye-OOP" class="headerlink" title="Bye OOP"></a>Bye OOP</h3><p>你可能会比较好奇为什么我讲了半天跟面向协议编程没关系的东西。在我开始将 POP 对比 OOP 的优势之前， 你得理解引用类型和值类型的区别。</p>
+<p>这里有一些毋庸置疑的 OOP 的优势, 也是劣势。</p>
+<ol>
+<li>创建一个子类, 这个子类会继承一些并不需要的属性和方法。这会让这个子类变的臃肿。</li>
+<li>当你有很多的继承关系的时候, 找到各个类之间的关系, 就变的比较困难了。</li>
+<li>当对象指向的内存中的同一块地址的时候, 如果对其中一个进行了修改, 所有的都会变。</li>
+</ol>
+<p>顺便看一下 UIKit 中的 OOP 吧</p>
+<center><br><img src="https://cdn-images-1.medium.com/max/1600/1*hjEXB3PGUOSbxet0qUJRNA.png" alt=""><br>2015 WWDC_Hideous Structure<br></center>
+
+<p>如果你是刚进苹果的工程师, 你能够搞定这些东西吗？我们在使用它的时候总觉的会比较混乱。</p>
+<p>有人说 OOP 是一个让你的代码变的想意大利面那样乱的模块化方案。如果你想要更多吐槽 OOP 的内容. <a href="https://content.pivotal.io/blog/all-evidence-points-to-oop-being-bullshit">这儿</a><a href="https://krakendev.io/blog/subclassing-can-suck-and-heres-why">这儿</a><a href="http://www.smashcompany.com/technology/object-oriented-programming-is-an-expensive-disaster-which-must-end">这儿</a><a href="https://www.leaseweb.com/labs/2015/08/object-oriented-programming-is-exceptionally-bad/">还有这儿</a></p>
+<h3 id="Welcome-POP"><a href="#Welcome-POP" class="headerlink" title="Welcome POP"></a>Welcome POP</h3><p>你可能已经猜到了, POP 的基础不是类, 而是值类型变量。没有引用，不像刚刚看到的金字塔结构。 POP 喜欢扁平的, 没那么多嵌套关系的代码。</p>
+<p>只是吓你一下啦, 下面我们看看苹果爸爸的官方定义。</p>
+<blockquote>
+<p>“A protocol defines a blueprint of methods, properties… The protocol can then be adopted by a class, structure, or enumeration” — Apple</p>
+<p>协议定义了方法属性的蓝图, 协议可以被类、结构体、还有枚举实现。</p>
+</blockquote>
+<h3 id="Getting-Real-with-POP"><a href="#Getting-Real-with-POP" class="headerlink" title="Getting Real with POP"></a>Getting Real with POP</h3><p>首先我们设计一下 human 这个东西。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">Human</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> name: <span class="type">String</span> &#123;<span class="keyword">get</span> <span class="keyword">set</span>&#125;</div><div class="line">    <span class="keyword">var</span> race: <span class="type">String</span> &#123;<span class="keyword">get</span> <span class="keyword">set</span>&#125;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">sayHi</span><span class="params">()</span></span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在这个协议中, 我没有申明 <code>drinking</code>. 它只是声明一些一定存在的东西。现在先不要纠结 <code>{get set}</code>. 它只是表明你可以给这个属性赋值也可以取值。先不要担心, 除非你要使用计算属性。</p>
+<p>我们在定义一个韩国人 🇰🇷 结构体, 来实现这个协议。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Korean</span>: <span class="title">Human</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> name: <span class="type">String</span> = <span class="string">"Bob Lee"</span></div><div class="line">    <span class="keyword">var</span> race: <span class="type">String</span> = <span class="string">"Asian"</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">sayHi</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="built_in">print</span>(<span class="string">"Hi, I'm <span class="subst">\(name)</span>"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>只要这个结构体遵守了这个协议，它就必须要实现这个协议中的多有方法和属性。如果没有的话 Xcode 就会报错😡</p>
+<p>只要是遵守了这个蓝图。你就可以做其他任何事情了, 盖一座长城也没关系。</p>
+<p>我们在来实现一个美国人 🇺🇸</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Korean</span>: <span class="title">Human</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> name: <span class="type">String</span> = <span class="string">"Joe Smith"</span></div><div class="line">    <span class="keyword">var</span> race: <span class="type">String</span> = <span class="string">"White"</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">sayHi</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="built_in">print</span>(<span class="string">"Hi, I'm <span class="subst">\(name)</span>"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>很酷吧！ 不需要用那些 <code>init</code> <code>override</code> 关键字。 开始感兴趣了吗？</p>
+<p><a href="https://www.youtube.com/watch?v=lyzcERHGH_8&amp;t=2s&amp;list=PL8btZwalbjYm5xDXDURW9u86vCtRKaHML&amp;index=1">Intro to Protocol Lesson</a></p>
+<h3 id="Protocol-Inheritance"><a href="#Protocol-Inheritance" class="headerlink" title="Protocol Inheritance"></a>Protocol Inheritance</h3><p>如果你想要一个 <code>superman</code> 的协议。这个协议也需要遵守 <code>Human</code> 这个协议呢？</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">SuperHuman</span>: <span class="title">Human</span> </span>&#123;</div><div class="line"> <span class="keyword">var</span> canFly: <span class="type">Bool</span> &#123; <span class="keyword">get</span> <span class="keyword">set</span> &#125; </div><div class="line"> <span class="function"><span class="keyword">func</span> <span class="title">punch</span><span class="params">()</span></span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>现在如果你有一个遵守了 <code>SuperMan</code> 这个协议的类或者结构体的话，这个类也必须实现 <code>Human</code> 这个协议中的方法。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SuperSaiyan</span>: <span class="title">SuperMan</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> name: <span class="type">String</span> = <span class="string">"Goku"</span></div><div class="line">    <span class="keyword">var</span> race: <span class="type">String</span> = <span class="string">"Asian"</span></div><div class="line">    <span class="keyword">var</span> canFly: <span class="type">Bool</span> = <span class="literal">true</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">sayHi</span><span class="params">()</span></span> &#123; <span class="built_in">print</span>(<span class="string">"Hi, I'm <span class="subst">\(name)</span>"</span>) &#125;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">punch</span><span class="params">()</span></span> &#123; <span class="built_in">print</span>(<span class="string">"Puuooookkk"</span>) &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当然你也可以遵守多个协议。就可以实现多继承了。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Example</span></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Example</span>: <span class="title">ProtocolOne</span>, <span class="title">ProtocolTwo</span> </span>&#123;&#125;</div></pre></td></tr></table></figure>
+<h3 id="Protocol-Extension"><a href="#Protocol-Extension" class="headerlink" title="Protocol Extension"></a>Protocol Extension</h3><p>下面才是协议最强大的特性了。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Super Animal speaks English</span></div><div class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">SuperAnimal</span> </span>&#123;</div><div class="line"> <span class="function"><span class="keyword">func</span> <span class="title">speakEnglish</span><span class="params">()</span></span> </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>给这个协议加一个 <code>Extension</code></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">SuperAnimal</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">speakEnglish</span><span class="params">()</span></span> &#123; <span class="built_in">print</span>(<span class="string">"I speak English, pretty cool, huh?"</span>)&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>现在再创建一个遵守这个协议的类</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Donkey</span>: <span class="title">SuperAnimal</span> </span>&#123;</div><div class="line">    </div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> ramon = <span class="type">Donkey</span>()</div><div class="line">ramon.speakEnglish()</div><div class="line"><span class="comment">//  "I speak English, pretty cool, huh?"</span></div></pre></td></tr></table></figure>
+<p>如果你使用了 <code>Extension</code> 就可以给这个协议添加默认的实现和属性值了。这样不爽吗？</p>
+<h3 id="Protocol-as-Type-Last"><a href="#Protocol-as-Type-Last" class="headerlink" title="Protocol as Type(Last)"></a>Protocol as Type(Last)</h3><p>如果我跟你说我能在一个数组中同时放一个对象和一个结构体呢？😮</p>
+<p>我要用袋鼠打架求偶来写一个 demo 了。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">Fightable</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">legKick</span><span class="params">()</span></span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">StructKangaroo</span>: <span class="title">Fightable</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">legKick</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="built_in">print</span>(<span class="string">"Puuook"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassKangroo</span>: <span class="title">Fightable</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">legKick</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="built_in">print</span>(<span class="string">"Pakkkk"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后初始化俩袋鼠出来</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> structKangroo = <span class="type">StructKangaroo</span>()</div><div class="line"><span class="keyword">let</span> classKangroo = <span class="type">ClassKangroo</span>()</div></pre></td></tr></table></figure>
+<p>现在就可以把他们放在一个数组中了。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> kangaroos: [<span class="type">Fightable</span>] = [structKang, classKang]</div></pre></td></tr></table></figure>
+<p>难以置信吧！ 再看看</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> kang <span class="keyword">in</span> kangaroos &#123; </div><div class="line"> kang.legKick() </div><div class="line">&#125;</div><div class="line"><span class="comment">// "Puuook"</span></div><div class="line"><span class="comment">// "Pakkkk"</span></div></pre></td></tr></table></figure>
+<p>这很爽吧！ 想象在 OOP 中我们怎么实现这个东西呢？</p>
+<h3 id="That’s-it"><a href="#That’s-it" class="headerlink" title="That’s it!"></a>That’s it!</h3><p><a href="https://blog.bobthedeveloper.io/protocol-oriented-programming-view-in-swift-3-8bcb3305c427">原文地址</a></p>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>我是一名来自中国的 iOS 程序员, 对技术有着浓厚的兴趣, 在学习的过程中, 发现了很多来自国外的优秀博客。为了更好的学习这些文章, 产生了将这些文章翻译成中文的想法。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;OOP is okay, but could’ve been better&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;Introduction&quot;&gt;&lt;a href=&quot;#Introduction&quot; class=&quot;headerlink&quot; tit
+    
+    </summary>
+    
+      <category term="POP" scheme="https://CepheusSun.github.io/categories/POP/"/>
+    
+    
+      <category term="iOS" scheme="https://CepheusSun.github.io/tags/iOS/"/>
+    
+      <category term="Swift" scheme="https://CepheusSun.github.io/tags/Swift/"/>
+    
+      <category term="翻译" scheme="https://CepheusSun.github.io/tags/%E7%BF%BB%E8%AF%91/"/>
+    
+      <category term="POP" scheme="https://CepheusSun.github.io/tags/POP/"/>
+    
+  </entry>
   
   <entry>
     <title>RxSwift MVVM API Manual 📃</title>
@@ -76,11 +173,11 @@
     
       <category term="iOS" scheme="https://CepheusSun.github.io/tags/iOS/"/>
     
-      <category term="Reactive" scheme="https://CepheusSun.github.io/tags/Reactive/"/>
-    
       <category term="Swift" scheme="https://CepheusSun.github.io/tags/Swift/"/>
     
       <category term="翻译" scheme="https://CepheusSun.github.io/tags/%E7%BF%BB%E8%AF%91/"/>
+    
+      <category term="Reactive" scheme="https://CepheusSun.github.io/tags/Reactive/"/>
     
   </entry>
   
@@ -154,11 +251,11 @@
     
       <category term="iOS" scheme="https://CepheusSun.github.io/tags/iOS/"/>
     
-      <category term="Reactive" scheme="https://CepheusSun.github.io/tags/Reactive/"/>
-    
       <category term="Swift" scheme="https://CepheusSun.github.io/tags/Swift/"/>
     
       <category term="翻译" scheme="https://CepheusSun.github.io/tags/%E7%BF%BB%E8%AF%91/"/>
+    
+      <category term="Reactive" scheme="https://CepheusSun.github.io/tags/Reactive/"/>
     
   </entry>
   
@@ -245,11 +342,11 @@
     
       <category term="iOS" scheme="https://CepheusSun.github.io/tags/iOS/"/>
     
-      <category term="Reactive" scheme="https://CepheusSun.github.io/tags/Reactive/"/>
-    
       <category term="Swift" scheme="https://CepheusSun.github.io/tags/Swift/"/>
     
       <category term="翻译" scheme="https://CepheusSun.github.io/tags/%E7%BF%BB%E8%AF%91/"/>
+    
+      <category term="Reactive" scheme="https://CepheusSun.github.io/tags/Reactive/"/>
     
   </entry>
   
@@ -379,11 +476,11 @@
     
       <category term="iOS" scheme="https://CepheusSun.github.io/tags/iOS/"/>
     
-      <category term="Reactive" scheme="https://CepheusSun.github.io/tags/Reactive/"/>
-    
       <category term="Swift" scheme="https://CepheusSun.github.io/tags/Swift/"/>
     
       <category term="翻译" scheme="https://CepheusSun.github.io/tags/%E7%BF%BB%E8%AF%91/"/>
+    
+      <category term="Reactive" scheme="https://CepheusSun.github.io/tags/Reactive/"/>
     
   </entry>
   
@@ -519,11 +616,11 @@
     
       <category term="iOS" scheme="https://CepheusSun.github.io/tags/iOS/"/>
     
-      <category term="Reactive" scheme="https://CepheusSun.github.io/tags/Reactive/"/>
-    
       <category term="Swift" scheme="https://CepheusSun.github.io/tags/Swift/"/>
     
       <category term="翻译" scheme="https://CepheusSun.github.io/tags/%E7%BF%BB%E8%AF%91/"/>
+    
+      <category term="Reactive" scheme="https://CepheusSun.github.io/tags/Reactive/"/>
     
   </entry>
   
@@ -608,11 +705,11 @@
     
       <category term="iOS" scheme="https://CepheusSun.github.io/tags/iOS/"/>
     
-      <category term="Reactive" scheme="https://CepheusSun.github.io/tags/Reactive/"/>
-    
       <category term="Swift" scheme="https://CepheusSun.github.io/tags/Swift/"/>
     
       <category term="翻译" scheme="https://CepheusSun.github.io/tags/%E7%BF%BB%E8%AF%91/"/>
+    
+      <category term="Reactive" scheme="https://CepheusSun.github.io/tags/Reactive/"/>
     
       <category term="设计模式" scheme="https://CepheusSun.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
@@ -681,11 +778,11 @@
     
       <category term="iOS" scheme="https://CepheusSun.github.io/tags/iOS/"/>
     
-      <category term="Reactive" scheme="https://CepheusSun.github.io/tags/Reactive/"/>
-    
       <category term="Swift" scheme="https://CepheusSun.github.io/tags/Swift/"/>
     
       <category term="翻译" scheme="https://CepheusSun.github.io/tags/%E7%BF%BB%E8%AF%91/"/>
+    
+      <category term="Reactive" scheme="https://CepheusSun.github.io/tags/Reactive/"/>
     
   </entry>
   
@@ -1562,79 +1659,6 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
     
     
       <category term="Objective-C" scheme="https://CepheusSun.github.io/tags/Objective-C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>python 中的逻辑运算符</title>
-    <link href="https://CepheusSun.github.io/2017/01/29/python%20%E4%B8%AD%E7%9A%84%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6/"/>
-    <id>https://CepheusSun.github.io/2017/01/29/python 中的逻辑运算符/</id>
-    <published>2017-01-28T16:00:00.000Z</published>
-    <updated>2017-01-29T16:05:59.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>从现在开始，开始了对 pyhton 这门语言的学习。</p>
-<a id="more"></a>
-<p>逻辑运算符其实没什么好说的，只是最近学习 python 这门语言的时候，才研究发现的一个小知识点。</p>
-<h2 id="逻辑运算符有什么？"><a href="#逻辑运算符有什么？" class="headerlink" title="逻辑运算符有什么？"></a>逻辑运算符有什么？</h2><table>
-<thead>
-<tr>
-<th style="text-align:center">关系运算符</th>
-<th style="text-align:center">含义</th>
-<th style="text-align:center">举例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">and</td>
-<td style="text-align:center">与(全真才真)</td>
-<td style="text-align:center">True and False == False</td>
-</tr>
-<tr>
-<td style="text-align:center">or</td>
-<td style="text-align:center">或(全假才假)</td>
-<td style="text-align:center">True or False == True</td>
-</tr>
-<tr>
-<td style="text-align:center">not</td>
-<td style="text-align:center">非(真变假、假变真)</td>
-<td style="text-align:center">not True == False</td>
-</tr>
-</tbody>
-</table>
-<h2 id="为什么123-and-456结果是456而123-or-456结果是123？"><a href="#为什么123-and-456结果是456而123-or-456结果是123？" class="headerlink" title="为什么123 and 456结果是456而123 or 456结果是123？"></a>为什么<code>123 and 456</code>结果是<code>456</code>而<code>123 or 456</code>结果是<code>123</code>？</h2><p><strong>and </strong>:</p>
-<p>​    对于 and 首先计算第一个表达式，</p>
-<p>​    如果第一个表达式为真，结果为第二个表达式的结果。</p>
-<p>​    如果第一个表达式为假，返回假。</p>
-<p><strong>or </strong>：</p>
-<p>​    对于 or 首先计算第一个表达式，</p>
-<p>​    如果第一个表达式为真，则返回真。</p>
-<p>​    如果第一个表达式为假，则返回第二个表达式的结果    </p>
-<p>所以，对于</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="number">123</span> <span class="keyword">and</span> <span class="number">456</span></div></pre></td></tr></table></figure>
-<p>这行代码， 遵循非零为真的原则，第一个表达式为真。那么看第二个表达式，第二个表达式也大于零，所以结果为第二个表达式的结果。所以返回</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="number">456</span></div></pre></td></tr></table></figure>
-<p>对于</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="number">123</span> <span class="keyword">or</span> <span class="number">456</span></div></pre></td></tr></table></figure>
-<p>这行代码，第一个表达式非零，结果为第一个表达式的结果。</p>
-<blockquote>
-<p>Strictly speaking, the operands of the logical operators should be boolean expressions, but</p>
-<p>Python is not very strict. Any nonzero number is interpreted as “true.”严格来讲，布尔运算符的运算数应该是布尔表达式， 但是Python并不严格。任何非0的数字都被解释成“真”。</p>
-</blockquote>
-<p>另外，因为 <code>123</code> 或者 <code>456</code> 这两个表达式，都不是逻辑运算，表达式的值就是他本身的值。所以最后得出这样的结果。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><strong>and: </strong>从左到右计算表达式，若所有值为真，返回最后一个值。若存在假，返回第一个假值。</p>
-<p><strong>or：</strong> 从左到右计算表达式，返回第一个为真的值。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;从现在开始，开始了对 pyhton 这门语言的学习。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="python" scheme="https://CepheusSun.github.io/categories/python/"/>
-    
-    
-      <category term="python" scheme="https://CepheusSun.github.io/tags/python/"/>
     
   </entry>
   
