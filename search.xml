@@ -1068,6 +1068,35 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
     </entry>
     
     <entry>
+      <title><![CDATA[python SyntaxError Non-ASCII character \xe9 in file xxx]]></title>
+      <url>https://CepheusSun.github.io/2017/02/02/python%20SyntaxError%20Non-ASCII%20character%20xe9%20in%20file%20xxx/</url>
+      <content type="html"><![CDATA[<p>错误类型:SyntaxError: Non-ASCII character <code>\xe9</code> in file xxx</p>
+<a id="more"></a>
+<p>最近写 python 代码的时候，简单的一下代码，确出现错误。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">points = int(raw_input(<span class="string">"领先的分数："</span>))</div><div class="line">is_in_control = raw_input(<span class="string">"是否领先队控球(Y／N：)"</span>)</div><div class="line">last_seconds = int(raw_input(<span class="string">"比赛剩余秒数："</span>))</div><div class="line"></div><div class="line">points -= <span class="number">3</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> is_in_control == <span class="string">'Y'</span>:</div><div class="line">    points += <span class="number">0.5</span></div><div class="line"><span class="keyword">else</span>:</div><div class="line">    points -= <span class="number">0.5</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> points &lt; <span class="number">0</span>:</div><div class="line">    points = <span class="number">0</span></div><div class="line"></div><div class="line"></div><div class="line">points = points ** <span class="number">2</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> points &gt; last_seconds:</div><div class="line">    <span class="keyword">print</span> <span class="string">"safe"</span></div><div class="line"><span class="keyword">else</span>:</div><div class="line">    <span class="keyword">print</span>  <span class="string">"unsafe"</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SyntaxError: Non-ASCII character &apos;\xe9&apos; in file /Users/programersunny/PycharmProjects/pythonDemo/hello on line 58, but no encoding declared; see http://www.python.org/peps/pep-0263.html for details</div></pre></td></tr></table></figure>
+<p>打开 URL 阅读了一下，找到原因：</p>
+<blockquote>
+<p>Python will default to ASCII as standard encoding if no other encoding hints are given.</p>
+</blockquote>
+<p>Python的默认编码文件是用的ASCII码，你将文件存成了UTF-8也没用。</p>
+<p>解决办法很简单：</p>
+<p>只要在文件开头加入<code># -*- coding: UTF-8 —</code>或者<code>#coding=utf-8</code> 就行了。</p>
+<p>注意，这两行代码必须添加在<code>.py</code>文件的第一行或者第二行。如果在第三行以及以上，都没有效果，这个在这个网址上也有描述</p>
+<blockquote>
+<p>To define a source code encoding, a magic comment must be placed into the source files either as first or second line in the file</p>
+</blockquote>
+<p>翻译一下：</p>
+<blockquote>
+<p>为了定义源码的编码格式，一个神奇的注释需要被添加到源文件的第一行或者第二行中。</p>
+</blockquote>
+<p>神奇的注释已经在上文提到了。</p>
+<p><a href="https://www.python.org/dev/peps/pep-0263/">上文提到的URL地址</a></p>
+<p>纪念一下自己在 python 中遇到的第一个小坑。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[iOS小知识集锦-NSString常用方法汇总]]></title>
       <url>https://CepheusSun.github.io/2017/02/01/iOS%E5%B0%8F%E7%9F%A5%E8%AF%86%E9%9B%86%E9%94%A6-NSString%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB/</url>
       <content type="html"><![CDATA[<p>NSString 几乎是 iOS 开发中最常用的类了。几乎所有的地方都会用到各种各样的字符串。NSString 也有很多的方法。这篇文章记录我在使用 NSString 类的时候，会用到的知识点。也是 <code>iOS小知识集锦</code>的第一篇文章吧。</p>

@@ -256,11 +256,11 @@
     
       <category term="iOS" scheme="https://CepheusSun.github.io/tags/iOS/"/>
     
-      <category term="Reactive" scheme="https://CepheusSun.github.io/tags/Reactive/"/>
-    
       <category term="Swift" scheme="https://CepheusSun.github.io/tags/Swift/"/>
     
       <category term="翻译" scheme="https://CepheusSun.github.io/tags/%E7%BF%BB%E8%AF%91/"/>
+    
+      <category term="Reactive" scheme="https://CepheusSun.github.io/tags/Reactive/"/>
     
   </entry>
   
@@ -334,11 +334,11 @@
     
       <category term="iOS" scheme="https://CepheusSun.github.io/tags/iOS/"/>
     
-      <category term="Reactive" scheme="https://CepheusSun.github.io/tags/Reactive/"/>
-    
       <category term="Swift" scheme="https://CepheusSun.github.io/tags/Swift/"/>
     
       <category term="翻译" scheme="https://CepheusSun.github.io/tags/%E7%BF%BB%E8%AF%91/"/>
+    
+      <category term="Reactive" scheme="https://CepheusSun.github.io/tags/Reactive/"/>
     
   </entry>
   
@@ -425,11 +425,11 @@
     
       <category term="iOS" scheme="https://CepheusSun.github.io/tags/iOS/"/>
     
-      <category term="Reactive" scheme="https://CepheusSun.github.io/tags/Reactive/"/>
-    
       <category term="Swift" scheme="https://CepheusSun.github.io/tags/Swift/"/>
     
       <category term="翻译" scheme="https://CepheusSun.github.io/tags/%E7%BF%BB%E8%AF%91/"/>
+    
+      <category term="Reactive" scheme="https://CepheusSun.github.io/tags/Reactive/"/>
     
   </entry>
   
@@ -559,11 +559,11 @@
     
       <category term="iOS" scheme="https://CepheusSun.github.io/tags/iOS/"/>
     
-      <category term="Reactive" scheme="https://CepheusSun.github.io/tags/Reactive/"/>
-    
       <category term="Swift" scheme="https://CepheusSun.github.io/tags/Swift/"/>
     
       <category term="翻译" scheme="https://CepheusSun.github.io/tags/%E7%BF%BB%E8%AF%91/"/>
+    
+      <category term="Reactive" scheme="https://CepheusSun.github.io/tags/Reactive/"/>
     
   </entry>
   
@@ -699,11 +699,11 @@
     
       <category term="iOS" scheme="https://CepheusSun.github.io/tags/iOS/"/>
     
-      <category term="Reactive" scheme="https://CepheusSun.github.io/tags/Reactive/"/>
-    
       <category term="Swift" scheme="https://CepheusSun.github.io/tags/Swift/"/>
     
       <category term="翻译" scheme="https://CepheusSun.github.io/tags/%E7%BF%BB%E8%AF%91/"/>
+    
+      <category term="Reactive" scheme="https://CepheusSun.github.io/tags/Reactive/"/>
     
   </entry>
   
@@ -788,11 +788,11 @@
     
       <category term="iOS" scheme="https://CepheusSun.github.io/tags/iOS/"/>
     
-      <category term="Reactive" scheme="https://CepheusSun.github.io/tags/Reactive/"/>
-    
       <category term="Swift" scheme="https://CepheusSun.github.io/tags/Swift/"/>
     
       <category term="翻译" scheme="https://CepheusSun.github.io/tags/%E7%BF%BB%E8%AF%91/"/>
+    
+      <category term="Reactive" scheme="https://CepheusSun.github.io/tags/Reactive/"/>
     
       <category term="设计模式" scheme="https://CepheusSun.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
@@ -861,11 +861,11 @@
     
       <category term="iOS" scheme="https://CepheusSun.github.io/tags/iOS/"/>
     
-      <category term="Reactive" scheme="https://CepheusSun.github.io/tags/Reactive/"/>
-    
       <category term="Swift" scheme="https://CepheusSun.github.io/tags/Swift/"/>
     
       <category term="翻译" scheme="https://CepheusSun.github.io/tags/%E7%BF%BB%E8%AF%91/"/>
+    
+      <category term="Reactive" scheme="https://CepheusSun.github.io/tags/Reactive/"/>
     
   </entry>
   
@@ -1592,6 +1592,51 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
   </entry>
   
   <entry>
+    <title>python SyntaxError Non-ASCII character \xe9 in file xxx</title>
+    <link href="https://CepheusSun.github.io/2017/02/02/python%20SyntaxError%20Non-ASCII%20character%20xe9%20in%20file%20xxx/"/>
+    <id>https://CepheusSun.github.io/2017/02/02/python SyntaxError Non-ASCII character xe9 in file xxx/</id>
+    <published>2017-02-01T16:00:00.000Z</published>
+    <updated>2017-05-19T02:35:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>错误类型:SyntaxError: Non-ASCII character <code>\xe9</code> in file xxx</p>
+<a id="more"></a>
+<p>最近写 python 代码的时候，简单的一下代码，确出现错误。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">points = int(raw_input(<span class="string">"领先的分数："</span>))</div><div class="line">is_in_control = raw_input(<span class="string">"是否领先队控球(Y／N：)"</span>)</div><div class="line">last_seconds = int(raw_input(<span class="string">"比赛剩余秒数："</span>))</div><div class="line"></div><div class="line">points -= <span class="number">3</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> is_in_control == <span class="string">'Y'</span>:</div><div class="line">    points += <span class="number">0.5</span></div><div class="line"><span class="keyword">else</span>:</div><div class="line">    points -= <span class="number">0.5</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> points &lt; <span class="number">0</span>:</div><div class="line">    points = <span class="number">0</span></div><div class="line"></div><div class="line"></div><div class="line">points = points ** <span class="number">2</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> points &gt; last_seconds:</div><div class="line">    <span class="keyword">print</span> <span class="string">"safe"</span></div><div class="line"><span class="keyword">else</span>:</div><div class="line">    <span class="keyword">print</span>  <span class="string">"unsafe"</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SyntaxError: Non-ASCII character &apos;\xe9&apos; in file /Users/programersunny/PycharmProjects/pythonDemo/hello on line 58, but no encoding declared; see http://www.python.org/peps/pep-0263.html for details</div></pre></td></tr></table></figure>
+<p>打开 URL 阅读了一下，找到原因：</p>
+<blockquote>
+<p>Python will default to ASCII as standard encoding if no other encoding hints are given.</p>
+</blockquote>
+<p>Python的默认编码文件是用的ASCII码，你将文件存成了UTF-8也没用。</p>
+<p>解决办法很简单：</p>
+<p>只要在文件开头加入<code># -*- coding: UTF-8 —</code>或者<code>#coding=utf-8</code> 就行了。</p>
+<p>注意，这两行代码必须添加在<code>.py</code>文件的第一行或者第二行。如果在第三行以及以上，都没有效果，这个在这个网址上也有描述</p>
+<blockquote>
+<p>To define a source code encoding, a magic comment must be placed into the source files either as first or second line in the file</p>
+</blockquote>
+<p>翻译一下：</p>
+<blockquote>
+<p>为了定义源码的编码格式，一个神奇的注释需要被添加到源文件的第一行或者第二行中。</p>
+</blockquote>
+<p>神奇的注释已经在上文提到了。</p>
+<p><a href="https://www.python.org/dev/peps/pep-0263/">上文提到的URL地址</a></p>
+<p>纪念一下自己在 python 中遇到的第一个小坑。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;错误类型:SyntaxError: Non-ASCII character &lt;code&gt;\xe9&lt;/code&gt; in file xxx&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="python" scheme="https://CepheusSun.github.io/categories/python/"/>
+    
+    
+      <category term="python" scheme="https://CepheusSun.github.io/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
     <title>iOS小知识集锦-NSString常用方法汇总</title>
     <link href="https://CepheusSun.github.io/2017/02/01/iOS%E5%B0%8F%E7%9F%A5%E8%AF%86%E9%9B%86%E9%94%A6-NSString%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB/"/>
     <id>https://CepheusSun.github.io/2017/02/01/iOS小知识集锦-NSString常用方法汇总/</id>
@@ -1736,62 +1781,6 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
     
     
       <category term="CocoaPods" scheme="https://CepheusSun.github.io/tags/CocoaPods/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Swift 和 OC 混合编程</title>
-    <link href="https://CepheusSun.github.io/2017/01/05/Swift%E5%92%8COC%E6%B7%B7%E5%90%88%E7%BC%96%E7%A8%8B/"/>
-    <id>https://CepheusSun.github.io/2017/01/05/Swift和OC混合编程/</id>
-    <published>2017-01-04T16:00:00.000Z</published>
-    <updated>2017-01-10T07:49:29.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>自己学了一段时间的 Swift ，从最开始看 Swift 2.3 的《写给大忙人看的Swift》,在 Xcode8 下很多示例代码都不能好好玩下去，然后看到了 SwiftGG 翻译组针对 Swift 官方文档的中文译本。算是正式开始了对 Swift 的学习。对 Swift 的喜爱不仅仅是因为他是新的语言，是 iOS 开发未来的趋势。而且还有一个很重要的一点单单就是因为 Swift 代码看起来就是非常漂亮啊。</p>
-<a id="more"></a>
-<h2 id="写在前面的话"><a href="#写在前面的话" class="headerlink" title="写在前面的话"></a>写在前面的话</h2><p>对于Swift的学习根本还是一种还没有正式入门的感觉。所以没有办法像 OC 那样驾轻就熟，很多语法都还没有完全掌握，因为时间原因，也因为最近确实发生了一些事情。导致最近学习的热情比较的低，而且年关在即，很多工作上生活上的事情都需要认真梳理一遍。减少了在学习上的努力，是在是罪大恶极。技术圈在这个时候也发生了一些大事情。微信开源的组件 <a href="https://github.com/Tencent/mars#mars_cn">Mars</a>  滴滴和手Q相继 po 出了自己的动态化解决方案。下一年应该会是动态化更广泛应用的一年吧，很多 app 动态化将成为标准配置。但是唯一比较遗憾的是，这些解决方案还是基于 OC 的。但是这也并不妨碍我学习 Swift 的激情，毕竟一切 app 的生杀大权都掌握在苹果手中的，而且，苹果还有一个并不开放的动态库。</p>
-<p>简单的学了一些 Swift 的相关东西，就开始手痒想要实践一下了。本来打算使用 Swift 重新写一个项目，但是苦于需求一直源源不断，重写压力也是非常的大。还有一个最大的原因，对 Swift 的掌握还没有真正算是一个 Swift 开发者。实在没有能力将原有项目中的组件转化为 Swift ，所以还是决定在原来的代码中，尝试将一些类用 Swift 来表达。</p>
-<blockquote>
-<p>这也解决了在 Swift 项目中，优秀的第三方库确实没有 OC 丰富，而作为现在非常热门的开发语言，很多比较好的效果什么的也只有 Swift 版本这样的问题。</p>
-</blockquote>
-<p>其实无论如何，其实都是 OC 和 Swift 之间的交互。</p>
-<h2 id="在-Swift-中使用-OC-类"><a href="#在-Swift-中使用-OC-类" class="headerlink" title="在 Swift 中使用 OC 类"></a>在 Swift 中使用 OC 类</h2><p>如果在Swift类中使用OC的代码，那么就需要使用桥接文件了。</p>
-<p>这是我们在平常的OC项目中创建一个新的类</p>
-<p><img src="http://ocg4av0wv.bkt.clouddn.com/34DF1870-F7E8-4522-B715-F1ACAA35DFEA.png" /></p>
-<p>点击按钮 <code>Create Bridging Header</code> 。</p>
-<p><img src="http://ocg4av0wv.bkt.clouddn.com/CC24943D-0A36-4095-9EFF-64DBF9D96193.png" /></p>
-<p>就会生成一个<code>项目名-Bridging-Header.h</code>文件，这其实貌似就是一个很平常的<code>.h</code>文件。</p>
-<p><img src="http://ocg4av0wv.bkt.clouddn.com/7132C9EA-C1A4-4AE9-BC83-F200006A95B1.png"></p>
-<p>然后就只需要像 Import 一个普通类一样把你需要在 Swift 中使用的所有 OC 类在这个<code>.h</code> 文件中添加进来，然后就能够在 Swift 代码中正常的使用 OC 的方法了。</p>
-<p><img src="http://ocg4av0wv.bkt.clouddn.com/B4E7A1D8-F202-4BE8-8CDF-1A3221F42571.png"></p>
-<p>这里的<code>MUserInfo</code>其实就是我项目中的一个单例类了。这里要注意的是，虽然使用的是 OC 的类，但是使用的时候依然是使用 Swift 的语法。这个也没什么需要注意的。</p>
-<blockquote>
-<p>需要注意的是：在 Swift 类中使用的 OC 的方法，还是需要使用 Swift 的语法。</p>
-</blockquote>
-<p>刚刚说的导入，就是直接在刚刚说的桥接文件中写入如下代码。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#import &quot;MUserInfo.h&quot;</div></pre></td></tr></table></figure>
-<h2 id="在-OC-中使用-Swift-类"><a href="#在-OC-中使用-Swift-类" class="headerlink" title="在 OC 中使用 Swift 类"></a>在 OC 中使用 Swift 类</h2><p>这个也是非常的简单，</p>
-<p>在<code>TARGETS</code>- <code>Build Settings</code>中选择<code>Swift Complier-General</code></p>
-<p><img src="http://ocg4av0wv.bkt.clouddn.com/0BA5113B-03E2-40EC-81D0-A55903005F19.png" /></p>
-<p>然后分别将<code>Install Objective-C Compatibility Header</code> 和 <code>Objective-C Generated Interface Header Name</code> 选项 改为 <code>YES</code> 和 <code>项目名-Swift.h</code></p>
-<p>然后在使用Swift类的时候，只需要在使用的时候像导入头文件一样倒入 <code>项目名-Swift.h</code>这个文件。然后就可以愉快的使用了。</p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>没有解语，期待下次分享！</p>
-<p>## </p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;自己学了一段时间的 Swift ，从最开始看 Swift 2.3 的《写给大忙人看的Swift》,在 Xcode8 下很多示例代码都不能好好玩下去，然后看到了 SwiftGG 翻译组针对 Swift 官方文档的中文译本。算是正式开始了对 Swift 的学习。对 Swift 的喜爱不仅仅是因为他是新的语言，是 iOS 开发未来的趋势。而且还有一个很重要的一点单单就是因为 Swift 代码看起来就是非常漂亮啊。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="iOS" scheme="https://CepheusSun.github.io/categories/iOS/"/>
-    
-    
-      <category term="iOS" scheme="https://CepheusSun.github.io/tags/iOS/"/>
-    
-      <category term="Swift" scheme="https://CepheusSun.github.io/tags/Swift/"/>
-    
-      <category term="Objective-C" scheme="https://CepheusSun.github.io/tags/Objective-C/"/>
     
   </entry>
   
