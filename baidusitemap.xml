@@ -516,28 +516,6 @@
 
     
   <url>
-    <loc>https://CepheusSun.github.io/2016/11/17/SYNetwork/</loc>
-    <lastmod>2017-02-22T15:44:25.000Z</lastmod>
-    <data>
-        <display>
-        <title>SYNetwork</title>
-        <pubTime>2016-11-16T16:00:00.000Z</pubTime>
-        
-        <tag>iOS</tag>
-         
-        <tag>OpenSource</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS" url="https://CepheusSun.github.io/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://CepheusSun.github.io/2017/02/19/interview07021901/</loc>
     <lastmod>2017-02-21T16:04:14.000Z</lastmod>
     <data>
@@ -695,28 +673,6 @@
            
              
               <breadCrumb title="随笔杂记" url="https://CepheusSun.github.io/categories/%E9%9A%8F%E7%AC%94%E6%9D%82%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://CepheusSun.github.io/2016/11/25/2016%E6%88%91%E7%9A%84%E4%B9%A6%E5%8D%95/</loc>
-    <lastmod>2016-12-09T03:08:53.000Z</lastmod>
-    <data>
-        <display>
-        <title>2016我的书单</title>
-        <pubTime>2016-11-24T16:00:00.000Z</pubTime>
-        
-        <tag>阅读</tag>
-         
-        <tag>图书</tag>
-         
-         
-           
-             
-              <breadCrumb title="阅读" url="https://CepheusSun.github.io/categories/%E9%98%85%E8%AF%BB/"/>
           
         </display>
     </data>
@@ -990,11 +946,11 @@
         <title>html学习笔记--1</title>
         <pubTime>2016-08-27T15:03:45.000Z</pubTime>
         
+        <tag>html</tag>
+         
         <tag>前端</tag>
          
         <tag>学习笔记</tag>
-         
-        <tag>html</tag>
          
          
            
@@ -1034,11 +990,11 @@
         <title>CSS学习笔记 -- 1</title>
         <pubTime>2016-08-29T01:56:45.000Z</pubTime>
         
-        <tag>CSS</tag>
-         
         <tag>前端</tag>
          
         <tag>学习笔记</tag>
+         
+        <tag>CSS</tag>
          
          
            
