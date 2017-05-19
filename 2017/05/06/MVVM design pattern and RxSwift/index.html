@@ -87,21 +87,18 @@
 
 
 <meta name="description" content="本文翻译自(http://lukagabric.com/mvvm-design-pattern-and-rxswift/)
-MVVMMVVM 是一种设计模式。他是程序的代码分离成三个部分: Model、View、ViewModel。 Model 代表数据的表现, View 代表用户看到的界面，ViewModel 代表着模型层和视图层的主要关联关系。
-ModelModel 就是数据层。他包括一定范围">
+MVVMMVVM 是一种设计模式。他是程序的代码分离成三个部分: Model、View、ViewModel。 Model 代表数据的表现, View 代表用户看到的界面，ViewModel 代表着模型层和视图层的主要关联关系。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MVVM design pattern and RxSwift">
 <meta property="og:url" content="https://CepheusSun.github.io/2017/05/06/MVVM design pattern and RxSwift/index.html">
 <meta property="og:site_name" content="CepheusSun">
 <meta property="og:description" content="本文翻译自(http://lukagabric.com/mvvm-design-pattern-and-rxswift/)
-MVVMMVVM 是一种设计模式。他是程序的代码分离成三个部分: Model、View、ViewModel。 Model 代表数据的表现, View 代表用户看到的界面，ViewModel 代表着模型层和视图层的主要关联关系。
-ModelModel 就是数据层。他包括一定范围">
-<meta property="og:updated_time" content="2017-05-06T16:25:06.000Z">
+MVVMMVVM 是一种设计模式。他是程序的代码分离成三个部分: Model、View、ViewModel。 Model 代表数据的表现, View 代表用户看到的界面，ViewModel 代表着模型层和视图层的主要关联关系。">
+<meta property="og:updated_time" content="2017-05-19T02:44:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MVVM design pattern and RxSwift">
 <meta name="twitter:description" content="本文翻译自(http://lukagabric.com/mvvm-design-pattern-and-rxswift/)
-MVVMMVVM 是一种设计模式。他是程序的代码分离成三个部分: Model、View、ViewModel。 Model 代表数据的表现, View 代表用户看到的界面，ViewModel 代表着模型层和视图层的主要关联关系。
-ModelModel 就是数据层。他包括一定范围">
+MVVMMVVM 是一种设计模式。他是程序的代码分离成三个部分: Model、View、ViewModel。 Model 代表数据的表现, View 代表用户看到的界面，ViewModel 代表着模型层和视图层的主要关联关系。">
 
 
 
@@ -347,6 +344,7 @@ ModelModel 就是数据层。他包括一定范围">
       
         <p>本文翻译自(<a href="http://lukagabric.com/mvvm-design-pattern-and-rxswift/">http://lukagabric.com/mvvm-design-pattern-and-rxswift/</a>)</p>
 <h3 id="MVVM"><a href="#MVVM" class="headerlink" title="MVVM"></a>MVVM</h3><p>MVVM 是一种设计模式。他是程序的代码分离成三个部分: <code>Model</code>、<code>View</code>、<code>ViewModel</code>。 <code>Model</code> 代表数据的表现, <code>View</code> 代表用户看到的界面，<code>ViewModel</code> 代表着模型层和视图层的主要关联关系。</p>
+<a id="more"></a>
 <h4 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h4><p><code>Model</code> 就是数据层。他包括一定范围内的模型，和业务逻辑。 <code>Model</code> 并不只是你程序中的那些模型结构体或者数据库, 他也包含了一些 Service 或者组件, 比如说 <code>Alamofire</code>和一些 SDK 等等。</p>
 <p><code>Model</code> 层执行所有跟数据有关的操作。比如常见的增删改查等等。这些操作由 <code>ViewModel</code> 发起。当 <code>Model</code>操作完了数据之后它再告诉 <code>ViewModel</code> 结果。</p>
 <p><code>Model</code> 被 ViewModel 持有。他也并不知道视图层和 <code>ViewModel</code> 层的事情。因为他是和这两个东西完全隔离开的。</p>
@@ -364,7 +362,6 @@ ModelModel 就是数据层。他包括一定范围">
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 响应式编程</span></div><div class="line">a = <span class="number">1</span></div><div class="line">b = <span class="number">2</span></div><div class="line"><span class="built_in">c</span> = a + b <span class="comment">// c = 3</span></div><div class="line">a = <span class="number">5</span>     <span class="comment">// c = 7</span></div></pre></td></tr></table></figure>
 <p>RxSwift 让你能用通过函数响应式编程来编写你的代码。使用 RxSwift 可以很轻松的创建事件或者数据流。这些事件或者数据流可以互相组合、转换。并且最终被观察到，基于值来进行一些操作。</p>
 <p>正如前文所说，在 MVVM 中 View 观察 ViewModel 中模型的数据。RxSwift 提供了一个非常简单并且干净的方法来观察这些值，并绑定到对应的 View 上。</p>
-<a id="more"></a>
 <h4 id="Observable"><a href="#Observable" class="headerlink" title="Observable"></a>Observable</h4><p>Observable 是 RxSwift 的主要构成部分。他是一个可以异步的接受元素的序列。这个序列可以有0个或者很多个的元素。有三种事件能够基于它发生。下一步(Next)、完成(Completed)、错误(Error)</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Event</span> </span>&#123;</div><div class="line">    <span class="keyword">case</span> next(<span class="type">Element</span>)   <span class="comment">// 这个序列的下一个元素</span></div><div class="line">    <span class="keyword">case</span> error(<span class="type">Swift</span>.<span class="type">Error</span>)<span class="comment">// 这个序列发生了错误</span></div><div class="line">    <span class="keyword">case</span> completed      <span class="comment">// 这个序列成功的完成的所有人任务</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>可以使用 <code>Observable</code> 的 <code>subscribe</code> 方法来订阅这些事件。 用这种方法可以分别处理这个事件的各种情况。</p>

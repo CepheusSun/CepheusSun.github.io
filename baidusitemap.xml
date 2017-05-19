@@ -4,6 +4,34 @@
 
     
   <url>
+    <loc>https://CepheusSun.github.io/2017/05/06/MVVM%20design%20pattern%20and%20RxSwift/</loc>
+    <lastmod>2017-05-19T02:44:22.000Z</lastmod>
+    <data>
+        <display>
+        <title>MVVM design pattern and RxSwift</title>
+        <pubTime>2017-05-05T17:35:57.000Z</pubTime>
+        
+        <tag>iOS</tag>
+         
+        <tag>Swift</tag>
+         
+        <tag>翻译</tag>
+         
+        <tag>Reactive</tag>
+         
+        <tag>设计模式</tag>
+         
+         
+           
+             
+              <breadCrumb title="Reactive" url="https://CepheusSun.github.io/categories/Reactive/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://CepheusSun.github.io/2017/05/06/RxSwift%20For%20Dummies%20Part1/</loc>
     <lastmod>2017-05-19T02:42:26.000Z</lastmod>
     <data>
@@ -261,34 +289,6 @@
            
              
               <breadCrumb title="CocoaPods" url="https://CepheusSun.github.io/categories/CocoaPods/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://CepheusSun.github.io/2017/05/06/MVVM%20design%20pattern%20and%20RxSwift/</loc>
-    <lastmod>2017-05-06T16:25:06.000Z</lastmod>
-    <data>
-        <display>
-        <title>MVVM design pattern and RxSwift</title>
-        <pubTime>2017-05-05T17:35:57.000Z</pubTime>
-        
-        <tag>iOS</tag>
-         
-        <tag>Swift</tag>
-         
-        <tag>翻译</tag>
-         
-        <tag>Reactive</tag>
-         
-        <tag>设计模式</tag>
-         
-         
-           
-             
-              <breadCrumb title="Reactive" url="https://CepheusSun.github.io/categories/Reactive/"/>
           
         </display>
     </data>

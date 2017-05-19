@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://CepheusSun.github.io/2017/05/06/MVVM%20design%20pattern%20and%20RxSwift/</loc>
+    
+    <lastmod>2017-05-19T02:44:22.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://CepheusSun.github.io/2017/05/06/RxSwift%20For%20Dummies%20Part1/</loc>
     
     <lastmod>2017-05-19T02:42:26.000Z</lastmod>
@@ -75,13 +82,6 @@
     <loc>https://CepheusSun.github.io/2017/04/19/%E4%BD%BF%E7%94%A8Gitlab%E5%92%8CCocoapods%E5%88%9B%E5%BB%BA%E7%A7%81%E6%9C%89pod/</loc>
     
     <lastmod>2017-05-11T08:44:49.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://CepheusSun.github.io/2017/05/06/MVVM%20design%20pattern%20and%20RxSwift/</loc>
-    
-    <lastmod>2017-05-06T16:25:06.000Z</lastmod>
     
   </url>
   
