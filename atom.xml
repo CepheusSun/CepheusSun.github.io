@@ -1336,21 +1336,103 @@
   </entry>
   
   <entry>
-    <title>iOS面试集锦&amp;2017年02月22日01</title>
-    <link href="https://CepheusSun.github.io/2017/02/22/interview07022201/"/>
-    <id>https://CepheusSun.github.io/2017/02/22/interview07022201/</id>
-    <published>2017-02-21T16:00:00.000Z</published>
-    <updated>2017-03-17T17:00:38.000Z</updated>
+    <title>iOS面试集锦</title>
+    <link href="https://CepheusSun.github.io/2017/02/21/interview/"/>
+    <id>https://CepheusSun.github.io/2017/02/21/interview/</id>
+    <published>2017-02-20T16:00:00.000Z</published>
+    <updated>2017-05-19T01:59:28.000Z</updated>
     
     <content type="html"><![CDATA[<ol>
+<li>写出中序遍历二叉树的算法(不限编程语言，已知 TreeRoot 为二叉树的根)</li>
+<li>快速排序，归并排序的时间复杂度分别是什么？</li>
+<li>UITableViewCell 可重用机制是什么?有什么要注意的地方?</li>
+<li>OC 中的 @property 和 @synthesize 有什么用？</li>
+<li>OC有没有重载(overload)和重写(overwrite)？有的话请举个例子。</li>
+<li>列举出 iOS 开发中三种最常出现的循环引用的场景。</li>
+<li>MVC 模式具体指什么？iOS现在流行的 MVVM 是什么？</li>
+<li>iOS 中设计金钱计算和比较时，用数值应该用哪个类型来处理？</li>
+<li>iOS 上触摸事件的视图检测和事件传递过程是怎样的？  </li>
+<li>写一个折半查找或者快速排序</li>
+</ol>
+<hr>
+<ol>
+<li>对内存管理的理解。</li>
+<li>类别的作用</li>
+<li>点击屏幕上的按钮，系统做了什么？</li>
+</ol>
+<hr>
+<ol>
 <li><code>id</code> 和 <code>instancetype</code> 的区别?</li>
 <li>有方法查看当前系统内存使用的情况吗？</li>
 <li>为什么 NotificationCenter 要 removeObserver? 如何实现自动 remove？</li>
 <li>iOS的沙盒目录结构是怎样的？ App Bundle 里面都有什么？</li>
 <li>简单描述一下客户端的缓存机制？</li>
 </ol>
-<p>注意： 以后的更新全部放在 GitHub 博客不再继续添加了。 毕竟好多内容放在这里也没有什么意义。<br><a id="more"></a></p>
-<p>##2017-02-22</p>
+<hr>
+<ol>
+<li>按钮或者 View 在进行 frame 动画的时候，为什么点击 frame 动画的重点位置才能触发事件？如何在动画过程中响应事件？<a id="more"></a>
+</li>
+</ol>
+<p>#####1.写出中序遍历二叉树的算法(不限编程语言，已知 TreeRoot 为二叉树的根)。  </p>
+<p>最近在学 Python 所以整理了一个 Python 版的</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -- coding: UTF-8 --</span></div><div class="line"><span class="comment"># @Date    : 2017-02-21</span></div><div class="line"><span class="comment"># @Author  : CepheusSun</span></div><div class="line"><span class="comment"># @Version : python 2.7</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Tree</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, data, left, right)</span>:</span></div><div class="line">        self.data = data</div><div class="line">        self.left = left</div><div class="line">        self.right = right</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">in_visit</span><span class="params">(tree)</span>:</span></div><div class="line">    <span class="string">"""递归中序遍历"""</span></div><div class="line">    <span class="keyword">if</span> tree:</div><div class="line">        in_visit(tree.left)</div><div class="line">        <span class="keyword">print</span> (tree.data)</div><div class="line">        in_visit(tree.right)</div><div class="line">        </div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">in_stack</span><span class="params">(tree)</span>:</span></div><div class="line">    <span class="string">"""堆栈中序遍历"""</span></div><div class="line">    <span class="keyword">if</span> tree:</div><div class="line">        my_stack = []</div><div class="line">        node = tree</div><div class="line">        <span class="keyword">while</span> node <span class="keyword">or</span> my_stack:</div><div class="line">            <span class="keyword">while</span> node:</div><div class="line">                my_stack.append(node)</div><div class="line">                node = node.left</div><div class="line">            node = my_stack.pop()</div><div class="line">            print(node.data)</div><div class="line">            node = node.right</div><div class="line"></div><div class="line">            <span class="keyword">print</span> my_stack2.pop().data</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">    node1 = Tree(<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>)</div><div class="line">    node2 = Tree(<span class="number">2</span>, <span class="number">0</span>, <span class="number">0</span>)</div><div class="line">    node3 = Tree(<span class="number">3</span>, node1, node2)</div><div class="line">    node4 = Tree(<span class="number">4</span>, <span class="number">0</span>, <span class="number">0</span>)</div><div class="line">    node5 = Tree(<span class="number">5</span>, node4, node3)</div><div class="line">    print(<span class="string">"the post_visit is ..."</span>)</div><div class="line">    post_visit(node5)</div><div class="line">    post_stack(node5)</div><div class="line">    print(<span class="string">"the pre_visit is ..."</span>)</div><div class="line">    pre_visit(node5)</div><div class="line">    pre_stack(node5)</div><div class="line">    print(<span class="string">"the in_visit is ..."</span>)</div><div class="line">    in_visit(node5)</div><div class="line">    in_stack(node5)</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    main()</div></pre></td></tr></table></figure>
+<h5 id="2-快速排序，归并排序的时间复杂度分别是什么？"><a href="#2-快速排序，归并排序的时间复杂度分别是什么？" class="headerlink" title="2.快速排序，归并排序的时间复杂度分别是什么？"></a>2.快速排序，归并排序的时间复杂度分别是什么？</h5><ul>
+<li>归并排序：稳定，时间复杂度 O(nlog n)</li>
+<li>快速排序：不稳定，时间复杂度 最理想 O(nlogn) 最差时间O(n^2)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -- coding: UTF-8 --</span></div><div class="line"><span class="comment"># @Date    : 2017-02-21</span></div><div class="line"><span class="comment"># @Author  : CepheusSun</span></div><div class="line"><span class="comment"># @Version : python 2.7</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">quick_sort</span><span class="params">(array, first_index, last_index)</span>:</span></div><div class="line">    <span class="string">"""快速排序"""</span></div><div class="line">    <span class="keyword">if</span> first_index &lt; last_index:</div><div class="line">        div_index = partition(array, first_index, last_index)</div><div class="line">        quick_sort(array, first_index, div_index)</div><div class="line">        quick_sort(array, div_index + <span class="number">1</span>, last_index)</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        <span class="keyword">return</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">partition</span><span class="params">(array, first_index, last_index)</span>:</span></div><div class="line">    i = first_index - <span class="number">1</span></div><div class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(first_index, last_index):</div><div class="line">        <span class="keyword">if</span> array[j] &lt;= array[last_index]:</div><div class="line">            i += <span class="number">1</span></div><div class="line">            array[i], array[j] = array[j], array[i]</div><div class="line">    array[i + <span class="number">1</span>], array[last_index] = array[last_index], array[i + <span class="number">1</span>]</div><div class="line">    <span class="keyword">return</span> i</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge</span><span class="params">(left, right)</span>:</span></div><div class="line">    i, j = <span class="number">0</span>, <span class="number">0</span></div><div class="line">    res = []</div><div class="line">    <span class="keyword">while</span> i &lt; len(left) <span class="keyword">and</span> j &lt; len(right):</div><div class="line">        <span class="keyword">if</span> left[i] &lt;= right[j]:</div><div class="line">            res.append(left[i])</div><div class="line">            i += <span class="number">1</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            res.append(right[j])</div><div class="line">            j += <span class="number">1</span></div><div class="line">    res += left[i:]</div><div class="line">    res += right[j:]</div><div class="line">    <span class="keyword">return</span> res</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge_sort</span><span class="params">(array)</span>:</span></div><div class="line">    <span class="string">"""并归排序"""</span></div><div class="line">    <span class="keyword">if</span> len(array) &lt;= <span class="number">1</span>:</div><div class="line">        <span class="keyword">return</span> array</div><div class="line">    num = len(array) / <span class="number">2</span></div><div class="line">    left = merge_sort(array[:num])</div><div class="line">    right = merge_sort(array[num:])</div><div class="line">    <span class="keyword">return</span> merge(left, right)</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">    array = [<span class="number">1</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">76</span>, <span class="number">5</span>, <span class="number">567</span>, <span class="number">54</span>, <span class="number">6</span>, <span class="number">54</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">0</span>]</div><div class="line">    print(<span class="string">"initial array : \n"</span>, array)</div><div class="line">    print(<span class="string">"merge sort result: \n"</span>, merge_sort(array))</div><div class="line">    quick_sort(array, <span class="number">0</span>, len(array) - <span class="number">1</span>)</div><div class="line">    print(<span class="string">"result array :\n"</span>, array)</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    main()</div><div class="line"></div><div class="line">``` </div><div class="line">    </div><div class="line"><span class="comment">##### 3.UITableViewCell 可重用机制是什么?有什么要注意的地方?</span></div><div class="line"></div><div class="line">UITableView 通过重用单元格来达到节省内存的目的：通过为每个单元格指定一个重用标识符，即指定来单元格的种类，以及当单元格滚出屏幕时，允许恢复单元格以便重用。对于不同种类的单元格使用不同的ID，对于简单的表格，一个标识符就够了。</div><div class="line"></div><div class="line">需要注意的地方：</div><div class="line">    取出来的cell是有可能已经捆绑过数据或者加过子视图的，如果有必要，要清除需要用与显示的数据和remove掉add过的子视图。不然会造成错乱的情况</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">##### 4.OC 中的 @property 和 @synthesize 有什么用？</span></div><div class="line"></div><div class="line">答：</div><div class="line">iOS2<span class="number">.0</span> Apple引入 `@property` `@synthesize` 概念，两者组合使用可以自动生成 `seter` `geter`方法，iOS4<span class="number">.0</span>以后只需要 `@property` 即可实现 自动生成 `seter` `geter`方法。</div></pre></td></tr></table></figure>
+<p>//setter</p>
+<ul>
+<li>(void)setObjStr:(NSString *)objStr {<br>   if (_ objStr != objStr) {<pre><code>[_objStr release];
+ _objStr = [objStr copy];
+</code></pre>   }<br>}<br>//getter</li>
+<li>(NSString *)objStr {<br>   return _objStr;<br>}<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">以上代码等价于</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>//iOS2.0-iOS4.0<br>@interface Obj : NSObject<br>@property (nonatomic, copy) NSString *objStr;<br>@end</p>
+<p>@implementation Object<br>@synthesize objStr = _ objStr;<br>@end<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iOS4.0及以后</div></pre></td></tr></table></figure></p>
+<p>@interface Obj : NSObject<br>@property (nonatomic, copy) NSString *objStr;<br>@end<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">##### 5.OC有没有重载(overload)和重写(overwrite)？有的话请举个例子。</div><div class="line"></div><div class="line">答：</div><div class="line">OC 语言不支持重载</div><div class="line"></div><div class="line">```oc</div><div class="line">-(void)doSth:(NSInteger)integer;</div><div class="line">-(void)doSth:(NSString *)str; </div><div class="line">//对Objective-C而言是一样的，都叫方法doSth: 同时定义实现这两个方法是无法编译通过的。 若要达到类似重载的效果，可以这样跟不同参数：</div><div class="line">-(void)doSthWithInt:(NSInteger)integer;</div><div class="line">-(void)doSthWithStr:(NSString *)str</div></pre></td></tr></table></figure></p>
+<p>OC 支持重写</p>
+<pre><code>子类重写父类方法
+</code></pre><h5 id="6-列举出-iOS-开发中三种最常出现的循环引用的场景。"><a href="#6-列举出-iOS-开发中三种最常出现的循环引用的场景。" class="headerlink" title="6.列举出 iOS 开发中三种最常出现的循环引用的场景。"></a>6.列举出 iOS 开发中三种最常出现的循环引用的场景。</h5><p>答：</p>
+<ul>
+<li>delegate 被强引用了，代理应该使用 weak (拓展 weak 干了啥使自己可以防止循环的出现)  </li>
+<li>使用 block 的时候，注意是否出现互相持有。  </li>
+<li>使用 NSTimer 的时候，我们可能会使<code>+scheduledTimerWithTimeInterval:target:selector:userInfo:repeats:</code> 这个方法在建立的时候需要指定 target ，会被 timer retain 一份。因为 timer 还在一直执行，就会导致无法运行 dealloc的方法。正确的做法是在 viewDidDisappear: 的时候停止timer </li>
+</ul>
+<h5 id="7-MVC-模式具体指什么？iOS现在流行的-MVVM-是什么？"><a href="#7-MVC-模式具体指什么？iOS现在流行的-MVVM-是什么？" class="headerlink" title="7.MVC 模式具体指什么？iOS现在流行的 MVVM 是什么？"></a>7.MVC 模式具体指什么？iOS现在流行的 MVVM 是什么？</h5><p>MVC：</p>
+<pre><code>MVC模式考虑三种对象：模型对象、视图对象和控制器对象。 模型对象负责应用程序的数据和定义操作数据的逻辑； 视图对象知道如何显示应用程序的模型数据； 控制器对象是M与V之间的协调者。
+</code></pre><p>MVVM：</p>
+<pre><code>MVVM 把 View Controller 作为 View
+View 和 Model 之间没有紧耦合
+MVVM 是在 View 和 ViewModel 之间进行绑定。
+什么是 ViewModel 呢？基本上来说，它是 View 和 View 状态的独立于     UIKit 外的一个呈现，ViewModel 调用 Model 中的的变化，根据 Model 的变化进行调整，并且通过 View 和 ViewModel 的绑定，同步调整 View。
+</code></pre><h5 id="8-iOS-中设计金钱计算和比较时，用数值应该用哪个类型来处理？"><a href="#8-iOS-中设计金钱计算和比较时，用数值应该用哪个类型来处理？" class="headerlink" title="8.iOS 中设计金钱计算和比较时，用数值应该用哪个类型来处理？"></a>8.iOS 中设计金钱计算和比较时，用数值应该用哪个类型来处理？</h5><ul>
+<li><code>NSDecimalNumber</code> 继承于 <code>NSNumber</code>   </li>
+<li><p><code>NSDecimalNumber</code> 包含  加减乘除，幂运算，指数运算，四舍五入，比较运算。  </p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div></pre></td><td class="code"><pre><div class="line">	/** 示例 比较运算</div><div class="line">	NSOrderedAscending 升序</div><div class="line">	NSOrderedSame 相等</div><div class="line">	NSOrderedDescending 降序</div><div class="line">	- (NSComparisonResult)compare:(NSNumber *)decimalNumber;</div><div class="line">	*/</div><div class="line">	NSDecimalNumber *discount1 = [NSDecimalNumber decimalNumberWithString:@&quot;1.2&quot;];</div><div class="line">	NSDecimalNumber *discount2 = [NSDecimalNumber decimalNumberWithString:@&quot;1.3&quot;];</div><div class="line">	NSComparisonResult result = [discount1 compare:discount2];</div><div class="line">	if (result == NSOrderedAscending) &#123;</div><div class="line">	    NSLog(@&quot;1.2 &lt; 1.3&quot;);</div><div class="line">	&#125; else if (result == NSOrderedSame) &#123;</div><div class="line">	    NSLog(@&quot;1.2 == 1.3&quot;);</div><div class="line">	&#125; else if (result == NSOrderedDescending) &#123;</div><div class="line">	    NSLog(@&quot;1.2 &gt; 1.3&quot;);</div><div class="line">	&#125;</div><div class="line">	输出结果 1.2 &lt; 1.3</div><div class="line">	``` </div><div class="line"></div><div class="line">##### 9.iOS 上触摸事件的视图检测和事件传递过程是怎样的？  </div><div class="line"></div><div class="line">* 发生触摸事件后，系统会将该事件加入到一个由UIApplication管理的事件队列中。(为什么是队列而不是栈？因为队列的特定是先进先出，先产生的事件先处理才符合常理，所以把事件添加到队列。)</div><div class="line"></div><div class="line">* UIApplication会从事件队列中取出最前面的事件，并将事件分发下去以便处理，通常，先发送事件给应用程序的主窗口（keyWindow）。</div><div class="line"></div><div class="line">* 主窗口会在视图层次结构中找到一个最合适的视图来处理触摸事件，这也是整个事件处理过程的第一步。</div><div class="line">找到合适的视图控件后，就会调用视图控件的touches方法来作具体的事件处理。</div><div class="line"></div><div class="line">##### 10.写一个折半查找或者快速排序</div><div class="line"></div><div class="line">    用 Python写了一个二分查找</div><div class="line">    </div><div class="line">```python</div><div class="line"># -- coding: UTF-8 --</div><div class="line"># @Date    : 2017-02-21</div><div class="line"># @Author  : CepheusSun</div><div class="line"># @Version : python 2.7</div><div class="line"></div><div class="line"></div><div class="line">def in_bisect(word_list, word):</div><div class="line">    &quot;&quot;&quot;check weather a word is in a list using bisection search.</div><div class="line">    Precondition: the words in the list are sorted</div><div class="line"></div><div class="line">    :param word_list: list of strings</div><div class="line">    :param word: string</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    if len(word_list) == 0:</div><div class="line">        return False</div><div class="line"></div><div class="line">    # 结果四舍五入</div><div class="line">    i = len(word_list) // 2</div><div class="line">    if word_list[i] == word:</div><div class="line">        return True</div><div class="line"></div><div class="line">    if word_list[i] &gt; word:</div><div class="line">        # search the first half</div><div class="line">        return in_bisect(word_list[:i], word)</div><div class="line">    else:</div><div class="line">        # search the second half</div><div class="line">        return in_bisect(word_list[i + 1:], word)</div><div class="line"></div><div class="line"></div><div class="line">def main():</div><div class="line">    array = [&apos;1&apos;, &apos;asf&apos;, &apos;sf2&apos;, &apos;df1&apos;, &apos;2das&apos;, &apos;5asdfd&apos;, &apos;0sadf&apos;,</div><div class="line">            &apos;2ge&apos;, &apos;efc2&apos;, &apos;1eds&apos;, &apos;2ef&apos;, &apos;2apple&apos;, &apos;apple&apos;, &apos;orange&apos;]</div><div class="line">    print(in_bisect(array, &apos;1&apos;))</div><div class="line">    print(in_bisect(array, &apos;111&apos;))</div><div class="line"></div><div class="line"></div><div class="line">if __name__ == &apos;__main__&apos;:</div><div class="line">    main()</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>Question 1.内存管理理解不正确的是<br>A 程序A里有一段内存被成功申请完成之后，内存计数器就从0变为1 (这个过程是alloc);<br>B 程序B里要使用已存在内存，那么内存计数器从1变为2 (这个过程是retain或者copy);<br>C 紧接着程序A不需要这个内存了，那么程序A就把这个内存计数器减1 (这个过程是release);<br>D 当系统发现这个内存计数器变为小于等于0，那么就调用垃圾回收程序把这段内存回收(这个过程是dealloc)；</p>
+<p>Question 2.类别的作用不正确的是<br>A 将类的实现分散到多个不同文件或多个不同框架中。<br>B 创建对私有方法的前向引用。<br>C 向对象添加非正式协议。 继承可以增加，修改或者删除方法。<br>D 不能添加属性  </p>
+<p>Question 3.点击屏幕上的按钮，系统做了什么？  </p>
+<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><p>Answer 1. B  使用并不会增加引用技术，持有才会。<br>Answer 2. D  </p>
+<pre><code>class-continuation分类是唯一能给添加属性的分类。而所谓的关联对象，我在52个方法中找到了这样一句话：
+    * “定义关联对象时可以指定内存管理语义，用以模仿定义属性时所采用的“拥有”和“非拥有关系””
+可见，关连对象跟属性是两个不同的概念，不能混为一谈。
+
+类别的三个作用：
+    * 可以将类的实现分散到多个不同文件或多个不同框架中，方便代码管理。
+    * 创建对私有方法的前向引用。比如在别人的类或者框架中有一个方法的是没有说明的，这时候通过类别声明这个方法，就可以在不破坏原来框架的情况下，使用到这个方法。
+    * 向对象添加非正式协议。
+</code></pre><p>Answer 3.   </p>
+<ul>
+<li>触摸事件的传递是从父空间传递到子控件，如果父空间不能接收触摸事件，那么子控件就不能接收触摸事件  </li>
+<li>发生触摸事件后，系统会将该事件加入到一个由UIApplication管理的事件队列中。(为什么是队列而不是栈？因为队列的特定是先进先出，先产生的事件先处理才符合常理，所以把事件添加到队列。)  </li>
+<li>UIApplication会从事件队列中取出最前面的事件，并将事件分发下去以便处理，通常，先发送事件给应用程序的主窗口（keyWindow）。  </li>
+<li>主窗口会在视图层次结构中找到一个最合适的视图来处理触摸事件，这也是整个事件处理过程的第一步。<br>找到合适的视图控件后，就会调用视图控件的touches方法来作具体的事件处理。  </li>
+</ul>
+<hr>
 <p>#####1. <code>id</code> 和 <code>instancetype</code> 的区别?</p>
 <ol>
 <li><p>在 ARC(Auto Reference Count)环境下:</p>
@@ -1412,97 +1494,24 @@
 </ol>
 </li>
 </ul>
-<pre><code>---
-</code></pre><h5 id="写在后面的话"><a href="#写在后面的话" class="headerlink" title="写在后面的话"></a>写在后面的话</h5><p>这个系列所有的文章都是在一个QQ群里面跟小伙伴们讨论出来的,每个 topic 都已经放在了 GitHub 的一个仓库中 <a href="https://github.com/GetOfferSoldier/Objective-C"><strong>这是地址</strong></a>。 所有内容的更新的将在这个仓库中进行,在博客中将不再进行更新。有任何问题，都可以在这个仓库中给我们提 issue 或者 pull request.</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;ol&gt;
-&lt;li&gt;&lt;code&gt;id&lt;/code&gt; 和 &lt;code&gt;instancetype&lt;/code&gt; 的区别?&lt;/li&gt;
-&lt;li&gt;有方法查看当前系统内存使用的情况吗？&lt;/li&gt;
-&lt;li&gt;为什么 NotificationCenter 要 removeObserver? 如何实现自动 remove？&lt;/li&gt;
-&lt;li&gt;iOS的沙盒目录结构是怎样的？ App Bundle 里面都有什么？&lt;/li&gt;
-&lt;li&gt;简单描述一下客户端的缓存机制？&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;注意： 以后的更新全部放在 GitHub 博客不再继续添加了。 毕竟好多内容放在这里也没有什么意义。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="iOS面试集锦" scheme="https://CepheusSun.github.io/categories/iOS%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/"/>
-    
-    
-      <category term="iOS面试集锦" scheme="https://CepheusSun.github.io/tags/iOS%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>iOS面试集锦&amp;2017年02月21日01</title>
-    <link href="https://CepheusSun.github.io/2017/02/21/interview07022101/"/>
-    <id>https://CepheusSun.github.io/2017/02/21/interview07022101/</id>
-    <published>2017-02-20T16:00:00.000Z</published>
-    <updated>2017-02-21T16:02:25.000Z</updated>
-    
-    <content type="html"><![CDATA[<ol>
-<li>写出中序遍历二叉树的算法(不限编程语言，已知 TreeRoot 为二叉树的根)</li>
-<li>快速排序，归并排序的时间复杂度分别是什么？</li>
-<li>UITableViewCell 可重用机制是什么?有什么要注意的地方?</li>
-<li>OC 中的 @property 和 @synthesize 有什么用？</li>
-<li>OC有没有重载(overload)和重写(overwrite)？有的话请举个例子。</li>
-<li>列举出 iOS 开发中三种最常出现的循环引用的场景。</li>
-<li>MVC 模式具体指什么？iOS现在流行的 MVVM 是什么？</li>
-<li>iOS 中设计金钱计算和比较时，用数值应该用哪个类型来处理？</li>
-<li>iOS 上触摸事件的视图检测和事件传递过程是怎样的？  </li>
-<li>写一个折半查找或者快速排序</li>
-</ol>
-<a id="more"></a>
-<p>#####1.写出中序遍历二叉树的算法(不限编程语言，已知 TreeRoot 为二叉树的根)。  </p>
-<pre><code>最近在学 Python 所以整理了一个 Python 版的
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -- coding: UTF-8 --</span></div><div class="line"><span class="comment"># @Date    : 2017-02-21</span></div><div class="line"><span class="comment"># @Author  : CepheusSun</span></div><div class="line"><span class="comment"># @Version : python 2.7</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Tree</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, data, left, right)</span>:</span></div><div class="line">        self.data = data</div><div class="line">        self.left = left</div><div class="line">        self.right = right</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">in_visit</span><span class="params">(tree)</span>:</span></div><div class="line">    <span class="string">"""递归中序遍历"""</span></div><div class="line">    <span class="keyword">if</span> tree:</div><div class="line">        in_visit(tree.left)</div><div class="line">        <span class="keyword">print</span> (tree.data)</div><div class="line">        in_visit(tree.right)</div><div class="line">        </div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">in_stack</span><span class="params">(tree)</span>:</span></div><div class="line">    <span class="string">"""堆栈中序遍历"""</span></div><div class="line">    <span class="keyword">if</span> tree:</div><div class="line">        my_stack = []</div><div class="line">        node = tree</div><div class="line">        <span class="keyword">while</span> node <span class="keyword">or</span> my_stack:</div><div class="line">            <span class="keyword">while</span> node:</div><div class="line">                my_stack.append(node)</div><div class="line">                node = node.left</div><div class="line">            node = my_stack.pop()</div><div class="line">            print(node.data)</div><div class="line">            node = node.right</div><div class="line"></div><div class="line">            <span class="keyword">print</span> my_stack2.pop().data</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">    node1 = Tree(<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>)</div><div class="line">    node2 = Tree(<span class="number">2</span>, <span class="number">0</span>, <span class="number">0</span>)</div><div class="line">    node3 = Tree(<span class="number">3</span>, node1, node2)</div><div class="line">    node4 = Tree(<span class="number">4</span>, <span class="number">0</span>, <span class="number">0</span>)</div><div class="line">    node5 = Tree(<span class="number">5</span>, node4, node3)</div><div class="line">    print(<span class="string">"the post_visit is ..."</span>)</div><div class="line">    post_visit(node5)</div><div class="line">    post_stack(node5)</div><div class="line">    print(<span class="string">"the pre_visit is ..."</span>)</div><div class="line">    pre_visit(node5)</div><div class="line">    pre_stack(node5)</div><div class="line">    print(<span class="string">"the in_visit is ..."</span>)</div><div class="line">    in_visit(node5)</div><div class="line">    in_stack(node5)</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    main()</div></pre></td></tr></table></figure>
-<h5 id="2-快速排序，归并排序的时间复杂度分别是什么？"><a href="#2-快速排序，归并排序的时间复杂度分别是什么？" class="headerlink" title="2.快速排序，归并排序的时间复杂度分别是什么？"></a>2.快速排序，归并排序的时间复杂度分别是什么？</h5><ul>
-<li>归并排序：稳定，时间复杂度 O(nlog n)</li>
-<li>快速排序：不稳定，时间复杂度 最理想 O(nlogn) 最差时间O(n^2)</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -- coding: UTF-8 --</span></div><div class="line"><span class="comment"># @Date    : 2017-02-21</span></div><div class="line"><span class="comment"># @Author  : CepheusSun</span></div><div class="line"><span class="comment"># @Version : python 2.7</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">quick_sort</span><span class="params">(array, first_index, last_index)</span>:</span></div><div class="line">    <span class="string">"""快速排序"""</span></div><div class="line">    <span class="keyword">if</span> first_index &lt; last_index:</div><div class="line">        div_index = partition(array, first_index, last_index)</div><div class="line">        quick_sort(array, first_index, div_index)</div><div class="line">        quick_sort(array, div_index + <span class="number">1</span>, last_index)</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        <span class="keyword">return</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">partition</span><span class="params">(array, first_index, last_index)</span>:</span></div><div class="line">    i = first_index - <span class="number">1</span></div><div class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(first_index, last_index):</div><div class="line">        <span class="keyword">if</span> array[j] &lt;= array[last_index]:</div><div class="line">            i += <span class="number">1</span></div><div class="line">            array[i], array[j] = array[j], array[i]</div><div class="line">    array[i + <span class="number">1</span>], array[last_index] = array[last_index], array[i + <span class="number">1</span>]</div><div class="line">    <span class="keyword">return</span> i</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge</span><span class="params">(left, right)</span>:</span></div><div class="line">    i, j = <span class="number">0</span>, <span class="number">0</span></div><div class="line">    res = []</div><div class="line">    <span class="keyword">while</span> i &lt; len(left) <span class="keyword">and</span> j &lt; len(right):</div><div class="line">        <span class="keyword">if</span> left[i] &lt;= right[j]:</div><div class="line">            res.append(left[i])</div><div class="line">            i += <span class="number">1</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            res.append(right[j])</div><div class="line">            j += <span class="number">1</span></div><div class="line">    res += left[i:]</div><div class="line">    res += right[j:]</div><div class="line">    <span class="keyword">return</span> res</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge_sort</span><span class="params">(array)</span>:</span></div><div class="line">    <span class="string">"""并归排序"""</span></div><div class="line">    <span class="keyword">if</span> len(array) &lt;= <span class="number">1</span>:</div><div class="line">        <span class="keyword">return</span> array</div><div class="line">    num = len(array) / <span class="number">2</span></div><div class="line">    left = merge_sort(array[:num])</div><div class="line">    right = merge_sort(array[num:])</div><div class="line">    <span class="keyword">return</span> merge(left, right)</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">    array = [<span class="number">1</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">76</span>, <span class="number">5</span>, <span class="number">567</span>, <span class="number">54</span>, <span class="number">6</span>, <span class="number">54</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">0</span>]</div><div class="line">    print(<span class="string">"initial array : \n"</span>, array)</div><div class="line">    print(<span class="string">"merge sort result: \n"</span>, merge_sort(array))</div><div class="line">    quick_sort(array, <span class="number">0</span>, len(array) - <span class="number">1</span>)</div><div class="line">    print(<span class="string">"result array :\n"</span>, array)</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    main()</div><div class="line"></div><div class="line">``` </div><div class="line">    </div><div class="line"><span class="comment">##### 3.UITableViewCell 可重用机制是什么?有什么要注意的地方?</span></div><div class="line"></div><div class="line">UITableView 通过重用单元格来达到节省内存的目的：通过为每个单元格指定一个重用标识符，即指定来单元格的种类，以及当单元格滚出屏幕时，允许恢复单元格以便重用。对于不同种类的单元格使用不同的ID，对于简单的表格，一个标识符就够了。</div><div class="line"></div><div class="line">需要注意的地方：</div><div class="line">    取出来的cell是有可能已经捆绑过数据或者加过子视图的，如果有必要，要清除需要用与显示的数据和remove掉add过的子视图。不然会造成错乱的情况</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">##### 4.OC 中的 @property 和 @synthesize 有什么用？</span></div><div class="line"></div><div class="line">答：</div><div class="line">iOS2<span class="number">.0</span> Apple引入 `@property` `@synthesize` 概念，两者组合使用可以自动生成 `seter` `geter`方法，iOS4<span class="number">.0</span>以后只需要 `@property` 即可实现 自动生成 `seter` `geter`方法。</div></pre></td></tr></table></figure>
-<p>//setter</p>
-<ul>
-<li>(void)setObjStr:(NSString *)objStr {<br>   if (_ objStr != objStr) {<pre><code>[_objStr release];
- _objStr = [objStr copy];
-</code></pre>   }<br>}<br>//getter</li>
-<li>(NSString *)objStr {<br>   return _objStr;<br>}<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">以上代码等价于</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>//iOS2.0-iOS4.0<br>@interface Obj : NSObject<br>@property (nonatomic, copy) NSString *objStr;<br>@end</p>
-<p>@implementation Object<br>@synthesize objStr = _ objStr;<br>@end<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iOS4.0及以后</div></pre></td></tr></table></figure></p>
-<p>@interface Obj : NSObject<br>@property (nonatomic, copy) NSString *objStr;<br>@end<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">##### 5.OC有没有重载(overload)和重写(overwrite)？有的话请举个例子。</div><div class="line"></div><div class="line">答：</div><div class="line">OC 语言不支持重载</div><div class="line"></div><div class="line">```oc</div><div class="line">-(void)doSth:(NSInteger)integer;</div><div class="line">-(void)doSth:(NSString *)str; </div><div class="line">//对Objective-C而言是一样的，都叫方法doSth: 同时定义实现这两个方法是无法编译通过的。 若要达到类似重载的效果，可以这样跟不同参数：</div><div class="line">-(void)doSthWithInt:(NSInteger)integer;</div><div class="line">-(void)doSthWithStr:(NSString *)str</div></pre></td></tr></table></figure></p>
-<p>OC 支持重写</p>
-<pre><code>子类重写父类方法
-</code></pre><h5 id="6-列举出-iOS-开发中三种最常出现的循环引用的场景。"><a href="#6-列举出-iOS-开发中三种最常出现的循环引用的场景。" class="headerlink" title="6.列举出 iOS 开发中三种最常出现的循环引用的场景。"></a>6.列举出 iOS 开发中三种最常出现的循环引用的场景。</h5><p>答：</p>
-<ul>
-<li>delegate 被强引用了，代理应该使用 weak (拓展 weak 干了啥使自己可以防止循环的出现)  </li>
-<li>使用 block 的时候，注意是否出现互相持有。  </li>
-<li>使用 NSTimer 的时候，我们可能会使<code>+scheduledTimerWithTimeInterval:target:selector:userInfo:repeats:</code> 这个方法在建立的时候需要指定 target ，会被 timer retain 一份。因为 timer 还在一直执行，就会导致无法运行 dealloc的方法。正确的做法是在 viewDidDisappear: 的时候停止timer </li>
-</ul>
-<h5 id="7-MVC-模式具体指什么？iOS现在流行的-MVVM-是什么？"><a href="#7-MVC-模式具体指什么？iOS现在流行的-MVVM-是什么？" class="headerlink" title="7.MVC 模式具体指什么？iOS现在流行的 MVVM 是什么？"></a>7.MVC 模式具体指什么？iOS现在流行的 MVVM 是什么？</h5><p>MVC：</p>
-<pre><code>MVC模式考虑三种对象：模型对象、视图对象和控制器对象。 模型对象负责应用程序的数据和定义操作数据的逻辑； 视图对象知道如何显示应用程序的模型数据； 控制器对象是M与V之间的协调者。
-</code></pre><p>MVVM：</p>
-<pre><code>MVVM 把 View Controller 作为 View
-View 和 Model 之间没有紧耦合
-MVVM 是在 View 和 ViewModel 之间进行绑定。
-什么是 ViewModel 呢？基本上来说，它是 View 和 View 状态的独立于     UIKit 外的一个呈现，ViewModel 调用 Model 中的的变化，根据 Model 的变化进行调整，并且通过 View 和 ViewModel 的绑定，同步调整 View。
-</code></pre><h5 id="8-iOS-中设计金钱计算和比较时，用数值应该用哪个类型来处理？"><a href="#8-iOS-中设计金钱计算和比较时，用数值应该用哪个类型来处理？" class="headerlink" title="8.iOS 中设计金钱计算和比较时，用数值应该用哪个类型来处理？"></a>8.iOS 中设计金钱计算和比较时，用数值应该用哪个类型来处理？</h5><ul>
-<li><code>NSDecimalNumber</code> 继承于 <code>NSNumber</code>   </li>
-<li><p><code>NSDecimalNumber</code> 包含  加减乘除，幂运算，指数运算，四舍五入，比较运算。  </p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div></pre></td><td class="code"><pre><div class="line">	/** 示例 比较运算</div><div class="line">	NSOrderedAscending 升序</div><div class="line">	NSOrderedSame 相等</div><div class="line">	NSOrderedDescending 降序</div><div class="line">	- (NSComparisonResult)compare:(NSNumber *)decimalNumber;</div><div class="line">	*/</div><div class="line">	NSDecimalNumber *discount1 = [NSDecimalNumber decimalNumberWithString:@&quot;1.2&quot;];</div><div class="line">	NSDecimalNumber *discount2 = [NSDecimalNumber decimalNumberWithString:@&quot;1.3&quot;];</div><div class="line">	NSComparisonResult result = [discount1 compare:discount2];</div><div class="line">	if (result == NSOrderedAscending) &#123;</div><div class="line">	    NSLog(@&quot;1.2 &lt; 1.3&quot;);</div><div class="line">	&#125; else if (result == NSOrderedSame) &#123;</div><div class="line">	    NSLog(@&quot;1.2 == 1.3&quot;);</div><div class="line">	&#125; else if (result == NSOrderedDescending) &#123;</div><div class="line">	    NSLog(@&quot;1.2 &gt; 1.3&quot;);</div><div class="line">	&#125;</div><div class="line">	输出结果 1.2 &lt; 1.3</div><div class="line">	``` </div><div class="line"></div><div class="line">##### 9.iOS 上触摸事件的视图检测和事件传递过程是怎样的？  </div><div class="line"></div><div class="line">* 发生触摸事件后，系统会将该事件加入到一个由UIApplication管理的事件队列中。(为什么是队列而不是栈？因为队列的特定是先进先出，先产生的事件先处理才符合常理，所以把事件添加到队列。)</div><div class="line"></div><div class="line">* UIApplication会从事件队列中取出最前面的事件，并将事件分发下去以便处理，通常，先发送事件给应用程序的主窗口（keyWindow）。</div><div class="line"></div><div class="line">* 主窗口会在视图层次结构中找到一个最合适的视图来处理触摸事件，这也是整个事件处理过程的第一步。</div><div class="line">找到合适的视图控件后，就会调用视图控件的touches方法来作具体的事件处理。</div><div class="line"></div><div class="line">##### 10.写一个折半查找或者快速排序</div><div class="line"></div><div class="line">    用 Python写了一个二分查找</div><div class="line">    </div><div class="line">```python</div><div class="line"># -- coding: UTF-8 --</div><div class="line"># @Date    : 2017-02-21</div><div class="line"># @Author  : CepheusSun</div><div class="line"># @Version : python 2.7</div><div class="line"></div><div class="line"></div><div class="line">def in_bisect(word_list, word):</div><div class="line">    &quot;&quot;&quot;check weather a word is in a list using bisection search.</div><div class="line">    Precondition: the words in the list are sorted</div><div class="line"></div><div class="line">    :param word_list: list of strings</div><div class="line">    :param word: string</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    if len(word_list) == 0:</div><div class="line">        return False</div><div class="line"></div><div class="line">    # 结果四舍五入</div><div class="line">    i = len(word_list) // 2</div><div class="line">    if word_list[i] == word:</div><div class="line">        return True</div><div class="line"></div><div class="line">    if word_list[i] &gt; word:</div><div class="line">        # search the first half</div><div class="line">        return in_bisect(word_list[:i], word)</div><div class="line">    else:</div><div class="line">        # search the second half</div><div class="line">        return in_bisect(word_list[i + 1:], word)</div><div class="line"></div><div class="line"></div><div class="line">def main():</div><div class="line">    array = [&apos;1&apos;, &apos;asf&apos;, &apos;sf2&apos;, &apos;df1&apos;, &apos;2das&apos;, &apos;5asdfd&apos;, &apos;0sadf&apos;,</div><div class="line">            &apos;2ge&apos;, &apos;efc2&apos;, &apos;1eds&apos;, &apos;2ef&apos;, &apos;2apple&apos;, &apos;apple&apos;, &apos;orange&apos;]</div><div class="line">    print(in_bisect(array, &apos;1&apos;))</div><div class="line">    print(in_bisect(array, &apos;111&apos;))</div><div class="line"></div><div class="line"></div><div class="line">if __name__ == &apos;__main__&apos;:</div><div class="line">    main()</div></pre></td></tr></table></figure>
-</li>
-</ul>
+<hr>
+<h5 id="1-按钮或者-View-在进行-frame-动画的时候，为什么点击-frame-动画的重点位置才能触发事件？如何在动画过程中响应事件？"><a href="#1-按钮或者-View-在进行-frame-动画的时候，为什么点击-frame-动画的重点位置才能触发事件？如何在动画过程中响应事件？" class="headerlink" title="1.按钮或者 View 在进行 frame 动画的时候，为什么点击 frame 动画的重点位置才能触发事件？如何在动画过程中响应事件？"></a>1.按钮或者 View 在进行 frame 动画的时候，为什么点击 frame 动画的重点位置才能触发事件？如何在动画过程中响应事件？</h5><p>答：<br>① <del>动画开始后有两个图层：</del><br>（修改原因：不是动画开始后,而是 view 出现了的时候。只要 view 出现在试图上,他都具有这两个图层。）<br><strong>iOS 中对于 UIView 具有一个 CALayer 类的属性 layer 我们姑且叫他 rootLayer。而每一个 CALayer 都有两个属性：</strong><br><del>一个 <code>view.layer.presentationLayer</code> 用来显示动画（属性随动画过程慢慢改变)</del><br>（修改原因:感觉显示动画这个用法不大准确,我语文也不好😂）<br><strong>一个<code>resentationLayer</code> 指呈现图层,是模型图层的复制，他的属性值代表了在任何指定时刻当前的显示。所以在 UIView 没有出现的时候这个 view 的属性值为 nil， 出现之后无论 view 是否动画，这个值的内存地址每次打印都不一样。</strong></p>
+<p><del>一个 <code>view.layer</code> 用来处理用户交互（动画一开始属性值立即改变到动画结束时的状态和位置)</del><br>(修改原因: CALayer 是不处理交互的,这一点可以从UIView有<code>userInteractionEnabled</code>这个属性，而CALayer没有可以看出,并且看 iOS-CoreAnimation这本书,这样使用 modelLayer 来描述更 MVC 一些)<br><strong>一个<code>modelLayer</code> 指模型层,在 view 显示出来的时候<code>view.layer</code> = <code>view.layer.presentationLayer.modelLayer</code> = <code>view.layer.view.layer.modelLayer</code>。 三者内存地址是一样的,保存实际的属性值。</strong></p>
+<p><strong>最后总结：当一个图层的属性改变的时候，我们设置的属性并没有直接调用图层的外观，只是定义了图层动画结束之后将要变化的外观。</strong>具体关系见下图：</p>
+<center><img src="http://ocg4av0wv.bkt.clouddn.com/layer%E7%9F%A5%E8%AF%86.png" alt=""><br>from《iOS-CoreAnimation》<br></center>
+
+<p>② 要在移动动画的过程中处理 触摸可以重写 <code>UIView的hitTest</code> 方法<br>(总的来说，通过<code>view.layer.presentationLayer</code>的相关属性，就可以实现响应需求了，通过<code>touchbegan</code>判断用户点击的位置是否在<code>view.layer.presentationLayer.frame</code>之内，是《iOS—CoreAnimation》中另外一个实现方式)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">- (id)hitTest:(CGPoint)point withEvent:(UIEvent *)event &#123;</div><div class="line">    NSArray *subViews = self.subviews;</div><div class="line">    for (UIView *subView in subViews) &#123;</div><div class="line">        if([subView isKindOfClass:[FoamImageView class]])&#123; //是要找的图片</div><div class="line">            CALayer *layer = subView.layer.presentationLayer; //图片的显示层            </div><div class="line">            if(CGRectContainsPoint(layer.frame, point))&#123; //触摸点在显示层中，返回当前图片</div><div class="line">                return subView;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return [super hitTest:point withEvent:event];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">- (void)touchesBegan:(NSSet&lt;UITouch *&gt; *)touches withEvent:(UIEvent *)event &#123;</div><div class="line">    CGPoint point = [[touches anyObject] locationInView:self.view];</div><div class="line">    </div><div class="line">    if (CGRectContainsPoint(button_.layer.presentationLayer.frame, point)) &#123;</div><div class="line">        NSLog(@&quot;youxiangying&quot;);</div><div class="line">        [self buttonEvent:button_];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><strong>参考资料</strong><br><a href="http://blog.sina.com.cn/s/blog_771849d301010ta0.html">资料1</a></p>
 <p><a href="https://my.oschina.net/iamzkt/blog/126503">Objective-C 之 @property和@synthesize</a>  </p>
 <p><a href="https://www.pupboss.com/property-and-synthesize/">回炉篇之（一）– @property和@synthesize</a>  </p>
 <p><a href="http://arthurchen.blog.51cto.com/2483760/761426">iOS开发：Objective-C精确的货币计算</a> </p>
 <p><a href="http://www.jianshu.com/p/4703d704c953">‘NSDecimalNumber–十进制数’使用方法(带例子)</a></p>
 <p><a href="https://yq.aliyun.com/wenzhang/show_41715">objective c-OC中有方法重载吗？具体是怎么样？</a></p>
+<p><a href="http://www.cnblogs.com/LiLihongqiang/p/5645907.html">http://www.cnblogs.com/LiLihongqiang/p/5645907.html</a><br><a href="http://www.infocool.net/kb/IOS/201610/200104.html">http://www.infocool.net/kb/IOS/201610/200104.html</a><br><a href="http://www.cocoachina.com/ios/20160113/14896.html">http://www.cocoachina.com/ios/20160113/14896.html</a><br><a href="http://www.jianshu.com/p/2e074db792ba">http://www.jianshu.com/p/2e074db792ba</a>  </p>
 <p>think python</p>
+<p><a href="http://www.voidcn.com/blog/lixuemei45/article/p-5021040.html">www.voidcn.com</a><br><a href="https://www.amazon.com/iOS-Core-Animation-Advanced-Techniques-ebook/dp/B00EHJCORC/ref=sr_1_1?ie=UTF8&amp;qid=1423192842&amp;sr=8-1&amp;keywords=Core+Animation+Advanced+Techniques">iOS-CoreAnimation</a></p>
 <hr>
 <h5 id="写在后面的话"><a href="#写在后面的话" class="headerlink" title="写在后面的话"></a>写在后面的话</h5><p>这个系列所有的文章都是在一个QQ群里面跟小伙伴们讨论出来的,每个 topic 都已经放在了 GitHub 的一个仓库中 <a href="https://github.com/GetOfferSoldier/Objective-C"><strong>这是地址</strong></a>。 所有内容的更新的将在这个仓库中进行,在博客中将不再进行更新。有任何问题，都可以在这个仓库中给我们提 issue 或者 pull request.</p>
 ]]></content>
@@ -1521,101 +1530,27 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
 &lt;li&gt;iOS 上触摸事件的视图检测和事件传递过程是怎样的？  &lt;/li&gt;
 &lt;li&gt;写一个折半查找或者快速排序&lt;/li&gt;
 &lt;/ol&gt;
-    
-    </summary>
-    
-      <category term="iOS面试集锦" scheme="https://CepheusSun.github.io/categories/iOS%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/"/>
-    
-    
-      <category term="iOS面试集锦" scheme="https://CepheusSun.github.io/tags/iOS%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>iOS面试集锦&amp;2017年02月20日01</title>
-    <link href="https://CepheusSun.github.io/2017/02/20/interview07022001/"/>
-    <id>https://CepheusSun.github.io/2017/02/20/interview07022001/</id>
-    <published>2017-02-19T16:00:00.000Z</published>
-    <updated>2017-02-22T17:09:41.000Z</updated>
-    
-    <content type="html"><![CDATA[<ol>
-<li>对内存管理的理解。</li>
-<li>类别的作用</li>
-<li>点击屏幕上的按钮，系统做了什么？</li>
-</ol>
-<a id="more"></a>
-<p>##2017-02-20  Question<br>Question 1.内存管理理解不正确的是<br>A 程序A里有一段内存被成功申请完成之后，内存计数器就从0变为1 (这个过程是alloc);<br>B 程序B里要使用已存在内存，那么内存计数器从1变为2 (这个过程是retain或者copy);<br>C 紧接着程序A不需要这个内存了，那么程序A就把这个内存计数器减1 (这个过程是release);<br>D 当系统发现这个内存计数器变为小于等于0，那么就调用垃圾回收程序把这段内存回收(这个过程是dealloc)；</p>
-<p>Question 2.类别的作用不正确的是<br>A 将类的实现分散到多个不同文件或多个不同框架中。<br>B 创建对私有方法的前向引用。<br>C 向对象添加非正式协议。 继承可以增加，修改或者删除方法。<br>D 不能添加属性  </p>
-<p>Question 3.点击屏幕上的按钮，系统做了什么？  </p>
-<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><p>Answer 1. B  使用并不会增加引用技术，持有才会。<br>Answer 2. D  </p>
-<pre><code>class-continuation分类是唯一能给添加属性的分类。而所谓的关联对象，我在52个方法中找到了这样一句话：
-    * “定义关联对象时可以指定内存管理语义，用以模仿定义属性时所采用的“拥有”和“非拥有关系””
-可见，关连对象跟属性是两个不同的概念，不能混为一谈。
-
-类别的三个作用：
-    * 可以将类的实现分散到多个不同文件或多个不同框架中，方便代码管理。
-    * 创建对私有方法的前向引用。比如在别人的类或者框架中有一个方法的是没有说明的，这时候通过类别声明这个方法，就可以在不破坏原来框架的情况下，使用到这个方法。
-    * 向对象添加非正式协议。
-</code></pre><p>Answer 3.   </p>
-<ul>
-<li>触摸事件的传递是从父空间传递到子控件，如果父空间不能接收触摸事件，那么子控件就不能接收触摸事件  </li>
-<li>发生触摸事件后，系统会将该事件加入到一个由UIApplication管理的事件队列中。(为什么是队列而不是栈？因为队列的特定是先进先出，先产生的事件先处理才符合常理，所以把事件添加到队列。)  </li>
-<li>UIApplication会从事件队列中取出最前面的事件，并将事件分发下去以便处理，通常，先发送事件给应用程序的主窗口（keyWindow）。  </li>
-<li>主窗口会在视图层次结构中找到一个最合适的视图来处理触摸事件，这也是整个事件处理过程的第一步。<br>找到合适的视图控件后，就会调用视图控件的touches方法来作具体的事件处理。  </li>
-</ul>
-<blockquote>
-<p>参考<br><a href="http://www.cnblogs.com/LiLihongqiang/p/5645907.html">http://www.cnblogs.com/LiLihongqiang/p/5645907.html</a><br><a href="http://www.infocool.net/kb/IOS/201610/200104.html">http://www.infocool.net/kb/IOS/201610/200104.html</a><br><a href="http://www.cocoachina.com/ios/20160113/14896.html">http://www.cocoachina.com/ios/20160113/14896.html</a><br><a href="http://www.jianshu.com/p/2e074db792ba">http://www.jianshu.com/p/2e074db792ba</a>  </p>
-</blockquote>
-<hr>
-<h5 id="写在后面的话"><a href="#写在后面的话" class="headerlink" title="写在后面的话"></a>写在后面的话</h5><p>这个系列所有的文章都是在一个QQ群里面跟小伙伴们讨论出来的,每个 topic 都已经放在了 GitHub 的一个仓库中 <a href="https://github.com/GetOfferSoldier/Objective-C"><strong>这是地址</strong></a>。 所有内容的更新的将在这个仓库中进行,在博客中将不再进行更新。有任何问题，都可以在这个仓库中给我们提 issue 或者 pull request.</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;ol&gt;
+&lt;hr&gt;
+&lt;ol&gt;
 &lt;li&gt;对内存管理的理解。&lt;/li&gt;
 &lt;li&gt;类别的作用&lt;/li&gt;
 &lt;li&gt;点击屏幕上的按钮，系统做了什么？&lt;/li&gt;
 &lt;/ol&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;id&lt;/code&gt; 和 &lt;code&gt;instancetype&lt;/code&gt; 的区别?&lt;/li&gt;
+&lt;li&gt;有方法查看当前系统内存使用的情况吗？&lt;/li&gt;
+&lt;li&gt;为什么 NotificationCenter 要 removeObserver? 如何实现自动 remove？&lt;/li&gt;
+&lt;li&gt;iOS的沙盒目录结构是怎样的？ App Bundle 里面都有什么？&lt;/li&gt;
+&lt;li&gt;简单描述一下客户端的缓存机制？&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li&gt;按钮或者 View 在进行 frame 动画的时候，为什么点击 frame 动画的重点位置才能触发事件？如何在动画过程中响应事件？
     
     </summary>
     
-      <category term="iOS面试集锦" scheme="https://CepheusSun.github.io/categories/iOS%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/"/>
-    
-    
-      <category term="iOS面试集锦" scheme="https://CepheusSun.github.io/tags/iOS%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>iOS面试集锦&amp;2017年02月19日01</title>
-    <link href="https://CepheusSun.github.io/2017/02/19/interview07021901/"/>
-    <id>https://CepheusSun.github.io/2017/02/19/interview07021901/</id>
-    <published>2017-02-18T16:00:00.000Z</published>
-    <updated>2017-02-21T16:04:14.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>按钮或者 View 在进行 frame 动画的时候，为什么点击 frame 动画的重点位置才能触发事件？如何在动画过程中响应事件？</p>
-<a id="more"></a>  
-<p>答：<br>① <del>动画开始后有两个图层：</del><br>（修改原因：不是动画开始后,而是 view 出现了的时候。只要 view 出现在试图上,他都具有这两个图层。）<br><strong>iOS 中对于 UIView 具有一个 CALayer 类的属性 layer 我们姑且叫他 rootLayer。而每一个 CALayer 都有两个属性：</strong><br><del>一个 <code>view.layer.presentationLayer</code> 用来显示动画（属性随动画过程慢慢改变)</del><br>（修改原因:感觉显示动画这个用法不大准确,我语文也不好😂）<br><strong>一个<code>resentationLayer</code> 指呈现图层,是模型图层的复制，他的属性值代表了在任何指定时刻当前的显示。所以在 UIView 没有出现的时候这个 view 的属性值为 nil， 出现之后无论 view 是否动画，这个值的内存地址每次打印都不一样。</strong></p>
-<p><del>一个 <code>view.layer</code> 用来处理用户交互（动画一开始属性值立即改变到动画结束时的状态和位置)</del><br>(修改原因: CALayer 是不处理交互的,这一点可以从UIView有<code>userInteractionEnabled</code>这个属性，而CALayer没有可以看出,并且看 iOS-CoreAnimation这本书,这样使用 modelLayer 来描述更 MVC 一些)<br><strong>一个<code>modelLayer</code> 指模型层,在 view 显示出来的时候<code>view.layer</code> = <code>view.layer.presentationLayer.modelLayer</code> = <code>view.layer.view.layer.modelLayer</code>。 三者内存地址是一样的,保存实际的属性值。</strong></p>
-<p><strong>最后总结：当一个图层的属性改变的时候，我们设置的属性并没有直接调用图层的外观，只是定义了图层动画结束之后将要变化的外观。</strong>具体关系见下图：</p>
-<center><img src="http://ocg4av0wv.bkt.clouddn.com/layer%E7%9F%A5%E8%AF%86.png" alt=""><br>from《iOS-CoreAnimation》<br></center>
-
-<p>② 要在移动动画的过程中处理 触摸可以重写 <code>UIView的hitTest</code> 方法<br>(总的来说，通过<code>view.layer.presentationLayer</code>的相关属性，就可以实现响应需求了，通过<code>touchbegan</code>判断用户点击的位置是否在<code>view.layer.presentationLayer.frame</code>之内，是《iOS—CoreAnimation》中另外一个实现方式)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">- (id)hitTest:(CGPoint)point withEvent:(UIEvent *)event &#123;</div><div class="line">    NSArray *subViews = self.subviews;</div><div class="line">    for (UIView *subView in subViews) &#123;</div><div class="line">        if([subView isKindOfClass:[FoamImageView class]])&#123; //是要找的图片</div><div class="line">            CALayer *layer = subView.layer.presentationLayer; //图片的显示层            </div><div class="line">            if(CGRectContainsPoint(layer.frame, point))&#123; //触摸点在显示层中，返回当前图片</div><div class="line">                return subView;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return [super hitTest:point withEvent:event];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">- (void)touchesBegan:(NSSet&lt;UITouch *&gt; *)touches withEvent:(UIEvent *)event &#123;</div><div class="line">    CGPoint point = [[touches anyObject] locationInView:self.view];</div><div class="line">    </div><div class="line">    if (CGRectContainsPoint(button_.layer.presentationLayer.frame, point)) &#123;</div><div class="line">        NSLog(@&quot;youxiangying&quot;);</div><div class="line">        [self buttonEvent:button_];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>参考资料</strong>：<br><a href="http://www.voidcn.com/blog/lixuemei45/article/p-5021040.html">www.voidcn.com</a><br><a href="https://www.amazon.com/iOS-Core-Animation-Advanced-Techniques-ebook/dp/B00EHJCORC/ref=sr_1_1?ie=UTF8&amp;qid=1423192842&amp;sr=8-1&amp;keywords=Core+Animation+Advanced+Techniques">iOS-CoreAnimation</a></p>
-<hr>
-<h5 id="写在后面的话"><a href="#写在后面的话" class="headerlink" title="写在后面的话"></a>写在后面的话</h5><p>这个系列所有的文章都是在一个QQ群里面跟小伙伴们讨论出来的,每个 topic 都已经放在了 GitHub 的一个仓库中 <a href="https://github.com/GetOfferSoldier/Objective-C"><strong>这是地址</strong></a>。 所有内容的更新的将在这个仓库中进行,在博客中将不再进行更新。有任何问题，都可以在这个仓库中给我们提 issue 或者 pull request.</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;按钮或者 View 在进行 frame 动画的时候，为什么点击 frame 动画的重点位置才能触发事件？如何在动画过程中响应事件？&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="iOS面试集锦" scheme="https://CepheusSun.github.io/categories/iOS%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/"/>
+      <category term="知识集锦" scheme="https://CepheusSun.github.io/categories/%E7%9F%A5%E8%AF%86%E9%9B%86%E9%94%A6/"/>
     
     
       <category term="iOS面试集锦" scheme="https://CepheusSun.github.io/tags/iOS%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/"/>
@@ -1698,6 +1633,154 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
     
     
       <category term="python" scheme="https://CepheusSun.github.io/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iOS小知识集锦-NSString常用方法汇总</title>
+    <link href="https://CepheusSun.github.io/2017/02/01/iOS%E5%B0%8F%E7%9F%A5%E8%AF%86%E9%9B%86%E9%94%A6-NSString%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB/"/>
+    <id>https://CepheusSun.github.io/2017/02/01/iOS小知识集锦-NSString常用方法汇总/</id>
+    <published>2017-01-31T16:00:00.000Z</published>
+    <updated>2017-05-19T01:59:33.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>NSString 几乎是 iOS 开发中最常用的类了。几乎所有的地方都会用到各种各样的字符串。NSString 也有很多的方法。这篇文章记录我在使用 NSString 类的时候，会用到的知识点。也是 <code>iOS小知识集锦</code>的第一篇文章吧。</p>
+<a id="more"></a>
+<h3 id="创建字符串"><a href="#创建字符串" class="headerlink" title="创建字符串"></a>创建字符串</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">// 直接创建字符串</div><div class="line">NSString *str1 = @&quot;this is Cepheus Sun&quot;;</div><div class="line"></div><div class="line">// 用一个字符串创建另一个字符串</div><div class="line">NSString *str2 =[[NSString alloc] initWithString:str1];</div><div class="line"></div><div class="line">// 用c的字符串创建oc的字符串</div><div class="line">NSString *str4 = [[NSString alloc] initWithUTF8String:&quot;我是程序猿&quot;];</div><div class="line"></div><div class="line">// 用格式符拼接字符串</div><div class="line">NSString *str3 = [[NSString alloc] initWithFormat:@&quot;%@%@&quot;,str1,str4];</div></pre></td></tr></table></figure>
+<h3 id="读取文件来初始化字符串"><a href="#读取文件来初始化字符串" class="headerlink" title="读取文件来初始化字符串"></a>读取文件来初始化字符串</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">// 先创建一个error对象，用来保存错误信息</div><div class="line">NSError *error = nil;</div><div class="line">//@&quot;/Users/xxx/Desktop/123.txt&quot;为文件路径</div><div class="line">NSString *str01 = [NSString stringWithContentsOfFile:@&quot;/Users/xxx/Desktop/123.txt&quot; encoding:NSUTF8StringEncoding error:&amp;error];</div><div class="line">        </div><div class="line">// 创建if语句判断输出</div><div class="line">if (error) &#123; // 一旦为真，说明读取文件出错了</div><div class="line">	NSLog(@&quot;读取文件出错 %@&quot;, error);</div><div class="line">&#125; else &#123;</div><div class="line">	NSLog(@&quot;读取成功:%@&quot;, str01);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="通过-URL-读取文件，初始化字符串"><a href="#通过-URL-读取文件，初始化字符串" class="headerlink" title="通过 URL 读取文件，初始化字符串"></a>通过 URL 读取文件，初始化字符串</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">// http://www.baidu.com/image/xxxx.png</div><div class="line">// url = 协议头://主机地址/在主机里面的路径</div><div class="line"></div><div class="line">// ftp协议，传输比较大的文件</div><div class="line">// file协议，读取比较大的文件</div><div class="line"></div><div class="line">// file协议，读取文本文件</div><div class="line">NSURL *url = [NSURL URLWithString:@&quot;file://192.168.1.1/user/apple/desktop/test.txt&quot;]</div><div class="line">  </div><div class="line">// 如果不写 IP 地址，就会默认访问本机</div><div class="line">NSURL *url = [NSURL URLWithString:@&quot;file:///user/CepheusSun/desktop/123.txt&quot;]</div><div class="line">  </div><div class="line">// 将本地文件路径创建为 URL 对象(路径可以是中文)</div><div class="line"> NSURL *url = [NSURL fileURLWithPath:@&quot;/Users/CepheusSun/Desktop/123.txt&quot;];</div><div class="line"></div><div class="line">// 将对应对网络资源文件路径创建为URL对象(路径必须是英文字母)</div><div class="line">// SURL *url = [NSURL URLWithString:@&quot;file:///Users/CepheusSun/Desktop/123.txt&quot;];</div><div class="line"> </div><div class="line">// 先创建一个 error 对象，用来保存错误信息</div><div class="line">NSError *error1 = nil;</div><div class="line">// 调用URL地址的文件</div><div class="line">NSString *str03 = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&amp;error1];</div><div class="line">        </div><div class="line">if (error1) &#123; // 一旦为真，说明读取文件出错了</div><div class="line">	NSLog(@&quot;读取文件出错 %@&quot;, error1);</div><div class="line">&#125; else&#123;</div><div class="line">	NSLog(@&quot;读取成功:%@&quot;, str03);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="通过-url-或-file-将字符串信息写入文件"><a href="#通过-url-或-file-将字符串信息写入文件" class="headerlink" title="通过 url 或 file 将字符串信息写入文件"></a>通过 url 或 file 将字符串信息写入文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"> NSString *s001 = @&quot;dfa短发方法法德俄额度 短发舒服&quot;;</div><div class="line">        </div><div class="line">// NSURL *myurl = [NSURL fileURLWithPath:@&quot;/Users/progamersunny/Desktop/123.txt&quot;];</div><div class="line">        </div><div class="line">NSURL *myurl = [NSURL URLWithString:@&quot;file:///Users/progamersunny/Desktop/123.txt&quot;];</div><div class="line"></div><div class="line">// 调用将字符串写入URL地址文件的方法</div><div class="line">[s001 writeToURL:myurl atomically:YES encoding:NSUTF8StringEncoding error:nil];</div><div class="line">        </div><div class="line">// 调用将字符串写入本机文件的方法</div><div class="line">// [s001 writeToFile:@&quot;/Users/xlzhang/Desktop/OC基础知识点汇总/OC中NSString常用方法汇总/text1.txt1&quot; atomically:YES encoding:NSUTF8StringEncoding error:nil];</div><div class="line">        </div><div class="line">// 提取文件内容</div><div class="line">NSString *str04 = [NSString stringWithContentsOfFile:@&quot;/Users/xlzhang/Desktop/text/text/123.txt&quot; encoding:NSUTF8StringEncoding error:nil];</div></pre></td></tr></table></figure>
+<h3 id="创建临时字符串"><a href="#创建临时字符串" class="headerlink" title="创建临时字符串"></a>创建临时字符串</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// 用一个字符串创建另一个临时字符串</div><div class="line">NSString *str5 = [NSString stringWithString:str2];</div><div class="line"></div><div class="line">// 用c的字符串创建oc的临时字符串</div><div class="line">NSString *str6 = [NSString stringWithUTF8String:&quot;我是程序猿&quot;];</div><div class="line">        </div><div class="line">// 用格式符拼接字符串</div><div class="line">NSString *str7 = [NSString stringWithFormat:@&quot;%@%@&quot;,str5,str3];</div></pre></td></tr></table></figure>
+<h3 id="字符串比较"><a href="#字符串比较" class="headerlink" title="字符串比较"></a>字符串比较</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">// 比较两个字符串是否相等，返回BOOL值YES或NO</div><div class="line">BOOL ret = [str6 isEqualToString: str7];</div><div class="line"></div><div class="line">// 比较并返回谁大谁小(返回值是个枚举类型: 比较的结果 ＝ －1，0，1)</div><div class="line">// typedef NS_ENUM(NSInteger, NSComparisonResult) &#123;NSOrderedAscending = -1L, NSOrderedSame, NSOrderedDescending&#125;;</div><div class="line">// 如果左边str1小于右边str4就返回－1，相等就返回0，大于就返回1</div><div class="line"></div><div class="line">NSComparisonResult ret1 = [str1 compare: str4];</div><div class="line"></div><div class="line">// 忽略大小写进行比较</div><div class="line">NSComparisonResult ret01 = [str1 caseInsensitiveCompare:str4];</div><div class="line"></div><div class="line"> // 有条件的比较谁大谁小(options的参数为限制条件)</div><div class="line"> // options: 指定比较的条件</div><div class="line"> // NSCaseInsensitiveSearch  忽略大小写</div><div class="line"> // NSBackwardsSearch  从后往前比较</div><div class="line"> // NSNumericSearch  首先比较字符串里面的字符的个数，个数一样再比较大小</div><div class="line"></div><div class="line">NSComparisonResult ret02 = [str1 compare:str4 options:NSCaseInsensitiveSearch]; // 忽略大小写进行比较</div></pre></td></tr></table></figure>
+<h3 id="从一个字符串中查找子字符串"><a href="#从一个字符串中查找子字符串" class="headerlink" title="从一个字符串中查找子字符串"></a>从一个字符串中查找子字符串</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">NSString *s1 = @&quot;I am such a poor programer.&quot;;</div><div class="line">NSString *s2 = @&quot;am&quot;;</div><div class="line"></div><div class="line">// 返回值类型是一个枚举类型NSRange,包含两个lu整型变量location(位置)和length(长度)</div><div class="line">NSRange range = [s1 rangeOfString:s2];// 查找并返回位置</div><div class="line"></div><div class="line">        </div><div class="line">// 有条件的查找,options后面为： NSCaseInsensitiveSearch 表示忽略大小写</div><div class="line">NSRange range01 = [s1 rangeOfString:s2 options:NSLiteralSearch]; // options表示查找方式</div><div class="line"></div><div class="line">BOOL b1 = [s1 containsString:s2]; // 返回值类型是一个BOOL值，YES表示s1包含有s2，NO表示没有包含</div><div class="line"></div><div class="line">// 如果查找的字符串不存在，返回的值：range.length = 0;range.location = NSNotFound (NSNotFound = -1)</div></pre></td></tr></table></figure>
+<h3 id="单独提取某一个字符"><a href="#单独提取某一个字符" class="headerlink" title="单独提取某一个字符"></a>单独提取某一个字符</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// 创建一个可变字符串对象</div><div class="line">NSMutableString *str02 = [[NSMutableString alloc] init];</div><div class="line">// 循环获取字符中的每一个字符</div><div class="line">for (int i = 0;i &lt; [str1 length]; i++)&#123;</div><div class="line">    // 此处提取的字符是两个字节，因此可以提取汉字</div><div class="line">	unichar c = [str1 characterAtIndex:i]; </div><div class="line">	// 将获取对字符合并到可变字符串中</div><div class="line">	[str02 appendFormat:@&quot;%C&quot;,c];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="从字符串中提取某个范围点字符生成新字符串－－-从第一个字符开始到某个位置结束，从某个位置开始到字符串尾，某点开始某点结束"><a href="#从字符串中提取某个范围点字符生成新字符串－－-从第一个字符开始到某个位置结束，从某个位置开始到字符串尾，某点开始某点结束" class="headerlink" title="从字符串中提取某个范围点字符生成新字符串－－(从第一个字符开始到某个位置结束，从某个位置开始到字符串尾，某点开始某点结束)"></a>从字符串中提取某个范围点字符生成新字符串－－(从第一个字符开始到某个位置结束，从某个位置开始到字符串尾，某点开始某点结束)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">NSString *s3 = @&quot;0123456789&quot;;</div><div class="line">NSString *s4 = [s3 substringToIndex: 6 ]; </div><div class="line">// 从s3中提取从头至第6个字符(不包括第6个),生产新字符串,返回这个新字符串的地址</div><div class="line">// s4的结果为: &quot;012345&quot;</div><div class="line">        </div><div class="line">NSString *s5 = [s3 substringFromIndex: 6 ]; </div><div class="line">// 从s3中提取从第6个字符(包括第6个)到最后一个字符,生产新字符串,返回这个新字符串的地址</div><div class="line">// s5到结果为: &quot;6789&quot;</div><div class="line">        </div><div class="line">NSRange range1 = &#123;3,4&#125;; </div><div class="line">// 3表示起始位置，4表示长度，表示从第3个字符(包含第3个)开始提取连续的4个字符,生产新字符串,返回这个新字符串的地址</div><div class="line">NSString *s6 = [s3 substringWithRange:range1]; </div><div class="line">// 先定义一个range值</div><div class="line">// s6的结果为: &quot;3456&quot;</div><div class="line">        </div><div class="line">        </div><div class="line">// 也可以合并一起写</div><div class="line">NSString *s7 = [s3 substringWithRange:NSMakeRange(3, 4)]; // NSMakeRange 是一个c函数</div></pre></td></tr></table></figure>
+<h3 id="字符串与其他类型的转换"><a href="#字符串与其他类型的转换" class="headerlink" title="字符串与其他类型的转换"></a>字符串与其他类型的转换</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">NSString *intStr = @&quot;1234&quot;;</div><div class="line">NSString *floatStr = @&quot;5.14&quot;;</div><div class="line"></div><div class="line">int a = [intStr intValue];</div><div class="line">float f = [floatS floatValue];</div></pre></td></tr></table></figure>
+<h3 id="字符串首位-前缀后缀的对比"><a href="#字符串首位-前缀后缀的对比" class="headerlink" title="字符串首位(前缀后缀的对比)"></a>字符串首位(前缀后缀的对比)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">NSString *url1 = @&quot;https://www.baidu.com/rader/p.png&quot;;</div><div class="line">BOOL b001 = [url1 hasPrefix:@&quot;https://&quot;]; // 判断字符串首位是否与输入的字符串相同</div><div class="line">BOOL b002 = [url1 hasSuffix:@&quot;p.png&quot;];   // 判断字符串尾部是否与输入的字符串相同</div></pre></td></tr></table></figure>
+<h3 id="字符串中某些字符的替换"><a href="#字符串中某些字符的替换" class="headerlink" title="字符串中某些字符的替换"></a>字符串中某些字符的替换</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">NSString *url2 = @&quot;http://www.baidu.com/rader/p.gdp&quot;;</div><div class="line">// 将withString:字符串内容替换掉url1中 OfString:字符串内容 后生成一个新的字符串url2</div><div class="line">NSString *url3 = [url2 stringByReplacingOccurrencesOfString:@&quot;/&quot; withString:@&quot;*&quot;];</div></pre></td></tr></table></figure>
+<h3 id="去掉字符串首尾的某些连续的字符"><a href="#去掉字符串首尾的某些连续的字符" class="headerlink" title="去掉字符串首尾的某些连续的字符"></a>去掉字符串首尾的某些连续的字符</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"> NSString *url4 = @&quot;    http://www.baidu.com     &quot;;</div><div class="line">        </div><div class="line">NSCharacterSet *set = [NSCharacterSet whitespaceCharacterSet]; //  去除空格</div><div class="line">// lowercaseLetterCharacterSet  去除小写字母</div><div class="line">// uppercaseLetterCharacterSet  去除大写字母</div><div class="line">        </div><div class="line">NSCharacterSet *set1 = [NSCharacterSet characterSetWithCharactersInString:@&quot;指定的字符串&quot;]; // 去除指定的字符串</div><div class="line">        </div><div class="line">        </div><div class="line">// 去除字符串首尾的某些相同字符,有多少个就去掉多少个</div><div class="line">NSString *url5 = [url4 stringByTrimmingCharactersInSet:set];</div></pre></td></tr></table></figure>
+<h3 id="可变字符串-以上字符串方法都可以用于可变字符串"><a href="#可变字符串-以上字符串方法都可以用于可变字符串" class="headerlink" title="可变字符串:(以上字符串方法都可以用于可变字符串)"></a>可变字符串:(以上字符串方法都可以用于可变字符串)</h3><blockquote>
+<p>可变字符串是字符串的子类，所以可以使用所有NSString的所有方法，其比起字符串增加的功能主要有：增,删,改,擦</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">// 创建一个可变字符串</div><div class="line"></div><div class="line">NSMutableString *string1 = [[NSMutableString alloc] init];</div><div class="line">[string1 setString:@&quot;1234&quot;]; // 对可变字符串进行赋值</div><div class="line">        </div><div class="line">[string1 setString:@&quot;abcd&quot;]; // 已赋值的可变字符串可以重新赋值（改）</div><div class="line">[string1 appendString:@&quot;123&quot;]; // 可以增加字符串，增加后结果为:&quot;abcd123&quot;</div><div class="line">[string1 appendFormat:@&quot;%c&quot;,&apos;D&apos;]; // 可以用格式符增加相应的字符或字符串，结果为:&quot;abcd123D&quot;</div><div class="line">[string1 insertString:@&quot;xxxx&quot; atIndex:4]; // 可以把&quot;xxxx&quot;字符串插入到第4个字符开始的地方,原第四个开始的后面字符依次后移</div><div class="line">// 插入后的结果为: &quot;abcdxxxx123D&quot;</div><div class="line">        </div><div class="line">// 也可以把字符串改为另一个字符串的地址，因为它们传递的都是地址</div><div class="line">NSString *ss1 = [NSString stringWithFormat:@&quot;%d&quot;,-88];</div><div class="line">        </div><div class="line">[string1 insertString:ss1 atIndex:6]; // 结果为: string1 = &quot;abcdxx-88xx123D&quot;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">NSRange range2 = &#123;3,4&#125;; </div><div class="line">// 3表示起始位置，4表示长度，表示从第3个字符(包含第3个)开始删除连续的4个字符,后面字符依次前移</div><div class="line">[string1 deleteCharactersInRange:range2]; </div><div class="line">// 结果为: string1 = &quot;abc88xx123D&quot;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[string1 replaceCharactersInRange:NSMakeRange(3, 2) withString:@&quot;RRRRRRRRRR&quot;];</div><div class="line">// 3表示起始位置，2表示长度，表示从第3个字符(包含第3个)开始将后面的2个字符换成字符串&quot;RRRRRRRRRR&quot;,后面字符依次后移</div><div class="line">// 结果为: string1 = &quot;abcRRRRRRRRRRxx123D&quot;</div><div class="line">NSLog(@&quot;\nstring1 = %@&quot;,string1);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 擦除原有字符串内容重新设置字符串的内容</div><div class="line">[string1 setString:@&quot;---&quot;];</div><div class="line">// 等同于</div><div class="line">// string1.string = @&quot;---&quot;;</div><div class="line">        </div><div class="line">NSLog(@&quot;string1 = %@&quot;, string1);</div><div class="line">// 结果为: string1 = &quot;---&quot;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;NSString 几乎是 iOS 开发中最常用的类了。几乎所有的地方都会用到各种各样的字符串。NSString 也有很多的方法。这篇文章记录我在使用 NSString 类的时候，会用到的知识点。也是 &lt;code&gt;iOS小知识集锦&lt;/code&gt;的第一篇文章吧。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="知识集锦" scheme="https://CepheusSun.github.io/categories/%E7%9F%A5%E8%AF%86%E9%9B%86%E9%94%A6/"/>
+    
+    
+      <category term="Objective-C" scheme="https://CepheusSun.github.io/tags/Objective-C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python 中的逻辑运算符</title>
+    <link href="https://CepheusSun.github.io/2017/01/29/python%20%E4%B8%AD%E7%9A%84%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6/"/>
+    <id>https://CepheusSun.github.io/2017/01/29/python 中的逻辑运算符/</id>
+    <published>2017-01-28T16:00:00.000Z</published>
+    <updated>2017-01-29T16:05:59.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>从现在开始，开始了对 pyhton 这门语言的学习。</p>
+<a id="more"></a>
+<p>逻辑运算符其实没什么好说的，只是最近学习 python 这门语言的时候，才研究发现的一个小知识点。</p>
+<h2 id="逻辑运算符有什么？"><a href="#逻辑运算符有什么？" class="headerlink" title="逻辑运算符有什么？"></a>逻辑运算符有什么？</h2><table>
+<thead>
+<tr>
+<th style="text-align:center">关系运算符</th>
+<th style="text-align:center">含义</th>
+<th style="text-align:center">举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">and</td>
+<td style="text-align:center">与(全真才真)</td>
+<td style="text-align:center">True and False == False</td>
+</tr>
+<tr>
+<td style="text-align:center">or</td>
+<td style="text-align:center">或(全假才假)</td>
+<td style="text-align:center">True or False == True</td>
+</tr>
+<tr>
+<td style="text-align:center">not</td>
+<td style="text-align:center">非(真变假、假变真)</td>
+<td style="text-align:center">not True == False</td>
+</tr>
+</tbody>
+</table>
+<h2 id="为什么123-and-456结果是456而123-or-456结果是123？"><a href="#为什么123-and-456结果是456而123-or-456结果是123？" class="headerlink" title="为什么123 and 456结果是456而123 or 456结果是123？"></a>为什么<code>123 and 456</code>结果是<code>456</code>而<code>123 or 456</code>结果是<code>123</code>？</h2><p><strong>and </strong>:</p>
+<p>​    对于 and 首先计算第一个表达式，</p>
+<p>​    如果第一个表达式为真，结果为第二个表达式的结果。</p>
+<p>​    如果第一个表达式为假，返回假。</p>
+<p><strong>or </strong>：</p>
+<p>​    对于 or 首先计算第一个表达式，</p>
+<p>​    如果第一个表达式为真，则返回真。</p>
+<p>​    如果第一个表达式为假，则返回第二个表达式的结果    </p>
+<p>所以，对于</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="number">123</span> <span class="keyword">and</span> <span class="number">456</span></div></pre></td></tr></table></figure>
+<p>这行代码， 遵循非零为真的原则，第一个表达式为真。那么看第二个表达式，第二个表达式也大于零，所以结果为第二个表达式的结果。所以返回</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="number">456</span></div></pre></td></tr></table></figure>
+<p>对于</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="number">123</span> <span class="keyword">or</span> <span class="number">456</span></div></pre></td></tr></table></figure>
+<p>这行代码，第一个表达式非零，结果为第一个表达式的结果。</p>
+<blockquote>
+<p>Strictly speaking, the operands of the logical operators should be boolean expressions, but</p>
+<p>Python is not very strict. Any nonzero number is interpreted as “true.”严格来讲，布尔运算符的运算数应该是布尔表达式， 但是Python并不严格。任何非0的数字都被解释成“真”。</p>
+</blockquote>
+<p>另外，因为 <code>123</code> 或者 <code>456</code> 这两个表达式，都不是逻辑运算，表达式的值就是他本身的值。所以最后得出这样的结果。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><strong>and: </strong>从左到右计算表达式，若所有值为真，返回最后一个值。若存在假，返回第一个假值。</p>
+<p><strong>or：</strong> 从左到右计算表达式，返回第一个为真的值。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;从现在开始，开始了对 pyhton 这门语言的学习。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="python" scheme="https://CepheusSun.github.io/categories/python/"/>
+    
+    
+      <category term="python" scheme="https://CepheusSun.github.io/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CocoaPods小知识集锦</title>
+    <link href="https://CepheusSun.github.io/2017/01/20/CocoaPods%E5%B0%8F%E7%9F%A5%E8%AF%86%E9%9B%86%E9%94%A6/"/>
+    <id>https://CepheusSun.github.io/2017/01/20/CocoaPods小知识集锦/</id>
+    <published>2017-01-19T16:00:00.000Z</published>
+    <updated>2017-01-20T06:09:01.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>在使用CocoaPods 的过程中遇到的问题。整理性的一遍文章，没有多少价值。</p>
+<a id="more"></a>
+<h3 id="1"><a href="#1" class="headerlink" title="1"></a>1</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">✘ sunyang@sunny-mbp  ~<span class="regexp">/desktop/ios</span>  pod install</div><div class="line">[!] No <span class="string">`Podfile' found in the project directory.</span></div></pre></td></tr></table></figure>
+<p>解决方案</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">✘ sunyang@sunny-mbp  ~<span class="regexp">/desktop/ios</span>   pod repo remove master</div><div class="line">Removing spec repo <span class="string">`master`</span></div><div class="line"></div><div class="line">✘ sunyang@sunny-mbp  ~<span class="regexp">/desktop/ios</span>  pod setup</div><div class="line">Setting up CocoaPods master repo</div><div class="line"></div><div class="line">✘ sunyang@sunny-mbp  ~<span class="regexp">/desktop/ios</span>  pod install</div><div class="line">Pod installation complete! There are <span class="number">3</span> dependencies from the Podfile <span class="keyword">and</span> <span class="number">4</span> total pods installed.</div></pre></td></tr></table></figure>
+<p>原因</p>
+<p>这是因为 CocoaPods 基于 GitHub 的网页编辑器的 <code>libgit2</code>的一个 bug。 正式这个 bug 导致了 git 仓库错误。</p>
+<p>唯一的解决办法就是像上面一样。 </p>
+<p><a href="http://blog.cocoapods.org/Repairing-Our-Broken-Specs-Repository/">相关链接</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在使用CocoaPods 的过程中遇到的问题。整理性的一遍文章，没有多少价值。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="CocoaPods" scheme="https://CepheusSun.github.io/categories/CocoaPods/"/>
+    
+    
+      <category term="CocoaPods" scheme="https://CepheusSun.github.io/tags/CocoaPods/"/>
     
   </entry>
   
