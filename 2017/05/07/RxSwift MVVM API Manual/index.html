@@ -96,7 +96,7 @@
 <meta property="og:description" content="现在我们掌握了所有的工具, 也明确了他存在的风险以及规避的方法。现在是时候想想应该怎么样最大可能的运用它了。以 MVVM 为例。
 又很多方法来写 RxSwift 的 API。 我怕的做法是: 利用 RxSwift 很酷的观察者模式和很方便的操作符, 管理异步的任务。可能不是 100% 纯正的 RxSwift。 在将我做过很多的尝试试图将两种编程思维统一起来,但是我都失败了。
 下面是一些我使用 Rx">
-<meta property="og:updated_time" content="2017-05-10T01:06:45.000Z">
+<meta property="og:updated_time" content="2017-05-19T02:40:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RxSwift MVVM API Manual 📃">
 <meta name="twitter:description" content="现在我们掌握了所有的工具, 也明确了他存在的风险以及规避的方法。现在是时候想想应该怎么样最大可能的运用它了。以 MVVM 为例。
@@ -348,6 +348,7 @@
         <p>现在我们掌握了所有的工具, 也明确了他存在的风险以及规避的方法。现在是时候想想应该怎么样最大可能的运用它了。以 MVVM 为例。</p>
 <p>又很多方法来写 RxSwift 的 API。 我怕的做法是: 利用 RxSwift 很酷的观察者模式和很方便的操作符, 管理异步的任务。可能不是 100% 纯正的 RxSwift。 在将我做过很多的尝试试图将两种编程思维统一起来,但是我都失败了。</p>
 <p>下面是一些我使用 RxSwift 的方法。</p>
+<a id="more"></a>
 <h3 id="Be-Consistent"><a href="#Be-Consistent" class="headerlink" title="Be Consistent"></a>Be Consistent</h3><p>这是在接口设计中最重要的事情, 如果你做出了选择。就坚持下去。</p>
 <p>既然如此, 现在就开始吧！<strong>input vs output</strong></p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">FilterViewModel</span> </span>&#123;</div><div class="line">    <span class="comment">//Input</span></div><div class="line">    <span class="keyword">let</span> filterButtonEvents: <span class="type">BehaviorSubject</span>&lt;<span class="type">Int</span>&gt;</div><div class="line">    <span class="keyword">let</span> filterSelectionEvent: <span class="type">PublishSubject</span>&lt;<span class="type">Int</span>&gt;</div><div class="line">    </div><div class="line">    <span class="comment">//OutPut</span></div><div class="line">    <span class="keyword">let</span> currentFilter: <span class="type">Observable</span>&lt;<span class="type">Int</span>&gt;</div><div class="line">    <span class="keyword">let</span> shouldShowFilter: <span class="type">Observable</span>&lt;<span class="type">Bool</span>&gt;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -359,7 +360,6 @@
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">(observable <span class="keyword">as</span>! <span class="type">PublishSubject</span>)</div><div class="line">    .onNext(<span class="string">"Ugly..."</span>)</div></pre></td></tr></table></figure>
 <p>如果你知道有更好的方法, 一定要告诉我。我感觉这么干是在是不优雅😱。</p>
 <h3 id="Safety"><a href="#Safety" class="headerlink" title="Safety"></a>Safety</h3><p>如果在一个简单的 Demo 中, 你可能记得做所有的细节。但在一个复杂的 app 中, 你几乎不可能记得住所有的实现细节。这里面可能有好几百个订阅者。 <code>Observable</code> 又是一个非常广泛的类型。都还没有说这个信号是热信号还是冷信号, 他是在主线程还是在后台线程中运行。这也是 <code>Driver</code> 被设计出来的原因, 为了让 API 更加明确。我们鼓励自己去创建一些单元。</p>
-<a id="more"></a>
 <p><strong>Driver</strong> 是一个热信号, 而且是运行在主线程当中的。好想忽略掉了冷信号？没关系, 创造一个就是了。我称他作 <strong>Template</strong> 因为冷信号就是是一个模版, 在这个模版中你可以用 <code>subscribe</code> 来运行他。</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Template</span>&lt;<span class="title">Element</span>&gt; </span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">let</span> observable: <span class="type">Observable</span>&lt;<span class="type">Element</span>&gt;</div><div class="line">    </div><div class="line">    <span class="keyword">init</span>(<span class="number">_</span> subscribe: @escaping (<span class="type">AnyObserver</span>&lt;<span class="type">Element</span>&gt;) -&gt; <span class="type">Disposable</span>) &#123;</div><div class="line">        observable = <span class="type">Observable</span>.create(subscribe)</div><div class="line">            .subscribeOn(<span class="type">MainScheduler</span>.instance)</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>这样 <code>Template</code> 就能确保是一个在主线程中执行的冷信号。</p>

@@ -87,24 +87,18 @@
 
 
 <meta name="description" content="好了, 接下来是第三个部分。Subjects
-学了之前内容. 我们可能已经发现了。之前学习的内容都是 Observables 输出事件的部分。我们可以订阅他, 就能知道他输出的事件了。但是我们还不能改变他。
-Subject 也是一个 Observable 但是他是能够同时输入和输出的。也就是说, 我们可以动态(强制)的在一个序列中发出信号。
-123456789let subject = Publi">
+学了之前内容. 我们可能已经发现了。之前学习的内容都是 Observables 输出事件的部分。我们可以订阅他, 就能知道他输出的事件了。但是我们还不能改变他。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RxSwift For Dummies 🐣 Part3">
 <meta property="og:url" content="https://CepheusSun.github.io/2017/05/07/RxSwift For Dummies Part3/index.html">
 <meta property="og:site_name" content="CepheusSun">
 <meta property="og:description" content="好了, 接下来是第三个部分。Subjects
-学了之前内容. 我们可能已经发现了。之前学习的内容都是 Observables 输出事件的部分。我们可以订阅他, 就能知道他输出的事件了。但是我们还不能改变他。
-Subject 也是一个 Observable 但是他是能够同时输入和输出的。也就是说, 我们可以动态(强制)的在一个序列中发出信号。
-123456789let subject = Publi">
-<meta property="og:updated_time" content="2017-05-07T09:20:53.000Z">
+学了之前内容. 我们可能已经发现了。之前学习的内容都是 Observables 输出事件的部分。我们可以订阅他, 就能知道他输出的事件了。但是我们还不能改变他。">
+<meta property="og:updated_time" content="2017-05-19T02:41:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RxSwift For Dummies 🐣 Part3">
 <meta name="twitter:description" content="好了, 接下来是第三个部分。Subjects
-学了之前内容. 我们可能已经发现了。之前学习的内容都是 Observables 输出事件的部分。我们可以订阅他, 就能知道他输出的事件了。但是我们还不能改变他。
-Subject 也是一个 Observable 但是他是能够同时输入和输出的。也就是说, 我们可以动态(强制)的在一个序列中发出信号。
-123456789let subject = Publi">
+学了之前内容. 我们可能已经发现了。之前学习的内容都是 Observables 输出事件的部分。我们可以订阅他, 就能知道他输出的事件了。但是我们还不能改变他。">
 
 
 
@@ -350,6 +344,7 @@ Subject 也是一个 Observable 但是他是能够同时输入和输出的。也
       
         <p>好了, 接下来是第三个部分。<strong>Subjects</strong></p>
 <p>学了之前内容. 我们可能已经发现了。之前学习的内容都是 <code>Observables</code> 输出事件的部分。我们可以订阅他, 就能知道他输出的事件了。但是我们还不能改变他。</p>
+<a id="more"></a>
 <p><strong>Subject</strong> 也是一个 <code>Observable</code> 但是他是能够同时输入和输出的。也就是说, 我们可以动态(强制)的在一个序列中发出信号。</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> subject = <span class="type">PublishSubject</span>&lt;<span class="type">String</span>&gt;()</div><div class="line"><span class="comment">// 可以直接转换，因为他也是一个 `Observable`</span></div><div class="line"><span class="keyword">let</span> observable: <span class="type">Observable</span>&lt;<span class="type">String</span>&gt; = subject</div><div class="line">observable.subscribe(onNext: &#123; (text) <span class="keyword">in</span></div><div class="line">    <span class="built_in">print</span>(text)</div><div class="line">&#125;).addDisposableTo(disposeBag)</div><div class="line"><span class="comment">// 只要你想发出一个新的事件, 就可以用 onNext 方法 </span></div><div class="line">subject.onNext(<span class="string">"Hey!"</span>)</div><div class="line">subject.onNext(<span class="string">"I'm back!"</span>)</div></pre></td></tr></table></figure>
 <p><strong>onNext</strong> 是一个输出事件的方法。最后控制台会输出</p>
@@ -364,7 +359,6 @@ Subject 也是一个 Observable 但是他是能够同时输入和输出的。也
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> subject = <span class="type">PublishSubject</span>&lt;<span class="type">String</span>&gt;()</div><div class="line"><span class="keyword">let</span> observable: <span class="type">Observable</span>&lt;<span class="type">String</span>&gt; = subject</div><div class="line"><span class="comment">// 这个信号还没有被订阅, 所以这个值不回被接受到</span></div><div class="line">subject.onNext(<span class="string">"Am I too early for the party?"</span>)</div><div class="line"></div><div class="line">observable</div><div class="line">    .subscribe(onNext: &#123; (text) <span class="keyword">in</span></div><div class="line">        <span class="built_in">print</span>(text)</div><div class="line">    &#125;).addDisposableTo(disposeBag)</div><div class="line"><span class="comment">// 这个值发出来的时候已经有一个订阅者了, 所以这个值会打印出来</span></div><div class="line">subject.onNext(<span class="string">"🎉🎉🎉"</span>)</div></pre></td></tr></table></figure>
 <p>很简单直接吧。如果在第一篇中你理解了冷信号的话, 理解热信号也是很自然的事情。</p>
 <h3 id="Subject-Types"><a href="#Subject-Types" class="headerlink" title="Subject Types"></a>Subject Types</h3><p>常用的 <code>Subject</code> 有三种。 他们其实都差不多, 唯一的区别就是: 在订阅之前, 它会干什么。</p>
-<a id="more"></a>
 <h4 id="Publish-Subject"><a href="#Publish-Subject" class="headerlink" title="Publish Subject"></a>Publish Subject</h4><p>在上面的例子中已经说到了。 <strong>PublishSubject</strong> 会忽略掉在订阅之前发出来的信号。</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> subject = <span class="type">PublishSubject</span>&lt;<span class="type">String</span>&gt;()</div><div class="line"><span class="keyword">let</span> observable: <span class="type">Observable</span>&lt;<span class="type">String</span>&gt; = subject</div><div class="line">subject.onNext(<span class="string">"Ignored..."</span>)</div><div class="line">observable.subscribe(onNext: &#123; (text) <span class="keyword">in</span></div><div class="line">    <span class="built_in">print</span>(text)</div><div class="line">&#125;).addDisposableTo(disposeBag)</div><div class="line">subject.onNext(<span class="string">"Printed!"</span>)</div></pre></td></tr></table></figure>
 <p>当你只关注你订阅之后发生了什么的时候, 就可以使用 <code>PublishSubject</code></p>

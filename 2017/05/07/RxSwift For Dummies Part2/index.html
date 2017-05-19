@@ -86,25 +86,16 @@
 
 
 
-<meta name="description" content="我们在上一篇文章中介绍了 RxSwift 基础的部分. 现在我们来学习一些操作符, 来学习一下 FRP 中的F(unctional) 部分
-Schedulers我们先学习一下之前就已经提到过的, 但是没有详细介绍的 Schedulers
-Schedulers 最常见的用法就是告诉 Observables 和订阅者 应该在哪个线程或者队列中发送事件,或者通知。
-关于 Schedulers 最常见的操">
+<meta name="description" content="我们在上一篇文章中介绍了 RxSwift 基础的部分. 现在我们来学习一些操作符, 来学习一下 FRP 中的F(unctional) 部分">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RxSwift For Dummies 🐣 Part2">
 <meta property="og:url" content="https://CepheusSun.github.io/2017/05/07/RxSwift For Dummies Part2/index.html">
 <meta property="og:site_name" content="CepheusSun">
-<meta property="og:description" content="我们在上一篇文章中介绍了 RxSwift 基础的部分. 现在我们来学习一些操作符, 来学习一下 FRP 中的F(unctional) 部分
-Schedulers我们先学习一下之前就已经提到过的, 但是没有详细介绍的 Schedulers
-Schedulers 最常见的用法就是告诉 Observables 和订阅者 应该在哪个线程或者队列中发送事件,或者通知。
-关于 Schedulers 最常见的操">
-<meta property="og:updated_time" content="2017-05-06T16:26:16.000Z">
+<meta property="og:description" content="我们在上一篇文章中介绍了 RxSwift 基础的部分. 现在我们来学习一些操作符, 来学习一下 FRP 中的F(unctional) 部分">
+<meta property="og:updated_time" content="2017-05-19T02:42:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RxSwift For Dummies 🐣 Part2">
-<meta name="twitter:description" content="我们在上一篇文章中介绍了 RxSwift 基础的部分. 现在我们来学习一些操作符, 来学习一下 FRP 中的F(unctional) 部分
-Schedulers我们先学习一下之前就已经提到过的, 但是没有详细介绍的 Schedulers
-Schedulers 最常见的用法就是告诉 Observables 和订阅者 应该在哪个线程或者队列中发送事件,或者通知。
-关于 Schedulers 最常见的操">
+<meta name="twitter:description" content="我们在上一篇文章中介绍了 RxSwift 基础的部分. 现在我们来学习一些操作符, 来学习一下 FRP 中的F(unctional) 部分">
 
 
 
@@ -349,6 +340,7 @@ Schedulers 最常见的用法就是告诉 Observables 和订阅者 应该在哪�
 
       
         <p>我们在上一篇文章中介绍了 RxSwift 基础的部分. 现在我们来学习一些操作符, 来学习一下 <strong>FRP</strong> 中的<strong>F</strong>(unctional) 部分</p>
+<a id="more"></a>
 <h3 id="Schedulers"><a href="#Schedulers" class="headerlink" title="Schedulers"></a>Schedulers</h3><p>我们先学习一下之前就已经提到过的, 但是没有详细介绍的 <strong>Schedulers</strong></p>
 <p><strong>Schedulers</strong> 最常见的用法就是告诉 <code>Observables</code> 和订阅者 应该在哪个线程或者队列中发送事件,或者通知。</p>
 <p>关于 <code>Schedulers</code> 最常见的操作符是<code>observerOn</code> 和 <code>subscribleOn</code></p>
@@ -374,7 +366,6 @@ Schedulers 最常见的用法就是告诉 Observables 和订阅者 应该在哪�
 <p>添加之后，就能够发现刚刚说到的问题已经解决掉了。</p>
 <p>我们什么时候应该用 <code>observeOn</code> 呢？最常见的场景是:如果在 <code>Observable</code> 不需要在后台执行耗时操作(读取数据, 大的计算任务)的话.我不认为这是非常频繁的事情。但是，come on!  多知道一个你能用的工具 🛠不是件很 cool 的事情吗？</p>
 <h4 id="Scheduler-Types"><a href="#Scheduler-Types" class="headerlink" title="Scheduler Types"></a>Scheduler Types</h4><p>做为 RxSwift 菜鸟, 好奇 <code>observeOn</code> 和 <code>MainScheduler.instance</code> 没什么关系。你可以自己创建一个线程或者直接使用已经创建好了的。如果你很好奇的话<a href="https://github.com/ReactiveX/RxSwift/blob/master/Documentation/Schedulers.md">这里有很多</a>。 这也没什么好复杂的， 就是对 GCD 和 NSOperation 的封装而已。</p>
-<a id="more"></a>
 <h3 id="Transforming-Operators"><a href="#Transforming-Operators" class="headerlink" title="Transforming Operators"></a>Transforming Operators</h3><p>现在你已经知道两种操作符了: 创建操作符(<code>create</code>、<code>interval</code>、<code>just</code>)  和 功能操作符(<code>observeOn</code>, <code>subscribeOn</code>)。 现在再学一些转换操作符吧！</p>
 <h4 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h4><p>这是非常简单，但非常有用的操作符。它也可能是你未来最常用的一个操作符号。</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> observerable = <span class="type">Observable</span>&lt;<span class="type">Int</span>&gt;.create &#123; (observer) -&gt; <span class="type">Disposable</span> <span class="keyword">in</span></div><div class="line">    observer.onNext(<span class="number">1</span>)</div><div class="line">    <span class="keyword">return</span> <span class="type">Disposables</span>.create()</div><div class="line">&#125;        </div><div class="line"><span class="keyword">let</span> boolObservable: <span class="type">Observable</span>&lt;<span class="type">Bool</span>&gt; = observerable.<span class="built_in">map</span>&#123;(element) -&gt; <span class="type">Bool</span> <span class="keyword">in</span></div><div class="line">    <span class="keyword">if</span> element == <span class="number">0</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span></div><div class="line">&#125;</div><div class="line">boolObservable.subscribe(onNext: &#123; (boolElement) <span class="keyword">in</span></div><div class="line">    <span class="built_in">print</span>(boolElement)</div><div class="line">&#125;).addDisposableTo(disposeBag)</div></pre></td></tr></table></figure>
