@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://CepheusSun.github.io/2017/05/20/Using%20lazy%20properties%20in%20Swift/</loc>
+    
+    <lastmod>2017-05-20T04:37:17.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://CepheusSun.github.io/2017/05/20/Picking%20the%20right%20way%20of%20failing%20in%20Swift/</loc>
+    
+    <lastmod>2017-05-20T04:37:11.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://CepheusSun.github.io/2017/05/06/MVVM%20design%20pattern%20and%20RxSwift/</loc>
     
     <lastmod>2017-05-19T02:44:22.000Z</lastmod>

@@ -273,6 +273,272 @@
             
               
                 
+                <a class="post-title-link" href="/2017/05/05/RxSwift and the awesome things you can do with Reactive Programming — Part I/" itemprop="url">
+                  RxSwift and the awesome things you can do with Reactive Programming — Part I
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-05-05T00:00:00+08:00" content="2017-05-05">
+              2017-05-05
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Reactive/" itemprop="url" rel="index">
+                    <span itemprop="name">Reactive</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/05/05/RxSwift and the awesome things you can do with Reactive Programming — Part I/" class="leancloud_visitors" data-flag-title="RxSwift and the awesome things you can do with Reactive Programming — Part I">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+                <span class="leancloud-visitors-count"></span>
+                <span class="post-meta-item-text">人正在围观 </span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>本文翻译自国外的美女工程师 <a href="https://medium.com/@kenzai">Kenza Iraki</a> 的文章 <a href="https://medium.com/@kenzai/rxswift-and-the-awesome-things-you-can-do-with-reactive-programming-part-i-3921137d251">RxSwift and the awesome things you can do with Reactive Programming — Part I</a></p>
+<p>第一次听见响应式编程，我的表情是这样的</p>
+<center><br><img src="https://cdn-images-1.medium.com/max/1600/1*28RdzpfQBHklPcgLGsg0jw.png"><br></center>
+
+<p>接下来的几次几次接触, 也并没有什么改变。整整两个星期之后,即使我在项目中写了一些响应式代码。我依然是这种感觉。</p>
+<p>现在我才知道有很多的人在第一次遇见响应式编程的时候跟我有一样的感觉。我也知道很多人看过响应式的代码之后再也不想再见到它了，因为她的学习曲线太过陡峭了。但是我能告诉你一个事实, 我还没听说过一个人， 在最终理解了他是怎么回事之后,后悔学习响应式编程。</p>
+<p>我知道网上有很多关于响应式编程理论和思想还有 RxSwift 的的资源, 也有很多教你用Rx来做各种事情的教程(文末我会给出一些链接)。这篇文章不是是一个教程, 也不会解释 <code>stream</code> 和 <code>observables</code> 是怎么回事。 我要做的是提供一个直接、明确并且尽量少的理论总结来告诉你 RxSwift 能做什么, 并且告诉你为什么你会喜欢上它。由于 Rx 的世界深似海, 所以我打算写三篇文章来讨论这件事情, 这是第一篇。</p>
+<h2 id="Part1-Data-Binding-control-events-and-gesture-recognizers"><a href="#Part1-Data-Binding-control-events-and-gesture-recognizers" class="headerlink" title="Part1: Data Binding, control events and gesture recognizers"></a>Part1: Data Binding, control events and gesture recognizers</h2><h3 id="Data-Binding"><a href="#Data-Binding" class="headerlink" title="Data Binding"></a>Data Binding</h3><p>数据绑定看起来像是一个高端的词语, 但是它却是一件非常简单的事情。假如你有一个 App 需要用户在 <code>UITextField</code> 中输入它们的名字。当他们在打字的时候, 用 “你好 + 用户输入的文字” 展示在界面上。这样一个很基本的场景。如果在不是响应式的程序中, 我们需要遵守 <code>UITextFieldDelegate</code> 这个协议, 然后在 <code>ViewController</code> 中实现 <code>textFieldDidEndEditing</code> 这个方法, 来监听用户用户的行为，然后给 <code>Label</code> 赋值。</p>
+<p>虽然很简单，但是假如有很多的 <code>UITextField</code> 我们还要在代理方法中判断, 又或者, 我们需要用户在输入的过程中时时的刷新 <code>Label</code>。这种场景, 我们的代码，看起来就会很糟糕。至少不会很优雅吧。</p>
+<p>在响应式中, 这种情况就可以用数据绑定来实现。说白了,就是将用户在 <code>UITextField</code> 中输入的文字绑定到 <code>UILabel</code> 上。在 <code>RxSwift</code> 的世界里,  没有什么比处理数据绑定更简单的了。刚才描述的需求, 我们只需要通过以下代码就可以实现了。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/05/05/RxSwift and the awesome things you can do with Reactive Programming — Part I/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/27/RAC 最基本的东西-- RACSignal/" itemprop="url">
+                  RAC 最基本的东西-- RACSignal
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-04-27T00:00:00+08:00" content="2017-04-27">
+              2017-04-27
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Reactive/" itemprop="url" rel="index">
+                    <span itemprop="name">Reactive</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/04/27/RAC 最基本的东西-- RACSignal/" class="leancloud_visitors" data-flag-title="RAC 最基本的东西-- RACSignal">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+                <span class="leancloud-visitors-count"></span>
+                <span class="post-meta-item-text">人正在围观 </span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="基础用法"><a href="#基础用法" class="headerlink" title="基础用法"></a>基础用法</h3><ul>
+<li>创建信号</li>
+<li>订阅信号</li>
+<li>发送信号</li>
+</ul>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 1.创建信号(cold)</span></div><div class="line">RACSignal *signal = [RACSignal createSignal:^RACDisposable * _Nullable(<span class="keyword">id</span>&lt;RACSubscriber&gt;  _Nonnull subscriber) &#123;</div><div class="line">    <span class="comment">// 3.发送信号</span></div><div class="line">    [subscriber sendNext:<span class="string">@"hello, RAC."</span>];</div><div class="line">    <span class="keyword">return</span> <span class="literal">nil</span>;</div><div class="line">&#125;];</div><div class="line"><span class="comment">// 2.订阅信号(hot)</span></div><div class="line">[signal subscribeNext:^(<span class="keyword">id</span>  _Nullable x) &#123;</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, x);</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+<p>在创建 RACSignal 的时候, </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">+ (RACSignal&lt;ValueType&gt; *)createSignal:(RACDisposable * _Nullable (^)(id&lt;RACSubscriber&gt; subscriber))didSubscribe;</div></pre></td></tr></table></figure>
+<p>方法传入的 block 会返回一个 <code>RACDisposable</code> 对象。</p>
+<p>将以上代码中的 <code>return nil；</code> 替换成如下代码</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/04/27/RAC 最基本的东西-- RACSignal/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/04/26/突然想聊聊 throttle/" itemprop="url">
                   突然想聊聊 throttle
                 </a>
@@ -1309,254 +1575,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/29/python 中的逻辑运算符/" itemprop="url">
-                  python 中的逻辑运算符
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-29T00:00:00+08:00" content="2017-01-29">
-              2017-01-29
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index">
-                    <span itemprop="name">python</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-             <span id="/2017/01/29/python 中的逻辑运算符/" class="leancloud_visitors" data-flag-title="python 中的逻辑运算符">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-                <span class="leancloud-visitors-count"></span>
-                <span class="post-meta-item-text">人正在围观 </span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>从现在开始，开始了对 pyhton 这门语言的学习。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/29/python 中的逻辑运算符/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/20/CocoaPods小知识集锦/" itemprop="url">
-                  CocoaPods小知识集锦
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-20T00:00:00+08:00" content="2017-01-20">
-              2017-01-20
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/CocoaPods/" itemprop="url" rel="index">
-                    <span itemprop="name">CocoaPods</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-             <span id="/2017/01/20/CocoaPods小知识集锦/" class="leancloud_visitors" data-flag-title="CocoaPods小知识集锦">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-                <span class="leancloud-visitors-count"></span>
-                <span class="post-meta-item-text">人正在围观 </span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>在使用CocoaPods 的过程中遇到的问题。整理性的一遍文章，没有多少价值。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/20/CocoaPods小知识集锦/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1602,7 +1620,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-count">44</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1610,7 +1628,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>

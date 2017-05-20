@@ -4,6 +4,54 @@
 
     
   <url>
+    <loc>https://CepheusSun.github.io/2017/05/20/Using%20lazy%20properties%20in%20Swift/</loc>
+    <lastmod>2017-05-20T04:37:17.000Z</lastmod>
+    <data>
+        <display>
+        <title>Using lazy properties in Swift</title>
+        <pubTime>2017-05-20T04:36:45.000Z</pubTime>
+        
+        <tag>iOS</tag>
+         
+        <tag>Swift</tag>
+         
+        <tag>翻译</tag>
+         
+         
+           
+             
+              <breadCrumb title="Swift" url="https://CepheusSun.github.io/categories/Swift/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://CepheusSun.github.io/2017/05/20/Picking%20the%20right%20way%20of%20failing%20in%20Swift/</loc>
+    <lastmod>2017-05-20T04:37:11.000Z</lastmod>
+    <data>
+        <display>
+        <title>Picking the right way of failing in Swift</title>
+        <pubTime>2017-05-20T04:37:45.000Z</pubTime>
+        
+        <tag>iOS</tag>
+         
+        <tag>Swift</tag>
+         
+        <tag>翻译</tag>
+         
+         
+           
+             
+              <breadCrumb title="Swift" url="https://CepheusSun.github.io/categories/Swift/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://CepheusSun.github.io/2017/05/06/MVVM%20design%20pattern%20and%20RxSwift/</loc>
     <lastmod>2017-05-19T02:44:22.000Z</lastmod>
     <data>
@@ -866,11 +914,11 @@
         <title>html学习笔记--1</title>
         <pubTime>2016-08-27T15:03:45.000Z</pubTime>
         
+        <tag>html</tag>
+         
         <tag>前端</tag>
          
         <tag>学习笔记</tag>
-         
-        <tag>html</tag>
          
          
            
@@ -910,11 +958,11 @@
         <title>CSS学习笔记 -- 1</title>
         <pubTime>2016-08-29T01:56:45.000Z</pubTime>
         
-        <tag>CSS</tag>
-         
         <tag>前端</tag>
          
         <tag>学习笔记</tag>
+         
+        <tag>CSS</tag>
          
          
            
