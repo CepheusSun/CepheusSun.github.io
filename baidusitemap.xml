@@ -4,6 +4,32 @@
 
     
   <url>
+    <loc>https://CepheusSun.github.io/RxSwift%20and%20the%20awesome%20things%20you%20can%20do%20with%20Reactive%20Programming%E2%80%8A%E2%80%94%E2%80%8APart%20I.html</loc>
+    <lastmod>2017-05-23T07:32:17.000Z</lastmod>
+    <data>
+        <display>
+        <title>RxSwift and the awesome things you can do with Reactive Programming — Part I</title>
+        <pubTime>2017-05-04T16:00:00.000Z</pubTime>
+        
+        <tag>iOS</tag>
+         
+        <tag>Swift</tag>
+         
+        <tag>翻译</tag>
+         
+        <tag>Reactive</tag>
+         
+         
+           
+             
+              <breadCrumb title="Reactive" url="https://CepheusSun.github.io/categories/Reactive/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://CepheusSun.github.io/Using%20lazy%20properties%20in%20Swift.html</loc>
     <lastmod>2017-05-20T04:37:17.000Z</lastmod>
     <data>
@@ -329,40 +355,14 @@
         <title>使用Gitlab和Cocoapods创建私有pod</title>
         <pubTime>2017-04-19T14:39:27.000Z</pubTime>
         
-        <tag>iOS</tag>
-         
         <tag>CocoaPods</tag>
+         
+        <tag>iOS</tag>
          
          
            
              
               <breadCrumb title="CocoaPods" url="https://CepheusSun.github.io/categories/CocoaPods/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://CepheusSun.github.io/RxSwift%20and%20the%20awesome%20things%20you%20can%20do%20with%20Reactive%20Programming%E2%80%8A%E2%80%94%E2%80%8APart%20I.html</loc>
-    <lastmod>2017-05-04T17:18:23.000Z</lastmod>
-    <data>
-        <display>
-        <title>RxSwift and the awesome things you can do with Reactive Programming — Part I</title>
-        <pubTime>2017-05-04T16:00:00.000Z</pubTime>
-        
-        <tag>iOS</tag>
-         
-        <tag>Swift</tag>
-         
-        <tag>翻译</tag>
-         
-        <tag>Reactive</tag>
-         
-         
-           
-             
-              <breadCrumb title="Reactive" url="https://CepheusSun.github.io/categories/Reactive/"/>
           
         </display>
     </data>
@@ -485,9 +485,9 @@
         <title>使用 Cocoapods 管理你的项目</title>
         <pubTime>2016-12-01T16:00:00.000Z</pubTime>
         
-        <tag>iOS</tag>
-         
         <tag>CocoaPods</tag>
+         
+        <tag>iOS</tag>
          
          
            
