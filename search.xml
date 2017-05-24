@@ -5,7 +5,7 @@
     
     <entry>
       <title><![CDATA[Swift Syntax Cheat Codes]]></title>
-      <url>https://CepheusSun.github.io/Swift%20Syntax%20Cheat%20Codes.html</url>
+      <url>http://www.CepheusSun.com/Swift%20Syntax%20Cheat%20Codes.html</url>
       <content type="html"><![CDATA[<p>这篇文章主要介绍一些很常见的语法。</p>
 <h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">() -&gt; <span class="type">Void</span></div></pre></td></tr></table></figure>
 <p>也叫做 <code>匿名函数</code>。闭包是自包含的函数代码块，可以在代码中被传递和使用。在 <code>C</code> 和 <code>OC</code> 中有 <code>block</code> 与之对应。</p>
@@ -52,7 +52,7 @@
     
     <entry>
       <title><![CDATA[Picking the right way of failing in Swift]]></title>
-      <url>https://CepheusSun.github.io/Picking%20the%20right%20way%20of%20failing%20in%20Swift.html</url>
+      <url>http://www.CepheusSun.com/Picking%20the%20right%20way%20of%20failing%20in%20Swift.html</url>
       <content type="html"><![CDATA[<p>Swift 的一大特色就是编译安全。这使得我们开发者能够更容易的编写出可预测性的代码, 并且能勾减少运行时错误的发生。但是, 在实际的情况中, 错误发生的原因是千奇百怪的。</p>
 <p>我们今天来看一下如果正确的去处理各类错误, 以及我们有什么工具来做这件事情。上一篇文章研究了如何处理 <code>non-optional</code>。 在那篇文章中我使用 <code>guard</code> + <code>preconditionFailure()</code> 代替了强制解包。</p>
 <p>之后很多人都在问 <code>preconditionFailure()</code> 和 <code>assert()</code> 有什么区别。 在这篇文章中。我们再仔细的看看这些语言特性。最重要的是在什么情况下使用哪一种？</p>
@@ -103,7 +103,7 @@
     
     <entry>
       <title><![CDATA[Using lazy properties in Swift]]></title>
-      <url>https://CepheusSun.github.io/Using%20lazy%20properties%20in%20Swift.html</url>
+      <url>http://www.CepheusSun.com/Using%20lazy%20properties%20in%20Swift.html</url>
       <content type="html"><![CDATA[<p>懒加载属于让你可以在需要的时候才初始化, 而不是在初始化这个对象的时候就必须要。懒加载可以用来避免 optional 的使用, 当某个属性的初始化耗费很多资源的时候会提升性能。当然使用懒加载也能让对象的初始化方法看起来很清爽, 因为某些设置会在这个对象的生命周期中被推迟。</p>
 <p>这周我们来学习一下 Swift 中懒加载的定义, 以及使用。</p>
 <a id="more"></a>
@@ -126,7 +126,7 @@
     
     <entry>
       <title><![CDATA[Protocol Oriented Programming View in Swift 3]]></title>
-      <url>https://CepheusSun.github.io/Protocol%20Oriented%20Programming%20View%20in%20Swift%203.html</url>
+      <url>http://www.CepheusSun.com/Protocol%20Oriented%20Programming%20View%20in%20Swift%203.html</url>
       <content type="html"><![CDATA[<blockquote>
 <p>学习如何在不创建一大堆类的前提下做按钮、label、图片的动画。</p>
 </blockquote>
@@ -182,7 +182,7 @@
     
     <entry>
       <title><![CDATA[Introduction to Protocol Oriented Programming in Swift]]></title>
-      <url>https://CepheusSun.github.io/Introduction%20to%20Protocol%20Oriented%20Programming%20in%20Swift.html</url>
+      <url>http://www.CepheusSun.com/Introduction%20to%20Protocol%20Oriented%20Programming%20in%20Swift.html</url>
       <content type="html"><![CDATA[<blockquote>
 <p>OOP is okay, but could’ve been better</p>
 </blockquote>
@@ -255,7 +255,7 @@
     
     <entry>
       <title><![CDATA[RxSwift MVVM API Manual 📃]]></title>
-      <url>https://CepheusSun.github.io/RxSwift%20MVVM%20API%20Manual.html</url>
+      <url>http://www.CepheusSun.com/RxSwift%20MVVM%20API%20Manual.html</url>
       <content type="html"><![CDATA[<p>现在我们掌握了所有的工具, 也明确了他存在的风险以及规避的方法。现在是时候想想应该怎么样最大可能的运用它了。以 MVVM 为例。</p>
 <p>又很多方法来写 RxSwift 的 API。 我怕的做法是: 利用 RxSwift 很酷的观察者模式和很方便的操作符, 管理异步的任务。可能不是 100% 纯正的 RxSwift。 在将我做过很多的尝试试图将两种编程思维统一起来,但是我都失败了。</p>
 <p>下面是一些我使用 RxSwift 的方法。</p>
@@ -289,7 +289,7 @@
     
     <entry>
       <title><![CDATA[RxSwift Safety Manual 📚]]></title>
-      <url>https://CepheusSun.github.io/RxSwift%20Safety%20Manual.html</url>
+      <url>http://www.CepheusSun.com/RxSwift%20Safety%20Manual.html</url>
       <content type="html"><![CDATA[<p>RxSwift 提供了大量非常好用的工具, 让写代码更爽, 但是他也可能给你带来一些头疼的地方, 也可能是bug😱。 用了三个月之后我觉得我应该也可以给出一些建议来避免一些问题。</p>
 <a id="more"></a>
 <h3 id="Side-Effects"><a href="#Side-Effects" class="headerlink" title="Side Effects"></a>Side Effects</h3><p>在计算机科学中副作用这个词可能没那么容易理解, 因为这是一个非常宽泛的内容。在 <a href="http://softwareengineering.stackexchange.com/questions/40297/what-is-a-side-effect">Stackoverflow</a> 有一些比较好的讨论。</p>
@@ -333,7 +333,7 @@
     
     <entry>
       <title><![CDATA[RxSwift For Dummies 🐣 Part3]]></title>
-      <url>https://CepheusSun.github.io/RxSwift%20For%20Dummies%20Part3.html</url>
+      <url>http://www.CepheusSun.com/RxSwift%20For%20Dummies%20Part3.html</url>
       <content type="html"><![CDATA[<p>好了, 接下来是第三个部分。<strong>Subjects</strong></p>
 <p>学了之前内容. 我们可能已经发现了。之前学习的内容都是 <code>Observables</code> 输出事件的部分。我们可以订阅他, 就能知道他输出的事件了。但是我们还不能改变他。</p>
 <a id="more"></a>
@@ -387,7 +387,7 @@
     
     <entry>
       <title><![CDATA[RxSwift For Dummies 🐣 Part2]]></title>
-      <url>https://CepheusSun.github.io/RxSwift%20For%20Dummies%20Part2.html</url>
+      <url>http://www.CepheusSun.com/RxSwift%20For%20Dummies%20Part2.html</url>
       <content type="html"><![CDATA[<p>我们在上一篇文章中介绍了 RxSwift 基础的部分. 现在我们来学习一些操作符, 来学习一下 <strong>FRP</strong> 中的<strong>F</strong>(unctional) 部分</p>
 <a id="more"></a>
 <h3 id="Schedulers"><a href="#Schedulers" class="headerlink" title="Schedulers"></a>Schedulers</h3><p>我们先学习一下之前就已经提到过的, 但是没有详细介绍的 <strong>Schedulers</strong></p>
@@ -474,7 +474,7 @@
     
     <entry>
       <title><![CDATA[RxSwift For Dummies 🐣 Part1]]></title>
-      <url>https://CepheusSun.github.io/RxSwift%20For%20Dummies%20Part1.html</url>
+      <url>http://www.CepheusSun.com/RxSwift%20For%20Dummies%20Part1.html</url>
       <content type="html"><![CDATA[<p><strong>RxSwift</strong> 真的是一个非常值得学习的东西。非常遗憾的是我没有研究所有的架构模式MVVM VIPER Routing。</p>
 <p>要非常好的讲出来RxSwift到底是个什么东西，我也说不好。毕竟他能做太多的事情了。普遍认为，他是函数响应式编程中非常重要的观察者模式。在最初的定义中,他并不就是函数响应式编程。他最初的设计灵感就是来自于函数响应式(<strong>FRP</strong>), 所以也可以说它包含了函数响应式的特性。</p>
 <p>如果你不知道什么是 <strong>FRP</strong> 的话, 不用担心, 在这个教程中你会自然而然的理解什么是 <strong>FRP</strong>。</p>
@@ -573,7 +573,7 @@
     
     <entry>
       <title><![CDATA[MVVM design pattern and RxSwift]]></title>
-      <url>https://CepheusSun.github.io/MVVM%20design%20pattern%20and%20RxSwift.html</url>
+      <url>http://www.CepheusSun.com/MVVM%20design%20pattern%20and%20RxSwift.html</url>
       <content type="html"><![CDATA[<p>本文翻译自(<a href="http://lukagabric.com/mvvm-design-pattern-and-rxswift/">http://lukagabric.com/mvvm-design-pattern-and-rxswift/</a>)</p>
 <h3 id="MVVM"><a href="#MVVM" class="headerlink" title="MVVM"></a>MVVM</h3><p>MVVM 是一种设计模式。他是程序的代码分离成三个部分: <code>Model</code>、<code>View</code>、<code>ViewModel</code>。 <code>Model</code> 代表数据的表现, <code>View</code> 代表用户看到的界面，<code>ViewModel</code> 代表着模型层和视图层的主要关联关系。</p>
 <a id="more"></a>
@@ -622,7 +622,7 @@
     
     <entry>
       <title><![CDATA[RxSwift and the awesome things you can do with Reactive Programming — Part I]]></title>
-      <url>https://CepheusSun.github.io/RxSwift%20and%20the%20awesome%20things%20you%20can%20do%20with%20Reactive%20Programming%E2%80%8A%E2%80%94%E2%80%8APart%20I.html</url>
+      <url>http://www.CepheusSun.com/RxSwift%20and%20the%20awesome%20things%20you%20can%20do%20with%20Reactive%20Programming%E2%80%8A%E2%80%94%E2%80%8APart%20I.html</url>
       <content type="html"><![CDATA[<p>本文翻译自国外的美女工程师 <a href="https://medium.com/@kenzai">Kenza Iraki</a> 的文章 <a href="https://medium.com/@kenzai/rxswift-and-the-awesome-things-you-can-do-with-reactive-programming-part-i-3921137d251">RxSwift and the awesome things you can do with Reactive Programming — Part I</a></p>
 <p>第一次听见响应式编程，我的表情是这样的</p>
 <center><br><img src="https://cdn-images-1.medium.com/max/1600/1*28RdzpfQBHklPcgLGsg0jw.png"><br></center>
@@ -662,7 +662,7 @@
     
     <entry>
       <title><![CDATA[RAC 最基本的东西-- RACSignal]]></title>
-      <url>https://CepheusSun.github.io/RAC%20%E6%9C%80%E5%9F%BA%E6%9C%AC%E7%9A%84%E4%B8%9C%E8%A5%BF--%20RACSignal.html</url>
+      <url>http://www.CepheusSun.com/RAC%20%E6%9C%80%E5%9F%BA%E6%9C%AC%E7%9A%84%E4%B8%9C%E8%A5%BF--%20RACSignal.html</url>
       <content type="html"><![CDATA[<h3 id="基础用法"><a href="#基础用法" class="headerlink" title="基础用法"></a>基础用法</h3><ul>
 <li>创建信号</li>
 <li>订阅信号</li>
@@ -742,7 +742,7 @@
     
     <entry>
       <title><![CDATA[突然想聊聊 throttle]]></title>
-      <url>https://CepheusSun.github.io/%E7%AA%81%E7%84%B6%E6%83%B3%E8%81%8A%E8%81%8A%20throttle.html</url>
+      <url>http://www.CepheusSun.com/%E7%AA%81%E7%84%B6%E6%83%B3%E8%81%8A%E8%81%8A%20throttle.html</url>
       <content type="html"><![CDATA[<blockquote>
 <p>如果我们将水龙头拧紧知道水是以水滴的形式流出, 不难发现, 每隔一段时间, 就会有一滴水流出来。</p>
 </blockquote>
@@ -778,7 +778,7 @@
     
     <entry>
       <title><![CDATA[我用RAC干了些什么(一)]]></title>
-      <url>https://CepheusSun.github.io/%E6%88%91%E7%94%A8RAC%E5%B9%B2%E4%BA%86%E4%BA%9B%E4%BB%80%E4%B9%88(%E4%B8%80).html</url>
+      <url>http://www.CepheusSun.com/%E6%88%91%E7%94%A8RAC%E5%B9%B2%E4%BA%86%E4%BA%9B%E4%BB%80%E4%B9%88(%E4%B8%80).html</url>
       <content type="html"><![CDATA[<p>对象间的交互, 主要有 <code>target-action</code>、<code>Notification</code>、<code>KVO</code>、<code>Delegate</code></p>
 <h3 id="target-action"><a href="#target-action" class="headerlink" title="target-action"></a>target-action</h3><figure class="highlight obj-c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[[<span class="keyword">self</span>.loginBtn rac_signalForControlEvents:<span class="built_in">UIControlEventTouchUpInside</span>] subscribeNext:^(<span class="built_in">UIButton</span> *btn) &#123;</div><div class="line"> <span class="comment">// btn, 即 self.loginBtn</span></div><div class="line"> <span class="comment">// 这里执行点击之后的操作</span></div><div class="line">&#125;];</div></pre></td></tr></table></figure>
 <p>可以用 BlocksKit 替代</p>
@@ -802,7 +802,7 @@
     
     <entry>
       <title><![CDATA[使用Gitlab和Cocoapods创建私有pod]]></title>
-      <url>https://CepheusSun.github.io/%E4%BD%BF%E7%94%A8Gitlab%E5%92%8CCocoapods%E5%88%9B%E5%BB%BA%E7%A7%81%E6%9C%89pod.html</url>
+      <url>http://www.CepheusSun.com/%E4%BD%BF%E7%94%A8Gitlab%E5%92%8CCocoapods%E5%88%9B%E5%BB%BA%E7%A7%81%E6%9C%89pod.html</url>
       <content type="html"><![CDATA[<p>每个稍微有点开发经验的 iOS 工程师都很容易的发现一下几点: </p>
 <ol>
 <li>几乎每个 iOS 的项目都适用了 <code>Cocoapods</code> </li>
@@ -879,7 +879,7 @@
     
     <entry>
       <title><![CDATA[python 爬虫之一 "Requests 库学习"]]></title>
-      <url>https://CepheusSun.github.io/Requests%20%E5%BA%93.html</url>
+      <url>http://www.CepheusSun.com/Requests%20%E5%BA%93.html</url>
       <content type="html"><![CDATA[<p>这个系列的文章是用来记录我学习 python 爬虫的。这是第一篇。</p>
 <a id="more"></a>
 <h2 id="安装-requests-库"><a href="#安装-requests-库" class="headerlink" title="安装 requests 库"></a>安装 requests 库</h2><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo pip install requests</div></pre></td></tr></table></figure>
@@ -994,7 +994,7 @@
     
     <entry>
       <title><![CDATA[iOS面试集锦]]></title>
-      <url>https://CepheusSun.github.io/interview.html</url>
+      <url>http://www.CepheusSun.com/interview.html</url>
       <content type="html"><![CDATA[<ol>
 <li>写出中序遍历二叉树的算法(不限编程语言，已知 TreeRoot 为二叉树的根)</li>
 <li>快速排序，归并排序的时间复杂度分别是什么？</li>
@@ -1172,7 +1172,7 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
     
     <entry>
       <title><![CDATA[python 中 str 和 list 互相转换]]></title>
-      <url>https://CepheusSun.github.io/python%20%E4%B8%AD%20str%20%E5%92%8C%20list%20%E4%BA%92%E7%9B%B8%E8%BD%AC%E6%8D%A2.html</url>
+      <url>http://www.CepheusSun.com/python%20%E4%B8%AD%20str%20%E5%92%8C%20list%20%E4%BA%92%E7%9B%B8%E8%BD%AC%E6%8D%A2.html</url>
       <content type="html"><![CDATA[<p>一些相关方法、函数、运算符的整理</p>
 <a id="more"></a>
 <h3 id="str-gt-list"><a href="#str-gt-list" class="headerlink" title="str -&gt; list"></a>str -&gt; list</h3><h4 id="将字符串按照字符分割成字符list"><a href="#将字符串按照字符分割成字符list" class="headerlink" title="将字符串按照字符分割成字符list"></a>将字符串按照字符分割成字符list</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">s = <span class="string">'spam'</span></div><div class="line">t = list(s)</div><div class="line"><span class="keyword">print</span> t</div><div class="line"></div><div class="line"><span class="comment">#结果：['s', 'p', 'a', 'm']</span></div></pre></td></tr></table></figure>
@@ -1190,7 +1190,7 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
     
     <entry>
       <title><![CDATA[python SyntaxError Non-ASCII character \xe9 in file xxx]]></title>
-      <url>https://CepheusSun.github.io/python%20SyntaxError%20Non-ASCII%20character%20xe9%20in%20file%20xxx.html</url>
+      <url>http://www.CepheusSun.com/python%20SyntaxError%20Non-ASCII%20character%20xe9%20in%20file%20xxx.html</url>
       <content type="html"><![CDATA[<p>错误类型:SyntaxError: Non-ASCII character <code>\xe9</code> in file xxx</p>
 <a id="more"></a>
 <p>最近写 python 代码的时候，简单的一下代码，确出现错误。</p>
@@ -1219,7 +1219,7 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
     
     <entry>
       <title><![CDATA[iOS小知识集锦-NSString常用方法汇总]]></title>
-      <url>https://CepheusSun.github.io/iOS%E5%B0%8F%E7%9F%A5%E8%AF%86%E9%9B%86%E9%94%A6-NSString%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB.html</url>
+      <url>http://www.CepheusSun.com/iOS%E5%B0%8F%E7%9F%A5%E8%AF%86%E9%9B%86%E9%94%A6-NSString%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB.html</url>
       <content type="html"><![CDATA[<p>NSString 几乎是 iOS 开发中最常用的类了。几乎所有的地方都会用到各种各样的字符串。NSString 也有很多的方法。这篇文章记录我在使用 NSString 类的时候，会用到的知识点。也是 <code>iOS小知识集锦</code>的第一篇文章吧。</p>
 <a id="more"></a>
 <h3 id="创建字符串"><a href="#创建字符串" class="headerlink" title="创建字符串"></a>创建字符串</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">// 直接创建字符串</div><div class="line">NSString *str1 = @&quot;this is Cepheus Sun&quot;;</div><div class="line"></div><div class="line">// 用一个字符串创建另一个字符串</div><div class="line">NSString *str2 =[[NSString alloc] initWithString:str1];</div><div class="line"></div><div class="line">// 用c的字符串创建oc的字符串</div><div class="line">NSString *str4 = [[NSString alloc] initWithUTF8String:&quot;我是程序猿&quot;];</div><div class="line"></div><div class="line">// 用格式符拼接字符串</div><div class="line">NSString *str3 = [[NSString alloc] initWithFormat:@&quot;%@%@&quot;,str1,str4];</div></pre></td></tr></table></figure>
@@ -1247,7 +1247,7 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
     
     <entry>
       <title><![CDATA[python 中的逻辑运算符]]></title>
-      <url>https://CepheusSun.github.io/python%20%E4%B8%AD%E7%9A%84%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6.html</url>
+      <url>http://www.CepheusSun.com/python%20%E4%B8%AD%E7%9A%84%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6.html</url>
       <content type="html"><![CDATA[<p>从现在开始，开始了对 pyhton 这门语言的学习。</p>
 <a id="more"></a>
 <p>逻辑运算符其实没什么好说的，只是最近学习 python 这门语言的时候，才研究发现的一个小知识点。</p>
@@ -1304,7 +1304,7 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
     
     <entry>
       <title><![CDATA[CocoaPods小知识集锦]]></title>
-      <url>https://CepheusSun.github.io/CocoaPods%E5%B0%8F%E7%9F%A5%E8%AF%86%E9%9B%86%E9%94%A6.html</url>
+      <url>http://www.CepheusSun.com/CocoaPods%E5%B0%8F%E7%9F%A5%E8%AF%86%E9%9B%86%E9%94%A6.html</url>
       <content type="html"><![CDATA[<p>在使用CocoaPods 的过程中遇到的问题。整理性的一遍文章，没有多少价值。</p>
 <a id="more"></a>
 <h3 id="1"><a href="#1" class="headerlink" title="1"></a>1</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">✘ sunyang@sunny-mbp  ~<span class="regexp">/desktop/ios</span>  pod install</div><div class="line">[!] No <span class="string">`Podfile' found in the project directory.</span></div></pre></td></tr></table></figure>
@@ -1319,7 +1319,7 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
     
     <entry>
       <title><![CDATA[Swift 和 OC 混合编程]]></title>
-      <url>https://CepheusSun.github.io/Swift%E5%92%8COC%E6%B7%B7%E5%90%88%E7%BC%96%E7%A8%8B.html</url>
+      <url>http://www.CepheusSun.com/Swift%E5%92%8COC%E6%B7%B7%E5%90%88%E7%BC%96%E7%A8%8B.html</url>
       <content type="html"><![CDATA[<p>自己学了一段时间的 Swift ，从最开始看 Swift 2.3 的《写给大忙人看的Swift》,在 Xcode8 下很多示例代码都不能好好玩下去，然后看到了 SwiftGG 翻译组针对 Swift 官方文档的中文译本。算是正式开始了对 Swift 的学习。对 Swift 的喜爱不仅仅是因为他是新的语言，是 iOS 开发未来的趋势。而且还有一个很重要的一点单单就是因为 Swift 代码看起来就是非常漂亮啊。</p>
 <a id="more"></a>
 <h2 id="写在前面的话"><a href="#写在前面的话" class="headerlink" title="写在前面的话"></a>写在前面的话</h2><p>对于Swift的学习根本还是一种还没有正式入门的感觉。所以没有办法像 OC 那样驾轻就熟，很多语法都还没有完全掌握，因为时间原因，也因为最近确实发生了一些事情。导致最近学习的热情比较的低，而且年关在即，很多工作上生活上的事情都需要认真梳理一遍。减少了在学习上的努力，是在是罪大恶极。技术圈在这个时候也发生了一些大事情。微信开源的组件 <a href="https://github.com/Tencent/mars#mars_cn">Mars</a>  滴滴和手Q相继 po 出了自己的动态化解决方案。下一年应该会是动态化更广泛应用的一年吧，很多 app 动态化将成为标准配置。但是唯一比较遗憾的是，这些解决方案还是基于 OC 的。但是这也并不妨碍我学习 Swift 的激情，毕竟一切 app 的生杀大权都掌握在苹果手中的，而且，苹果还有一个并不开放的动态库。</p>
@@ -1355,7 +1355,7 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
     
     <entry>
       <title><![CDATA[2016写在年关的话]]></title>
-      <url>https://CepheusSun.github.io/2016%E5%86%99%E5%9C%A8%E5%B9%B4%E5%85%B3%E7%9A%84%E8%AF%9D.html</url>
+      <url>http://www.CepheusSun.com/2016%E5%86%99%E5%9C%A8%E5%B9%B4%E5%85%B3%E7%9A%84%E8%AF%9D.html</url>
       <content type="html"><![CDATA[<p>距离下一个年头也只有几张日历纸了，还是抱着一个比较好的态度来回忆一些这即将过去的2016. 从大学开始，每一年都有着一个这样的习惯，总要在每学期结束，每一年结束的时候，给自己写下点什么。开通了新的blog， 总还是要在这里留下心的印记。</p>
 <a id="more"></a>
 <p>写了那么多年，着实还是没有训练出来对文字驾轻就熟的能力，写出来的东西也往往还是一坨狗屎。让自己也不忍心重新回头再来看下去。每一年也就是这么简单的这么写着。</p>
@@ -1384,7 +1384,7 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
     
     <entry>
       <title><![CDATA[一叶知秋]]></title>
-      <url>https://CepheusSun.github.io/%E4%B8%80%E5%A4%9C%E7%9F%A5%E7%A7%8B.html</url>
+      <url>http://www.CepheusSun.com/%E4%B8%80%E5%A4%9C%E7%9F%A5%E7%A7%8B.html</url>
       <content type="html"><![CDATA[<blockquote>
 <p>任何一种环境或个人，初次见面就预感到离别的隐痛时，你必定爱上他了。</p>
 </blockquote>
@@ -1424,7 +1424,7 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
     
     <entry>
       <title><![CDATA[使用 Cocoapods 管理你的项目]]></title>
-      <url>https://CepheusSun.github.io/%E4%BD%BF%E7%94%A8Cocoapods%E7%AE%A1%E7%90%86%E4%BD%A0%E7%9A%84%E9%A1%B9%E7%9B%AE.html</url>
+      <url>http://www.CepheusSun.com/%E4%BD%BF%E7%94%A8Cocoapods%E7%AE%A1%E7%90%86%E4%BD%A0%E7%9A%84%E9%A1%B9%E7%9B%AE.html</url>
       <content type="html"><![CDATA[<blockquote>
 <p>本文是一个教你使用CocoaPods管理开源模块的文章。</p>
 </blockquote>
@@ -1498,7 +1498,7 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
     
     <entry>
       <title><![CDATA[怎样在iOS中使用icon-font？]]></title>
-      <url>https://CepheusSun.github.io/%E6%80%8E%E6%A0%B7%E5%9C%A8iOS%E4%B8%AD%E4%BD%BF%E7%94%A8icon-font%EF%BC%9F.html</url>
+      <url>http://www.CepheusSun.com/%E6%80%8E%E6%A0%B7%E5%9C%A8iOS%E4%B8%AD%E4%BD%BF%E7%94%A8icon-font%EF%BC%9F.html</url>
       <content type="html"><![CDATA[<blockquote>
 <p>这是一篇写给 iOS 开发的文章(教程)。</p>
 </blockquote>
@@ -1592,7 +1592,7 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
     
     <entry>
       <title><![CDATA[SYPhotoBrowser]]></title>
-      <url>https://CepheusSun.github.io/SYPhotoBrowser.html</url>
+      <url>http://www.CepheusSun.com/SYPhotoBrowser.html</url>
       <content type="html"><![CDATA[<p>图片浏览器，使用方法类似UITableView的图片浏览器。基于YYWebImage.</p>
 <a id="more"></a>
 <h3 id="GIF"><a href="#GIF" class="headerlink" title="GIF"></a>GIF</h3><p><img src="http://ocg4av0wv.bkt.clouddn.com/SYPhotoBrowser.gif" width=500/></p>
@@ -1604,7 +1604,7 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
     
     <entry>
       <title><![CDATA[让人恐惧的属性关键字]]></title>
-      <url>https://CepheusSun.github.io/%E8%AE%A9%E4%BA%BA%E6%81%90%E6%83%A7%E7%9A%84%E5%B1%9E%E6%80%A7%E5%85%B3%E9%94%AE%E5%AD%97.html</url>
+      <url>http://www.CepheusSun.com/%E8%AE%A9%E4%BA%BA%E6%81%90%E6%83%A7%E7%9A%84%E5%B1%9E%E6%80%A7%E5%85%B3%E9%94%AE%E5%AD%97.html</url>
       <content type="html"><![CDATA[<p>一半的 App 都会有一个个人这个模块来对个人信息，设置等功能进行管理，最近搞公司的项目，在项目结束的时候就想到了应该给我的这个界面加上 “headerimage scale” 这样的效果。然后项目已经结束，也并不想大刀阔斧的去修改原来的代码，想到之前在微博看到一个这样的库。时间还是比较紧急的，毕竟周末，然后就把代码下下来，简单的跑了一下，没有发现什么问题之后就直接在项目中用了。</p>
 <p>由于公司一直缺乏很系统的兼容测试，只是对功能有比较严格的要求，所以接下来到上线这个过程都很愉快。 UI、产品都比较满意这样搞。</p>
 <p>上线之后，就发生了一些悲剧的事情了….</p>
@@ -1682,7 +1682,7 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
     
     <entry>
       <title><![CDATA[如何优雅的使用xib进行开发]]></title>
-      <url>https://CepheusSun.github.io/%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E7%9A%84%E4%BD%BF%E7%94%A8xib%E8%BF%9B%E8%A1%8C%E5%BC%80%E5%8F%91.html</url>
+      <url>http://www.CepheusSun.com/%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E7%9A%84%E4%BD%BF%E7%94%A8xib%E8%BF%9B%E8%A1%8C%E5%BC%80%E5%8F%91.html</url>
       <content type="html"><![CDATA[<p>IB 和纯代码布局在 iOS 界一直都存在着不小的争论，唐巧也曾专门撰文来对比二者。网上也能找打一大堆关于 IB 或者纯代码好的或者不好的文章。即使是大神对这个也有着不一样的看法。 Sunny 力挺 IB 开发，据说Ibireme YY大神是纯代码的拥簇，虽然两位大神现在也不会再写 UI 了…</p>
 <p>最近实在是比较忙，先是公司从成都搬到了重庆，纠结了半天还是决定留在现在的团队，再继续往前走下去。再是到重庆没有完整的办公场地的情况下，启动了2.0计划。好在坚持了一段时间之后，2.0版本已经完成了95%的开发等着接下来的优化了。停止可这么长时间的博客，终于也想起来了要打理打理。</p>
 <p>在项目中一直都坚持着使用xib来进行界面布局,除了一些界面需要使用静态单元格用了StoryBoard其他的view层全部使用了xib进行。即使这样,刚刚看了一下也有了16w＋行代码,这篇文章就算是一些心得吧。</p>
@@ -1740,7 +1740,7 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
     
     <entry>
       <title><![CDATA[JPUSH 两个问题]]></title>
-      <url>https://CepheusSun.github.io/JPUSH%20%E4%B8%A4%E4%B8%AA%E9%97%AE%E9%A2%98.html</url>
+      <url>http://www.CepheusSun.com/JPUSH%20%E4%B8%A4%E4%B8%AA%E9%97%AE%E9%A2%98.html</url>
       <content type="html"><![CDATA[<p>最近在调试公司项目的推送的时候遇到了点小问题,死活收不到推送消息。</p>
 <a id="more"></a>
 <p>由于接受公司项目的时候极光推送是已经集成上去了的,虽然说本地调试的时候会经常看见失败这种情况,一直也知道极光推送可能会出现一些收不到消息的问题,所以并没有在意。</p>
@@ -1768,7 +1768,7 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
     
     <entry>
       <title><![CDATA[EmptyDataKit -- 一行代码集成列表视图无数据展示]]></title>
-      <url>https://CepheusSun.github.io/EmptyDataKit.html</url>
+      <url>http://www.CepheusSun.com/EmptyDataKit.html</url>
       <content type="html"><![CDATA[<p>抽空写了一个小东西<a href="https://github.com/CepheusSun/EmptyDataKit"><strong>EmptyDataKit</strong></a>，一行代码可以集成UITableView 和 UICollectionView 在数据源没有数据的时候展示一个默认占位图片。</p>
 <a id="more"></a>
 <h2 id="gif"><a href="#gif" class="headerlink" title="gif"></a>gif</h2><p><img src="http://ocg4av0wv.bkt.clouddn.com/ProgramerSunnyDemo.gif" width= "400" /></p>
@@ -1801,7 +1801,7 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
     
     <entry>
       <title><![CDATA[为Category添加属性]]></title>
-      <url>https://CepheusSun.github.io/%E4%B8%BACategory%E6%B7%BB%E5%8A%A0%E5%B1%9E%E6%80%A7.html</url>
+      <url>http://www.CepheusSun.com/%E4%B8%BACategory%E6%B7%BB%E5%8A%A0%E5%B1%9E%E6%80%A7.html</url>
       <content type="html"><![CDATA[<p>使用Runtime给Category添加属性。</p>
 <a id="more"></a>
 <h2 id="Category-与-property"><a href="#Category-与-property" class="headerlink" title="Category 与 property"></a>Category 与 property</h2><p>我为类<code>ViewController</code>添加了一个<code>Category</code>,然后我想给他添加一个属性，<code>vcName</code></p>
@@ -1871,7 +1871,7 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
     
     <entry>
       <title><![CDATA[怎么使用Hexo发博客]]></title>
-      <url>https://CepheusSun.github.io/%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8Hexo%E5%8F%91%E5%8D%9A%E5%AE%A2.html</url>
+      <url>http://www.CepheusSun.com/%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8Hexo%E5%8F%91%E5%8D%9A%E5%AE%A2.html</url>
       <content type="html"><![CDATA[<p>怎么样使用Hexo发博客,以及博客的使用技巧。</p>
 <a id="more"></a>
 <blockquote>
@@ -1958,7 +1958,7 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
     
     <entry>
       <title><![CDATA[复杂业务下的架构设计和研发效率提升(笔记)]]></title>
-      <url>https://CepheusSun.github.io/%E5%A4%8D%E6%9D%82%E4%B8%9A%E5%8A%A1%E4%B8%8B%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%92%8C%E7%A0%94%E5%8F%91%E6%95%88%E7%8E%87%E6%8F%90%E5%8D%87(%E7%AC%94%E8%AE%B0).html</url>
+      <url>http://www.CepheusSun.com/%E5%A4%8D%E6%9D%82%E4%B8%9A%E5%8A%A1%E4%B8%8B%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%92%8C%E7%A0%94%E5%8F%91%E6%95%88%E7%8E%87%E6%8F%90%E5%8D%87(%E7%AC%94%E8%AE%B0).html</url>
       <content type="html"><![CDATA[<p>抽空重新看了一下今年的<a href="http://gmtc.geekbang.org/"><em>GMTC</em></a>,读到链家郭晓铭的PPT:<a href="http://ppt.geekbang.org/slide/show/210"><em>链家网移动端敏捷之术</em></a>的时候忍不住写了这个笔记,大多数内容都是ppt上的原文。</p>
 <a id="more"></a>
 <h2 id="大多数app存在的现象"><a href="#大多数app存在的现象" class="headerlink" title="大多数app存在的现象"></a>大多数app存在的现象</h2><ol>
@@ -2061,7 +2061,7 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
     
     <entry>
       <title><![CDATA[CSS学习笔记 -- 1]]></title>
-      <url>https://CepheusSun.github.io/css%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0--1.html</url>
+      <url>http://www.CepheusSun.com/css%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0--1.html</url>
       <content type="html"><![CDATA[<p>抽空学习了一下html、css、JavaScript。</p>
 <a id="more"></a>
 <blockquote>
@@ -2181,7 +2181,7 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
     
     <entry>
       <title><![CDATA[JavaScript和Native的交互 第二弹]]></title>
-      <url>https://CepheusSun.github.io/javascript%E5%92%8Cnative%E7%9A%84%E4%BA%A4%E4%BA%92_%E7%AC%AC%E4%BA%8C%E5%BC%B9.html</url>
+      <url>http://www.CepheusSun.com/javascript%E5%92%8Cnative%E7%9A%84%E4%BA%A4%E4%BA%92_%E7%AC%AC%E4%BA%8C%E5%BC%B9.html</url>
       <content type="html"><![CDATA[<p>上次简单的写了一下js和Native交互的问题，这篇文章再稍微深入的研究一下JSBinding。作为上文的补充。</p>
 <a id="more"></a>
 <h2 id="JSBinding"><a href="#JSBinding" class="headerlink" title="JSBinding"></a>JSBinding</h2><h3 id="JSBinding-是什么"><a href="#JSBinding-是什么" class="headerlink" title="JSBinding 是什么?"></a>JSBinding 是什么?</h3><p>JSBinding 不是Hybrid很多人都是通过cocos2dx来了解JSbinding这个技术的。</p>
@@ -2227,7 +2227,7 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
     
     <entry>
       <title><![CDATA[html学习笔记--1]]></title>
-      <url>https://CepheusSun.github.io/html%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0--1.html</url>
+      <url>http://www.CepheusSun.com/html%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0--1.html</url>
       <content type="html"><![CDATA[<p>抽空学习了一下html、css、JavaScript。</p>
 <a id="more"></a>
 <blockquote>
@@ -2400,7 +2400,7 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
     
     <entry>
       <title><![CDATA[JavaScript和Native的交互]]></title>
-      <url>https://CepheusSun.github.io/JavaScript%E5%92%8CNative%E7%9A%84%E4%BA%A4%E4%BA%92.html</url>
+      <url>http://www.CepheusSun.com/JavaScript%E5%92%8CNative%E7%9A%84%E4%BA%A4%E4%BA%92.html</url>
       <content type="html"><![CDATA[<p>iOS Dev难免会遇上需要和JavaScript交互的时候，我是这么做的。<br><a id="more"></a></p>
 <h2 id="JavaScriptCore"><a href="#JavaScriptCore" class="headerlink" title="JavaScriptCore"></a>JavaScriptCore</h2><p>JSC是webkit的一部分，主要是对JS进行解析和提供执行环境,并且，他是开源的。<br><a href="https://github.com/phoboslab/JavaScriptCore-iOS"><em>JavaScriptCore源码</em></a><br>在iOS7推出后，JSC极大的方便了开发者对js的操作。在此之前通用的方法都是是用<code>webview</code>里面的一个函数<code>stringByEvaluatingJavaScriptFromString</code>,JS 对Native的回调都是通过拦截URL的方式进行的。</p>
 <p>JSC中和我们相关的类就大概只有一下5个。</p>
@@ -2495,7 +2495,7 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
     
     <entry>
       <title><![CDATA[我是这样格式化我的代码]]></title>
-      <url>https://CepheusSun.github.io/%E6%88%91%E6%98%AF%E8%BF%99%E6%A0%B7%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%88%91%E7%9A%84%E4%BB%A3%E7%A0%81.html</url>
+      <url>http://www.CepheusSun.com/%E6%88%91%E6%98%AF%E8%BF%99%E6%A0%B7%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%88%91%E7%9A%84%E4%BB%A3%E7%A0%81.html</url>
       <content type="html"><![CDATA[<p>这篇文章是我整理的一份代码格式化的东西, 和一份我正在用的clang-format的配置文件。</p>
 <p>clang-format 之类的插件在 Xcode8 上已经不能用了,所以… 呵呵</p>
 <a id="more"></a>
@@ -2539,7 +2539,7 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
     
     <entry>
       <title><![CDATA[简单对比了一下Delegate和Block的效率]]></title>
-      <url>https://CepheusSun.github.io/%E7%AE%80%E5%8D%95%E5%AF%B9%E6%AF%94%E4%BA%86%E4%B8%80%E4%B8%8BDelegate%E5%92%8CBlock%E7%9A%84%E6%95%88%E7%8E%87.html</url>
+      <url>http://www.CepheusSun.com/%E7%AE%80%E5%8D%95%E5%AF%B9%E6%AF%94%E4%BA%86%E4%B8%80%E4%B8%8BDelegate%E5%92%8CBlock%E7%9A%84%E6%95%88%E7%8E%87.html</url>
       <content type="html"><![CDATA[<p>最近公司的项目完成了，简单的写了个小demo来验证一下block和delegate的效率问题。</p>
 <a id="more"></a>
 <h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><blockquote>
@@ -2647,7 +2647,7 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
     
     <entry>
       <title><![CDATA[如果一个页面需要发送4个网络请求，如何监听到所有的请求都已经回调之后再刷新UI？]]></title>
-      <url>https://CepheusSun.github.io/%E5%A6%82%E6%9E%9C%E4%B8%80%E4%B8%AA%E9%A1%B5%E9%9D%A2%E9%9C%80%E8%A6%81%E5%8F%91%E9%80%814%E4%B8%AA%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%EF%BC%8C%E5%A6%82%E4%BD%95%E7%9B%91%E5%90%AC%E5%88%B0%E6%89%80%E6%9C%89%E7%9A%84%E8%AF%B7%E6%B1%82%E9%83%BD%E5%B7%B2%E7%BB%8F%E5%9B%9E%E8%B0%83%E4%B9%8B%E5%90%8E%E5%86%8D%E5%88%B7%E6%96%B0UI%EF%BC%9F.html</url>
+      <url>http://www.CepheusSun.com/%E5%A6%82%E6%9E%9C%E4%B8%80%E4%B8%AA%E9%A1%B5%E9%9D%A2%E9%9C%80%E8%A6%81%E5%8F%91%E9%80%814%E4%B8%AA%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%EF%BC%8C%E5%A6%82%E4%BD%95%E7%9B%91%E5%90%AC%E5%88%B0%E6%89%80%E6%9C%89%E7%9A%84%E8%AF%B7%E6%B1%82%E9%83%BD%E5%B7%B2%E7%BB%8F%E5%9B%9E%E8%B0%83%E4%B9%8B%E5%90%8E%E5%86%8D%E5%88%B7%E6%96%B0UI%EF%BC%9F.html</url>
       <content type="html"><![CDATA[<p>Model里面有ABCD四个属性，这4个属性每个都不能直接用，都需要去调一个Block返回回来才能用，然后界面上的textview的值需要这4个属性来拼接，每个属性都有可能为空，最后拼出来的东西还不能打乱顺序。</p>
 <a id="more"></a>
 <p>看了一天的JavaScript基础语法，然后水了一下群，发现一个朋友在问这样的问题:</p>
@@ -2715,7 +2715,7 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
     
     <entry>
       <title><![CDATA[iOS中的预编译指令]]></title>
-      <url>https://CepheusSun.github.io/iOS%E4%B8%AD%E7%9A%84%E9%A2%84%E7%BC%96%E8%AF%91%E6%8C%87%E4%BB%A4%E7%9A%84%E5%88%9D%E6%AD%A5%E6%8E%A2%E7%A9%B6-%E8%BD%AC.html</url>
+      <url>http://www.CepheusSun.com/iOS%E4%B8%AD%E7%9A%84%E9%A2%84%E7%BC%96%E8%AF%91%E6%8C%87%E4%BB%A4%E7%9A%84%E5%88%9D%E6%AD%A5%E6%8E%A2%E7%A9%B6-%E8%BD%AC.html</url>
       <content type="html"><![CDATA[<p>iOS中的一些预编译指令。<br><a id="more"></a></p>
 <h2 id="开篇"><a href="#开篇" class="headerlink" title="开篇"></a>开篇</h2><p>举一个简单的的例子，老婆说了句“你给我滚出去睡沙发”。这句话的处理流程事这样的</p>
 <p><img src="http://i4.piimg.com/567571/5d9de7ecac719da4.png" width=600 height=400 /></p>
@@ -2808,7 +2808,7 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
     
     <entry>
       <title><![CDATA[我是这样搭建我的博客的]]></title>
-      <url>https://CepheusSun.github.io/%E6%88%91%E6%98%AF%E8%BF%99%E6%A0%B7%E6%90%AD%E5%BB%BA%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%9A%84.html</url>
+      <url>http://www.CepheusSun.com/%E6%88%91%E6%98%AF%E8%BF%99%E6%A0%B7%E6%90%AD%E5%BB%BA%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%9A%84.html</url>
       <content type="html"><![CDATA[<p>通过GitHub pages &amp; Hexo 搭建我的个人博客。<br><a id="more"></a></p>
 <h3 id="说在前面的话"><a href="#说在前面的话" class="headerlink" title="说在前面的话"></a>说在前面的话</h3><p>转眼，已经做了那么久的开发了。相信跟我一样，很多的iOSer都是在<a href="http://blog.devtang.com/"><em>唐巧的技术博客</em></a>、<a href="https://onevcat.com/#blog"><em>oneV’s Den</em></a>、<a href="http://blog.ibireme.com/archive/"><em>ibireme</em></a>等等大神的技术博客里面汲取营养，每次看到那么漂亮的技术博客，总会想自己也弄一个来玩玩，在看了群里@bestswifter的介绍之后，结合另一个群里的<a href="http://www.jianshu.com/p/834d7cc0668d"><em>锤神 水瓶座_iOSer</em></a>的文章，我也完成了我的技术博客的搭建。</p>
 <p>最开始也想快速搭建的，结果弄了一半公司的项目突然要拆分，所以搁置了一段时间，终于闲下来了，公司老大强烈建议我从现在开始写技术博客。想想也是，坚持总结和梳理，5年10年以后，终会是会又一些收获的，所以我也大胆的搭建了这个博客。并且按照国际案例，第一篇博文总是要说说这个博客是怎么出生的。</p>

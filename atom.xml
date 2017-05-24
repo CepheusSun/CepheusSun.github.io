@@ -4,9 +4,9 @@
   <subtitle>CepheusSun的博客</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://CepheusSun.github.io/"/>
+  <link href="http://www.CepheusSun.com/"/>
   <updated>2017-05-24T03:24:35.000Z</updated>
-  <id>https://CepheusSun.github.io/</id>
+  <id>http://www.CepheusSun.com/</id>
   
   <author>
     <name>CepheusSun</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>Swift Syntax Cheat Codes</title>
-    <link href="https://CepheusSun.github.io/Swift%20Syntax%20Cheat%20Codes.html"/>
-    <id>https://CepheusSun.github.io/Swift Syntax Cheat Codes.html</id>
+    <link href="http://www.CepheusSun.com/Swift%20Syntax%20Cheat%20Codes.html"/>
+    <id>http://www.CepheusSun.com/Swift Syntax Cheat Codes.html</id>
     <published>2017-05-23T16:05:23.000Z</published>
     <updated>2017-05-24T03:24:35.000Z</updated>
     
@@ -74,21 +74,21 @@
     
     </summary>
     
-      <category term="Swift" scheme="https://CepheusSun.github.io/categories/Swift/"/>
+      <category term="Swift" scheme="http://www.CepheusSun.com/categories/Swift/"/>
     
     
-      <category term="iOS" scheme="https://CepheusSun.github.io/tags/iOS/"/>
+      <category term="iOS" scheme="http://www.CepheusSun.com/tags/iOS/"/>
     
-      <category term="Swift" scheme="https://CepheusSun.github.io/tags/Swift/"/>
+      <category term="Swift" scheme="http://www.CepheusSun.com/tags/Swift/"/>
     
-      <category term="翻译" scheme="https://CepheusSun.github.io/tags/%E7%BF%BB%E8%AF%91/"/>
+      <category term="翻译" scheme="http://www.CepheusSun.com/tags/%E7%BF%BB%E8%AF%91/"/>
     
   </entry>
   
   <entry>
     <title>Picking the right way of failing in Swift</title>
-    <link href="https://CepheusSun.github.io/Picking%20the%20right%20way%20of%20failing%20in%20Swift.html"/>
-    <id>https://CepheusSun.github.io/Picking the right way of failing in Swift.html</id>
+    <link href="http://www.CepheusSun.com/Picking%20the%20right%20way%20of%20failing%20in%20Swift.html"/>
+    <id>http://www.CepheusSun.com/Picking the right way of failing in Swift.html</id>
     <published>2017-05-20T04:37:45.000Z</published>
     <updated>2017-05-20T04:37:11.000Z</updated>
     
@@ -147,21 +147,21 @@
     
     </summary>
     
-      <category term="Swift" scheme="https://CepheusSun.github.io/categories/Swift/"/>
+      <category term="Swift" scheme="http://www.CepheusSun.com/categories/Swift/"/>
     
     
-      <category term="iOS" scheme="https://CepheusSun.github.io/tags/iOS/"/>
+      <category term="iOS" scheme="http://www.CepheusSun.com/tags/iOS/"/>
     
-      <category term="Swift" scheme="https://CepheusSun.github.io/tags/Swift/"/>
+      <category term="Swift" scheme="http://www.CepheusSun.com/tags/Swift/"/>
     
-      <category term="翻译" scheme="https://CepheusSun.github.io/tags/%E7%BF%BB%E8%AF%91/"/>
+      <category term="翻译" scheme="http://www.CepheusSun.com/tags/%E7%BF%BB%E8%AF%91/"/>
     
   </entry>
   
   <entry>
     <title>Using lazy properties in Swift</title>
-    <link href="https://CepheusSun.github.io/Using%20lazy%20properties%20in%20Swift.html"/>
-    <id>https://CepheusSun.github.io/Using lazy properties in Swift.html</id>
+    <link href="http://www.CepheusSun.com/Using%20lazy%20properties%20in%20Swift.html"/>
+    <id>http://www.CepheusSun.com/Using lazy properties in Swift.html</id>
     <published>2017-05-20T04:36:45.000Z</published>
     <updated>2017-05-20T04:37:17.000Z</updated>
     
@@ -191,21 +191,21 @@
     
     </summary>
     
-      <category term="Swift" scheme="https://CepheusSun.github.io/categories/Swift/"/>
+      <category term="Swift" scheme="http://www.CepheusSun.com/categories/Swift/"/>
     
     
-      <category term="iOS" scheme="https://CepheusSun.github.io/tags/iOS/"/>
+      <category term="iOS" scheme="http://www.CepheusSun.com/tags/iOS/"/>
     
-      <category term="Swift" scheme="https://CepheusSun.github.io/tags/Swift/"/>
+      <category term="Swift" scheme="http://www.CepheusSun.com/tags/Swift/"/>
     
-      <category term="翻译" scheme="https://CepheusSun.github.io/tags/%E7%BF%BB%E8%AF%91/"/>
+      <category term="翻译" scheme="http://www.CepheusSun.com/tags/%E7%BF%BB%E8%AF%91/"/>
     
   </entry>
   
   <entry>
     <title>Protocol Oriented Programming View in Swift 3</title>
-    <link href="https://CepheusSun.github.io/Protocol%20Oriented%20Programming%20View%20in%20Swift%203.html"/>
-    <id>https://CepheusSun.github.io/Protocol Oriented Programming View in Swift 3.html</id>
+    <link href="http://www.CepheusSun.com/Protocol%20Oriented%20Programming%20View%20in%20Swift%203.html"/>
+    <id>http://www.CepheusSun.com/Protocol Oriented Programming View in Swift 3.html</id>
     <published>2017-05-14T09:28:23.000Z</published>
     <updated>2017-05-14T09:28:46.000Z</updated>
     
@@ -270,23 +270,23 @@
     
     </summary>
     
-      <category term="POP" scheme="https://CepheusSun.github.io/categories/POP/"/>
+      <category term="POP" scheme="http://www.CepheusSun.com/categories/POP/"/>
     
     
-      <category term="iOS" scheme="https://CepheusSun.github.io/tags/iOS/"/>
+      <category term="iOS" scheme="http://www.CepheusSun.com/tags/iOS/"/>
     
-      <category term="Swift" scheme="https://CepheusSun.github.io/tags/Swift/"/>
+      <category term="Swift" scheme="http://www.CepheusSun.com/tags/Swift/"/>
     
-      <category term="翻译" scheme="https://CepheusSun.github.io/tags/%E7%BF%BB%E8%AF%91/"/>
+      <category term="翻译" scheme="http://www.CepheusSun.com/tags/%E7%BF%BB%E8%AF%91/"/>
     
-      <category term="POP" scheme="https://CepheusSun.github.io/tags/POP/"/>
+      <category term="POP" scheme="http://www.CepheusSun.com/tags/POP/"/>
     
   </entry>
   
   <entry>
     <title>Introduction to Protocol Oriented Programming in Swift</title>
-    <link href="https://CepheusSun.github.io/Introduction%20to%20Protocol%20Oriented%20Programming%20in%20Swift.html"/>
-    <id>https://CepheusSun.github.io/Introduction to Protocol Oriented Programming in Swift.html</id>
+    <link href="http://www.CepheusSun.com/Introduction%20to%20Protocol%20Oriented%20Programming%20in%20Swift.html"/>
+    <id>http://www.CepheusSun.com/Introduction to Protocol Oriented Programming in Swift.html</id>
     <published>2017-05-13T16:05:23.000Z</published>
     <updated>2017-05-13T16:07:48.000Z</updated>
     
@@ -369,23 +369,23 @@
     
     </summary>
     
-      <category term="POP" scheme="https://CepheusSun.github.io/categories/POP/"/>
+      <category term="POP" scheme="http://www.CepheusSun.com/categories/POP/"/>
     
     
-      <category term="iOS" scheme="https://CepheusSun.github.io/tags/iOS/"/>
+      <category term="iOS" scheme="http://www.CepheusSun.com/tags/iOS/"/>
     
-      <category term="Swift" scheme="https://CepheusSun.github.io/tags/Swift/"/>
+      <category term="Swift" scheme="http://www.CepheusSun.com/tags/Swift/"/>
     
-      <category term="翻译" scheme="https://CepheusSun.github.io/tags/%E7%BF%BB%E8%AF%91/"/>
+      <category term="翻译" scheme="http://www.CepheusSun.com/tags/%E7%BF%BB%E8%AF%91/"/>
     
-      <category term="POP" scheme="https://CepheusSun.github.io/tags/POP/"/>
+      <category term="POP" scheme="http://www.CepheusSun.com/tags/POP/"/>
     
   </entry>
   
   <entry>
     <title>RxSwift MVVM API Manual 📃</title>
-    <link href="https://CepheusSun.github.io/RxSwift%20MVVM%20API%20Manual.html"/>
-    <id>https://CepheusSun.github.io/RxSwift MVVM API Manual.html</id>
+    <link href="http://www.CepheusSun.com/RxSwift%20MVVM%20API%20Manual.html"/>
+    <id>http://www.CepheusSun.com/RxSwift MVVM API Manual.html</id>
     <published>2017-05-07T11:02:57.000Z</published>
     <updated>2017-05-19T02:40:42.000Z</updated>
     
@@ -427,23 +427,23 @@
     
     </summary>
     
-      <category term="Reactive" scheme="https://CepheusSun.github.io/categories/Reactive/"/>
+      <category term="Reactive" scheme="http://www.CepheusSun.com/categories/Reactive/"/>
     
     
-      <category term="iOS" scheme="https://CepheusSun.github.io/tags/iOS/"/>
+      <category term="iOS" scheme="http://www.CepheusSun.com/tags/iOS/"/>
     
-      <category term="Swift" scheme="https://CepheusSun.github.io/tags/Swift/"/>
+      <category term="Swift" scheme="http://www.CepheusSun.com/tags/Swift/"/>
     
-      <category term="翻译" scheme="https://CepheusSun.github.io/tags/%E7%BF%BB%E8%AF%91/"/>
+      <category term="翻译" scheme="http://www.CepheusSun.com/tags/%E7%BF%BB%E8%AF%91/"/>
     
-      <category term="Reactive" scheme="https://CepheusSun.github.io/tags/Reactive/"/>
+      <category term="Reactive" scheme="http://www.CepheusSun.com/tags/Reactive/"/>
     
   </entry>
   
   <entry>
     <title>RxSwift Safety Manual 📚</title>
-    <link href="https://CepheusSun.github.io/RxSwift%20Safety%20Manual.html"/>
-    <id>https://CepheusSun.github.io/RxSwift Safety Manual.html</id>
+    <link href="http://www.CepheusSun.com/RxSwift%20Safety%20Manual.html"/>
+    <id>http://www.CepheusSun.com/RxSwift Safety Manual.html</id>
     <published>2017-05-07T09:19:57.000Z</published>
     <updated>2017-05-19T02:41:20.000Z</updated>
     
@@ -493,23 +493,23 @@
     
     </summary>
     
-      <category term="Reactive" scheme="https://CepheusSun.github.io/categories/Reactive/"/>
+      <category term="Reactive" scheme="http://www.CepheusSun.com/categories/Reactive/"/>
     
     
-      <category term="iOS" scheme="https://CepheusSun.github.io/tags/iOS/"/>
+      <category term="iOS" scheme="http://www.CepheusSun.com/tags/iOS/"/>
     
-      <category term="Swift" scheme="https://CepheusSun.github.io/tags/Swift/"/>
+      <category term="Swift" scheme="http://www.CepheusSun.com/tags/Swift/"/>
     
-      <category term="翻译" scheme="https://CepheusSun.github.io/tags/%E7%BF%BB%E8%AF%91/"/>
+      <category term="翻译" scheme="http://www.CepheusSun.com/tags/%E7%BF%BB%E8%AF%91/"/>
     
-      <category term="Reactive" scheme="https://CepheusSun.github.io/tags/Reactive/"/>
+      <category term="Reactive" scheme="http://www.CepheusSun.com/tags/Reactive/"/>
     
   </entry>
   
   <entry>
     <title>RxSwift For Dummies 🐣 Part3</title>
-    <link href="https://CepheusSun.github.io/RxSwift%20For%20Dummies%20Part3.html"/>
-    <id>https://CepheusSun.github.io/RxSwift For Dummies Part3.html</id>
+    <link href="http://www.CepheusSun.com/RxSwift%20For%20Dummies%20Part3.html"/>
+    <id>http://www.CepheusSun.com/RxSwift For Dummies Part3.html</id>
     <published>2017-05-07T07:27:57.000Z</published>
     <updated>2017-05-19T02:41:50.000Z</updated>
     
@@ -570,23 +570,23 @@
     
     </summary>
     
-      <category term="Reactive" scheme="https://CepheusSun.github.io/categories/Reactive/"/>
+      <category term="Reactive" scheme="http://www.CepheusSun.com/categories/Reactive/"/>
     
     
-      <category term="iOS" scheme="https://CepheusSun.github.io/tags/iOS/"/>
+      <category term="iOS" scheme="http://www.CepheusSun.com/tags/iOS/"/>
     
-      <category term="Swift" scheme="https://CepheusSun.github.io/tags/Swift/"/>
+      <category term="Swift" scheme="http://www.CepheusSun.com/tags/Swift/"/>
     
-      <category term="翻译" scheme="https://CepheusSun.github.io/tags/%E7%BF%BB%E8%AF%91/"/>
+      <category term="翻译" scheme="http://www.CepheusSun.com/tags/%E7%BF%BB%E8%AF%91/"/>
     
-      <category term="Reactive" scheme="https://CepheusSun.github.io/tags/Reactive/"/>
+      <category term="Reactive" scheme="http://www.CepheusSun.com/tags/Reactive/"/>
     
   </entry>
   
   <entry>
     <title>RxSwift For Dummies 🐣 Part2</title>
-    <link href="https://CepheusSun.github.io/RxSwift%20For%20Dummies%20Part2.html"/>
-    <id>https://CepheusSun.github.io/RxSwift For Dummies Part2.html</id>
+    <link href="http://www.CepheusSun.com/RxSwift%20For%20Dummies%20Part2.html"/>
+    <id>http://www.CepheusSun.com/RxSwift For Dummies Part2.html</id>
     <published>2017-05-06T16:26:57.000Z</published>
     <updated>2017-05-19T02:42:07.000Z</updated>
     
@@ -679,23 +679,23 @@
     
     </summary>
     
-      <category term="Reactive" scheme="https://CepheusSun.github.io/categories/Reactive/"/>
+      <category term="Reactive" scheme="http://www.CepheusSun.com/categories/Reactive/"/>
     
     
-      <category term="iOS" scheme="https://CepheusSun.github.io/tags/iOS/"/>
+      <category term="iOS" scheme="http://www.CepheusSun.com/tags/iOS/"/>
     
-      <category term="Swift" scheme="https://CepheusSun.github.io/tags/Swift/"/>
+      <category term="Swift" scheme="http://www.CepheusSun.com/tags/Swift/"/>
     
-      <category term="翻译" scheme="https://CepheusSun.github.io/tags/%E7%BF%BB%E8%AF%91/"/>
+      <category term="翻译" scheme="http://www.CepheusSun.com/tags/%E7%BF%BB%E8%AF%91/"/>
     
-      <category term="Reactive" scheme="https://CepheusSun.github.io/tags/Reactive/"/>
+      <category term="Reactive" scheme="http://www.CepheusSun.com/tags/Reactive/"/>
     
   </entry>
   
   <entry>
     <title>RxSwift For Dummies 🐣 Part1</title>
-    <link href="https://CepheusSun.github.io/RxSwift%20For%20Dummies%20Part1.html"/>
-    <id>https://CepheusSun.github.io/RxSwift For Dummies Part1.html</id>
+    <link href="http://www.CepheusSun.com/RxSwift%20For%20Dummies%20Part1.html"/>
+    <id>http://www.CepheusSun.com/RxSwift For Dummies Part1.html</id>
     <published>2017-05-06T10:41:59.000Z</published>
     <updated>2017-05-19T02:42:26.000Z</updated>
     
@@ -806,23 +806,23 @@
     
     </summary>
     
-      <category term="Reactive" scheme="https://CepheusSun.github.io/categories/Reactive/"/>
+      <category term="Reactive" scheme="http://www.CepheusSun.com/categories/Reactive/"/>
     
     
-      <category term="iOS" scheme="https://CepheusSun.github.io/tags/iOS/"/>
+      <category term="iOS" scheme="http://www.CepheusSun.com/tags/iOS/"/>
     
-      <category term="Swift" scheme="https://CepheusSun.github.io/tags/Swift/"/>
+      <category term="Swift" scheme="http://www.CepheusSun.com/tags/Swift/"/>
     
-      <category term="翻译" scheme="https://CepheusSun.github.io/tags/%E7%BF%BB%E8%AF%91/"/>
+      <category term="翻译" scheme="http://www.CepheusSun.com/tags/%E7%BF%BB%E8%AF%91/"/>
     
-      <category term="Reactive" scheme="https://CepheusSun.github.io/tags/Reactive/"/>
+      <category term="Reactive" scheme="http://www.CepheusSun.com/tags/Reactive/"/>
     
   </entry>
   
   <entry>
     <title>MVVM design pattern and RxSwift</title>
-    <link href="https://CepheusSun.github.io/MVVM%20design%20pattern%20and%20RxSwift.html"/>
-    <id>https://CepheusSun.github.io/MVVM design pattern and RxSwift.html</id>
+    <link href="http://www.CepheusSun.com/MVVM%20design%20pattern%20and%20RxSwift.html"/>
+    <id>http://www.CepheusSun.com/MVVM design pattern and RxSwift.html</id>
     <published>2017-05-05T17:35:57.000Z</published>
     <updated>2017-05-19T02:44:22.000Z</updated>
     
@@ -878,25 +878,25 @@
     
     </summary>
     
-      <category term="Reactive" scheme="https://CepheusSun.github.io/categories/Reactive/"/>
+      <category term="Reactive" scheme="http://www.CepheusSun.com/categories/Reactive/"/>
     
     
-      <category term="iOS" scheme="https://CepheusSun.github.io/tags/iOS/"/>
+      <category term="iOS" scheme="http://www.CepheusSun.com/tags/iOS/"/>
     
-      <category term="Swift" scheme="https://CepheusSun.github.io/tags/Swift/"/>
+      <category term="Swift" scheme="http://www.CepheusSun.com/tags/Swift/"/>
     
-      <category term="翻译" scheme="https://CepheusSun.github.io/tags/%E7%BF%BB%E8%AF%91/"/>
+      <category term="翻译" scheme="http://www.CepheusSun.com/tags/%E7%BF%BB%E8%AF%91/"/>
     
-      <category term="Reactive" scheme="https://CepheusSun.github.io/tags/Reactive/"/>
+      <category term="Reactive" scheme="http://www.CepheusSun.com/tags/Reactive/"/>
     
-      <category term="设计模式" scheme="https://CepheusSun.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+      <category term="设计模式" scheme="http://www.CepheusSun.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
   </entry>
   
   <entry>
     <title>RxSwift and the awesome things you can do with Reactive Programming — Part I</title>
-    <link href="https://CepheusSun.github.io/RxSwift%20and%20the%20awesome%20things%20you%20can%20do%20with%20Reactive%20Programming%E2%80%8A%E2%80%94%E2%80%8APart%20I.html"/>
-    <id>https://CepheusSun.github.io/RxSwift and the awesome things you can do with Reactive Programming — Part I.html</id>
+    <link href="http://www.CepheusSun.com/RxSwift%20and%20the%20awesome%20things%20you%20can%20do%20with%20Reactive%20Programming%E2%80%8A%E2%80%94%E2%80%8APart%20I.html"/>
+    <id>http://www.CepheusSun.com/RxSwift and the awesome things you can do with Reactive Programming — Part I.html</id>
     <published>2017-05-04T16:00:00.000Z</published>
     <updated>2017-05-23T07:32:17.000Z</updated>
     
@@ -951,23 +951,23 @@
     
     </summary>
     
-      <category term="Reactive" scheme="https://CepheusSun.github.io/categories/Reactive/"/>
+      <category term="Reactive" scheme="http://www.CepheusSun.com/categories/Reactive/"/>
     
     
-      <category term="iOS" scheme="https://CepheusSun.github.io/tags/iOS/"/>
+      <category term="iOS" scheme="http://www.CepheusSun.com/tags/iOS/"/>
     
-      <category term="Swift" scheme="https://CepheusSun.github.io/tags/Swift/"/>
+      <category term="Swift" scheme="http://www.CepheusSun.com/tags/Swift/"/>
     
-      <category term="翻译" scheme="https://CepheusSun.github.io/tags/%E7%BF%BB%E8%AF%91/"/>
+      <category term="翻译" scheme="http://www.CepheusSun.com/tags/%E7%BF%BB%E8%AF%91/"/>
     
-      <category term="Reactive" scheme="https://CepheusSun.github.io/tags/Reactive/"/>
+      <category term="Reactive" scheme="http://www.CepheusSun.com/tags/Reactive/"/>
     
   </entry>
   
   <entry>
     <title>RAC 最基本的东西-- RACSignal</title>
-    <link href="https://CepheusSun.github.io/RAC%20%E6%9C%80%E5%9F%BA%E6%9C%AC%E7%9A%84%E4%B8%9C%E8%A5%BF--%20RACSignal.html"/>
-    <id>https://CepheusSun.github.io/RAC 最基本的东西-- RACSignal.html</id>
+    <link href="http://www.CepheusSun.com/RAC%20%E6%9C%80%E5%9F%BA%E6%9C%AC%E7%9A%84%E4%B8%9C%E8%A5%BF--%20RACSignal.html"/>
+    <id>http://www.CepheusSun.com/RAC 最基本的东西-- RACSignal.html</id>
     <published>2017-04-26T16:00:00.000Z</published>
     <updated>2017-04-27T09:20:19.000Z</updated>
     
@@ -1062,19 +1062,19 @@
     
     </summary>
     
-      <category term="Reactive" scheme="https://CepheusSun.github.io/categories/Reactive/"/>
+      <category term="Reactive" scheme="http://www.CepheusSun.com/categories/Reactive/"/>
     
     
-      <category term="iOS" scheme="https://CepheusSun.github.io/tags/iOS/"/>
+      <category term="iOS" scheme="http://www.CepheusSun.com/tags/iOS/"/>
     
-      <category term="Reactive" scheme="https://CepheusSun.github.io/tags/Reactive/"/>
+      <category term="Reactive" scheme="http://www.CepheusSun.com/tags/Reactive/"/>
     
   </entry>
   
   <entry>
     <title>突然想聊聊 throttle</title>
-    <link href="https://CepheusSun.github.io/%E7%AA%81%E7%84%B6%E6%83%B3%E8%81%8A%E8%81%8A%20throttle.html"/>
-    <id>https://CepheusSun.github.io/突然想聊聊 throttle.html</id>
+    <link href="http://www.CepheusSun.com/%E7%AA%81%E7%84%B6%E6%83%B3%E8%81%8A%E8%81%8A%20throttle.html"/>
+    <id>http://www.CepheusSun.com/突然想聊聊 throttle.html</id>
     <published>2017-04-25T16:00:00.000Z</published>
     <updated>2017-04-27T01:22:28.000Z</updated>
     
@@ -1127,19 +1127,19 @@
     
     </summary>
     
-      <category term="Reactive" scheme="https://CepheusSun.github.io/categories/Reactive/"/>
+      <category term="Reactive" scheme="http://www.CepheusSun.com/categories/Reactive/"/>
     
     
-      <category term="iOS" scheme="https://CepheusSun.github.io/tags/iOS/"/>
+      <category term="iOS" scheme="http://www.CepheusSun.com/tags/iOS/"/>
     
-      <category term="Reactive" scheme="https://CepheusSun.github.io/tags/Reactive/"/>
+      <category term="Reactive" scheme="http://www.CepheusSun.com/tags/Reactive/"/>
     
   </entry>
   
   <entry>
     <title>我用RAC干了些什么(一)</title>
-    <link href="https://CepheusSun.github.io/%E6%88%91%E7%94%A8RAC%E5%B9%B2%E4%BA%86%E4%BA%9B%E4%BB%80%E4%B9%88(%E4%B8%80).html"/>
-    <id>https://CepheusSun.github.io/我用RAC干了些什么(一).html</id>
+    <link href="http://www.CepheusSun.com/%E6%88%91%E7%94%A8RAC%E5%B9%B2%E4%BA%86%E4%BA%9B%E4%BB%80%E4%B9%88(%E4%B8%80).html"/>
+    <id>http://www.CepheusSun.com/我用RAC干了些什么(一).html</id>
     <published>2017-04-20T16:00:00.000Z</published>
     <updated>2017-04-21T04:34:05.000Z</updated>
     
@@ -1180,19 +1180,19 @@
     
     </summary>
     
-      <category term="Reactive" scheme="https://CepheusSun.github.io/categories/Reactive/"/>
+      <category term="Reactive" scheme="http://www.CepheusSun.com/categories/Reactive/"/>
     
     
-      <category term="iOS" scheme="https://CepheusSun.github.io/tags/iOS/"/>
+      <category term="iOS" scheme="http://www.CepheusSun.com/tags/iOS/"/>
     
-      <category term="Reactive" scheme="https://CepheusSun.github.io/tags/Reactive/"/>
+      <category term="Reactive" scheme="http://www.CepheusSun.com/tags/Reactive/"/>
     
   </entry>
   
   <entry>
     <title>使用Gitlab和Cocoapods创建私有pod</title>
-    <link href="https://CepheusSun.github.io/%E4%BD%BF%E7%94%A8Gitlab%E5%92%8CCocoapods%E5%88%9B%E5%BB%BA%E7%A7%81%E6%9C%89pod.html"/>
-    <id>https://CepheusSun.github.io/使用Gitlab和Cocoapods创建私有pod.html</id>
+    <link href="http://www.CepheusSun.com/%E4%BD%BF%E7%94%A8Gitlab%E5%92%8CCocoapods%E5%88%9B%E5%BB%BA%E7%A7%81%E6%9C%89pod.html"/>
+    <id>http://www.CepheusSun.com/使用Gitlab和Cocoapods创建私有pod.html</id>
     <published>2017-04-19T14:39:27.000Z</published>
     <updated>2017-05-11T08:44:49.000Z</updated>
     
@@ -1290,19 +1290,19 @@
     
     </summary>
     
-      <category term="CocoaPods" scheme="https://CepheusSun.github.io/categories/CocoaPods/"/>
+      <category term="CocoaPods" scheme="http://www.CepheusSun.com/categories/CocoaPods/"/>
     
     
-      <category term="iOS" scheme="https://CepheusSun.github.io/tags/iOS/"/>
+      <category term="CocoaPods" scheme="http://www.CepheusSun.com/tags/CocoaPods/"/>
     
-      <category term="CocoaPods" scheme="https://CepheusSun.github.io/tags/CocoaPods/"/>
+      <category term="iOS" scheme="http://www.CepheusSun.com/tags/iOS/"/>
     
   </entry>
   
   <entry>
     <title>python 爬虫之一 &quot;Requests 库学习&quot;</title>
-    <link href="https://CepheusSun.github.io/Requests%20%E5%BA%93.html"/>
-    <id>https://CepheusSun.github.io/Requests 库.html</id>
+    <link href="http://www.CepheusSun.com/Requests%20%E5%BA%93.html"/>
+    <id>http://www.CepheusSun.com/Requests 库.html</id>
     <published>2017-03-06T16:00:00.000Z</published>
     <updated>2017-03-10T01:54:02.000Z</updated>
     
@@ -1423,17 +1423,17 @@
     
     </summary>
     
-      <category term="python" scheme="https://CepheusSun.github.io/categories/python/"/>
+      <category term="python" scheme="http://www.CepheusSun.com/categories/python/"/>
     
     
-      <category term="python" scheme="https://CepheusSun.github.io/tags/python/"/>
+      <category term="python" scheme="http://www.CepheusSun.com/tags/python/"/>
     
   </entry>
   
   <entry>
     <title>iOS面试集锦</title>
-    <link href="https://CepheusSun.github.io/interview.html"/>
-    <id>https://CepheusSun.github.io/interview.html</id>
+    <link href="http://www.CepheusSun.com/interview.html"/>
+    <id>http://www.CepheusSun.com/interview.html</id>
     <published>2017-02-20T16:00:00.000Z</published>
     <updated>2017-05-19T01:59:28.000Z</updated>
     
@@ -1645,17 +1645,17 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
     
     </summary>
     
-      <category term="知识集锦" scheme="https://CepheusSun.github.io/categories/%E7%9F%A5%E8%AF%86%E9%9B%86%E9%94%A6/"/>
+      <category term="知识集锦" scheme="http://www.CepheusSun.com/categories/%E7%9F%A5%E8%AF%86%E9%9B%86%E9%94%A6/"/>
     
     
-      <category term="iOS面试集锦" scheme="https://CepheusSun.github.io/tags/iOS%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/"/>
+      <category term="iOS面试集锦" scheme="http://www.CepheusSun.com/tags/iOS%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/"/>
     
   </entry>
   
   <entry>
     <title>python 中 str 和 list 互相转换</title>
-    <link href="https://CepheusSun.github.io/python%20%E4%B8%AD%20str%20%E5%92%8C%20list%20%E4%BA%92%E7%9B%B8%E8%BD%AC%E6%8D%A2.html"/>
-    <id>https://CepheusSun.github.io/python 中 str 和 list 互相转换.html</id>
+    <link href="http://www.CepheusSun.com/python%20%E4%B8%AD%20str%20%E5%92%8C%20list%20%E4%BA%92%E7%9B%B8%E8%BD%AC%E6%8D%A2.html"/>
+    <id>http://www.CepheusSun.com/python 中 str 和 list 互相转换.html</id>
     <published>2017-02-03T16:00:00.000Z</published>
     <updated>2017-02-04T09:27:00.000Z</updated>
     
@@ -1679,17 +1679,17 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
     
     </summary>
     
-      <category term="python" scheme="https://CepheusSun.github.io/categories/python/"/>
+      <category term="python" scheme="http://www.CepheusSun.com/categories/python/"/>
     
     
-      <category term="python" scheme="https://CepheusSun.github.io/tags/python/"/>
+      <category term="python" scheme="http://www.CepheusSun.com/tags/python/"/>
     
   </entry>
   
   <entry>
     <title>python SyntaxError Non-ASCII character \xe9 in file xxx</title>
-    <link href="https://CepheusSun.github.io/python%20SyntaxError%20Non-ASCII%20character%20xe9%20in%20file%20xxx.html"/>
-    <id>https://CepheusSun.github.io/python SyntaxError Non-ASCII character xe9 in file xxx.html</id>
+    <link href="http://www.CepheusSun.com/python%20SyntaxError%20Non-ASCII%20character%20xe9%20in%20file%20xxx.html"/>
+    <id>http://www.CepheusSun.com/python SyntaxError Non-ASCII character xe9 in file xxx.html</id>
     <published>2017-02-01T16:00:00.000Z</published>
     <updated>2017-05-19T02:35:30.000Z</updated>
     
@@ -1724,10 +1724,10 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
     
     </summary>
     
-      <category term="python" scheme="https://CepheusSun.github.io/categories/python/"/>
+      <category term="python" scheme="http://www.CepheusSun.com/categories/python/"/>
     
     
-      <category term="python" scheme="https://CepheusSun.github.io/tags/python/"/>
+      <category term="python" scheme="http://www.CepheusSun.com/tags/python/"/>
     
   </entry>
   
