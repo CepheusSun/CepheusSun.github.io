@@ -4,6 +4,30 @@
 
     
   <url>
+    <loc>http://www.CepheusSun.com/Swifty%20Tips.html</loc>
+    <lastmod>2017-05-29T17:05:38.000Z</lastmod>
+    <data>
+        <display>
+        <title>Swifty Tips ⚡️</title>
+        <pubTime>2017-05-29T16:05:23.000Z</pubTime>
+        
+        <tag>iOS</tag>
+         
+        <tag>Swift</tag>
+         
+        <tag>翻译</tag>
+         
+         
+           
+             
+              <breadCrumb title="Swift" url="http://www.CepheusSun.com/categories/Swift/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.CepheusSun.com/Swift%20Syntax%20Cheat%20Codes.html</loc>
     <lastmod>2017-05-24T03:24:35.000Z</lastmod>
     <data>
@@ -37,11 +61,11 @@
         
         <tag>iOS</tag>
          
+        <tag>Reactive</tag>
+         
         <tag>Swift</tag>
          
         <tag>翻译</tag>
-         
-        <tag>Reactive</tag>
          
          
            
@@ -111,11 +135,11 @@
         
         <tag>iOS</tag>
          
+        <tag>Reactive</tag>
+         
         <tag>Swift</tag>
          
         <tag>翻译</tag>
-         
-        <tag>Reactive</tag>
          
         <tag>设计模式</tag>
          
@@ -139,11 +163,11 @@
         
         <tag>iOS</tag>
          
+        <tag>Reactive</tag>
+         
         <tag>Swift</tag>
          
         <tag>翻译</tag>
-         
-        <tag>Reactive</tag>
          
          
            
@@ -165,11 +189,11 @@
         
         <tag>iOS</tag>
          
+        <tag>Reactive</tag>
+         
         <tag>Swift</tag>
          
         <tag>翻译</tag>
-         
-        <tag>Reactive</tag>
          
          
            
@@ -191,11 +215,11 @@
         
         <tag>iOS</tag>
          
+        <tag>Reactive</tag>
+         
         <tag>Swift</tag>
          
         <tag>翻译</tag>
-         
-        <tag>Reactive</tag>
          
          
            
@@ -217,11 +241,11 @@
         
         <tag>iOS</tag>
          
+        <tag>Reactive</tag>
+         
         <tag>Swift</tag>
          
         <tag>翻译</tag>
-         
-        <tag>Reactive</tag>
          
          
            
@@ -243,11 +267,11 @@
         
         <tag>iOS</tag>
          
+        <tag>Reactive</tag>
+         
         <tag>Swift</tag>
          
         <tag>翻译</tag>
-         
-        <tag>Reactive</tag>
          
          
            
@@ -938,11 +962,11 @@
         <title>html学习笔记--1</title>
         <pubTime>2016-08-27T15:03:45.000Z</pubTime>
         
+        <tag>html</tag>
+         
         <tag>前端</tag>
          
         <tag>学习笔记</tag>
-         
-        <tag>html</tag>
          
          
            
@@ -982,11 +1006,11 @@
         <title>CSS学习笔记 -- 1</title>
         <pubTime>2016-08-29T01:56:45.000Z</pubTime>
         
-        <tag>CSS</tag>
-         
         <tag>前端</tag>
          
         <tag>学习笔记</tag>
+         
+        <tag>CSS</tag>
          
          
            

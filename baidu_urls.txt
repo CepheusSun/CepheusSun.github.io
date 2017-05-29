@@ -1,3 +1,4 @@
+http://www.CepheusSun.com/Swifty Tips.html
 http://www.CepheusSun.com/Swift Syntax Cheat Codes.html
 http://www.CepheusSun.com/Picking the right way of failing in Swift.html
 http://www.CepheusSun.com/Using lazy properties in Swift.html
