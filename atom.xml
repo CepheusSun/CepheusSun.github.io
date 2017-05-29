@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.CepheusSun.com/"/>
-  <updated>2017-05-29T17:05:38.000Z</updated>
+  <updated>2017-05-29T17:23:02.000Z</updated>
   <id>http://www.CepheusSun.com/</id>
   
   <author>
@@ -20,12 +20,13 @@
     <link href="http://www.CepheusSun.com/Swifty%20Tips.html"/>
     <id>http://www.CepheusSun.com/Swifty Tips.html</id>
     <published>2017-05-29T16:05:23.000Z</published>
-    <updated>2017-05-29T17:05:38.000Z</updated>
+    <updated>2017-05-29T17:23:02.000Z</updated>
     
     <content type="html"><![CDATA[<p>Swift 开发中的一些小的技巧</p>
 <p>刚开始的时候, 特别好奇大厂是怎么搞的, 他们的项目长什么样子, 他们用哪些库…想在巨人的肩膀上开发, 免得浪费时间在那些已经有很好解决方案的事情上。</p>
 <p>四年前，我和团队中很多很厉害的人讨论过一些编程实践。今天就分享一些东西吧。</p>
 <p>欢迎指正！🚀</p>
+<a id="more"></a>
 <h2 id="滥用引用类型"><a href="#滥用引用类型" class="headerlink" title="滥用引用类型"></a>滥用引用类型</h2><p>只有“动态”对象才使用引用类型。这里的“动态”对象是什么呢？看下面的代码:</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Car</span> </span>&#123;</div><div class="line">    <span class="keyword">let</span> model: <span class="type">String</span></div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CarManager</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span>(<span class="keyword">set</span>) <span class="keyword">var</span> cars: [<span class="type">Car</span>]</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">fetchCars</span><span class="params">()</span></span> &#123;&#125;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">registerCar</span><span class="params">(<span class="number">_</span> car: Car)</span></span> &#123;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>🚗 在这里只是一个值。他代表的就是一些数据。就像 <code>1</code>、<code>2</code>、<code>3</code>。 这种数据是“静态”的数据(死的)。 它不会处理任何东西, 所以它也没有必要是“动态”的, 也就是说, 没必要把它定义成引用类型。</p>
@@ -122,7 +123,8 @@
     
       &lt;p&gt;Swift 开发中的一些小的技巧&lt;/p&gt;
 &lt;p&gt;刚开始的时候, 特别好奇大厂是怎么搞的, 他们的项目长什么样子, 他们用哪些库…想在巨人的肩膀上开发, 免得浪费时间在那些已经有很好解决方案的事情上。&lt;/p&gt;
-&lt;p&gt;四年前，我和团队中很多很厉害的人讨论过一些编程实践。今天就分
+&lt;p&gt;四年前，我和团队中很多很厉害的人讨论过一些编程实践。今天就分享一些东西吧。&lt;/p&gt;
+&lt;p&gt;欢迎指正！🚀&lt;/p&gt;
     
     </summary>
     
@@ -554,11 +556,11 @@
     
       <category term="iOS" scheme="http://www.CepheusSun.com/tags/iOS/"/>
     
-      <category term="Reactive" scheme="http://www.CepheusSun.com/tags/Reactive/"/>
-    
       <category term="Swift" scheme="http://www.CepheusSun.com/tags/Swift/"/>
     
       <category term="翻译" scheme="http://www.CepheusSun.com/tags/%E7%BF%BB%E8%AF%91/"/>
+    
+      <category term="Reactive" scheme="http://www.CepheusSun.com/tags/Reactive/"/>
     
   </entry>
   
@@ -620,11 +622,11 @@
     
       <category term="iOS" scheme="http://www.CepheusSun.com/tags/iOS/"/>
     
-      <category term="Reactive" scheme="http://www.CepheusSun.com/tags/Reactive/"/>
-    
       <category term="Swift" scheme="http://www.CepheusSun.com/tags/Swift/"/>
     
       <category term="翻译" scheme="http://www.CepheusSun.com/tags/%E7%BF%BB%E8%AF%91/"/>
+    
+      <category term="Reactive" scheme="http://www.CepheusSun.com/tags/Reactive/"/>
     
   </entry>
   
@@ -697,11 +699,11 @@
     
       <category term="iOS" scheme="http://www.CepheusSun.com/tags/iOS/"/>
     
-      <category term="Reactive" scheme="http://www.CepheusSun.com/tags/Reactive/"/>
-    
       <category term="Swift" scheme="http://www.CepheusSun.com/tags/Swift/"/>
     
       <category term="翻译" scheme="http://www.CepheusSun.com/tags/%E7%BF%BB%E8%AF%91/"/>
+    
+      <category term="Reactive" scheme="http://www.CepheusSun.com/tags/Reactive/"/>
     
   </entry>
   
@@ -806,11 +808,11 @@
     
       <category term="iOS" scheme="http://www.CepheusSun.com/tags/iOS/"/>
     
-      <category term="Reactive" scheme="http://www.CepheusSun.com/tags/Reactive/"/>
-    
       <category term="Swift" scheme="http://www.CepheusSun.com/tags/Swift/"/>
     
       <category term="翻译" scheme="http://www.CepheusSun.com/tags/%E7%BF%BB%E8%AF%91/"/>
+    
+      <category term="Reactive" scheme="http://www.CepheusSun.com/tags/Reactive/"/>
     
   </entry>
   
@@ -933,11 +935,11 @@
     
       <category term="iOS" scheme="http://www.CepheusSun.com/tags/iOS/"/>
     
-      <category term="Reactive" scheme="http://www.CepheusSun.com/tags/Reactive/"/>
-    
       <category term="Swift" scheme="http://www.CepheusSun.com/tags/Swift/"/>
     
       <category term="翻译" scheme="http://www.CepheusSun.com/tags/%E7%BF%BB%E8%AF%91/"/>
+    
+      <category term="Reactive" scheme="http://www.CepheusSun.com/tags/Reactive/"/>
     
   </entry>
   
@@ -1005,11 +1007,11 @@
     
       <category term="iOS" scheme="http://www.CepheusSun.com/tags/iOS/"/>
     
-      <category term="Reactive" scheme="http://www.CepheusSun.com/tags/Reactive/"/>
-    
       <category term="Swift" scheme="http://www.CepheusSun.com/tags/Swift/"/>
     
       <category term="翻译" scheme="http://www.CepheusSun.com/tags/%E7%BF%BB%E8%AF%91/"/>
+    
+      <category term="Reactive" scheme="http://www.CepheusSun.com/tags/Reactive/"/>
     
       <category term="设计模式" scheme="http://www.CepheusSun.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
@@ -1078,11 +1080,11 @@
     
       <category term="iOS" scheme="http://www.CepheusSun.com/tags/iOS/"/>
     
-      <category term="Reactive" scheme="http://www.CepheusSun.com/tags/Reactive/"/>
-    
       <category term="Swift" scheme="http://www.CepheusSun.com/tags/Swift/"/>
     
       <category term="翻译" scheme="http://www.CepheusSun.com/tags/%E7%BF%BB%E8%AF%91/"/>
+    
+      <category term="Reactive" scheme="http://www.CepheusSun.com/tags/Reactive/"/>
     
   </entry>
   
