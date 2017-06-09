@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.CepheusSun.com/"/>
-  <updated>2017-06-09T02:07:48.000Z</updated>
+  <updated>2017-06-09T02:22:15.000Z</updated>
   <id>http://www.CepheusSun.com/</id>
   
   <author>
@@ -20,9 +20,9 @@
     <link href="http://www.CepheusSun.com/Handing%20non-optional%20optionals%20in%20Swift.html"/>
     <id>http://www.CepheusSun.com/Handing non-optional optionals in Swift.html</id>
     <published>2017-06-09T02:05:23.000Z</published>
-    <updated>2017-06-09T02:07:48.000Z</updated>
+    <updated>2017-06-09T02:22:15.000Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Handing-non-optional-optionals-in-Swift"><a href="#Handing-non-optional-optionals-in-Swift" class="headerlink" title="Handing non-optional optionals in Swift"></a>Handing non-optional optionals in Swift</h1><p><strong>optional</strong>, 可以说是 Swift 中最为重要的特性, 也是它跟 <code>Objective-C</code> 不同的关键特征。在编码的时候强制处理那些可能为空的值, 可以让程序更具有可预测性, 减少错误发生的机会。</p>
+    <content type="html"><![CDATA[<p><strong>optional</strong>, 可以说是 Swift 中最为重要的特性, 也是它跟 <code>Objective-C</code> 不同的关键特征。在编码的时候强制处理那些可能为空的值, 可以让程序更具有可预测性, 减少错误发生的机会。</p>
 <p>然而在开发中我们经常会遇到一些变量, 明明是 <code>optional</code> 的, 但在逻辑又一定是非空的。比如说 <code>controller</code> 中的 <code>view</code></p>
 <a id="more"></a>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">ViewModel</span></span>&#123;&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TableViewController</span>: <span class="title">UIViewController</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> tableView: <span class="type">UITableView</span>?</div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line">        tableView = <span class="type">UITableView</span>.<span class="keyword">init</span>(frame: view.bounds)</div><div class="line">        view.addSubview(tableView!)</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">viewModelDidUpdate</span><span class="params">(<span class="number">_</span> viewModel: ViewModel)</span></span> &#123;</div><div class="line">        tableView?.reloadData()</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -74,7 +74,7 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;Handing-non-optional-optionals-in-Swift&quot;&gt;&lt;a href=&quot;#Handing-non-optional-optionals-in-Swift&quot; class=&quot;headerlink&quot; title=&quot;Handing non-optional optionals in Swift&quot;&gt;&lt;/a&gt;Handing non-optional optionals in Swift&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;optional&lt;/strong&gt;, 可以说是 Swift 中最为重要的特性, 也是它跟 &lt;code&gt;Objective-C&lt;/code&gt; 不同的关键特征。在编码的时候强制处理那些可能为空的值, 可以让程序更具有可预测性, 减少错误发生的机会。&lt;/p&gt;
+      &lt;p&gt;&lt;strong&gt;optional&lt;/strong&gt;, 可以说是 Swift 中最为重要的特性, 也是它跟 &lt;code&gt;Objective-C&lt;/code&gt; 不同的关键特征。在编码的时候强制处理那些可能为空的值, 可以让程序更具有可预测性, 减少错误发生的机会。&lt;/p&gt;
 &lt;p&gt;然而在开发中我们经常会遇到一些变量, 明明是 &lt;code&gt;optional&lt;/code&gt; 的, 但在逻辑又一定是非空的。比如说 &lt;code&gt;controller&lt;/code&gt; 中的 &lt;code&gt;view&lt;/code&gt;&lt;/p&gt;
     
     </summary>
@@ -1492,9 +1492,9 @@
       <category term="CocoaPods" scheme="http://www.CepheusSun.com/categories/CocoaPods/"/>
     
     
-      <category term="iOS" scheme="http://www.CepheusSun.com/tags/iOS/"/>
-    
       <category term="CocoaPods" scheme="http://www.CepheusSun.com/tags/CocoaPods/"/>
+    
+      <category term="iOS" scheme="http://www.CepheusSun.com/tags/iOS/"/>
     
   </entry>
   
