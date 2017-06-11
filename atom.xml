@@ -1492,9 +1492,9 @@
       <category term="CocoaPods" scheme="http://www.CepheusSun.com/categories/CocoaPods/"/>
     
     
-      <category term="CocoaPods" scheme="http://www.CepheusSun.com/tags/CocoaPods/"/>
-    
       <category term="iOS" scheme="http://www.CepheusSun.com/tags/iOS/"/>
+    
+      <category term="CocoaPods" scheme="http://www.CepheusSun.com/tags/CocoaPods/"/>
     
   </entry>
   
