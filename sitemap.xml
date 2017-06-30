@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.CepheusSun.com/TodayExtension.html</loc>
+    
+    <lastmod>2017-06-30T10:43:19.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.CepheusSun.com/Handing%20non-optional%20optionals%20in%20Swift.html</loc>
     
     <lastmod>2017-06-09T02:22:15.000Z</lastmod>

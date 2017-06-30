@@ -4,6 +4,107 @@
   
     
     <entry>
+      <title><![CDATA[面向 Extension 开发 🌞 Today Extension]]></title>
+      <url>http://www.CepheusSun.com/TodayExtension.html</url>
+      <content type="html"><![CDATA[<p>app extension 让我们在用户正在使用其他 app 的时候, 拓展我们 app 的功能。</p>
+<p>Today Extension 也叫做 widget。 它能够让一些重要的消息更快速的到达你的用户。比如说, 用户可以通过它查看天气，或者股票价格, 查看日程表等等。苹果在官方文档中说到， 一个 widget 应该有以下的特点。</p>
+<ul>
+<li>确保内容是最新的</li>
+<li>响应的用户事件</li>
+<li>性能好(在iOS上占用大量内存，系统可能会kill掉这个widget)</li>
+</ul>
+<a id="more"></a>
+<h3 id="创建-Today-Extension"><a href="#创建-Today-Extension" class="headerlink" title="创建 Today Extension"></a>创建 Today Extension</h3><p>Xcode -&gt; File -&gt; New -&gt; Target -&gt; TodayExtension</p>
+<p>跟创建一个新的项目一样, 设置创建好之后, 项目中会多一个 Target, 修改Scheme 为你刚刚创建的 Extension 再运行, 就能在 通知中心的 Today 里面看到你刚刚创建的 widget 了, 上面写着“Hello world”</p>
+<p>另外 Xcode 给你创建了默认的模版文件。</p>
+<ul>
+<li>TodayViewController.swift(如果是 OC 对应会是 <code>.h</code> 和 <code>.m</code> 文件)</li>
+<li>MainInterface.storyboard</li>
+<li>Info.plist</li>
+</ul>
+<p><strong>注意:</strong> 默认是使用这个 storyboard 作为这个 widget 的入口。如果不需要使用storyboard 可以删除掉这个storyboard并且将Info.plist 中的</p>
+<ul>
+<li><code>NSExtensionMainStoryboard</code> 改成 <code>NSExtensionPrincipalClass</code></li>
+<li><code>MainInterface</code> 改成 <code>TodayViewController</code></li>
+</ul>
+<h3 id="设置界面"><a href="#设置界面" class="headerlink" title="设置界面"></a>设置界面</h3><p>完成了上面的步骤之后, 不论你是选择用 stroyboard 作为你 widget 的入口, 还是选择用代码来做这件事情。都是一样的。</p>
+<blockquote>
+<p>由于不知道什么原因, 我在网上看到的文章都是使用代码来做的这件事情。所以在这篇文章以及后面的示例代码中都将使用 Xcode 默认的 storyboard 来做这个 widget 的布局。</p>
+</blockquote>
+<h3 id="我将解决的问题"><a href="#我将解决的问题" class="headerlink" title="我将解决的问题"></a>我将解决的问题</h3><ul>
+<li>在 widget 中打开主 app 并传递参数</li>
+<li>widget 和 主 app 共享数据</li>
+<li>widget 和 主 app 共用资源</li>
+<li>widget 的打开和折叠</li>
+</ul>
+<h3 id="我遇到的坑"><a href="#我遇到的坑" class="headerlink" title="我遇到的坑"></a>我遇到的坑</h3><p>也没什么坑, 毕竟 Today Extension 并不是什么很难的东西。</p>
+<ul>
+<li>测试的时候, 由于 widget 和 主app 是两个不同的 target, 所以在传递参数的时候, 在 appdelegate 中打印对应的值没有效果。最开始我还以为是因为设置的 scheme 是 widget 所以在 主 app 中的修改是无效的。但是实际是并不是这样。将参数以 alert 的形式表现出来, 这时候能够发现, 其实主 app 是跑起来了的。</li>
+</ul>
+<h3 id="先说说我做的准备工作吧"><a href="#先说说我做的准备工作吧" class="headerlink" title="先说说我做的准备工作吧"></a>先说说我做的准备工作吧</h3><p>为了不扯那么多没用的东西。先说说我做了那些跟今天主题没什么关系的事情。</p>
+<h4 id="写主app"><a href="#写主app" class="headerlink" title="写主app"></a>写主app</h4><p>在主 app 中我写了一个 UITableView, 并使用 Userdefault 将我要持久化的数据保存下来。然后对应给 Todo list 做了，添加，和删除的功能。</p>
+<h4 id="widget"><a href="#widget" class="headerlink" title="widget"></a>widget</h4><p>在 widget 中我也下了同样的一个 UITableView 只有查看的功能。</p>
+<h4 id="要做的事情"><a href="#要做的事情" class="headerlink" title="要做的事情"></a>要做的事情</h4><h5 id="widget-和-主-app-共用资源"><a href="#widget-和-主-app-共用资源" class="headerlink" title="widget 和 主 app 共用资源"></a>widget 和 主 app 共用资源</h5><p>widget 和 主app 共享代码和资源。作为一个工程师, 我们在任何事情的时候都要想到高类聚低耦合着句不变的真理。所以我们还是要尽可能的让 widget 和 主 app 共享代码。</p>
+<p>主要有两个方案:</p>
+<ul>
+<li>framework</li>
+<li>直接共享</li>
+</ul>
+<p>framework 的话，就拿 cocoapods 来说吧， 由于 widget 是一个新的target, 所以只需要在 podfile 中对应添加代码就能够在 widget 中使用。</p>
+<p>另外一个是 直接共享, 这个就很简单了。我在示例中让主app 和 widget 共享了一张图片，一个 TodoCell 类(包括xib 文件)。我做的唯一的一件事情就是在 Xcode 中选中这个文件，然后在 Xcode右边的 TargetMenberShip 中勾选对应的 target.</p>
+<h5 id="widget-和-主-app-共享数据"><a href="#widget-和-主-app-共享数据" class="headerlink" title="widget 和 主 app 共享数据"></a>widget 和 主 app 共享数据</h5><p>严格来说 widget 和 app 是不同的两个 app 了, 他们之间要共享数据的话只能使用 <strong>App Groups</strong> 了。</p>
+<p>首先在主 app</p>
+<p>target -&gt; capabilities -&gt; app groups</p>
+<p>打开 app groups 功能, 点击 <code>+</code> , 设置 id 。如果重复了就改一个。</p>
+<p>widget app</p>
+<p>target -&gt; capabilities -&gt; app groups</p>
+<p>这时候的 group 列表就能够看到对应的 group 了。勾选即可。</p>
+<p>这时候已经完成了widget 和 主app共享数据的前提条件。</p>
+<p>接下来还需要做的事情, 就是将我们准备工作里面Userdefault相关代码进行调整。</p>
+<p>将 <code>UserDefaults.standard</code> 改成 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">UserDefaults(suiteName: &quot;your group id&quot;)</div></pre></td></tr></table></figure>
+<p>这样就可以在 widget 中 使用</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> userdefault = <span class="type">UserDefaults</span>(suiteName: <span class="string">"group.com.sunny.group"</span>)</div></pre></td></tr></table></figure>
+<p>获得在主 app 中持久化的数据了。关于 app groups 其他的用法，可以继续深入研究。</p>
+<h5 id="widget-的折叠和展开"><a href="#widget-的折叠和展开" class="headerlink" title="widget 的折叠和展开"></a>widget 的折叠和展开</h5><p>苹果的官方文档里面明确的说了，widget 的界面是不能滑动的。毕竟 widget 和通知中心的滑动不能冲突啊。</p>
+<p>所以有时候我们需要将 widget 折叠起来，毕竟太长的 widget 实在是令人讨厌啊。</p>
+<p>主要还是说说iOS10 上怎么做的吧，毕竟没有iOS10 以下的设备。</p>
+<p>在 TodayViewController 的 didLoad 中添加</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">        <span class="comment">// iOS10 添加折叠按钮</span></div><div class="line">        <span class="keyword">if</span> #available(iOSApplicationExtension <span class="number">10.0</span>, *) &#123;</div><div class="line">            extensionContext?.widgetLargestAvailableDisplayMode = .expanded</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line"><span class="comment">// iOS8 、iOS9 上需要自己添加折叠按钮</span></div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<p>然后实现 <code>NCWidgetProviding</code> 协议中的方法</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">widgetActiveDisplayModeDidChange</span><span class="params">(<span class="number">_</span> activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize)</span></span> &#123;</div><div class="line"><span class="comment">// 由于 iOS8 、iOS9 上没有这个代理。需要对自己添加的按钮设置 target-action 然后进行修改</span></div><div class="line">        <span class="keyword">switch</span> activeDisplayMode &#123;</div><div class="line">        <span class="keyword">case</span> .compact:</div><div class="line">            preferredContentSize = maxSize</div><div class="line">        <span class="keyword">case</span> .expanded:</div><div class="line">            preferredContentSize = <span class="type">CGSize</span>(width: <span class="number">0.0</span>, height: <span class="number">60</span> * <span class="type">CGFloat</span>(dataSource.<span class="built_in">count</span>))</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>在 iOS8 和 iOS9 中, 由于系统没有这个功能。我们只能自己写一个按钮然后再来做这些事情了。</p>
+<h5 id="widget-打开-主app"><a href="#widget-打开-主app" class="headerlink" title="widget 打开 主app"></a>widget 打开 主app</h5><p>widget 打开主 app 还是老思路，openurl 就可以了，然后在url 中添加对应需要的参数。</p>
+<p><strong>准备工作</strong> </p>
+<p>主app -&gt; target -&gt; info -&gt; UrlTypes </p>
+<p>添加一个 URlType 然后设置 URL Scheme 为你自定义的字符串。 比如 “sunny”。</p>
+<p>在 widget 中需要跳转的地方写这样的代码</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">self</span>.extensionContext?.open(<span class="type">NSURL</span>(string: <span class="string">"sunny://action=<span class="subst">\(dataSource[indexPath.row])</span>"</span>)</div></pre></td></tr></table></figure>
+<p>参数传递也就是按照上文, 在url中拼接了。上文有提到, widget 和 app 可以共享数据。这也可能是一种传递参数的方式。</p>
+<p>这个时候打开主要 app 就是直接进入主要界面了。如果我们需要做一些其他的事情应该怎么做呢？</p>
+<p>想想以前做微信或者支付宝支付的时候， 都要在 appdelegate 中写一些代码。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">application</span><span class="params">(<span class="number">_</span> app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:])</span></span> -&gt; <span class="type">Bool</span> &#123;</div><div class="line">    <span class="keyword">let</span> <span class="keyword">prefix</span> = <span class="string">"sunny://"</span><span class="comment">// 判断是否是可靠的地方传递过来的</span></div><div class="line">    <span class="keyword">if</span> url.absoluteString.hasPrefix(<span class="keyword">prefix</span>) &#123;</div><div class="line">    <span class="comment">// 参数过来了！ 做对应的事情</span></div><div class="line">        <span class="keyword">let</span> a = <span class="type">UIAlertController</span>(title: url.absoluteString, message: <span class="literal">nil</span>, preferredStyle: .alert)</div><div class="line">        a.addAction(<span class="type">UIAlertAction</span>(title: <span class="string">"取消"</span>, style: .cancel, handler: <span class="literal">nil</span>))</div><div class="line">        <span class="keyword">self</span>.window?.rootViewController?.present(a, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span></div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="others"><a href="#others" class="headerlink" title="others"></a>others</h4><h5 id="高度"><a href="#高度" class="headerlink" title="高度"></a>高度</h5><p>widget的默认高度是有限制的。</p>
+<p>compact 下:</p>
+<ul>
+<li>max = 110</li>
+<li>mim = 110</li>
+</ul>
+<p>expanded 下:</p>
+<ul>
+<li>min = 110</li>
+<li>max = 根据不同的机型二不同。</li>
+</ul>
+<p>无论怎么设置, 都不回超出这个范围</p>
+<h5 id="widgetPerformUpdate"><a href="#widgetPerformUpdate" class="headerlink" title="widgetPerformUpdate"></a>widgetPerformUpdate</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -&gt; Void)) &#123;</div><div class="line">    // Perform any setup necessary in order to update the view.</div><div class="line">    </div><div class="line">    // If an error is encountered, use NCUpdateResult.Failed</div><div class="line">    // If there&apos;s no update required, use NCUpdateResult.NoData</div><div class="line">    // If there&apos;s an update, use NCUpdateResult.NewData</div><div class="line">    </div><div class="line">    completionHandler(NCUpdateResult.newData)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个方法用来选择 widget 再出现的时候会不会重新刷新。</p>
+<h5 id="通知"><a href="#通知" class="headerlink" title="通知"></a>通知</h5><p>在 <code>NSExtensionContext</code> 中看到的几个通知貌似不是给 TodayExtension 用的。</p>
+<h4 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h4><p>抛砖引玉，本文用Today Extension做了一个很简单的功能。 当然, 我们能用他做的事情可不止这些。这就需要我们发动我们的聪明才智了。</p>
+<p><a href="https://github.com/CepheusSun/TodayExtension">示例代码下载链接</a>由于使用swift写的, 由于众所周知的原因, 你发现编译不过了。可以联系我, 我将做适配。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Handing non-optional optionals in Swift]]></title>
       <url>http://www.CepheusSun.com/Handing%20non-optional%20optionals%20in%20Swift.html</url>
       <content type="html"><![CDATA[<p><strong>optional</strong>, 可以说是 Swift 中最为重要的特性, 也是它跟 <code>Objective-C</code> 不同的关键特征。在编码的时候强制处理那些可能为空的值, 可以让程序更具有可预测性, 减少错误发生的机会。</p>

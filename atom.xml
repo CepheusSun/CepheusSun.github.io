@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.CepheusSun.com/"/>
-  <updated>2017-06-09T02:22:15.000Z</updated>
+  <updated>2017-06-30T10:43:19.000Z</updated>
   <id>http://www.CepheusSun.com/</id>
   
   <author>
@@ -14,6 +14,131 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>面向 Extension 开发 🌞 Today Extension</title>
+    <link href="http://www.CepheusSun.com/TodayExtension.html"/>
+    <id>http://www.CepheusSun.com/TodayExtension.html</id>
+    <published>2017-06-30T10:41:38.000Z</published>
+    <updated>2017-06-30T10:43:19.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>app extension 让我们在用户正在使用其他 app 的时候, 拓展我们 app 的功能。</p>
+<p>Today Extension 也叫做 widget。 它能够让一些重要的消息更快速的到达你的用户。比如说, 用户可以通过它查看天气，或者股票价格, 查看日程表等等。苹果在官方文档中说到， 一个 widget 应该有以下的特点。</p>
+<ul>
+<li>确保内容是最新的</li>
+<li>响应的用户事件</li>
+<li>性能好(在iOS上占用大量内存，系统可能会kill掉这个widget)</li>
+</ul>
+<a id="more"></a>
+<h3 id="创建-Today-Extension"><a href="#创建-Today-Extension" class="headerlink" title="创建 Today Extension"></a>创建 Today Extension</h3><p>Xcode -&gt; File -&gt; New -&gt; Target -&gt; TodayExtension</p>
+<p>跟创建一个新的项目一样, 设置创建好之后, 项目中会多一个 Target, 修改Scheme 为你刚刚创建的 Extension 再运行, 就能在 通知中心的 Today 里面看到你刚刚创建的 widget 了, 上面写着“Hello world”</p>
+<p>另外 Xcode 给你创建了默认的模版文件。</p>
+<ul>
+<li>TodayViewController.swift(如果是 OC 对应会是 <code>.h</code> 和 <code>.m</code> 文件)</li>
+<li>MainInterface.storyboard</li>
+<li>Info.plist</li>
+</ul>
+<p><strong>注意:</strong> 默认是使用这个 storyboard 作为这个 widget 的入口。如果不需要使用storyboard 可以删除掉这个storyboard并且将Info.plist 中的</p>
+<ul>
+<li><code>NSExtensionMainStoryboard</code> 改成 <code>NSExtensionPrincipalClass</code></li>
+<li><code>MainInterface</code> 改成 <code>TodayViewController</code></li>
+</ul>
+<h3 id="设置界面"><a href="#设置界面" class="headerlink" title="设置界面"></a>设置界面</h3><p>完成了上面的步骤之后, 不论你是选择用 stroyboard 作为你 widget 的入口, 还是选择用代码来做这件事情。都是一样的。</p>
+<blockquote>
+<p>由于不知道什么原因, 我在网上看到的文章都是使用代码来做的这件事情。所以在这篇文章以及后面的示例代码中都将使用 Xcode 默认的 storyboard 来做这个 widget 的布局。</p>
+</blockquote>
+<h3 id="我将解决的问题"><a href="#我将解决的问题" class="headerlink" title="我将解决的问题"></a>我将解决的问题</h3><ul>
+<li>在 widget 中打开主 app 并传递参数</li>
+<li>widget 和 主 app 共享数据</li>
+<li>widget 和 主 app 共用资源</li>
+<li>widget 的打开和折叠</li>
+</ul>
+<h3 id="我遇到的坑"><a href="#我遇到的坑" class="headerlink" title="我遇到的坑"></a>我遇到的坑</h3><p>也没什么坑, 毕竟 Today Extension 并不是什么很难的东西。</p>
+<ul>
+<li>测试的时候, 由于 widget 和 主app 是两个不同的 target, 所以在传递参数的时候, 在 appdelegate 中打印对应的值没有效果。最开始我还以为是因为设置的 scheme 是 widget 所以在 主 app 中的修改是无效的。但是实际是并不是这样。将参数以 alert 的形式表现出来, 这时候能够发现, 其实主 app 是跑起来了的。</li>
+</ul>
+<h3 id="先说说我做的准备工作吧"><a href="#先说说我做的准备工作吧" class="headerlink" title="先说说我做的准备工作吧"></a>先说说我做的准备工作吧</h3><p>为了不扯那么多没用的东西。先说说我做了那些跟今天主题没什么关系的事情。</p>
+<h4 id="写主app"><a href="#写主app" class="headerlink" title="写主app"></a>写主app</h4><p>在主 app 中我写了一个 UITableView, 并使用 Userdefault 将我要持久化的数据保存下来。然后对应给 Todo list 做了，添加，和删除的功能。</p>
+<h4 id="widget"><a href="#widget" class="headerlink" title="widget"></a>widget</h4><p>在 widget 中我也下了同样的一个 UITableView 只有查看的功能。</p>
+<h4 id="要做的事情"><a href="#要做的事情" class="headerlink" title="要做的事情"></a>要做的事情</h4><h5 id="widget-和-主-app-共用资源"><a href="#widget-和-主-app-共用资源" class="headerlink" title="widget 和 主 app 共用资源"></a>widget 和 主 app 共用资源</h5><p>widget 和 主app 共享代码和资源。作为一个工程师, 我们在任何事情的时候都要想到高类聚低耦合着句不变的真理。所以我们还是要尽可能的让 widget 和 主 app 共享代码。</p>
+<p>主要有两个方案:</p>
+<ul>
+<li>framework</li>
+<li>直接共享</li>
+</ul>
+<p>framework 的话，就拿 cocoapods 来说吧， 由于 widget 是一个新的target, 所以只需要在 podfile 中对应添加代码就能够在 widget 中使用。</p>
+<p>另外一个是 直接共享, 这个就很简单了。我在示例中让主app 和 widget 共享了一张图片，一个 TodoCell 类(包括xib 文件)。我做的唯一的一件事情就是在 Xcode 中选中这个文件，然后在 Xcode右边的 TargetMenberShip 中勾选对应的 target.</p>
+<h5 id="widget-和-主-app-共享数据"><a href="#widget-和-主-app-共享数据" class="headerlink" title="widget 和 主 app 共享数据"></a>widget 和 主 app 共享数据</h5><p>严格来说 widget 和 app 是不同的两个 app 了, 他们之间要共享数据的话只能使用 <strong>App Groups</strong> 了。</p>
+<p>首先在主 app</p>
+<p>target -&gt; capabilities -&gt; app groups</p>
+<p>打开 app groups 功能, 点击 <code>+</code> , 设置 id 。如果重复了就改一个。</p>
+<p>widget app</p>
+<p>target -&gt; capabilities -&gt; app groups</p>
+<p>这时候的 group 列表就能够看到对应的 group 了。勾选即可。</p>
+<p>这时候已经完成了widget 和 主app共享数据的前提条件。</p>
+<p>接下来还需要做的事情, 就是将我们准备工作里面Userdefault相关代码进行调整。</p>
+<p>将 <code>UserDefaults.standard</code> 改成 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">UserDefaults(suiteName: &quot;your group id&quot;)</div></pre></td></tr></table></figure>
+<p>这样就可以在 widget 中 使用</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> userdefault = <span class="type">UserDefaults</span>(suiteName: <span class="string">"group.com.sunny.group"</span>)</div></pre></td></tr></table></figure>
+<p>获得在主 app 中持久化的数据了。关于 app groups 其他的用法，可以继续深入研究。</p>
+<h5 id="widget-的折叠和展开"><a href="#widget-的折叠和展开" class="headerlink" title="widget 的折叠和展开"></a>widget 的折叠和展开</h5><p>苹果的官方文档里面明确的说了，widget 的界面是不能滑动的。毕竟 widget 和通知中心的滑动不能冲突啊。</p>
+<p>所以有时候我们需要将 widget 折叠起来，毕竟太长的 widget 实在是令人讨厌啊。</p>
+<p>主要还是说说iOS10 上怎么做的吧，毕竟没有iOS10 以下的设备。</p>
+<p>在 TodayViewController 的 didLoad 中添加</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">        <span class="comment">// iOS10 添加折叠按钮</span></div><div class="line">        <span class="keyword">if</span> #available(iOSApplicationExtension <span class="number">10.0</span>, *) &#123;</div><div class="line">            extensionContext?.widgetLargestAvailableDisplayMode = .expanded</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line"><span class="comment">// iOS8 、iOS9 上需要自己添加折叠按钮</span></div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<p>然后实现 <code>NCWidgetProviding</code> 协议中的方法</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">widgetActiveDisplayModeDidChange</span><span class="params">(<span class="number">_</span> activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize)</span></span> &#123;</div><div class="line"><span class="comment">// 由于 iOS8 、iOS9 上没有这个代理。需要对自己添加的按钮设置 target-action 然后进行修改</span></div><div class="line">        <span class="keyword">switch</span> activeDisplayMode &#123;</div><div class="line">        <span class="keyword">case</span> .compact:</div><div class="line">            preferredContentSize = maxSize</div><div class="line">        <span class="keyword">case</span> .expanded:</div><div class="line">            preferredContentSize = <span class="type">CGSize</span>(width: <span class="number">0.0</span>, height: <span class="number">60</span> * <span class="type">CGFloat</span>(dataSource.<span class="built_in">count</span>))</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>在 iOS8 和 iOS9 中, 由于系统没有这个功能。我们只能自己写一个按钮然后再来做这些事情了。</p>
+<h5 id="widget-打开-主app"><a href="#widget-打开-主app" class="headerlink" title="widget 打开 主app"></a>widget 打开 主app</h5><p>widget 打开主 app 还是老思路，openurl 就可以了，然后在url 中添加对应需要的参数。</p>
+<p><strong>准备工作</strong> </p>
+<p>主app -&gt; target -&gt; info -&gt; UrlTypes </p>
+<p>添加一个 URlType 然后设置 URL Scheme 为你自定义的字符串。 比如 “sunny”。</p>
+<p>在 widget 中需要跳转的地方写这样的代码</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">self</span>.extensionContext?.open(<span class="type">NSURL</span>(string: <span class="string">"sunny://action=<span class="subst">\(dataSource[indexPath.row])</span>"</span>)</div></pre></td></tr></table></figure>
+<p>参数传递也就是按照上文, 在url中拼接了。上文有提到, widget 和 app 可以共享数据。这也可能是一种传递参数的方式。</p>
+<p>这个时候打开主要 app 就是直接进入主要界面了。如果我们需要做一些其他的事情应该怎么做呢？</p>
+<p>想想以前做微信或者支付宝支付的时候， 都要在 appdelegate 中写一些代码。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">application</span><span class="params">(<span class="number">_</span> app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:])</span></span> -&gt; <span class="type">Bool</span> &#123;</div><div class="line">    <span class="keyword">let</span> <span class="keyword">prefix</span> = <span class="string">"sunny://"</span><span class="comment">// 判断是否是可靠的地方传递过来的</span></div><div class="line">    <span class="keyword">if</span> url.absoluteString.hasPrefix(<span class="keyword">prefix</span>) &#123;</div><div class="line">    <span class="comment">// 参数过来了！ 做对应的事情</span></div><div class="line">        <span class="keyword">let</span> a = <span class="type">UIAlertController</span>(title: url.absoluteString, message: <span class="literal">nil</span>, preferredStyle: .alert)</div><div class="line">        a.addAction(<span class="type">UIAlertAction</span>(title: <span class="string">"取消"</span>, style: .cancel, handler: <span class="literal">nil</span>))</div><div class="line">        <span class="keyword">self</span>.window?.rootViewController?.present(a, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span></div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="others"><a href="#others" class="headerlink" title="others"></a>others</h4><h5 id="高度"><a href="#高度" class="headerlink" title="高度"></a>高度</h5><p>widget的默认高度是有限制的。</p>
+<p>compact 下:</p>
+<ul>
+<li>max = 110</li>
+<li>mim = 110</li>
+</ul>
+<p>expanded 下:</p>
+<ul>
+<li>min = 110</li>
+<li>max = 根据不同的机型二不同。</li>
+</ul>
+<p>无论怎么设置, 都不回超出这个范围</p>
+<h5 id="widgetPerformUpdate"><a href="#widgetPerformUpdate" class="headerlink" title="widgetPerformUpdate"></a>widgetPerformUpdate</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -&gt; Void)) &#123;</div><div class="line">    // Perform any setup necessary in order to update the view.</div><div class="line">    </div><div class="line">    // If an error is encountered, use NCUpdateResult.Failed</div><div class="line">    // If there&apos;s no update required, use NCUpdateResult.NoData</div><div class="line">    // If there&apos;s an update, use NCUpdateResult.NewData</div><div class="line">    </div><div class="line">    completionHandler(NCUpdateResult.newData)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个方法用来选择 widget 再出现的时候会不会重新刷新。</p>
+<h5 id="通知"><a href="#通知" class="headerlink" title="通知"></a>通知</h5><p>在 <code>NSExtensionContext</code> 中看到的几个通知貌似不是给 TodayExtension 用的。</p>
+<h4 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h4><p>抛砖引玉，本文用Today Extension做了一个很简单的功能。 当然, 我们能用他做的事情可不止这些。这就需要我们发动我们的聪明才智了。</p>
+<p><a href="https://github.com/CepheusSun/TodayExtension">示例代码下载链接</a>由于使用swift写的, 由于众所周知的原因, 你发现编译不过了。可以联系我, 我将做适配。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;app extension 让我们在用户正在使用其他 app 的时候, 拓展我们 app 的功能。&lt;/p&gt;
+&lt;p&gt;Today Extension 也叫做 widget。 它能够让一些重要的消息更快速的到达你的用户。比如说, 用户可以通过它查看天气，或者股票价格, 查看日程表等等。苹果在官方文档中说到， 一个 widget 应该有以下的特点。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;确保内容是最新的&lt;/li&gt;
+&lt;li&gt;响应的用户事件&lt;/li&gt;
+&lt;li&gt;性能好(在iOS上占用大量内存，系统可能会kill掉这个widget)&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="App Extension" scheme="http://www.CepheusSun.com/categories/App-Extension/"/>
+    
+    
+      <category term="iOS" scheme="http://www.CepheusSun.com/tags/iOS/"/>
+    
+      <category term="App Extension" scheme="http://www.CepheusSun.com/tags/App-Extension/"/>
+    
+  </entry>
   
   <entry>
     <title>Handing non-optional optionals in Swift</title>
@@ -1492,9 +1617,9 @@
       <category term="CocoaPods" scheme="http://www.CepheusSun.com/categories/CocoaPods/"/>
     
     
-      <category term="iOS" scheme="http://www.CepheusSun.com/tags/iOS/"/>
-    
       <category term="CocoaPods" scheme="http://www.CepheusSun.com/tags/CocoaPods/"/>
+    
+      <category term="iOS" scheme="http://www.CepheusSun.com/tags/iOS/"/>
     
   </entry>
   
@@ -1626,228 +1751,6 @@
     
     
       <category term="python" scheme="http://www.CepheusSun.com/tags/python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>iOS面试集锦</title>
-    <link href="http://www.CepheusSun.com/interview.html"/>
-    <id>http://www.CepheusSun.com/interview.html</id>
-    <published>2017-02-20T16:00:00.000Z</published>
-    <updated>2017-05-19T01:59:28.000Z</updated>
-    
-    <content type="html"><![CDATA[<ol>
-<li>写出中序遍历二叉树的算法(不限编程语言，已知 TreeRoot 为二叉树的根)</li>
-<li>快速排序，归并排序的时间复杂度分别是什么？</li>
-<li>UITableViewCell 可重用机制是什么?有什么要注意的地方?</li>
-<li>OC 中的 @property 和 @synthesize 有什么用？</li>
-<li>OC有没有重载(overload)和重写(overwrite)？有的话请举个例子。</li>
-<li>列举出 iOS 开发中三种最常出现的循环引用的场景。</li>
-<li>MVC 模式具体指什么？iOS现在流行的 MVVM 是什么？</li>
-<li>iOS 中设计金钱计算和比较时，用数值应该用哪个类型来处理？</li>
-<li>iOS 上触摸事件的视图检测和事件传递过程是怎样的？  </li>
-<li>写一个折半查找或者快速排序</li>
-</ol>
-<hr>
-<ol>
-<li>对内存管理的理解。</li>
-<li>类别的作用</li>
-<li>点击屏幕上的按钮，系统做了什么？</li>
-</ol>
-<hr>
-<ol>
-<li><code>id</code> 和 <code>instancetype</code> 的区别?</li>
-<li>有方法查看当前系统内存使用的情况吗？</li>
-<li>为什么 NotificationCenter 要 removeObserver? 如何实现自动 remove？</li>
-<li>iOS的沙盒目录结构是怎样的？ App Bundle 里面都有什么？</li>
-<li>简单描述一下客户端的缓存机制？</li>
-</ol>
-<hr>
-<ol>
-<li>按钮或者 View 在进行 frame 动画的时候，为什么点击 frame 动画的重点位置才能触发事件？如何在动画过程中响应事件？<a id="more"></a>
-</li>
-</ol>
-<p>#####1.写出中序遍历二叉树的算法(不限编程语言，已知 TreeRoot 为二叉树的根)。  </p>
-<p>最近在学 Python 所以整理了一个 Python 版的</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -- coding: UTF-8 --</span></div><div class="line"><span class="comment"># @Date    : 2017-02-21</span></div><div class="line"><span class="comment"># @Author  : CepheusSun</span></div><div class="line"><span class="comment"># @Version : python 2.7</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Tree</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, data, left, right)</span>:</span></div><div class="line">        self.data = data</div><div class="line">        self.left = left</div><div class="line">        self.right = right</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">in_visit</span><span class="params">(tree)</span>:</span></div><div class="line">    <span class="string">"""递归中序遍历"""</span></div><div class="line">    <span class="keyword">if</span> tree:</div><div class="line">        in_visit(tree.left)</div><div class="line">        <span class="keyword">print</span> (tree.data)</div><div class="line">        in_visit(tree.right)</div><div class="line">        </div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">in_stack</span><span class="params">(tree)</span>:</span></div><div class="line">    <span class="string">"""堆栈中序遍历"""</span></div><div class="line">    <span class="keyword">if</span> tree:</div><div class="line">        my_stack = []</div><div class="line">        node = tree</div><div class="line">        <span class="keyword">while</span> node <span class="keyword">or</span> my_stack:</div><div class="line">            <span class="keyword">while</span> node:</div><div class="line">                my_stack.append(node)</div><div class="line">                node = node.left</div><div class="line">            node = my_stack.pop()</div><div class="line">            print(node.data)</div><div class="line">            node = node.right</div><div class="line"></div><div class="line">            <span class="keyword">print</span> my_stack2.pop().data</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">    node1 = Tree(<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>)</div><div class="line">    node2 = Tree(<span class="number">2</span>, <span class="number">0</span>, <span class="number">0</span>)</div><div class="line">    node3 = Tree(<span class="number">3</span>, node1, node2)</div><div class="line">    node4 = Tree(<span class="number">4</span>, <span class="number">0</span>, <span class="number">0</span>)</div><div class="line">    node5 = Tree(<span class="number">5</span>, node4, node3)</div><div class="line">    print(<span class="string">"the post_visit is ..."</span>)</div><div class="line">    post_visit(node5)</div><div class="line">    post_stack(node5)</div><div class="line">    print(<span class="string">"the pre_visit is ..."</span>)</div><div class="line">    pre_visit(node5)</div><div class="line">    pre_stack(node5)</div><div class="line">    print(<span class="string">"the in_visit is ..."</span>)</div><div class="line">    in_visit(node5)</div><div class="line">    in_stack(node5)</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    main()</div></pre></td></tr></table></figure>
-<h5 id="2-快速排序，归并排序的时间复杂度分别是什么？"><a href="#2-快速排序，归并排序的时间复杂度分别是什么？" class="headerlink" title="2.快速排序，归并排序的时间复杂度分别是什么？"></a>2.快速排序，归并排序的时间复杂度分别是什么？</h5><ul>
-<li>归并排序：稳定，时间复杂度 O(nlog n)</li>
-<li>快速排序：不稳定，时间复杂度 最理想 O(nlogn) 最差时间O(n^2)</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -- coding: UTF-8 --</span></div><div class="line"><span class="comment"># @Date    : 2017-02-21</span></div><div class="line"><span class="comment"># @Author  : CepheusSun</span></div><div class="line"><span class="comment"># @Version : python 2.7</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">quick_sort</span><span class="params">(array, first_index, last_index)</span>:</span></div><div class="line">    <span class="string">"""快速排序"""</span></div><div class="line">    <span class="keyword">if</span> first_index &lt; last_index:</div><div class="line">        div_index = partition(array, first_index, last_index)</div><div class="line">        quick_sort(array, first_index, div_index)</div><div class="line">        quick_sort(array, div_index + <span class="number">1</span>, last_index)</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        <span class="keyword">return</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">partition</span><span class="params">(array, first_index, last_index)</span>:</span></div><div class="line">    i = first_index - <span class="number">1</span></div><div class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(first_index, last_index):</div><div class="line">        <span class="keyword">if</span> array[j] &lt;= array[last_index]:</div><div class="line">            i += <span class="number">1</span></div><div class="line">            array[i], array[j] = array[j], array[i]</div><div class="line">    array[i + <span class="number">1</span>], array[last_index] = array[last_index], array[i + <span class="number">1</span>]</div><div class="line">    <span class="keyword">return</span> i</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge</span><span class="params">(left, right)</span>:</span></div><div class="line">    i, j = <span class="number">0</span>, <span class="number">0</span></div><div class="line">    res = []</div><div class="line">    <span class="keyword">while</span> i &lt; len(left) <span class="keyword">and</span> j &lt; len(right):</div><div class="line">        <span class="keyword">if</span> left[i] &lt;= right[j]:</div><div class="line">            res.append(left[i])</div><div class="line">            i += <span class="number">1</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            res.append(right[j])</div><div class="line">            j += <span class="number">1</span></div><div class="line">    res += left[i:]</div><div class="line">    res += right[j:]</div><div class="line">    <span class="keyword">return</span> res</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge_sort</span><span class="params">(array)</span>:</span></div><div class="line">    <span class="string">"""并归排序"""</span></div><div class="line">    <span class="keyword">if</span> len(array) &lt;= <span class="number">1</span>:</div><div class="line">        <span class="keyword">return</span> array</div><div class="line">    num = len(array) / <span class="number">2</span></div><div class="line">    left = merge_sort(array[:num])</div><div class="line">    right = merge_sort(array[num:])</div><div class="line">    <span class="keyword">return</span> merge(left, right)</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">    array = [<span class="number">1</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">76</span>, <span class="number">5</span>, <span class="number">567</span>, <span class="number">54</span>, <span class="number">6</span>, <span class="number">54</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">0</span>]</div><div class="line">    print(<span class="string">"initial array : \n"</span>, array)</div><div class="line">    print(<span class="string">"merge sort result: \n"</span>, merge_sort(array))</div><div class="line">    quick_sort(array, <span class="number">0</span>, len(array) - <span class="number">1</span>)</div><div class="line">    print(<span class="string">"result array :\n"</span>, array)</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    main()</div><div class="line"></div><div class="line">``` </div><div class="line">    </div><div class="line"><span class="comment">##### 3.UITableViewCell 可重用机制是什么?有什么要注意的地方?</span></div><div class="line"></div><div class="line">UITableView 通过重用单元格来达到节省内存的目的：通过为每个单元格指定一个重用标识符，即指定来单元格的种类，以及当单元格滚出屏幕时，允许恢复单元格以便重用。对于不同种类的单元格使用不同的ID，对于简单的表格，一个标识符就够了。</div><div class="line"></div><div class="line">需要注意的地方：</div><div class="line">    取出来的cell是有可能已经捆绑过数据或者加过子视图的，如果有必要，要清除需要用与显示的数据和remove掉add过的子视图。不然会造成错乱的情况</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">##### 4.OC 中的 @property 和 @synthesize 有什么用？</span></div><div class="line"></div><div class="line">答：</div><div class="line">iOS2<span class="number">.0</span> Apple引入 `@property` `@synthesize` 概念，两者组合使用可以自动生成 `seter` `geter`方法，iOS4<span class="number">.0</span>以后只需要 `@property` 即可实现 自动生成 `seter` `geter`方法。</div></pre></td></tr></table></figure>
-<p>//setter</p>
-<ul>
-<li>(void)setObjStr:(NSString *)objStr {<br>   if (_ objStr != objStr) {<pre><code>[_objStr release];
- _objStr = [objStr copy];
-</code></pre>   }<br>}<br>//getter</li>
-<li>(NSString *)objStr {<br>   return _objStr;<br>}<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">以上代码等价于</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>//iOS2.0-iOS4.0<br>@interface Obj : NSObject<br>@property (nonatomic, copy) NSString *objStr;<br>@end</p>
-<p>@implementation Object<br>@synthesize objStr = _ objStr;<br>@end<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iOS4.0及以后</div></pre></td></tr></table></figure></p>
-<p>@interface Obj : NSObject<br>@property (nonatomic, copy) NSString *objStr;<br>@end<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">##### 5.OC有没有重载(overload)和重写(overwrite)？有的话请举个例子。</div><div class="line"></div><div class="line">答：</div><div class="line">OC 语言不支持重载</div><div class="line"></div><div class="line">```oc</div><div class="line">-(void)doSth:(NSInteger)integer;</div><div class="line">-(void)doSth:(NSString *)str; </div><div class="line">//对Objective-C而言是一样的，都叫方法doSth: 同时定义实现这两个方法是无法编译通过的。 若要达到类似重载的效果，可以这样跟不同参数：</div><div class="line">-(void)doSthWithInt:(NSInteger)integer;</div><div class="line">-(void)doSthWithStr:(NSString *)str</div></pre></td></tr></table></figure></p>
-<p>OC 支持重写</p>
-<pre><code>子类重写父类方法
-</code></pre><h5 id="6-列举出-iOS-开发中三种最常出现的循环引用的场景。"><a href="#6-列举出-iOS-开发中三种最常出现的循环引用的场景。" class="headerlink" title="6.列举出 iOS 开发中三种最常出现的循环引用的场景。"></a>6.列举出 iOS 开发中三种最常出现的循环引用的场景。</h5><p>答：</p>
-<ul>
-<li>delegate 被强引用了，代理应该使用 weak (拓展 weak 干了啥使自己可以防止循环的出现)  </li>
-<li>使用 block 的时候，注意是否出现互相持有。  </li>
-<li>使用 NSTimer 的时候，我们可能会使<code>+scheduledTimerWithTimeInterval:target:selector:userInfo:repeats:</code> 这个方法在建立的时候需要指定 target ，会被 timer retain 一份。因为 timer 还在一直执行，就会导致无法运行 dealloc的方法。正确的做法是在 viewDidDisappear: 的时候停止timer </li>
-</ul>
-<h5 id="7-MVC-模式具体指什么？iOS现在流行的-MVVM-是什么？"><a href="#7-MVC-模式具体指什么？iOS现在流行的-MVVM-是什么？" class="headerlink" title="7.MVC 模式具体指什么？iOS现在流行的 MVVM 是什么？"></a>7.MVC 模式具体指什么？iOS现在流行的 MVVM 是什么？</h5><p>MVC：</p>
-<pre><code>MVC模式考虑三种对象：模型对象、视图对象和控制器对象。 模型对象负责应用程序的数据和定义操作数据的逻辑； 视图对象知道如何显示应用程序的模型数据； 控制器对象是M与V之间的协调者。
-</code></pre><p>MVVM：</p>
-<pre><code>MVVM 把 View Controller 作为 View
-View 和 Model 之间没有紧耦合
-MVVM 是在 View 和 ViewModel 之间进行绑定。
-什么是 ViewModel 呢？基本上来说，它是 View 和 View 状态的独立于     UIKit 外的一个呈现，ViewModel 调用 Model 中的的变化，根据 Model 的变化进行调整，并且通过 View 和 ViewModel 的绑定，同步调整 View。
-</code></pre><h5 id="8-iOS-中设计金钱计算和比较时，用数值应该用哪个类型来处理？"><a href="#8-iOS-中设计金钱计算和比较时，用数值应该用哪个类型来处理？" class="headerlink" title="8.iOS 中设计金钱计算和比较时，用数值应该用哪个类型来处理？"></a>8.iOS 中设计金钱计算和比较时，用数值应该用哪个类型来处理？</h5><ul>
-<li><code>NSDecimalNumber</code> 继承于 <code>NSNumber</code>   </li>
-<li><p><code>NSDecimalNumber</code> 包含  加减乘除，幂运算，指数运算，四舍五入，比较运算。  </p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div></pre></td><td class="code"><pre><div class="line">	/** 示例 比较运算</div><div class="line">	NSOrderedAscending 升序</div><div class="line">	NSOrderedSame 相等</div><div class="line">	NSOrderedDescending 降序</div><div class="line">	- (NSComparisonResult)compare:(NSNumber *)decimalNumber;</div><div class="line">	*/</div><div class="line">	NSDecimalNumber *discount1 = [NSDecimalNumber decimalNumberWithString:@&quot;1.2&quot;];</div><div class="line">	NSDecimalNumber *discount2 = [NSDecimalNumber decimalNumberWithString:@&quot;1.3&quot;];</div><div class="line">	NSComparisonResult result = [discount1 compare:discount2];</div><div class="line">	if (result == NSOrderedAscending) &#123;</div><div class="line">	    NSLog(@&quot;1.2 &lt; 1.3&quot;);</div><div class="line">	&#125; else if (result == NSOrderedSame) &#123;</div><div class="line">	    NSLog(@&quot;1.2 == 1.3&quot;);</div><div class="line">	&#125; else if (result == NSOrderedDescending) &#123;</div><div class="line">	    NSLog(@&quot;1.2 &gt; 1.3&quot;);</div><div class="line">	&#125;</div><div class="line">	输出结果 1.2 &lt; 1.3</div><div class="line">	``` </div><div class="line"></div><div class="line">##### 9.iOS 上触摸事件的视图检测和事件传递过程是怎样的？  </div><div class="line"></div><div class="line">* 发生触摸事件后，系统会将该事件加入到一个由UIApplication管理的事件队列中。(为什么是队列而不是栈？因为队列的特定是先进先出，先产生的事件先处理才符合常理，所以把事件添加到队列。)</div><div class="line"></div><div class="line">* UIApplication会从事件队列中取出最前面的事件，并将事件分发下去以便处理，通常，先发送事件给应用程序的主窗口（keyWindow）。</div><div class="line"></div><div class="line">* 主窗口会在视图层次结构中找到一个最合适的视图来处理触摸事件，这也是整个事件处理过程的第一步。</div><div class="line">找到合适的视图控件后，就会调用视图控件的touches方法来作具体的事件处理。</div><div class="line"></div><div class="line">##### 10.写一个折半查找或者快速排序</div><div class="line"></div><div class="line">    用 Python写了一个二分查找</div><div class="line">    </div><div class="line">```python</div><div class="line"># -- coding: UTF-8 --</div><div class="line"># @Date    : 2017-02-21</div><div class="line"># @Author  : CepheusSun</div><div class="line"># @Version : python 2.7</div><div class="line"></div><div class="line"></div><div class="line">def in_bisect(word_list, word):</div><div class="line">    &quot;&quot;&quot;check weather a word is in a list using bisection search.</div><div class="line">    Precondition: the words in the list are sorted</div><div class="line"></div><div class="line">    :param word_list: list of strings</div><div class="line">    :param word: string</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    if len(word_list) == 0:</div><div class="line">        return False</div><div class="line"></div><div class="line">    # 结果四舍五入</div><div class="line">    i = len(word_list) // 2</div><div class="line">    if word_list[i] == word:</div><div class="line">        return True</div><div class="line"></div><div class="line">    if word_list[i] &gt; word:</div><div class="line">        # search the first half</div><div class="line">        return in_bisect(word_list[:i], word)</div><div class="line">    else:</div><div class="line">        # search the second half</div><div class="line">        return in_bisect(word_list[i + 1:], word)</div><div class="line"></div><div class="line"></div><div class="line">def main():</div><div class="line">    array = [&apos;1&apos;, &apos;asf&apos;, &apos;sf2&apos;, &apos;df1&apos;, &apos;2das&apos;, &apos;5asdfd&apos;, &apos;0sadf&apos;,</div><div class="line">            &apos;2ge&apos;, &apos;efc2&apos;, &apos;1eds&apos;, &apos;2ef&apos;, &apos;2apple&apos;, &apos;apple&apos;, &apos;orange&apos;]</div><div class="line">    print(in_bisect(array, &apos;1&apos;))</div><div class="line">    print(in_bisect(array, &apos;111&apos;))</div><div class="line"></div><div class="line"></div><div class="line">if __name__ == &apos;__main__&apos;:</div><div class="line">    main()</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>Question 1.内存管理理解不正确的是<br>A 程序A里有一段内存被成功申请完成之后，内存计数器就从0变为1 (这个过程是alloc);<br>B 程序B里要使用已存在内存，那么内存计数器从1变为2 (这个过程是retain或者copy);<br>C 紧接着程序A不需要这个内存了，那么程序A就把这个内存计数器减1 (这个过程是release);<br>D 当系统发现这个内存计数器变为小于等于0，那么就调用垃圾回收程序把这段内存回收(这个过程是dealloc)；</p>
-<p>Question 2.类别的作用不正确的是<br>A 将类的实现分散到多个不同文件或多个不同框架中。<br>B 创建对私有方法的前向引用。<br>C 向对象添加非正式协议。 继承可以增加，修改或者删除方法。<br>D 不能添加属性  </p>
-<p>Question 3.点击屏幕上的按钮，系统做了什么？  </p>
-<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><p>Answer 1. B  使用并不会增加引用技术，持有才会。<br>Answer 2. D  </p>
-<pre><code>class-continuation分类是唯一能给添加属性的分类。而所谓的关联对象，我在52个方法中找到了这样一句话：
-    * “定义关联对象时可以指定内存管理语义，用以模仿定义属性时所采用的“拥有”和“非拥有关系””
-可见，关连对象跟属性是两个不同的概念，不能混为一谈。
-
-类别的三个作用：
-    * 可以将类的实现分散到多个不同文件或多个不同框架中，方便代码管理。
-    * 创建对私有方法的前向引用。比如在别人的类或者框架中有一个方法的是没有说明的，这时候通过类别声明这个方法，就可以在不破坏原来框架的情况下，使用到这个方法。
-    * 向对象添加非正式协议。
-</code></pre><p>Answer 3.   </p>
-<ul>
-<li>触摸事件的传递是从父空间传递到子控件，如果父空间不能接收触摸事件，那么子控件就不能接收触摸事件  </li>
-<li>发生触摸事件后，系统会将该事件加入到一个由UIApplication管理的事件队列中。(为什么是队列而不是栈？因为队列的特定是先进先出，先产生的事件先处理才符合常理，所以把事件添加到队列。)  </li>
-<li>UIApplication会从事件队列中取出最前面的事件，并将事件分发下去以便处理，通常，先发送事件给应用程序的主窗口（keyWindow）。  </li>
-<li>主窗口会在视图层次结构中找到一个最合适的视图来处理触摸事件，这也是整个事件处理过程的第一步。<br>找到合适的视图控件后，就会调用视图控件的touches方法来作具体的事件处理。  </li>
-</ul>
-<hr>
-<p>#####1. <code>id</code> 和 <code>instancetype</code> 的区别?</p>
-<ol>
-<li><p>在 ARC(Auto Reference Count)环境下:</p>
-<pre><code>instancetype 用来在编译期确定实例的类型,而使用 id 的话,编译器不检查类型, 运行时检查类型.
-</code></pre><p>在 MRC(Manual Reference Count)环境下:</p>
-<pre><code>instancetype 和 id 一样,不做具体类型检查
-</code></pre></li>
-<li><p>id 可以作为方法的参数,但 instancetype 不可以<br>instancetype 只适用于初始化方法和便利构造器的返回值类型</p>
-</li>
-</ol>
-<p>#####2. 有方法查看当前系统内存使用的情况吗？<br>一般我上手新的项目,检查内存问题三部曲;</p>
-<ol>
-<li>静态分析, 初步了解代码不规范的地方,或者是一些内存泄漏问题。</li>
-<li>instrument, 初略的定位我们在什么地方发生了内存泄漏。</li>
-<li>代码测试内存泄漏, 观察对象的生成和销毁是否配对。使用MLeaksFinder来配合检查</li>
-</ol>
-<ul>
-<li>两个对象互相持有，主要是 delegate 使用 weak 属性, 在 iOS8 上系统 delegate 使用的是 assign 这会带来一些问题,踩过坑的老司机可以提一下。</li>
-<li>有时候需要使用 removeFromSuperView 来释放, a 持有了 b ， b 被 add 到了 c 上, 而在程序设计中b 的生命周期应该和 a 相同, 这个时候使用 self.b = nil 并不会吧 b 释放, 我们应该在之前加上 <code>[b removeFromSuperView]</code></li>
-</ul>
-<p>#####3. 为什么 NotificationCenter 要 removeObserver? 如何实现自动 remove？</p>
-<ul>
-<li>如果不移除，万一注册通知的类被销毁之后又发送了通知, 程序会 crash。 因为野指针。</li>
-<li>实现自动 remove;通过自动释放机制, 通过动态属性将 remove 转移给第三者,解除耦合,达到自动实现 remove 。</li>
-</ul>
-<p>#####4. iOS的沙盒目录结构是怎样的？ App Bundle 里面都有什么？</p>
-<ol>
-<li>沙盒结构<ul>
-<li>Application: 存放程序源文件, 上架前经过数字签名,上架后不可修改</li>
-<li>Documents: 常用目录, iCloud 备份目录,存放数据,这里不能缓存文件,否则上架不被通过</li>
-<li>Library<ul>
-<li>Caches: 存放体积大又不需要备份的数据, SDWebImage 就是这个</li>
-<li>Preference: 设置目录, iCloud会备份设置信息。</li>
-<li>tmp: 存放临时文件,不会被备份,而且这个文件下的数据有可能随时被清除</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>App Bundle<ul>
-<li>Info.plist: 文件的配置信息,系统依赖次文件获取应用程序的相关信息。</li>
-<li>可执行文件: 此文件包含应用程序的入口和通过静态链接到应用程序 target 的代码。</li>
-<li>资源文件: 图片声音</li>
-<li>其他: 可以潜入定制的数据资源。</li>
-</ul>
-</li>
-</ol>
-<h5 id="5-简单描述一下客户端的缓存机制？"><a href="#5-简单描述一下客户端的缓存机制？" class="headerlink" title="5.简单描述一下客户端的缓存机制？"></a>5.简单描述一下客户端的缓存机制？</h5><ul>
-<li>缓存可以分为:<ul>
-<li>内存数据缓存</li>
-<li>数据库缓存</li>
-<li>文件缓存</li>
-</ul>
-</li>
-<li>每次想获取数据的时候<ol>
-<li>检查内存中有无缓存</li>
-<li>检查本地有无缓存(数据库\文件)</li>
-<li>发起请求</li>
-<li>将服务器返回的数据进行缓存(内存数据库文件)</li>
-</ol>
-</li>
-</ul>
-<hr>
-<h5 id="1-按钮或者-View-在进行-frame-动画的时候，为什么点击-frame-动画的重点位置才能触发事件？如何在动画过程中响应事件？"><a href="#1-按钮或者-View-在进行-frame-动画的时候，为什么点击-frame-动画的重点位置才能触发事件？如何在动画过程中响应事件？" class="headerlink" title="1.按钮或者 View 在进行 frame 动画的时候，为什么点击 frame 动画的重点位置才能触发事件？如何在动画过程中响应事件？"></a>1.按钮或者 View 在进行 frame 动画的时候，为什么点击 frame 动画的重点位置才能触发事件？如何在动画过程中响应事件？</h5><p>答：<br>① <del>动画开始后有两个图层：</del><br>（修改原因：不是动画开始后,而是 view 出现了的时候。只要 view 出现在试图上,他都具有这两个图层。）<br><strong>iOS 中对于 UIView 具有一个 CALayer 类的属性 layer 我们姑且叫他 rootLayer。而每一个 CALayer 都有两个属性：</strong><br><del>一个 <code>view.layer.presentationLayer</code> 用来显示动画（属性随动画过程慢慢改变)</del><br>（修改原因:感觉显示动画这个用法不大准确,我语文也不好😂）<br><strong>一个<code>resentationLayer</code> 指呈现图层,是模型图层的复制，他的属性值代表了在任何指定时刻当前的显示。所以在 UIView 没有出现的时候这个 view 的属性值为 nil， 出现之后无论 view 是否动画，这个值的内存地址每次打印都不一样。</strong></p>
-<p><del>一个 <code>view.layer</code> 用来处理用户交互（动画一开始属性值立即改变到动画结束时的状态和位置)</del><br>(修改原因: CALayer 是不处理交互的,这一点可以从UIView有<code>userInteractionEnabled</code>这个属性，而CALayer没有可以看出,并且看 iOS-CoreAnimation这本书,这样使用 modelLayer 来描述更 MVC 一些)<br><strong>一个<code>modelLayer</code> 指模型层,在 view 显示出来的时候<code>view.layer</code> = <code>view.layer.presentationLayer.modelLayer</code> = <code>view.layer.view.layer.modelLayer</code>。 三者内存地址是一样的,保存实际的属性值。</strong></p>
-<p><strong>最后总结：当一个图层的属性改变的时候，我们设置的属性并没有直接调用图层的外观，只是定义了图层动画结束之后将要变化的外观。</strong>具体关系见下图：</p>
-<center><img src="http://ocg4av0wv.bkt.clouddn.com/layer%E7%9F%A5%E8%AF%86.png" alt=""><br>from《iOS-CoreAnimation》<br></center>
-
-<p>② 要在移动动画的过程中处理 触摸可以重写 <code>UIView的hitTest</code> 方法<br>(总的来说，通过<code>view.layer.presentationLayer</code>的相关属性，就可以实现响应需求了，通过<code>touchbegan</code>判断用户点击的位置是否在<code>view.layer.presentationLayer.frame</code>之内，是《iOS—CoreAnimation》中另外一个实现方式)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">- (id)hitTest:(CGPoint)point withEvent:(UIEvent *)event &#123;</div><div class="line">    NSArray *subViews = self.subviews;</div><div class="line">    for (UIView *subView in subViews) &#123;</div><div class="line">        if([subView isKindOfClass:[FoamImageView class]])&#123; //是要找的图片</div><div class="line">            CALayer *layer = subView.layer.presentationLayer; //图片的显示层            </div><div class="line">            if(CGRectContainsPoint(layer.frame, point))&#123; //触摸点在显示层中，返回当前图片</div><div class="line">                return subView;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return [super hitTest:point withEvent:event];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">- (void)touchesBegan:(NSSet&lt;UITouch *&gt; *)touches withEvent:(UIEvent *)event &#123;</div><div class="line">    CGPoint point = [[touches anyObject] locationInView:self.view];</div><div class="line">    </div><div class="line">    if (CGRectContainsPoint(button_.layer.presentationLayer.frame, point)) &#123;</div><div class="line">        NSLog(@&quot;youxiangying&quot;);</div><div class="line">        [self buttonEvent:button_];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>参考资料</strong><br><a href="http://blog.sina.com.cn/s/blog_771849d301010ta0.html">资料1</a></p>
-<p><a href="https://my.oschina.net/iamzkt/blog/126503">Objective-C 之 @property和@synthesize</a>  </p>
-<p><a href="https://www.pupboss.com/property-and-synthesize/">回炉篇之（一）– @property和@synthesize</a>  </p>
-<p><a href="http://arthurchen.blog.51cto.com/2483760/761426">iOS开发：Objective-C精确的货币计算</a> </p>
-<p><a href="http://www.jianshu.com/p/4703d704c953">‘NSDecimalNumber–十进制数’使用方法(带例子)</a></p>
-<p><a href="https://yq.aliyun.com/wenzhang/show_41715">objective c-OC中有方法重载吗？具体是怎么样？</a></p>
-<p><a href="http://www.cnblogs.com/LiLihongqiang/p/5645907.html">http://www.cnblogs.com/LiLihongqiang/p/5645907.html</a><br><a href="http://www.infocool.net/kb/IOS/201610/200104.html">http://www.infocool.net/kb/IOS/201610/200104.html</a><br><a href="http://www.cocoachina.com/ios/20160113/14896.html">http://www.cocoachina.com/ios/20160113/14896.html</a><br><a href="http://www.jianshu.com/p/2e074db792ba">http://www.jianshu.com/p/2e074db792ba</a>  </p>
-<p>think python</p>
-<p><a href="http://www.voidcn.com/blog/lixuemei45/article/p-5021040.html">www.voidcn.com</a><br><a href="https://www.amazon.com/iOS-Core-Animation-Advanced-Techniques-ebook/dp/B00EHJCORC/ref=sr_1_1?ie=UTF8&amp;qid=1423192842&amp;sr=8-1&amp;keywords=Core+Animation+Advanced+Techniques">iOS-CoreAnimation</a></p>
-<hr>
-<h5 id="写在后面的话"><a href="#写在后面的话" class="headerlink" title="写在后面的话"></a>写在后面的话</h5><p>这个系列所有的文章都是在一个QQ群里面跟小伙伴们讨论出来的,每个 topic 都已经放在了 GitHub 的一个仓库中 <a href="https://github.com/GetOfferSoldier/Objective-C"><strong>这是地址</strong></a>。 所有内容的更新的将在这个仓库中进行,在博客中将不再进行更新。有任何问题，都可以在这个仓库中给我们提 issue 或者 pull request.</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;ol&gt;
-&lt;li&gt;写出中序遍历二叉树的算法(不限编程语言，已知 TreeRoot 为二叉树的根)&lt;/li&gt;
-&lt;li&gt;快速排序，归并排序的时间复杂度分别是什么？&lt;/li&gt;
-&lt;li&gt;UITableViewCell 可重用机制是什么?有什么要注意的地方?&lt;/li&gt;
-&lt;li&gt;OC 中的 @property 和 @synthesize 有什么用？&lt;/li&gt;
-&lt;li&gt;OC有没有重载(overload)和重写(overwrite)？有的话请举个例子。&lt;/li&gt;
-&lt;li&gt;列举出 iOS 开发中三种最常出现的循环引用的场景。&lt;/li&gt;
-&lt;li&gt;MVC 模式具体指什么？iOS现在流行的 MVVM 是什么？&lt;/li&gt;
-&lt;li&gt;iOS 中设计金钱计算和比较时，用数值应该用哪个类型来处理？&lt;/li&gt;
-&lt;li&gt;iOS 上触摸事件的视图检测和事件传递过程是怎样的？  &lt;/li&gt;
-&lt;li&gt;写一个折半查找或者快速排序&lt;/li&gt;
-&lt;/ol&gt;
-&lt;hr&gt;
-&lt;ol&gt;
-&lt;li&gt;对内存管理的理解。&lt;/li&gt;
-&lt;li&gt;类别的作用&lt;/li&gt;
-&lt;li&gt;点击屏幕上的按钮，系统做了什么？&lt;/li&gt;
-&lt;/ol&gt;
-&lt;hr&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;id&lt;/code&gt; 和 &lt;code&gt;instancetype&lt;/code&gt; 的区别?&lt;/li&gt;
-&lt;li&gt;有方法查看当前系统内存使用的情况吗？&lt;/li&gt;
-&lt;li&gt;为什么 NotificationCenter 要 removeObserver? 如何实现自动 remove？&lt;/li&gt;
-&lt;li&gt;iOS的沙盒目录结构是怎样的？ App Bundle 里面都有什么？&lt;/li&gt;
-&lt;li&gt;简单描述一下客户端的缓存机制？&lt;/li&gt;
-&lt;/ol&gt;
-&lt;hr&gt;
-&lt;ol&gt;
-&lt;li&gt;按钮或者 View 在进行 frame 动画的时候，为什么点击 frame 动画的重点位置才能触发事件？如何在动画过程中响应事件？
-    
-    </summary>
-    
-      <category term="知识集锦" scheme="http://www.CepheusSun.com/categories/%E7%9F%A5%E8%AF%86%E9%9B%86%E9%94%A6/"/>
-    
-    
-      <category term="iOS面试集锦" scheme="http://www.CepheusSun.com/tags/iOS%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/"/>
     
   </entry>
   
