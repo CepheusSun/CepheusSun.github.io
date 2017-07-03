@@ -79,6 +79,8 @@
 
 
 
+  
+
 
   <link rel="alternate" href="/atom.xml" title="CepheusSun" type="application/atom+xml" />
 
@@ -108,7 +110,7 @@ Today Extension 也叫做 widget。 它能够让一些重要的消息更快速�
 确保内容是最新的
 响应的用户事件
 性能好(在iOS上占用大量内存，系">
-<meta property="og:updated_time" content="2017-06-30T10:43:19.000Z">
+<meta property="og:updated_time" content="2017-07-03T06:05:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面向 Extension 开发 🌞 Today Extension">
 <meta name="twitter:description" content="app extension 让我们在用户正在使用其他 app 的时候, 拓展我们 app 的功能。
@@ -346,8 +348,8 @@ Today Extension 也叫做 widget。 它能够让一些重要的消息更快速�
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-06-30T18:43:19+08:00">
-                2017-06-30
+              <time title="更新于" itemprop="dateModified" datetime="2017-07-03T14:05:38+08:00">
+                2017-07-03
               </time>
             
           </span>
@@ -395,7 +397,7 @@ Today Extension 也叫做 widget。 它能够让一些重要的消息更快速�
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  1,869
+                  1,907
                 </span>
               
 
@@ -521,7 +523,8 @@ Today Extension 也叫做 widget。 它能够让一些重要的消息更快速�
 <p>无论怎么设置, 都不回超出这个范围</p>
 <h5 id="widgetPerformUpdate"><a href="#widgetPerformUpdate" class="headerlink" title="widgetPerformUpdate"></a>widgetPerformUpdate</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -&gt; Void)) &#123;</div><div class="line">    // Perform any setup necessary in order to update the view.</div><div class="line">    </div><div class="line">    // If an error is encountered, use NCUpdateResult.Failed</div><div class="line">    // If there&apos;s no update required, use NCUpdateResult.NoData</div><div class="line">    // If there&apos;s an update, use NCUpdateResult.NewData</div><div class="line">    </div><div class="line">    completionHandler(NCUpdateResult.newData)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>这个方法用来选择 widget 再出现的时候会不会重新刷新。</p>
-<h5 id="通知"><a href="#通知" class="headerlink" title="通知"></a>通知</h5><p>在 <code>NSExtensionContext</code> 中看到的几个通知貌似不是给 TodayExtension 用的。</p>
+<h5 id="通知"><a href="#通知" class="headerlink" title="通知"></a>通知</h5><p><del>在 <code>NSExtensionContext</code> 中看到的几个通知貌似不是给 TodayExtension 用的。</del></p>
+<p><code>NSExtensionContext</code> 中能看到几个通知他们都是监听 host app 的状态的。所以对于widget 来说， host app 就是 Today 这个东西啦。</p>
 <h4 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h4><p>抛砖引玉，本文用Today Extension做了一个很简单的功能。 当然, 我们能用他做的事情可不止这些。这就需要我们发动我们的聪明才智了。</p>
 <p><a href="https://github.com/CepheusSun/TodayExtension">示例代码下载链接</a>由于使用swift写的, 由于众所周知的原因, 你发现编译不过了。可以联系我, 我将做适配。</p>
 
