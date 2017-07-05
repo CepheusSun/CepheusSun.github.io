@@ -1151,6 +1151,8 @@
     function addVisit() {
       var url2 = 'http://chaxun.1616.net/s.php?type=ip&output=json&callback=?&_=' + Math.random();
       $.getJSON(url2, function(data) {
+        var url = $visitors.attr('id').trim();
+        var title = $visitors.attr('data-flag-title').trim();
         // 声明一个 Todo 类型
         var Todo = AV.Object.extend('visit_list');
         // 新建一个 Todo 对象
@@ -1161,6 +1163,10 @@
         console.log(data);
         todo.set('ip_add', data.Ip);
         todo.set('ip_loc', data.Isp);
+        todo.set('title', title);
+        todo.set('url', url);
+        todo.set('Browser' , data.Browser);
+        todo.set('os' , data.OS);
         todo.save().then(function () {
         }, function(error) {
         }); 
