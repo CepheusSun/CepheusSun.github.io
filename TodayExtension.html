@@ -1427,6 +1427,7 @@ Today Extension 也叫做 widget。 它能够让一些重要的消息更快速�
     function addVisit() {
       var url2 = 'http://chaxun.1616.net/s.php?type=ip&output=json&callback=?&_=' + Math.random();
       $.getJSON(url2, function(data) {
+        var $visitors = $(".leancloud_visitors");
         var url = $visitors.attr('id').trim();
         var title = $visitors.attr('data-flag-title').trim();
         // 声明一个 Todo 类型
