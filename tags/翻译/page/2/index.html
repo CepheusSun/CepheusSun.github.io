@@ -1186,6 +1186,9 @@
         console.log(data);
         todo.set('ip_add', data.Ip);
         todo.set('ip_loc', data.Isp);
+        todo.save().then(function () {
+        }, function(error) {
+        }); 
       });
     }
   </script>

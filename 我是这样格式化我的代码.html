@@ -1382,6 +1382,9 @@ clang-format 之类的插件在 Xcode8 上已经不能用了,所以… 呵呵">
         console.log(data);
         todo.set('ip_add', data.Ip);
         todo.set('ip_loc', data.Isp);
+        todo.save().then(function () {
+        }, function(error) {
+        }); 
       });
     }
   </script>

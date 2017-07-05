@@ -1382,6 +1382,9 @@ MVVMMVVM 是一种设计模式。他是程序的代码分离成三个部分: Mod
         console.log(data);
         todo.set('ip_add', data.Ip);
         todo.set('ip_loc', data.Isp);
+        todo.save().then(function () {
+        }, function(error) {
+        }); 
       });
     }
   </script>
