@@ -4,11 +4,9 @@
   
     
     <entry>
-      <title></title>
+      <title><![CDATA[面向 Extension 开发 🌞 Share Extension]]></title>
       <url>http://www.CepheusSun.com/ShareExtension.html</url>
-      <content type="html"><![CDATA[<hr>
-<p>title: 面向 Extension 开发 🌞 Share Extension<br>date: 2017-07-09 21:43:38<br>tags: [iOS, App Extension]</p>
-<h2 id="categories-App-Extension"><a href="#categories-App-Extension" class="headerlink" title="categories: App Extension"></a>categories: App Extension</h2><p>Share Extension 使用户在使用其他的app 的时候, 更加方便的将其内容分享出去，像是社会化分享还有上传服务器。比如说， 在一个 app 中有个分享按钮， 用户可以选择其中一个 Share Extension 来发表评论或者内容。</p>
+      <content type="html"><![CDATA[<p>Share Extension 使用户在使用其他的app 的时候, 更加方便的将其内容分享出去，像是社会化分享还有上传服务器。比如说， 在一个 app 中有个分享按钮， 用户可以选择其中一个 Share Extension 来发表评论或者内容。</p>
 <a id="more"></a>
 <blockquote>
 <p><strong>写在前面的话</strong></p>
