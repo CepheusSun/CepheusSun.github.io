@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.CepheusSun.com/categories/index.html</loc>
+    
+    <lastmod>2017-07-18T06:59:08.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.CepheusSun.com/tags/index.html</loc>
+    
+    <lastmod>2017-07-18T06:58:28.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.CepheusSun.com/ShareExtension.html</loc>
     
     <lastmod>2017-07-09T13:53:09.000Z</lastmod>
@@ -296,13 +310,6 @@
   </url>
   
   <url>
-    <loc>http://www.CepheusSun.com/tags/index.html</loc>
-    
-    <lastmod>2016-08-29T03:03:20.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://www.CepheusSun.com/JavaScript%E5%92%8CNative%E7%9A%84%E4%BA%A4%E4%BA%92.html</loc>
     
     <lastmod>2016-08-29T02:27:38.000Z</lastmod>
@@ -348,13 +355,6 @@
     <loc>http://www.CepheusSun.com/%E7%AE%80%E5%8D%95%E5%AF%B9%E6%AF%94%E4%BA%86%E4%B8%80%E4%B8%8BDelegate%E5%92%8CBlock%E7%9A%84%E6%95%88%E7%8E%87.html</loc>
     
     <lastmod>2016-08-29T02:24:06.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.CepheusSun.com/categories/index.html</loc>
-    
-    <lastmod>2016-08-29T02:18:17.000Z</lastmod>
     
   </url>
   
