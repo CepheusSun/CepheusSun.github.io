@@ -1736,7 +1736,7 @@ pre .javascript .function {
   max-width: 110px;
   height: auto;
   border: 2px solid #515155;
-  border-radius: 50%;
+  border-radius: 60px;
 }
 .site-author-name {
   margin: 5px 0 0;
@@ -1819,7 +1819,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #410b7f;
+  background: #ff080e;
 }
 .links-of-blogroll {
   font-size: 13px;
