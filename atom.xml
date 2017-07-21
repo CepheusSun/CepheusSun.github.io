@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.CepheusSun.com/"/>
-  <updated>2017-07-09T13:53:09.000Z</updated>
+  <updated>2017-07-21T11:01:53.000Z</updated>
   <id>http://www.CepheusSun.com/</id>
   
   <author>
@@ -14,6 +14,308 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>用 ReSwift 实现 Redux 架构</title>
+    <link href="http://www.CepheusSun.com/ReSwiftAndRedux.html"/>
+    <id>http://www.CepheusSun.com/ReSwiftAndRedux.html</id>
+    <published>2017-07-20T16:00:00.000Z</published>
+    <updated>2017-07-21T11:01:53.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>随着 app 的发展， MVC 渐渐的满足不了业务的需求。大家都在探索各种各样的架构模式来适应这种情况，像是MVVM、VIPER、<a href="https://eng.uber.com/new-rider-app/">Riblets</a> 等等。 他们都有各自的特点，但是都有同一个核心: 通过多向数据流将代码按照单一职责原则来划分代码。在多向数据流中，数据在各个模块中传递。</p>
+<p>多向数据流并不一定是你想要的，反而，单向数据流才是我们更喜欢的数据传递方式。在这个 ReSwift 的教程中，你会学到如何使用 ReSwift 来实现单向数据流，并完成一个状态驱动的游戏——<strong>MemoryTunes</strong></p>
+<a id="more"></a>
+<h2 id="什么是-ReSwift"><a href="#什么是-ReSwift" class="headerlink" title="什么是 ReSwift"></a>什么是 ReSwift</h2><p><a href="https://github.com/ReSwift/ReSwift">ReSwift</a> 是一个轻量级的框架，能够帮助你很轻松的去构建一个 Redux 架构的app。当然它是用Swift 实现的。</p>
+<p>RxSwift 有以下四个模块</p>
+<ul>
+<li><strong>Views</strong>： 响应 <strong>Store</strong> 的改变，并且把他们展示在页面上。views 发出 <strong>Actions</strong>。</li>
+<li><strong>Actions</strong>:发起app 种状态的改变。Action 是有 <strong>Reducer</strong> 操作的。</li>
+<li><strong>Reducers</strong>: 直接改变程序的状态，这些状态由 <strong>Store</strong> 来保存。</li>
+<li><strong>Store</strong>:保存当前的程序的状态。其他模块，比如说 <strong>Views</strong> 可以订阅这个状态，并且响应状态的改变。</li>
+</ul>
+<p>ReSwift 至少有以下这些优势:</p>
+<ul>
+<li><strong>很强的约束力</strong>：把一些代码放在不合适的地方往往具有很强的诱惑性，虽然这样写很方便。ReSwift 通过很强的约束力来避免这种情况。</li>
+<li><strong>单向数据流</strong>：多向数据流的代码在阅读和debug上都可能变成一场灾难。一个改变可能会带来一系列的连锁反应。而单向数据流就能让程序的运行更加具有可预测性，也能够减少阅读这些代码的痛苦。</li>
+<li><strong>容易测试</strong>：大多数的业务逻辑都在Reducer 中，这些都是纯的功能。</li>
+<li><strong>复用性</strong>：ReSwift 中的每个组件—Store、Reducer、Action ，都是能在各个平台独立运行的，可以很轻松的在iOS、macOS、或者tvOS 中复用这些模块。</li>
+</ul>
+<h3 id="多向数据流-vs-单向数据流"><a href="#多向数据流-vs-单向数据流" class="headerlink" title="多向数据流 vs. 单向数据流"></a>多向数据流 vs. 单向数据流</h3><p>通过以下的几个例子，我们来理解一下什么是数据流。一个基于 VIPER 架构实现的程序就允许数据在其组件中多向传递。</p>
+<center><br><br><img src="http://ocg4av0wv.bkt.clouddn.com/2017-07-20-033011.jpg" alt="VIPER 中的多向数据流"><br><br>VIPER 中的多向数据流</center>
+
+<p>跟 ReSwift 中的数据传递方向比较一下：</p>
+<center><br><br><img src="http://ocg4av0wv.bkt.clouddn.com/2017-07-20-033331.jpg" alt=""><br><br>ReSwift 中的单向数据流</center>
+
+<p>可以看出来，数据是单向传递的，这么做，可以让程序中的数据传递更加清晰，也能够很轻松的定位到问题的所在。</p>
+<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><p>这是一个已经把整个框架差不多搭建起来的模版项目，包含了一些骨架代码，和库。<a href="https://github.com/CepheusSun/Translate/tree/master/demos/ReSwiftAndRedux">GitHub</a></p>
+<p>首先需要做一些准备工作，首先就是要设置这个app最重要的部分:state</p>
+<p>打开<strong>AppState.swift</strong> 文件，创建一个 AppState 的结构体:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> ReSwift</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">AppState</span> : <span class="title">StateType</span></span>&#123;</div><div class="line">  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个结构体定义了整个app的状态。</p>
+<p>在创建包含所有的 AppState 的 <strong>Store</strong> 之前，还要创建一个主 Reducer</p>
+<center><br><br><img src="http://ocg4av0wv.bkt.clouddn.com/2017-07-20-034323.jpg" alt=""><br><br></center>
+
+<p>Reducer 是唯一可以直接改变 <strong>Store</strong> 中 <strong>AppState</strong> 的值的地方。只有 Action 可以驱动 Reducer 来改变当前程序的状态。而 Reducer 改变当前 AppState 的值，又取决于他接受到的 Action 类型。</p>
+<blockquote>
+<p>注意，在程序中只有一个 Store， 他也只有一个主 Reducer</p>
+</blockquote>
+<p>接下来在<strong>AppReducer.swift</strong> 中创建主 reducer：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> ReSwift</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">appReducer</span><span class="params">(action: Action, state: AppState?)</span></span> -&gt; <span class="type">AppState</span> &#123;</div><div class="line">  <span class="keyword">return</span> <span class="type">AppState</span>()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>appReducer</strong> 是一个接收 Action 并且返回改变之后的 AppState 的函数。参数 state 是程序当前的 state。 这个函数可以根据他接收的 Action 直接改变这个 状态。现在就可以很容易的创建一个 AppState 值了。</p>
+<p>现在应该创建 Store 来保存 state 了。</p>
+<center><br><br><img src="http://ocg4av0wv.bkt.clouddn.com/2017-07-20-035231.jpg" alt=""><br><br></center>
+
+<p>Store 包含了整个程序当前的状态：这是 AppState 的一个实例。打开<strong>AppDelegate.swift</strong> ,在 impore UIkit 下面添加如下代码:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> ReSwift</div><div class="line"></div><div class="line"><span class="keyword">var</span> store = <span class="type">Store</span>&lt;<span class="type">AppState</span>&gt;(reducer: appReducer, state: <span class="literal">nil</span>)</div></pre></td></tr></table></figure>
+<p>这段代码通过 appReducer 创建了一个全局的变量store，appReducer 是这个 Store 的主 Reducer，他包含了接收到action的时候，store 应该怎么改变的规则。因为这是一些准备工作，所以只是传递了一个 nil state 进去。</p>
+<p>编译运行，当然，什么都看不见。因为还没写啊！</p>
+<h2 id="App-Routing"><a href="#App-Routing" class="headerlink" title="App Routing"></a>App Routing</h2><p>现在可以创建第一个实质的 state了，可是使用 IB 的导航，或者是 routing。</p>
+<p>App 路由在所有的架构模式中都是一个挑战，在 ReSwift 中也是。在 MemoryTunes 中将使用很简单的方法来做这件事情，首先需要通过 enum 定义所有的终点，然后让 AppState 持有当前的终点。AppRouter 就会响应这个值的改变，达到路由的目的。</p>
+<p>在 <strong>AppRouter.swift</strong> 中添加下面的代码：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> ReSwift</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">enum</span> <span class="title">RoutingDestination</span>: <span class="title">String</span> </span>&#123;</div><div class="line">  <span class="keyword">case</span> menu = <span class="string">"MenuTableViewController"</span></div><div class="line">  <span class="keyword">case</span> categories = <span class="string">"CategoriesTableViewController"</span></div><div class="line">  <span class="keyword">case</span> game = <span class="string">"GameViewController"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个枚举代表了app 中的所有 ViewController。</p>
+<p>到现在，终于有能够放在你程序状态中的数据了。在这个例子里面，只有一个 state 结构体(AppState), 你也可以在这个 state 里面通过子状态的方法，将状态进行分类，这是一个很好的实践。</p>
+<p>打开 <strong>RoutingState.swift</strong> 添加如下的子状态结构体：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> ReSwift</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">RoutingState</span>: <span class="title">StateType</span> </span>&#123;</div><div class="line">  <span class="keyword">var</span> navigationState: <span class="type">RoutingDestination</span></div><div class="line">  </div><div class="line">  <span class="keyword">init</span>(navigationState: <span class="type">RoutingDestination</span> = .menu) &#123;</div><div class="line">    <span class="keyword">self</span>.navigationState = navigationState</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>RoutingState 包含了 navigationState， 这个东西，就是当前屏幕展示的界面。</p>
+<blockquote>
+<p>menu 是 navigationState 的默认值。如果没有制定的话，将它设置成这个app的最初状态。</p>
+</blockquote>
+<p>在 <strong>AppState.swift</strong> 中，添加如下代码:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> routingState: <span class="type">RoutingState</span></div></pre></td></tr></table></figure>
+<p>现在 AppState 就有了 RoutingState 这个子状态。编译一下，会发现一个错误。</p>
+<center><br><br><img src="http://ocg4av0wv.bkt.clouddn.com/2017-07-20-091710.jpg" alt=""><br><br></center>
+
+<p><em>appReducer</em> 编译不过了！因为我们给 <em>AppState</em> 添加了 <em>routingState</em>，但是在初始化的时候并没有把这个东西传进去。现在还需要一个 reducer 来创建 <em>routingState</em></p>
+<p>现在我们只有一个主 <strong>Reducer</strong>， 跟 state 类型，我们也可以通过 子Reducer 来将 Reducer 划分开来。</p>
+<center><br><br><img src="http://ocg4av0wv.bkt.clouddn.com/2017-07-21-014930.jpg" alt=""><br><br></center>
+
+<p>在 <strong>RoutingReducer.swift</strong> 中添加下面的 <strong>Reducer</strong>：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> ReSwift</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">routingReducer</span><span class="params">(action: Action, state: RoutingState?)</span></span> -&gt; <span class="type">RoutingState</span> &#123;</div><div class="line">  <span class="keyword">let</span> state = state ?? <span class="type">RoutingState</span>()</div><div class="line">  <span class="keyword">return</span> state</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>跟 主 Reducer 差不多， <em>routionReducer</em> 根据接收到的 Action 改变状态，然后将这个状态返回。到现在，还没有创建 action 所以如果没有接收到 state 的话，就 new 一个 <em>RoutingState</em>，然后返回。</p>
+<p>子 reducer 负责创造他们对应的 子状态。</p>
+<p>现在回到 <strong>AppReducer.swift</strong> 去改变这个编译错误:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">return</span> <span class="type">AppState</span>(routingState: routingReducer(action: action, </div><div class="line">										 state: state?.routingState))</div></pre></td></tr></table></figure>
+<p>给 AppState 的初始化方法中添加了对应的参数。其中的 action 和 state 都是由main reducer 传递进去的。</p>
+<h3 id="订阅-subscribing"><a href="#订阅-subscribing" class="headerlink" title="订阅  subscribing"></a>订阅  subscribing</h3><p>还记得 RoutingState 里面那个默认的 state <code>.menu</code> 吗？他就是 app 默认的状态。只是你还没有订阅它。</p>
+<p>任何的类都可以定于这个 store， 不仅仅是 <strong>View</strong>。当一个类订阅了这个 Store 之后，每次 state 的改变他都会得到通知。我们在 <em>AppRouter</em> 中订阅这个 Store， 然后收到通知之后，push 一个 Controller</p>
+<p>打开 <strong>AppRouter.swift</strong> 然后重新写 <em>AppRouter</em></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">AppRouter</span> </span>&#123;</div><div class="line">  </div><div class="line">  <span class="keyword">let</span> navigationController: <span class="type">UINavigationController</span></div><div class="line">  </div><div class="line">  <span class="keyword">init</span>(window: <span class="type">UIWindow</span>) &#123;</div><div class="line">    navigationController = <span class="type">UINavigationController</span>()</div><div class="line">    window.rootViewController = navigationController</div><div class="line">    </div><div class="line">    <span class="comment">// 1</span></div><div class="line">    store.subscribe(<span class="keyword">self</span>) &#123;</div><div class="line">      $<span class="number">0</span>.select &#123;</div><div class="line">        $<span class="number">0</span>.routingState</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  <span class="comment">// 2</span></div><div class="line">  fileprivate <span class="function"><span class="keyword">func</span>  <span class="title">pushViewController</span><span class="params">(identifier: String, animated: Bool)</span></span> &#123;</div><div class="line">    <span class="keyword">let</span> viewController = instantiateViewController(identifier: identifier)</div><div class="line">    navigationController.pushViewController(viewController, animated: animated)</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  fileprivate <span class="function"><span class="keyword">func</span> <span class="title">instantiateViewController</span><span class="params">(identifier: String)</span></span> -&gt; <span class="type">UIViewController</span> &#123;</div><div class="line">    <span class="keyword">let</span> storyboard = <span class="type">UIStoryboard</span>(name: <span class="string">"Main"</span>, bundle: <span class="literal">nil</span>)</div><div class="line">    <span class="keyword">return</span> storyboard.instantiateViewController(withIdentifier: identifier)</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// MARK: - StoreSubscriber</span></div><div class="line"><span class="comment">// 3</span></div><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">AppRouter</span> :<span class="title">StoreSubscriber</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">func</span> <span class="title">newState</span><span class="params">(state: RoutingState)</span></span> &#123;</div><div class="line">    <span class="comment">// 4</span></div><div class="line">    <span class="keyword">let</span> shouldsAnimate = navigationController.topViewController != <span class="literal">nil</span></div><div class="line">    pushViewController(identifier: state.navigationState.rawValue, animated: shouldsAnimate)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在这段代码中，我们改了 AppRouter 这个类，然后添加了一个 extension。我们看看具体每一步都做了什么吧！</p>
+<ol>
+<li><em>AppState</em> 现在订阅了全局的 store， 在闭包里面， selct 表明正在订阅 routingState 的改变。</li>
+<li><em>pushViewController</em> 用来初始化，并且 push 这个控制器。通过 identifier 加载的 StoryBoard 中的控制器。</li>
+<li>让 <em>AppRouter</em> 响应 StoreSubscriber， 当 routingState 改变的时候，将新的值返回回来。</li>
+<li>根控制器是不需要动画的，所以在这个地方判断一下根控制器。</li>
+<li>当 state 发生改变，就可以去出 state.navigationState, push 出对应的 controller</li>
+</ol>
+<p>AppRouter 现在就就初始化 <em>menu</em> 然后将 <em>MenuTableViewController</em> push 出来</p>
+<p>编译运行：</p>
+<center><br><br><img src="http://ocg4av0wv.bkt.clouddn.com/2017-07-21-024808.jpg" width="200"><br><br></center>
+
+<p>现在 app 中就是 <em>MenuTableViewController</em> 了, 现在当然还是空的。毕竟我们还没有开始学 view。</p>
+<h2 id="View"><a href="#View" class="headerlink" title="View"></a>View</h2><center><br><br><img src="http://ocg4av0wv.bkt.clouddn.com/2017-07-21-025205.jpg" alt=""><br><br></center>
+
+<p>任何东西都可能是一个 <em>StoreSubscriber</em>， 但是大多数情况下都是 view 层在响应状态的变化。现在是让 <em>MenuTableViewController</em> 来展示两个不同的 menu 了。</p>
+<p>去 <strong>MenuState.swift</strong>， 创建对应的 Reducer</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> ReSwift</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">MenuState</span>: <span class="title">StateType</span> </span>&#123;</div><div class="line">  <span class="keyword">var</span> menuTitles: [<span class="type">String</span>]</div><div class="line">  </div><div class="line">  <span class="keyword">init</span>() &#123;</div><div class="line">    menuTitles = [<span class="string">"NewGame"</span>, <span class="string">"Choose Category"</span>]</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>MenuState</strong> 有一个 *menuTitles， 这个属性就是 tableView 的 title</p>
+<p>在 <strong>MenuReducer.swift</strong> 中，创建这个 state 对应的 Reducer:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> ReSwift</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">menuReducer</span><span class="params">(action: Action, state: MenuState?)</span></span> -&gt; <span class="type">MenuState</span> &#123;</div><div class="line">  <span class="keyword">return</span> <span class="type">MenuState</span>()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>因为 MenuState 是静态的，所以不需要去处理状态的变化。所以这里只需要简单的返回一个新的 MenuState</p>
+<p>回到 <strong>AppState.swift</strong> 中, 添加</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> meunState: <span class="type">MenuState</span></div></pre></td></tr></table></figure>
+<p>编译又失败了，然后需要到 <strong>AppReducer.swift</strong> 中去修改这个编译错误。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">return</span> <span class="type">AppState</span>(routingState: routingReducer(action: action,</div><div class="line">                                  state: state?.routingState),</div><div class="line">      meunState: menuReducer(action: action, state: state?.meunState))</div></pre></td></tr></table></figure>
+<p>现在有了 MenuState, 接下来就是要订阅它了。</p>
+<p>先在打开 <strong>MenuTableViewController.swift</strong>, 然后将代码改成这样:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> ReSwift</div><div class="line"></div><div class="line"><span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">MenuTableViewController</span>: <span class="title">UITableViewController</span> </span>&#123;</div><div class="line">  <span class="comment">// 1</span></div><div class="line">  <span class="keyword">var</span> tableDataSource: <span class="type">TableDataSource</span>&lt;<span class="type">UITableViewCell</span>, <span class="type">String</span>&gt;?</div><div class="line">  </div><div class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewWillAppear</span><span class="params">(<span class="number">_</span> animated: Bool)</span></span> &#123;</div><div class="line">    <span class="keyword">super</span>.viewWillAppear(animated)</div><div class="line">    <span class="comment">// 2</span></div><div class="line">    store.subscribe(<span class="keyword">self</span>) &#123;</div><div class="line">      $<span class="number">0</span>.select &#123;</div><div class="line">        $<span class="number">0</span>.menuState</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewWillDisappear</span><span class="params">(<span class="number">_</span> animated: Bool)</span></span> &#123;</div><div class="line">    <span class="keyword">super</span>.viewWillDisappear(animated)</div><div class="line">    <span class="comment">// 3</span></div><div class="line">    store.unsubscribe(<span class="keyword">self</span>)</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// MARK: - StoreSubscriber</span></div><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">MenuTableViewController</span>: <span class="title">StoreSubscriber</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">func</span> <span class="title">newState</span><span class="params">(state: MenuState)</span></span> &#123;</div><div class="line">    <span class="comment">// 4</span></div><div class="line">    tableDataSource = <span class="type">TableDataSource</span>(cellIdentifier: <span class="string">"TitleCell"</span>, models: state.menuTitles) &#123;</div><div class="line">      $<span class="number">0</span>.textLabel?.text = $<span class="number">1</span></div><div class="line">      $<span class="number">0</span>.textLabel?.textAlignment = .center</div><div class="line">      <span class="keyword">return</span> $<span class="number">0</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    tableView.dataSource = tableDataSource</div><div class="line">    tableView.reloadData()</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>现在我们来看看这段代码做了什么？</p>
+<ol>
+<li>TableDataSource 包含了UITableView data source 相关的东西。</li>
+<li>订阅了 menuState</li>
+<li>取消订阅</li>
+<li>这段代码就是实现 UITableView 的代码，在这儿可以很明确的看到 state 是怎么变成 view 的。</li>
+</ol>
+<blockquote>
+<p>可能已经发现了，ReSwift 使用了很多值类型变量，而不是对象类型。并且推荐使用声明式的 UI 代码。为什么呢？</p>
+<p>StoreSubscriber 中定义的 newState 回调了状态的改变。你可能会通过这样的方法去接货这个值</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">MenuTableViewController</span>: <span class="title">UITableViewController</span> </span>&#123;</div><div class="line">&gt;   <span class="keyword">var</span> currentMenuTitlesState: [<span class="type">String</span>]</div><div class="line">&gt;   ...</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<p>但是写声明式的 UI 代码，可以很明确的知道 state 是怎么转换成 View 的。在这个例子中的问题的 UITableView 并没有这样的API。这就是我写 TableDataSource 来桥接的原因。如果你感兴趣的话可以去看看这个 <strong>TableDataSource.swift</strong></p>
+</blockquote>
+<p>编译运行，就能够看到了:</p>
+<center><br><br><img src="http://ocg4av0wv.bkt.clouddn.com/2017-07-21-032618.jpg" width="200"><br><br></center>
+
+<h2 id="Action"><a href="#Action" class="headerlink" title="Action"></a>Action</h2><center><br><br><img src="http://ocg4av0wv.bkt.clouddn.com/2017-07-21-032930.jpg" alt=""><br><br></center>
+
+<p>做好了 View 接下来就来写 <strong>Action</strong> 了。</p>
+<p>Action 是 Store 中数据改变的原因。一个 Action 就是一个有很多变量结构体，这写变量也是这个 Action 的参数。 Reducer 处理一系列的 action， 然后改变 app 的状态。</p>
+<p>我们现在先创建一个 Action， 打开 <strong>RoutingAction.swift</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> ReSwift</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">RoutingAction</span>: <span class="title">Action</span> </span>&#123;</div><div class="line">  <span class="keyword">let</span> destination: <span class="type">RoutingDestination</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><em>RoutingAction</em> 改变当前的 routing 终点</p>
+<p>现在，当 menu 的 cell 被点击的时候，派发一个 action。</p>
+<p>在 <strong>MenuTableViewController.swift</strong> 中添加下面的代码:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, didSelectRowAt indexPath: IndexPath)</span></span> &#123;</div><div class="line">    <span class="keyword">var</span> routeDestination: <span class="type">RoutingDestination</span> = .categories</div><div class="line">    <span class="keyword">switch</span> indexPath.row &#123;</div><div class="line">    <span class="keyword">case</span> <span class="number">0</span>: routeDestination = .game</div><div class="line">    <span class="keyword">case</span> <span class="number">1</span>: routeDestination = .categories</div><div class="line">    <span class="keyword">default</span>:<span class="keyword">break</span></div><div class="line">    &#125;</div><div class="line">    store.dispatch(<span class="type">RoutingAction</span>(destination: routeDestination))</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<p>这段代码，根据选择的 cell 设置不同的 routeDestination 然后用dispatch 方法派发出去。</p>
+<p>这个 action 被派发出去了，但是，还没有被任何的 reducer 给支持。现在去 RoutingReducer.swift 然后做一下对应的修改。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> state = state ?? <span class="type">RoutingState</span>()</div><div class="line"></div><div class="line"><span class="keyword">switch</span> action &#123;</div><div class="line"><span class="keyword">case</span> <span class="keyword">let</span> routingAction <span class="keyword">as</span> <span class="type">RoutingAction</span>:</div><div class="line">  state.navigationState = routingAction.destination</div><div class="line"><span class="keyword">default</span>: <span class="keyword">break</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">return</span> state</div></pre></td></tr></table></figure>
+<p>switch 语句用来判断是否传入的 action 是 RoutingAction。如果是，就修改 state 为这个 action 的 destination</p>
+<p>编译运行，现在点击 item ， 就会对应的 push 出 controller。</p>
+<h2 id="Updating-the-State"><a href="#Updating-the-State" class="headerlink" title="Updating the State"></a>Updating the State</h2><p>这样去实现导航可能是由瑕疵的。当你点击 “New Game” 的时候，<code>RoutingState</code> 的 <code>navigationState</code> 就会从<code>menu</code> 变成 <code>game</code>。 但是当你点击 controller 的返回按钮的时候，navigationState 却没有改变。</p>
+<p>在 ReSwift 中，让状态跟 UI 同步是很重要的，但是这又是最容易搞忘的东西。特别是向上面那样，由 UIKit 自动控制的东西。</p>
+<p>我们可以在 MenutableViewController 出现的时候更新一下这个状态。</p>
+<p>在 <strong>MenuTableViewController.swift</strong> 的 <code>viewWillAppear</code>: 方法中，添加:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">store.dispatch(<span class="type">RoutingAction</span>(destination: .menu))</div></pre></td></tr></table></figure>
+<p>这样就能够在上面的问题出现的时候解决这个问题。</p>
+<p>运行一下呢？呃… 完全乱了。也可能会看到一个崩溃。</p>
+<center><br><br><img src="http://ocg4av0wv.bkt.clouddn.com/2017-07-21-live.gif" alt=""><br><br></center>
+
+<p>打开 <strong>AppRouter.swift</strong>， 你会看到每次接收到一个新的 navigationState 的时候，都会调用 <code>pushViewController</code> 方法。也就是说，每次响应就会 push 一个 menu 出来！</p>
+<p>所以我们还必须在 push 之前确定这个 controller 是不是正在屏幕中。所以我们修改一下 <code>pushViewController</code>  这个方法:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">fileprivate <span class="function"><span class="keyword">func</span>  <span class="title">pushViewController</span><span class="params">(identifier: String, animated: Bool)</span></span> &#123;</div><div class="line">	<span class="keyword">let</span> viewController = instantiateViewController(identifier: identifier)</div><div class="line">    <span class="keyword">let</span> newViewControllerType = type(of: viewController)</div><div class="line">    <span class="keyword">if</span> <span class="keyword">let</span> currentVc = navigationController.topViewController &#123;</div><div class="line">      <span class="keyword">let</span> currentViewControllerType = type(of: currentVc)</div><div class="line">      <span class="keyword">if</span> currentViewControllerType == newViewControllerType &#123;</div><div class="line">        <span class="keyword">return</span></div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    navigationController.pushViewController(viewController, animated: animated)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面的方法中，通过 <code>type(of:)</code> 方法来避免当前的 topViewController 跟 要推出来的 Controller 进行对比。如果相等，就直接 <code>return</code> 。</p>
+<p>编译运行，这时候，又一切正常了。</p>
+<p>当 UI 发生变化的时候更新当前的状态是比较复杂的事情。这是写 ReSwift 的时候必须要解决的一件事情。还好他不是那么常见。</p>
+<h2 id="Category"><a href="#Category" class="headerlink" title="Category"></a>Category</h2><p>现在，我们继续来实现  <em>CategoriesTableViewController</em> 这一部分跟之前的部分比起来更复杂一些。这个界面需要允许用户来选择音乐的类型，首先，我们在<strong>CategoriesState.swift</strong> 中添加响应的状态。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> ReSwift</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Category</span>: <span class="title">String</span> </span>&#123;</div><div class="line">  <span class="keyword">case</span> pop = <span class="string">"Pop"</span></div><div class="line">  <span class="keyword">case</span> electrinic = <span class="string">"Electronic"</span></div><div class="line">  <span class="keyword">case</span> rock = <span class="string">"Rock"</span></div><div class="line">  <span class="keyword">case</span> metal = <span class="string">"Metal"</span></div><div class="line">  <span class="keyword">case</span> rap = <span class="string">"Rap"</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">CategoriesState</span>: <span class="title">StateType</span> </span>&#123;</div><div class="line">  <span class="keyword">let</span> categories: [<span class="type">Category</span>]</div><div class="line">  <span class="keyword">var</span> currentCategorySelected: <span class="type">Category</span></div><div class="line">  </div><div class="line">  <span class="keyword">init</span>(currentCategory: <span class="type">Category</span>) &#123;</div><div class="line">    categories = [.pop, .electrinic, .rock, .metal, .rap]</div><div class="line">    currentCategorySelected = currentCategory</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个枚举定义了一些音乐的类型。CategoriesState 包含了一个数组的种类，以及当前选择的种类。</p>
+<p>在 <strong>ChangeCategoryAction.swift</strong> 中添加这些代码:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> ReSwift</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">ChangeCategoryAction</span>: <span class="title">Action</span> </span>&#123;</div><div class="line">  <span class="keyword">let</span> categoryIndex: <span class="type">Int</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这里定义了对应的 action， 使用 categoryIndex 来寻找对应的音乐类型。</p>
+<p>现在来实现 Reducer了。 这个 reducer 需要接受 ChangeCategoryAction 然后将新的 state 保存起来。打开 <strong>CategoryReducer.swift</strong>：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> ReSwift</div><div class="line"></div><div class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">struct</span> <span class="title">CategoriesReducerConstants</span> </span>&#123;</div><div class="line">  <span class="keyword">static</span> <span class="keyword">let</span> userDefaultCategoryKey = <span class="string">"currentCategoryKey"</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">private</span> <span class="keyword">typealias</span> <span class="type">C</span> = <span class="type">CategoriesReducerConstants</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">categoriesReducer</span><span class="params">(action: Action, state: CategoriesState?)</span></span> -&gt; <span class="type">CategoriesState</span> &#123;</div><div class="line">  <span class="keyword">var</span> currentCategory: <span class="type">Category</span> = .pop</div><div class="line">  <span class="comment">// 1</span></div><div class="line">  <span class="keyword">if</span> <span class="keyword">let</span> loadedCategory = getCurrentCategoryStateFromUserDefaults() &#123;</div><div class="line">    currentCategory = loadedCategory</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">var</span> state = state ?? <span class="type">CategoriesState</span>(currentCategory: currentCategory)</div><div class="line">  </div><div class="line">  <span class="keyword">switch</span> action &#123;</div><div class="line">  <span class="keyword">case</span> <span class="keyword">let</span> changeCategoryAction <span class="keyword">as</span> <span class="type">ChangeCategoryAction</span>:</div><div class="line">    <span class="comment">// 2</span></div><div class="line">    <span class="keyword">let</span> newCategory = state.categories[changeCategoryAction.categoryIndex]</div><div class="line">    state.currentCategorySelected = newCategory</div><div class="line">    saveCurrentCategoryStateToUserdefaults(category: newCategory)</div><div class="line">  <span class="keyword">default</span>: <span class="keyword">break</span></div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> state</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 3</span></div><div class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">func</span> <span class="title">getCurrentCategoryStateFromUserDefaults</span><span class="params">()</span></span> -&gt; <span class="type">Category</span>?</div><div class="line">&#123;</div><div class="line">  <span class="keyword">let</span> userDefaults = <span class="type">UserDefaults</span>.standard</div><div class="line">  <span class="keyword">let</span> rawValue = userDefaults.string(forKey: <span class="type">C</span>.userDefaultCategoryKey)</div><div class="line">  <span class="keyword">if</span> <span class="keyword">let</span> rawValue = rawValue &#123;</div><div class="line">    <span class="keyword">return</span> <span class="type">Category</span>(rawValue: rawValue)</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="keyword">return</span> <span class="literal">nil</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 4</span></div><div class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">func</span> <span class="title">saveCurrentCategoryStateToUserdefaults</span><span class="params">(category: Category)</span></span> &#123;</div><div class="line">  <span class="keyword">let</span> userDefaults = <span class="type">UserDefaults</span>.standard</div><div class="line">  userDefaults.<span class="keyword">set</span>(category.rawValue, forKey: <span class="type">C</span>.userDefaultCategoryKey)</div><div class="line">  userDefaults.synchronize()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>跟其他的 Reducer 一样，这些方法实现了一下比较复杂的状态的改变，并且将选择之后的状态通过 Userdefault 持久化。</p>
+<ol>
+<li>从 UserDefault 中获取 category， 然后赋值给 CategoriesState</li>
+<li>在接收到 ChangeCategoryAction 的时候更新状态，然后保存下来</li>
+<li>从 Userdefault 中获取state</li>
+<li>将 state 保存在 UserDefault 中</li>
+</ol>
+<p>3、4 中的两个方法都是功能很单一的方法，而且是全局的。你也可以把他们放在一个类或者结构体中。</p>
+<p>接下来很自然的，就会需要在 AppState 中添加新的状态。打开 <strong>AppState.swift</strong> 然后添加对应的状态:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> categoriesState: <span class="type">CategoriesState</span></div></pre></td></tr></table></figure>
+<p>然后去 <strong>AppReducer.swift</strong> 中去修改对应的错误</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">return</span> <span class="type">AppState</span>(routingState: routingReducer(action: action,</div><div class="line">                                             state: state?.routingState),</div><div class="line">                meunState: menuReducer(action: action, state: state?.meunState),</div><div class="line">      categoriesState: categoriesReducer(action: action, state: state?.categoriesState))</div></pre></td></tr></table></figure>
+<p>现在还需要 View 了。现在需要在 CategoriesViewController 中去写这部分的 View</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> ReSwift</div><div class="line"></div><div class="line"><span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">CategoriesTableViewController</span>: <span class="title">UITableViewController</span> </span>&#123;</div><div class="line">  <span class="keyword">var</span> tableDataSource: <span class="type">TableDataSource</span>&lt;<span class="type">UITableViewCell</span>, <span class="type">Category</span>&gt;?</div><div class="line">  </div><div class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewWillAppear</span><span class="params">(<span class="number">_</span> animated: Bool)</span></span> &#123;</div><div class="line">    <span class="keyword">super</span>.viewWillAppear(animated)</div><div class="line">    <span class="comment">//1</span></div><div class="line">    store.subscribe(<span class="keyword">self</span>) &#123;</div><div class="line">      $<span class="number">0</span>.select &#123;</div><div class="line">        $<span class="number">0</span>.categoriesState</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewWillDisappear</span><span class="params">(<span class="number">_</span> animated: Bool)</span></span> &#123;</div><div class="line">    <span class="keyword">super</span>.viewDidDisappear(animated)</div><div class="line">    store.unsubscribe(<span class="keyword">self</span>)</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, didSelectRowAt indexPath: IndexPath)</span></span> &#123;</div><div class="line">    <span class="comment">// 2</span></div><div class="line">    store.dispatch(<span class="type">ChangeCategoryAction</span>(categoryIndex: indexPath.row))</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">CategoriesTableViewController</span>: <span class="title">StoreSubscriber</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">func</span> <span class="title">newState</span><span class="params">(state: CategoriesState)</span></span> &#123;</div><div class="line">    tableDataSource = <span class="type">TableDataSource</span>(cellIdentifier: <span class="string">"CategoryCell"</span>, models: state.categories) &#123;</div><div class="line">      $<span class="number">0</span>.textLabel?.text = $<span class="number">1</span>.rawValue</div><div class="line">      <span class="comment">// 3</span></div><div class="line">      $<span class="number">0</span>.accessoryType = (state.currentCategorySelected == $<span class="number">1</span>) ? .checkmark : .<span class="keyword">none</span></div><div class="line">      <span class="keyword">return</span> $<span class="number">0</span></div><div class="line">    &#125;</div><div class="line">    tableView.dataSource = tableDataSource</div><div class="line">    tableView.reloadData()</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这部分的代码跟 MenuTableViewController 差不多。注释中标记的内容分别是：</p>
+<ol>
+<li>在 <code>viewWillAppear</code> 中订阅 categoriesState 的改变，然后在 <code>viewillDisappear</code> 中取消订阅。</li>
+<li>将事件派发出去</li>
+<li>标记选择的状态</li>
+</ol>
+<p>所有的东西都写好了，现在试一下！</p>
+<center><br><br><img src="http://ocg4av0wv.bkt.clouddn.com/2017-07-21-065609.jpg" width="200"><br><br></center>
+
+<h2 id="异步任务"><a href="#异步任务" class="headerlink" title="异步任务"></a>异步任务</h2><p>怎么都跑不了这个话题，这在 ReSwift 也很方便。</p>
+<p>场景:从 iTunes的 <a href="https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/?uo=8&amp;at=11ld4k">API</a> 中去获取照片。首先需要创建对应的 state， reducer 以及相关的 action.</p>
+<p>打开 <strong>GameState.swift</strong> 添加</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> ReSwift</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">GameState</span>: <span class="title">StateType</span> </span>&#123;</div><div class="line">  <span class="keyword">var</span> memoryCards: [<span class="type">MemoryCard</span>]</div><div class="line">  <span class="comment">// 1</span></div><div class="line">  <span class="keyword">var</span> showLoading: <span class="type">Bool</span></div><div class="line">  <span class="comment">// 2</span></div><div class="line">  <span class="keyword">var</span> gameFinishied: <span class="type">Bool</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这段代码定义了 Game 的状态。</p>
+<ol>
+<li>loading 的 菊花，是否存在</li>
+<li>游戏是否结束</li>
+</ol>
+<p>接下来是Reducer <strong>GameReducer.swift</strong>:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> ReSwift</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">gameReducer</span><span class="params">(action: Action, state: GameState?)</span></span> -&gt; <span class="type">GameState</span> &#123;</div><div class="line">  <span class="keyword">let</span> state = state ?? <span class="type">GameState</span>(memoryCards: [],</div><div class="line">                                 showLoading: <span class="literal">false</span>,</div><div class="line">                                 gameFinishied: <span class="literal">false</span>)</div><div class="line">  <span class="keyword">return</span> state</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这段代码就是简单的创建了一个 <em>GameState</em>, 稍后会再回到这个地方的。</p>
+<p>在 <strong>AppState.swift</strong> 中，添加对应的状态</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> gameState: <span class="type">GameState</span></div></pre></td></tr></table></figure>
+<p>修改 <strong>AppReducer.swift</strong> 中出现的编译错误</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">return</span> <span class="type">AppState</span>(routingState: routingReducer(action: action,</div><div class="line">                                               state: state?.routingState),</div><div class="line">                  meunState: menuReducer(action: action, state: state?.meunState),</div><div class="line">                  categoriesState: categoriesReducer(action: action, state: state?.categoriesState),</div><div class="line">                  gameState: gameReducer(action: action, state: state?.gameState))</div></pre></td></tr></table></figure>
+<blockquote>
+<p>发现了规律了吧，在每次写完 Action/Reducer/State之后应该做什么都是可见并且很简单的。这种情况，得益于ReSwift 的单向数据特效和严格的代码约束。只有 Reducer 能够改变 app 的 Store，只有 Action 能够触发这种响应。这样做能够让你知道在上面地方找代码，在什么地方做新功能。</p>
+</blockquote>
+<p>现在开始定义 Action， 这个 action 用来更新卡片。在 <strong>SetCardsAction.swift</strong>：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> ReSwift</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SetCardsAction</span>: <span class="title">Action</span> </span>&#123;</div><div class="line">  <span class="keyword">let</span> cardImageUrls: [<span class="type">String</span>]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个 action 用来设置 GameState 中图片的URL</p>
+<p>现在开始准备程序中第一个异步行为吧！在 <strong>FetchTumesAction.swift</strong> 中，添加下面的代码:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> ReSwift</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">fetchTunes</span><span class="params">(state: AppState, store: Store&lt;AppState&gt;)</span></span> -&gt; <span class="type">FetchTunesAction</span> &#123;</div><div class="line">  iTunesAPI.searchFor(category: state.categoriesState.currentCategorySelected.rawValue) &#123;</div><div class="line">    store.dispatch(<span class="type">SetCardsAction</span>(cardImageUrls: $<span class="number">0</span>))</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="type">FetchTunesAction</span>()</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">FetchTunesAction</span>: <span class="title">Action</span></span>&#123;&#125;</div></pre></td></tr></table></figure>
+<p><code>fetchTunes</code>  通过 <code>itunesAPI</code> 获取了图片。然后在闭包中将结果派发出来。 ReSwift 中的异步任务就是这么简单。</p>
+<p><code>fetchTunes</code> 返回一个 <code>FetchTunesAction</code>  这个 action 是用来验证请求的。</p>
+<p>打开 <strong>OpenReducer.swift</strong> 然后添加对这两个 action 的支持。把 <code>gameReducer</code> 中的代码改成下面这样：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> state = state ?? <span class="type">GameState</span>(memoryCards: [],</div><div class="line">                                showLoading: <span class="literal">false</span>,</div><div class="line">                                gameFinishied: <span class="literal">false</span>)</div><div class="line"> <span class="keyword">switch</span> action &#123;</div><div class="line"> <span class="comment">// 1</span></div><div class="line"> <span class="keyword">case</span> <span class="number">_</span> <span class="keyword">as</span> <span class="type">FetchTunesAction</span>:</div><div class="line">   state = <span class="type">GameState</span>(memoryCards: [],</div><div class="line">                     showLoading: <span class="literal">true</span>,</div><div class="line">                     gameFinishied: <span class="literal">false</span>)</div><div class="line"> <span class="comment">// 2</span></div><div class="line"> <span class="keyword">case</span> <span class="keyword">let</span> setCardsAction <span class="keyword">as</span> <span class="type">SetCardsAction</span>:</div><div class="line">   state.memoryCards = generateNewCards(with: setCardsAction.cardImageUrls)</div><div class="line">   state.showLoading = <span class="literal">false</span></div><div class="line"> <span class="keyword">default</span>:<span class="keyword">break</span></div><div class="line"> &#125;</div><div class="line"> <span class="keyword">return</span> state</div></pre></td></tr></table></figure>
+<p>这段代码，就是根据具体的 action 做不同的事情。</p>
+<ol>
+<li>FetchTunesAction, 设置 showLoading 为 true</li>
+<li>SetCardsAction, 打乱卡片，然后将 showLoading 设置为 false。 generateNewCards 方法可以在 <strong>MemoryGameLogic.swift</strong> 中找到</li>
+</ol>
+<p>现在开始写 <strong>View</strong></p>
+<p>在 <strong>CardCollectionViewCell.swift</strong> 中添加下面的方法:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">configCell</span><span class="params">(with cardState: MemoryCard)</span></span> &#123;</div><div class="line">  <span class="keyword">let</span> url = <span class="type">URL</span>(string: cardState.imageUrl)</div><div class="line">  <span class="comment">// 1</span></div><div class="line">  cardImageView.kf.setImage(with: url)</div><div class="line">  <span class="comment">// 2</span></div><div class="line">  cardImageView.alpha = cardState.isAlreadyGuessed || cardState.isFlipped ? <span class="number">1</span> : <span class="number">0</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>configCell</code> 这个方法做了下面两件事情:</p>
+<ol>
+<li>使用 Kingfisher 来缓存图片</li>
+<li>判断是否展示图片</li>
+</ol>
+<p>下一步，实现 CollectionView。在 gameViewCotroller.swift 倒入 <code>import ReSwift</code> 然后在 <code>showGameFinishedAlert</code> 上面添加下面的代码:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> collectionDataSource: <span class="type">CollectionDataSource</span>&lt;<span class="type">CardCollectionViewCell</span>, <span class="type">MemoryCard</span>&gt;?</div><div class="line"> <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewWillAppear</span><span class="params">(<span class="number">_</span> animated: Bool)</span></span> &#123;</div><div class="line">   <span class="keyword">super</span>.viewWillAppear(animated)</div><div class="line">   store.subscribe(<span class="keyword">self</span>) &#123;</div><div class="line">     $<span class="number">0</span>.select &#123;</div><div class="line">       $<span class="number">0</span>.gameState</div><div class="line">     &#125;</div><div class="line">   &#125;</div><div class="line"> &#125;</div><div class="line"> </div><div class="line"> <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewWillDisappear</span><span class="params">(<span class="number">_</span> animated: Bool)</span></span> &#123;</div><div class="line">   <span class="keyword">super</span>.viewWillDisappear(animated)</div><div class="line">   store.unsubscribe(<span class="keyword">self</span>)</div><div class="line"> &#125;</div><div class="line"> </div><div class="line"> <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">   <span class="comment">// 1</span></div><div class="line">   store.dispatch(fetchTunes)</div><div class="line">   collectionView.delegate = <span class="keyword">self</span></div><div class="line">   loadingIndicator.hidesWhenStopped = <span class="literal">true</span></div><div class="line">   </div><div class="line">   <span class="comment">// 2</span></div><div class="line">   collectionDataSource = <span class="type">CollectionDataSource</span>.<span class="keyword">init</span>(cellIdentifier: <span class="string">"CardCell"</span>, models: []) &#123;</div><div class="line">     $<span class="number">0</span>.configCell(with: $<span class="number">1</span>)</div><div class="line">     <span class="keyword">return</span> $<span class="number">0</span></div><div class="line">   &#125;</div><div class="line">   collectionView.dataSource = collectionDataSource</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<p>由于没有写 StoreSubscriber ，所以这里会有一点点的编译错误。我们先假设已经写了。这段代码，首先是订阅了取消订阅 gameState 然后:</p>
+<ol>
+<li>派发 fetchTunes 来获取图片</li>
+<li>使用 CollectiondataSource  来配置 cell 相关信息。</li>
+</ol>
+<p>现在我们来添加 <code>StoreSubscriber</code> :</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">GameViewController</span>: <span class="title">StoreSubscriber</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">func</span> <span class="title">newState</span><span class="params">(state: GameState)</span></span> &#123;</div><div class="line">    collectionDataSource?.models = state.memoryCards</div><div class="line">    collectionView.reloadData()</div><div class="line">    <span class="comment">// 1</span></div><div class="line">    state.showLoading ? loadingIndicator.startAnimating() : loadingIndicator.stopAnimating()</div><div class="line">       <span class="comment">// 2</span></div><div class="line">    <span class="keyword">if</span> state.gameFinishied &#123;</div><div class="line">      showGameFinishedAlert()</div><div class="line">      store.dispatch(fetchTunes)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这段代码实现了 state 改变的时候对应的变化。他会更新 dataSource</p>
+<ol>
+<li>更新 loading indicator 的状态。</li>
+<li>当游戏结束时，弹窗</li>
+</ol>
+<p>现在，运行一下吧！</p>
+<center><br><br><img src="http://ocg4av0wv.bkt.clouddn.com/2017-07-21-085643.jpg" width="200"><br><br></center>
+
+<h2 id="Play"><a href="#Play" class="headerlink" title="Play"></a>Play</h2><p>游戏的逻辑是： 让用户翻转两张卡片的时候，如果它们是一眼的，就让他们保持，如果不一样就翻回去。用户的任务是在尽可能少的尝试之后翻转所有的卡片。</p>
+<p>现在需要一个翻转的事件。在 <strong>OpenCardAction.swift</strong> 中添加代码:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> ReSwift</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">FlipCardAction</span>: <span class="title">Action</span></span>&#123;</div><div class="line">  <span class="keyword">let</span> cardIndexToFlip: <span class="type">Int</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当卡片翻转的时候: FlipCardAction 使用 cardIndexToFlip 来更新 gameState 中的状态。</p>
+<p>下一步修改 <code>gamereducer</code>  来支持这个 action。打开 <strong>GameReducer.swift</strong> 添加下面对应的case</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">case</span> <span class="keyword">let</span> flipCardAction <span class="keyword">as</span> <span class="type">FlipCardAction</span>:</div><div class="line">   state.memoryCards = flipCard(index: flipCardAction.cardIndexToFlip,</div><div class="line">                                memoryCards: state.memoryCards)</div><div class="line">state.gameFinishied = hasFinishedGame(cards: state.memoryCards)</div></pre></td></tr></table></figure>
+<p>对 FlipCardAction 来说， flipCard 改变卡片的状态。hasFinishedGame 会在游戏结束的时候调用。两个方法都可以在 <strong>MemoryGameLogic.swift</strong> 中找到。</p>
+<p>最后一个问题是在点击的时候，把翻转的 action 派发出去。</p>
+<p>在 <strong>GameViewController.swift</strong> 中，找到 <code>UICollectionViewDelegate</code>  这个 extension。在 <code>collectionView(_:didSelectItemAt:)</code> 中添加:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">store.dispatch(<span class="type">FlipCardAction</span>(cardIndexToFlip: indexPath.row))</div></pre></td></tr></table></figure>
+<p>当卡片被选择的时候，关联的<code>indexPath.row</code> 就会跟着 <code>FlipcardAction</code> 被派发出去.</p>
+<p>再运行一下，就会发现！</p>
+<center><br><br><img src="http://ocg4av0wv.bkt.clouddn.com/2017-07-21-091810.jpg" width="200"><br><br></center>
+
+
+
+<h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><p>模版项目已经完整项目都在 <a href="https://github.com/CepheusSun/Translate/tree/master/demos/ReSwiftAndRedux">GitHub</a> </p>
+<p>ReSwift 不仅仅是我们今天提到的内容。他还以很多:</p>
+<ul>
+<li><strong>Middleware</strong>: 中间件。swift目前还没有很好的办法来做切面。但是 ReSwift 解决了这个问题。可以使用ReSwift 的 [Middleware] 特性来解决这个问题。他能够让你轻松的切面(logging, 统计， 缓存)。</li>
+<li><strong>Routing</strong>： 在这个 app 中已经实现了自己的 Routing， 还有个更通用的解决方案<a href="https://github.com/ReSwift/ReSwift-Router">ReSwift-Routing</a> 单这在社区还是一个还没有完全解决的问题。说不定解决它的人就是你！</li>
+<li><strong>Testing</strong>: ReSwift 或许是最方便测试的框架了。 Reducer 包含了你需要测试的所有代码。他们都是纯的功能函数。这种函数在接受了同一个input 总是返回同一个值，他们不回依赖于程序当前的状态。</li>
+<li><strong>Debugging</strong>： ReSwift 的所有状态都在一个结构体中定义，并且是单向数据流的，debug 会非常的简单，甚至你还可以用 <a href="https://github.com/ReSwift/ReSwift-Recorder">ReSwift-Recorder</a> 来记录下导致 crash 的状态</li>
+<li><strong>Persistence</strong>: 因为所有的状态都在一个地方，拓展和坚持都是很容易的事情。缓存离线的数据也是一个比较麻烦的架构问题，但是 ReSwift 解决了这个问题。</li>
+<li><strong>others</strong>： Redux 架构并不是一个库，它是一种编程范式，你也可以自己实现一套，还有 <a href="https://github.com/BendingSpoons/katana-swift">Katana</a> 或者 <a href="https://github.com/ReduxKit/ReduxKit">ReduxKit</a> 也可以做这件事</li>
+</ul>
+<p>如果你想学习更多关于 ReSwift 的东西，可以看 ReSwift 作者 <a href="https://news.realm.io/news/benji-encz-unidirectional-data-flow-swift/">Benjamin Encz</a> 的演讲视频</p>
+<p><a href="http://christiantietze.de/posts/2016/01/reswift-level-indirection/">Christian Tietze’s blog</a> 的博客上有很多有趣的例子。</p>
+<p><strong>这篇文章翻译自Ray wenderlich <a href="https://www.raywenderlich.com/155815/reswift-tutorial-memory-game-app">ReSwift Tutorial: Memory Game App</a>]</strong></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;随着 app 的发展， MVC 渐渐的满足不了业务的需求。大家都在探索各种各样的架构模式来适应这种情况，像是MVVM、VIPER、&lt;a href=&quot;https://eng.uber.com/new-rider-app/&quot;&gt;Riblets&lt;/a&gt; 等等。 他们都有各自的特点，但是都有同一个核心: 通过多向数据流将代码按照单一职责原则来划分代码。在多向数据流中，数据在各个模块中传递。&lt;/p&gt;
+&lt;p&gt;多向数据流并不一定是你想要的，反而，单向数据流才是我们更喜欢的数据传递方式。在这个 ReSwift 的教程中，你会学到如何使用 ReSwift 来实现单向数据流，并完成一个状态驱动的游戏——&lt;strong&gt;MemoryTunes&lt;/strong&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Swift" scheme="http://www.CepheusSun.com/categories/Swift/"/>
+    
+    
+      <category term="iOS" scheme="http://www.CepheusSun.com/tags/iOS/"/>
+    
+      <category term="Swift" scheme="http://www.CepheusSun.com/tags/Swift/"/>
+    
+      <category term="翻译" scheme="http://www.CepheusSun.com/tags/%E7%BF%BB%E8%AF%91/"/>
+    
+  </entry>
   
   <entry>
     <title>面向 Extension 开发 🌞 Share Extension</title>
@@ -1782,116 +2084,6 @@
       <category term="iOS" scheme="http://www.CepheusSun.com/tags/iOS/"/>
     
       <category term="Reactive" scheme="http://www.CepheusSun.com/tags/Reactive/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用Gitlab和Cocoapods创建私有pod</title>
-    <link href="http://www.CepheusSun.com/%E4%BD%BF%E7%94%A8Gitlab%E5%92%8CCocoapods%E5%88%9B%E5%BB%BA%E7%A7%81%E6%9C%89pod.html"/>
-    <id>http://www.CepheusSun.com/使用Gitlab和Cocoapods创建私有pod.html</id>
-    <published>2017-04-19T14:39:27.000Z</published>
-    <updated>2017-05-11T08:44:49.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>每个稍微有点开发经验的 iOS 工程师都很容易的发现一下几点: </p>
-<ol>
-<li>几乎每个 iOS 的项目都适用了 <code>Cocoapods</code> </li>
-<li>几乎每个 ObjC 的 iOS 项目是使用 <code>AFNetworking</code> 、 <code>SDWebImage</code>等三方框架。</li>
-<li>几乎每个 Swift 的 iOS 项目都是用了 <code>Alamofire</code>、 <code>Kingfisher</code>等三方框架</li>
-<li>每一次这些框架更新之后, 无数个工程师只需要在终端执行一下’pod update’ 或 <code>pod install</code>就能对应的更新自己项目中的代码</li>
-</ol>
-<p>这几乎都是每个 iOS 工程师经常都会遇到的事情。目前几乎所有优秀的 iOS 开源框架都支持了 CocoaPods。 几乎所有的 iOS 项目都集成了 CocoaPods</p>
-<p>但是我们在日常的开发中也常会遇到这样的问题:</p>
-<ol>
-<li>很多公司都有好 App 同时在进行开发。</li>
-<li>这些 App 或多或少在业务或者 UI 都很很多的重合。</li>
-</ol>
-<p>着就意味着有很多的代码在这些 App 中都是可以复用的。由于各种各样的原因,同个公司的不同 App 可能更新不同步。 app A 可能已经升级到新版本 app B 可能还在老版本。每个 App 分别管理势必会出现混乱的局面。一起管理又存在新旧交替的问题。如果每个 App 又不同的工程师负责, 即使可能有交叉 review 的机制, 但也很难保证公司代码的统一。很多逻辑都存在多段代码。</p>
-<p>如何管理公司的公共代码库就成了一个比较麻烦的问题。</p>
-<p>集成 IJKMediaPlayer 的时候,想到了使用git来区别版本,然后使用 framework 来管理共有代码。然而在出现了你的代码需要使用到其他的 Framework 的时候, 或者好几个 Framework 都需要使用同一个第三方框架的时候, 这么做确实也是件恼火的事情。</p>
-<a id="more"></a>
-<p>去年写了三了小组件 <code>SYNetwork</code> <code>EmptyDataKit</code> <code>SYPhotoBrowser</code>。前两个已经支持了 <code>Cocoapods</code> 之后网上不断的开始有一些利用 <code>cocoapods</code>进行组件化的文章。前些天在 去直播看了 casa 的两个关于组建化的直播之后。也一直蠢蠢欲动想自己也来做一下这件事情。</p>
-<p>做开源的 repo 的时候，还是比较顺利的做到了这件事情。但是当时想用 <code>OSChina</code> 来做了几次都没有成功。就一直搁置了。</p>
-<p>春节之后换了个工作, 适应了公司的环境, 简单的学习了一下 Swift 之后, 公司还是决定对现有的项目进行一次梳理,然后做一次重构。 所以很自然的还是想到了使用 <code>CocoaPods</code> 将公司原有的项目进行组件化。</p>
-<p>结果了半天时间的尝试,报错create gitlab账号等等。终于达到了最初的想法。 所以将这个过程记录下来。</p>
-<h2 id="为什么使用-GitLab"><a href="#为什么使用-GitLab" class="headerlink" title="为什么使用 GitLab"></a>为什么使用 GitLab</h2><p>其实上面已经说到了,为什么要使用 CocoaPods 来做这件事情。也说到了为什么要做这件事情。为什么使用 gitlab 呢？ 原因很简单。 毕竟 GitHub 的私有repo 是收费的。原谅我穷, 也可以说是公司扣门儿。只能把开源的东西放在, GitHub 把不能开源的东西放在其他地方。</p>
-<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>其实没什么好准备的。 但是首先你得有个 Gitlab 账号吧！ 如果没有注册之后添加 SSH 就好了。</p>
-<p>然后在 Gitlab 上创建一个空的仓库:XXX 然后记住这个项目的 地址: git@gitlab.com:XXX/XXX.git </p>
-<h2 id="创建工程"><a href="#创建工程" class="headerlink" title="创建工程"></a>创建工程</h2><p>这些可以看我去年年底写开源 Cocoapods 的时候写的东西。<a href="http://cepheussun.com/2016/12/02/%E4%BD%BF%E7%94%A8Cocoapods%E7%AE%A1%E7%90%86%E4%BD%A0%E7%9A%84%E9%A1%B9%E7%9B%AE/">使用 Cocoapods 管理你的项目</a></p>
-<p>基本上简化一下就是以下</p>
-<h3 id="创建工程-1"><a href="#创建工程-1" class="headerlink" title="创建工程"></a>创建工程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pod lib create XXX</div></pre></td></tr></table></figure>
-<p>回答问题</p>
-<h3 id="添加私有库到本地-pod-库-多人开发其他人也应该有这个操作"><a href="#添加私有库到本地-pod-库-多人开发其他人也应该有这个操作" class="headerlink" title="添加私有库到本地 pod 库(多人开发其他人也应该有这个操作)"></a>添加私有库到本地 pod 库(多人开发其他人也应该有这个操作)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pod repo add XXX git@gitlab.com:XXX/XXX.git</div></pre></td></tr></table></figure>
-<blockquote>
-<p>可以检查一下: ~./cocoapods/repos 目录下又了 XXX 文件夹</p>
-</blockquote>
-<h3 id="将代码放进去"><a href="#将代码放进去" class="headerlink" title="将代码放进去"></a>将代码放进去</h3><blockquote>
-<p>这一步上篇文章中有。 <a href="http://cepheussun.com/2016/12/02/%E4%BD%BF%E7%94%A8Cocoapods%E7%AE%A1%E7%90%86%E4%BD%A0%E7%9A%84%E9%A1%B9%E7%9B%AE/">使用 Cocoapods 管理你的项目</a></p>
-</blockquote>
-<h4 id="修改-podspec"><a href="#修改-podspec" class="headerlink" title="修改 .podspec"></a>修改 .podspec</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">Pod::Spec.new <span class="keyword">do</span> <span class="params">|s|</span></div><div class="line">  s.name             = <span class="string">'XXX'</span></div><div class="line">  s.version          = <span class="string">'0.0.1'</span></div><div class="line">  s.summary          = <span class="string">'这是项目的基础框架,所有项目都需要集成.'</span></div><div class="line"></div><div class="line">  s.homepage         = <span class="string">'https://gitlab.com/XXX/XXX'</span></div><div class="line">  s.license          = &#123; <span class="symbol">:type</span> =&gt; <span class="string">'MIT'</span>, <span class="symbol">:file</span> =&gt; <span class="string">'LICENSE'</span> &#125;</div><div class="line">  s.author           = &#123; <span class="string">'XXX'</span> =&gt; <span class="string">'cd_sunyang@163.com'</span> &#125;</div><div class="line">  s.source           = &#123; <span class="symbol">:git</span> =&gt; <span class="string">'git@gitlab.com:XXX/XXX.git'</span>, <span class="symbol">:tag</span> =&gt; s.version &#125;</div><div class="line"></div><div class="line">  s.ios.deployment_target = <span class="string">'8.0'</span></div><div class="line"></div><div class="line">  s.source_files = <span class="string">'XXX/Classes/**/*'</span></div><div class="line">  s.frameworks = <span class="string">'UIKit'</span></div><div class="line">  s.dependency <span class="string">'AFNetworking'</span></div><div class="line">  s.dependency <span class="string">'MBProgressHUD'</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
-<p>我这个Demo引用了两个公有的repo</p>
-<h4 id="提交代码"><a href="#提交代码" class="headerlink" title="提交代码"></a>提交代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git add .</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git commit -m &quot;commit comments&quot;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git push origin master</div></pre></td></tr></table></figure>
-<h4 id="检查一下"><a href="#检查一下" class="headerlink" title="检查一下"></a>检查一下</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ pod lib lint</div><div class="line"></div><div class="line">#或者 pod lib lint --allow-warnings 忽略警告</div></pre></td></tr></table></figure>
-<p>然后也可以在项目中的 <code>podfile</code>文件中添加</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">pod &apos;XXX&apos;, :path =&gt; &apos;/Users/xxx/Desktop/XXX&apos;</div><div class="line"></div><div class="line">## 最后路径以实际情况为准, 有可能不在桌面</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod install</div></pre></td></tr></table></figure>
-<p>成功后我们的库会出现在<code>Development Pods</code>文件夹里面。可以检查一下有没有问题。</p>
-<h4 id="提交私有库"><a href="#提交私有库" class="headerlink" title="提交私有库"></a>提交私有库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git tag 0.0.1</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git push --tags</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod repo push XXX XXX.podspec</div></pre></td></tr></table></figure>
-<h3 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h3><h4 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h4><p>在执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pod lib lint</div></pre></td></tr></table></figure></p>
-<p>的时候,如果在你的文件中引入了一些三方库, 并且在<code>.podspec</code>文件中也添加了对用的<code>.dependency</code> 依然出现</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- ERROR | xcodebuild: /Users/xinhuikeji/Library/Developer/Xcode/DerivedData/App-cpgccqdjhyrbqwcpjanyefntolkf/Build/Products/Release-iphonesimulator/wLib/wLib.framework/Headers/BaseModel.h:13:9: error: include of non-modular header inside framework module &apos;wLib.BaseModel&apos; [-Werror,-Wnon-modular-include-in-framework-module]</div></pre></td></tr></table></figure>
-<p>这样的错误。</p>
-<p>在命令后面添加参数 <code>--use-libraries</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ pod lib lint xxx.podspec --use-libraries</div><div class="line">$ pod repo push XXX XXX.podspec --use-libraries</div></pre></td></tr></table></figure>
-<p>在<a href="https://segmentfault.com/q/1010000006885674">segmentfault</a>中看到的答案。</p>
-<h4 id="pod-search-找不到"><a href="#pod-search-找不到" class="headerlink" title="pod search 找不到"></a>pod search 找不到</h4><p>最后完成之后在新建的工程中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pod init</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ vim podfile</div></pre></td></tr></table></figure>
-<p>添加</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod &quot;SYBase&quot;, :git =&gt; &apos;git@gitlab.com:CepheusSun/SYBase.git&apos;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod install</div></pre></td></tr></table></figure>
-<p>然后莫名其妙发现引入的 repo 是<code>0.1.0</code>或者什么巴拉巴拉版本的。这个时候更新一下pod</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod update</div></pre></td></tr></table></figure>
-<p>再<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod install</div></pre></td></tr></table></figure></p>
-<h4 id="强迫症"><a href="#强迫症" class="headerlink" title="强迫症"></a>强迫症</h4><p>如果遇到强迫症想要用 1.1.1 这样的三级版本的话。</p>
-<p><code>XXX.podspec</code> 文件中的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">s.source = &#123; :git =&gt; &apos;git@gitlab.com:XXX/XXX.git&apos;, :tag =&gt; s.version &#125;</div></pre></td></tr></table></figure></p>
-<p>必须用 s.version</p>
-<p>我也不知道为什么。</p>
-<h3 id="结束篇"><a href="#结束篇" class="headerlink" title="结束篇"></a>结束篇</h3><p>好久没写文章了。终于还是继续写了下去。这段时间自己学了学Swift 学了学 函数响应式编程, 七牛云直播的认证也下来的。接下来可能要研究一下推流相关的东西。2017 的前半段老实说学到了很多的东西。一直很感恩也很珍惜这样的情况。</p>
-<p><strong>参考文档</strong></p>
-<p><a href="http://www.th7.cn/program/ios/201702/1119967.shtml">组件化开发之CocoaPods私有库制作</a><br><a href="http://mt.sohu.com/20160824/n465823814.shtml">使用cocoapods管理私有库</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;每个稍微有点开发经验的 iOS 工程师都很容易的发现一下几点: &lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;几乎每个 iOS 的项目都适用了 &lt;code&gt;Cocoapods&lt;/code&gt; &lt;/li&gt;
-&lt;li&gt;几乎每个 ObjC 的 iOS 项目是使用 &lt;code&gt;AFNetworking&lt;/code&gt; 、 &lt;code&gt;SDWebImage&lt;/code&gt;等三方框架。&lt;/li&gt;
-&lt;li&gt;几乎每个 Swift 的 iOS 项目都是用了 &lt;code&gt;Alamofire&lt;/code&gt;、 &lt;code&gt;Kingfisher&lt;/code&gt;等三方框架&lt;/li&gt;
-&lt;li&gt;每一次这些框架更新之后, 无数个工程师只需要在终端执行一下’pod update’ 或 &lt;code&gt;pod install&lt;/code&gt;就能对应的更新自己项目中的代码&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;这几乎都是每个 iOS 工程师经常都会遇到的事情。目前几乎所有优秀的 iOS 开源框架都支持了 CocoaPods。 几乎所有的 iOS 项目都集成了 CocoaPods&lt;/p&gt;
-&lt;p&gt;但是我们在日常的开发中也常会遇到这样的问题:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;很多公司都有好 App 同时在进行开发。&lt;/li&gt;
-&lt;li&gt;这些 App 或多或少在业务或者 UI 都很很多的重合。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;着就意味着有很多的代码在这些 App 中都是可以复用的。由于各种各样的原因,同个公司的不同 App 可能更新不同步。 app A 可能已经升级到新版本 app B 可能还在老版本。每个 App 分别管理势必会出现混乱的局面。一起管理又存在新旧交替的问题。如果每个 App 又不同的工程师负责, 即使可能有交叉 review 的机制, 但也很难保证公司代码的统一。很多逻辑都存在多段代码。&lt;/p&gt;
-&lt;p&gt;如何管理公司的公共代码库就成了一个比较麻烦的问题。&lt;/p&gt;
-&lt;p&gt;集成 IJKMediaPlayer 的时候,想到了使用git来区别版本,然后使用 framework 来管理共有代码。然而在出现了你的代码需要使用到其他的 Framework 的时候, 或者好几个 Framework 都需要使用同一个第三方框架的时候, 这么做确实也是件恼火的事情。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="CocoaPods" scheme="http://www.CepheusSun.com/categories/CocoaPods/"/>
-    
-    
-      <category term="CocoaPods" scheme="http://www.CepheusSun.com/tags/CocoaPods/"/>
-    
-      <category term="iOS" scheme="http://www.CepheusSun.com/tags/iOS/"/>
     
   </entry>
   
