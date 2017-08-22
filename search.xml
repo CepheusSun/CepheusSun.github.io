@@ -2744,12 +2744,14 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
 <p>于是我在<code>ViewController+Category</code>中声明了一个属性</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@property (nonatomic ,copy) NSString *vcName;</div></pre></td></tr></table></figure>
 <p>我们知道在类目的接口中是可以声明属性的。但是在他的实现部分是不允许包含<code>@synthesize</code>的。 下面安利一下两个关键字<code>@synthesize</code>、<code>@dynamic</code></p>
-<pre><code>`@synthesize`的语义是如果我们没有手动的实现`property`的`setter`和`getter`方法，编译器会自动的添加上这两个方法。
-
-`@dynamic`告诉编译器,属性的`setter`与`getter`方法由用户自己实现，不自动生成。
-
-在平常我们都习惯了不写这两个关键词，这个时候其实默认是`@synthesize var = _var`
-</code></pre><p>回到刚才的地方,如果我手动加上<code>@synthesize vcName = _vcName;</code>是无法通过编译的。</p>
+<ul>
+<li><p><code>@synthesize</code>的语义是如果我们没有手动的实现<code>property</code>的<code>setter</code>和<code>getter</code>方法，编译器会自动的添加上这两个方法。</p>
+</li>
+<li><p><code>@dynamic</code>告诉编译器,属性的<code>setter</code>与<code>getter</code>方法由用户自己实现，不自动生成。</p>
+<p>在平常我们都习惯了不写这两个关键词，这个时候其实默认是<code>@synthesize var = _var</code></p>
+</li>
+</ul>
+<p>回到刚才的地方,如果我手动加上<code>@synthesize vcName = _vcName;</code>是无法通过编译的。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@synthesize not allowed in a category&apos;s implementation//这是编译器报的错误消息</div></pre></td></tr></table></figure>
 <p>如果我不写的话编译器会有警告让你加上<code>@dynamic</code>语句。这个当然也是不行的。因为这个时候我自己写setter和getter.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">- (NSString *)vcName&#123;</div><div class="line">    return _vcName;</div><div class="line">&#125;</div><div class="line">- (void)setVcName:(NSString *)vcName &#123;</div><div class="line">    _vcName = vcName;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -2789,9 +2791,7 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>扯了这么多有的没得，还是talk is cheap， show me the code 比较好一点。</p>
 <p><em>第一步</em>  导入头文件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#import &lt;objc/runtime.h&gt;</div></pre></td></tr></table></figure>
-<p><em>第二步</em>  定义用作键值的静态变量。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">static char *vcNameKey;</div></pre></td></tr></table></figure>
-<p>或者</p>
+<p><em>第二步</em>  定义用作键值的静态变量。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">```</div><div class="line">// static char *vcNameKey;  </div><div class="line"></div><div class="line">/*</div><div class="line">IMPORTANT!!!</div><div class="line">这样写可能会有bug， 笔者已经踩坑。直接下面那样写！！！</div><div class="line">*/</div><div class="line">```</div><div class="line"></div><div class="line">~~或者</div></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">static const char *vcNameKey = &quot;vcNameKey&quot;;</div></pre></td></tr></table></figure>
 <p><em>第三步</em> 定义存取方法</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">- (NSString *)vcName&#123;</div><div class="line">    return objc_getAssociatedObject(self, vcNameKey);</div><div class="line">&#125;</div><div class="line">- (void)setVcName:(NSString *)vcName &#123;</div><div class="line">    objc_setAssociatedObject(self, vcNameKey, vcName, OBJC_ASSOCIATION_COPY_NONATOMIC);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
