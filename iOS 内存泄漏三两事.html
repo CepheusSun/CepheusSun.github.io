@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="How Are You!" />
+  <meta name="keywords" content="iOS,Objective-C,性能优化," />
 
 
 
@@ -92,15 +92,19 @@
 
 
 
-<meta name="description" content="iOS Dev. Stay hungry, Stay foolish.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="CepheusSun">
-<meta property="og:url" content="http://www.CepheusSun.com/tags/UI/index.html">
+<meta name="description" content="相信大家都有过重写 dealloc 方法来检查某个 view controller 在消失后是否被释放的经历。这几乎是 iOS 中寻找由于引用循环造成内存泄漏最有效的方法了。基本上每次发布，都会做很多次这种事情。不得不说这件事情很无聊，并且很可能会出错。如果我们在日常的开发中, 提前的学习相关的知识, 那该多好？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS 内存泄漏三两事">
+<meta property="og:url" content="http://www.CepheusSun.com/iOS 内存泄漏三两事.html">
 <meta property="og:site_name" content="CepheusSun">
-<meta property="og:description" content="iOS Dev. Stay hungry, Stay foolish.">
+<meta property="og:description" content="相信大家都有过重写 dealloc 方法来检查某个 view controller 在消失后是否被释放的经历。这几乎是 iOS 中寻找由于引用循环造成内存泄漏最有效的方法了。基本上每次发布，都会做很多次这种事情。不得不说这件事情很无聊，并且很可能会出错。如果我们在日常的开发中, 提前的学习相关的知识, 那该多好？">
+<meta property="og:image" content="http://holko.pl/public/images/deallocation_checker@2x.png">
+<meta property="og:image" content="https://pbs.twimg.com/media/DH_nWyhXUAIqByQ.png">
+<meta property="og:updated_time" content="2017-08-27T15:40:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CepheusSun">
-<meta name="twitter:description" content="iOS Dev. Stay hungry, Stay foolish.">
+<meta name="twitter:title" content="iOS 内存泄漏三两事">
+<meta name="twitter:description" content="相信大家都有过重写 dealloc 方法来检查某个 view controller 在消失后是否被释放的经历。这几乎是 iOS 中寻找由于引用循环造成内存泄漏最有效的方法了。基本上每次发布，都会做很多次这种事情。不得不说这件事情很无聊，并且很可能会出错。如果我们在日常的开发中, 提前的学习相关的知识, 那该多好？">
+<meta name="twitter:image" content="http://holko.pl/public/images/deallocation_checker@2x.png">
 
 
 
@@ -128,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="http://www.CepheusSun.com/tags/UI/"/>
+  <link rel="canonical" href="http://www.CepheusSun.com/iOS 内存泄漏三两事.html"/>
 
 
 
 
 
-  <title>标签: UI | CepheusSun</title>
+  <title>iOS 内存泄漏三两事 | CepheusSun</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -159,7 +163,7 @@
     
   
 
-  <div class="container sidebar-position-left  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -277,44 +281,272 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2>UI<small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.CepheusSun.com/iOS 内存泄漏三两事.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CepheusSun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ocg4av0wv.bkt.clouddn.com/2017-07-18--3b9f0d5785eefeb7.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CepheusSun">
+    </span>
 
     
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">iOS 内存泄漏三两事</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-08-27T23:40:12+08:00">
+                2017-08-27
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a class="cloud-tie-join-count" href="/iOS 内存泄漏三两事.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/iOS 内存泄漏三两事.html" class="leancloud_visitors" data-flag-title="iOS 内存泄漏三两事">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  951
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <p>相信大家都有过重写 <code>dealloc</code> 方法来检查某个 view controller 在消失后是否被释放的经历。这几乎是 iOS 中寻找由于引用循环造成内存泄漏最有效的方法了。基本上每次发布，都会做很多次这种事情。不得不说这件事情很无聊，并且很可能会出错。<strong>如果我们在日常的开发中, 提前的学习相关的知识, 那该多好？</strong></p>
+<a id="more"></a>
+<p>下面是两个很少见的 <code>UIViewController</code>的属性:</p>
+<ul>
+<li><code>isBeingDismissed</code> 当一个模态推送出来的 view controller 正在消失的时候, 为: true.</li>
+<li><code>isMovingFromParentViewController</code> ,当一个 view controller 正在从它的父 view contrlller 中移除的时候(包括从系统的容器试图比如说 UINavigationController), 为true.</li>
+</ul>
+<p>如果这两个属性有一个是 <code>true</code> 的话, 这个 view controller 就会自动的被释放掉。我们不知道一个 view contrller 完成内部状态的改变，并且被 ARC 释放掉需要耗费多长的时间。为了简单起见，我们假设它不会超过两秒。</p>
+<p>1.现在看看下面的代码(文末会有OC版):</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UIViewController</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">func</span> <span class="title">dch_checkDeallocation</span><span class="params">(afterDelay delay: TimeInterval = <span class="number">2.0</span>)</span></span> &#123;</div><div class="line">        <span class="keyword">let</span> rootParentViewController = dch_rootParentViewController</div><div class="line"></div><div class="line">        <span class="comment">// We don’t check `isBeingDismissed` simply on this view controller because it’s common</span></div><div class="line">        <span class="comment">// to wrap a view controller in another view controller (e.g. in UINavigationController)</span></div><div class="line">        <span class="comment">// and present the wrapping view controller instead.</span></div><div class="line">        <span class="keyword">if</span> isMovingFromParentViewController || rootParentViewController.isBeingDismissed &#123;</div><div class="line">            <span class="keyword">let</span> type = type(of: <span class="keyword">self</span>)</div><div class="line">            <span class="keyword">let</span> disappearanceSource: <span class="type">String</span> = isMovingFromParentViewController ? <span class="string">"removed from its parent"</span> : <span class="string">"dismissed"</span></div><div class="line"></div><div class="line">            <span class="type">DispatchQueue</span>.main.asyncAfter(deadline: .now() + delay, execute: &#123; [<span class="keyword">weak</span> <span class="keyword">self</span>] <span class="keyword">in</span></div><div class="line">                <span class="built_in">assert</span>(<span class="keyword">self</span> == <span class="literal">nil</span>, <span class="string">"<span class="subst">\(type)</span> not deallocated after being <span class="subst">\(disappearanceSource)</span>"</span>)</div><div class="line">            &#125;)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">var</span> dch_rootParentViewController: <span class="type">UIViewController</span> &#123;</div><div class="line">        <span class="keyword">var</span> root = <span class="keyword">self</span></div><div class="line"></div><div class="line">        <span class="keyword">while</span> <span class="keyword">let</span> parent = root.parent &#123;</div><div class="line">            root = parent</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> root</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p> 在延时操作这个闭包中，我们首先通过 <code>[weak self]</code> 来避免这个闭包强引用self。然后通过断言让程序在 <code>self</code> 不为空的时候抛出异常。<strong>只有存在循环引用的情况下这个 view controller 才不为空。</strong></p>
+<p>现在我们需要做的就是在 <code>viewDidDisappear</code> 中调用这个方法。只要是你需要检查它在消失后是不是被释放掉的 view controller 都需要添加这个方法。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidDisappear</span><span class="params">(<span class="number">_</span> animated: Bool)</span></span> &#123;</div><div class="line">    <span class="keyword">super</span>.viewDidDisappear(animated)</div><div class="line"></div><div class="line">    dch_checkDeallocation()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果发声了内存泄漏，我们就会得到下面的断言:</p>
+<p><img src="http://holko.pl/public/images/deallocation_checker@2x.png" alt=""></p>
+<p>这个时候，我们只需要打开 Xcode 的 <a href="https://developer.apple.com/library/content/documentation/DeveloperTools/Conceptual/debugging_with_xcode/chapters/special_debugging_workflows.html#//apple_ref/doc/uid/TP40015022-CH9-DontLinkElementID_1">Memory Graph Debugger</a> 找到并且解决这些循环引用。</p>
+<ol>
+<li>另外在 twitter 上也看到了类似的解决方案。</li>
+</ol>
+<p><img src="https://pbs.twimg.com/media/DH_nWyhXUAIqByQ.png" alt=""></p>
+<p>3.使用国人写的 MLeaksFinder 在每次发生内存泄漏的时候都会弹窗。并且没有代码侵入性，只需要使用 CocosPod 导入就可以了。</p>
+<p>4.在使用图片资源的时候，少使用  <code>imageNamed:</code> 方法去获取使用频次不高的图片资源。因为使用 <code>imageNamed:</code>加载的图片资源会一直存在内存里面， 对内存的浪费也是巨大的。</p>
+<p>5.上面的方法写了一个 OC 版本的： </p>
+<p>.h:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">#import &lt;UIKit/UIKit.h&gt;</div><div class="line"></div><div class="line">@interface UIViewController (FindLeaks)</div><div class="line"></div><div class="line"></div><div class="line">// 默认为 NO</div><div class="line">@property (nonatomic) BOOL noCheckLeaks;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>.m:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div></pre></td><td class="code"><pre><div class="line">//</div><div class="line">//  UIViewController+FindLeaks.m</div><div class="line">//  Leaks</div><div class="line">//</div><div class="line">//  Created by sunny on 2017/8/27.</div><div class="line">//  Copyright © 2017年 CepheusSun. All rights reserved.</div><div class="line">//</div><div class="line"></div><div class="line">#import &quot;UIViewController+FindLeaks.h&quot;</div><div class="line">#import &lt;objc/runtime.h&gt;</div><div class="line"></div><div class="line">static const char *noCheckLeaksKey = &quot;noChechLeaksKey&quot;;</div><div class="line"></div><div class="line">@interface NSObject (MethodSwizzling)</div><div class="line"></div><div class="line">+ (void)sy_swizzleInstanceSelector:(SEL)origSelector</div><div class="line">                   swizzleSelector:(SEL)swizzleSelector;</div><div class="line"></div><div class="line">@end</div><div class="line"></div><div class="line">@implementation UIViewController (FindLeaks)</div><div class="line"></div><div class="line">#pragma mark - Binding Property</div><div class="line">- (BOOL)noCheckLeaks &#123;</div><div class="line">    return [objc_getAssociatedObject(self, noCheckLeaksKey) boolValue];</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)setNoCheckLeaks:(BOOL)noCheckLeaks &#123;</div><div class="line">    objc_setAssociatedObject(self, noCheckLeaksKey, [NSNumber numberWithBool:noCheckLeaks], OBJC_ASSOCIATION_RETAIN_NONATOMIC);</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">#pragma mark - Check</div><div class="line">+ (void)load &#123;</div><div class="line">    </div><div class="line">#if DEBUG</div><div class="line">    [self sy_swizzleInstanceSelector:@selector(viewDidDisappear:) swizzleSelector:@selector(fl_viewDidDisappear:)];</div><div class="line">#endif</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)fl_viewDidDisappear:(BOOL)animated &#123;</div><div class="line">    [self fl_viewDidDisappear:animated];</div><div class="line">    if (!self.noCheckLeaks) &#123;</div><div class="line">        [self fl_checkDeallocationAfterDelay:2];</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)fl_checkDeallocationAfterDelay:(NSTimeInterval)delay &#123;</div><div class="line">    UIViewController *root = [self fl_rootParentViewController];</div><div class="line">    if (self.isMovingFromParentViewController || root.isBeingDismissed) &#123;</div><div class="line">        NSString *type = NSStringFromClass([self class]);</div><div class="line">        NSString *disappearanceSource = self.isMovingFromParentViewController ? @&quot;removed from its parent&quot; : @&quot;dismissed&quot;;</div><div class="line">        __weak typeof(self) weakSelf = self;</div><div class="line">        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^&#123;</div><div class="line">            NSString *assert = [NSString stringWithFormat:@&quot;%@ not deallocated after being %@&quot;,</div><div class="line">             type, disappearanceSource];</div><div class="line">            NSAssert(weakSelf == nil,assert);</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (UIViewController *)fl_rootParentViewController &#123;</div><div class="line">    UIViewController *root = self;</div><div class="line">    while (root.parentViewController) &#123;</div><div class="line">        root = root.parentViewController;</div><div class="line">    &#125;</div><div class="line">    return root;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@end</div><div class="line"></div><div class="line">@implementation NSObject (MethodSwizzling)</div><div class="line"></div><div class="line">+ (void)sy_swizzleInstanceSelector:(SEL)origSelector</div><div class="line">                   swizzleSelector:(SEL)swizzleSelector &#123;</div><div class="line">    </div><div class="line">    Method origMethod = class_getInstanceMethod(self, origSelector);</div><div class="line">    Method swizzleMethod = class_getInstanceMethod(self, swizzleSelector);</div><div class="line">    </div><div class="line">    BOOL isAdd = class_addMethod(self, origSelector, method_getImplementation(swizzleMethod), method_getTypeEncoding(swizzleMethod));</div><div class="line">    </div><div class="line">    if (!isAdd) &#123;</div><div class="line">        method_exchangeImplementations(origMethod, swizzleMethod);</div><div class="line">    &#125;else &#123;</div><div class="line">        class_replaceMethod(self, swizzleSelector, method_getImplementation(origMethod), method_getTypeEncoding(origMethod));</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>只需要在不需要检查的方法中设置属性为 YES 就好了。</p>
 
-      <h3 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/怎样在iOS中使用icon-font？.html" itemprop="url">
-              
-                <span itemprop="name">怎样在iOS中使用icon-font？</span>
-              
-            </a>
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="http://ocg4av0wv.bkt.clouddn.com/2017-07-22-qrcode_for_gh_ef8fdb22f3c3_430.jpg" alt="CepheusSun wechat" style="width: 200px; max-width: 100%;"/>
+    <div>订阅我的公众号，每次更新我都会告诉你！</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
         
-      </h3>
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://ocg4av0wv.bkt.clouddn.com/wechat.png" alt="CepheusSun WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://ocg4av0wv.bkt.clouddn.com/alipay.png" alt="CepheusSun Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-11-23T00:00:00+08:00"
-              content="2016-11-23" >
-          11-23
-        </time>
-      </div>
 
-    </header>
+      
+    </div>
+
+    <div>
+      
+        
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      CepheusSun
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://www.CepheusSun.com/iOS 内存泄漏三两事.html" title="iOS 内存泄漏三两事">http://www.CepheusSun.com/iOS 内存泄漏三两事.html</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
+          
+            <a href="/tags/Objective-C/" rel="tag"># Objective-C</a>
+          
+            <a href="/tags/性能优化/" rel="tag"># 性能优化</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/一个人的敏捷开发.html" rel="next" title="一个人的敏捷开发">
+                <i class="fa fa-chevron-left"></i> 一个人的敏捷开发
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
     
+    <div class="post-spread">
+      
+    </div>
   </div>
-
-  
 
 
           </div>
@@ -322,6 +554,12 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+  </div>
+
 
         </div>
         
@@ -600,6 +838,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
 
   
 
