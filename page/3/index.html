@@ -289,6 +289,173 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.CepheusSun.com/RxSwift and the awesome things you can do with Reactive Programming — Part I.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CepheusSun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ocg4av0wv.bkt.clouddn.com/2017-07-18--3b9f0d5785eefeb7.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CepheusSun">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/RxSwift and the awesome things you can do with Reactive Programming — Part I.html" itemprop="url">RxSwift and the awesome things you can do with Reactive Programming — Part I</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-05-23T15:32:17+08:00">
+                2017-05-23
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/RxSwift and the awesome things you can do with Reactive Programming — Part I.html" class="leancloud_visitors" data-flag-title="RxSwift and the awesome things you can do with Reactive Programming — Part I">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  1,589
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>本文翻译自国外的美女工程师 <a href="https://medium.com/@kenzai">Kenza Iraki</a> 的文章 <a href="https://medium.com/@kenzai/rxswift-and-the-awesome-things-you-can-do-with-reactive-programming-part-i-3921137d251">RxSwift and the awesome things you can do with Reactive Programming — Part I</a></p>
+<p>第一次听见响应式编程，我的表情是这样的</p>
+<center><br><img src="https://cdn-images-1.medium.com/max/1600/1*28RdzpfQBHklPcgLGsg0jw.png"><br></center>
+
+<p>接下来的几次几次接触, 也并没有什么改变。整整两个星期之后,即使我在项目中写了一些响应式代码。我依然是这种感觉。</p>
+<p>现在我才知道有很多的人在第一次遇见响应式编程的时候跟我有一样的感觉。我也知道很多人看过响应式的代码之后再也不想再见到它了，因为她的学习曲线太过陡峭了。但是我能告诉你一个事实, 我还没听说过一个人， 在最终理解了他是怎么回事之后,后悔学习响应式编程。</p>
+<p>我知道网上有很多关于响应式编程理论和思想还有 RxSwift 的的资源, 也有很多教你用Rx来做各种事情的教程(文末我会给出一些链接)。这篇文章不是是一个教程, 也不会解释 <code>stream</code> 和 <code>observables</code> 是怎么回事。 我要做的是提供一个直接、明确并且尽量少的理论总结来告诉你 RxSwift 能做什么, 并且告诉你为什么你会喜欢上它。由于 Rx 的世界深似海, 所以我打算写三篇文章来讨论这件事情, 这是第一篇。</p>
+<h2 id="Part1-Data-Binding-control-events-and-gesture-recognizers"><a href="#Part1-Data-Binding-control-events-and-gesture-recognizers" class="headerlink" title="Part1: Data Binding, control events and gesture recognizers"></a>Part1: Data Binding, control events and gesture recognizers</h2><h3 id="Data-Binding"><a href="#Data-Binding" class="headerlink" title="Data Binding"></a>Data Binding</h3><p>数据绑定看起来像是一个高端的词语, 但是它却是一件非常简单的事情。假如你有一个 App 需要用户在 <code>UITextField</code> 中输入它们的名字。当他们在打字的时候, 用 “你好 + 用户输入的文字” 展示在界面上。这样一个很基本的场景。如果在不是响应式的程序中, 我们需要遵守 <code>UITextFieldDelegate</code> 这个协议, 然后在 <code>ViewController</code> 中实现 <code>textFieldDidEndEditing</code> 这个方法, 来监听用户用户的行为，然后给 <code>Label</code> 赋值。</p>
+<p>虽然很简单，但是假如有很多的 <code>UITextField</code> 我们还要在代理方法中判断, 又或者, 我们需要用户在输入的过程中时时的刷新 <code>Label</code>。这种场景, 我们的代码，看起来就会很糟糕。至少不会很优雅吧。</p>
+<p>在响应式中, 这种情况就可以用数据绑定来实现。说白了,就是将用户在 <code>UITextField</code> 中输入的文字绑定到 <code>UILabel</code> 上。在 <code>RxSwift</code> 的世界里,  没有什么比处理数据绑定更简单的了。刚才描述的需求, 我们只需要通过以下代码就可以实现了。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/RxSwift and the awesome things you can do with Reactive Programming — Part I.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://www.CepheusSun.com/RAC 最基本的东西-- RACSignal.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1776,164 +1943,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.CepheusSun.com/python 中的逻辑运算符.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CepheusSun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ocg4av0wv.bkt.clouddn.com/2017-07-18--3b9f0d5785eefeb7.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CepheusSun">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/python 中的逻辑运算符.html" itemprop="url">python 中的逻辑运算符</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2017-01-30T00:05:59+08:00">
-                2017-01-30
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/python 中的逻辑运算符.html" class="leancloud_visitors" data-flag-title="python 中的逻辑运算符">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  478
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>从现在开始，开始了对 pyhton 这门语言的学习。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/python 中的逻辑运算符.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1983,7 +1992,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">53</span>
+                <span class="site-state-item-count">54</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1994,7 +2003,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -2005,7 +2014,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

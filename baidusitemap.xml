@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://www.CepheusSun.com/%E5%8D%8A%E5%B9%B4%E7%9A%84%E8%BF%9C%E7%A8%8B%E5%8A%9E%E5%85%AC%E6%88%91%E5%AD%A6%E5%88%B0%E4%BA%86%E4%BB%80%E4%B9%88.html</loc>
+    <lastmod>2017-08-30T10:04:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>半年的远程办公我学到了什么</title>
+        <pubTime>2017-08-29T16:00:00.000Z</pubTime>
+        
+        <tag>翻译</tag>
+         
+        <tag>工作方式</tag>
+         
+         
+           
+             
+              <breadCrumb title="工作方式" url="http://www.CepheusSun.com/categories/%E5%B7%A5%E4%BD%9C%E6%96%B9%E5%BC%8F/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.CepheusSun.com/Swift4.Codable.html</loc>
     <lastmod>2017-08-29T07:46:54.000Z</lastmod>
     <data>
@@ -613,9 +635,9 @@
         <title>使用Gitlab和Cocoapods创建私有pod</title>
         <pubTime>2017-04-19T14:39:27.000Z</pubTime>
         
-        <tag>CocoaPods</tag>
-         
         <tag>iOS</tag>
+         
+        <tag>CocoaPods</tag>
          
          
            
@@ -721,9 +743,9 @@
         <title>使用 Cocoapods 管理你的项目</title>
         <pubTime>2016-12-01T16:00:00.000Z</pubTime>
         
-        <tag>CocoaPods</tag>
-         
         <tag>iOS</tag>
+         
+        <tag>CocoaPods</tag>
          
          
            
@@ -1125,11 +1147,11 @@
         <title>html学习笔记--1</title>
         <pubTime>2016-08-27T15:03:45.000Z</pubTime>
         
-        <tag>html</tag>
-         
         <tag>前端</tag>
          
         <tag>学习笔记</tag>
+         
+        <tag>html</tag>
          
          
            
@@ -1169,11 +1191,11 @@
         <title>CSS学习笔记 -- 1</title>
         <pubTime>2016-08-29T01:56:45.000Z</pubTime>
         
+        <tag>CSS</tag>
+         
         <tag>前端</tag>
          
         <tag>学习笔记</tag>
-         
-        <tag>CSS</tag>
          
          
            
