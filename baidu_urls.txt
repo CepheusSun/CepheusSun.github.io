@@ -12,6 +12,7 @@ http://www.CepheusSun.com/Picking the right way of failing in Swift.html
 http://www.CepheusSun.com/Using lazy properties in Swift.html
 http://www.CepheusSun.com/Protocol Oriented Programming View in Swift 3.html
 http://www.CepheusSun.com/Introduction to Protocol Oriented Programming in Swift.html
+http://www.CepheusSun.com/你好！若尔盖.html
 http://www.CepheusSun.com/RxSwift MVVM API Manual.html
 http://www.CepheusSun.com/RxSwift Safety Manual.html
 http://www.CepheusSun.com/RxSwift For Dummies Part3.html
