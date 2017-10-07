@@ -5,24 +5,18 @@
     
   <url>
     <loc>http://www.CepheusSun.com/%E4%BD%A0%E5%A5%BD%EF%BC%81%E8%8B%A5%E5%B0%94%E7%9B%96.html</loc>
-    <lastmod>2017-10-06T06:02:51.035Z</lastmod>
+    <lastmod>2017-10-07T19:13:39.695Z</lastmod>
     <data>
         <display>
         <title>你好！若尔盖</title>
         <pubTime>2017-10-06T06:02:57.000Z</pubTime>
         
-        <tag>iOS</tag>
-         
-        <tag>Swift</tag>
-         
-        <tag>翻译</tag>
-         
-        <tag>Reactive</tag>
+        <tag>游记</tag>
          
          
            
              
-              <breadCrumb title="Reactive" url="http://www.CepheusSun.com/categories/Reactive/"/>
+              <breadCrumb title="游记" url="http://www.CepheusSun.com/categories/%E6%B8%B8%E8%AE%B0/"/>
           
         </display>
     </data>
@@ -1173,11 +1167,11 @@
         <title>html学习笔记--1</title>
         <pubTime>2016-08-27T15:03:45.000Z</pubTime>
         
+        <tag>html</tag>
+         
         <tag>前端</tag>
          
         <tag>学习笔记</tag>
-         
-        <tag>html</tag>
          
          
            
@@ -1217,11 +1211,11 @@
         <title>CSS学习笔记 -- 1</title>
         <pubTime>2016-08-29T01:56:45.000Z</pubTime>
         
-        <tag>CSS</tag>
-         
         <tag>前端</tag>
          
         <tag>学习笔记</tag>
+         
+        <tag>CSS</tag>
          
          
            
