@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://www.CepheusSun.com/Scrum%E5%AE%9E%E8%B7%B5%E6%AD%A5%E9%AA%A4(%E6%91%98%E8%87%AA%E3%80%8A%E6%95%8F%E6%8D%B7%E9%9D%A9%E5%91%BD).html</loc>
+    <lastmod>2017-10-17T05:05:49.889Z</lastmod>
+    <data>
+        <display>
+        <title>Scrum 实践步骤(摘自:《敏捷革命》)</title>
+        <pubTime>2017-10-16T16:00:00.000Z</pubTime>
+        
+        <tag>读书笔记</tag>
+         
+        <tag>敏捷开发</tag>
+         
+         
+           
+             
+              <breadCrumb title="敏捷开发" url="http://www.CepheusSun.com/categories/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.CepheusSun.com/%E4%BD%A0%E5%A5%BD%EF%BC%81%E8%8B%A5%E5%B0%94%E7%9B%96.html</loc>
     <lastmod>2017-10-07T19:13:39.695Z</lastmod>
     <data>
@@ -1167,11 +1189,11 @@
         <title>html学习笔记--1</title>
         <pubTime>2016-08-27T15:03:45.000Z</pubTime>
         
-        <tag>html</tag>
-         
         <tag>前端</tag>
          
         <tag>学习笔记</tag>
+         
+        <tag>html</tag>
          
          
            
@@ -1211,11 +1233,11 @@
         <title>CSS学习笔记 -- 1</title>
         <pubTime>2016-08-29T01:56:45.000Z</pubTime>
         
+        <tag>CSS</tag>
+         
         <tag>前端</tag>
          
         <tag>学习笔记</tag>
-         
-        <tag>CSS</tag>
          
          
            
