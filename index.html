@@ -289,6 +289,171 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.CepheusSun.com/Swift4中的范型约束.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CepheusSun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ocg4av0wv.bkt.clouddn.com/2017-07-18--3b9f0d5785eefeb7.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CepheusSun">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Swift4中的范型约束.html" itemprop="url">Swift4 中的范型约束</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-10-19T17:58:50+08:00">
+                2017-10-19
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/Swift4中的范型约束.html" class="leancloud_visitors" data-flag-title="Swift4 中的范型约束">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  1,438
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>范型可以说是 Swift 跟 OC 相比最大的优势了。通过给像集合这类东西关联范型, 可以写出更可预测并且更安全的代码。在 Swift4 中类型约束更为强大， 它能够让我们更能够轻而易举的做很多事情。即使是通用代码, 也能充分的利用 Swift 的类型系统。</p>
+<h2 id="例1"><a href="#例1" class="headerlink" title="例1:"></a>例1:</h2><p>首先我们来看看一个简单的例子。比如说给一个数字数字求和。我们可能会些这样的代码:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 在这段代码中, 我们定义了一个方法, 接受一个 Int 数组作为参数, 在方法内部使用高阶函数 reduce 最后返回这个结果。</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">sum</span><span class="params">(<span class="number">_</span> numbers: [Int])</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">    <span class="keyword">return</span> numbers.<span class="built_in">reduce</span>(<span class="number">0</span>, +)</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> array = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</div><div class="line">sum(array) <span class="comment">// 15</span></div></pre></td></tr></table></figure>
+<p>使用范型约束, 我们可以这样来实现这个需求:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 在这段代码中, 我们给 Array 添加了类型约束的 Extension。当数组的 Element 遵守了 Numeric 协议的时候, Array 就拥有 sum 这个方法。</span></div><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">Array</span> <span class="title">where</span> <span class="title">Element</span>: <span class="title">Numeric</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">sum</span><span class="params">()</span></span> -&gt; <span class="type">Element</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="built_in">reduce</span>(<span class="number">0</span>, +)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">array.sum() <span class="comment">// 15</span></div></pre></td></tr></table></figure>
+<p>两者相比, 使用范型约束最大的优势是使用扩展, 能够让这个功能跟调用者更紧密。比较一下:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> sum = sum(array)</div><div class="line"><span class="keyword">let</span> sum = array.sum()</div></pre></td></tr></table></figure>
+<p>在 OC 里面， 可能有些同学会写一个 <code>XXXTool</code> 之类的类, 来封装这种类型的功能。 或者是直接写成 C 的函数。但是不论怎么写,  这样貌似都不是特别的 OOP。或者OC 还可以直接给 NSArray 加一个 category, 然后再实现相似的功能。但是, 这样做不就等于所有的 array 都具有这个功能了吗？</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/Swift4中的范型约束.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://www.CepheusSun.com/Scrum实践步骤(摘自《敏捷革命).html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1714,165 +1879,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.CepheusSun.com/Handing non-optional optionals in Swift.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CepheusSun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ocg4av0wv.bkt.clouddn.com/2017-07-18--3b9f0d5785eefeb7.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CepheusSun">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Handing non-optional optionals in Swift.html" itemprop="url">Handing non-optional optionals in Swift</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2017-06-09T10:22:15+08:00">
-                2017-06-09
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/Handing non-optional optionals in Swift.html" class="leancloud_visitors" data-flag-title="Handing non-optional optionals in Swift">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  1,503
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  6
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><strong>optional</strong>, 可以说是 Swift 中最为重要的特性, 也是它跟 <code>Objective-C</code> 不同的关键特征。在编码的时候强制处理那些可能为空的值, 可以让程序更具有可预测性, 减少错误发生的机会。</p>
-<p>然而在开发中我们经常会遇到一些变量, 明明是 <code>optional</code> 的, 但在逻辑又一定是非空的。比如说 <code>controller</code> 中的 <code>view</code></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Handing non-optional optionals in Swift.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1922,7 +1928,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">56</span>
+                <span class="site-state-item-count">57</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
