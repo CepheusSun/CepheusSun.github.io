@@ -289,6 +289,176 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.CepheusSun.com/SafeArea.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CepheusSun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ocg4av0wv.bkt.clouddn.com/2017-07-18--3b9f0d5785eefeb7.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CepheusSun">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/SafeArea.html" itemprop="url">最近很火的 Safe Area 到底是什么</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-10-24T16:38:49+08:00">
+                2017-10-24
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/SafeArea.html" class="leancloud_visitors" data-flag-title="最近很火的 Safe Area 到底是什么">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  2,812
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  12
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>iOS 7 之后苹果给 <em>UIViewController</em> 引入了 <em>topLayoutGuide</em> 和 <em>bottomLayoutGuide</em> 两个属性来描述不希望被透明的状态栏或者导航栏遮挡的最高位置(status bar, navigation bar, toolbar, tab bar 等)。这个属性的值是一个 length 属性( <em>topLayoutGuide.length</em>)。 这个值可能由当前的 ViewController 或者 NavigationController 或者 TabbarController 决定。</p>
+<ul>
+<li>一个独立的ViewController，不包含于任何其他的ViewController。如果状态栏可见，topLayoutGuide表示状态栏的底部，否则表示这个ViewController的上边缘。</li>
+<li>包含于其他ViewController的ViewController不对这个属性起决定作用，而是由容器ViewController决定这个属性的含义：<ul>
+<li>如果导航栏（Navigation Bar）可见，topLayoutGuide表示导航栏的底部。</li>
+<li>如果状态栏可见，topLayoutGuide表示状态栏的底部。</li>
+<li>如果都不可见，表示ViewController的上边缘。<br>这部分还比较好理解，总之是屏幕上方任何遮挡内容的栏的最底部。</li>
+</ul>
+</li>
+</ul>
+<p>iOS 11 开始弃用了这两个属性， 并且引入了 Safe Area 这个概念。苹果建议: <strong>不要把 Control 放在 Safe Area 之外的地方</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// These objects may be used as layout items in the NSLayoutConstraint API</span></div><div class="line"><span class="meta">@available</span>(iOS, introduced: <span class="number">7.0</span>, deprecated: <span class="number">11.0</span>)</div><div class="line">open <span class="keyword">var</span> topLayoutGuide: <span class="type">UILayoutSupport</span> &#123; <span class="keyword">get</span> &#125;</div><div class="line"></div><div class="line"><span class="meta">@available</span>(iOS, introduced: <span class="number">7.0</span>, deprecated: <span class="number">11.0</span>)</div><div class="line">open <span class="keyword">var</span> bottomLayoutGuide: <span class="type">UILayoutSupport</span> &#123; <span class="keyword">get</span> &#125;</div></pre></td></tr></table></figure>
+<p>今天, 来研究一下 iOS 11 中新引入的这个 API。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/SafeArea.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://www.CepheusSun.com/Swift4中的范型约束.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -3320,165 +3490,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.CepheusSun.com/RxSwift For Dummies Part3.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CepheusSun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ocg4av0wv.bkt.clouddn.com/2017-07-18--3b9f0d5785eefeb7.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CepheusSun">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/RxSwift For Dummies Part3.html" itemprop="url">RxSwift For Dummies 🐣 Part3</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2017-05-19T10:41:50+08:00">
-                2017-05-19
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/RxSwift For Dummies Part3.html" class="leancloud_visitors" data-flag-title="RxSwift For Dummies 🐣 Part3">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  1,623
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  7
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>好了, 接下来是第三个部分。<strong>Subjects</strong></p>
-<p>学了之前内容. 我们可能已经发现了。之前学习的内容都是 <code>Observables</code> 输出事件的部分。我们可以订阅他, 就能知道他输出的事件了。但是我们还不能改变他。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/RxSwift For Dummies Part3.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -3528,7 +3539,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">57</span>
+                <span class="site-state-item-count">58</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -3550,7 +3561,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-count">32</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -3643,7 +3654,7 @@
           </div>
         
 
-        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=110 src="//music.163.com/outchain/player?type=0&id=964908739&auto=1&height=90"></iframe>
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=964908739&auto=1&height=430"></iframe>
 
       </section>
 
