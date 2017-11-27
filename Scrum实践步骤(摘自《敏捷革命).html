@@ -1,0 +1,1375 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/VEN/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/VEN/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="读书笔记,敏捷开发," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="CepheusSun" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="在现在这家公司带了一段时间了，发现了很多因为流程的不完善, 各个流程之间的衔接的不顺畅带来的”浪费”。加上之前有过的敏捷开发的经验, 和看过的一些想过的资料。又在微信读书上看了《敏捷革命》这本书,  才发现敏捷开发原来是一门非常厉害的学问。在看书的过程中就想着自己总结写一个类似于“破.守.离(先学习规则和形式,  掌握之后再进行创新。最后再特别熟悉的状态下，就可以摆脱形式的束缚，随性发挥。因为一切">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Scrum 实践步骤(摘自:《敏捷革命》)">
+<meta property="og:url" content="http://www.CepheusSun.com/Scrum实践步骤(摘自《敏捷革命).html">
+<meta property="og:site_name" content="CepheusSun">
+<meta property="og:description" content="在现在这家公司带了一段时间了，发现了很多因为流程的不完善, 各个流程之间的衔接的不顺畅带来的”浪费”。加上之前有过的敏捷开发的经验, 和看过的一些想过的资料。又在微信读书上看了《敏捷革命》这本书,  才发现敏捷开发原来是一门非常厉害的学问。在看书的过程中就想着自己总结写一个类似于“破.守.离(先学习规则和形式,  掌握之后再进行创新。最后再特别熟悉的状态下，就可以摆脱形式的束缚，随性发挥。因为一切">
+<meta property="og:updated_time" content="2017-10-17T05:05:49.889Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Scrum 实践步骤(摘自:《敏捷革命》)">
+<meta name="twitter:description" content="在现在这家公司带了一段时间了，发现了很多因为流程的不完善, 各个流程之间的衔接的不顺畅带来的”浪费”。加上之前有过的敏捷开发的经验, 和看过的一些想过的资料。又在微信读书上看了《敏捷革命》这本书,  才发现敏捷开发原来是一门非常厉害的学问。在看书的过程中就想着自己总结写一个类似于“破.守.离(先学习规则和形式,  掌握之后再进行创新。最后再特别熟悉的状态下，就可以摆脱形式的束缚，随性发挥。因为一切">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":true},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: "",
+      labels: ""
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.CepheusSun.com/Scrum实践步骤(摘自《敏捷革命).html"/>
+
+
+
+
+
+  <title>Scrum 实践步骤(摘自:《敏捷革命》) | CepheusSun</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CepheusSun</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Code for a better world.</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.CepheusSun.com/Scrum实践步骤(摘自《敏捷革命).html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CepheusSun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ocg4av0wv.bkt.clouddn.com/2017-07-18--3b9f0d5785eefeb7.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CepheusSun">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Scrum 实践步骤(摘自:《敏捷革命》)</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-10-17T13:05:49+08:00">
+                2017-10-17
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/Scrum实践步骤(摘自《敏捷革命).html" class="leancloud_visitors" data-flag-title="Scrum 实践步骤(摘自:《敏捷革命》)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  2,289
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在现在这家公司带了一段时间了，发现了很多因为流程的不完善, 各个流程之间的衔接的不顺畅带来的”浪费”。加上之前有过的敏捷开发的经验, 和看过的一些想过的资料。又在微信读书上看了《敏捷革命》这本书,  才发现敏捷开发原来是一门非常厉害的学问。在看书的过程中就想着自己总结写一个类似于“破.守.离(先学习规则和形式,  掌握之后再进行创新。最后再特别熟悉的状态下，就可以摆脱形式的束缚，随性发挥。因为一切都已烂熟于心。几乎可以在下意识的状态下做出决定。)”的东西。看到最后就看到了这么一段。</p>
+<a id="more"></a>
+<ol>
+<li><p><strong>挑选一位产品负责人。</strong>这个人必须知道自己带领的团队需要做什么、制造什么产品以及取得什么成果，必须全面考虑到风险与回报、什么具有可行性、什么能做以及他们对什么富有热情。</p>
+</li>
+<li><p><strong>挑选一个团队。</strong>真正做事的是谁？这个团队必须能够落实产品负责人的愿景。团队规模宜小不宜大，一般3～9人较为合适。</p>
+</li>
+<li><p><strong>挑选 Scrum 主管。</strong>主管为 Scrum 过程负责，负责培训团队其他成员，确保 Scrum 得到正确运用，帮助团队消除一切障碍。</p>
+</li>
+<li><p><strong>拟定待办事项清单，并确定优先顺序。</strong>这个清单高屋建瓴地列出为了落实产品负责人的愿景而需要完成的所有事项。在产品的整个研发过程中，这个清单一直存在，并有所演变，相当于产品研发的“路线图”。无论在任何时间，想要知道一个团队要做的所有事项(按照优先顺序排列)，待办事项清单都是唯一具有决定性的参考依据。待办事项清单只有一份，意味着产品负责人从头到尾必须不断地对优先顺序加以调整。产品负责人应该与所有利益相关者和团队进行协商，以确保产品待办事项清单既能反映用户的需求，又不会超出团队的能力范围。</p>
+</li>
+<li><p><strong>改进和评估待办事项清单。</strong>让负责实际开发工作的团队对待办事项作出评估，是一个至关重要的环节。团队应该审视每个事项，看看是否切实可行。但要完成这些事项，现有的信息足够吗？该项目是否细分到了可以评估的程度？团队是否具有了每个成员都能接受、用于评定一个事项已完成的标准？一个事项能够带来显著的价值？各个事项在完成后必须产生能够用来展示的成果，如果这个成果能够交付给客户试用会更好。不要用所需小时去评估，一位人们根本不擅长做出这么精确的评估。要用相对难度去评估，比如，难度是小、中或大。更好的方式是采用斐波那契数列的数字(1,2,3,5,8,13,21……)。</p>
+</li>
+<li><p><strong>冲刺规划会。</strong>这是一场 Scrum 会议。团队成员、Scrum 主管以及产品负责人坐到一起，规划冲刺的内容。冲刺周期一般是固定的，不超过一个月，大部分是一至两周。团队要从待办事项的顶端着手(即从最重要的事项着手)，看看一个冲刺阶段中能完成多少。如果团队已经开展过好几个冲刺，那就记录下每个冲刺完成事项的”点数“。这个数字相当于团队的速度。 Scrum 主管与团队成员应努力在每一个冲刺阶段中提高这个数字。团队成员和产品负责人也可以借助“点数”确保每个人都能够了解待办事项对于落实最终愿景的作用。对于冲刺目标，即在这一冲刺阶段完成那些事项，所有人都应形成共识。</p>
+<p>​    Scrum 的基石之一在于，产品负责人告诉开发团队他需要完成产品订单中的那些订单项。开发团队决定在下一次冲刺中他们能够承诺完成多少订单项。在冲刺的过程中，没有人能够变更冲刺内容。团队必须在冲刺阶段自主工作。</p>
+</li>
+<li><p><strong>工作透明化。</strong>在 Scrum 中，最常见的做法是准备一块白板，上面分成三栏：待办事项、在办事项、完成事项。把待办事项写到便签纸上，随着进度的推进，将相应的便签纸转移到其他栏目。</p>
+<p>​    让工作透明化的另一个工具是燃尽图。在这张图中，一个轴代表工作量，另一个轴代表时间。每天，Scrum 主管都会记录待完成的剩余点数，而后画在燃尽图。理想的情况下，该图是一条向下的曲线，随着剩余工作的完成，“燃尽”至零。</p>
+</li>
+<li><p><strong>每日立会。</strong>这是 Scrum 的活力源泉。团队每天在固定时间进行内部沟通，时间一般不超过15分钟，且站立进行，Scrum 主管想团队成员提出下列问题:</p>
+<ol>
+<li><p>你昨天做了什么去帮助团队完成冲刺？</p>
+</li>
+<li><p>今天你打算做什么来帮助团队完成冲刺？</p>
+</li>
+<li><p>什么因素阻碍了团队的前进之路？</p>
+</li>
+</ol>
+</li>
+</ol>
+<p>​        Scrum主管要问的问题就是这么多！整个会议的内容就是这么多！如果会议时间超过15分钟，那就说明开会的方法存在问题。这样做的意义在于让整个团队清楚地知道在这一个冲刺周期内各项任务的进展。所有任务都能按时完成吗？有没有机会帮助其他团队成员克服障碍？团队的任务都不是自上而下分派的，而是自主决定、自主完成的，也不需要向上司做详细的汇报。Scrum 主管负责消除团队面临的障碍。</p>
+<ol>
+<li><p><strong>冲刺评估或冲刺展示。</strong>在冲刺结束前，给产品负责人展示成果，也就是展示哪些事项可以挪到“完成事项”那一栏，并且接受评价。这是一场公开的会议，任何人都可以是参与者，不仅仅包括产品负责人、Scrum 主管及开发团队，还包括利益相关者、管理人员与客户。<br>​        团队应该只展示那些符合“完成定义”的事项，也就是全部完成，不需要在做工作就能交付的成果。这个成果或许不是完成的产品，但至少是一项完整的、可以使用的功能。</p>
+</li>
+<li><p><strong>冲刺回顾。</strong>团队展示之前冲中创造的成果，也就是展示已完成的事项，看看可以为顾客传递哪些价值，并征求反馈意见，大家就会坐下来想想哪些事执行得很顺利，哪些事应该做的更好，以及在下一个冲刺阶段中做出什么改善。那么，如何发现流程中的哪个环节需要改善呢？</p>
+<p>​    要让这个冲刺回顾过程有效，团队需要互相信任。必须记住关键的一点，即大家不要从团队中找一个人当成责备对象，而是要将注意力集中在流程上，认真分析一下几个问题：为什么会发生那件事？为什么我们当时忽略了？怎样才能加快工作进度？作为一个团队，大家要集思广益，共同寻求问题解决之道。这一点是至关重要的。</p>
+<p>​    于此同时，团队必须有勇气把真正的障碍摆到台面上来，这样做是为了解决问题，而不是为了指责某个成员。团队成员必须能够认真探讨问题，并虚心接受他人反馈的意见和建议，以便寻求问题解决之道，而非只想着为自己辩解。</p>
+<p>​    然后就进入了关键环节。团队确定一个最值得改善的地方，将其设定为下一个冲刺阶段的首要任务，当然，改善的结果必须通过“验收测试”。你如何证明自己成功的完成了改善？你需要用具体的、可操作的方式界定什么是“成功”，这样，在下一个冲刺回顾会议中才能很快判断出是否已完成改善。</p>
+</li>
+<li><p><strong>上一个冲刺阶段结束后，立即开始新的冲刺阶段。</strong>利用在之前的冲刺过程中，团队在消除障碍、改善流程方面积累的经验。</p>
+</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="http://ocg4av0wv.bkt.clouddn.com/2017-07-22-qrcode_for_gh_ef8fdb22f3c3_430.jpg" alt="CepheusSun wechat" style="width: 200px; max-width: 100%;"/>
+    <div>订阅我的公众号，每次更新我都不一定会告诉你！</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://ocg4av0wv.bkt.clouddn.com/wechat.png" alt="CepheusSun WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://ocg4av0wv.bkt.clouddn.com/alipay.png" alt="CepheusSun Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      CepheusSun
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://www.CepheusSun.com/Scrum实践步骤(摘自《敏捷革命).html" title="Scrum 实践步骤(摘自:《敏捷革命》)">http://www.CepheusSun.com/Scrum实践步骤(摘自《敏捷革命).html</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/读书笔记/" rel="tag"># 读书笔记</a>
+          
+            <a href="/tags/敏捷开发/" rel="tag"># 敏捷开发</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/你好！若尔盖.html" rel="next" title="你好！若尔盖">
+                <i class="fa fa-chevron-left"></i> 你好！若尔盖
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Swift4中的范型约束.html" rel="prev" title="Swift4 中的范型约束">
+                Swift4 中的范型约束 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+    
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ocg4av0wv.bkt.clouddn.com/2017-07-18--3b9f0d5785eefeb7.jpg"
+               alt="CepheusSun" />
+          <p class="site-author-name" itemprop="name">CepheusSun</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">59</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/CepheusSun" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/208883862/home?wvr=5&lf=reg" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/u/7f9d7158212f" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/CepheusSun_" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://CepheusTeam.github.io/" title="CepheusTeam" target="_blank">CepheusTeam</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://kevincym.github.io/" title="KevinCym" target="_blank">KevinCym</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://maojianxiang.github.io/" title="小毛的博客" target="_blank">小毛的博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://goileo.top/" title="Goileo" target="_blank">Goileo</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=110 src="//music.163.com/outchain/player?type=0&id=964908739&auto=1&height=90"></iframe>
+
+      </section>
+
+      
+
+      
+    </div>
+  </aside>
+
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CepheusSun</span>
+</div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/VEN/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/VEN/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/VEN/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/VEN/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/VEN/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/VEN/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (search_path.endsWith("json")) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("3VegSLQBjr1EXkI6a2GR2aXY-gzGzoHsz", "bUW35k3am6UQE29tQY4kDeP5");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+        addVisit();
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+
+    // 添加统计
+    function addVisit() {
+      var url2 = 'http://chaxun.1616.net/s.php?type=ip&output=json&callback=?&_=' + Math.random();
+      $.getJSON(url2, function(data) {
+        var $visitors = $(".leancloud_visitors");
+        var url = $visitors.attr('id').trim();
+        var title = $visitors.attr('data-flag-title').trim();
+        // 声明一个 Todo 类型
+        var Todo = AV.Object.extend('visit_list');
+        // 新建一个 Todo 对象
+        var todo = new Todo();
+        var $visitors = $(".leancloud_visitors");
+        var url = $visitors.attr('id').trim();
+        var title = $visitors.attr('data-flag-title').trim();
+        console.log(data);
+        todo.set('ip_add', data.Ip);
+        todo.set('ip_loc', data.Isp);
+        todo.set('title', title);
+        todo.set('url', url);
+        todo.set('Browser' , data.Browser);
+        todo.set('os' , data.OS);
+        todo.save().then(function () {
+        }, function(error) {
+        }); 
+      });
+    }
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

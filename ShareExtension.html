@@ -1,0 +1,1608 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/VEN/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/VEN/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS,App Extension," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="CepheusSun" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Share Extension 使用户在使用其他的app 的时候, 更加方便的将其内容分享出去，像是社会化分享还有上传服务器。比如说， 在一个 app 中有个分享按钮， 用户可以选择其中一个 Share Extension 来发表评论或者内容。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面向 Extension 开发 🌞 Share Extension">
+<meta property="og:url" content="http://www.CepheusSun.com/ShareExtension.html">
+<meta property="og:site_name" content="CepheusSun">
+<meta property="og:description" content="Share Extension 使用户在使用其他的app 的时候, 更加方便的将其内容分享出去，像是社会化分享还有上传服务器。比如说， 在一个 app 中有个分享按钮， 用户可以选择其中一个 Share Extension 来发表评论或者内容。">
+<meta property="og:image" content="http://ocg4av0wv.bkt.clouddn.com/2017-07-07-live.gif">
+<meta property="og:image" content="http://ocg4av0wv.bkt.clouddn.com/2017-07-09-5D4D49E7-5087-4D01-B78A-D3BCF979E979.png">
+<meta property="og:image" content="http://ocg4av0wv.bkt.clouddn.com/2017-07-09-133823.jpg">
+<meta property="og:updated_time" content="2017-07-09T13:53:09.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="面向 Extension 开发 🌞 Share Extension">
+<meta name="twitter:description" content="Share Extension 使用户在使用其他的app 的时候, 更加方便的将其内容分享出去，像是社会化分享还有上传服务器。比如说， 在一个 app 中有个分享按钮， 用户可以选择其中一个 Share Extension 来发表评论或者内容。">
+<meta name="twitter:image" content="http://ocg4av0wv.bkt.clouddn.com/2017-07-07-live.gif">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":true},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: "",
+      labels: ""
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.CepheusSun.com/ShareExtension.html"/>
+
+
+
+
+
+  <title>面向 Extension 开发 🌞 Share Extension | CepheusSun</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CepheusSun</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Code for a better world.</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.CepheusSun.com/ShareExtension.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CepheusSun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ocg4av0wv.bkt.clouddn.com/2017-07-18--3b9f0d5785eefeb7.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CepheusSun">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">面向 Extension 开发 🌞 Share Extension</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-07-09T21:53:09+08:00">
+                2017-07-09
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/ShareExtension.html" class="leancloud_visitors" data-flag-title="面向 Extension 开发 🌞 Share Extension">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  3,503
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  14
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Share Extension 使用户在使用其他的app 的时候, 更加方便的将其内容分享出去，像是社会化分享还有上传服务器。比如说， 在一个 app 中有个分享按钮， 用户可以选择其中一个 Share Extension 来发表评论或者内容。</p>
+<a id="more"></a>
+<blockquote>
+<p><strong>写在前面的话</strong></p>
+<p>最好的 Share Extension 能够让用户能够很轻松的分享网页中的内容。如果你需要用一个扩展来让用户使用这些内容做一些其他的操作, 或者为用户提供他们所关心的内容的更新， Share Extension 可能就不是最好的解决方案了。</p>
+</blockquote>
+<h3 id="如何理解-Share-Extension"><a href="#如何理解-Share-Extension" class="headerlink" title="如何理解 Share Extension"></a>如何理解 Share Extension</h3><p> Share Extension 有以下几个特点：</p>
+<ul>
+<li>让用户更容易分享内容。</li>
+<li>如果可以的话，能够让用户预览，编辑，标注，并且自定义内容。</li>
+<li>在用户发送内容的时候，能够确保内容是合法的。</li>
+</ul>
+<p>用户能够通过系统提供的 UI 来获得他能够使用的 Share Extension。在 iOS 中， 用户点击分享按钮，然后从系统弹出来的分享区域中选择一个 Share Extension。</p>
+<p>当用户选择了你的 Share Extension 之后，你需要展示一个包含了内容的视图，然后发表出去。你可以将你的视图机遇系统提供的 vc， 或者自定义一个。系统提供的那个提供了一些很常见的操作，比如说，预览，合法性判断，同步内容，以及视图的动画，还有设置发布。</p>
+<h3 id="创建-Share-Extension"><a href="#创建-Share-Extension" class="headerlink" title="创建 Share Extension"></a>创建 Share Extension</h3><p>创建的过程类似于之前写的 <a href="http://cepheussun.com/TodayExtension.html">面向 Extension 开发 🌞 Today Extension</a></p>
+<p>唯一不同的是 Today Extension 有唯一的一个 宿主 app 而 Share Extension 在使用的时候， 可能有很多的宿主 app 所以在运行的时候，需要选择一个宿主 app。 一般都是选择的 Safari 然后，随便打开一个网页，下面的分享按钮就可用了，点击之后，在分享列表里面就能够看到你的 app 咯。</p>
+<blockquote>
+<p>需要注意的是，这个时候看到的 Share Extension 的名称是你 Share Extension 的名称，这个是可以更app 名称不一样的。只要改 Share Extension 的 info.plist 中的 Bundle display name 为你想要的名称就可以了。</p>
+</blockquote>
+<h3 id="这篇文章要做什么？"><a href="#这篇文章要做什么？" class="headerlink" title="这篇文章要做什么？"></a>这篇文章要做什么？</h3><p>写到这里, 基本上已经完成了准备工作了。可能还有 创建 app groups 之类的工作，这块将在下面的内容中介绍。花了几天时间断断续续的研究 <code>Share Extension</code>，对比了系统中本来就存在的facebook twitter 以及国内的微博什么的。我将在本文中模仿着做一个类似的效果出来。</p>
+<p><img src="http://ocg4av0wv.bkt.clouddn.com/2017-07-07-live.gif" alt=""></p>
+<p>这是最终效果的 gif 图。这只是第一步。好了，我们开始吧。</p>
+<h4 id="基本设置"><a href="#基本设置" class="headerlink" title="基本设置"></a>基本设置</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">       <span class="keyword">super</span>.viewDidLoad()</div><div class="line">       placeholder = <span class="string">"分享到微博"</span>  <span class="comment">// 占位文字</span></div><div class="line">       charactersRemaining = <span class="number">140</span>  <span class="comment">// 左下角的文字 展示数字，可以用来倒数，还能输入几个字, 小于等于0的时候变成红色</span></div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p>如注释所见，这里设置了placeholder 已经右下角的数字。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 过滤分享的内容</span></div><div class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">isContentValid</span><span class="params">()</span></span> -&gt; <span class="type">Bool</span> &#123;</div><div class="line">    charactersRemaining = <span class="number">140</span> - contentText.characters.<span class="built_in">count</span> <span class="keyword">as</span> <span class="type">NSNumber</span></div><div class="line">    <span class="keyword">return</span> contentText.characters.<span class="built_in">count</span> &gt; <span class="number">2</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这段代码用来验证用户输入的内容是否合法。这里我只是简单的设置了内容的长度不能超过140，并且不能小于2.</p>
+<p>系统在<code>SLComposeServiceViewController</code>中提供了<code>open func didSelectPost()</code>、<code>open func didSelectCancel()</code> 两个方法分别是上面两个按钮的事件。</p>
+<blockquote>
+<p>需要注意的是，重写 cancel 的时候，需要调用 super</p>
+</blockquote>
+<p>接下来是设置位置，分组这些内容。这写也是在系统的api 中能找到对应的方法。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">configurationItems</span><span class="params">()</span></span> -&gt; [<span class="type">Any</span>]! &#123;</div><div class="line">       <span class="comment">// 定位</span></div><div class="line">       <span class="keyword">let</span> item1 = <span class="type">SLComposeSheetConfigurationItem</span>()</div><div class="line">       item1?.title = <span class="string">"位置"</span></div><div class="line">       item1?.value = <span class="string">"无"</span></div><div class="line">       item1?.valuePending = <span class="literal">false</span></div><div class="line">       item1?.tapHandler = &#123;</div><div class="line">           item1?.valuePending = <span class="literal">true</span></div><div class="line">           <span class="comment">// 在这里做定位的操作</span></div><div class="line">           <span class="comment">// 模拟花了3s时间</span></div><div class="line">           delay(<span class="number">3</span>, task: &#123;</div><div class="line">               item1?.value = <span class="string">""</span></div><div class="line">               item1?.valuePending = <span class="literal">false</span></div><div class="line">               item1?.value = <span class="string">"四川省 成都市"</span></div><div class="line">           &#125;)</div><div class="line">       &#125;</div><div class="line">       </div><div class="line">       <span class="comment">// 跳转</span></div><div class="line">       <span class="keyword">let</span> item2 = <span class="type">SLComposeSheetConfigurationItem</span>()</div><div class="line">       item2?.title = <span class="string">"可见组"</span></div><div class="line">       item2?.value = <span class="string">""</span></div><div class="line">       </div><div class="line">       item2?.tapHandler = &#123;</div><div class="line">           <span class="keyword">let</span> list = <span class="type">ListController</span>()</div><div class="line">           list.callbackClosure = &#123;</div><div class="line">               item2?.value = $<span class="number">0</span></div><div class="line">           &#125;</div><div class="line">           <span class="keyword">self</span>.pushConfigurationViewController(list)</div><div class="line">       &#125;</div><div class="line">       </div><div class="line">       <span class="comment">// 测试预览</span></div><div class="line">       <span class="comment">/*</div><div class="line">       let item3 = SLComposeSheetConfigurationItem()</div><div class="line">       item3?.title = "预览"</div><div class="line">       item3?.tapHandler = &#123;</div><div class="line">           let pre = self.loadPreviewView()// 这个方法实际上是用来获取右边的图片的</div><div class="line">           pre?.frame = self.view.bounds</div><div class="line">           self.view.addSubview(pre!)</div><div class="line">       &#125;</div><div class="line">       */</span></div><div class="line">       <span class="keyword">return</span> [item1!, item2!]</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p>这个方法返回了一个数组，就是对应的按钮等内容。每个按钮其实也很简单。只有 <code>title</code>，<code>value</code>， <code>tapHandler</code>， <code>valuePending</code> 四个属性。</p>
+<ul>
+<li>title: 左边的文字</li>
+<li>value: 右边的文字</li>
+<li>tapHandler： 处理这个 item 事件的 closure</li>
+<li>valuePending： 左边转菊花的indicator，是一个 bool 类型的属性。</li>
+</ul>
+<p>在上面的代码里，我用 <code>self.pushConfigurationViewController(list)</code> 这行代码push 到了另外的界面，用来让用户选择他们要把消息分享到的具体分组。这个操作是在 Facebook 的 share extension 中看见的。在实际中，我们也可以这样做其他很多的事情。</p>
+<blockquote>
+<p>需要注意的是，推出来的 Controller 需要设置背景为clear，cell 也要设置背景为 clear 这是为了保证界面跟系统统一（模糊效果）。</p>
+</blockquote>
+<p>然后就是要把用户选择的内容分享出去了。</p>
+<h4 id="通过-Share-Extension-分享内容"><a href="#通过-Share-Extension-分享内容" class="headerlink" title="通过 Share Extension 分享内容"></a>通过 Share Extension 分享内容</h4><p>要将内容分享出去，需要解决几个问题。</p>
+<ul>
+<li>用户信息</li>
+<li>获取分享的内容</li>
+</ul>
+<p>因为 App Extension 和主 App 是两个不同的 Target， 这就需要我们在这个获取到主 app 中用户的登录信息。至少需要知道我们要把内容分享到哪个用户的数据流中吧。</p>
+<p>这个其实也是很简单的事情。在 Today 中我们已经知道了 App Groups 这个东西。也知道了如何共享部分代码。</p>
+<p>所以在 Share Extension 中</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">fetchUserInfomation</span><span class="params">()</span></span> -&gt; <span class="type">String</span>? &#123;</div><div class="line">    <span class="keyword">let</span> userdefault = <span class="type">UserDefaults</span>.<span class="keyword">init</span>(suiteName: <span class="string">"group.sunny.com"</span>)</div><div class="line">    <span class="keyword">let</span> info = userdefault?.value(forKey: <span class="string">"userInformation"</span>) <span class="keyword">as</span>? [<span class="type">String</span>: <span class="type">String</span>]</div><div class="line">    <span class="keyword">return</span> info?[<span class="string">"token"</span>]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后在主app 中</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> userdefault = <span class="type">UserDefaults</span>(suiteName: <span class="string">"group.sunny.com"</span>)</div><div class="line">userdefault?.<span class="keyword">set</span>([<span class="string">"token"</span>: <span class="string">"this the user token"</span>], forKey: <span class="string">"userInformation"</span>)</div><div class="line">userdefault?.synchronize()</div></pre></td></tr></table></figure>
+<p>就实现了数据之间的交换。到这儿，可能会想到另外一个问题。如果没有登录的话需要跳转到主 app 中进行登录操作。这里也没有什么问题通过 openurl 就可以。</p>
+<ol>
+<li>设置主app 的url type</li>
+<li>跳转</li>
+</ol>
+<p>所以我在 <code>viewDidload</code> 方法中添加了以下代码</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> fetchUserInfomation() == <span class="literal">nil</span> &#123;</div><div class="line">            </div><div class="line">	<span class="keyword">let</span> alert = <span class="type">UIAlertController</span>(title: <span class="string">"还没有登录"</span>, message: <span class="literal">nil</span>, preferredStyle: .alert)</div><div class="line">	alert.addAction(<span class="type">UIAlertAction</span>(title: <span class="string">"取消"</span>, style: .cancel) &#123;<span class="number">_</span> <span class="keyword">in</span></div><div class="line">		<span class="keyword">self</span>.cancel()</div><div class="line">	&#125;)</div><div class="line">	alert.addAction(<span class="type">UIAlertAction</span>(title: <span class="string">"去登录"</span>, style: .<span class="keyword">default</span>) &#123;<span class="number">_</span> <span class="keyword">in</span></div><div class="line">	<span class="keyword">self</span>.extensionContext?.open(<span class="type">NSURL</span>(string: <span class="string">"sunny://action=login"</span>)! <span class="keyword">as</span> <span class="type">URL</span>, completionHandler: &#123; (success) <span class="keyword">in</span></div><div class="line">		<span class="keyword">self</span>.cancel()</div><div class="line">		<span class="built_in">print</span>(success)</div><div class="line">	&#125;)</div><div class="line">&#125;)</div><div class="line">	present(alert, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>判断登录状态，然后弹窗。取消或者去登录。如果选择去登录的话，就通过 openUrl 去打开主 app。</p>
+<p>很完美吧！<strong>but it doesn’t work!!!</strong>， 我在 stackoverflow 上找到了些资料。</p>
+<ul>
+<li><a href="https://stackoverflow.com/questions/24895093/openurl-doesnt-work-in-share-extension">openURL doesn’t work in Share extension</a></li>
+<li><a href="https://stackoverflow.com/questions/24297273/openurl-not-work-in-action-extension">openURL not work in Action Extension</a></li>
+</ul>
+<blockquote>
+<p>苹果爸爸只允许 Today Extension 通过 extensionContext 的 openUrl 打开主app</p>
+</blockquote>
+<p>但是这个需求总是需要实现的。其实还是有解决方法。</p>
+<h5 id="方法一-在-Extension-中实现登录操作"><a href="#方法一-在-Extension-中实现登录操作" class="headerlink" title="方法一:  在 Extension 中实现登录操作"></a>方法一:  在 Extension 中实现登录操作</h5><p>这个确实没什么好说的。也是弹出一个 alert，然后输入用户名，密码，登录。完成所有操作。或者是其他什么方案，都可以。这个就不再详细描述了。Share Extension 来实现登录行为，然后 主 app 也能够共享等了状态。这仿佛也是解决了这种问题。</p>
+<p>当然，强迫症笔者，还是想通过打开主 app 的方法来解决这个问题。</p>
+<h5 id="方法二-另类的-openUrl"><a href="#方法二-另类的-openUrl" class="headerlink" title="方法二: 另类的 openUrl"></a>方法二: 另类的 openUrl</h5><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// For skip compile error.</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">openURL</span><span class="params">(<span class="number">_</span> url: URL)</span></span> &#123;</div><div class="line">    <span class="keyword">return</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">openContainerApp</span><span class="params">()</span></span> &#123;</div><div class="line">    <span class="keyword">var</span> responder: <span class="type">UIResponder</span>? = <span class="keyword">self</span> <span class="keyword">as</span> <span class="type">UIResponder</span></div><div class="line">    <span class="keyword">let</span> selector = #selector(openURL(<span class="number">_</span>:))</div><div class="line">    <span class="keyword">while</span> responder != <span class="literal">nil</span> &#123;</div><div class="line">        <span class="keyword">if</span> responder!.responds(to: selector) &amp;&amp; responder != <span class="keyword">self</span> &#123;</div><div class="line">            responder!.perform(selector, with: <span class="type">URL</span>(string: <span class="string">"sunny://action=login"</span>)!)</div><div class="line">            <span class="keyword">return</span></div><div class="line">        &#125;</div><div class="line">        responder = responder?.next</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当然，上面的两个链接还有一些其他的方法，就不一一列举了。</p>
+<p>解决了最开始的用户信息的问题。接下来就是要获取分享的内容这个问题了。在ShareExtension 中，相信已经看见了。需要两个东西，第一个是用户关于这个内容的评论，以及这个内容本身（url、照片等）。关于用户对内容的评论这点其实很简单。</p>
+<h5 id="用户评论"><a href="#用户评论" class="headerlink" title="用户评论"></a>用户评论</h5><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Convenience. This returns the current text from the textView.</span></div><div class="line">open <span class="keyword">var</span> contentText: <span class="type">String</span>! &#123; <span class="keyword">get</span> &#125;</div></pre></td></tr></table></figure>
+<p>系统提供的这个 api 就能够解决这个问题。</p>
+<h5 id="附件内容"><a href="#附件内容" class="headerlink" title="附件内容"></a>附件内容</h5><p>暂且叫做附件内容吧！我也不知道应该怎么叫。这个东西，我们还是看看 <code>extensionContext</code> 这个东西吧！</p>
+<p><code>NSExtensionContext</code> 这个类一共暴露了四个api出来。我们看第一个</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// The list of input NSExtensionItems associated with the context. If the context has no input items, this array will be empty.</span></div><div class="line">open <span class="keyword">var</span> inputItems: [<span class="type">Any</span>] &#123; <span class="keyword">get</span> &#125;</div></pre></td></tr></table></figure>
+<p>看样子就是这个了。</p>
+<blockquote>
+<p>看注释内容，突然感觉，apple 的api 也有设计的不是很好的地方，既然注释都明确说了 NSExtensionItems 数组应该不是 Any 的吧😂</p>
+</blockquote>
+<p>既然这样, 我们再看看 <code>NSExtensionItem</code> 这个类吧！</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// (optional) title for the item</span></div><div class="line"><span class="meta">@NSCopying</span> open <span class="keyword">var</span> attributedTitle: <span class="type">NSAttributedString</span>?</div><div class="line"><span class="comment">// (optional) content text</span></div><div class="line"><span class="meta">@NSCopying</span> open <span class="keyword">var</span> attributedContentText: <span class="type">NSAttributedString</span>?</div><div class="line"><span class="comment">// (optional) Contains images, videos, URLs, etc. This is not meant to be an array of alternate data formats/types, but instead a collection to include in a social media post for example. These items are always typed NSItemProvider.</span></div><div class="line">open <span class="keyword">var</span> attachments: [<span class="type">Any</span>]?</div><div class="line"><span class="comment">// (optional) dictionary of key-value data. The key/value pairs accepted by the service are expected to be specified in the extension's Info.plist. The values of NSExtensionItem's properties will be reflected into the dictionary.</span></div><div class="line">open <span class="keyword">var</span> userInfo: [<span class="type">AnyHashable</span> : <span class="type">Any</span>]?</div></pre></td></tr></table></figure>
+<p>注释太复杂了，整理成一个表格就是这样的:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Properties</th>
+<th style="text-align:center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">attributedTitle</td>
+<td style="text-align:center">标题 optional</td>
+</tr>
+<tr>
+<td style="text-align:center">attributedContentText</td>
+<td style="text-align:center">内容 optional</td>
+</tr>
+<tr>
+<td style="text-align:center">attachments</td>
+<td style="text-align:center">所有的附件<code>NSItemProvider</code>组成一个数组 optional</td>
+</tr>
+<tr>
+<td style="text-align:center">userInfo</td>
+<td style="text-align:center">一个key－value结构的数据。NSExtensionItem中的属性都会在这个属性中一一映射。注释中讲到的在 info.plist 中要设置的部分会在后面提到</td>
+</tr>
+</tbody>
+</table>
+<p> 下面的表格就是 <code>userInfo</code> 中的 key :</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">名称</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">NSExtensionItemAttributedTitleKey</td>
+<td style="text-align:center">标题 的键名</td>
+</tr>
+<tr>
+<td style="text-align:center">NSExtensionItemAttributedContentTextKey</td>
+<td style="text-align:center">内容 的键名</td>
+</tr>
+<tr>
+<td style="text-align:center">NSExtensionItemAttachmentsKey</td>
+<td style="text-align:center">附件 的键名</td>
+</tr>
+</tbody>
+</table>
+<p>上面又提到了 <code>NSItemProvider</code> 这个东西。这相必须就是我们需要的附件了吧！</p>
+<table>
+<thead>
+<tr>
+<th>Api</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>initWithItem:typeIdentifier：</td>
+<td>初始化方法，item为附件的数据，typeIdentifier是附件对应的类型标识,对应UTI的描述。</td>
+</tr>
+<tr>
+<td>initWithContentsOfURL:</td>
+<td>根据制定的文件路径来初始化。</td>
+</tr>
+<tr>
+<td>registerItemForTypeIdentifier:loadHandler:</td>
+<td>为一种资源类型自定义加载过程。这个方法主要针对自定义资源使用，例如自己定义的类或者文件格式等。当调用loadItemForTypeIdentifier:options:completionHandler:方法时就会触发定义的加载过程。</td>
+</tr>
+<tr>
+<td>hasItemConformingToTypeIdentifier:</td>
+<td>用于判断是否有typeIdentifier(UTI)所指定的资源存在。存在则返回YES，否则返回NO。该方法结合loadItemForTypeIdentifier:options:completionHandler:使用。</td>
+</tr>
+<tr>
+<td>loadItemForTypeIdentifier:options:completionHandler:</td>
+<td>加载typeIdentifier指定的资源。加载是一个异步过程，加载完成后会触发completionHandler。</td>
+</tr>
+<tr>
+<td>loadPreviewImageWithOptions:completionHandler:</td>
+<td>加载资源的预览图片。</td>
+</tr>
+</tbody>
+</table>
+<p>这时候看看整体的结构：(<a href="http://www.jianshu.com/p/863ce6729455">这个图是在看到的</a>)</p>
+<p><img src="http://ocg4av0wv.bkt.clouddn.com/2017-07-09-5D4D49E7-5087-4D01-B78A-D3BCF979E979.png" alt=""></p>
+<p>到这里，应该已经知道了应该怎么做了吧！</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 点击发表的事件</span></div><div class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">didSelectPost</span><span class="params">()</span></span> &#123;</div><div class="line">    </div><div class="line">    <span class="keyword">self</span>.extensionContext?.inputItems.forEach(&#123; (item) <span class="keyword">in</span></div><div class="line">        <span class="built_in">print</span>(<span class="string">"//////////////////////////"</span>)</div><div class="line">        </div><div class="line">        <span class="keyword">let</span> ext = item <span class="keyword">as</span>! <span class="type">NSExtensionItem</span></div><div class="line">        ext.attachments?.forEach(&#123;</div><div class="line">            <span class="keyword">let</span> atta = $<span class="number">0</span> <span class="keyword">as</span>! <span class="type">NSItemProvider</span></div><div class="line">            <span class="built_in">print</span>(atta)</div><div class="line">            <span class="comment">// 分享的是网页</span></div><div class="line">            <span class="keyword">if</span> atta.hasItemConformingToTypeIdentifier(<span class="string">"public.url"</span>) &#123;</div><div class="line">                atta.loadItem(forTypeIdentifier: <span class="string">"public.url"</span>) &#123; (item, error) <span class="keyword">in</span></div><div class="line">                    <span class="built_in">print</span>(<span class="string">"//////////////////////////"</span>)</div><div class="line">                    <span class="built_in">print</span>(item!)</div><div class="line">                &#125;</div><div class="line">                <span class="built_in">print</span>(<span class="string">"//////////////////////////"</span>)</div><div class="line">            &#125;</div><div class="line">            <span class="comment">// 分享的是图片</span></div><div class="line">            <span class="keyword">if</span> atta.hasItemConformingToTypeIdentifier(<span class="string">"public.jpeg"</span>) &#123;</div><div class="line">                atta.loadItem(forTypeIdentifier: <span class="string">"public.jpeg"</span>) &#123; (item, error) <span class="keyword">in</span></div><div class="line">                    <span class="built_in">print</span>(<span class="string">"//////////////////////////"</span>)</div><div class="line">                    <span class="built_in">print</span>(item!)</div><div class="line">                &#125;</div><div class="line">                <span class="built_in">print</span>(<span class="string">"//////////////////////////"</span>)</div><div class="line">            &#125;</div><div class="line">        &#125;)</div><div class="line">        <span class="keyword">self</span>.extensionContext!.completeRequest(returningItems: [], completionHandler: <span class="literal">nil</span>)</div><div class="line">    &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>代码中分别是分享网页和图片两个东西。这一步解决了找到分享的内容的代码。</p>
+<p><strong>具体分享的行为可以有两个办法来解决</strong></p>
+<ul>
+<li>将需要分享的内容功过 apps group 保存，然后在打开主 app 的时候，在主 app 中取出然后发送给sever。</li>
+<li>直接在 Share Extension 中分享。</li>
+</ul>
+<p>这个过程就不再叙述了。</p>
+<h4 id="info-plist"><a href="#info-plist" class="headerlink" title="info.plist"></a>info.plist</h4><p>既然说到了 info.plist 中的设置，就再看看这部分是说的什么吧！都是一些很固定的内容，我随便挑两个说说吧！</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NSExtensionActivationSupportsAttachmentsWithMaxCount</td>
+<td>附件最大个数</td>
+</tr>
+<tr>
+<td>NSExtensionActivationSupportsAttachmentsWithMinCount</td>
+<td>附件最小个数</td>
+</tr>
+<tr>
+<td>NSExtensionActivationSupportsFileWithMaxCount</td>
+<td>附件种类限制</td>
+</tr>
+<tr>
+<td>NSExtensionActivationSupportsMovieWithMaxCount</td>
+<td>视频个数限制</td>
+</tr>
+<tr>
+<td>NSExtensionActivationSupportsImageWithMaxCount</td>
+<td>图片个数限制</td>
+</tr>
+<tr>
+<td>NSExtensionActivationSupportsText</td>
+<td>是否支持文本类型</td>
+</tr>
+<tr>
+<td>NSExtensionActivationSupportsWebURLWithMaxCount</td>
+<td>web 链接最多限制</td>
+</tr>
+<tr>
+<td>NSExtensionActivationSupportsWebPageWithMaxCount</td>
+<td>web 页面最多限制</td>
+</tr>
+</tbody>
+</table>
+<p>如果要设置你的 extension 只支持图片，url 什么的。只需要把个数限制写成 0！</p>
+<p>但是设置的时候需要注意是将NSExtensionActivationRule 改成 Dictionary 类型并添加：</p>
+<ul>
+<li>NSExtensionActivationSupportsAttachmentsWithMaxCount</li>
+<li>NSExtensionActivationSupportsAttachmentsWithMinCount</li>
+<li>NSExtensionActivationSupportsImageWithMaxCount</li>
+<li>NSExtensionActivationSupportsMovieWithMaxCount</li>
+<li>NSExtensionActivationSupportsWebPageWithMaxCount</li>
+<li>NSExtensionActivationSupportsWebURLWithMaxCount</li>
+</ul>
+<p>这就基本上完成了，我们要在 系统或者 外部 app 中将内容分享到我们自己的 app 中。这好像还是有很大的限制。毕竟如果我们的产品不是像微博qq这样的社交app 的话，这个东西就没什么作用了。</p>
+<p><strong>另外注意这个警告</strong></p>
+<p><img src="http://ocg4av0wv.bkt.clouddn.com/2017-07-09-133823.jpg" alt=""></p>
+<h3 id="在自己的app-中调起-Share-Extension"><a href="#在自己的app-中调起-Share-Extension" class="headerlink" title="在自己的app 中调起 Share Extension"></a>在自己的app 中调起 Share Extension</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> activity = <span class="type">UIActivityViewController</span>(activityItems: [<span class="string">"百度"</span>, <span class="type">URL</span>(string: <span class="string">"http://www.baidu.com"</span>)!], applicationActivities: <span class="literal">nil</span>)</div><div class="line"><span class="comment">// 不分享到 airDrop 和 粘贴板</span></div><div class="line">activity.excludedActivityTypes = [.airDrop, .copyToPasteboard]</div><div class="line">present(activity, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</div></pre></td></tr></table></figure>
+<p>当然还有 <code>UIActivityViewControllerCompletionHandler</code> 这个东西，来回调分享的结果。</p>
+<p><strong>另外一种方法</strong>可以直接调起某个系统的分享。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 判断是否支持 微博</span></div><div class="line">     </div><div class="line">     <span class="keyword">if</span> !<span class="type">SLComposeViewController</span>.isAvailable(forServiceType: <span class="type">SLServiceTypeSinaWeibo</span>) &#123;</div><div class="line">         <span class="comment">// 应该是没有登录的原因, 所以一直不会返回</span></div><div class="line">         <span class="built_in">print</span>(<span class="string">"不可用"</span>)</div><div class="line">         <span class="keyword">return</span></div><div class="line">     &#125;</div><div class="line">     </div><div class="line">     <span class="keyword">let</span> composeVC = <span class="type">SLComposeViewController</span>(forServiceType: <span class="type">SLServiceTypeSinaWeibo</span>)</div><div class="line">     <span class="comment">//        // 添加要分享的图片</span></div><div class="line">     <span class="comment">//        composeVC?.add(UIImage(named: "Nameless"))</span></div><div class="line">     <span class="comment">//        // 添加要分享的文字</span></div><div class="line">     <span class="comment">//        composeVC?.setInitialText("分享到XXX")</span></div><div class="line">     <span class="comment">//        // 添加要分享的url</span></div><div class="line">     <span class="comment">//        composeVC?.add(URL(string: "http://www.baidu.com"))</span></div><div class="line">     <span class="comment">//        // 弹出分享控制器</span></div><div class="line">     <span class="keyword">self</span>.present(composeVC!, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</div><div class="line">     <span class="comment">//        // 监听用户点击事件</span></div><div class="line">     composeVC?.completionHandler = &#123;</div><div class="line">         <span class="keyword">if</span> $<span class="number">0</span> == .done &#123;</div><div class="line">             <span class="type">NSLog</span>(<span class="string">"点击了发送"</span>);</div><div class="line">         &#125; <span class="keyword">else</span> <span class="keyword">if</span> $<span class="number">0</span> == .cancelled &#123;</div><div class="line">             <span class="type">NSLog</span>(<span class="string">"点击了取消"</span>);</div><div class="line">         &#125;</div><div class="line">     &#125;</div></pre></td></tr></table></figure>
+<p>这种方式有一个缺陷，就是，这样的分享只能对系统的分享，微信什么的就不能这么做了。</p>
+<h3 id="最后的话"><a href="#最后的话" class="headerlink" title="最后的话"></a>最后的话</h3><p>Share Extension 写到这里就差不多了。初步的入门步骤也已经完成了。最后，我看了一下，微信的 Share Extension 做的事情，感觉用他还能做很多的事情。这个也需要在开发中根据实际需求去拓展了，另外还有自定义 UI 等，也是很简单的事情。只是用自己 UIViewController 就好了。这个就不再详细的说了。到此，我能想到的功能，就基本上完成了。如果有更多需求也可以跟我讨论。</p>
+<p><a href="https://github.com/CepheusSun/ShareExtension"><strong>demo地址</strong></a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="http://ocg4av0wv.bkt.clouddn.com/2017-07-22-qrcode_for_gh_ef8fdb22f3c3_430.jpg" alt="CepheusSun wechat" style="width: 200px; max-width: 100%;"/>
+    <div>订阅我的公众号，每次更新我都不一定会告诉你！</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://ocg4av0wv.bkt.clouddn.com/wechat.png" alt="CepheusSun WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://ocg4av0wv.bkt.clouddn.com/alipay.png" alt="CepheusSun Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      CepheusSun
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://www.CepheusSun.com/ShareExtension.html" title="面向 Extension 开发 🌞 Share Extension">http://www.CepheusSun.com/ShareExtension.html</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
+          
+            <a href="/tags/App-Extension/" rel="tag"># App Extension</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/TodayExtension.html" rel="next" title="面向 Extension 开发 🌞 Today Extension">
+                <i class="fa fa-chevron-left"></i> 面向 Extension 开发 🌞 Today Extension
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/ReSwiftAndRedux.html" rel="prev" title="用 ReSwift 实现 Redux 架构">
+                用 ReSwift 实现 Redux 架构 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+    
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ocg4av0wv.bkt.clouddn.com/2017-07-18--3b9f0d5785eefeb7.jpg"
+               alt="CepheusSun" />
+          <p class="site-author-name" itemprop="name">CepheusSun</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">59</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/CepheusSun" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/208883862/home?wvr=5&lf=reg" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/u/7f9d7158212f" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/CepheusSun_" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://CepheusTeam.github.io/" title="CepheusTeam" target="_blank">CepheusTeam</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://kevincym.github.io/" title="KevinCym" target="_blank">KevinCym</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://maojianxiang.github.io/" title="小毛的博客" target="_blank">小毛的博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://goileo.top/" title="Goileo" target="_blank">Goileo</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=110 src="//music.163.com/outchain/player?type=0&id=964908739&auto=1&height=90"></iframe>
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#如何理解-Share-Extension"><span class="nav-number">1.</span> <span class="nav-text">如何理解 Share Extension</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建-Share-Extension"><span class="nav-number">2.</span> <span class="nav-text">创建 Share Extension</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#这篇文章要做什么？"><span class="nav-number">3.</span> <span class="nav-text">这篇文章要做什么？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本设置"><span class="nav-number">3.1.</span> <span class="nav-text">基本设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通过-Share-Extension-分享内容"><span class="nav-number">3.2.</span> <span class="nav-text">通过 Share Extension 分享内容</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#方法一-在-Extension-中实现登录操作"><span class="nav-number">3.2.1.</span> <span class="nav-text">方法一:  在 Extension 中实现登录操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#方法二-另类的-openUrl"><span class="nav-number">3.2.2.</span> <span class="nav-text">方法二: 另类的 openUrl</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#用户评论"><span class="nav-number">3.2.3.</span> <span class="nav-text">用户评论</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#附件内容"><span class="nav-number">3.2.4.</span> <span class="nav-text">附件内容</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#info-plist"><span class="nav-number">3.3.</span> <span class="nav-text">info.plist</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在自己的app-中调起-Share-Extension"><span class="nav-number">4.</span> <span class="nav-text">在自己的app 中调起 Share Extension</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最后的话"><span class="nav-number">5.</span> <span class="nav-text">最后的话</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+    </div>
+  </aside>
+
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CepheusSun</span>
+</div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/VEN/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/VEN/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/VEN/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/VEN/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/VEN/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/VEN/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (search_path.endsWith("json")) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("3VegSLQBjr1EXkI6a2GR2aXY-gzGzoHsz", "bUW35k3am6UQE29tQY4kDeP5");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+        addVisit();
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+
+    // 添加统计
+    function addVisit() {
+      var url2 = 'http://chaxun.1616.net/s.php?type=ip&output=json&callback=?&_=' + Math.random();
+      $.getJSON(url2, function(data) {
+        var $visitors = $(".leancloud_visitors");
+        var url = $visitors.attr('id').trim();
+        var title = $visitors.attr('data-flag-title').trim();
+        // 声明一个 Todo 类型
+        var Todo = AV.Object.extend('visit_list');
+        // 新建一个 Todo 对象
+        var todo = new Todo();
+        var $visitors = $(".leancloud_visitors");
+        var url = $visitors.attr('id').trim();
+        var title = $visitors.attr('data-flag-title').trim();
+        console.log(data);
+        todo.set('ip_add', data.Ip);
+        todo.set('ip_loc', data.Isp);
+        todo.set('title', title);
+        todo.set('url', url);
+        todo.set('Browser' , data.Browser);
+        todo.set('os' , data.OS);
+        todo.save().then(function () {
+        }, function(error) {
+        }); 
+      });
+    }
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

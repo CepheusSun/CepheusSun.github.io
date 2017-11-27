@@ -1,0 +1,1409 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/VEN/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/VEN/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS,Swift,翻译,Reactive,设计模式," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="CepheusSun" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="本文翻译自(http://lukagabric.com/mvvm-design-pattern-and-rxswift/)
+MVVMMVVM 是一种设计模式。他是程序的代码分离成三个部分: Model、View、ViewModel。 Model 代表数据的表现, View 代表用户看到的界面，ViewModel 代表着模型层和视图层的主要关联关系。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MVVM design pattern and RxSwift">
+<meta property="og:url" content="http://www.CepheusSun.com/MVVM design pattern and RxSwift.html">
+<meta property="og:site_name" content="CepheusSun">
+<meta property="og:description" content="本文翻译自(http://lukagabric.com/mvvm-design-pattern-and-rxswift/)
+MVVMMVVM 是一种设计模式。他是程序的代码分离成三个部分: Model、View、ViewModel。 Model 代表数据的表现, View 代表用户看到的界面，ViewModel 代表着模型层和视图层的主要关联关系。">
+<meta property="og:updated_time" content="2017-05-19T02:44:22.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MVVM design pattern and RxSwift">
+<meta name="twitter:description" content="本文翻译自(http://lukagabric.com/mvvm-design-pattern-and-rxswift/)
+MVVMMVVM 是一种设计模式。他是程序的代码分离成三个部分: Model、View、ViewModel。 Model 代表数据的表现, View 代表用户看到的界面，ViewModel 代表着模型层和视图层的主要关联关系。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":true},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: "",
+      labels: ""
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.CepheusSun.com/MVVM design pattern and RxSwift.html"/>
+
+
+
+
+
+  <title>MVVM design pattern and RxSwift | CepheusSun</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CepheusSun</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Code for a better world.</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.CepheusSun.com/MVVM design pattern and RxSwift.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CepheusSun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ocg4av0wv.bkt.clouddn.com/2017-07-18--3b9f0d5785eefeb7.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CepheusSun">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">MVVM design pattern and RxSwift</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-05-19T10:44:22+08:00">
+                2017-05-19
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/MVVM design pattern and RxSwift.html" class="leancloud_visitors" data-flag-title="MVVM design pattern and RxSwift">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  2,661
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  10
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本文翻译自(<a href="http://lukagabric.com/mvvm-design-pattern-and-rxswift/">http://lukagabric.com/mvvm-design-pattern-and-rxswift/</a>)</p>
+<h3 id="MVVM"><a href="#MVVM" class="headerlink" title="MVVM"></a>MVVM</h3><p>MVVM 是一种设计模式。他是程序的代码分离成三个部分: <code>Model</code>、<code>View</code>、<code>ViewModel</code>。 <code>Model</code> 代表数据的表现, <code>View</code> 代表用户看到的界面，<code>ViewModel</code> 代表着模型层和视图层的主要关联关系。</p>
+<a id="more"></a>
+<h4 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h4><p><code>Model</code> 就是数据层。他包括一定范围内的模型，和业务逻辑。 <code>Model</code> 并不只是你程序中的那些模型结构体或者数据库, 他也包含了一些 Service 或者组件, 比如说 <code>Alamofire</code>和一些 SDK 等等。</p>
+<p><code>Model</code> 层执行所有跟数据有关的操作。比如常见的增删改查等等。这些操作由 <code>ViewModel</code> 发起。当 <code>Model</code>操作完了数据之后它再告诉 <code>ViewModel</code> 结果。</p>
+<p><code>Model</code> 被 ViewModel 持有。他也并不知道视图层和 <code>ViewModel</code> 层的事情。因为他是和这两个东西完全隔离开的。</p>
+<h4 id="View"><a href="#View" class="headerlink" title="View"></a>View</h4><p><code>View</code> 是程序中数据的可视化展示。它没有逻辑相关的东西。他主要有接受用户交互事件，和将数据展示在界面上两个人物。它将用户交互的事件转发到 <code>ViewModel</code> 中进行处理。<code>View</code> 观察 <code>ViewModel</code> 中数据的变化, 并且将这些变化展现出来。</p>
+<p><code>View</code> 和 <code>Model</code> 之间没有任何直接的关联。 他们通过 <code>View</code> 持有的 <code>ViewModel</code> 产生关联。</p>
+<p>界面信息在 <code>xib</code> 或者 <code>StoryBoard</code> 中通过 <code>UIKit</code> 中的组件被定义。<code>ViewController</code> 是直接跟 <code>xib</code> 或者 <code>StoryBoard</code> 关联的。它包含了 <code>Xib</code> 或者 <code>StoryBoard</code> 中的 <code>outlets</code> 和一些定义 UI 的额外配置。他也负责管理 <code>View</code> 的生命周期。 在 MVVM 中他和 <code>View</code> 的关联是非常紧密的, 他其实就是 <code>View</code> 层的一部分。</p>
+<h4 id="ViewModel"><a href="#ViewModel" class="headerlink" title="ViewModel"></a>ViewModel</h4><p><code>ViewModel</code> 是程序的逻辑层。他处理用户交互行为。然后更新数据。然后在通知 <code>View</code> 新的数据和显示的方式。举一个很平常的例子。一个 ViewModel 从Model层中请求到了一些包含 <code>Date</code> 的模型。 这个 Date 值并不会被告诉给 View, ViewModel 告诉 View 的应该是被格式化之后的字符串。视图不会操作数据本身，他只负责将 ViewModel 准备好的数据展示出来。</p>
+<h4 id="Similar-to-MVC"><a href="#Similar-to-MVC" class="headerlink" title="Similar to MVC"></a>Similar to MVC</h4><p>在 MVC 设计模式中, <code>ViewController</code> 是 <code>Model</code> 和 <code>View</code> 之间的桥梁。他只有视图, 管理视图的结构，管理用户的交互。他还负责管理视图的生命周期,加载、显示、消失等。他具有的另外一个指责是更新模型数据, 这就包括了显示数据的相关逻辑(也就是数据的处理,如上文提到的讲 <code>Date</code> 转化成 <code>String</code> 的逻辑)。因为他具有这么多的职责，所以很多情况下 <code>Viewcontroller</code> 就会变的非常大。所以也有人称MVC 为 Massive View Controller</p>
+<p>出现复杂的 <code>viewController</code> 主要有两个原因。由于 <code>Controller</code> 有很多的职责。代码就会变的非常的复杂。这很明显就违背了单一职责这个原则。这也让测试 <code>Controller</code> 中的逻辑变成一件很麻烦的事情。<code>Controller</code> 和 <code>View</code> 的高度耦合。<code>view</code> 的生命周期使得逻辑的分离变的不那么容易。我们就需要花很大的精力来处理视图的生命周期。</p>
+<p>MVVM 和 MVC 非常相似。 正如前文所说。 MVC 中的 <code>Controller</code> 同时包含了视图和程序的逻辑。将逻辑相关的代码从 <code>Controller</code> 中分离出来, 放到他自己抽象出来的类里面去。这时候的 <code>Controller</code>就只关注视图相关的事情。刚刚分离出来的这个类处理相关的逻辑。这个类就是 ViewModel。他和 <code>Controller</code> 具有一一对应关系。所以说 MVVM 就是将逻辑代码从 <code>controller</code>中分离到 <code>ViewModel</code> 中的 MVC</p>
+<h4 id="Binding-data-from-ViewModel-to-View"><a href="#Binding-data-from-ViewModel-to-View" class="headerlink" title="Binding data from ViewModel to View"></a>Binding data from ViewModel to View</h4><p>有很多将数据绑定的机制, 比如 Swift 中的属性观察。视图可以对外提供一个 Closure 来进行视图的更新。这个 Closure 用来通知 View 他关联的属性的更新。除了熟悉观察。我们的程序还经常需要处理各种异步操作，比如网络请求，和通知或者事件的流信息。函数响应式编程(FRP)框架简直就是为了处理这类事件而生的。现在也有很多FRP 框架，对 iOS 开发来说，最出名的应该是 <code>RxSwift</code> 和 <code>ReactiveCocoa</code>了。之前在一篇对比文章中有提到过, 不管怎样，我更喜欢 <code>RxSwift</code> </p>
+<h3 id="RxSwift"><a href="#RxSwift" class="headerlink" title="RxSwift"></a>RxSwift</h3><p>指令式编程是基于一步一步明确的指令来执行的。他详细的描述了程序的运行过程。值做为状态而存在。由于程序是一步一步的执行的,所以如果其中一个值在之后发生了改变，这一改变也不会被传到下一步。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 指令式编程</span></div><div class="line">a = <span class="number">1</span></div><div class="line">b = <span class="number">2</span></div><div class="line"><span class="built_in">c</span> = a + b  <span class="comment">// c = 3</span></div><div class="line">a = <span class="number">5</span>   <span class="comment">// c = 3</span></div></pre></td></tr></table></figure>
+<p>响应式编程,跟指令式相反。他是基于变化的。他基于声明式编程，这就意味着他关注的是程序应该完成什么，而不是程序是怎么运行的。它是通过数学运算和其他像是 <code>filter</code> <code>map</code> <code>reduce</code> 之类的运算操作的运用来实现的。如何准确的运行被交给底层的程序语言或者框架来考虑了。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 响应式编程</span></div><div class="line">a = <span class="number">1</span></div><div class="line">b = <span class="number">2</span></div><div class="line"><span class="built_in">c</span> = a + b <span class="comment">// c = 3</span></div><div class="line">a = <span class="number">5</span>     <span class="comment">// c = 7</span></div></pre></td></tr></table></figure>
+<p>RxSwift 让你能用通过函数响应式编程来编写你的代码。使用 RxSwift 可以很轻松的创建事件或者数据流。这些事件或者数据流可以互相组合、转换。并且最终被观察到，基于值来进行一些操作。</p>
+<p>正如前文所说，在 MVVM 中 View 观察 ViewModel 中模型的数据。RxSwift 提供了一个非常简单并且干净的方法来观察这些值，并绑定到对应的 View 上。</p>
+<h4 id="Observable"><a href="#Observable" class="headerlink" title="Observable"></a>Observable</h4><p>Observable 是 RxSwift 的主要构成部分。他是一个可以异步的接受元素的序列。这个序列可以有0个或者很多个的元素。有三种事件能够基于它发生。下一步(Next)、完成(Completed)、错误(Error)</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Event</span> </span>&#123;</div><div class="line">    <span class="keyword">case</span> next(<span class="type">Element</span>)   <span class="comment">// 这个序列的下一个元素</span></div><div class="line">    <span class="keyword">case</span> error(<span class="type">Swift</span>.<span class="type">Error</span>)<span class="comment">// 这个序列发生了错误</span></div><div class="line">    <span class="keyword">case</span> completed      <span class="comment">// 这个序列成功的完成的所有人任务</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以使用 <code>Observable</code> 的 <code>subscribe</code> 方法来订阅这些事件。 用这种方法可以分别处理这个事件的各种情况。</p>
+<ul>
+<li>OnNext: 可以使用被订阅的元素值。</li>
+<li>OnCompleted: 当这个序列成功的发送完所有元素之后会被调用。</li>
+<li>OnError: 当这个序列不能完成的时候被调用。</li>
+</ul>
+<p>只要 <code>Complete</code> 或者 <code>Error</code> 被观察到了, 这个序列就不能产生任何新的元素了。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">observable.subscribe(</div><div class="line">    onNext: &#123; element <span class="keyword">in</span> ... &#125;, </div><div class="line">    onError: &#123; error <span class="keyword">in</span> ... &#125;,</div><div class="line">    onCompleted: &#123; ... &#125;</div><div class="line">)</div></pre></td></tr></table></figure>
+<h4 id="Hot-and-cold-observables"><a href="#Hot-and-cold-observables" class="headerlink" title="Hot and cold observables"></a>Hot and cold observables</h4><p>即使没有被观察也会发送消息的信号被称作热信号。想象一下 <code>NotificationCenter</code> 技术没有其他对象接受通知, 也也然会发送出来。如果你在某个时候订阅了这个信号, 之前发出来的消息你就会错过。</p>
+<p>那些只有被订阅之后才开始发送消息的信号被称作冷信号。这些资源会被分配给每个订阅对象。(比如说，你每次订阅的网络请求就会被释放)但是这些资源可以被多个对象共享(只有一个网络请求被释放了,但可能这被很多个观察者订阅)</p>
+<h4 id="Driver"><a href="#Driver" class="headerlink" title="Driver"></a>Driver</h4><p>Driver 是 RxCocoa 框架中的一个值类型。它是对一个可订阅的序列的封装，如果要把一个简单的值绑定到View上, 它会是一个更简单的方法。如果 <code>Observables</code> 发生了错误, 你需要很方便的将一些东西展示出来。每个信号都可以很容易的被转换成 <code>Driver</code>。 当你提供了这个信号发生错误的返回什么的时候，只需要使用 <code>asDriver</code> 方法就可以了。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">.asDriver(onErrorJustReturn: <span class="string">"No items to display."</span>)</div></pre></td></tr></table></figure>
+<p>想象一下异步操作的场景。比如说网络请求。我们需要在界面上展示返回值的个数。在这个场景中，我们需要将返回值的个数映射成一个字符串。可能这个字符串的格式可能是 <code>&quot;X item(s)&quot;</code> <code>Driver</code> 还能够确保我们需要修改 UI 的这个订阅是发生在主线程当中的。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> results: <span class="type">Observable</span>&lt;[<span class="type">SomeItem</span>]&gt; = ...</div><div class="line"><span class="keyword">let</span> resultsCountDriver = results</div><div class="line">    .<span class="built_in">map</span> &#123; <span class="string">"<span class="subst">\($<span class="number">0</span>.<span class="built_in">count</span>)</span> item(s)"</span> &#125;</div><div class="line">    .asDriver(onErrorJustReturn: <span class="string">"No items to display."</span>)</div></pre></td></tr></table></figure>
+<p>把这个数据绑定到 Label 中就很简单了</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">resultsCountDriver.drive(resultCountLabel.rx.text).disposed(by: disposeBag)</div></pre></td></tr></table></figure>
+<h4 id="DisposeBag"><a href="#DisposeBag" class="headerlink" title="DisposeBag"></a>DisposeBag</h4><p>如果一个序列停止了, 但是它并没有被释放掉。在他就会造成资源的浪费和内存的泄漏。知道他完成了或者处错了。如果一个序列没有停止，也没有出错，这个资源就会被永久的占用。这就是为什么我们要在需要订阅的对象中生命一个 <code>DisposeBag</code> 的成员变量的原因了。这样的话，只要这个对象呗释放掉了，所有相关的资源都会被释放并且被系统回收。</p>
+<h4 id="Variable"><a href="#Variable" class="headerlink" title="Variable"></a>Variable</h4><p><code>Variable</code>表示可以被订阅的状态。它是信号和功能范式之间的桥梁。<code>Variable</code> 总是包含了提供给构造函数的初始值当你订阅当前的值的时候，这个初始值会立马被发送到过来。(只有最新和当前值会被发出，旧的值不会)。也可以直接获取或者设置 <code>Variable</code> 的值。他内部的信号可以通过 <code>asObservable</code> 方法获取到。另外, <code>Variable</code> 永远都不会出错。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> variable = <span class="type">Variable</span>(<span class="string">"My Variable"</span>)</div><div class="line">variable.value = <span class="string">"Some value"</span></div><div class="line"><span class="keyword">let</span> variableObservable = variable.asObservable()</div><div class="line">variableObservable.subscribe(onNext: &#123; value <span class="keyword">in</span></div><div class="line">    <span class="built_in">print</span>(value) <span class="comment">//prints "Some value"</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>最后， 我写了一个 Demo 来演示 MVVM + RxSwift. 这是一个简单的程序获取并且显示天气的数据。这个app有三种状态， 加载中，显示中，错误。有两种对错误的处理，一是，我们只显示错误。另一个是显示之前的数据。如果没有，就显示错误。这两种处理方式都是通过响应式编程和指令式编程实现的。</p>
+<p>在这些例子中，只有 ViewMoel 会发生改变。你可以看到给功能增加复杂性(显示错误或者旧的数据)。如果使用指令式编程，可能会对代码带来很多的变动。而使用响应式编程，只需要增加额外的状态而已。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="http://ocg4av0wv.bkt.clouddn.com/2017-07-22-qrcode_for_gh_ef8fdb22f3c3_430.jpg" alt="CepheusSun wechat" style="width: 200px; max-width: 100%;"/>
+    <div>订阅我的公众号，每次更新我都不一定会告诉你！</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://ocg4av0wv.bkt.clouddn.com/wechat.png" alt="CepheusSun WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://ocg4av0wv.bkt.clouddn.com/alipay.png" alt="CepheusSun Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      CepheusSun
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://www.CepheusSun.com/MVVM design pattern and RxSwift.html" title="MVVM design pattern and RxSwift">http://www.CepheusSun.com/MVVM design pattern and RxSwift.html</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
+          
+            <a href="/tags/Swift/" rel="tag"># Swift</a>
+          
+            <a href="/tags/翻译/" rel="tag"># 翻译</a>
+          
+            <a href="/tags/Reactive/" rel="tag"># Reactive</a>
+          
+            <a href="/tags/设计模式/" rel="tag"># 设计模式</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/RxSwift and the awesome things you can do with Reactive Programming — Part I.html" rel="next" title="RxSwift and the awesome things you can do with Reactive Programming — Part I">
+                <i class="fa fa-chevron-left"></i> RxSwift and the awesome things you can do with Reactive Programming — Part I
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/RxSwift For Dummies Part1.html" rel="prev" title="RxSwift For Dummies 🐣 Part1">
+                RxSwift For Dummies 🐣 Part1 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+    
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ocg4av0wv.bkt.clouddn.com/2017-07-18--3b9f0d5785eefeb7.jpg"
+               alt="CepheusSun" />
+          <p class="site-author-name" itemprop="name">CepheusSun</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">59</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/CepheusSun" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/208883862/home?wvr=5&lf=reg" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/u/7f9d7158212f" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/CepheusSun_" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://CepheusTeam.github.io/" title="CepheusTeam" target="_blank">CepheusTeam</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://kevincym.github.io/" title="KevinCym" target="_blank">KevinCym</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://maojianxiang.github.io/" title="小毛的博客" target="_blank">小毛的博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://goileo.top/" title="Goileo" target="_blank">Goileo</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=110 src="//music.163.com/outchain/player?type=0&id=964908739&auto=1&height=90"></iframe>
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#MVVM"><span class="nav-number">1.</span> <span class="nav-text">MVVM</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Model"><span class="nav-number">1.1.</span> <span class="nav-text">Model</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#View"><span class="nav-number">1.2.</span> <span class="nav-text">View</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ViewModel"><span class="nav-number">1.3.</span> <span class="nav-text">ViewModel</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Similar-to-MVC"><span class="nav-number">1.4.</span> <span class="nav-text">Similar to MVC</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Binding-data-from-ViewModel-to-View"><span class="nav-number">1.5.</span> <span class="nav-text">Binding data from ViewModel to View</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RxSwift"><span class="nav-number">2.</span> <span class="nav-text">RxSwift</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Observable"><span class="nav-number">2.1.</span> <span class="nav-text">Observable</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hot-and-cold-observables"><span class="nav-number">2.2.</span> <span class="nav-text">Hot and cold observables</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Driver"><span class="nav-number">2.3.</span> <span class="nav-text">Driver</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DisposeBag"><span class="nav-number">2.4.</span> <span class="nav-text">DisposeBag</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Variable"><span class="nav-number">2.5.</span> <span class="nav-text">Variable</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+    </div>
+  </aside>
+
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CepheusSun</span>
+</div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/VEN/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/VEN/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/VEN/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/VEN/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/VEN/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/VEN/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (search_path.endsWith("json")) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("3VegSLQBjr1EXkI6a2GR2aXY-gzGzoHsz", "bUW35k3am6UQE29tQY4kDeP5");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+        addVisit();
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+
+    // 添加统计
+    function addVisit() {
+      var url2 = 'http://chaxun.1616.net/s.php?type=ip&output=json&callback=?&_=' + Math.random();
+      $.getJSON(url2, function(data) {
+        var $visitors = $(".leancloud_visitors");
+        var url = $visitors.attr('id').trim();
+        var title = $visitors.attr('data-flag-title').trim();
+        // 声明一个 Todo 类型
+        var Todo = AV.Object.extend('visit_list');
+        // 新建一个 Todo 对象
+        var todo = new Todo();
+        var $visitors = $(".leancloud_visitors");
+        var url = $visitors.attr('id').trim();
+        var title = $visitors.attr('data-flag-title').trim();
+        console.log(data);
+        todo.set('ip_add', data.Ip);
+        todo.set('ip_loc', data.Isp);
+        todo.set('title', title);
+        todo.set('url', url);
+        todo.set('Browser' , data.Browser);
+        todo.set('os' , data.OS);
+        todo.save().then(function () {
+        }, function(error) {
+        }); 
+      });
+    }
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

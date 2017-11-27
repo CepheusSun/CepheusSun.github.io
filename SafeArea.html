@@ -1,0 +1,1500 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/VEN/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/VEN/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS,iOS11," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="CepheusSun" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="iOS 7 之后苹果给 UIViewController 引入了 topLayoutGuide 和 bottomLayoutGuide 两个属性来描述不希望被透明的状态栏或者导航栏遮挡的最高位置(status bar, navigation bar, toolbar, tab bar 等)。这个属性的值是一个 length 属性( topLayoutGuide.length)。 这个值可能由当前的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="最近很火的 Safe Area 到底是什么">
+<meta property="og:url" content="http://www.CepheusSun.com/SafeArea.html">
+<meta property="og:site_name" content="CepheusSun">
+<meta property="og:description" content="iOS 7 之后苹果给 UIViewController 引入了 topLayoutGuide 和 bottomLayoutGuide 两个属性来描述不希望被透明的状态栏或者导航栏遮挡的最高位置(status bar, navigation bar, toolbar, tab bar 等)。这个属性的值是一个 length 属性( topLayoutGuide.length)。 这个值可能由当前的">
+<meta property="og:image" content="http://ocg4av0wv.bkt.clouddn.com/2017-10-23-035620.jpg">
+<meta property="og:image" content="http://ocg4av0wv.bkt.clouddn.com/2017-10-23-035012.jpg">
+<meta property="og:image" content="http://ocg4av0wv.bkt.clouddn.com/2017-10-23-035302.jpg">
+<meta property="og:image" content="http://ocg4av0wv.bkt.clouddn.com/2017-10-23-042453.jpg">
+<meta property="og:image" content="http://ocg4av0wv.bkt.clouddn.com/2017-10-23-052419.jpg">
+<meta property="og:image" content="http://ocg4av0wv.bkt.clouddn.com/2017-10-23-052726.jpg">
+<meta property="og:image" content="http://ocg4av0wv.bkt.clouddn.com/2017-10-24-034928.jpg">
+<meta property="og:image" content="http://ocg4av0wv.bkt.clouddn.com/2017-10-24-064951.jpg">
+<meta property="og:image" content="http://ocg4av0wv.bkt.clouddn.com/2017-10-23-073208.jpg">
+<meta property="og:image" content="http://ocg4av0wv.bkt.clouddn.com/2017-10-24-025524.jpg">
+<meta property="og:image" content="http://ocg4av0wv.bkt.clouddn.com/2017-10-24-live.gif">
+<meta property="og:image" content="http://ocg4av0wv.bkt.clouddn.com/2017-10-24-025524.jpg">
+<meta property="og:image" content="http://ocg4av0wv.bkt.clouddn.com/2017-10-24-030448.jpg">
+<meta property="og:image" content="http://ocg4av0wv.bkt.clouddn.com/2017-10-24-030732.jpg">
+<meta property="og:image" content="http://ocg4av0wv.bkt.clouddn.com/2017-10-24-032133.jpg">
+<meta property="og:image" content="http://ocg4av0wv.bkt.clouddn.com/2017-10-24-032133.jpg">
+<meta property="og:updated_time" content="2017-10-24T08:38:49.358Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="最近很火的 Safe Area 到底是什么">
+<meta name="twitter:description" content="iOS 7 之后苹果给 UIViewController 引入了 topLayoutGuide 和 bottomLayoutGuide 两个属性来描述不希望被透明的状态栏或者导航栏遮挡的最高位置(status bar, navigation bar, toolbar, tab bar 等)。这个属性的值是一个 length 属性( topLayoutGuide.length)。 这个值可能由当前的">
+<meta name="twitter:image" content="http://ocg4av0wv.bkt.clouddn.com/2017-10-23-035620.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":true},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: "",
+      labels: ""
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.CepheusSun.com/SafeArea.html"/>
+
+
+
+
+
+  <title>最近很火的 Safe Area 到底是什么 | CepheusSun</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CepheusSun</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Code for a better world.</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.CepheusSun.com/SafeArea.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CepheusSun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ocg4av0wv.bkt.clouddn.com/2017-07-18--3b9f0d5785eefeb7.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CepheusSun">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">最近很火的 Safe Area 到底是什么</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-10-24T16:38:49+08:00">
+                2017-10-24
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/SafeArea.html" class="leancloud_visitors" data-flag-title="最近很火的 Safe Area 到底是什么">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  2,812
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  12
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>iOS 7 之后苹果给 <em>UIViewController</em> 引入了 <em>topLayoutGuide</em> 和 <em>bottomLayoutGuide</em> 两个属性来描述不希望被透明的状态栏或者导航栏遮挡的最高位置(status bar, navigation bar, toolbar, tab bar 等)。这个属性的值是一个 length 属性( <em>topLayoutGuide.length</em>)。 这个值可能由当前的 ViewController 或者 NavigationController 或者 TabbarController 决定。</p>
+<ul>
+<li>一个独立的ViewController，不包含于任何其他的ViewController。如果状态栏可见，topLayoutGuide表示状态栏的底部，否则表示这个ViewController的上边缘。</li>
+<li>包含于其他ViewController的ViewController不对这个属性起决定作用，而是由容器ViewController决定这个属性的含义：<ul>
+<li>如果导航栏（Navigation Bar）可见，topLayoutGuide表示导航栏的底部。</li>
+<li>如果状态栏可见，topLayoutGuide表示状态栏的底部。</li>
+<li>如果都不可见，表示ViewController的上边缘。<br>这部分还比较好理解，总之是屏幕上方任何遮挡内容的栏的最底部。</li>
+</ul>
+</li>
+</ul>
+<p>iOS 11 开始弃用了这两个属性， 并且引入了 Safe Area 这个概念。苹果建议: <strong>不要把 Control 放在 Safe Area 之外的地方</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// These objects may be used as layout items in the NSLayoutConstraint API</span></div><div class="line"><span class="meta">@available</span>(iOS, introduced: <span class="number">7.0</span>, deprecated: <span class="number">11.0</span>)</div><div class="line">open <span class="keyword">var</span> topLayoutGuide: <span class="type">UILayoutSupport</span> &#123; <span class="keyword">get</span> &#125;</div><div class="line"></div><div class="line"><span class="meta">@available</span>(iOS, introduced: <span class="number">7.0</span>, deprecated: <span class="number">11.0</span>)</div><div class="line">open <span class="keyword">var</span> bottomLayoutGuide: <span class="type">UILayoutSupport</span> &#123; <span class="keyword">get</span> &#125;</div></pre></td></tr></table></figure>
+<p>今天, 来研究一下 iOS 11 中新引入的这个 API。</p>
+<a id="more"></a>
+<h3 id="UIView-中的-safe-area"><a href="#UIView-中的-safe-area" class="headerlink" title="UIView 中的 safe area"></a>UIView 中的 safe area</h3><p>iOS 11 中 UIViewController 的 topLayoutGuide 和 bottonLayoutGuide 两个属性被 UIView 中的 safe area 替代了。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@available</span>(iOS <span class="number">11.0</span>, *)</div><div class="line">open <span class="keyword">var</span> safeAreaInsets: <span class="type">UIEdgeInsets</span> &#123; <span class="keyword">get</span> &#125;</div><div class="line"></div><div class="line"><span class="meta">@available</span>(iOS <span class="number">11.0</span>, *)</div><div class="line">open <span class="function"><span class="keyword">func</span> <span class="title">safeAreaInsetsDidChange</span><span class="params">()</span></span></div></pre></td></tr></table></figure>
+<p><strong>safeAreaInsets</strong></p>
+<p>这个属性表示相对于屏幕四个边的间距， 而不仅仅是顶部还有底部。这么说好像没有什么感觉, 我们来看一看这个东西分别在 iPhone X 和 iPhone 8 中是什么样的吧！</p>
+<p>什么都没有做, 只是新建了一个工程然后在 <code>Main.storyboard</code> 中的 <em>UIViewController</em> 中拖了一个橙色的 View 并且设置约束为:</p>
+<center><br><br><img src="http://ocg4av0wv.bkt.clouddn.com/2017-10-23-035620.jpg" width="300"><br><br></center>
+
+<p>在 <code>ViewController.swift</code> 的 <code>viewDidLoad</code> 中打印</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line">        <span class="built_in">print</span>(view.safeAreaInsets)</div><div class="line">    &#125;</div><div class="line"><span class="comment">// 无论是iPhone 8 还是 iPhone X 输出结果均为</span></div><div class="line"><span class="comment">// UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)</span></div></pre></td></tr></table></figure>
+<center><br><br><img src="http://ocg4av0wv.bkt.clouddn.com/2017-10-23-035012.jpg" width="500"><br><br></center>
+
+<center>iPhone 8 VS iPhone X Safe Area (竖屏)</center>
+
+<center><br><br><img src="http://ocg4av0wv.bkt.clouddn.com/2017-10-23-035302.jpg" width="500"><br><br></center>
+
+<center>iPhone 8 VS iPhone X Safe Area (横屏)</center>
+
+<p>这样对比可以看出, iPhone X 同时具有上下, 还有左右的 Safe Area。</p>
+<p><strong>再来看这个例子: </strong> 拖两个自定义的 View, 这个 View 上有一个 显示很多字的Label。然后设置这两个 View 的约束分别是:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> view1 = <span class="type">MyView</span>()</div><div class="line"><span class="keyword">let</span> view2 = <span class="type">MyView</span>()</div><div class="line">view.addSubview(view1)</div><div class="line">view.addSubview(view2)</div><div class="line"><span class="keyword">let</span> screenW = <span class="type">UIScreen</span>.main.bounds.size.width</div><div class="line"><span class="keyword">let</span> screenH = <span class="type">UIScreen</span>.main.bounds.size.height</div><div class="line"></div><div class="line">view1.frame = <span class="type">CGRect</span>(</div><div class="line">	x: <span class="number">0</span>,</div><div class="line">	y: <span class="number">0</span>,</div><div class="line">	width:screenW,</div><div class="line">	height: <span class="number">200</span>)</div><div class="line"></div><div class="line">view2.frame = <span class="type">CGRect</span>(</div><div class="line">	x: <span class="number">0</span>,</div><div class="line">	y: screenH - <span class="number">200</span>,</div><div class="line">	width:screenW,</div><div class="line">	height: <span class="number">200</span>)</div></pre></td></tr></table></figure>
+<center><br><br><img src="http://ocg4av0wv.bkt.clouddn.com/2017-10-23-042453.jpg" width="300"><br><br></center>
+
+<p>可以看出来， 子视图被顶部的刘海以及底部的 home 指示区挡住了。我们可以使用 frame 布局或者 auto layout 来优化这个地方:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> insets = <span class="type">UIApplication</span>.shared.delegate?.window??.safeAreaInsets ?? <span class="type">UIEdgeInsets</span>.zero</div><div class="line">            </div><div class="line">view1.frame = <span class="type">CGRect</span>(</div><div class="line">	x: insets.<span class="keyword">left</span>,</div><div class="line">	y: insets.top,</div><div class="line">	width:view.bounds.width - insets.<span class="keyword">left</span> - insets.<span class="keyword">right</span>,</div><div class="line">	height: <span class="number">200</span>)</div><div class="line"></div><div class="line">view2.frame = <span class="type">CGRect</span>(</div><div class="line">	x: insets.<span class="keyword">left</span>,</div><div class="line">	y: screenH - insets.bottom - <span class="number">200</span>,</div><div class="line">	width:view.bounds.width - insets.<span class="keyword">left</span> - insets.<span class="keyword">right</span>,</div><div class="line">	height: <span class="number">200</span>)</div></pre></td></tr></table></figure>
+<center><br><br><img src="http://ocg4av0wv.bkt.clouddn.com/2017-10-23-052419.jpg" width="300"><br><br></center>
+
+<p>这样起来好多了,  还有另外一个更好的办法是直接在自定义的 View 中修改 Label 的布局:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">layoutSubviews</span><span class="params">()</span></span> &#123;</div><div class="line">	<span class="keyword">super</span>.layoutSubviews()</div><div class="line">	<span class="keyword">if</span> #available(iOS <span class="number">11.0</span>, *) &#123;</div><div class="line">		label.frame = safeAreaLayoutGuide.layoutFrame</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<center><br><br><img src="http://ocg4av0wv.bkt.clouddn.com/2017-10-23-052726.jpg" width="300"><br><br></center>
+
+<p>这样, 不仅仅是在 ViewController 中能够使用 safe area 了。</p>
+<h3 id="UIViewController-中的-safe-area"><a href="#UIViewController-中的-safe-area" class="headerlink" title="UIViewController 中的 safe area"></a>UIViewController 中的 safe area</h3><p>在 iOS 11 中 UIViewController 有一个新的属性</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@available</span>(iOS <span class="number">11.0</span>, *)</div><div class="line">open <span class="keyword">var</span> additionalSafeAreaInsets: <span class="type">UIEdgeInsets</span></div></pre></td></tr></table></figure>
+<p>当 view controller 的子视图覆盖了嵌入的子 view controller 的视图的时候。比如说， 当 UINavigationController 和 UITabbarController 中的 bar 是半透明(translucent) 状态的时候, 就有 <code>additionalSafeAreaInsets</code></p>
+<p><img src="http://ocg4av0wv.bkt.clouddn.com/2017-10-24-034928.jpg" width="300"></p>
+<p>自定义的 View 上面的 label 布局兼容了 safe area。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// UIView</span></div><div class="line"><span class="meta">@available</span>(iOS <span class="number">11.0</span>, *)</div><div class="line">open <span class="function"><span class="keyword">func</span> <span class="title">safeAreaInsetsDidChange</span><span class="params">()</span></span></div><div class="line"></div><div class="line"><span class="comment">//UIViewController</span></div><div class="line"><span class="meta">@available</span>(iOS <span class="number">11.0</span>, *)</div><div class="line">open <span class="function"><span class="keyword">func</span> <span class="title">viewSafeAreaInsetsDidChange</span><span class="params">()</span></span></div></pre></td></tr></table></figure>
+<p>这两个方法分别是 UIView 和 UIViewController 的 safe area insets 发生改变时调用的方法，如果需要做一些处理，可以重写这个方法。有点类似于 KVO 的意思。</p>
+<h4 id="模拟-iPhone-X-的-safe-area"><a href="#模拟-iPhone-X-的-safe-area" class="headerlink" title="模拟 iPhone X 的 safe area"></a>模拟 iPhone X 的 safe area</h4><p>额外的 safe area insets 也能用来测试你的 app 是否支持 iPhone X。在没有 iPhone X 也不方便使用模拟器的时候， 这个还是很有用的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">//竖屏</div><div class="line">additionalSafeAreaInsets.top = 24.0</div><div class="line">additionalSafeAreaInsets.bottom = 34.0</div><div class="line"></div><div class="line">//竖屏, status bar 隐藏</div><div class="line">additionalSafeAreaInsets.top = 44.0</div><div class="line">additionalSafeAreaInsets.bottom = 34.0</div><div class="line"></div><div class="line">//横屏</div><div class="line">additionalSafeAreaInsets.left = 44.0</div><div class="line">additionalSafeAreaInsets.bottom = 21.0</div><div class="line">additionalSafeAreaInsets.right = 44.0</div></pre></td></tr></table></figure>
+<h3 id="UIScrollView-中的-safe-area"><a href="#UIScrollView-中的-safe-area" class="headerlink" title="UIScrollView 中的 safe area"></a>UIScrollView 中的 safe area</h3><p>在 scroll view 上加一个 label。设置scroll 的约束为:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">scrollView.snp.makeConstraints &#123; (make) <span class="keyword">in</span></div><div class="line">    make.edges.equalToSuperview()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="http://ocg4av0wv.bkt.clouddn.com/2017-10-24-064951.jpg" width="300"></p>
+<p>iOS 7 中引入 UIViewController 的 <em>automaticallyAdjustsScrollViewInsets</em> 属性在 iOS11 中被废弃掉了。取而代之的是 UIScrollView  的 <em>contentInsetAdjustmentBehavior</em></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@available</span>(iOS <span class="number">11.0</span>, *)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">UIScrollViewContentInsetAdjustmentBehavior</span> : <span class="title">Int</span> </span>&#123;    </div><div class="line">    <span class="keyword">case</span> automatic          <span class="comment">//default value</span></div><div class="line">    <span class="keyword">case</span> scrollableAxes</div><div class="line">    <span class="keyword">case</span> never</div><div class="line">    <span class="keyword">case</span> always</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">@available</span>(iOS <span class="number">11.0</span>, *)</div><div class="line">open <span class="keyword">var</span> contentInsetAdjustmentBehavior: <span class="type">UIScrollViewContentInsetAdjustmentBehavior</span></div></pre></td></tr></table></figure>
+<h4 id="Content-Insets-Adjustment-Behavior"><a href="#Content-Insets-Adjustment-Behavior" class="headerlink" title="Content Insets Adjustment Behavior"></a>Content Insets Adjustment Behavior</h4><p><em>never</em> 不做调整。</p>
+<p><em>scrollableAxes</em> content insets 只会针对 scrollview 滚动方向做调整。</p>
+<p><em>always</em> content insets 会针对两个方向都做调整。</p>
+<p><em>automatic</em> 这是默认值。当下面的条件满足时， 它跟 always 是一个意思</p>
+<ul>
+<li>能够水平滚动，不能垂直滚动</li>
+<li>scroll view 是 当前 view controller 的第一个视图</li>
+<li>这个controller 是被navigation controller 或者 tab bar controller 管理的</li>
+<li><em>automaticallyAdjustsScrollViewInsets</em> 为 true</li>
+</ul>
+<p>在其他情况下 <em>automoatc</em> 跟 <em>scrollableAxes</em> 一样</p>
+<h4 id="Adjusted-Content-Insets"><a href="#Adjusted-Content-Insets" class="headerlink" title="Adjusted Content Insets"></a>Adjusted Content Insets</h4><p>iOS 11 中 UIScrollView 新加了一个属性: <em>adjustedContentInset</em></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@available</span>(iOS <span class="number">11.0</span>, *)</div><div class="line">open <span class="keyword">var</span> adjustedContentInset: <span class="type">UIEdgeInsets</span> &#123; <span class="keyword">get</span> &#125;</div></pre></td></tr></table></figure>
+<p><em>adjustedContentInset</em> 和 <em>contentInset</em> 之间有什么区别呢？</p>
+<p>在同时有 navigation 和 tab bar 的 view controller 中添加一个 scrollview 然后分别打印两个值:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//iOS 10</span></div><div class="line"><span class="comment">//contentInset = UIEdgeInsets(top: 64.0, left: 0.0, bottom: 49.0, right: 0.0)</span></div><div class="line"><span class="comment">//iOS 11</span></div><div class="line"><span class="comment">//contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)</span></div><div class="line"><span class="comment">//adjustedContentInset = UIEdgeInsets(top: 64.0, left: 0.0, bottom: 49.0, right: 0.0)</span></div></pre></td></tr></table></figure>
+<p>然后再设置:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 给 scroll view 的四个方向都加 10 的间距</span></div><div class="line">scrollView.contentInset = <span class="type">UIEdgeInsets</span>(top: <span class="number">10</span>, <span class="keyword">left</span>: <span class="number">10</span>, bottom: <span class="number">10</span>, <span class="keyword">right</span>: <span class="number">10</span>)</div></pre></td></tr></table></figure>
+<p>打印:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//iOS 10</span></div><div class="line"><span class="comment">//contentInset = UIEdgeInsets(top: 74.0, left: 10.0, bottom: 59.0, right: 10.0)</span></div><div class="line"><span class="comment">//iOS 11</span></div><div class="line"><span class="comment">//contentInset = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)</span></div><div class="line"><span class="comment">//adjustedContentInset = UIEdgeInsets(top: 74.0, left: 10.0, bottom: 59.0, right: 10.0)</span></div></pre></td></tr></table></figure>
+<p>由此可见，在 iOS 11 中 scroll view 实际的 content inset 可以通过 <em>adjustedContentInset</em> 获取。这就是说如果你要适配 iOS 10 的话。这一部分的逻辑是不一样的。</p>
+<p>系统还提供了两个方法来监听这个属性的改变</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//UIScrollView</span></div><div class="line"><span class="meta">@available</span>(iOS <span class="number">11.0</span>, *)</div><div class="line">open <span class="function"><span class="keyword">func</span> <span class="title">adjustedContentInsetDidChange</span><span class="params">()</span></span></div><div class="line"></div><div class="line"><span class="comment">//UIScrollViewDelegate</span></div><div class="line"><span class="meta">@available</span>(iOS <span class="number">11.0</span>, *)</div><div class="line"><span class="keyword">optional</span> <span class="keyword">public</span> <span class="function"><span class="keyword">func</span> <span class="title">scrollViewDidChangeAdjustedContentInset</span><span class="params">(<span class="number">_</span> scrollView: UIScrollView)</span></span></div></pre></td></tr></table></figure>
+<h3 id="UITableView-中的-safe-area"><a href="#UITableView-中的-safe-area" class="headerlink" title="UITableView 中的 safe area"></a>UITableView 中的 safe area</h3><p>我们现在再来看一下 UITableView 中 safe area 的情况。我们先添加一个有自定义 header 以及自定义 cell 的 tableview。设置边框为 self.view 的边框。也就是</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">tableView.snp.makeConstraints &#123; (make) <span class="keyword">in</span></div><div class="line">	make.edges.equalToSuperview()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tableView.frame = view.bounds</div></pre></td></tr></table></figure>
+<p><img src="http://ocg4av0wv.bkt.clouddn.com/2017-10-23-073208.jpg"></p>
+<p>自定义的 header 上面有一个 lable，自定义的 cell 上面也有一个 label。将屏幕横屏之后会发现，cell 以及 header 的布局均自动留出了 safe area 以外的距离。cell 还是那么大，只是 cell 的 contnt view 留出了相应的距离。这其实是 UITableView 中新引入的属性管理的:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@available</span>(iOS <span class="number">11.0</span>, *)</div><div class="line">open <span class="keyword">var</span> insetsContentViewsToSafeArea: <span class="type">Bool</span></div></pre></td></tr></table></figure>
+<p><code>insetsContentViewsToSafeArea</code> 的默认值是 true， 将其设置成 no 之后:</p>
+<p><img src="http://ocg4av0wv.bkt.clouddn.com/2017-10-24-025524.jpg"></p>
+<p>可以看出来 footer 和 cell 的 content view 的大小跟 cell 的大小相同了。这就是说：<strong>在 iOS 11 下, 并不需要改变 header/footer/cell 的布局， 系统会自动区适配 safe area</strong></p>
+<p>需要注意的是, Xcode 9 中使用 IB 拖出来的 TableView 默认的边框是 safe area 的。所以实际运行起来 tableview 都是在 safe area 之内的。</p>
+<p><img src="http://ocg4av0wv.bkt.clouddn.com/2017-10-24-live.gif"></p>
+<h3 id="UICollectionView-中的-safe-area"><a href="#UICollectionView-中的-safe-area" class="headerlink" title="UICollectionView 中的 safe area"></a>UICollectionView 中的 safe area</h3><p>我们在做一个相同的 collection view 来看一下 collection view 中是什么情况:</p>
+<p><img src="http://ocg4av0wv.bkt.clouddn.com/2017-10-24-025524.jpg"></p>
+<p>这是一个使用了 <code>UICollectionViewFlowLayout</code> 的 collection view。 滑动方向是竖向的。cell 透明， cell 的 content view 是白色的。这些都跟上面 table view 一样。header(UICollectionReusableView) 没有 content view 的概念, 所以给其自身设置了红色的背景。</p>
+<p>从截图上可以看出来， collection view 并没有默认给 header cell footer 添加safe area 的间距。能够将布局调整到合适的情况的方法只有将 header/ footer / cell 的子视图跟其 safe area 关联起来。跟 IB 中拖 table view 一个道理。</p>
+<p><img src="http://ocg4av0wv.bkt.clouddn.com/2017-10-24-030448.jpg"></p>
+<p>现在我们再试试把布局调整成更像 collection view 那样:</p>
+<p><img src="http://ocg4av0wv.bkt.clouddn.com/2017-10-24-030732.jpg"></p>
+<p>截图上可以看出来横屏下, 左右两边的 cell 都被刘海挡住了。这种情况下, 我们可以通过修改 section insets 来适配 safe area 来解决这个问题。但是再 iOS 11 中， UICollectionViewFlowLayout 提供了一个新的属性 <em>sectionInsetReference</em> 来帮你做这件事情。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@available</span>(iOS <span class="number">11.0</span>, *)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">UICollectionViewFlowLayoutSectionInsetReference</span> : <span class="title">Int</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">case</span> fromContentInset</div><div class="line"></div><div class="line">    <span class="keyword">case</span> fromSafeArea</div><div class="line"></div><div class="line">    <span class="keyword">case</span> fromLayoutMargins</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/// The reference boundary that the section insets will be defined as relative to. Defaults to `.fromContentInset`.</span></div><div class="line"><span class="comment">/// <span class="doctag">NOTE:</span> Content inset will always be respected at a minimum. For example, if the sectionInsetReference equals `.fromSafeArea`, but the adjusted content inset is greater that the combination of the safe area and section insets, then section content will be aligned with the content inset instead.</span></div><div class="line"><span class="meta">@available</span>(iOS <span class="number">11.0</span>, *)</div><div class="line">open <span class="keyword">var</span> sectionInsetReference: <span class="type">UICollectionViewFlowLayoutSectionInsetReference</span></div></pre></td></tr></table></figure>
+<p>可以看出来，系统默认是使用 <code>.fromContentInset</code> 我们再分别修改, 看具体会是什么样子的。 </p>
+<p><img src="http://ocg4av0wv.bkt.clouddn.com/2017-10-24-032133.jpg"></p>
+<center>fromSafeArea</center>
+
+<p>这种情况下 section content insets 等于原来的大小加上 safe area insets 的大小。</p>
+<p>跟使用 <code>.fromLayoutMargins</code> 相似使用这个属性 colection view 的 layout margins 会被添加到 section content insets 上面。</p>
+<p><img src="http://ocg4av0wv.bkt.clouddn.com/2017-10-24-032133.jpg"></p>
+<h3 id="IB-中的-Safe-Area"><a href="#IB-中的-Safe-Area" class="headerlink" title="IB 中的 Safe Area"></a>IB 中的 Safe Area</h3><p>前面的例子都说的是用代码布局要实现的部分。但是很多人都还是习惯用 Interface Builder 来写 UI 界面。苹果在 WWDC 2107 Session 412 中提到:<strong>Storyboards 中的 safe area 是向下兼容的</strong> 也就是说, 即使在 iOS10 及以下的 target 中，也可以使用 safe area 来做布局。<strong>唯一需要做的就是给每个 stroyboard 勾选 Use Safe Area Layout Guide</strong>。实际测试看，应该是 iOS9 以后都只需要这么做。</p>
+<p><strong>知识点</strong>: 在使用 IB 设置约束之后， 注意看相对的是 superview 还是 topLayoutGuide/bottomLayoutGuide， 包括在 Xcode 9 中勾选了 Use Safe Area Layout Guide 之后，默认应该是相对于 safe area 了。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
+<li>在适配 iPhone X 的时候首先是要理解 safe area 是怎么回事。盲目的 <code>if iPhoneX{}</code> 只会给之后的工作代码更多的麻烦。</li>
+<li>如果只需要适配到 iOS9 之前的 storyboard 都只需要做一件事情。</li>
+<li>Xcode9 用 IB 可以看得出来, safe area 到处都是了。理解起来很简单。就是系统对每个 View 都添加了 safe area， 这个区域的大小，是否跟 view 的大小相同是系统来决定的。在这个 View 上的布局只需要相对于 safe area 就可以了。每个 View 的 safe area 都可以通过 iOS 11 新增的 API <strong>safeAreaInsets</strong> 或者 <strong>safeAreaLayoutGuide</strong> 获取。</li>
+<li>对与 UIViewController 来说新增了 <strong>additionalSafeAreaInsets</strong> 这个属性, 用来管理有 tabbar 或者 navigation bar 的情况下额外的情况。</li>
+<li>对于 UIScrollView， UITableView， UICollectionView 这三个控件来说，系统以及做了大多数的事情。<ul>
+<li>scrollView 只需要设置 contentInsetAdjustmentBehavior 就可以很容易的适配带 iPhoneX</li>
+<li>tableView 只需要在 cell header footer 等设置约束的时候相对于 safe area 来做</li>
+<li>对 collection view 来说修改 <em>sectionInsetReference</em> 为 .safeArea 就可以做大多数的事情了。</li>
+</ul>
+</li>
+<li>总的来说， safe area 可以看作是系统在所有的 view 上加了一个虚拟的 view， 这个虚拟的 view 的大小等都是跟 view 的位置等有关的(当然是在 iPhoneX上才有值) <strong>以后在写代码的时候，自定义的控件都尽量针对 safe area 这个虚拟的 view 进行布局。</strong></li>
+</ol>
+<p><a href="https://medium.com/rosberryapps/ios-safe-area-ca10e919526f">参考文章</a> 可能需要梯子<br><a href="https://useyourloaf.com/blog/safe-area-layout-guide/">参考文章</a> 可能需要梯子</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="http://ocg4av0wv.bkt.clouddn.com/2017-07-22-qrcode_for_gh_ef8fdb22f3c3_430.jpg" alt="CepheusSun wechat" style="width: 200px; max-width: 100%;"/>
+    <div>订阅我的公众号，每次更新我都不一定会告诉你！</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://ocg4av0wv.bkt.clouddn.com/wechat.png" alt="CepheusSun WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://ocg4av0wv.bkt.clouddn.com/alipay.png" alt="CepheusSun Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      CepheusSun
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://www.CepheusSun.com/SafeArea.html" title="最近很火的 Safe Area 到底是什么">http://www.CepheusSun.com/SafeArea.html</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
+          
+            <a href="/tags/iOS11/" rel="tag"># iOS11</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Swift4中的范型约束.html" rel="next" title="Swift4 中的范型约束">
+                <i class="fa fa-chevron-left"></i> Swift4 中的范型约束
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/ExpressibleByStringLiteral.html" rel="prev" title="ExpressibleByStringLiteral">
+                ExpressibleByStringLiteral <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+    
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ocg4av0wv.bkt.clouddn.com/2017-07-18--3b9f0d5785eefeb7.jpg"
+               alt="CepheusSun" />
+          <p class="site-author-name" itemprop="name">CepheusSun</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">59</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/CepheusSun" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/208883862/home?wvr=5&lf=reg" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/u/7f9d7158212f" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/CepheusSun_" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://CepheusTeam.github.io/" title="CepheusTeam" target="_blank">CepheusTeam</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://kevincym.github.io/" title="KevinCym" target="_blank">KevinCym</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://maojianxiang.github.io/" title="小毛的博客" target="_blank">小毛的博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://goileo.top/" title="Goileo" target="_blank">Goileo</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=110 src="//music.163.com/outchain/player?type=0&id=964908739&auto=1&height=90"></iframe>
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#UIView-中的-safe-area"><span class="nav-number">1.</span> <span class="nav-text">UIView 中的 safe area</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UIViewController-中的-safe-area"><span class="nav-number">2.</span> <span class="nav-text">UIViewController 中的 safe area</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#模拟-iPhone-X-的-safe-area"><span class="nav-number">2.1.</span> <span class="nav-text">模拟 iPhone X 的 safe area</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UIScrollView-中的-safe-area"><span class="nav-number">3.</span> <span class="nav-text">UIScrollView 中的 safe area</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Content-Insets-Adjustment-Behavior"><span class="nav-number">3.1.</span> <span class="nav-text">Content Insets Adjustment Behavior</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Adjusted-Content-Insets"><span class="nav-number">3.2.</span> <span class="nav-text">Adjusted Content Insets</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UITableView-中的-safe-area"><span class="nav-number">4.</span> <span class="nav-text">UITableView 中的 safe area</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UICollectionView-中的-safe-area"><span class="nav-number">5.</span> <span class="nav-text">UICollectionView 中的 safe area</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IB-中的-Safe-Area"><span class="nav-number">6.</span> <span class="nav-text">IB 中的 Safe Area</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">7.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+    </div>
+  </aside>
+
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CepheusSun</span>
+</div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/VEN/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/VEN/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/VEN/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/VEN/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/VEN/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/VEN/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (search_path.endsWith("json")) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("3VegSLQBjr1EXkI6a2GR2aXY-gzGzoHsz", "bUW35k3am6UQE29tQY4kDeP5");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+        addVisit();
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+
+    // 添加统计
+    function addVisit() {
+      var url2 = 'http://chaxun.1616.net/s.php?type=ip&output=json&callback=?&_=' + Math.random();
+      $.getJSON(url2, function(data) {
+        var $visitors = $(".leancloud_visitors");
+        var url = $visitors.attr('id').trim();
+        var title = $visitors.attr('data-flag-title').trim();
+        // 声明一个 Todo 类型
+        var Todo = AV.Object.extend('visit_list');
+        // 新建一个 Todo 对象
+        var todo = new Todo();
+        var $visitors = $(".leancloud_visitors");
+        var url = $visitors.attr('id').trim();
+        var title = $visitors.attr('data-flag-title').trim();
+        console.log(data);
+        todo.set('ip_add', data.Ip);
+        todo.set('ip_loc', data.Isp);
+        todo.set('title', title);
+        todo.set('url', url);
+        todo.set('Browser' , data.Browser);
+        todo.set('os' , data.OS);
+        todo.save().then(function () {
+        }, function(error) {
+        }); 
+      });
+    }
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
