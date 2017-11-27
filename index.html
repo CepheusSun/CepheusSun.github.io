@@ -289,6 +289,195 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.CepheusSun.com/ExpressibleByStringLiteral.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CepheusSun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ocg4av0wv.bkt.clouddn.com/2017-07-18--3b9f0d5785eefeb7.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CepheusSun">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/ExpressibleByStringLiteral.html" itemprop="url">ExpressibleByStringLiteral</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-27T15:22:23+08:00">
+                2017-11-27
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/ExpressibleByStringLiteral.html" class="leancloud_visitors" data-flag-title="ExpressibleByStringLiteral">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  630
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>从字面意思上看，<strong>通过字符串字面意思表达</strong>。这是一个协议,  就是说实现这个协议可以通过字面意思实例化这个类。</p>
+<p>我们查看 String 这个类, Swift 实际上已经给 String 这个类实现了 <code>ExpressibleByStringLiteral</code> 这个协议。所以可以通过</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> aString = <span class="string">"this is a string"</span></div></pre></td></tr></table></figure>
+<p>来初始化一个 String 对象。通过查看<a href="https://developer.apple.com/documentation/swift/expressiblebystringliteral">文档</a>：</p>
+<p>这个协议已经被</p>
+<ul>
+<li>CSLocalizedString</li>
+<li>StaticString</li>
+<li>NSMutableString</li>
+<li>String</li>
+<li>NSString</li>
+<li>SubString</li>
+<li>Selector</li>
+</ul>
+<p>这几个东西实现了。</p>
+<p>这个协议有什么用呢？其实我们可以通过实现这个协议，来帮助我们更简单的初始化一些东西。比如说: URL。</p>
+<p>在实际开发中, 每次初始化一个 URL 都需要</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> urls = <span class="type">URL</span>.<span class="keyword">init</span>(string: <span class="string">"https://www.baidu.com"</span>)</div></pre></td></tr></table></figure>
+<p>这样来初始化一个 URL 出来， 这个初始化出来的 URL 又是一个 optional 的，在使用的使用还需要给他解包什么的。但是每次都要这样实在是很烦。所以我们可以通过这个协议来简化这个过程。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">URL</span>: <span class="title">ExpressibleByStringLiteral</span> </span>&#123;</div><div class="line">    </div><div class="line"><span class="keyword">public</span> <span class="keyword">init</span>(stringLiteral value: <span class="type">String</span>) &#123;</div><div class="line">	<span class="keyword">guard</span> <span class="keyword">let</span> url = <span class="type">URL</span>(string: <span class="string">"<span class="subst">\(value)</span>"</span>) <span class="keyword">else</span> &#123;</div><div class="line">		<span class="built_in">preconditionFailure</span>(<span class="string">"This url: <span class="subst">\(value)</span> is not invalid"</span>)</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">self</span> = url</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样就可以通过</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> url: <span class="type">URL</span> = <span class="string">"https://www.baidu.com"</span></div><div class="line"><span class="keyword">let</span> task = <span class="type">URLSession</span>.shared.dataTask(with: url)</div><div class="line"><span class="keyword">let</span> task2 = <span class="type">URLSession</span>.shared.dataTask(with: <span class="string">"https://www.baidu.com"</span>)</div></pre></td></tr></table></figure>
+<p>这种方式去初始化一个 URL 了，然后当这个 URL 不对的时候就会抛出异常。</p>
+<p>当然还有一些其他的类, 也可以通过实现这个协议的方式来做这件事情。比如说:</p>
+<p>我们有一个商品类</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Product</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> `id`: <span class="type">String</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个结构体我们需要这样实现</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> p = <span class="type">Product</span>(id: <span class="string">"xx"</span>)</div></pre></td></tr></table></figure>
+<p>这时候我们再实现这个协议</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">Product</span>: <span class="title">ExpressibleByStringLiteral</span> </span>&#123;</div><div class="line">    <span class="keyword">init</span>(stringLiteral value: <span class="type">String</span>) &#123;</div><div class="line">        <span class="keyword">self</span> = <span class="type">Product</span>(id: value)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> p2: <span class="type">Product</span> = <span class="string">"xx"</span></div></pre></td></tr></table></figure>
+<p>当然还可以直接通过一个字符串初始化一个 Controller 这种做法。</p>
+<p><strong>当然，本人还是不支持对这种自定义的类做这种事情，确实是一种非常风骚的做法。暂时没有想到十分具体的场景。但是知道这个小技巧还是很不错的。</strong></p>
+<p>不过，对<code>URL</code> <code>Date</code> 这类，在开发中经常会以字符串来表示，但是又是字符串东西来说，这样去写还是挺不错的。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">Date</span>: <span class="title">ExpressibleByStringLiteral</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">init</span>(stringLiteral value: <span class="type">String</span>) &#123;</div><div class="line">        <span class="keyword">let</span> dateformatter = <span class="type">DateFormatter</span>()</div><div class="line">        dateformatter.dateFormat = <span class="string">"YYYY-MM-dd"</span></div><div class="line">        <span class="keyword">guard</span> <span class="keyword">let</span> date = dateformatter.date(from: value) <span class="keyword">else</span> &#123;</div><div class="line">            <span class="built_in">preconditionFailure</span>(<span class="string">"This date: <span class="subst">\(value)</span> is not invalid"</span>)</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">self</span> = date</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> date: <span class="type">Date</span> = <span class="string">"1990-09-09"</span></div></pre></td></tr></table></figure>
+<p><img src="http://ocg4av0wv.bkt.clouddn.com/2017-11-27-070845.png" alt=""></p>
+<p>看了一下，还有好几种类似的协议。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://www.CepheusSun.com/SafeArea.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -3332,164 +3521,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.CepheusSun.com/RxSwift Safety Manual.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CepheusSun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ocg4av0wv.bkt.clouddn.com/2017-07-18--3b9f0d5785eefeb7.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CepheusSun">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/RxSwift Safety Manual.html" itemprop="url">RxSwift Safety Manual 📚</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2017-05-19T10:41:20+08:00">
-                2017-05-19
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/RxSwift Safety Manual.html" class="leancloud_visitors" data-flag-title="RxSwift Safety Manual 📚">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  1,432
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  6
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>RxSwift 提供了大量非常好用的工具, 让写代码更爽, 但是他也可能给你带来一些头疼的地方, 也可能是bug😱。 用了三个月之后我觉得我应该也可以给出一些建议来避免一些问题。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/RxSwift Safety Manual.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -3539,7 +3570,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">58</span>
+                <span class="site-state-item-count">59</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
