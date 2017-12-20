@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.CepheusSun.com/"/>
-  <updated>2017-12-15T03:34:54.014Z</updated>
+  <updated>2017-12-20T06:49:58.776Z</updated>
   <id>http://www.CepheusSun.com/</id>
   
   <author>
@@ -14,6 +14,114 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>新手应该怎么写 Swift</title>
+    <link href="http://www.CepheusSun.com/%E6%96%B0%E6%89%8B%E5%BA%94%E8%AF%A5%E6%80%8E%E4%B9%88%E5%86%99%20Swift.html"/>
+    <id>http://www.CepheusSun.com/新手应该怎么写 Swift.html</id>
+    <published>2017-12-19T16:00:00.000Z</published>
+    <updated>2017-12-20T06:49:58.776Z</updated>
+    
+    <content type="html"><![CDATA[<p>已经有好几个人跟我抱怨过为什么 swift 里面有那么多问号(<code>?</code>)还有叹号(<code>!</code>)了。恰恰哈, 在刚刚开始写 swift 的时候, 我也面临着这种问题。</p>
+<p>昨天一个朋友发了我一行代码, 让我看看应该怎么写:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> pageiid = (<span class="keyword">self</span>.pageid?.intValue)! + <span class="number">1</span></div></pre></td></tr></table></figure>
+<p>这段代码看起来很操蛋, 但是糟心的是, 在刚刚写 swift 的时候， 我写过更恶心的代码。</p>
+<p>既然大家在刚刚开始写 swift 的时候都遇到了这个问题。今天就来看看, 这样的代码应该怎样写才能让我们更爽。</p>
+<a id="more"></a>
+<p>我们都知道, 有问号(<code>?</code>)和叹号(<code>!</code>)的原因是什么？—<strong>Optional</strong></p>
+<p>相信准备要试试 swift 的人，或多或少都看到过, 或者听说过这是 swift 相较于 oc 很大的区别。在我看来，除了语法上的变化以外， swift 和 oc 最大的区别就在 于<code>optional</code> 了。为了照顾到实在是太新的新手(毕竟我自己也是新手)。还是简单的讲讲这个东西吧！</p>
+<h2 id="什么是-Optional"><a href="#什么是-Optional" class="headerlink" title="什么是 Optional"></a>什么是 Optional</h2><p>这一点就没什么可说的，在 swift 中 Optional 实际上是一个枚举。如果要自己实现一个类似的东西的话,  核心的代码应该是这样的:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 这段代码不重要</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">SYOptional</span>&lt;<span class="title">Wrapped</span>&gt; </span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">case</span> <span class="keyword">none</span></div><div class="line">    <span class="keyword">case</span> some(<span class="type">Wrapped</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这段代码只是要告诉你, 这个枚举只有两个 case,  一个是 <code>.none</code> 代表这个 optional 是没有值的, 也就是说他是 nil。另外一个值 <code>.some</code> 代表这个 optional 是有值的。</p>
+<p>苹果为什么要引入 optional 这个概念, 在这个地方就不打算赘述了。看下面一段话: </p>
+<blockquote>
+<p>“Optional 可以说是 Swift 的一大特色，它完全解决了 “有” 和 “无” 这两个困扰了 Objective-C 许久的哲学概念，也使得代码安全性得到了很大的增加。”</p>
+<p>摘录来自: 王巍 (onevcat). “Swifter - Swift 必备 Tips (第四版)”。 iBooks. </p>
+</blockquote>
+<p>个人认为 optional 确实是 swift 中非常好的新特性了。</p>
+<p>接下来, 我们看看 Optional 的那几个操作符号: <code>??</code>/ <code>!</code>/<code>?</code></p>
+<p>这些无非就是一些 swift 中的语法糖而已。具体什么意思，我们来往下看。</p>
+<h3 id="？"><a href="#？" class="headerlink" title="？"></a>？</h3><p><em>在声明一个变量或者属性的时候:</em></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> optionalString: <span class="type">String</span>?</div></pre></td></tr></table></figure>
+<p>最后的<code>?</code>表示这个 <code>optionalString</code> 是一个可选类型(optional)。这里的 <code>String？</code> 就是 <code>Optional&lt;String&gt;</code> 的意思。</p>
+<p><em>在使用变量的时候:</em></p>
+<p>如果这样写编译器是会报错的, </p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">optionalString.lowercased()</div></pre></td></tr></table></figure>
+<p>这时候编译器会提示你在 <code>optionalString</code> 后面添加一个<code>?</code></p>
+<p>这个问号就是告诉编译器这个 <code>optionalString</code> 是一个可选类型。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> name: <span class="type">String</span>!</div><div class="line">    <span class="keyword">var</span> son: <span class="type">Son</span>!</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Son</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> name: <span class="type">String</span>?</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> p: <span class="type">Person</span>?</div><div class="line"></div><div class="line"><span class="built_in">print</span>(p?.son.name)</div><div class="line"><span class="comment">// Playground: nil</span></div></pre></td></tr></table></figure>
+<p>这段代码表示，如果在一行代码里的某个地方出现 nil 着, 这行代码也将会返回 nil。(这一点有点类似 oc 中给 nil 发送消息)。这样写有一个好处，就是在维护代码的时候, 看到 ？就知道这个东西是可选类型了。也就是<strong>告诉我们在程序运行期间这个东西是可能为空的。</strong></p>
+<h3 id="！"><a href="#！" class="headerlink" title="！"></a>！</h3><p>接下来就是 <code>!</code>  了。这个东西跟<code>?</code> 一样。</p>
+<p><em>在声明一个变量或者属性的时候:</em></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> something: <span class="type">String</span>!</div></pre></td></tr></table></figure>
+<p>这个用法有一个专门的叫法：<strong>隐式解包可选类型</strong>。 这是一个特殊的可选类型，在对他的成员或者是方法进行访问的时候，编译器会自动的帮我们自动解包。也就说说编译器会自动帮我们加上<code>!</code> 这个符号。换成我们自己的话可以这样理解:</p>
+<p><strong>在声明一个变量或者属性的时候，如果我们明确的知道在程序运行过程中访问到这个变量或者属性的时候，他的值一定不为空。那么就可以使用隐式解包可选类型。</strong>如果要举例的话: 我想我会举 XIB 的例子。从 SB 或者 XIB 中拖出来的控件, 都是这样子声明的。</p>
+<p><em>在访问变量或者属性的时候:</em></p>
+<p>对于一个可选类型来说， 有些时候编译器会提醒我们在这个对象后面添加<code>!</code> 就像最开始我朋友发给我的代码一样:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> pageiid = (<span class="keyword">self</span>.pageid?.intValue)! + <span class="number">1</span></div></pre></td></tr></table></figure>
+<p>如果一个方法需要传入的是一个不可选类型作为参数。这时候如果强制传入一个可选类型的话。编译器就会报错，并且提醒我们在这个可选类型变量后面添加一个<code>!</code> 。 这个做法就是<strong>强制解包</strong>。 相当于是直接访问这个可选类型的 <code>.some</code> 。 </p>
+<h3 id=""><a href="#" class="headerlink" title="??"></a>??</h3><p>这个只需要花一句话就能够讲清楚了，这是给这个 optional 默认值。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> optionalString: <span class="type">String</span>?</div><div class="line"><span class="keyword">var</span> defaultValue = optionalString ?? <span class="string">"defaultValue"</span></div></pre></td></tr></table></figure>
+<p>如果 <code>optionalString</code> 有值的话  <code>defaultValue</code> 就是  <code>optionalString</code> 的值。反之就是 <code>&quot;defaultValue&quot;</code>。</p>
+<h2 id="怎么写好-Optional"><a href="#怎么写好-Optional" class="headerlink" title="怎么写好 Optional"></a>怎么写好 Optional</h2><p>大概讲完了一些基本的概念。下面就来说说如何避免在代码中出现各种 <code>?</code> \ <code>!</code> 的情况。其实对新手来说。几乎都是因为编译器提示，然后自动加上去的各种 <code>?</code> 和 <code>!</code> 。 不得不说，这样的代码是非常丑陋的。要解决这个问题, 知道 optional 的原理当然是最重要的。</p>
+<h3 id="避免使用-Optional"><a href="#避免使用-Optional" class="headerlink" title="避免使用 Optional"></a>避免使用 Optional</h3><p>写了一段时间之后，我发现很多时候 optional 的使用都是没有什么意义的。就像我朋友给我的例子一样。我们可以通过设置初始值的方法来避免使用 optional</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> pageid: <span class="type">Int</span> = <span class="number">0</span></div></pre></td></tr></table></figure>
+<p>通过这种方法就能够避免使用到 optional， 也就不会有下面的事情了。当然还可以使用懒加载:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">lazy</span> <span class="keyword">var</span> tableView = <span class="type">UITableView</span>()</div></pre></td></tr></table></figure>
+<p>保证在第一次使用这个属性的时候这个属性是肯定被初始化出来了的。</p>
+<p>当然还可以通过使用隐式解包可选类型去避免之后的代码中出现 <code>?</code> \ <code>!</code></p>
+<p>但是这个其实是不被鼓励的。</p>
+<blockquote>
+<p>默认不要隐式解包可选类型。 在大多数场景中你都可能会忘掉这件事情。但是在一些特殊情况下应该这样做来减少编译器的压力。而且我们也需要去理解这件事情背后的逻辑。</p>
+</blockquote>
+<h3 id="如何访问-Optional"><a href="#如何访问-Optional" class="headerlink" title="如何访问 Optional"></a>如何访问 Optional</h3><p>既然设计出来的 Optional 肯定在编码的过程中不可避免的要使用到它。那么在使用 Optional 的时候怎么去避免出现像最开始的那种情况呢？</p>
+<p>还是来看这行代码:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> pageiid = (<span class="keyword">self</span>.pageid?.intValue)! + <span class="number">1</span></div></pre></td></tr></table></figure>
+<p>在这里如果 <code>pageid</code> 为空的话， 强制解包是肯定会崩溃的。这种情况应该怎么写呢？除了最开始说的声明的时候设置初始值，还有就是给默认值。另外还有 Optional Map 这种方法来访问 Optioal：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> optionalVal = <span class="keyword">optional</span> &#123;</div><div class="line"> <span class="comment">// do someThing</span></div><div class="line">&#125;</div><div class="line"><span class="comment">// 等价于</span></div><div class="line"><span class="keyword">optional</span>.<span class="built_in">map</span>&#123; <span class="comment">// do someThing &#125;</span></div></pre></td></tr></table></figure>
+<p>另外还有一些我在网上搜集的 snippet 也能够很舒服的解决一些问题:给 Optional 加一个 extension:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">Optional</span> </span>&#123; &#125;</div></pre></td></tr></table></figure>
+<p>添加一些方法:基本上都来自 <a href="https://github.com/JohnSundell/SwiftTips">GitHub</a> 这个库</p>
+<h3 id="require"><a href="#require" class="headerlink" title="require"></a>require</h3><p>可以强制要求某个 Optional 在当前行不为空，为空的话会跑出异常。这个相当于是优化了强制解包的异常信息：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">   <span class="comment">/// 强制要求这个 optional 不为空</span></div><div class="line">   <span class="comment">///</span></div><div class="line">   <span class="comment">/// 这个方法返回 optional 的值，或者在optional 为空的时候触发 error</span></div><div class="line">   <span class="comment">///</span></div><div class="line">   <span class="comment">///</span></div><div class="line">   <span class="comment">/// - Parameters:</span></div><div class="line">   <span class="comment">///   - hint: 为空抛出的错误信息</span></div><div class="line">   <span class="comment">///</span></div><div class="line">   <span class="comment">/// - Returns: optional 的值.    </span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">require</span><span class="params">(hint hintExpression: @autoclosure<span class="params">()</span></span></span> -&gt; <span class="type">String</span>? = <span class="literal">nil</span>,</div><div class="line">                file: <span class="type">StaticString</span> = #file,</div><div class="line">                line: <span class="type">UInt</span> = #line) -&gt; <span class="type">Wrapped</span> &#123;</div><div class="line">       <span class="keyword">guard</span> <span class="keyword">let</span> unwrapped = <span class="keyword">self</span> <span class="keyword">else</span> &#123;</div><div class="line">           <span class="keyword">var</span> message = <span class="string">"required value was nil <span class="subst">\(file)</span>, at line <span class="subst">\(line)</span>"</span></div><div class="line">           <span class="keyword">if</span> <span class="keyword">let</span> hint = hintExpression() &#123;</div><div class="line">               message.append(<span class="string">". Debugging hit: <span class="subst">\(hint)</span>"</span>)</div><div class="line">           &#125;</div><div class="line">           #<span class="keyword">if</span> !os(<span class="type">Linux</span>)</div><div class="line">           <span class="keyword">let</span> exception = <span class="type">NSException</span>(name: .invalidArgumentException,</div><div class="line">                                       reason: message,</div><div class="line">                                       userInfo: <span class="literal">nil</span>)</div><div class="line">           exception.raise()</div><div class="line">           #endif</div><div class="line">           </div><div class="line">           <span class="built_in">preconditionFailure</span>(message)</div><div class="line">       &#125;</div><div class="line">       <span class="keyword">return</span> unwrapped</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<h3 id="or"><a href="#or" class="headerlink" title="or"></a>or</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/// 用来代替 ?? 操作符, 这样写可读性高些</span></div><div class="line"><span class="comment">///</span></div><div class="line"><span class="comment">/// - Sample:</span></div><div class="line"><span class="comment">//  var a: String? = nil</span></div><div class="line"><span class="comment">//  let res = a.or("b")</span></div><div class="line"><span class="function"><span class="keyword">func</span> `<span class="title">or</span>`<span class="params">(value: Wrapped?)</span></span> -&gt; <span class="type">Optional</span> &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">self</span> ?? value</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="hasSome"><a href="#hasSome" class="headerlink" title="hasSome"></a>hasSome</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/// 用来判断这个 Optional 是不是为空了。</span></div><div class="line"><span class="keyword">var</span> hasSome: <span class="type">Bool</span> &#123;</div><div class="line">    <span class="keyword">switch</span> <span class="keyword">self</span> &#123;</div><div class="line">    <span class="keyword">case</span> .<span class="keyword">none</span>: <span class="keyword">return</span> <span class="literal">false</span></div><div class="line">    <span class="keyword">case</span> .some: <span class="keyword">return</span> <span class="literal">true</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="ifSome-ifNone"><a href="#ifSome-ifNone" class="headerlink" title="ifSome   ifNone"></a>ifSome   ifNone</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">   <span class="comment">// 如果 optional 不为空的话，执行闭包， 并返回这个 Optional</span></div><div class="line">@discardableResult</div><div class="line">   <span class="function"><span class="keyword">func</span> <span class="title">ifSome</span><span class="params">(<span class="number">_</span> handler: <span class="params">(Wrapped)</span></span></span> -&gt; <span class="type">Void</span>) -&gt; <span class="type">Optional</span> &#123;</div><div class="line">       <span class="keyword">switch</span> <span class="keyword">self</span> &#123;</div><div class="line">       <span class="keyword">case</span> .some(<span class="keyword">let</span> wrapped): handler(wrapped); <span class="keyword">return</span> <span class="keyword">self</span>;</div><div class="line">       <span class="keyword">case</span> .<span class="keyword">none</span>: <span class="keyword">return</span> <span class="keyword">self</span></div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="comment">// 如果 optional 为空的话，执行闭包， 并返回这个 Optional</span></div><div class="line">   @discardableResult</div><div class="line">   <span class="function"><span class="keyword">func</span> <span class="title">ifNone</span><span class="params">(<span class="number">_</span> handler: <span class="params">()</span></span></span> -&gt; ()) -&gt; <span class="type">Optional</span> &#123;</div><div class="line">       <span class="keyword">switch</span> <span class="keyword">self</span> &#123;</div><div class="line">       <span class="keyword">case</span> .some: <span class="keyword">return</span> <span class="keyword">self</span>;</div><div class="line">       <span class="keyword">case</span> .<span class="keyword">none</span>: handler(); <span class="keyword">return</span> <span class="keyword">self</span></div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>为了避免写出满是 <code>?</code> 和 <code>!</code> 的代码, 掌握 Swift 中可选类型的基本知识是很必要的。另外也需要去了解 Swift 中为什么要引入可选类型这个概念。在编写 Swift 代码的时候，需要我们程序员时刻知道程序的逻辑是怎么样的，在设计一个类的时候, 要清楚它的属性在其生命周期中那些是可能为空的。在没有必要的时候，尽量的避免是用  Optional 减少 Optional 的使用，一方面能让你的代码逻辑更可控，一方面也能让你的代码更漂亮。至少不会再被编译器一步一步的搞出那些恶心的东西。<strong>想清楚逻辑, 合理的规避, 加上一些小手段, 让代码更漂亮, 是一件很幸福的事情。</strong> Optional 能够让代码逻辑更明确, 减少很多不必要的crash，如果不当使用, crash 也不会少哦。</p>
+<p>最后我一直觉得，掌握了 Optional 是怎么回事， 以及 Optional 怎么用最好， 基本上就算是入门了 Swift 了。</p>
+<p>对了朋友的代码:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> pageiid: <span class="type">NSString</span>?   <span class="comment">// 这是属性声明</span></div><div class="line"><span class="keyword">let</span> pageiid = (<span class="keyword">self</span>.pageid?.intValue)! + <span class="number">1</span>  <span class="comment">// 这是某个方法里面的代码</span></div></pre></td></tr></table></figure>
+<ul>
+<li>为什么要用 NSString?</li>
+<li>为什么要 Optional</li>
+<li>为什么要强制解包?</li>
+</ul>
+<p>为什么要 NSString？这个我真不知道， 他只说了接口要一个字符串；为什么要 Optional？这个我也不知道；为什么要强制解包？这我知道，肯定是 Xcode 自动帮他改的啊😂</p>
+<p>然后我给他改成了这样:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> pageid: <span class="type">Int</span> = <span class="number">0</span> </div><div class="line"><span class="keyword">self</span>.pageid +=<span class="number">1</span></div><div class="line"><span class="string">"<span class="subst">\(<span class="keyword">self</span>.pageid)</span>"</span></div></pre></td></tr></table></figure>
+<p>初始化的时候默认初始值为0，避免 Optional 的使用也避免了后面的强制解包。</p>
+<p>使用 Int 代替 NSString。第一是不想用 NSString， 第二是，在业务逻辑中，这个值应该就是 int 类型的</p>
+<p>在接口组装参数的地方，将 int 转换成字符串。这个逻辑应该是接口的事情，不应该拿业务层的逻辑去将就它。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;已经有好几个人跟我抱怨过为什么 swift 里面有那么多问号(&lt;code&gt;?&lt;/code&gt;)还有叹号(&lt;code&gt;!&lt;/code&gt;)了。恰恰哈, 在刚刚开始写 swift 的时候, 我也面临着这种问题。&lt;/p&gt;
+&lt;p&gt;昨天一个朋友发了我一行代码, 让我看看应该怎么写:&lt;/p&gt;
+&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; pageiid = (&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.pageid?.intValue)! + &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;这段代码看起来很操蛋, 但是糟心的是, 在刚刚写 swift 的时候， 我写过更恶心的代码。&lt;/p&gt;
+&lt;p&gt;既然大家在刚刚开始写 swift 的时候都遇到了这个问题。今天就来看看, 这样的代码应该怎样写才能让我们更爽。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Swift" scheme="http://www.CepheusSun.com/categories/Swift/"/>
+    
+    
+      <category term="iOS" scheme="http://www.CepheusSun.com/tags/iOS/"/>
+    
+      <category term="Swift" scheme="http://www.CepheusSun.com/tags/Swift/"/>
+    
+  </entry>
   
   <entry>
     <title>Swift 中 class 怎么支持 Codable</title>
@@ -2038,105 +2146,6 @@
 &lt;p&gt;学习如何在不创建一大堆类的前提下做按钮、label、图片的动画。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;掌握了足够的知识而不去使用它, 就像你长了满口的牙齿, 但是成天都喝牛奶一样。 掌握了足够的理论知识, 在项目中怎么使用 POP 呢？🤔&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="POP" scheme="http://www.CepheusSun.com/categories/POP/"/>
-    
-    
-      <category term="iOS" scheme="http://www.CepheusSun.com/tags/iOS/"/>
-    
-      <category term="Swift" scheme="http://www.CepheusSun.com/tags/Swift/"/>
-    
-      <category term="翻译" scheme="http://www.CepheusSun.com/tags/%E7%BF%BB%E8%AF%91/"/>
-    
-      <category term="POP" scheme="http://www.CepheusSun.com/tags/POP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Introduction to Protocol Oriented Programming in Swift</title>
-    <link href="http://www.CepheusSun.com/Introduction%20to%20Protocol%20Oriented%20Programming%20in%20Swift.html"/>
-    <id>http://www.CepheusSun.com/Introduction to Protocol Oriented Programming in Swift.html</id>
-    <published>2017-05-13T16:05:23.000Z</published>
-    <updated>2017-05-13T16:07:48.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>OOP is okay, but could’ve been better</p>
-</blockquote>
-<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>即使你还不知道 Class 和 Struct 基本的区别, 你也可以看这个文章。都知道 Struct 不能继承, 但是, 为什么呢？</p>
-<p>如果你还不知道上面这个问题的答案, 花两分钟时间读一下下面这段代码。这些代码是写在 playground 上的</p>
-<a id="more"></a>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">HumanClass</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> name: <span class="type">String</span></div><div class="line">    <span class="keyword">init</span>(name: <span class="type">String</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.name = name</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> classHuman = <span class="type">HumanClass</span>(name: <span class="string">"Bob"</span>)</div><div class="line"><span class="comment">// "Bob"</span></div><div class="line">classHuman.name</div><div class="line"><span class="comment">// Created a "copied" object</span></div><div class="line"><span class="keyword">var</span> newClassHuman = classHuman</div><div class="line">newClassHuman.name = <span class="string">"Bobby"</span></div><div class="line">classHuman.name <span class="comment">//"Bobby"</span></div></pre></td></tr></table></figure>
-<p>等我们改变 <code>newClassHuman</code> 的 <code>name</code> 属性为 <code>“Bobby”</code> 之后, <code>classHuman</code> 的 <code>name</code> 属性也变成 <code>“Bobby”</code> 了。</p>
-<p>我们再看看 Struct </p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">HumanStruct</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> name: <span class="type">String</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> humanStruct = <span class="type">HumanStruct</span>(name: <span class="string">"Bob"</span>)</div><div class="line"><span class="keyword">var</span> newHumanStruct = humanStruct</div><div class="line">newHumanStruct.name = <span class="string">"Bobby"</span></div><div class="line">humanStruct.name  <span class="comment">// "Bobby"</span></div></pre></td></tr></table></figure>
-<p>看出来区别了吗？ 改变复制出来的 <code>newHumanStruct</code> 的 <code>name</code> 属性比呢没有改变原始的 <code>humanStruct</code> 的 <code>name</code> 属性。</p>
-<p>对于 Class 来说, 这样的复制出来的对象, 和原来的对象都指向的是内存中的同一个对象。对任何一个对象的改变, 都会改变其他的对象(引用类型)。 对于 Struct 来说, 在传递和赋值的时候会创造一个新的对象(值类型)</p>
-<p><a href="https://www.youtube.com/watch?v=MNnfUwzJ4ig">这里有一个介绍这个概念的视频</a></p>
-<h3 id="Bye-OOP"><a href="#Bye-OOP" class="headerlink" title="Bye OOP"></a>Bye OOP</h3><p>你可能会比较好奇为什么我讲了半天跟面向协议编程没关系的东西。在我开始将 POP 对比 OOP 的优势之前， 你得理解引用类型和值类型的区别。</p>
-<p>这里有一些毋庸置疑的 OOP 的优势, 也是劣势。</p>
-<ol>
-<li>创建一个子类, 这个子类会继承一些并不需要的属性和方法。这会让这个子类变的臃肿。</li>
-<li>当你有很多的继承关系的时候, 找到各个类之间的关系, 就变的比较困难了。</li>
-<li>当对象指向的内存中的同一块地址的时候, 如果对其中一个进行了修改, 所有的都会变。</li>
-</ol>
-<p>顺便看一下 UIKit 中的 OOP 吧</p>
-<center><br><img src="https://cdn-images-1.medium.com/max/1600/1*hjEXB3PGUOSbxet0qUJRNA.png" alt=""><br>2015 WWDC_Hideous Structure<br></center>
-
-<p>如果你是刚进苹果的工程师, 你能够搞定这些东西吗？我们在使用它的时候总觉的会比较混乱。</p>
-<p>有人说 OOP 是一个让你的代码变的想意大利面那样乱的模块化方案。如果你想要更多吐槽 OOP 的内容. <a href="https://content.pivotal.io/blog/all-evidence-points-to-oop-being-bullshit">这儿</a><a href="https://krakendev.io/blog/subclassing-can-suck-and-heres-why">这儿</a><a href="http://www.smashcompany.com/technology/object-oriented-programming-is-an-expensive-disaster-which-must-end">这儿</a><a href="https://www.leaseweb.com/labs/2015/08/object-oriented-programming-is-exceptionally-bad/">还有这儿</a></p>
-<h3 id="Welcome-POP"><a href="#Welcome-POP" class="headerlink" title="Welcome POP"></a>Welcome POP</h3><p>你可能已经猜到了, POP 的基础不是类, 而是值类型变量。没有引用，不像刚刚看到的金字塔结构。 POP 喜欢扁平的, 没那么多嵌套关系的代码。</p>
-<p>只是吓你一下啦, 下面我们看看苹果爸爸的官方定义。</p>
-<blockquote>
-<p>“A protocol defines a blueprint of methods, properties… The protocol can then be adopted by a class, structure, or enumeration” — Apple</p>
-<p>协议定义了方法属性的蓝图, 协议可以被类、结构体、还有枚举实现。</p>
-</blockquote>
-<h3 id="Getting-Real-with-POP"><a href="#Getting-Real-with-POP" class="headerlink" title="Getting Real with POP"></a>Getting Real with POP</h3><p>首先我们设计一下 human 这个东西。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">Human</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> name: <span class="type">String</span> &#123;<span class="keyword">get</span> <span class="keyword">set</span>&#125;</div><div class="line">    <span class="keyword">var</span> race: <span class="type">String</span> &#123;<span class="keyword">get</span> <span class="keyword">set</span>&#125;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">sayHi</span><span class="params">()</span></span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在这个协议中, 我没有申明 <code>drinking</code>. 它只是声明一些一定存在的东西。现在先不要纠结 <code>{get set}</code>. 它只是表明你可以给这个属性赋值也可以取值。先不要担心, 除非你要使用计算属性。</p>
-<p>我们在定义一个韩国人 🇰🇷 结构体, 来实现这个协议。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Korean</span>: <span class="title">Human</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> name: <span class="type">String</span> = <span class="string">"Bob Lee"</span></div><div class="line">    <span class="keyword">var</span> race: <span class="type">String</span> = <span class="string">"Asian"</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">sayHi</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="built_in">print</span>(<span class="string">"Hi, I'm <span class="subst">\(name)</span>"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>只要这个结构体遵守了这个协议，它就必须要实现这个协议中的多有方法和属性。如果没有的话 Xcode 就会报错😡</p>
-<p>只要是遵守了这个蓝图。你就可以做其他任何事情了, 盖一座长城也没关系。</p>
-<p>我们在来实现一个美国人 🇺🇸</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Korean</span>: <span class="title">Human</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> name: <span class="type">String</span> = <span class="string">"Joe Smith"</span></div><div class="line">    <span class="keyword">var</span> race: <span class="type">String</span> = <span class="string">"White"</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">sayHi</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="built_in">print</span>(<span class="string">"Hi, I'm <span class="subst">\(name)</span>"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>很酷吧！ 不需要用那些 <code>init</code> <code>override</code> 关键字。 开始感兴趣了吗？</p>
-<p><a href="https://www.youtube.com/watch?v=lyzcERHGH_8&amp;t=2s&amp;list=PL8btZwalbjYm5xDXDURW9u86vCtRKaHML&amp;index=1">Intro to Protocol Lesson</a></p>
-<h3 id="Protocol-Inheritance"><a href="#Protocol-Inheritance" class="headerlink" title="Protocol Inheritance"></a>Protocol Inheritance</h3><p>如果你想要一个 <code>superman</code> 的协议。这个协议也需要遵守 <code>Human</code> 这个协议呢？</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">SuperHuman</span>: <span class="title">Human</span> </span>&#123;</div><div class="line"> <span class="keyword">var</span> canFly: <span class="type">Bool</span> &#123; <span class="keyword">get</span> <span class="keyword">set</span> &#125; </div><div class="line"> <span class="function"><span class="keyword">func</span> <span class="title">punch</span><span class="params">()</span></span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>现在如果你有一个遵守了 <code>SuperMan</code> 这个协议的类或者结构体的话，这个类也必须实现 <code>Human</code> 这个协议中的方法。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SuperSaiyan</span>: <span class="title">SuperMan</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> name: <span class="type">String</span> = <span class="string">"Goku"</span></div><div class="line">    <span class="keyword">var</span> race: <span class="type">String</span> = <span class="string">"Asian"</span></div><div class="line">    <span class="keyword">var</span> canFly: <span class="type">Bool</span> = <span class="literal">true</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">sayHi</span><span class="params">()</span></span> &#123; <span class="built_in">print</span>(<span class="string">"Hi, I'm <span class="subst">\(name)</span>"</span>) &#125;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">punch</span><span class="params">()</span></span> &#123; <span class="built_in">print</span>(<span class="string">"Puuooookkk"</span>) &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>当然你也可以遵守多个协议。就可以实现多继承了。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Example</span></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Example</span>: <span class="title">ProtocolOne</span>, <span class="title">ProtocolTwo</span> </span>&#123;&#125;</div></pre></td></tr></table></figure>
-<h3 id="Protocol-Extension"><a href="#Protocol-Extension" class="headerlink" title="Protocol Extension"></a>Protocol Extension</h3><p>下面才是协议最强大的特性了。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Super Animal speaks English</span></div><div class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">SuperAnimal</span> </span>&#123;</div><div class="line"> <span class="function"><span class="keyword">func</span> <span class="title">speakEnglish</span><span class="params">()</span></span> </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>给这个协议加一个 <code>Extension</code></p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">SuperAnimal</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">speakEnglish</span><span class="params">()</span></span> &#123; <span class="built_in">print</span>(<span class="string">"I speak English, pretty cool, huh?"</span>)&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>现在再创建一个遵守这个协议的类</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Donkey</span>: <span class="title">SuperAnimal</span> </span>&#123;</div><div class="line">    </div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> ramon = <span class="type">Donkey</span>()</div><div class="line">ramon.speakEnglish()</div><div class="line"><span class="comment">//  "I speak English, pretty cool, huh?"</span></div></pre></td></tr></table></figure>
-<p>如果你使用了 <code>Extension</code> 就可以给这个协议添加默认的实现和属性值了。这样不爽吗？</p>
-<h3 id="Protocol-as-Type-Last"><a href="#Protocol-as-Type-Last" class="headerlink" title="Protocol as Type(Last)"></a>Protocol as Type(Last)</h3><p>如果我跟你说我能在一个数组中同时放一个对象和一个结构体呢？😮</p>
-<p>我要用袋鼠打架求偶来写一个 demo 了。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">Fightable</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">legKick</span><span class="params">()</span></span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">StructKangaroo</span>: <span class="title">Fightable</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">legKick</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="built_in">print</span>(<span class="string">"Puuook"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassKangroo</span>: <span class="title">Fightable</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">legKick</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="built_in">print</span>(<span class="string">"Pakkkk"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>然后初始化俩袋鼠出来</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> structKangroo = <span class="type">StructKangaroo</span>()</div><div class="line"><span class="keyword">let</span> classKangroo = <span class="type">ClassKangroo</span>()</div></pre></td></tr></table></figure>
-<p>现在就可以把他们放在一个数组中了。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> kangaroos: [<span class="type">Fightable</span>] = [structKang, classKang]</div></pre></td></tr></table></figure>
-<p>难以置信吧！ 再看看</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> kang <span class="keyword">in</span> kangaroos &#123; </div><div class="line"> kang.legKick() </div><div class="line">&#125;</div><div class="line"><span class="comment">// "Puuook"</span></div><div class="line"><span class="comment">// "Pakkkk"</span></div></pre></td></tr></table></figure>
-<p>这很爽吧！ 想象在 OOP 中我们怎么实现这个东西呢？</p>
-<h3 id="That’s-it"><a href="#That’s-it" class="headerlink" title="That’s it!"></a>That’s it!</h3><p><a href="https://blog.bobthedeveloper.io/protocol-oriented-programming-view-in-swift-3-8bcb3305c427">原文地址</a></p>
-<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>我是一名来自中国的 iOS 程序员, 对技术有着浓厚的兴趣, 在学习的过程中, 发现了很多来自国外的优秀博客。为了更好的学习这些文章, 产生了将这些文章翻译成中文的想法。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;OOP is okay, but could’ve been better&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;Introduction&quot;&gt;&lt;a href=&quot;#Introduction&quot; class=&quot;headerlink&quot; title=&quot;Introduction&quot;&gt;&lt;/a&gt;Introduction&lt;/h3&gt;&lt;p&gt;即使你还不知道 Class 和 Struct 基本的区别, 你也可以看这个文章。都知道 Struct 不能继承, 但是, 为什么呢？&lt;/p&gt;
-&lt;p&gt;如果你还不知道上面这个问题的答案, 花两分钟时间读一下下面这段代码。这些代码是写在 playground 上的&lt;/p&gt;
     
     </summary>
     
