@@ -4,6 +4,30 @@
 
     
   <url>
+    <loc>http://www.CepheusSun.com/Swift%20%E4%B8%AD%E7%9A%84%E7%B1%BB%E5%9E%8B%E6%93%A6%E9%99%A4.html</loc>
+    <lastmod>2018-01-12T06:29:42.401Z</lastmod>
+    <data>
+        <display>
+        <title>译 Swift 中的类型擦除</title>
+        <pubTime>2018-01-12T06:20:45.000Z</pubTime>
+        
+        <tag>iOS</tag>
+         
+        <tag>Swift</tag>
+         
+        <tag>翻译</tag>
+         
+         
+           
+             
+              <breadCrumb title="Swift" url="http://www.CepheusSun.com/categories/Swift/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.CepheusSun.com/%E6%96%B0%E6%89%8B%E5%BA%94%E8%AF%A5%E6%80%8E%E4%B9%88%E5%86%99%20Swift.html</loc>
     <lastmod>2017-12-20T06:49:58.776Z</lastmod>
     <data>
@@ -787,9 +811,9 @@
         <title>使用Gitlab和Cocoapods创建私有pod</title>
         <pubTime>2017-04-19T14:39:27.000Z</pubTime>
         
-        <tag>CocoaPods</tag>
-         
         <tag>iOS</tag>
+         
+        <tag>CocoaPods</tag>
          
          
            
@@ -895,9 +919,9 @@
         <title>使用 Cocoapods 管理你的项目</title>
         <pubTime>2016-12-01T16:00:00.000Z</pubTime>
         
-        <tag>CocoaPods</tag>
-         
         <tag>iOS</tag>
+         
+        <tag>CocoaPods</tag>
          
          
            

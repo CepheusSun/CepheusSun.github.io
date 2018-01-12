@@ -289,6 +289,169 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.CepheusSun.com/Swift 中的类型擦除.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CepheusSun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ocg4av0wv.bkt.clouddn.com/2017-07-18--3b9f0d5785eefeb7.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CepheusSun">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Swift 中的类型擦除.html" itemprop="url">译 Swift 中的类型擦除</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-01-12T14:29:42+08:00">
+                2018-01-12
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/Swift 中的类型擦除.html" class="leancloud_visitors" data-flag-title="译 Swift 中的类型擦除">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  2,453
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>你可能听过这个术语 :<strong>类型擦除</strong>。甚至你也用过标准库中的类型擦除(<code>AnySequence</code>)。但是具体什么是类型擦除, 我们怎么才能实现类型擦除呢？这篇文章就是介绍这件事情的。</p>
+<p>在日常的开发中, 总有想要把某个类或者是某些实现细节对其他模块隐藏起来, 不然总会感觉这些类在项目里到处都是。或者想要实现两个不同类之间的互相转换。类型擦除就是一个移除某个类的类型标准， 将其变得更加通用的过程。</p>
+<p>到这里很自然的就会想到协议或者是提取抽象的父类来做这件事情。<strong>协议</strong>或者<strong>父类</strong> 就可以看作是一种实现类型擦除的方式。举个例子:</p>
+<p><strong>NSString</strong> 在标准库中我们是没办法得到 <code>NSString</code> 的实例的，我们得到的所有的 <code>NSString</code> 对象其实都是标准库中 <code>NSString</code> 的私有子类。这些私有类型对外界可以说是完全隐藏起来了的, 同时可以是用 <code>NSString</code> 的 API 来使用这些实例。所有的子类我们在使用的时候都不需要知道他们具体是什么, 也就不需要考虑他们具体的类型信息了。</p>
+<p>在处理 Swift 中的泛型和有关联类型的协议的时候, 就需要一些更高级的东西了。Swift 不允许把协议当作类来使用。如果你想要写一个<strong>接受一个 Int 类型的序列的方法</strong>。这么写是不对的:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">f</span><span class="params">(seq: Sequence&lt;Int&gt;)</span></span> &#123;...&#125;</div><div class="line"></div><div class="line"><span class="comment">// Compile error： Cannot specialize non-generic type 'Sequence'</span></div></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/Swift 中的类型擦除.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://www.CepheusSun.com/新手应该怎么写 Swift.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -3352,167 +3515,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.CepheusSun.com/Protocol Oriented Programming View in Swift 3.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CepheusSun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ocg4av0wv.bkt.clouddn.com/2017-07-18--3b9f0d5785eefeb7.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CepheusSun">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Protocol Oriented Programming View in Swift 3.html" itemprop="url">Protocol Oriented Programming View in Swift 3</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2017-05-14T17:28:46+08:00">
-                2017-05-14
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/Protocol Oriented Programming View in Swift 3.html" class="leancloud_visitors" data-flag-title="Protocol Oriented Programming View in Swift 3">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  1,140
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  5
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>学习如何在不创建一大堆类的前提下做按钮、label、图片的动画。</p>
-</blockquote>
-<p>掌握了足够的知识而不去使用它, 就像你长了满口的牙齿, 但是成天都喝牛奶一样。 掌握了足够的理论知识, 在项目中怎么使用 POP 呢？🤔</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Protocol Oriented Programming View in Swift 3.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -3562,7 +3564,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">61</span>
+                <span class="site-state-item-count">62</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
