@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.CepheusSun.com/"/>
-  <updated>2018-01-12T06:29:42.401Z</updated>
+  <updated>2018-01-17T09:10:01.043Z</updated>
   <id>http://www.CepheusSun.com/</id>
   
   <author>
@@ -14,6 +14,39 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>你好，2018</title>
+    <link href="http://www.CepheusSun.com/2017%E6%80%BB%E7%BB%93.html"/>
+    <id>http://www.CepheusSun.com/2017总结.html</id>
+    <published>2018-01-16T16:00:00.000Z</published>
+    <updated>2018-01-17T09:10:01.043Z</updated>
+    
+    <content type="html"><![CDATA[<p>每到年关，总会看到各种各样的年终总结。大学以来一直坚持着记录一些东西的习惯。趁着今年的政治任务，还是开始了今年的总结。与其说是总结，不如说是好好的给刚刚过去的这段时间说说再见，然后再给新的阶段说句你好。</p>
+<a id="more"></a>
+<p>2017 答应自己的坚持写作， 算是做到了。这一年在博客上一共发表了40篇文章。下半年觉得可以开始输出，所以在开始将后来的文章放在简书上。很幸运被 CocoaChina 的编辑看到了，也算是上过热门了。前两天群里还有人说在百度搜 Codable 还有 safe area 首屏都是我的东西。这也算是一些小成就吧！后来因为一些原因，又跑到了掘金，希望接下来的2018在掘金能混够10w+的阅读1k+的喜欢。</p>
+<p>1月看着 《Think Python》 学了一段 python， 以亲身经历映证了一个道理。知识还是要用起来才算是掌握。本来还抱着做 python 的期望，到最后实在是没有应用场景，到最后感觉还是跟没学似的。还是自己 too naive 了。</p>
+<p>因为苹果强行屏蔽热更新。一直坚守 OC 的理由突然就没有了。所以开始认认真真的去学习 Swift。很庆幸，这件事情也坚持下来了。正巧 2017 年写的第一篇文章是《Swift 和 OC 混合编程》, 最后一篇文章是《新手应该怎么写 Swift》从刚刚开始入门，到最后自诩老司机。这一年最大的收获恐怕就是这件事情了。</p>
+<p>2016年实践了半年的敏捷开发，年初去 thoughtworks 参加了一次技术交流。一直听说 thoughtworks 在敏捷实践上很有经验。2017 也算是对敏捷有过一些思考。从翻译《一个人的敏捷开发》到通读《敏捷革命》。总还是会去思考应该怎么样去提高自己的工作效率。很遗憾，之后经历的公司基本上没有认真在做 Scrum 的。</p>
+<p>伴着这一年不断的学习和写做。2017 还有一些成长应该是来自外语这方面。学习 Swift 实在是缺少优秀的中文资料。所以在学习的初期，被迫的花了很多的时间去读国外的东西。先是 Medium， 慢慢的接触到了 RayWenderlich、MikeAsh 这些很不错的内容。一年下来，养成了读英文的习惯。读了 RayWenderlich 出的《The Swift Apprentice Second Edition Beginning programming with Swift 3》、《RxSwift Reactive Programming with Swift》两本书。希望2018年能坚持着个习惯吧！</p>
+<p>说到读书，这一年还是看过一些书的。《腾讯是怎么长大的》、《一句顶一万句》、《许三观卖血记》、《白鹿原》、《以色列：一个国家的诞生》、《以色列2:在危机中生存》、《钱商》、《哲学家都干了什么》、《佛祖都说了什么》…. 回看起来，自己的兴趣还真是广泛呢。公司传记，文学，政治、经济、哲学、宗教… 也能吹牛自己是一个爱好广泛的人了。</p>
+<p>读了些书，应该也要走一些路的。年初跑了趟贵州，实在是没有留下什么深刻的印象。国庆说走就走去了趟若尔盖。算起来还是更喜欢草原沙漠这类比较大的风景。希望2018能有更多几机会去体会更多中人生！</p>
+<p>2017年读了很多的书，写了很多的字。学了一门新的计算机语言。写了几个没什么价值的 App。也不知道还做了什么事情了。2017 没能给自己一个满意的答卷，没有活成自己想要的样子，好些年初定下的计划到最后也因为各种各样的原因没能坚持下去。</p>
+<p>希望下一年的自己，坚持写作，坚持阅读，坚持学习。能在某些点上有些更深入的思考。很多想做，却没能做的事情希望新的一年能接着做下去。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;每到年关，总会看到各种各样的年终总结。大学以来一直坚持着记录一些东西的习惯。趁着今年的政治任务，还是开始了今年的总结。与其说是总结，不如说是好好的给刚刚过去的这段时间说说再见，然后再给新的阶段说句你好。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="随笔杂记" scheme="http://www.CepheusSun.com/categories/%E9%9A%8F%E7%AC%94%E6%9D%82%E8%AE%B0/"/>
+    
+    
+      <category term="杂记" scheme="http://www.CepheusSun.com/tags/%E6%9D%82%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>译 Swift 中的类型擦除</title>
@@ -2119,50 +2152,6 @@
       &lt;p&gt;Swift 的一大特色就是编译安全。这使得我们开发者能够更容易的编写出可预测性的代码, 并且能勾减少运行时错误的发生。但是, 在实际的情况中, 错误发生的原因是千奇百怪的。&lt;/p&gt;
 &lt;p&gt;我们今天来看一下如果正确的去处理各类错误, 以及我们有什么工具来做这件事情。上一篇文章研究了如何处理 &lt;code&gt;non-optional&lt;/code&gt;。 在那篇文章中我使用 &lt;code&gt;guard&lt;/code&gt; + &lt;code&gt;preconditionFailure()&lt;/code&gt; 代替了强制解包。&lt;/p&gt;
 &lt;p&gt;之后很多人都在问 &lt;code&gt;preconditionFailure()&lt;/code&gt; 和 &lt;code&gt;assert()&lt;/code&gt; 有什么区别。 在这篇文章中。我们再仔细的看看这些语言特性。最重要的是在什么情况下使用哪一种？&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Swift" scheme="http://www.CepheusSun.com/categories/Swift/"/>
-    
-    
-      <category term="iOS" scheme="http://www.CepheusSun.com/tags/iOS/"/>
-    
-      <category term="Swift" scheme="http://www.CepheusSun.com/tags/Swift/"/>
-    
-      <category term="翻译" scheme="http://www.CepheusSun.com/tags/%E7%BF%BB%E8%AF%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Using lazy properties in Swift</title>
-    <link href="http://www.CepheusSun.com/Using%20lazy%20properties%20in%20Swift.html"/>
-    <id>http://www.CepheusSun.com/Using lazy properties in Swift.html</id>
-    <published>2017-05-20T04:36:45.000Z</published>
-    <updated>2017-05-20T04:37:17.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>懒加载属于让你可以在需要的时候才初始化, 而不是在初始化这个对象的时候就必须要。懒加载可以用来避免 optional 的使用, 当某个属性的初始化耗费很多资源的时候会提升性能。当然使用懒加载也能让对象的初始化方法看起来很清爽, 因为某些设置会在这个对象的生命周期中被推迟。</p>
-<p>这周我们来学习一下 Swift 中懒加载的定义, 以及使用。</p>
-<a id="more"></a>
-<h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><p>定义一个懒加载属性最简单的办法就是在 <code>var</code> 前加一个 <code>lazy</code> 关键字, 并且还要给 出默认的值。这个默认值会在这个属性被第一次访问的时候被指定, 也就是说在这个对象的初始化方法中这个就不需要再去初始化这个属性了。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">FileLoader</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="built_in">lazy</span> <span class="keyword">var</span> cahce = <span class="type">Cache</span>&lt;<span class="type">File</span>&gt;()</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">loadFile</span><span class="params">(name name: String)</span></span> <span class="keyword">throws</span> -&gt; <span class="type">File</span> &#123;</div><div class="line">        <span class="keyword">if</span> <span class="keyword">let</span> cachedFile = cahce[name] &#123;</div><div class="line">            <span class="keyword">return</span> cachedFile</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">let</span> file = <span class="keyword">try</span> loadFileFromDisk(fileName: name)</div><div class="line">        cahce[name] = file</div><div class="line">        <span class="keyword">return</span> file</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="使用工厂方法"><a href="#使用工厂方法" class="headerlink" title="使用工厂方法"></a>使用工厂方法</h3><p>有些时候我们可能需要在这个属性在懒加载的时候设置一些东西, 只是简单的使用它的初始化方法可能就没有那么方便了。这种情况下, 更方便的方法是把这个属性的初始化代理给一个工厂方法。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Scene</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="built_in">lazy</span> <span class="keyword">var</span> eventManager: <span class="type">EventManager</span> = <span class="keyword">self</span>.makeEventManager()</div><div class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">func</span> <span class="title">makeEventManager</span><span class="params">()</span></span> -&gt; <span class="type">EventManager</span>&#123;</div><div class="line">        <span class="keyword">let</span> manager = <span class="type">EventManager</span>()</div><div class="line">        <span class="keyword">return</span> manager</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>如果你不希望你的类里面全是各种 <code>make..()</code> 这类工厂方法, 你可以把这些方法放在一个专门的 <code>extension</code> 中</p>
-<h3 id="使用自执行闭包"><a href="#使用自执行闭包" class="headerlink" title="使用自执行闭包"></a>使用自执行闭包</h3><p>除了使用工厂方法来返回这个属性值以外, 你也可以选择在这个属性声明的地方通过一个自执行的闭包来出初始化这个属性。我们看看上面这个情况, 我们应该怎么做吧！</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="built_in">lazy</span> <span class="keyword">var</span> eventManager: <span class="type">EventManager</span> = &#123;</div><div class="line">   <span class="keyword">let</span> manager = <span class="type">EventManager</span>()</div><div class="line">    <span class="keyword">return</span> manager</div><div class="line">&#125;()</div></pre></td></tr></table></figure>
-<p>这要做有一个好处: 让这个属性的在同一个地方声明和设置。当然阅读这些代码可能会比较不爽。特别是在这个属性的设置需要很长的代码的时候。我自己的规则是当这个属性的初始化方法只有两三行代码的时候。就是使用这样的方法来初始化懒加载属性。</p>
-<h3 id="使用静态工厂方法"><a href="#使用静态工厂方法" class="headerlink" title="使用静态工厂方法"></a>使用静态工厂方法</h3><p>对于那些设置起来更复杂属性, 把这些代码放到其他的类中, 会是更好的办法。这么做, 可以让这个类更加专注于它自己的职责, 让这个类不至于那么复杂。当然这也可以在不使用子类的条件下, 在多个类中共享代码。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="built_in">lazy</span> <span class="keyword">var</span> actionButton: <span class="type">UIButton</span> = <span class="type">ViewFactory</span>.makeActionButton()</div></pre></td></tr></table></figure>
-<p>在这个例子中, <code>ViewFactory</code> 这个类包含了这个 <code>controller</code> 中所有控件的初始化方法。不用引入更多的类, 也不用让继承树变复杂。如果我们希望在另外一个 <code>controller</code> 中使用这个按钮, 也只需要调用同一个 API 就好了 <code>ViewFactory.makeActionButton()</code></p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>可能有人会问, 有没有什么大一统的方法来使用懒加载呢？ 个人认为没有. 写代码就是这样, 选择最合适的方法来处理不同的业务需求才是最正确的做法。而且我自己也在日常开发中使用上面所有的方法。</p>
-<p>Twitter 又一个问题: 使用不同的方法, 对编译时间有什么影响呢？我做了一些基本的测试, 并没有发现这其中有什么差别。当然这也跟这个懒加载属性有关。</p>
-<p>Thanks for reading! 🚀</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;懒加载属于让你可以在需要的时候才初始化, 而不是在初始化这个对象的时候就必须要。懒加载可以用来避免 optional 的使用, 当某个属性的初始化耗费很多资源的时候会提升性能。当然使用懒加载也能让对象的初始化方法看起来很清爽, 因为某些设置会在这个对象的生命周期中被推迟。&lt;/p&gt;
-&lt;p&gt;这周我们来学习一下 Swift 中懒加载的定义, 以及使用。&lt;/p&gt;
     
     </summary>
     
