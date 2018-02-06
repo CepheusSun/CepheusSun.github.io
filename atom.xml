@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.CepheusSun.com/"/>
-  <updated>2018-02-06T07:15:35.570Z</updated>
+  <updated>2018-02-06T07:18:56.781Z</updated>
   <id>http://www.CepheusSun.com/</id>
   
   <author>
@@ -20,10 +20,11 @@
     <link href="http://www.CepheusSun.com/Swift%E4%B8%AD%E7%9A%84%E8%87%AA%E5%AE%9A%E4%B9%89%E6%93%8D%E4%BD%9C%E7%AC%A6.html"/>
     <id>http://www.CepheusSun.com/Swift中的自定义操作符.html</id>
     <published>2018-02-05T16:00:00.000Z</published>
-    <updated>2018-02-06T07:15:35.570Z</updated>
+    <updated>2018-02-06T07:18:56.781Z</updated>
     
     <content type="html"><![CDATA[<p>知道 <code>ObjectMapper</code> 的人大概都见过在使用 <code>Mappable</code> 定义的模型中 <code>func mapping(map: Map) {}</code> 中需要写很多  <code>name &lt;- map[&quot;name&quot;]</code> 这样的代码。这里的 <code>&lt;-</code> 将模型中的属性跟数据中的 <code>key</code> 对应了起来。</p>
 <p>Swift 提供的这种特性能够减少很多的代码量，也能极大的简化语法。在标准库或者是我们自己定义的一些类型中，有一些只是简单的一些基本的值类型的容器，比如说 <code>CGRect</code>、<code>CGSize</code>、<code>CGPoint</code> 这些东西。或者直接使用 <a href="https://medium.com/@johnsundell?source=post_header_lockup">John Sundell</a> 的文章 <a href="https://medium.com/@johnsundell/custom-operators-in-swift-284837290f43">Custom operators in Swift</a> 中的例子。在某个策略类游戏中，玩家能够手机两种资源木材还有金币。为了要将两种资源模型化，定义了 <code>Resources</code> 这个结构体。</p>
+<a id="more"></a>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Resources</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> gold: <span class="type">Int</span></div><div class="line">    <span class="keyword">var</span> wood: <span class="type">Int</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>当然这些资源都是一个具体的玩家来使用或者赚取的。</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Player</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> resources: <span class="type">Resources</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -85,7 +86,8 @@
     
     <summary type="html">
     
-      &lt;p&gt;知道 &lt;code&gt;ObjectMapper&lt;/code&gt; 的人大概都见过在使用 &lt;code&gt;Mappable&lt;/code&gt; 定义的模型中 &lt;code&gt;func mapping(map: Map) {}&lt;/code&gt; 中需要写很多  &lt;code&gt;name &amp;lt;- map[
+      &lt;p&gt;知道 &lt;code&gt;ObjectMapper&lt;/code&gt; 的人大概都见过在使用 &lt;code&gt;Mappable&lt;/code&gt; 定义的模型中 &lt;code&gt;func mapping(map: Map) {}&lt;/code&gt; 中需要写很多  &lt;code&gt;name &amp;lt;- map[&amp;quot;name&amp;quot;]&lt;/code&gt; 这样的代码。这里的 &lt;code&gt;&amp;lt;-&lt;/code&gt; 将模型中的属性跟数据中的 &lt;code&gt;key&lt;/code&gt; 对应了起来。&lt;/p&gt;
+&lt;p&gt;Swift 提供的这种特性能够减少很多的代码量，也能极大的简化语法。在标准库或者是我们自己定义的一些类型中，有一些只是简单的一些基本的值类型的容器，比如说 &lt;code&gt;CGRect&lt;/code&gt;、&lt;code&gt;CGSize&lt;/code&gt;、&lt;code&gt;CGPoint&lt;/code&gt; 这些东西。或者直接使用 &lt;a href=&quot;https://medium.com/@johnsundell?source=post_header_lockup&quot;&gt;John Sundell&lt;/a&gt; 的文章 &lt;a href=&quot;https://medium.com/@johnsundell/custom-operators-in-swift-284837290f43&quot;&gt;Custom operators in Swift&lt;/a&gt; 中的例子。在某个策略类游戏中，玩家能够手机两种资源木材还有金币。为了要将两种资源模型化，定义了 &lt;code&gt;Resources&lt;/code&gt; 这个结构体。&lt;/p&gt;
     
     </summary>
     
