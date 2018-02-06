@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="iOS,推送," />
+  <meta name="keywords" content="iOS,Swift," />
 
 
 
@@ -92,18 +92,19 @@
 
 
 
-<meta name="description" content="最近在调试公司项目的推送的时候遇到了点小问题,死活收不到推送消息。">
+<meta name="description" content="知道 ObjectMapper 的人大概都见过在使用 Mappable 定义的模型中 func mapping(map: Map) {} 中需要写很多  name &amp;lt;- map[&amp;quot;name&amp;quot;] 这样的代码。这里的 &amp;lt;- 将模型中的属性跟数据中的 key 对应了起来。
+Swift 提供的这种特性能够减少很多的代码量，也能极大的简化语法。在标准库或者是我们自己定义的一些">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JPUSH 两个问题">
-<meta property="og:url" content="http://www.CepheusSun.com/JPUSH 两个问题.html">
+<meta property="og:title" content="Swift 中的自定义操作符">
+<meta property="og:url" content="http://www.CepheusSun.com/Swift中的自定义操作符.html">
 <meta property="og:site_name" content="CepheusSun">
-<meta property="og:description" content="最近在调试公司项目的推送的时候遇到了点小问题,死活收不到推送消息。">
-<meta property="og:image" content="http://ocg4av0wv.bkt.clouddn.com/BD4D54BC-82B6-40F6-83E8-ECE15A8FA8D2.png">
-<meta property="og:updated_time" content="2016-09-13T03:24:52.000Z">
+<meta property="og:description" content="知道 ObjectMapper 的人大概都见过在使用 Mappable 定义的模型中 func mapping(map: Map) {} 中需要写很多  name &amp;lt;- map[&amp;quot;name&amp;quot;] 这样的代码。这里的 &amp;lt;- 将模型中的属性跟数据中的 key 对应了起来。
+Swift 提供的这种特性能够减少很多的代码量，也能极大的简化语法。在标准库或者是我们自己定义的一些">
+<meta property="og:updated_time" content="2018-02-06T07:15:35.570Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JPUSH 两个问题">
-<meta name="twitter:description" content="最近在调试公司项目的推送的时候遇到了点小问题,死活收不到推送消息。">
-<meta name="twitter:image" content="http://ocg4av0wv.bkt.clouddn.com/BD4D54BC-82B6-40F6-83E8-ECE15A8FA8D2.png">
+<meta name="twitter:title" content="Swift 中的自定义操作符">
+<meta name="twitter:description" content="知道 ObjectMapper 的人大概都见过在使用 Mappable 定义的模型中 func mapping(map: Map) {} 中需要写很多  name &amp;lt;- map[&amp;quot;name&amp;quot;] 这样的代码。这里的 &amp;lt;- 将模型中的属性跟数据中的 key 对应了起来。
+Swift 提供的这种特性能够减少很多的代码量，也能极大的简化语法。在标准库或者是我们自己定义的一些">
 
 
 
@@ -131,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="http://www.CepheusSun.com/JPUSH 两个问题.html"/>
+  <link rel="canonical" href="http://www.CepheusSun.com/Swift中的自定义操作符.html"/>
 
 
 
 
 
-  <title>JPUSH 两个问题 | CepheusSun</title>
+  <title>Swift 中的自定义操作符 | CepheusSun</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -290,7 +291,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.CepheusSun.com/JPUSH 两个问题.html">
+    <link itemprop="mainEntityOfPage" href="http://www.CepheusSun.com/Swift中的自定义操作符.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CepheusSun">
@@ -307,7 +308,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">JPUSH 两个问题</h2>
+          <h2 class="post-title" itemprop="name headline">Swift 中的自定义操作符</h2>
         
 
         <div class="post-meta">
@@ -323,8 +324,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2016-09-13T11:24:52+08:00">
-                2016-09-13
+              <time title="更新于" itemprop="dateModified" datetime="2018-02-06T15:15:35+08:00">
+                2018-02-06
               </time>
             
           </span>
@@ -337,7 +338,7 @@
 
           
           
-             <span id="/JPUSH 两个问题.html" class="leancloud_visitors" data-flag-title="JPUSH 两个问题">
+             <span id="/Swift中的自定义操作符.html" class="leancloud_visitors" data-flag-title="Swift 中的自定义操作符">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -362,7 +363,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  565
+                  2,545
                 </span>
               
 
@@ -378,7 +379,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  2
+                  10
                 </span>
               
             </div>
@@ -396,28 +397,65 @@
       
 
       
-        <p>最近在调试公司项目的推送的时候遇到了点小问题,死活收不到推送消息。</p>
-<a id="more"></a>
-<p>由于接受公司项目的时候极光推送是已经集成上去了的,虽然说本地调试的时候会经常看见失败这种情况,一直也知道极光推送可能会出现一些收不到消息的问题,所以并没有在意。</p>
-<p>后来公司需要通过tag给不同组别的用户推送消息,所以也要开始看一下以前的代码。果然还是被我发现了问题。</p>
-<h4 id="Q1"><a href="#Q1" class="headerlink" title="Q1"></a>Q1</h4><blockquote>
-<p>在登陆的时候设置了别名，但是在Appdelegate中并没有设置。</p>
+        <p>知道 <code>ObjectMapper</code> 的人大概都见过在使用 <code>Mappable</code> 定义的模型中 <code>func mapping(map: Map) {}</code> 中需要写很多  <code>name &lt;- map[&quot;name&quot;]</code> 这样的代码。这里的 <code>&lt;-</code> 将模型中的属性跟数据中的 <code>key</code> 对应了起来。</p>
+<p>Swift 提供的这种特性能够减少很多的代码量，也能极大的简化语法。在标准库或者是我们自己定义的一些类型中，有一些只是简单的一些基本的值类型的容器，比如说 <code>CGRect</code>、<code>CGSize</code>、<code>CGPoint</code> 这些东西。或者直接使用 <a href="https://medium.com/@johnsundell?source=post_header_lockup">John Sundell</a> 的文章 <a href="https://medium.com/@johnsundell/custom-operators-in-swift-284837290f43">Custom operators in Swift</a> 中的例子。在某个策略类游戏中，玩家能够手机两种资源木材还有金币。为了要将两种资源模型化，定义了 <code>Resources</code> 这个结构体。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Resources</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> gold: <span class="type">Int</span></div><div class="line">    <span class="keyword">var</span> wood: <span class="type">Int</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当然这些资源都是一个具体的玩家来使用或者赚取的。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Player</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> resources: <span class="type">Resources</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>用户可以通过训练军队来使用这些资源。当用户训练军队的时候，都需要从用户的 <code>resources</code> 里面减去对应数量的金币还有木材。比如用户花费10个金币20个木材训练了一个弓箭手(<code>Archer</code>)。</p>
+<p>我们先定义弓箭手这个容器:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">Armyable</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> cost: <span class="type">Resources</span> &#123; <span class="keyword">get</span> &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Archer</span>: <span class="title">Armyable</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> cost: <span class="type">Resources</span> = <span class="type">Resources</span>(gold: <span class="number">10</span>, wood: <span class="number">20</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在这个例子中我们首先定义了<code>Armyable</code> 这个协议来描述所有的军队类型。当然在这个例子里面只有训练花费的资源也就是 <code>cost</code> 这一个东西。<code>Archer</code> 这个结构体直接定义了训练一个弓箭手需要耗费的资源量。</p>
+<p>现在再在 <code>Player</code> 这个方法里面定义训练军队的方法。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> board: [<span class="type">String</span>]</div><div class="line"><span class="keyword">mutating</span> <span class="function"><span class="keyword">func</span> <span class="title">trainArmy</span><span class="params">(<span class="number">_</span> unit: Armyable)</span></span> &#123;</div><div class="line">    </div><div class="line">    resources.gold -= unit.cost.gold   <span class="comment">// line 1</span></div><div class="line">    resources.wood -= unit.cost.wood   <span class="comment">// line 2</span></div><div class="line">    board.append(<span class="string">"弓箭手"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>首先模拟的定义了一个数组来存放当前的军队。然后定义了 <code>trainArmy</code>  这个方法来训练军队。这样就完成了训练军队这个逻辑的编码工作。但是可能你也想到了，在这类游戏中，有很多的情况需要操作用户的资源，也就是说上面 line1 line2 之类的代码会在这个游戏里写很多次。如果你觉得只是重复写点代码没什么的话，那么以后需要新增另外的什么资源的时候呢？恐怕就只能在整个代码库中找到所有相关的地方了。</p>
+<h3 id="操作符重载"><a href="#操作符重载" class="headerlink" title="操作符重载"></a>操作符重载</h3><p>这时候要是能够用到数学符号 <code>+</code>、<code>-</code> 就完美了。Swift 也替我们想到了这点。我们可以自己定义一个操作符也可以重载一个已经有了的操作符。操作符重载跟方法重载一样。我们先重载 <code>-=</code> 这个符号。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">Resources</span> </span>&#123;</div><div class="line">    <span class="keyword">static</span> <span class="function"><span class="keyword">func</span> -= <span class="params">(lhs: <span class="keyword">inout</span> Resources, rhs: Resources)</span></span> &#123;</div><div class="line">        lhs.gold -= rhs.gold</div><div class="line">        lhs.wood -= rhs.wood</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>跟 <code>Equatable</code> 一样，Swift 中的操作符重载只是一个简单的静态方法。在 <code>-=</code> 这个方法里面，左边的参数被标记成了<code>inout</code>， 这个参数就是我们需要改变的值。有了 <code>-=</code> 这个操作符，我们现在就可以像操作数字一样操作 resource</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">resources -= unit.cost</div></pre></td></tr></table></figure>
+<p>这么些不仅仅看起来或者读起来很友好，也能够帮助我们减少类似的代码到处 copy 的问题。既然现在我们可以使用外部逻辑改变 resource ，现在甚至可以把 Resource 中的属性改成只读的。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Resources</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span>(<span class="keyword">set</span>) <span class="keyword">var</span> gold: <span class="type">Int</span></div><div class="line">    <span class="keyword">private</span>(<span class="keyword">set</span>) <span class="keyword">var</span> wood: <span class="type">Int</span></div><div class="line">    </div><div class="line">    <span class="keyword">init</span>(gold: <span class="type">Int</span>, wood: <span class="type">Int</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.gold = gold</div><div class="line">        <span class="keyword">self</span>.wood = wood</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当然我们也可以使用 <code>mutating</code> 方法来做这件事情。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">Resources</span> </span>&#123;</div><div class="line">    <span class="keyword">mutating</span> <span class="function"><span class="keyword">func</span> <span class="title">reduce</span><span class="params">(by resources: Resources)</span></span> &#123;</div><div class="line">        gold -= resources.gold</div><div class="line">        wood -= resources.wood</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>上面两种方法都各有优势，你可以说使用 mutating 方法可以让读者更加明确代码的含义。但是你肯定也不想标准库中的减法变成 <code>5.reduce(by: 3)</code> 这样的。</p>
 </blockquote>
-<p>这中情况会造成app在保存密码之后进入app不会在走道登录界面，所以并不会设置别名什么的。这个时候的推送应该是收不到的。</p>
-<p>这个我没有测试过,看了之前的代码之后直接的添加了相关代码,运行后并没有什么问题。</p>
-<h4 id="Q2"><a href="#Q2" class="headerlink" title="Q2"></a>Q2</h4><blockquote>
-<p>报错APNs is not available, please check your provisioning profile and certification</p>
+<h3 id="布局运算中的操作符重载"><a href="#布局运算中的操作符重载" class="headerlink" title="布局运算中的操作符重载"></a>布局运算中的操作符重载</h3><p>还有一个场景就是刚刚提到了做 UI 布局的时候，涉及到的 CGRect、 CGPoint 等等。在做布局的时候经常会涉及到需要对这些值进行运算，如果能够使用像上面那样的方法来做这件事情不是很好的吗？</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">CGSize</span> </span>&#123;</div><div class="line">    <span class="keyword">static</span> <span class="function"><span class="keyword">func</span> + <span class="params">(lhs: CGSize, rhs: CGSize)</span></span> -&gt; <span class="type">CGPoint</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="type">CGPoint</span>(x: lhs.width + rhs.width,</div><div class="line">                       y: lhs.height + rhs.height)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这段代码，重载了 <code>+</code> 这个操作符，接受两个 CGSize， 返回 CGPoint。然后就可以这样写了</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">label.frame.origin = imageView.bounds.size + <span class="type">CGSize</span>(width: <span class="number">10</span>, height: <span class="number">20</span>)</div></pre></td></tr></table></figure>
+<p>这样已经很好的，但是必须要创建一个 CGSize 对象确实还不够好。所以我们再多定义一个 <code>+</code> 这个操作符接受一个元组:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">CGSize</span> </span>&#123;</div><div class="line">    <span class="keyword">static</span> <span class="function"><span class="keyword">func</span> + <span class="params">(lhs: CGSize, rhs: <span class="params">(x: CGFloat, y: CGFloat)</span></span></span>) -&gt; <span class="type">CGPoint</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="type">CGPoint</span>(</div><div class="line">            x: lhs.width + rhs.x,</div><div class="line">            y: lhs.height + rhs.y)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后就可以把上面的代码进一步简化了:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">label.frame.origin = imageView.bounds.size + (x: <span class="number">10</span>, y: <span class="number">20</span>)</div><div class="line"><span class="comment">// or</span></div><div class="line">label.frame.origin = imageView.bounds.size + (<span class="number">10</span>,<span class="number">20</span>)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>知道现在我们都还在操作数字相关的东西，大多数的人都能够很轻松的去理解和阅读这些代码，但是如果是在涉及到一些特别的点，特别是需要引入新的操作符的时候，就需要好好去思考这样做的必要性的。这是一个关于冗余代码和可读性代码的关键点。</p>
 </blockquote>
-<p>这个可能就全是我自身造成的了,为了尝鲜Swift3.0 下了Xcode8.0beta 来玩玩,然后本来是Xcode7.0打开的项目文件,默认8.0了,然后不小心运行到了公司的项目。很悲剧的是，Xcode8.0 是默认关闭Push Notifications的,Xcode中手动打开就ok了。然后其它添加证书什么的, 真的没什么好说的, 极光在文档中也已经描述的非常清楚了。</p>
-<p><strong>设置步骤:</strong> taget -&gt; Capabilities -&gt; PushNotification -&gt; ON</p>
-<p><img src="http://ocg4av0wv.bkt.clouddn.com/BD4D54BC-82B6-40F6-83E8-ECE15A8FA8D2.png" /></p>
-<h4 id="Q3"><a href="#Q3" class="headerlink" title="Q3"></a>Q3</h4><blockquote>
-<p>设置别名悲剧 : app not registed, give up set tag: alias:</p>
+<p>作者 John Sundel 有一个库 <a href="https://github.com/JohnSundell/CGOperators">CGOperators</a>  是很多关于 <em>Core Graphics</em> 中的类的。</p>
+<h3 id="异常处理中的自定义操作符"><a href="#异常处理中的自定义操作符" class="headerlink" title="异常处理中的自定义操作符"></a>异常处理中的自定义操作符</h3><p>到现在，我们已经知道了如何去重载已有的操作符。有些时候我们还想要使用操作符来做一些操作，而在已经存在的操作符中找不到对应的，这种时候就需要自己去定义一个操作符了。</p>
+<p>我们来举个例子。 Swift 中的 <code>do</code>、<code>try</code>、 <code>catch</code>  是非常好的异常处理机制。它让我们能够很安全的从发生了异常的方法里退出，比如说下面这个从本地读取数据的例子:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">NoteManager</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">loadNote</span><span class="params">(fromFileNamed fileName: String)</span></span> <span class="keyword">throws</span> -&gt; <span class="type">Note</span> &#123;</div><div class="line">        <span class="keyword">let</span> file = <span class="keyword">try</span> fileLoader.loadFile(named: fileName)</div><div class="line">        <span class="keyword">let</span> data = <span class="keyword">try</span> file.read()</div><div class="line">        <span class="keyword">let</span> note = <span class="keyword">try</span> <span class="type">Note</span>(data: data)</div><div class="line">        <span class="keyword">return</span> note</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这么些最大的缺陷就是在遇到异常的时候，我们给调用者直接抛出了比较隐晦的异常。<em>[</em>“Providing a unified Swift error API”*](<a href="https://www.swiftbysundell.com/posts/providing-a-unified-swift-error-api">https://www.swiftbysundell.com/posts/providing-a-unified-swift-error-api</a>) 这篇文章聊过减少一个 API 能够抛出异常的总量的好处。</p>
+<p>这种情况下，我们想要的异常其实是有限的，这样我们就能够很轻松的处理每一种异常情况。但是，我们还是像捕获到所有的异常，获得每个异常的消息，我们可以定义一个枚举:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">NoteManager</span> </span>&#123;</div><div class="line">    <span class="class"><span class="keyword">enum</span> <span class="title">LoadingError</span>: <span class="title">Error</span> </span>&#123;</div><div class="line">        <span class="keyword">case</span> invalidFile(<span class="type">Error</span>)</div><div class="line">        <span class="keyword">case</span> invalidData(<span class="type">Error</span>)</div><div class="line">        <span class="keyword">case</span> decodingFailed(<span class="type">Error</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样就可以将各种异常消息归类，并且不会影响到外界知道这个错误的具体信息。但是这样写代码就会变成这样了:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">NoteManager</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">loadNote</span><span class="params">(fromFileNamed fileName: String)</span></span> <span class="keyword">throws</span> -&gt; <span class="type">Note</span> &#123;</div><div class="line">        <span class="keyword">do</span> &#123;</div><div class="line">            <span class="keyword">let</span> file = <span class="keyword">try</span> fileLoader.loadFile(named: fileName)</div><div class="line">            <span class="keyword">do</span> &#123;</div><div class="line">                <span class="keyword">let</span> data = <span class="keyword">try</span> file.read()</div><div class="line">                <span class="keyword">do</span> &#123;</div><div class="line">                    <span class="keyword">return</span> <span class="keyword">try</span> <span class="type">Note</span>(data: data)</div><div class="line">                &#125; <span class="keyword">catch</span> &#123;</div><div class="line">                    <span class="keyword">throw</span> <span class="type">LoadingError</span>.decodingFailed(error)</div><div class="line">                &#125;</div><div class="line">            &#125; <span class="keyword">catch</span> &#123;</div><div class="line">                <span class="keyword">throw</span> <span class="type">LoadingError</span>.invalidData(error)</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">catch</span> &#123;</div><div class="line">            <span class="keyword">throw</span> <span class="type">LoadingError</span>.invalidFile(error)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>不得不说这简直就是一场灾难。相信没人愿意读到这样的代码吧！引入一个新的操作 <code>perform</code> 可以让代码看起来更友好一些:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">NoteManager</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">loadNote</span><span class="params">(fromFileNamed fileName: String)</span></span> <span class="keyword">throws</span> -&gt; <span class="type">Note</span> &#123;</div><div class="line">        <span class="keyword">let</span> file = <span class="keyword">try</span> perform(fileLoader.loadFile(named: fileName),</div><div class="line">                               orThrow: <span class="type">LoadingError</span>.invalidFile)</div><div class="line">        <span class="keyword">let</span> data = <span class="keyword">try</span> perform(file.read(),</div><div class="line">                               orThrow: <span class="type">LoadingError</span>.invalidData)</div><div class="line">        <span class="keyword">let</span> note = <span class="keyword">try</span> perform(<span class="type">Note</span>(data: data),</div><div class="line">                               orThrow: <span class="type">LoadingError</span>.decodingFailed)</div><div class="line">        <span class="keyword">return</span> note</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这就好很多了，但是依然有很多异常处理相关的代码会干扰主逻辑。下面我们来看看引入新的操作符之后会是什么样的情况。</p>
+<h3 id="自定义操作符"><a href="#自定义操作符" class="headerlink" title="自定义操作符"></a>自定义操作符</h3><p>我们现在来自定义一个操作符。我选择了 <code>~&gt;</code> 。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">infix</span> <span class="keyword">operator</span> ~&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&gt;<span class="keyword">prefix</span> <span class="keyword">operator</span>  &amp;*&amp; &#123;&#125;     <span class="comment">//定义左操作符</span></div><div class="line">&gt;<span class="keyword">infix</span> <span class="keyword">operator</span>  ** &#123;&#125;       <span class="comment">//定义中操作符</span></div><div class="line">&gt;<span class="keyword">postfix</span> <span class="keyword">operator</span>  &amp;&amp; &#123;&#125;     <span class="comment">//定义右操作符</span></div><div class="line">&gt;</div><div class="line">&gt;<span class="keyword">prefix</span> <span class="function"><span class="keyword">func</span> &amp;*&amp;<span class="params">(a: Int)</span></span> -&gt; <span class="type">Int</span> &#123; ... &#125;</div><div class="line">&gt;<span class="keyword">postfix</span> <span class="function"><span class="keyword">func</span> &amp;&amp;<span class="params">(a: Int)</span></span> -&gt; <span class="type">Int</span> &#123; ... &#125;</div><div class="line">&gt;<span class="comment">// let c = 1&amp;&amp;</span></div><div class="line">&gt;<span class="comment">// let b = &amp;*&amp;1</span></div><div class="line">&gt;<span class="comment">// let a = 1 ** 2</span></div><div class="line">&gt;</div></pre></td></tr></table></figure>
 </blockquote>
-<p>这是由于记住密码的情况下,设置别名什么的和注册极光等都是在很短的时间内,这个时候掉用的话，可能极光推送还不可用,所以就悲剧了.</p>
-<p><strong>解决方案:</strong>延迟调用设置别名的方法。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^&#123;</div><div class="line">    [JPUSHService setTags:[NSSet setWithObject:_MUserInfo.partnerId]</div><div class="line">                    alias:_MUserInfo.userId</div><div class="line">    fetchCompletionHandle:^(int iResCode, NSSet *iTags, NSString *iAlias) &#123;</div><div class="line">        PSLog(@&quot;-----%@&quot;, iAlias);</div><div class="line">    &#125;];</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<h4 id="ending"><a href="#ending" class="headerlink" title="ending"></a>ending</h4><p>在集成的时候还是要注意一下方法的调用顺序, 别在注册JPush之前去设置什么东西吧! 猜想:这肯定是有问题的。</p>
+<p>操作符能够如此强大的原因在于它能够捕获到两边的上下文。结合 Swift 的 <code>@autoclosure</code> 特性我们就可以做一些很酷的事情了。</p>
+<p>请我们来实现这个操作符吧！让它接受一个能够抛出一场的表达式，以及一个异常转换的表达式。返回原来的值或者是原来的异常。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> ~&gt;&lt;T&gt;<span class="params">(expression: @autoclosure <span class="params">()</span></span></span> <span class="keyword">throws</span> -&gt; <span class="type">T</span>,</div><div class="line">           errorTransform: (<span class="type">Error</span>) -&gt; <span class="type">Error</span>) <span class="keyword">throws</span> -&gt; <span class="type">T</span> &#123;</div><div class="line">    <span class="keyword">do</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">try</span> expression()</div><div class="line">    &#125; <span class="keyword">catch</span> &#123;</div><div class="line">        <span class="keyword">throw</span> errorTransform(error)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这一段代码能够让我们很够简单的通过在操作和异常之间添加 <code>~&gt;</code> 来表达具体执行的任务以及可能遇到的异常。之前的代码就可以改成这样了：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">NoteManager</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">loadNote</span><span class="params">(fromFileNamed fileName: String)</span></span> <span class="keyword">throws</span> -&gt; <span class="type">Note</span> &#123;</div><div class="line">        <span class="keyword">let</span> file = <span class="keyword">try</span> fileLoader.loadFile(named: fileName) ~&gt; <span class="type">LoadingError</span>.invalidFile</div><div class="line">        <span class="keyword">let</span> data = <span class="keyword">try</span> file.read() ~&gt; <span class="type">LoadingError</span>.invalidData</div><div class="line">        <span class="keyword">let</span> note = <span class="keyword">try</span> <span class="type">Note</span>(data: data) ~&gt; <span class="type">LoadingError</span>.decodingFailed</div><div class="line">        <span class="keyword">return</span> note</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>怎么样，通过引入一个操作符，我们可以移除掉很多干扰阅读的代码。但是缺点就是，由于引入了新的操作符，这对新人来说，这会是额外的学习成本。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>自定义操作符以及操作符重载是 Swift 中一个很强大的特性，它能够帮助你很轻松的去构建一些解决方案。它能够帮助我们减少在相似逻辑中的代码复制，让代码更干净。但是它也可能会让你一不小心就写出了隐晦，阅读不友好的代码。</p>
+<p>在引入自定义操作符或者是想要重载某个操作符的时候，还是需要好好想一想利弊。从其他同事或者同行那里寻求建议是一个非常有效的方法，新的操作符对你自己来说可能很好，但是别人看起来可能会觉得很奇怪。<strong>同其他很多的事情一样，这其实就是一个关于权衡的话题，我们需要为每种情况选择最合适的解决方案。</strong></p>
 
       
     </div>
@@ -472,7 +510,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="http://www.CepheusSun.com/JPUSH 两个问题.html" title="JPUSH 两个问题">http://www.CepheusSun.com/JPUSH 两个问题.html</a>
+      <a href="http://www.CepheusSun.com/Swift中的自定义操作符.html" title="Swift 中的自定义操作符">http://www.CepheusSun.com/Swift中的自定义操作符.html</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -490,7 +528,7 @@
           
             <a href="/tags/iOS/" rel="tag"># iOS</a>
           
-            <a href="/tags/推送/" rel="tag"># 推送</a>
+            <a href="/tags/Swift/" rel="tag"># Swift</a>
           
         </div>
       
@@ -503,8 +541,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/EmptyDataKit.html" rel="next" title="EmptyDataKit -- 一行代码集成列表视图无数据展示">
-                <i class="fa fa-chevron-left"></i> EmptyDataKit -- 一行代码集成列表视图无数据展示
+              <a href="/2017总结.html" rel="next" title="你好，2018">
+                <i class="fa fa-chevron-left"></i> 你好，2018
               </a>
             
           </div>
@@ -512,10 +550,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/如何优雅的使用xib进行开发.html" rel="prev" title="如何优雅的使用xib进行开发">
-                如何优雅的使用xib进行开发 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -729,7 +763,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Q1"><span class="nav-number">1.</span> <span class="nav-text">Q1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Q2"><span class="nav-number">2.</span> <span class="nav-text">Q2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Q3"><span class="nav-number">3.</span> <span class="nav-text">Q3</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ending"><span class="nav-number">4.</span> <span class="nav-text">ending</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#操作符重载"><span class="nav-number">1.</span> <span class="nav-text">操作符重载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#布局运算中的操作符重载"><span class="nav-number">2.</span> <span class="nav-text">布局运算中的操作符重载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异常处理中的自定义操作符"><span class="nav-number">3.</span> <span class="nav-text">异常处理中的自定义操作符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义操作符"><span class="nav-number">4.</span> <span class="nav-text">自定义操作符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
           </div>
         </section>
