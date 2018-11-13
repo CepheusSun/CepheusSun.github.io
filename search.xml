@@ -3349,6 +3349,15 @@ MVVM 是在 View 和 ViewModel 之间进行绑定。
 <p>Unable to interpret the specified path as a podspec</p>
 </blockquote>
 <p> 看你的 tag 标记和 podSpec 文件的 version 字段是否一致</p>
+<h4 id="账号验证失败"><a href="#账号验证失败" class="headerlink" title="账号验证失败"></a>账号验证失败</h4><blockquote>
+<p>Authentication token is invalid or unverified. Either verify it with the email that was sent or register a new session.</p>
+</blockquote>
+<p>按照如下步骤：</p>
+<ol>
+<li><code>pod trunk register 你的邮箱</code></li>
+<li>打开邮箱验证</li>
+<li>重新执行pod trunk push podspec 提交podspec文件</li>
+</ol>
 <h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><p>[<em><a href="http://blog.csdn.net/skylin19840101/article/details/50426822">在CocoaPods上创建自己iOS程序的依赖管理</a></em></p>
 <p><a href="http://tips.producter.io/shi-yong-cocoapods-jin-xing-tuan-dui-xie-zuo/">使用 CocoaPods 进行团队协作</a></p>
 ]]></content>

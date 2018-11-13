@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://www.CepheusSun.com/%E4%BD%BF%E7%94%A8Cocoapods%E7%AE%A1%E7%90%86%E4%BD%A0%E7%9A%84%E9%A1%B9%E7%9B%AE.html</loc>
+    <lastmod>2018-11-13T08:33:29.752Z</lastmod>
+    <data>
+        <display>
+        <title>使用 Cocoapods 管理你的项目</title>
+        <pubTime>2016-12-01T16:00:00.000Z</pubTime>
+        
+        <tag>CocoaPods</tag>
+         
+        <tag>iOS</tag>
+         
+         
+           
+             
+              <breadCrumb title="CocoaPods" url="http://www.CepheusSun.com/categories/CocoaPods/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.CepheusSun.com/Xcode10%E9%80%82%E9%85%8D%E8%B8%A9%E5%9D%91.html</loc>
     <lastmod>2018-09-20T01:37:47.348Z</lastmod>
     <data>
@@ -941,9 +963,9 @@
         <title>使用Gitlab和Cocoapods创建私有pod</title>
         <pubTime>2017-04-19T14:39:27.000Z</pubTime>
         
-        <tag>iOS</tag>
-         
         <tag>CocoaPods</tag>
+         
+        <tag>iOS</tag>
          
          
            
@@ -1035,28 +1057,6 @@
            
              
               <breadCrumb title="python" url="http://www.CepheusSun.com/categories/python/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.CepheusSun.com/%E4%BD%BF%E7%94%A8Cocoapods%E7%AE%A1%E7%90%86%E4%BD%A0%E7%9A%84%E9%A1%B9%E7%9B%AE.html</loc>
-    <lastmod>2017-03-01T15:29:17.000Z</lastmod>
-    <data>
-        <display>
-        <title>使用 Cocoapods 管理你的项目</title>
-        <pubTime>2016-12-01T16:00:00.000Z</pubTime>
-        
-        <tag>iOS</tag>
-         
-        <tag>CocoaPods</tag>
-         
-         
-           
-             
-              <breadCrumb title="CocoaPods" url="http://www.CepheusSun.com/categories/CocoaPods/"/>
           
         </display>
     </data>
@@ -1453,11 +1453,11 @@
         <title>html学习笔记--1</title>
         <pubTime>2016-08-27T15:03:45.000Z</pubTime>
         
+        <tag>html</tag>
+         
         <tag>前端</tag>
          
         <tag>学习笔记</tag>
-         
-        <tag>html</tag>
          
          
            
@@ -1497,11 +1497,11 @@
         <title>CSS学习笔记 -- 1</title>
         <pubTime>2016-08-29T01:56:45.000Z</pubTime>
         
-        <tag>CSS</tag>
-         
         <tag>前端</tag>
          
         <tag>学习笔记</tag>
+         
+        <tag>CSS</tag>
          
          
            
